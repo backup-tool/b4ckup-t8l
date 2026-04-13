@@ -52,7 +52,7 @@ export function Contact() {
         </a>
         <div className="flex items-center gap-2">
           <Mail className="w-4 h-4" />
-          {t("contact.emailDirect")}: <a href="mailto:contact@example.com" className="text-accent">contact@example.com</a>
+          {t("contact.emailDirect")}: <a href="mailto:contact@backup-tool.app" className="text-accent">contact@backup-tool.app</a>
         </div>
       </div>
     </div>
