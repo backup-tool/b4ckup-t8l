@@ -249,7 +249,7 @@ fn validate_path(path: &Path) -> Result<(), String> {
     let blocked_prefixes: &[&str] = if cfg!(target_os = "macos") {
         &["/System", "/usr", "/bin", "/sbin", "/private/etc", "/private/var/root"]
     } else if cfg!(target_os = "windows") {
-        &["C:\\Windows", "C:\\Program Files", "C:\\ProgramData"]
+        &["C:\\Windows", "C:\\Program Files", "C:\\Program Files (x86)", "C:\\ProgramData"]
     } else {
         &["/bin", "/sbin", "/usr", "/boot", "/proc", "/sys", "/etc"]
     };
@@ -257,6 +257,18 @@ fn validate_path(path: &Path) -> Result<(), String> {
     for prefix in blocked_prefixes {
         if path_str.starts_with(prefix) {
             return Err(format!("Access to system directory '{}' is not allowed", prefix));
+        }
+    }
+
+    // Windows: block system dirs on any drive letter (D:\Windows, E:\Program Files, etc.)
+    if cfg!(target_os = "windows") {
+        let lower = path_str.to_lowercase();
+        if lower.len() >= 3 && lower.as_bytes()[1] == b':' {
+            let after_drive = &lower[2..];
+            if after_drive.starts_with("\\windows") || after_drive.starts_with("\\program files")
+                || after_drive.starts_with("\\programdata") || after_drive.starts_with("\\system volume information") {
+                return Err("Access to system directory is not allowed".to_string());
+            }
         }
     }
 

@@ -44,7 +44,7 @@ export function Contact() {
         <a
           href="https://github.com/backup-tool/b4ckup-t8l/issues"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           className="flex items-center gap-3 p-5 rounded-2xl bg-bg-card border border-border hover:border-accent/30 transition-colors"
         >
           <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">

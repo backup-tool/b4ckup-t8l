@@ -91,7 +91,7 @@ i18n.use(initReactI18next).init({
   },
   lng: saved || browser,
   fallbackLng: "en",
-  interpolation: { escapeValue: false },
+  interpolation: { escapeValue: true },
 });
 
 export default i18n;

@@ -90,7 +90,7 @@ export function Download() {
           <a
             href={`https://github.com/${GITHUB_REPO}/releases/latest`}
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent text-bg font-semibold hover:bg-accent-hover transition-colors"
           >
             <DownloadIcon className="w-4 h-4" />
@@ -143,7 +143,7 @@ export function Download() {
         <a
           href={`https://github.com/${GITHUB_REPO}/releases`}
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           className="flex items-center gap-3 p-4 rounded-xl bg-bg-card border border-border hover:border-accent/30 transition-colors"
         >
           <History className="w-5 h-5 text-fg-muted shrink-0" />
@@ -156,7 +156,7 @@ export function Download() {
         <a
           href={`https://github.com/${GITHUB_REPO}`}
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           className="flex items-center gap-3 p-4 rounded-xl bg-bg-card border border-border hover:border-accent/30 transition-colors"
         >
           <GitBranch className="w-5 h-5 text-fg-muted shrink-0" />
