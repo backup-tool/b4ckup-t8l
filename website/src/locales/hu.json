@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Kezdőlap",
+    "features": "Funkciók",
+    "download": "Letöltés",
+    "contact": "Kapcsolat"
+  },
+  "hero": {
+    "tagline": "Kövesse nyomon, kezelje és figyelje az összes biztonsági mentését egy helyen.",
+    "subtitle": "Soha többé ne veszítse szem elől a biztonsági mentéseit. A B4cKuP T8L teljes áttekintést nyújt az összes biztonsági mentési adatáról minden eszközön és adathordozón.",
+    "cta": "Ingyenes letöltés",
+    "learnMore": "Tudjon meg többet"
+  },
+  "stats": {
+    "backups": "Korlátlan számú biztonsági mentés kezelése",
+    "platforms": "Windows, macOS és Linux",
+    "languages": "3 nyelv",
+    "opensource": "Ingyenes és nyílt forráskódú"
+  },
+  "features": {
+    "title": "Minden, amire szüksége van a biztonsági mentések kezeléséhez",
+    "subtitle": "A B4cKuP T8L lecseréli a biztonsági mentési táblázatát egy hatékony asztali alkalmazásra.",
+    "dashboard": "Vezérlőpult",
+    "dashboardDesc": "Teljes áttekintés az összes biztonsági mentésről állapotjelzőkkel, tárhelyhasználati diagramokkal és a 3-2-1 biztonsági mentési szabály ellenőrzésével.",
+    "tracking": "Biztonsági mentések nyomon követése",
+    "trackingDesc": "Dokumentáljon minden biztonsági mentést dátummal, mérettel, tárolási hellyel és jegyzetekkel. Kövesse nyomon az előzményeket és a méretváltozásokat az idő múlásával.",
+    "scan": "Automatikus vizsgálat",
+    "scanDesc": "Mutasson egy mappára, és automatikusan észlelje a meglévő biztonsági mentéseket. A méretek a háttérben kerülnek kiszámításra.",
+    "media": "Adathordozók",
+    "mediaDesc": "Kezelje az összes tárolóeszközét - NAS, külső meghajtók, felhőszolgáltatások, SSD-k és egyebek. Kövesse nyomon a kapacitást és a titkosítást.",
+    "matrix": "Áttekintő mátrix",
+    "matrixDesc": "Lássa egy pillantásra, melyik biztonsági mentés melyik adathordozón van tárolva - mint egy táblázat, de jobb.",
+    "notifications": "Intelligens értesítések",
+    "notificationsDesc": "Kapjon értesítést, ha a biztonsági mentések lejártak. Konfigurálható emlékeztető időközök biztonsági mentésenként.",
+    "darkmode": "Sötét mód",
+    "darkmodeDesc": "Gyönyörű világos és sötét témák testreszabható kiemelő színekkel. Követi a rendszer beállításait.",
+    "i18n": "Többnyelvű",
+    "i18nDesc": "Elérhető angol, német és orosz nyelven. További nyelvek könnyen hozzáadhatók.",
+    "tray": "Rendszertálca",
+    "trayDesc": "Csendben fut a háttérben. A fájlfigyelők automatikusan észlelik az új biztonsági mentéseket.",
+    "export": "Adatexportálás",
+    "exportDesc": "Exportálja az összes biztonsági mentési adatot JSON vagy CSV formátumban. Az automatikus adatbázis-mentések biztonságban tartják az adatait.",
+    "sources": "Forráskezelés",
+    "sourcesDesc": "Rendszerezze a biztonsági mentéseket forrás szerint - eszközök, felhőszolgáltatások, külső meghajtók. Teljes CRUD lágy törléssel és lomtárral.",
+    "encryption": "Titkosítás nyomon követése",
+    "encryptionDesc": "Kövesse nyomon, mely adathordozók vannak titkosítva, milyen módszerrel (VeraCrypt, BitLocker, FileVault) és kulcscímkékkel."
+  },
+  "download": {
+    "title": "B4cKuP T8L letöltése",
+    "subtitle": "Elérhető az összes főbb platformra. Ingyenes és nyílt forráskódú.",
+    "version": "Verzió",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 vagy újabb",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) vagy újabb",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 vagy újabb",
+    "downloadBtn": "Letöltés",
+    "comingSoon": "Hamarosan"
+  },
+  "contact": {
+    "title": "Kapcsolat",
+    "subtitle": "Kérdése, visszajelzése van, vagy hibát talált? Lépjen kapcsolatba velünk.",
+    "name": "Név",
+    "email": "Email",
+    "message": "Üzenet",
+    "send": "Üzenet küldése",
+    "github": "Hibák jelentése a GitHubon",
+    "emailDirect": "Vagy írjon nekünk közvetlenül a következő címre"
+  },
+  "imprint": {
+    "title": "Jogi nyilatkozat (Impressum)",
+    "according": "Információk az 5. § TMG szerint",
+    "responsible": "A tartalomért felelős az 55. § (2) RStV szerint",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Németország",
+    "email": "Email: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Vitarendezés",
+    "disputeText": "Az Európai Bizottság online vitarendezési (OS) platformot biztosít: https://ec.europa.eu/consumers/odr/. Nem vagyunk hajlandóak és nem kötelesek részt venni vitarendezési eljárásokban fogyasztói választottbíróság előtt."
+  },
+  "privacy": {
+    "title": "Adatvédelmi szabályzat",
+    "intro": "Nagyon komolyan vesszük a személyes adatai védelmét. Ez az adatvédelmi szabályzat tájékoztatja Önt arról, hogyan kezeljük az adatait.",
+    "responsible": "Felelős fél",
+    "responsibleText": "Az ezen a weboldalon történő adatfeldolgozásért felelős fél a Jogi nyilatkozatban van megadva.",
+    "hosting": "Tárhelyszolgáltatás",
+    "hostingText": "Ez a weboldal a saját szervereinken van tárolva. Amikor meglátogatja ezt a weboldalt, böngészője automatikusan információkat küld (IP-cím, dátum/idő, meglátogatott oldal) a szerverünkre. Ezeket az adatokat a szerver naplófájljaiban tároljuk, és 30 nap után automatikusan töröljük.",
+    "cookies": "Cookie-k",
+    "cookiesText": "Ez a weboldal nem használ cookie-kat vagy bármilyen nyomkövető technológiát. Nem használunk analitikai eszközöket.",
+    "contact": "Kapcsolatfelvételi űrlap",
+    "contactText": "Amikor üzenetet küld nekünk a kapcsolatfelvételi űrlapon keresztül, az adatait (név, email, üzenet) kizárólag a megkeresésére való válaszadásra használjuk fel. Ezeket az adatokat nem osztjuk meg harmadik felekkel.",
+    "downloads": "Letöltések",
+    "downloadsText": "A szoftverünk letöltésekor nem gyűjtünk személyes adatokat. A letöltési fájlok regisztráció nélkül érhetők el.",
+    "rights": "Az Ön jogai",
+    "rightsText": "A GDPR értelmében Önnek joga van a hozzáféréshez, helyesbítéshez, törléshez, az adatfeldolgozás korlátozásához, az adathordozhatósághoz és a tiltakozáshoz. Ezen jogok gyakorlásához kérjük, lépjen kapcsolatba velünk a Jogi nyilatkozatban megadott elérhetőségeken.",
+    "changes": "Változások",
+    "changesText": "Fenntartjuk a jogot ezen adatvédelmi szabályzat frissítésére. Az aktuális verzió mindig elérhető ezen az oldalon."
+  },
+  "footer": {
+    "legal": "Jogi információk",
+    "imprint": "Jogi nyilatkozat",
+    "privacy": "Adatvédelmi szabályzat",
+    "product": "Termék",
+    "madeWith": "Készítve"
+  }
+}

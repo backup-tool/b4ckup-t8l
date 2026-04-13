@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Acasă",
+    "features": "Funcționalități",
+    "download": "Descărcare",
+    "contact": "Contact"
+  },
+  "hero": {
+    "tagline": "Urmărește, gestionează și monitorizează toate copiile de rezervă într-un singur loc.",
+    "subtitle": "Nu mai pierde niciodată urma copiilor de rezervă. B4cKuP T8L îți oferă o imagine completă a tuturor datelor de rezervă de pe fiecare dispozitiv și mediu de stocare.",
+    "cta": "Descarcă gratuit",
+    "learnMore": "Află mai multe"
+  },
+  "stats": {
+    "backups": "Gestionează copii de rezervă nelimitate",
+    "platforms": "Windows, macOS și Linux",
+    "languages": "3 limbi",
+    "opensource": "Gratuit și open source"
+  },
+  "features": {
+    "title": "Tot ce ai nevoie pentru a gestiona copiile de rezervă",
+    "subtitle": "B4cKuP T8L înlocuiește tabelul tău de calcul pentru copii de rezervă cu o aplicație desktop puternică.",
+    "dashboard": "Panou de control",
+    "dashboardDesc": "Obține o imagine completă a tuturor copiilor de rezervă cu indicatori de stare, grafice de utilizare a spațiului de stocare și verificarea regulii de backup 3-2-1.",
+    "tracking": "Urmărirea copiilor de rezervă",
+    "trackingDesc": "Documentează fiecare copie de rezervă cu data, dimensiunea, locația de stocare și note. Urmărește istoricul și modificările de dimensiune în timp.",
+    "scan": "Scanare automată",
+    "scanDesc": "Indică un folder și detectează automat copiile de rezervă existente. Dimensiunile sunt calculate în fundal.",
+    "media": "Medii de stocare",
+    "mediaDesc": "Gestionează toate dispozitivele de stocare - NAS, unități externe, servicii cloud, SSD-uri și altele. Urmărește capacitatea și criptarea.",
+    "matrix": "Matrice de ansamblu",
+    "matrixDesc": "Vezi dintr-o privire ce copie de rezervă este stocată pe ce mediu - la fel ca un tabel de calcul, dar mai bine.",
+    "notifications": "Notificări inteligente",
+    "notificationsDesc": "Primește notificări când copiile de rezervă sunt întârziate. Intervale de reamintire configurabile per copie de rezervă.",
+    "darkmode": "Mod întunecat",
+    "darkmodeDesc": "Teme luminoase și întunecate frumoase cu culori de accent personalizabile. Urmează preferința sistemului tău.",
+    "i18n": "Multilingv",
+    "i18nDesc": "Disponibil în engleză, germană și rusă. Mai multe limbi pot fi adăugate cu ușurință.",
+    "tray": "Bară de sistem",
+    "trayDesc": "Rulează silențios în fundal. Monitoarele de fișiere detectează automat copii de rezervă noi.",
+    "export": "Export de date",
+    "exportDesc": "Exportă toate datele de rezervă ca JSON sau CSV. Copiile de rezervă automate ale bazei de date îți păstrează datele în siguranță.",
+    "sources": "Gestionarea surselor",
+    "sourcesDesc": "Organizează copiile de rezervă după sursă - dispozitive, servicii cloud, unități externe. CRUD complet cu ștergere soft și coș de gunoi.",
+    "encryption": "Urmărirea criptării",
+    "encryptionDesc": "Urmărește care medii de stocare sunt criptate, cu ce metodă (VeraCrypt, BitLocker, FileVault) și etichete de cheie."
+  },
+  "download": {
+    "title": "Descarcă B4cKuP T8L",
+    "subtitle": "Disponibil pentru toate platformele majore. Gratuit și open source.",
+    "version": "Versiune",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 sau mai nou",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) sau mai nou",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 sau mai nou",
+    "downloadBtn": "Descarcă",
+    "comingSoon": "În curând"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Ai întrebări, feedback sau ai găsit un bug? Contactează-ne.",
+    "name": "Nume",
+    "email": "Email",
+    "message": "Mesaj",
+    "send": "Trimite mesajul",
+    "github": "Raportează probleme pe GitHub",
+    "emailDirect": "Sau trimite-ne un email direct la"
+  },
+  "imprint": {
+    "title": "Notă legală (Impressum)",
+    "according": "Informații conform Secțiunii 5 TMG",
+    "responsible": "Responsabil pentru conținut conform Secțiunii 55 (2) RStV",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Germania",
+    "email": "Email: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Soluționarea litigiilor",
+    "disputeText": "Comisia Europeană oferă o platformă pentru soluționarea litigiilor online (OS): https://ec.europa.eu/consumers/odr/. Nu suntem dispuși sau obligați să participăm la proceduri de soluționare a litigiilor în fața unui consiliu de arbitraj pentru consumatori."
+  },
+  "privacy": {
+    "title": "Politica de confidențialitate",
+    "intro": "Luăm foarte în serios protecția datelor tale personale. Această politică de confidențialitate te informează despre modul în care gestionăm datele tale.",
+    "responsible": "Partea responsabilă",
+    "responsibleText": "Partea responsabilă pentru prelucrarea datelor pe acest site web este specificată în Nota legală.",
+    "hosting": "Găzduire",
+    "hostingText": "Acest site web este găzduit pe serverele noastre proprii. Când accesezi acest site web, browserul tău trimite automat informații (adresă IP, dată/oră, pagina accesată) către serverul nostru. Aceste date sunt stocate în fișierele jurnal ale serverului și șterse automat după 30 de zile.",
+    "cookies": "Cookie-uri",
+    "cookiesText": "Acest site web nu utilizează cookie-uri sau alte tehnologii de urmărire. Nu sunt utilizate instrumente de analiză.",
+    "contact": "Formular de contact",
+    "contactText": "Când ne trimiți un mesaj prin formularul de contact, datele tale (nume, email, mesaj) vor fi utilizate exclusiv pentru a răspunde la solicitarea ta. Nu partajăm aceste date cu terțe părți.",
+    "downloads": "Descărcări",
+    "downloadsText": "Când descarci software-ul nostru, nu sunt colectate date personale. Fișierele de descărcare sunt furnizate fără înregistrare.",
+    "rights": "Drepturile tale",
+    "rightsText": "Conform GDPR, ai dreptul la acces, rectificare, ștergere, restricționarea prelucrării, portabilitatea datelor și opoziție. Pentru a exercita aceste drepturi, te rugăm să ne contactezi folosind informațiile din Nota legală.",
+    "changes": "Modificări",
+    "changesText": "Ne rezervăm dreptul de a actualiza această politică de confidențialitate. Versiunea actuală este întotdeauna disponibilă pe această pagină."
+  },
+  "footer": {
+    "legal": "Legal",
+    "imprint": "Notă legală",
+    "privacy": "Politica de confidențialitate",
+    "product": "Produs",
+    "madeWith": "Realizat cu"
+  }
+}

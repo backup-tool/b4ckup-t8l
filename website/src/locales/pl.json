@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Strona główna",
+    "features": "Funkcje",
+    "download": "Pobierz",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "tagline": "Śledź, zarządzaj i monitoruj wszystkie kopie zapasowe w jednym miejscu.",
+    "subtitle": "Nigdy więcej nie trać kopii zapasowych z oczu. B4cKuP T8L zapewnia pełny przegląd wszystkich danych kopii zapasowych na każdym urządzeniu i nośniku danych.",
+    "cta": "Pobierz za darmo",
+    "learnMore": "Dowiedz się więcej"
+  },
+  "stats": {
+    "backups": "Zarządzaj nieograniczoną liczbą kopii zapasowych",
+    "platforms": "Windows, macOS i Linux",
+    "languages": "3 języki",
+    "opensource": "Darmowy i open source"
+  },
+  "features": {
+    "title": "Wszystko, czego potrzebujesz do zarządzania kopiami zapasowymi",
+    "subtitle": "B4cKuP T8L zastępuje Twój arkusz kalkulacyjny kopii zapasowych potężną aplikacją desktopową.",
+    "dashboard": "Panel",
+    "dashboardDesc": "Uzyskaj pełny przegląd wszystkich kopii zapasowych ze wskaźnikami stanu, wykresami wykorzystania przestrzeni dyskowej i sprawdzeniem reguły kopii zapasowej 3-2-1.",
+    "tracking": "Śledzenie kopii zapasowych",
+    "trackingDesc": "Dokumentuj każdą kopię zapasową z datą, rozmiarem, lokalizacją przechowywania i notatkami. Śledź historię i zmiany rozmiaru w czasie.",
+    "scan": "Automatyczne skanowanie",
+    "scanDesc": "Wskaż folder i automatycznie wykryj istniejące kopie zapasowe. Rozmiary są obliczane w tle.",
+    "media": "Nośniki danych",
+    "mediaDesc": "Zarządzaj wszystkimi urządzeniami pamięci masowej - NAS, dyski zewnętrzne, usługi chmurowe, dyski SSD i inne. Śledź pojemność i szyfrowanie.",
+    "matrix": "Matryca przeglądowa",
+    "matrixDesc": "Zobacz na pierwszy rzut oka, która kopia zapasowa jest przechowywana na jakim nośniku - jak arkusz kalkulacyjny, ale lepiej.",
+    "notifications": "Inteligentne powiadomienia",
+    "notificationsDesc": "Otrzymuj powiadomienia, gdy kopie zapasowe są przeterminowane. Konfigurowalne interwały przypomnień dla każdej kopii zapasowej.",
+    "darkmode": "Tryb ciemny",
+    "darkmodeDesc": "Piękne jasne i ciemne motywy z konfigurowalnymi kolorami akcentu. Podąża za preferencjami systemu.",
+    "i18n": "Wielojęzyczny",
+    "i18nDesc": "Dostępny w języku angielskim, niemieckim i rosyjskim. Więcej języków można łatwo dodać.",
+    "tray": "Zasobnik systemowy",
+    "trayDesc": "Działa cicho w tle. Obserwatory plików automatycznie wykrywają nowe kopie zapasowe.",
+    "export": "Eksport danych",
+    "exportDesc": "Eksportuj wszystkie dane kopii zapasowych jako JSON lub CSV. Automatyczne kopie zapasowe bazy danych chronią Twoje dane.",
+    "sources": "Zarządzanie źródłami",
+    "sourcesDesc": "Organizuj kopie zapasowe według źródła - urządzenia, usługi chmurowe, dyski zewnętrzne. Pełny CRUD z miękkim usuwaniem i koszem.",
+    "encryption": "Śledzenie szyfrowania",
+    "encryptionDesc": "Śledź, które nośniki danych są zaszyfrowane, jaką metodą (VeraCrypt, BitLocker, FileVault) i etykiety kluczy."
+  },
+  "download": {
+    "title": "Pobierz B4cKuP T8L",
+    "subtitle": "Dostępny na wszystkie główne platformy. Darmowy i open source.",
+    "version": "Wersja",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 lub nowszy",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) lub nowszy",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 lub nowszy",
+    "downloadBtn": "Pobierz",
+    "comingSoon": "Wkrótce"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Masz pytania, uwagi lub znalazłeś błąd? Skontaktuj się z nami.",
+    "name": "Imię",
+    "email": "Email",
+    "message": "Wiadomość",
+    "send": "Wyślij wiadomość",
+    "github": "Zgłoś problemy na GitHubie",
+    "emailDirect": "Lub napisz do nas bezpośrednio na"
+  },
+  "imprint": {
+    "title": "Nota prawna (Impressum)",
+    "according": "Informacje zgodnie z § 5 TMG",
+    "responsible": "Odpowiedzialny za treść zgodnie z § 55 ust. 2 RStV",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Niemcy",
+    "email": "Email: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Rozstrzyganie sporów",
+    "disputeText": "Komisja Europejska udostępnia platformę do internetowego rozstrzygania sporów (OS): https://ec.europa.eu/consumers/odr/. Nie jesteśmy skłonni ani zobowiązani do udziału w postępowaniach rozstrzygania sporów przed konsumenckim sądem arbitrażowym."
+  },
+  "privacy": {
+    "title": "Polityka prywatności",
+    "intro": "Bardzo poważnie traktujemy ochronę Twoich danych osobowych. Niniejsza polityka prywatności informuje o sposobie przetwarzania Twoich danych.",
+    "responsible": "Strona odpowiedzialna",
+    "responsibleText": "Strona odpowiedzialna za przetwarzanie danych na tej stronie internetowej jest określona w Nocie prawnej.",
+    "hosting": "Hosting",
+    "hostingText": "Ta strona internetowa jest hostowana na naszych własnych serwerach. Gdy odwiedzasz tę stronę, Twoja przeglądarka automatycznie wysyła informacje (adres IP, data/godzina, odwiedzona strona) do naszego serwera. Dane te są przechowywane w plikach dziennika serwera i automatycznie usuwane po 30 dniach.",
+    "cookies": "Pliki cookie",
+    "cookiesText": "Ta strona internetowa nie używa plików cookie ani żadnych technologii śledzenia. Nie są używane narzędzia analityczne.",
+    "contact": "Formularz kontaktowy",
+    "contactText": "Gdy wysyłasz nam wiadomość przez formularz kontaktowy, Twoje dane (imię, email, wiadomość) będą wykorzystywane wyłącznie do odpowiedzi na Twoje zapytanie. Nie udostępniamy tych danych osobom trzecim.",
+    "downloads": "Pobieranie",
+    "downloadsText": "Podczas pobierania naszego oprogramowania nie są zbierane żadne dane osobowe. Pliki do pobrania są udostępniane bez rejestracji.",
+    "rights": "Twoje prawa",
+    "rightsText": "Zgodnie z RODO masz prawo do dostępu, sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych i sprzeciwu. Aby skorzystać z tych praw, skontaktuj się z nami, korzystając z informacji w Nocie prawnej.",
+    "changes": "Zmiany",
+    "changesText": "Zastrzegamy sobie prawo do aktualizacji niniejszej polityki prywatności. Aktualna wersja jest zawsze dostępna na tej stronie."
+  },
+  "footer": {
+    "legal": "Prawo",
+    "imprint": "Nota prawna",
+    "privacy": "Polityka prywatności",
+    "product": "Produkt",
+    "madeWith": "Stworzone z"
+  }
+}

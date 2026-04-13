@@ -12,10 +12,15 @@ import sv from "@/locales/sv.json";
 import da from "@/locales/da.json";
 import no from "@/locales/no.json";
 import fi from "@/locales/fi.json";
+import ro from "@/locales/ro.json";
+import pl from "@/locales/pl.json";
+import cs from "@/locales/cs.json";
+import hu from "@/locales/hu.json";
+import bg from "@/locales/bg.json";
 
 const saved = localStorage.getItem("lang");
 const browserLang = navigator.language.split("-")[0];
-const supported = ["en", "de", "ru", "fr", "it", "es", "pt", "nl", "sv", "da", "no", "fi"];
+const supported = ["en", "de", "ru", "fr", "it", "es", "pt", "nl", "sv", "da", "no", "fi", "ro", "pl", "cs", "hu", "bg"];
 const browser = supported.includes(browserLang) ? browserLang : "en";
 
 i18n.use(initReactI18next).init({
@@ -32,6 +37,11 @@ i18n.use(initReactI18next).init({
     da: { translation: da },
     no: { translation: no },
     fi: { translation: fi },
+    ro: { translation: ro },
+    pl: { translation: pl },
+    cs: { translation: cs },
+    hu: { translation: hu },
+    bg: { translation: bg },
   },
   lng: saved || browser,
   fallbackLng: "en",

@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Domů",
+    "features": "Funkce",
+    "download": "Stáhnout",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "tagline": "Sledujte, spravujte a monitorujte všechny své zálohy na jednom místě.",
+    "subtitle": "Už nikdy neztratíte přehled o svých zálohách. B4cKuP T8L vám poskytne kompletní přehled o všech zálohovaných datech napříč všemi zařízeními a úložišti.",
+    "cta": "Stáhnout zdarma",
+    "learnMore": "Zjistit více"
+  },
+  "stats": {
+    "backups": "Spravujte neomezený počet záloh",
+    "platforms": "Windows, macOS a Linux",
+    "languages": "3 jazyky",
+    "opensource": "Zdarma a open source"
+  },
+  "features": {
+    "title": "Vše, co potřebujete ke správě svých záloh",
+    "subtitle": "B4cKuP T8L nahrazuje vaši zálohovací tabulku výkonnou desktopovou aplikací.",
+    "dashboard": "Přehled",
+    "dashboardDesc": "Získejte kompletní přehled o všech zálohách s indikátory stavu, grafy využití úložiště a kontrolou pravidla zálohování 3-2-1.",
+    "tracking": "Sledování záloh",
+    "trackingDesc": "Dokumentujte každou zálohu s datem, velikostí, umístěním úložiště a poznámkami. Sledujte historii a změny velikosti v čase.",
+    "scan": "Automatické skenování",
+    "scanDesc": "Ukažte na složku a automaticky detekujte existující zálohy. Velikosti se počítají na pozadí.",
+    "media": "Úložná média",
+    "mediaDesc": "Spravujte všechna svá úložná zařízení - NAS, externí disky, cloudové služby, SSD a další. Sledujte kapacitu a šifrování.",
+    "matrix": "Přehledová matice",
+    "matrixDesc": "Podívejte se na první pohled, která záloha je uložena na jakém médiu - jako tabulka, ale lépe.",
+    "notifications": "Chytrá upozornění",
+    "notificationsDesc": "Dostávejte upozornění, když jsou zálohy po termínu. Konfigurovatelné intervaly připomenutí pro každou zálohu.",
+    "darkmode": "Tmavý režim",
+    "darkmodeDesc": "Krásné světlé a tmavé motivy s přizpůsobitelnými barvami akcentu. Sleduje preference vašeho systému.",
+    "i18n": "Vícejazyčný",
+    "i18nDesc": "Dostupný v angličtině, němčině a ruštině. Další jazyky lze snadno přidat.",
+    "tray": "Systémová lišta",
+    "trayDesc": "Běží tiše na pozadí. Sledovače souborů automaticky detekují nové zálohy.",
+    "export": "Export dat",
+    "exportDesc": "Exportujte všechna data záloh jako JSON nebo CSV. Automatické zálohy databáze chrání vaše data.",
+    "sources": "Správa zdrojů",
+    "sourcesDesc": "Organizujte zálohy podle zdroje - zařízení, cloudové služby, externí disky. Plný CRUD s měkkým mazáním a košem.",
+    "encryption": "Sledování šifrování",
+    "encryptionDesc": "Sledujte, která úložná média jsou šifrována, jakou metodou (VeraCrypt, BitLocker, FileVault) a štítky klíčů."
+  },
+  "download": {
+    "title": "Stáhnout B4cKuP T8L",
+    "subtitle": "Dostupný pro všechny hlavní platformy. Zdarma a open source.",
+    "version": "Verze",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 nebo novější",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) nebo novější",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 nebo novější",
+    "downloadBtn": "Stáhnout",
+    "comingSoon": "Již brzy"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Máte otázky, zpětnou vazbu nebo jste našli chybu? Ozvěte se nám.",
+    "name": "Jméno",
+    "email": "Email",
+    "message": "Zpráva",
+    "send": "Odeslat zprávu",
+    "github": "Nahlaste problémy na GitHubu",
+    "emailDirect": "Nebo nám napište přímo na"
+  },
+  "imprint": {
+    "title": "Právní upozornění (Impressum)",
+    "according": "Informace podle § 5 TMG",
+    "responsible": "Odpovědný za obsah podle § 55 odst. 2 RStV",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Německo",
+    "email": "Email: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Řešení sporů",
+    "disputeText": "Evropská komise poskytuje platformu pro online řešení sporů (OS): https://ec.europa.eu/consumers/odr/. Nejsme ochotni ani povinni účastnit se řízení o řešení sporů před spotřebitelským rozhodčím orgánem."
+  },
+  "privacy": {
+    "title": "Zásady ochrany osobních údajů",
+    "intro": "Ochranu vašich osobních údajů bereme velmi vážně. Tyto zásady ochrany osobních údajů vás informují o tom, jak nakládáme s vašimi daty.",
+    "responsible": "Odpovědná strana",
+    "responsibleText": "Odpovědná strana za zpracování údajů na těchto webových stránkách je uvedena v Právním upozornění.",
+    "hosting": "Hosting",
+    "hostingText": "Tyto webové stránky jsou hostovány na našich vlastních serverech. Při přístupu na tyto webové stránky váš prohlížeč automaticky odesílá informace (IP adresa, datum/čas, navštívená stránka) na náš server. Tyto údaje jsou uloženy v souborech protokolu serveru a automaticky smazány po 30 dnech.",
+    "cookies": "Cookies",
+    "cookiesText": "Tyto webové stránky nepoužívají cookies ani žádné sledovací technologie. Nejsou používány žádné analytické nástroje.",
+    "contact": "Kontaktní formulář",
+    "contactText": "Když nám pošlete zprávu prostřednictvím kontaktního formuláře, vaše údaje (jméno, email, zpráva) budou použity výhradně k odpovědi na váš dotaz. Tyto údaje nesdílíme s třetími stranami.",
+    "downloads": "Stahování",
+    "downloadsText": "Při stahování našeho softwaru nejsou shromažďovány žádné osobní údaje. Soubory ke stažení jsou poskytovány bez registrace.",
+    "rights": "Vaše práva",
+    "rightsText": "Podle GDPR máte právo na přístup, opravu, výmaz, omezení zpracování, přenositelnost údajů a námitku. Pro uplatnění těchto práv nás prosím kontaktujte pomocí informací v Právním upozornění.",
+    "changes": "Změny",
+    "changesText": "Vyhrazujeme si právo aktualizovat tyto zásady ochrany osobních údajů. Aktuální verze je vždy dostupná na této stránce."
+  },
+  "footer": {
+    "legal": "Právní informace",
+    "imprint": "Právní upozornění",
+    "privacy": "Ochrana osobních údajů",
+    "product": "Produkt",
+    "madeWith": "Vytvořeno s"
+  }
+}
