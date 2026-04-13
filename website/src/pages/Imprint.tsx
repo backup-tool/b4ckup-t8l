@@ -10,7 +10,6 @@ export function Imprint() {
       <div className="prose prose-invert space-y-6 text-sm text-fg-muted leading-relaxed">
         <section>
           <h2 className="text-lg font-semibold text-fg mb-3">{t("imprint.according")}</h2>
-          <p>{t("imprint.company")}</p>
           <p>{t("imprint.name")}</p>
           <p>{t("imprint.address")}</p>
           <p>{t("imprint.city")}</p>
@@ -20,8 +19,6 @@ export function Imprint() {
         <section>
           <h2 className="text-lg font-semibold text-fg mb-3">{t("nav.contact")}</h2>
           <p>{t("imprint.email")}</p>
-          <p>{t("imprint.phone")}</p>
-          <p>{t("imprint.vatId")}</p>
         </section>
 
         <section>
