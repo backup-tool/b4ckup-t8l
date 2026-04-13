@@ -8,6 +8,10 @@ const LANGS = [
   { code: "en", label: "English" },
   { code: "de", label: "Deutsch" },
   { code: "ru", label: "Русский" },
+  { code: "fr", label: "Français" },
+  { code: "it", label: "Italiano" },
+  { code: "es", label: "Español" },
+  { code: "pt", label: "Português" },
 ];
 
 export function Header() {
@@ -42,7 +46,7 @@ export function Header() {
 
   function switchLang(newLang: string) {
     // Remove current lang prefix from path
-    const pathWithoutLang = location.pathname.replace(/^\/(de|ru)/, "");
+    const pathWithoutLang = location.pathname.replace(/^\/(de|ru|fr|it|es|pt)/, "");
     const newPrefix = newLang === "en" ? "" : `/${newLang}`;
     i18n.changeLanguage(newLang);
     localStorage.setItem("lang", newLang);

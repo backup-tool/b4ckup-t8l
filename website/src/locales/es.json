@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "features": "Funcionalidades",
+    "download": "Descargar",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "tagline": "Rastrea, gestiona y supervisa todas tus copias de seguridad en un solo lugar.",
+    "subtitle": "No pierdas nunca más el control de tus copias de seguridad. B4cKuP T8L te ofrece una visión completa de todos tus datos de respaldo en cada dispositivo y medio de almacenamiento.",
+    "cta": "Descargar gratis",
+    "learnMore": "Más información"
+  },
+  "stats": {
+    "backups": "Gestiona copias de seguridad ilimitadas",
+    "platforms": "Windows, macOS & Linux",
+    "languages": "3 idiomas",
+    "opensource": "Gratuito & Open Source"
+  },
+  "features": {
+    "title": "Todo lo que necesitas para gestionar tus copias de seguridad",
+    "subtitle": "B4cKuP T8L reemplaza tu hoja de cálculo de copias de seguridad con una potente aplicación de escritorio.",
+    "dashboard": "Panel de control",
+    "dashboardDesc": "Obtén una visión completa de todas tus copias de seguridad con indicadores de estado, gráficos de uso de almacenamiento y verificación de la regla de respaldo 3-2-1.",
+    "tracking": "Seguimiento de copias de seguridad",
+    "trackingDesc": "Documenta cada copia de seguridad con fecha, tamaño, ubicación de almacenamiento y notas. Rastrea el historial y los cambios de tamaño a lo largo del tiempo.",
+    "scan": "Escaneo automático",
+    "scanDesc": "Apunta a una carpeta y detecta automáticamente las copias de seguridad existentes. Los tamaños se calculan en segundo plano.",
+    "media": "Medios de almacenamiento",
+    "mediaDesc": "Gestiona todos tus dispositivos de almacenamiento - NAS, discos externos, servicios en la nube, SSD y más. Rastrea la capacidad y el cifrado.",
+    "matrix": "Matriz de vista general",
+    "matrixDesc": "Ve de un vistazo qué copia de seguridad está almacenada en qué medio - como una hoja de cálculo, pero mejor.",
+    "notifications": "Notificaciones inteligentes",
+    "notificationsDesc": "Recibe notificaciones cuando las copias de seguridad estén atrasadas. Intervalos de recordatorio configurables por copia de seguridad.",
+    "darkmode": "Modo oscuro",
+    "darkmodeDesc": "Hermosos temas claros y oscuros con colores de acento personalizables. Sigue las preferencias de tu sistema.",
+    "i18n": "Multilingüe",
+    "i18nDesc": "Disponible en inglés, alemán y ruso. Se pueden añadir más idiomas fácilmente.",
+    "tray": "Bandeja del sistema",
+    "trayDesc": "Se ejecuta silenciosamente en segundo plano. Los observadores de archivos detectan nuevas copias de seguridad automáticamente.",
+    "export": "Exportación de datos",
+    "exportDesc": "Exporta todos tus datos de copias de seguridad como JSON o CSV. Las copias de seguridad automáticas de la base de datos mantienen tus datos seguros.",
+    "sources": "Gestión de fuentes",
+    "sourcesDesc": "Organiza las copias de seguridad por fuente - dispositivos, servicios en la nube, discos externos. CRUD completo con eliminación suave y papelera.",
+    "encryption": "Seguimiento de cifrado",
+    "encryptionDesc": "Rastrea qué medios de almacenamiento están cifrados, con qué método (VeraCrypt, BitLocker, FileVault) y las etiquetas de claves."
+  },
+  "download": {
+    "title": "Descargar B4cKuP T8L",
+    "subtitle": "Disponible para todas las principales plataformas. Gratuito y open source.",
+    "version": "Versión",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 o posterior",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) o posterior",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 o posterior",
+    "downloadBtn": "Descargar",
+    "comingSoon": "Próximamente"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "¿Tienes preguntas, comentarios o encontraste un error? Ponte en contacto.",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "send": "Enviar mensaje",
+    "github": "Reportar problemas en GitHub",
+    "emailDirect": "O escríbenos directamente a"
+  },
+  "imprint": {
+    "title": "Aviso legal (Impressum)",
+    "according": "Información según el artículo 5 TMG",
+    "responsible": "Responsable del contenido según el artículo 55 (2) RStV",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Alemania",
+    "email": "Correo electrónico: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Resolución de disputas",
+    "disputeText": "La Comisión Europea proporciona una plataforma para la resolución de disputas en línea (RDL): https://ec.europa.eu/consumers/odr/. No estamos dispuestos ni obligados a participar en procedimientos de resolución de disputas ante una junta de arbitraje de consumidores."
+  },
+  "privacy": {
+    "title": "Política de privacidad",
+    "intro": "Nos tomamos muy en serio la protección de sus datos personales. Esta política de privacidad le informa sobre cómo tratamos sus datos.",
+    "responsible": "Responsable del tratamiento",
+    "responsibleText": "El responsable del tratamiento de datos en este sitio web se especifica en el aviso legal.",
+    "hosting": "Alojamiento",
+    "hostingText": "Este sitio web está alojado en nuestros propios servidores. Cuando accede a este sitio web, su navegador envía automáticamente información (dirección IP, fecha/hora, página visitada) a nuestro servidor. Estos datos se almacenan en archivos de registro del servidor y se eliminan automáticamente después de 30 días.",
+    "cookies": "Cookies",
+    "cookiesText": "Este sitio web no utiliza cookies ni tecnologías de seguimiento. No se utilizan herramientas de análisis.",
+    "contact": "Formulario de contacto",
+    "contactText": "Cuando nos envía un mensaje a través del formulario de contacto, sus datos (nombre, correo electrónico, mensaje) se utilizarán únicamente para responder a su consulta. No compartimos estos datos con terceros.",
+    "downloads": "Descargas",
+    "downloadsText": "Cuando descarga nuestro software, no se recopilan datos personales. Los archivos de descarga se proporcionan sin registro.",
+    "rights": "Sus derechos",
+    "rightsText": "Según el RGPD, tiene derecho de acceso, rectificación, supresión, limitación del tratamiento, portabilidad de datos y oposición. Para ejercer estos derechos, póngase en contacto con nosotros utilizando la información del aviso legal.",
+    "changes": "Cambios",
+    "changesText": "Nos reservamos el derecho de actualizar esta política de privacidad. La versión actual siempre está disponible en esta página."
+  },
+  "footer": {
+    "legal": "Legal",
+    "imprint": "Aviso legal",
+    "privacy": "Privacidad",
+    "product": "Producto",
+    "madeWith": "Hecho con"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Funzionalità",
+    "download": "Download",
+    "contact": "Contatti"
+  },
+  "hero": {
+    "tagline": "Traccia, gestisci e monitora tutti i tuoi backup in un unico posto.",
+    "subtitle": "Non perdere mai più di vista i tuoi backup. B4cKuP T8L ti offre una panoramica completa di tutti i tuoi dati di backup su ogni dispositivo e supporto di archiviazione.",
+    "cta": "Scarica gratuitamente",
+    "learnMore": "Scopri di più"
+  },
+  "stats": {
+    "backups": "Gestisci backup illimitati",
+    "platforms": "Windows, macOS & Linux",
+    "languages": "3 lingue",
+    "opensource": "Gratuito & Open Source"
+  },
+  "features": {
+    "title": "Tutto ciò di cui hai bisogno per gestire i tuoi backup",
+    "subtitle": "B4cKuP T8L sostituisce il tuo foglio di calcolo dei backup con una potente applicazione desktop.",
+    "dashboard": "Dashboard",
+    "dashboardDesc": "Ottieni una panoramica completa di tutti i tuoi backup con indicatori di stato, grafici di utilizzo dello spazio e verifica della regola di backup 3-2-1.",
+    "tracking": "Tracciamento backup",
+    "trackingDesc": "Documenta ogni backup con data, dimensione, posizione di archiviazione e note. Segui la cronologia e le variazioni di dimensione nel tempo.",
+    "scan": "Scansione automatica",
+    "scanDesc": "Punta a una cartella e rileva automaticamente i backup esistenti. Le dimensioni vengono calcolate in background.",
+    "media": "Supporti di archiviazione",
+    "mediaDesc": "Gestisci tutti i tuoi dispositivi di archiviazione - NAS, dischi esterni, servizi cloud, SSD e altro. Monitora capacità e crittografia.",
+    "matrix": "Matrice panoramica",
+    "matrixDesc": "Vedi a colpo d'occhio quale backup è archiviato su quale supporto - come un foglio di calcolo, ma migliore.",
+    "notifications": "Notifiche intelligenti",
+    "notificationsDesc": "Ricevi notifiche quando i backup sono in ritardo. Intervalli di promemoria configurabili per ogni backup.",
+    "darkmode": "Modalità scura",
+    "darkmodeDesc": "Bellissimi temi chiari e scuri con colori di accento personalizzabili. Segue le preferenze del tuo sistema.",
+    "i18n": "Multilingue",
+    "i18nDesc": "Disponibile in inglese, tedesco e russo. Altre lingue possono essere aggiunte facilmente.",
+    "tray": "Barra di sistema",
+    "trayDesc": "Funziona silenziosamente in background. Gli osservatori di file rilevano automaticamente i nuovi backup.",
+    "export": "Esportazione dati",
+    "exportDesc": "Esporta tutti i tuoi dati di backup in JSON o CSV. I backup automatici del database mantengono i tuoi dati al sicuro.",
+    "sources": "Gestione fonti",
+    "sourcesDesc": "Organizza i backup per fonte - dispositivi, servizi cloud, dischi esterni. CRUD completo con eliminazione soft e cestino.",
+    "encryption": "Tracciamento crittografia",
+    "encryptionDesc": "Monitora quali supporti di archiviazione sono crittografati, con quale metodo (VeraCrypt, BitLocker, FileVault) e le etichette delle chiavi."
+  },
+  "download": {
+    "title": "Scarica B4cKuP T8L",
+    "subtitle": "Disponibile per tutte le principali piattaforme. Gratuito e open source.",
+    "version": "Versione",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 o successivo",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) o successivo",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 o successivo",
+    "downloadBtn": "Scarica",
+    "comingSoon": "Prossimamente"
+  },
+  "contact": {
+    "title": "Contatti",
+    "subtitle": "Hai domande, feedback o hai trovato un bug? Contattaci.",
+    "name": "Nome",
+    "email": "E-mail",
+    "message": "Messaggio",
+    "send": "Invia messaggio",
+    "github": "Segnala problemi su GitHub",
+    "emailDirect": "Oppure scrivici direttamente a"
+  },
+  "imprint": {
+    "title": "Note legali (Impressum)",
+    "according": "Informazioni ai sensi dell'articolo 5 TMG",
+    "responsible": "Responsabile del contenuto ai sensi dell'articolo 55 (2) RStV",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Germania",
+    "email": "E-mail: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Risoluzione delle controversie",
+    "disputeText": "La Commissione europea fornisce una piattaforma per la risoluzione delle controversie online (ODR): https://ec.europa.eu/consumers/odr/. Non siamo disposti né obbligati a partecipare a procedimenti di risoluzione delle controversie davanti a un organismo di arbitrato dei consumatori."
+  },
+  "privacy": {
+    "title": "Informativa sulla privacy",
+    "intro": "Prendiamo molto seriamente la protezione dei vostri dati personali. Questa informativa sulla privacy vi informa su come trattiamo i vostri dati.",
+    "responsible": "Titolare del trattamento",
+    "responsibleText": "Il titolare del trattamento dei dati su questo sito web è indicato nelle note legali.",
+    "hosting": "Hosting",
+    "hostingText": "Questo sito web è ospitato sui nostri server. Quando accedete a questo sito, il vostro browser invia automaticamente informazioni (indirizzo IP, data/ora, pagina visitata) al nostro server. Questi dati vengono memorizzati nei file di log del server e cancellati automaticamente dopo 30 giorni.",
+    "cookies": "Cookie",
+    "cookiesText": "Questo sito web non utilizza cookie né tecnologie di tracciamento. Non vengono utilizzati strumenti di analisi.",
+    "contact": "Modulo di contatto",
+    "contactText": "Quando ci inviate un messaggio tramite il modulo di contatto, i vostri dati (nome, e-mail, messaggio) saranno utilizzati esclusivamente per rispondere alla vostra richiesta. Non condividiamo questi dati con terze parti.",
+    "downloads": "Download",
+    "downloadsText": "Quando scaricate il nostro software, non vengono raccolti dati personali. I file di download sono forniti senza registrazione.",
+    "rights": "I vostri diritti",
+    "rightsText": "Ai sensi del GDPR, avete il diritto di accesso, rettifica, cancellazione, limitazione del trattamento, portabilità dei dati e opposizione. Per esercitare questi diritti, contattateci utilizzando le informazioni nelle note legali.",
+    "changes": "Modifiche",
+    "changesText": "Ci riserviamo il diritto di aggiornare questa informativa sulla privacy. La versione attuale è sempre disponibile su questa pagina."
+  },
+  "footer": {
+    "legal": "Legale",
+    "imprint": "Note legali",
+    "privacy": "Privacy",
+    "product": "Prodotto",
+    "madeWith": "Fatto con"
+  }
+}
