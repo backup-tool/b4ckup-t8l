@@ -13,7 +13,7 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
-import { Database, Shield, AlertTriangle, AlertCircle, HardDrive, TrendingUp } from "lucide-react";
+import { Database, Shield, AlertTriangle, AlertCircle, PauseCircle, HardDrive, TrendingUp } from "lucide-react";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { getBackupsWithStatus, getMediaWithUsage, getAllEntries } from "@/lib/db";
 import { formatBytes, formatDate, daysAgo } from "@/lib/format";
@@ -61,6 +61,7 @@ export function Dashboard() {
   const okCount = backups.filter((b) => b.status === "ok").length;
   const warnCount = backups.filter((b) => b.status === "warning").length;
   const critCount = backups.filter((b) => b.status === "critical").length;
+  const pausedCount = backups.filter((b) => b.status === "paused").length;
 
   // Total storage stats
   const totalCapacity = media.reduce((sum, m) => sum + ((m.total_capacity_gb as number) || 0), 0);
@@ -99,7 +100,7 @@ export function Dashboard() {
       <h1 className="text-xl font-bold">{t("dashboard.title")}</h1>
 
       {/* Stats row */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
         <Card>
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-lg bg-muted">
@@ -141,6 +142,17 @@ export function Dashboard() {
             <div>
               <p className="text-2xl font-bold text-red-600">{critCount}</p>
               <p className="text-xs text-muted-foreground">{t("dashboard.critical")}</p>
+            </div>
+          </div>
+        </Card>
+        <Card>
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-lg bg-zinc-100">
+              <PauseCircle className="w-4 h-4 text-zinc-500" />
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-zinc-500">{pausedCount}</p>
+              <p className="text-xs text-muted-foreground">{t("dashboard.paused")}</p>
             </div>
           </div>
         </Card>

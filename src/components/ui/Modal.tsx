@@ -5,12 +5,14 @@ import { cn } from "@/lib/cn";
 export function Modal({
   open,
   onClose,
+  onSave,
   title,
   children,
   className,
 }: {
   open: boolean;
   onClose: () => void;
+  onSave?: () => void;
   title: string;
   children: ReactNode;
   className?: string;
@@ -18,10 +20,14 @@ export function Modal({
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if ((e.metaKey || e.ctrlKey) && e.key === "s" && onSave) {
+        e.preventDefault();
+        onSave();
+      }
     };
     if (open) document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
-  }, [open, onClose]);
+  }, [open, onClose, onSave]);
 
   if (!open) return null;
 

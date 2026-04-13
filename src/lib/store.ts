@@ -17,7 +17,7 @@ export const useAppStore = create<AppState>((set) => ({
 // --- Theme ---
 
 type ThemeMode = "light" | "dark" | "system";
-type AccentColor = "default" | "blue" | "purple" | "green" | "orange" | "pink" | "red" | "teal";
+type AccentColor = "b4ckup" | "default" | "blue" | "purple" | "green" | "orange" | "pink" | "red" | "teal";
 
 interface ThemeState {
   mode: ThemeMode;
@@ -45,7 +45,7 @@ function applyTheme(mode: ThemeMode, accent: AccentColor) {
 }
 
 const savedMode = (localStorage.getItem("theme-mode") as ThemeMode) || "system";
-const savedAccent = (localStorage.getItem("theme-accent") as AccentColor) || "default";
+const savedAccent = (localStorage.getItem("theme-accent") as AccentColor) || "b4ckup";
 
 // Apply on load
 applyTheme(savedMode, savedAccent);
@@ -54,7 +54,7 @@ applyTheme(savedMode, savedAccent);
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
   const currentMode = localStorage.getItem("theme-mode") as ThemeMode || "system";
   if (currentMode === "system") {
-    const accent = (localStorage.getItem("theme-accent") as AccentColor) || "default";
+    const accent = (localStorage.getItem("theme-accent") as AccentColor) || "b4ckup";
     applyTheme("system", accent);
   }
 });

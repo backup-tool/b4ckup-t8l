@@ -133,6 +133,9 @@ async function runMigrations(db: Database) {
   try {
     await db.execute("ALTER TABLE devices ADD COLUMN sort_order INTEGER DEFAULT 0");
   } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backups ADD COLUMN is_paused INTEGER DEFAULT 0");
+  } catch { /* column already exists */ }
 }
 
 // --- Storage Media ---
@@ -397,6 +400,14 @@ export async function restoreBackup(id: number) {
   );
 }
 
+export async function toggleBackupPaused(id: number, paused: boolean) {
+  const db = await getDb();
+  await db.execute(
+    "UPDATE backups SET is_paused=$1, updated_at=datetime('now') WHERE id=$2",
+    [paused ? 1 : 0, id]
+  );
+}
+
 export async function permanentDeleteBackup(id: number) {
   const db = await getDb();
   // CASCADE will handle backup_entries and backup_storage_locations
@@ -591,8 +602,10 @@ export async function getBackupsWithStatus() {
     const latest = await getLatestEntryForBackup(backup.id as number);
     const locations = await getLocationsForBackup(backup.id as number);
 
-    let status: "ok" | "warning" | "critical" = "critical";
-    if (latest) {
+    let status: "ok" | "warning" | "critical" | "paused" = "critical";
+    if (backup.is_paused) {
+      status = "paused";
+    } else if (latest) {
       const daysSince = Math.floor(
         (Date.now() - new Date(latest.backup_date as string).getTime()) / (1000 * 60 * 60 * 24)
       );

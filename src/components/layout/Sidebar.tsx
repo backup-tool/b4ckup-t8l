@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
   LayoutDashboard,
@@ -9,7 +10,6 @@ import {
   Clock,
   Settings,
   ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 import { useAppStore } from "@/lib/store";
 import { cn } from "@/lib/cn";
@@ -29,6 +29,20 @@ export function Sidebar() {
   const { t } = useTranslation();
   const collapsed = useAppStore((s) => s.sidebarCollapsed);
   const toggle = useAppStore((s) => s.toggleSidebar);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (!(e.metaKey || e.ctrlKey)) return;
+      const idx = parseInt(e.key) - 1;
+      if (idx >= 0 && idx < navItems.length) {
+        e.preventDefault();
+        navigate(navItems[idx].to);
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [navigate]);
 
   return (
     <aside
@@ -37,25 +51,46 @@ export function Sidebar() {
         collapsed ? "w-16" : "w-56"
       )}
     >
-      <div className="flex items-center h-14 px-4 border-b border-border">
-        {!collapsed && (
-          <span className="font-semibold text-sm truncate">
-            {t("app.title")}
-          </span>
-        )}
+      <div className={cn(
+        "flex items-center h-14 border-b border-border",
+        collapsed ? "justify-center px-2" : "px-4"
+      )}>
         <button
           onClick={toggle}
           className={cn(
-            "p-1.5 rounded-md hover:bg-muted transition-colors",
-            collapsed ? "mx-auto" : "ml-auto"
+            "flex items-center gap-2.5 rounded-lg transition-colors hover:bg-muted p-1.5",
+            collapsed && "justify-center"
           )}
+          title={collapsed ? t("app.title") : undefined}
         >
-          {collapsed ? (
-            <ChevronRight className="w-4 h-4" />
-          ) : (
-            <ChevronLeft className="w-4 h-4" />
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-7 h-7 shrink-0">
+            <defs>
+              <linearGradient id="logo-bg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#1a1a2e"/>
+                <stop offset="100%" stopColor="#16213e"/>
+              </linearGradient>
+            </defs>
+            <rect width="512" height="512" rx="100" fill="url(#logo-bg)"/>
+            <path d="M256 80 L400 140 L400 280 Q400 380 256 440 Q112 380 112 280 L112 140 Z"
+                  fill="none" stroke="#4ade80" strokeWidth="24" strokeLinejoin="round"/>
+            <path d="M256 200 L256 340" stroke="#ffffff" strokeWidth="28" strokeLinecap="round"/>
+            <path d="M200 256 L256 200 L312 256" stroke="#ffffff" strokeWidth="28" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+            <line x1="210" y1="340" x2="302" y2="340" stroke="#4ade80" strokeWidth="16" strokeLinecap="round"/>
+          </svg>
+          {!collapsed && (
+            <span className="font-semibold text-sm truncate">
+              {t("app.title")}
+            </span>
           )}
         </button>
+        {!collapsed && (
+          <button
+            onClick={toggle}
+            className="ml-auto p-1.5 rounded-md hover:bg-muted transition-colors"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+        )}
       </div>
 
       <div className="pt-2">

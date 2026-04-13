@@ -11,7 +11,8 @@ export function StatusBadge({ status }: { status: BackupStatus }) {
         "inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium",
         status === "ok" && "bg-emerald-50 text-emerald-700",
         status === "warning" && "bg-amber-50 text-amber-700",
-        status === "critical" && "bg-red-50 text-red-700"
+        status === "critical" && "bg-red-50 text-red-700",
+        status === "paused" && "bg-zinc-100 text-zinc-500"
       )}
     >
       <span
@@ -19,7 +20,8 @@ export function StatusBadge({ status }: { status: BackupStatus }) {
           "w-1.5 h-1.5 rounded-full",
           status === "ok" && "bg-emerald-500",
           status === "warning" && "bg-amber-500",
-          status === "critical" && "bg-red-500"
+          status === "critical" && "bg-red-500",
+          status === "paused" && "bg-zinc-400"
         )}
       />
       {t(`status.${status}`)}

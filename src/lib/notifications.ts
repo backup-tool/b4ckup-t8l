@@ -24,6 +24,7 @@ async function checkOverdueBackups() {
 
     const backups = await getBackupsWithStatus();
     const overdue = backups.filter((b) => {
+      // Only notify for critical (paused backups have status "paused", not "critical")
       if (b.status !== "critical") return false;
       // Only notify if it has entries (skip brand new backups with no history)
       return b.latest_entry !== null;

@@ -18,6 +18,7 @@
     "upToDate": "Up to Date",
     "warnings": "Warnings",
     "critical": "Critical",
+    "paused": "Paused",
     "storageOverview": "Storage Overview",
     "recentActivity": "Recent Activity",
     "backupRule": "3-2-1 Rule Check",
@@ -65,7 +66,9 @@
     "backupDate": "Backup Date",
     "selectMedia": "Select Storage Medium",
     "editEntry": "Edit Entry",
-    "entryNumber": "Number"
+    "entryNumber": "Number",
+    "pause": "Pause",
+    "resume": "Resume"
   },
   "media": {
     "title": "Storage Media",
@@ -160,7 +163,8 @@
   "status": {
     "ok": "Up to Date",
     "warning": "Outdated",
-    "critical": "Critical"
+    "critical": "Critical",
+    "paused": "Paused"
   },
   "matrix": {
     "title": "Overview",
@@ -177,7 +181,8 @@
     "import": "Import Selected",
     "alreadyExists": "Already exists",
     "noResults": "No backups found in this directory.",
-    "imported": "entries imported"
+    "imported": "entries imported",
+    "failed": "Scan failed"
   },
   "trash": {
     "title": "Trash",

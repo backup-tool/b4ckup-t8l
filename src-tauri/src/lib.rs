@@ -3,7 +3,7 @@ mod watcher;
 use serde::Serialize;
 use std::path::Path;
 use std::time::Duration;
-use tauri::Manager;
+use tauri::{Emitter, Manager};
 
 #[derive(Serialize, Clone)]
 struct ScanResult {
@@ -79,6 +79,7 @@ pub fn run() {
         })
         .invoke_handler(tauri::generate_handler![
             get_dir_size,
+            get_dir_size_with_progress,
             watch_directory,
             scan_directory,
             backup_database,
@@ -92,11 +93,52 @@ pub fn run() {
 async fn get_dir_size(path: String) -> Result<u64, String> {
     let resolved = resolve_path(&path);
     validate_path(&resolved)?;
-    tokio::time::timeout(Duration::from_secs(120), tokio::task::spawn_blocking(move || {
-        dir_size_recursive(&resolved, 100)
+    tokio::time::timeout(Duration::from_secs(300), tokio::task::spawn_blocking(move || {
+        dir_size_fast(&resolved)
     }))
     .await
-    .map_err(|_| "Directory size calculation timed out after 120 seconds".to_string())?
+    .map_err(|_| "Directory size calculation timed out after 5 minutes".to_string())?
+    .map_err(|e| format!("Task error: {}", e))
+}
+
+#[tauri::command]
+async fn get_dir_size_with_progress(app_handle: tauri::AppHandle, path: String, task_id: String) -> Result<u64, String> {
+    let resolved = resolve_path(&path);
+    validate_path(&resolved)?;
+    let handle = app_handle.clone();
+    let tid = task_id.clone();
+
+    tokio::task::spawn_blocking(move || {
+        let mut total_bytes: u64 = 0;
+        let start = std::time::Instant::now();
+        let mut last_emit = std::time::Instant::now();
+
+        for entry in walkdir::WalkDir::new(&resolved).into_iter().filter_map(|e| e.ok()) {
+            if entry.file_type().is_file() {
+                total_bytes += entry.metadata().map(|m| m.len()).unwrap_or(0);
+
+                if last_emit.elapsed() >= Duration::from_millis(500) {
+                    let _ = handle.emit("size-progress", serde_json::json!({
+                        "taskId": tid,
+                        "phase": "calculating",
+                        "bytes": total_bytes,
+                        "elapsed": start.elapsed().as_secs(),
+                    }));
+                    last_emit = std::time::Instant::now();
+                }
+            }
+        }
+
+        let _ = handle.emit("size-progress", serde_json::json!({
+            "taskId": tid,
+            "phase": "done",
+            "bytes": total_bytes,
+            "elapsed": start.elapsed().as_secs(),
+        }));
+
+        total_bytes
+    })
+    .await
     .map_err(|e| format!("Task error: {}", e))
 }
 
@@ -111,7 +153,55 @@ async fn watch_directory(path: String) -> Result<bool, String> {
     }
 }
 
-/// Recursive size calculation with max depth limit for speed on NAS
+/// Directory size calculation — uses `du` with kill timeout, then shallow walkdir fallback
+fn dir_size_fast(path: &Path) -> u64 {
+    let path_str = path.to_string_lossy().to_string();
+
+    // `du -s -k` with a 15-second kill timeout
+    if cfg!(target_os = "macos") || cfg!(target_os = "linux") {
+        if let Ok(mut child) = std::process::Command::new("du")
+            .args(["-s", "-k", &path_str])
+            .stdout(std::process::Stdio::piped())
+            .stderr(std::process::Stdio::null())
+            .spawn()
+        {
+            let start = std::time::Instant::now();
+            loop {
+                match child.try_wait() {
+                    Ok(Some(status)) if status.success() => {
+                        if let Some(stdout) = child.stdout.take() {
+                            use std::io::Read;
+                            let mut output = String::new();
+                            let mut reader = std::io::BufReader::new(stdout);
+                            let _ = reader.read_to_string(&mut output);
+                            if let Some(size_str) = output.split_whitespace().next() {
+                                if let Ok(kb) = size_str.parse::<u64>() {
+                                    return kb * 1024;
+                                }
+                            }
+                        }
+                        break;
+                    }
+                    Ok(Some(_)) => break,
+                    Ok(None) => {
+                        if start.elapsed() > Duration::from_secs(15) {
+                            let _ = child.kill();
+                            let _ = child.wait();
+                            break;
+                        }
+                        std::thread::sleep(Duration::from_millis(200));
+                    }
+                    Err(_) => break,
+                }
+            }
+        }
+    }
+
+    // Fallback: shallow walkdir (depth 2 — fast even on NAS)
+    dir_size_recursive(path, 2)
+}
+
+/// Fallback: Recursive size calculation with max depth limit
 fn dir_size_recursive(path: &Path, max_depth: usize) -> u64 {
     walkdir::WalkDir::new(path)
         .max_depth(max_depth)
@@ -215,57 +305,56 @@ async fn scan_directory(path: String, mode: String) -> Result<Vec<ScanResult>, S
     }
     let root = resolve_path(&path);
     validate_path(&root)?;
-    if !root.exists() || !root.is_dir() {
-        return Err(format!("Path not accessible: {}. Resolved to: {}. Make sure the network share is mounted.", path, root.display()));
-    }
 
-    let mut results = Vec::new();
-
-    if mode == "subdirectories" {
-        // Each direct subdirectory = one backup
-        let entries = std::fs::read_dir(&root)
-            .map_err(|e| format!("Cannot read directory: {}", e))?;
-
-        for entry in entries.flatten() {
-            let entry_path = entry.path();
-            if entry_path.is_dir() {
-                let name = entry_path
-                    .file_name()
-                    .unwrap_or_default()
-                    .to_string_lossy()
-                    .to_string();
-                // Skip size during scan for speed - user can calculate via "Scan sizes"
-                let size = 0;
-                let date = extract_date_from_name(&name)
-                    .unwrap_or_else(|| dir_created_date(&entry_path));
-                results.push(ScanResult {
-                    name,
-                    size_bytes: size,
-                    modified_date: date,
-                });
-            }
+    tokio::time::timeout(Duration::from_secs(60), tokio::task::spawn_blocking(move || {
+        if !root.exists() || !root.is_dir() {
+            return Err(format!("Path not accessible: {}. Make sure the network share is mounted.", root.display()));
         }
 
-        // Sort by name (typically date-based folder names)
-        results.sort_by(|a, b| a.name.cmp(&b.name));
-    } else {
-        // "flat" - entire directory is one backup
-        let name = root
-            .file_name()
-            .unwrap_or_default()
-            .to_string_lossy()
-            .to_string();
-        let size = 0;
-        let modified = extract_date_from_name(&name)
-            .unwrap_or_else(|| dir_created_date(&root));
-        results.push(ScanResult {
-            name,
-            size_bytes: size,
-            modified_date: modified,
-        });
-    }
+        let mut results = Vec::new();
 
-    Ok(results)
+        if mode == "subdirectories" {
+            let entries = std::fs::read_dir(&root)
+                .map_err(|e| format!("Cannot read directory: {}", e))?;
+
+            for entry in entries.flatten() {
+                let entry_path = entry.path();
+                if entry_path.is_dir() {
+                    let name = entry_path
+                        .file_name()
+                        .unwrap_or_default()
+                        .to_string_lossy()
+                        .to_string();
+                    let date = extract_date_from_name(&name)
+                        .unwrap_or_else(|| dir_created_date(&entry_path));
+                    results.push(ScanResult {
+                        name,
+                        size_bytes: 0,
+                        modified_date: date,
+                    });
+                }
+            }
+            results.sort_by(|a, b| a.name.cmp(&b.name));
+        } else {
+            let name = root
+                .file_name()
+                .unwrap_or_default()
+                .to_string_lossy()
+                .to_string();
+            let modified = extract_date_from_name(&name)
+                .unwrap_or_else(|| dir_created_date(&root));
+            results.push(ScanResult {
+                name,
+                size_bytes: 0,
+                modified_date: modified,
+            });
+        }
+
+        Ok(results)
+    }))
+    .await
+    .map_err(|_| "Directory scan timed out after 60 seconds".to_string())?
+    .map_err(|e| format!("Scan error: {}", e))?
 }
 
 #[tauri::command]

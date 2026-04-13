@@ -42,6 +42,17 @@ export function Devices() {
     loadDevices();
   }, []);
 
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "n") {
+        e.preventDefault();
+        openCreate();
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, []);
+
   async function loadDevices() {
     try {
       const [active, trash] = await Promise.all([getDeviceWithBackupCount(), getDeletedDevices()]);
@@ -175,14 +186,14 @@ export function Devices() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {sorted.map((d) => (
             <Card key={d.id as number}>
-              <div className="flex items-start justify-between mb-2">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center">
+              <div className="flex items-start justify-between gap-2 mb-2">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center shrink-0">
                     <Monitor className="w-5 h-5 text-muted-foreground" />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-sm">{d.name as string}</h3>
-                    <p className="text-xs text-muted-foreground">
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-sm truncate">{d.name as string}</h3>
+                    <p className="text-xs text-muted-foreground truncate">
                       {DEVICE_TYPE_LABELS[d.type as string]?.[lang] || d.type}
                     </p>
                   </div>
@@ -205,21 +216,21 @@ export function Devices() {
 
               <div className="space-y-1 text-xs text-muted-foreground mt-3">
                 {d.os && (
-                  <div className="flex justify-between">
-                    <span>{t("devices.os")}</span>
-                    <span className="text-foreground">{d.os as string}</span>
+                  <div className="flex justify-between gap-2">
+                    <span className="shrink-0">{t("devices.os")}</span>
+                    <span className="text-foreground truncate">{d.os as string}</span>
                   </div>
                 )}
                 {d.model && (
-                  <div className="flex justify-between">
-                    <span>{t("devices.model")}</span>
-                    <span className="text-foreground">{d.model as string}</span>
+                  <div className="flex justify-between gap-2">
+                    <span className="shrink-0">{t("devices.model")}</span>
+                    <span className="text-foreground truncate">{d.model as string}</span>
                   </div>
                 )}
                 {d.serial_number && (
-                  <div className="flex justify-between">
-                    <span>{t("devices.serialNumber")}</span>
-                    <span className="text-foreground font-mono text-[10px]">{d.serial_number as string}</span>
+                  <div className="flex justify-between gap-2">
+                    <span className="shrink-0">{t("devices.serialNumber")}</span>
+                    <span className="text-foreground font-mono text-[10px] truncate">{d.serial_number as string}</span>
                   </div>
                 )}
                 <div className="flex justify-between pt-1 border-t border-border mt-2">
@@ -242,6 +253,7 @@ export function Devices() {
       <Modal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
+        onSave={handleSave}
         title={editing ? t("devices.edit") : t("devices.create")}
       >
         <div className="space-y-4">

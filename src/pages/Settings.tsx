@@ -10,6 +10,7 @@ import { useThemeStore } from "@/lib/store";
 import { cn } from "@/lib/cn";
 
 const ACCENT_COLORS = [
+  { id: "b4ckup" as const, color: "#1a1a2e", darkColor: "#1a1a2e", label: "B4cKuP" },
   { id: "default" as const, color: "#171717", darkColor: "#fafafa", label: "Default" },
   { id: "blue" as const, color: "#3b82f6", darkColor: "#3b82f6", label: "Blue" },
   { id: "purple" as const, color: "#8b5cf6", darkColor: "#8b5cf6", label: "Purple" },

@@ -18,6 +18,7 @@
     "upToDate": "Aktuell",
     "warnings": "Warnungen",
     "critical": "Kritisch",
+    "paused": "Pausiert",
     "storageOverview": "Speicher\u00fcbersicht",
     "recentActivity": "Letzte Aktivit\u00e4ten",
     "backupRule": "3-2-1 Regel Check",
@@ -65,7 +66,9 @@
     "backupDate": "Backup-Datum",
     "selectMedia": "Speichermedium w\u00e4hlen",
     "editEntry": "Eintrag bearbeiten",
-    "entryNumber": "Nummer"
+    "entryNumber": "Nummer",
+    "pause": "Pausieren",
+    "resume": "Fortsetzen"
   },
   "media": {
     "title": "Speichermedien",
@@ -160,7 +163,8 @@
   "status": {
     "ok": "Aktuell",
     "warning": "Veraltet",
-    "critical": "Kritisch"
+    "critical": "Kritisch",
+    "paused": "Pausiert"
   },
   "matrix": {
     "title": "\u00dcbersicht",
@@ -177,7 +181,8 @@
     "import": "Ausgew\u00e4hlte importieren",
     "alreadyExists": "Bereits vorhanden",
     "noResults": "Keine Backups in diesem Verzeichnis gefunden.",
-    "imported": "Eintr\u00e4ge importiert"
+    "imported": "Eintr\u00e4ge importiert",
+    "failed": "Scan fehlgeschlagen"
   },
   "trash": {
     "title": "Papierkorb",

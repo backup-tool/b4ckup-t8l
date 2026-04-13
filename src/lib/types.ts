@@ -42,7 +42,7 @@ export interface BackupStorageLocation {
   path_on_media: string | null;
 }
 
-export type BackupStatus = "ok" | "warning" | "critical";
+export type BackupStatus = "ok" | "warning" | "critical" | "paused";
 
 export interface BackupWithStatus extends Backup {
   status: BackupStatus;
@@ -66,6 +66,7 @@ export const BACKUP_CATEGORIES = [
   "system", "system_image", "vm", "database",
   "media", "code", "projects", "email",
   "contacts", "calendar", "messages",
+  "health", "social_media", "finance",
   "games", "applications", "config", "other",
 ] as const;
 
@@ -103,6 +104,9 @@ export const CATEGORY_LABELS: Record<string, L> = {
   contacts: { en: "Contacts", de: "Kontakte", ru: "\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b" },
   calendar: { en: "Calendar", de: "Kalender", ru: "\u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044c" },
   messages: { en: "Messages", de: "Nachrichten", ru: "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f" },
+  health: { en: "Health", de: "Gesundheit", ru: "\u0417\u0434\u043e\u0440\u043e\u0432\u044c\u0435" },
+  social_media: { en: "Social Media", de: "Social Media", ru: "\u0421\u043e\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0435 \u0441\u0435\u0442\u0438" },
+  finance: { en: "Finance", de: "Finanzen", ru: "\u0424\u0438\u043d\u0430\u043d\u0441\u044b" },
   games: { en: "Games", de: "Spiele", ru: "\u0418\u0433\u0440\u044b" },
   applications: { en: "Applications", de: "Anwendungen", ru: "\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f" },
   config: { en: "Configuration", de: "Konfiguration", ru: "\u041a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044f" },
@@ -111,7 +115,8 @@ export const CATEGORY_LABELS: Record<string, L> = {
 
 export const DEVICE_TYPES = [
   "desktop", "laptop", "phone", "tablet", "server", "nas",
-  "cloud", "external_drive", "camera", "console", "smart_home", "other",
+  "cloud", "external_drive", "camera", "console", "smart_home",
+  "app", "service", "other",
 ] as const;
 
 export const DEVICE_TYPE_LABELS: Record<string, L> = {
@@ -126,6 +131,8 @@ export const DEVICE_TYPE_LABELS: Record<string, L> = {
   camera: { en: "Camera", de: "Kamera", ru: "\u041a\u0430\u043c\u0435\u0440\u0430" },
   console: { en: "Console", de: "Konsole", ru: "\u041a\u043e\u043d\u0441\u043e\u043b\u044c" },
   smart_home: { en: "Smart Home", de: "Smart Home", ru: "\u0423\u043c\u043d\u044b\u0439 \u0434\u043e\u043c" },
+  app: { en: "App", de: "App", ru: "\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435" },
+  service: { en: "Online Service", de: "Online-Dienst", ru: "\u041e\u043d\u043b\u0430\u0439\u043d-\u0441\u0435\u0440\u0432\u0438\u0441" },
   other: { en: "Other", de: "Sonstiges", ru: "\u0414\u0440\u0443\u0433\u043e\u0435" },
 };
 

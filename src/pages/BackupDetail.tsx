@@ -19,6 +19,8 @@ import {
   HardDrive,
   Search,
   Loader2,
+  Pause,
+  Play,
 } from "lucide-react";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -27,6 +29,7 @@ import { Input, Textarea, Label } from "@/components/ui/Input";
 import { CustomSelect } from "@/components/ui/CustomSelect";
 import { ComboSelect } from "@/components/ui/ComboSelect";
 import { DatePicker } from "@/components/ui/DatePicker";
+import { ProgressRing } from "@/components/ui/ProgressRing";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
 import {
@@ -46,6 +49,7 @@ import {
   addStorageLocation,
   removeStorageLocation,
   getBackupsWithStatus,
+  toggleBackupPaused,
 } from "@/lib/db";
 import { BACKUP_CATEGORIES, CATEGORY_LABELS, SIZE_UNITS, SIZE_MULTIPLIERS } from "@/lib/types";
 import type { BackupStatus } from "@/lib/types";
@@ -143,45 +147,112 @@ export function BackupDetail() {
     load();
   }, [load]);
 
-  // Auto-calculate sizes for 0-byte entries
+  // Auto-calculate sizes for 0-byte entries (in background, with live progress)
   const sizeCalcRunning = useRef(false);
+  const [sizeCalcProgress, setSizeCalcProgress] = useState<Record<string, {
+    bytes: number; elapsed: number; phase: string;
+  }>>({});
+
   useEffect(() => {
-    if (entries.length === 0 || locations.length === 0) return;
+    if (entries.length === 0 || locations.length === 0 || !id) return;
     if (sizeCalcRunning.current) return;
 
-    const zeroEntries = entries.filter((e) => (e.size_bytes as number) === 0);
+    const zeroEntries = entries
+      .filter((e) => (e.size_bytes as number) === 0 && (e.notes as string))
+      .sort((a, b) => (a.backup_date as string).localeCompare(b.backup_date as string)); // Älteste zuerst
     if (zeroEntries.length === 0) return;
 
     sizeCalcRunning.current = true;
 
-    async function calcSizes() {
-      for (const entry of zeroEntries) {
-        const loc = locations.find(
-          (l) => (l.storage_media_id as number) === (entry.storage_media_id as number)
-        );
-        if (!loc?.path_on_media) continue;
+    // Mark all zero entries as "waiting" in progress
+    const initialProgress: Record<string, any> = {};
+    for (const e of zeroEntries) {
+      initialProgress[`entry-${e.id}`] = { bytes: 0, elapsed: 0, phase: "waiting" };
+    }
+    setSizeCalcProgress(initialProgress);
 
-        const basePath = loc.path_on_media as string;
-        const name = entry.notes as string;
-        if (!name) continue;
+    async function processEntry(entry: Record<string, any>) {
+      const loc = locations.find(
+        (l) => (l.storage_media_id as number) === (entry.storage_media_id as number)
+      );
+      const taskId = `entry-${entry.id}`;
 
-        const fullPath = basePath.endsWith("/") ? basePath + name : basePath + "/" + name;
-
-        try {
-          const size = await invoke<number>("get_dir_size", { path: fullPath });
-          if (size > 0) {
-            await updateEntrySize(entry.id as number, size);
-          }
-        } catch { /* ignore */ }
-        // Always refresh from DB to pick up any other changes (verify, edits, etc.)
-        const freshEntries = await getEntriesForBackup(parseInt(id!));
-        setEntries(freshEntries);
+      if (!loc?.path_on_media) {
+        setSizeCalcProgress((prev) => ({ ...prev, [taskId]: { ...prev[taskId], phase: "done" } }));
+        return;
       }
+
+      const basePath = loc.path_on_media as string;
+      const name = entry.notes as string;
+      const fullPath = basePath.endsWith("/") ? basePath + name : basePath + "/" + name;
+
+      setSizeCalcProgress((prev) => ({
+        ...prev,
+        [taskId]: { bytes: 0, elapsed: 0, phase: "calculating" },
+      }));
+
+      try {
+        const size = await invoke<number>("get_dir_size_with_progress", {
+          path: fullPath,
+          taskId,
+        });
+        if (size > 0) {
+          await updateEntrySize(entry.id as number, size);
+        }
+      } catch (err) {
+        console.warn(`Size calc failed for ${name}:`, err);
+      }
+      setSizeCalcProgress((prev) => ({ ...prev, [taskId]: { ...prev[taskId], phase: "done" } }));
+    }
+
+    async function calcSizes() {
+      // Set up event listener FIRST, then start processing
+      let unlisten: (() => void) | null = null;
+      try {
+        const { listen } = await import("@tauri-apps/api/event");
+        unlisten = await listen<any>("size-progress", (event) => {
+          const d = event.payload;
+          setSizeCalcProgress((prev) => ({
+            ...prev,
+            [d.taskId]: {
+              bytes: d.bytes || 0,
+              elapsed: d.elapsed || 0,
+              phase: d.phase,
+            },
+          }));
+        });
+      } catch (err) {
+        console.warn("Failed to set up progress listener:", err);
+      }
+
+      // Process 2 at a time (parallel but NAS-friendly), oldest first
+      const CONCURRENCY = 2;
+      const queue = [...zeroEntries];
+      const running: Promise<void>[] = [];
+
+      while (queue.length > 0 || running.length > 0) {
+        while (running.length < CONCURRENCY && queue.length > 0) {
+          const entry = queue.shift()!;
+          const promise = processEntry(entry).then(() => {
+            running.splice(running.indexOf(promise), 1);
+          });
+          running.push(promise);
+        }
+        if (running.length > 0) {
+          await Promise.race(running);
+        }
+      }
+
+      // Refresh all entries once at the end
+      const freshEntries = await getEntriesForBackup(parseInt(id!));
+      setEntries(freshEntries);
+      setSizeCalcProgress({});
+      if (unlisten) unlisten();
       sizeCalcRunning.current = false;
     }
 
     calcSizes();
-  }, [entries.length, locations.length]);
+  }, [id, entries.length, locations.length]);
 
   if (!backup) return null;
 
@@ -364,15 +435,15 @@ export function BackupDetail() {
     try {
       const results = await invoke<ScanResult[]>("scan_directory", { path, mode });
 
-      // Mark already existing entries
+      // Mark already existing entries by name + date match
       const existingEntries = entries.map((e) => ({
-        size: e.size_bytes as number,
+        name: (e.notes as string) || "",
         date: (e.backup_date as string).split("T")[0],
       }));
 
       const filtered = results.map((r, i) => {
         const exists = existingEntries.some(
-          (e) => e.size === r.size_bytes && e.date === r.modified_date
+          (e) => (e.name === r.name && e.date === r.modified_date) || (e.name === r.name)
         );
         return { ...r, _exists: exists, _index: i };
       });
@@ -386,26 +457,29 @@ export function BackupDetail() {
       setScanSelected(sel);
       setScanning(false);
 
-      // Auto-calculate sizes in background (after list is shown)
+      // Calculate all sizes in parallel (much faster)
       const scanPath = path;
-      for (let i = 0; i < filtered.length; i++) {
-        const r = filtered[i] as any;
-        const fullPath = scanPath.endsWith("/") ? scanPath + r.name : scanPath + "/" + r.name;
-        setScanSizesLoading((prev) => new Set(prev).add(i));
-        try {
-          const size = await invoke<number>("get_dir_size", { path: fullPath });
-          setScanResults((prev) => {
-            const next = [...prev];
-            (next[i] as any).size_bytes = size;
+      const allIndices = filtered.map((_: any, i: number) => i);
+      setScanSizesLoading(new Set(allIndices));
+
+      await Promise.all(
+        filtered.map(async (r: any, i: number) => {
+          const fullPath = scanPath.endsWith("/") ? scanPath + r.name : scanPath + "/" + r.name;
+          try {
+            const size = await invoke<number>("get_dir_size", { path: fullPath });
+            setScanResults((prev) => {
+              const next = [...prev];
+              (next[i] as any).size_bytes = size;
+              return next;
+            });
+          } catch { /* ignore individual failures */ }
+          setScanSizesLoading((prev) => {
+            const next = new Set(prev);
+            next.delete(i);
             return next;
           });
-        } catch { /* ignore individual failures */ }
-        setScanSizesLoading((prev) => {
-          const next = new Set(prev);
-          next.delete(i);
-          return next;
-        });
-      }
+        })
+      );
     } catch (err: any) {
       setScanError(typeof err === "string" ? err : err?.message || String(err));
       setScanning(false);
@@ -416,10 +490,17 @@ export function BackupDetail() {
     if (!backup || scanMediaId === null) return;
     setScanImporting(true);
 
-    // Import all entries immediately (with whatever size is available)
+    // Get fresh entries to check for duplicates
+    const currentEntries = await getEntriesForBackup(backup.id as number);
+    const existingNames = new Set(currentEntries.map((e) => e.notes as string).filter(Boolean));
+
+    let imported = 0;
     for (const idx of scanSelected) {
       const r = scanResults[idx] as any;
       if (r._exists) continue;
+      // Skip if an entry with this folder name already exists (prevent duplicates)
+      if (existingNames.has(r.name)) continue;
+
       await createEntry({
         backup_id: backup.id as number,
         storage_media_id: scanMediaId,
@@ -427,11 +508,13 @@ export function BackupDetail() {
         backup_date: r.modified_date,
         notes: r.name,
       });
+      existingNames.add(r.name);
+      imported++;
     }
 
     setScanImporting(false);
     setScanModalOpen(false);
-    sizeCalcRunning.current = false; // Allow the useEffect to pick up the new 0-byte entries
+    sizeCalcRunning.current = false;
     triggerRefresh();
     await load();
   }
@@ -440,6 +523,7 @@ export function BackupDetail() {
 
 
   // Chart data
+  // Chart data — only show entries with final sizes (no live progress)
   const chartData = [...entries]
     .reverse()
     .map((e) => ({
@@ -470,6 +554,18 @@ export function BackupDetail() {
             {backup.tags ? ` · ${backup.tags}` : ""}
           </p>
         </div>
+        <Button
+          variant="secondary"
+          size="sm"
+          onClick={async () => {
+            await toggleBackupPaused(backup.id as number, !backup.is_paused);
+            triggerRefresh();
+            load();
+          }}
+        >
+          {backup.is_paused ? <Play className="w-3.5 h-3.5" /> : <Pause className="w-3.5 h-3.5" />}
+          {backup.is_paused ? t("backups.resume") : t("backups.pause")}
+        </Button>
         <Button variant="secondary" size="sm" onClick={openEdit}>
           <Pencil className="w-3.5 h-3.5" />
           {t("common.edit")}
@@ -524,6 +620,7 @@ export function BackupDetail() {
                       boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
                       fontSize: "12px",
                     }}
+                    formatter={(value: any) => [`${value} GB`, t("backups.size")]}
                   />
                   <Line
                     type="monotone"
@@ -579,8 +676,13 @@ export function BackupDetail() {
                           size="sm"
                           variant="ghost"
                           onClick={() => handleScan(loc)}
+                          disabled={scanning}
                         >
-                          <Search className="w-3.5 h-3.5" />
+                          {scanning ? (
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                          ) : (
+                            <Search className="w-3.5 h-3.5" />
+                          )}
                           {t("scan.button")}
                         </Button>
                       )}
@@ -607,7 +709,24 @@ export function BackupDetail() {
       {/* Entries */}
       <Card>
         <CardHeader>
-          <CardTitle>{t("backups.entries")} ({entries.length})</CardTitle>
+          <div className="flex items-center gap-2">
+            <CardTitle>{t("backups.entries")} ({entries.length})</CardTitle>
+            {Object.keys(sizeCalcProgress).length > 0 && (() => {
+              // Only count entries that belong to this backup
+              const entryIds = new Set(entries.map((e) => `entry-${e.id}`));
+              const relevant = Object.entries(sizeCalcProgress).filter(([k]) => entryIds.has(k));
+              const activeCount = relevant.filter(([, p]) => p.phase === "calculating").length;
+              const waitingCount = relevant.filter(([, p]) => p.phase === "waiting").length;
+              const remaining = activeCount + waitingCount;
+              if (remaining === 0) return null;
+              return (
+                <div className="flex items-center gap-1.5" title="Speicherplatz wird berechnet. App nicht schließen.">
+                  <Loader2 className="w-3.5 h-3.5 animate-spin text-primary" />
+                  <span className="text-[10px] text-muted-foreground">{remaining} von {entries.filter((e) => (e.size_bytes as number) === 0).length}</span>
+                </div>
+              );
+            })()}
+          </div>
           <Button size="sm" onClick={() => setEntryModalOpen(true)}>
             <Plus className="w-3.5 h-3.5" />
             {t("backups.addEntry")}
@@ -643,18 +762,48 @@ export function BackupDetail() {
                         <CheckCircle className="w-3 h-3" />
                       </span>
                     )}
+                    {/* Size inline */}
+                    {(() => {
+                      const size = entry.size_bytes as number;
+                      const prog = sizeCalcProgress[`entry-${entry.id}`];
+                      const liveBytes = prog?.phase === "calculating" ? prog.bytes : 0;
+                      const displayBytes = size > 0 ? size : liveBytes;
+                      if (displayBytes > 0) {
+                        return (
+                          <span className={`text-xs tabular-nums ml-1 ${size > 0 ? "font-medium" : "text-muted-foreground"}`}>
+                            {formatBytes(displayBytes)}
+                          </span>
+                        );
+                      }
+                      return null;
+                    })()}
                   </div>
                   <div className="flex items-center gap-2 mt-0.5">
-                    {(entry.size_bytes as number) === 0 ? (
-                      <span className="text-xs text-muted-foreground flex items-center gap-1">
-                        <Loader2 className="w-3 h-3 animate-spin" />
-                      </span>
-                    ) : (
-                      <span className="text-xs font-medium">{formatBytes(entry.size_bytes as number)}</span>
-                    )}
                     {entry.notes && (
                       <span className="text-xs text-muted-foreground truncate">{entry.notes as string}</span>
                     )}
+                    {(entry.size_bytes as number) === 0 && (() => {
+                      const prog = sizeCalcProgress[`entry-${entry.id}`];
+                      const tooltip = "Speicherplatz wird im Hintergrund berechnet.\nBitte die App nicht schließen.";
+                      if (prog && prog.phase === "calculating") {
+                        const elapsed = prog.elapsed;
+                        const timeStr = elapsed < 60 ? `${elapsed}s` : `${Math.floor(elapsed / 60)}m ${elapsed % 60}s`;
+                        return (
+                          <span className="text-[10px] text-muted-foreground inline-flex items-center gap-1.5 cursor-default" title={tooltip}>
+                            <Loader2 className="w-3 h-3 animate-spin text-primary shrink-0" />
+                            <span className="tabular-nums">{timeStr}</span>
+                          </span>
+                        );
+                      } else if (prog && prog.phase === "waiting") {
+                        return (
+                          <span className="text-[10px] text-muted-foreground flex items-center gap-1.5 cursor-default" title={tooltip}>
+                            <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30 animate-pulse" />
+                            Warten...
+                          </span>
+                        );
+                      }
+                      return null;
+                    })()}
                   </div>
                 </div>
 
@@ -693,6 +842,7 @@ export function BackupDetail() {
       <Modal
         open={entryModalOpen}
         onClose={() => setEntryModalOpen(false)}
+        onSave={handleAddEntry}
         title={t("backups.addEntry")}
       >
         <div className="space-y-4">
@@ -771,6 +921,7 @@ export function BackupDetail() {
       <Modal
         open={locationModalOpen}
         onClose={() => setLocationModalOpen(false)}
+        onSave={handleAddLocation}
         title={t("backups.addLocation")}
       >
         <div className="space-y-4">
@@ -861,6 +1012,7 @@ export function BackupDetail() {
       <Modal
         open={editModalOpen}
         onClose={() => setEditModalOpen(false)}
+        onSave={handleEdit}
         title={t("backups.edit")}
       >
         <div className="space-y-4">
@@ -995,6 +1147,7 @@ export function BackupDetail() {
       <Modal
         open={editEntryModalOpen}
         onClose={() => setEditEntryModalOpen(false)}
+        onSave={handleEditEntry}
         title={t("backups.editEntry")}
       >
         <div className="space-y-4">
@@ -1073,7 +1226,7 @@ export function BackupDetail() {
           </div>
         ) : scanError ? (
           <div className="py-4 space-y-2">
-            <p className="text-sm text-red-600 font-medium">Scan fehlgeschlagen</p>
+            <p className="text-sm text-red-600 font-medium">{t("scan.failed")}</p>
             <p className="text-xs text-muted-foreground bg-muted rounded-lg p-3 font-mono break-all">
               {scanError}
             </p>
@@ -1082,15 +1235,24 @@ export function BackupDetail() {
           <p className="text-sm text-muted-foreground py-4">{t("scan.noResults")}</p>
         ) : (
           <div className="space-y-3">
-            <p className="text-xs text-muted-foreground">
-              {scanResults.length} {t("scan.found")}
-              {scanSizesLoading.size > 0 && (
-                <span className="inline-flex items-center gap-1 ml-2">
-                  <Loader2 className="w-3 h-3 animate-spin" />
-                  <span>{scanSizesLoading.size} loading...</span>
-                </span>
-              )}
-            </p>
+            <div className="flex items-center gap-3">
+              <p className="text-xs text-muted-foreground">
+                {scanResults.length} {t("scan.found")}
+              </p>
+              {scanSizesLoading.size > 0 && (() => {
+                const total = scanResults.length;
+                const done = total - scanSizesLoading.size;
+                const pct = Math.round((done / total) * 100);
+                return (
+                  <div className="flex items-center gap-1.5 ml-auto">
+                    <ProgressRing progress={pct} size={18} strokeWidth={2.5} className="text-primary" />
+                    <span className="text-xs text-muted-foreground tabular-nums">
+                      {pct}%
+                    </span>
+                  </div>
+                );
+              })()}
+            </div>
             <div className="max-h-80 overflow-y-auto space-y-1">
               {scanResults.map((r: any, i: number) => {
                 const exists = r._exists;
@@ -1123,11 +1285,13 @@ export function BackupDetail() {
                       <p className="text-xs text-muted-foreground">
                         {formatDate(r.modified_date)} &middot;{" "}
                         {r.size_bytes > 0 ? (
-                          <span className="font-medium">{formatBytes(r.size_bytes)}</span>
-                        ) : (
-                          <span className="inline-flex items-center gap-1 text-muted-foreground">
+                          <span className="font-medium text-foreground">{formatBytes(r.size_bytes)}</span>
+                        ) : scanSizesLoading.has(i) ? (
+                          <span className="inline-flex items-center gap-1">
                             <Loader2 className="w-3 h-3 animate-spin" />
                           </span>
+                        ) : (
+                          <span className="italic">NAS...</span>
                         )}
                         {exists && (
                           <span className="ml-2 text-amber-600">

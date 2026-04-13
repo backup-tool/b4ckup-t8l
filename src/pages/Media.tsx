@@ -50,6 +50,17 @@ export function Media() {
     loadAll();
   }, [refreshKey]);
 
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "n") {
+        e.preventDefault();
+        openCreate();
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, []);
+
   async function loadAll() {
     try {
       const [active, trash] = await Promise.all([getMediaWithUsage(), getDeletedMedia()]);
@@ -270,6 +281,7 @@ export function Media() {
       <Modal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
+        onSave={handleSave}
         title={editing ? t("media.edit") : t("media.create")}
       >
         <div className="space-y-4">

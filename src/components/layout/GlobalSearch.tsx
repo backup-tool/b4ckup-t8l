@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Search, Database, HardDrive, Monitor, Clock } from "lucide-react";
 import { getAllBackups, getAllMedia, getAllDevices, getAllEntries } from "@/lib/db";
 import { formatBytes, formatDate } from "@/lib/format";
+import { useAppStore } from "@/lib/store";
 
 interface SearchResult {
   type: "backup" | "media" | "device" | "entry";
@@ -146,13 +147,17 @@ export function GlobalSearch({ collapsed }: { collapsed: boolean }) {
     entry: Clock,
   };
 
+  const toggleSidebar = useAppStore((s) => s.toggleSidebar);
+
   if (collapsed) {
     return (
       <button
         onClick={() => {
-          // Can't search when collapsed, just visual hint
+          toggleSidebar();
+          setTimeout(() => inputRef.current?.focus(), 200);
         }}
-        className="mx-auto p-2 rounded-lg hover:bg-muted transition-colors"
+        className="flex justify-center w-full py-2"
+        title={`${t("backups.search")} (⌘K)`}
       >
         <Search className="w-4 h-4 text-muted-foreground" />
       </button>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Plus, Search, Database, Trash2, Monitor } from "lucide-react";
+import { Plus, Search, Database, Trash2, Monitor, Pause, Play } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
@@ -18,6 +18,7 @@ import {
   softDeleteBackup,
   restoreBackup,
   permanentDeleteBackup,
+  toggleBackupPaused,
   getAllDevices,
   createDevice,
 } from "@/lib/db";
@@ -55,6 +56,17 @@ export function Backups() {
   useEffect(() => {
     loadAll();
   }, [refreshKey]);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "n") {
+        e.preventDefault();
+        setModalOpen(true);
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, []);
 
   async function loadAll() {
     try {
@@ -199,6 +211,7 @@ export function Backups() {
             { value: "ok", label: t("status.ok") },
             { value: "warning", label: t("status.warning") },
             { value: "critical", label: t("status.critical") },
+            { value: "paused", label: t("status.paused") },
           ]}
         />
         <CustomSelect
@@ -282,6 +295,21 @@ export function Backups() {
                           </Card>
                         </Link>
                         <button
+                          onClick={async () => {
+                            await toggleBackupPaused(b.id as number, !b.is_paused);
+                            triggerRefresh();
+                            await loadAll();
+                          }}
+                          className="p-2 rounded-lg hover:bg-muted transition-colors shrink-0"
+                          title={b.is_paused ? t("backups.resume") : t("backups.pause")}
+                        >
+                          {b.is_paused ? (
+                            <Play className="w-4 h-4 text-muted-foreground" />
+                          ) : (
+                            <Pause className="w-4 h-4 text-muted-foreground" />
+                          )}
+                        </button>
+                        <button
                           onClick={() => setSoftDeleteId(b.id as number)}
                           className="p-2 rounded-lg hover:bg-muted transition-colors shrink-0"
                         >
@@ -301,6 +329,7 @@ export function Backups() {
       <Modal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
+        onSave={handleCreate}
         title={t("backups.create")}
       >
         <div className="space-y-4">
