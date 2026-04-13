@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "features": "Fitur",
+    "download": "Unduh",
+    "contact": "Kontak"
+  },
+  "hero": {
+    "tagline": "Lacak, kelola, dan pantau semua cadangan Anda di satu tempat.",
+    "subtitle": "Jangan pernah kehilangan jejak cadangan Anda lagi. B4cKuP T8L memberi Anda gambaran lengkap tentang semua data cadangan di setiap perangkat dan media penyimpanan.",
+    "cta": "Unduh Gratis",
+    "learnMore": "Pelajari Lebih Lanjut"
+  },
+  "stats": {
+    "backups": "Kelola cadangan tanpa batas",
+    "platforms": "Windows, macOS & Linux",
+    "languages": "3 Bahasa",
+    "opensource": "Gratis & Sumber Terbuka"
+  },
+  "features": {
+    "title": "Semua yang Anda butuhkan untuk mengelola cadangan",
+    "subtitle": "B4cKuP T8L menggantikan lembar kerja cadangan Anda dengan aplikasi desktop yang kuat.",
+    "dashboard": "Dasbor",
+    "dashboardDesc": "Dapatkan gambaran lengkap semua cadangan Anda dengan indikator status, grafik penggunaan penyimpanan, dan pemeriksaan aturan cadangan 3-2-1.",
+    "tracking": "Pelacakan Cadangan",
+    "trackingDesc": "Dokumentasikan setiap cadangan dengan tanggal, ukuran, lokasi penyimpanan, dan catatan. Lacak riwayat dan perubahan ukuran dari waktu ke waktu.",
+    "scan": "Pemindaian Otomatis",
+    "scanDesc": "Arahkan ke folder dan deteksi cadangan yang ada secara otomatis. Ukuran dihitung di latar belakang.",
+    "media": "Media Penyimpanan",
+    "mediaDesc": "Kelola semua perangkat penyimpanan Anda - NAS, drive eksternal, layanan cloud, SSD, dan lainnya. Lacak kapasitas dan enkripsi.",
+    "matrix": "Matriks Gambaran",
+    "matrixDesc": "Lihat sekilas cadangan mana yang tersimpan di media mana - seperti lembar kerja tapi lebih baik.",
+    "notifications": "Notifikasi Cerdas",
+    "notificationsDesc": "Dapatkan pemberitahuan saat cadangan terlambat. Interval pengingat yang dapat dikonfigurasi per cadangan.",
+    "darkmode": "Mode Gelap",
+    "darkmodeDesc": "Tema terang dan gelap yang indah dengan warna aksen yang dapat disesuaikan. Mengikuti preferensi sistem Anda.",
+    "i18n": "Multibahasa",
+    "i18nDesc": "Tersedia dalam bahasa Inggris, Jerman, dan Rusia. Bahasa lain dapat ditambahkan dengan mudah.",
+    "tray": "Baki Sistem",
+    "trayDesc": "Berjalan diam-diam di latar belakang. Pemantau file mendeteksi cadangan baru secara otomatis.",
+    "export": "Ekspor Data",
+    "exportDesc": "Ekspor semua data cadangan Anda sebagai JSON atau CSV. Cadangan basis data otomatis menjaga keamanan data Anda.",
+    "sources": "Manajemen Sumber",
+    "sourcesDesc": "Atur cadangan berdasarkan sumber - perangkat, layanan cloud, drive eksternal. CRUD lengkap dengan penghapusan lunak dan tempat sampah.",
+    "encryption": "Pelacakan Enkripsi",
+    "encryptionDesc": "Lacak media penyimpanan mana yang dienkripsi, dengan metode apa (VeraCrypt, BitLocker, FileVault) dan label kunci."
+  },
+  "download": {
+    "title": "Unduh B4cKuP T8L",
+    "subtitle": "Tersedia untuk semua platform utama. Gratis dan sumber terbuka.",
+    "version": "Versi",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 atau lebih baru",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) atau lebih baru",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 atau lebih baru",
+    "downloadBtn": "Unduh",
+    "comingSoon": "Segera Hadir"
+  },
+  "contact": {
+    "title": "Kontak",
+    "subtitle": "Punya pertanyaan, umpan balik, atau menemukan bug? Hubungi kami.",
+    "name": "Nama",
+    "email": "Email",
+    "message": "Pesan",
+    "send": "Kirim Pesan",
+    "github": "Laporkan masalah di GitHub",
+    "emailDirect": "Atau kirim email langsung kepada kami di"
+  },
+  "imprint": {
+    "title": "Pemberitahuan Hukum (Impressum)",
+    "according": "Informasi sesuai Pasal 5 TMG",
+    "responsible": "Bertanggung jawab atas konten sesuai Pasal 55 (2) RStV",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Jerman",
+    "email": "Email: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Penyelesaian Sengketa",
+    "disputeText": "Komisi Eropa menyediakan platform untuk penyelesaian sengketa online (OS): https://ec.europa.eu/consumers/odr/. Kami tidak bersedia atau berkewajiban untuk berpartisipasi dalam proses penyelesaian sengketa di hadapan dewan arbitrase konsumen."
+  },
+  "privacy": {
+    "title": "Kebijakan Privasi",
+    "intro": "Kami sangat serius dalam melindungi data pribadi Anda. Kebijakan privasi ini menginformasikan kepada Anda tentang bagaimana kami menangani data Anda.",
+    "responsible": "Pihak yang Bertanggung Jawab",
+    "responsibleText": "Pihak yang bertanggung jawab atas pemrosesan data di situs web ini disebutkan dalam Pemberitahuan Hukum.",
+    "hosting": "Hosting",
+    "hostingText": "Situs web ini dihosting di server kami sendiri. Saat Anda mengakses situs web ini, browser Anda secara otomatis mengirimkan informasi (alamat IP, tanggal/waktu, halaman yang diakses) ke server kami. Data ini disimpan dalam file log server dan dihapus secara otomatis setelah 30 hari.",
+    "cookies": "Cookie",
+    "cookiesText": "Situs web ini tidak menggunakan cookie atau teknologi pelacakan apa pun. Tidak ada alat analitik yang digunakan.",
+    "contact": "Formulir Kontak",
+    "contactText": "Saat Anda mengirim pesan melalui formulir kontak, data Anda (nama, email, pesan) hanya akan digunakan untuk menanggapi pertanyaan Anda. Kami tidak membagikan data ini dengan pihak ketiga.",
+    "downloads": "Unduhan",
+    "downloadsText": "Saat Anda mengunduh perangkat lunak kami, tidak ada data pribadi yang dikumpulkan. File unduhan disediakan tanpa registrasi.",
+    "rights": "Hak Anda",
+    "rightsText": "Berdasarkan GDPR, Anda memiliki hak untuk mengakses, memperbaiki, menghapus, membatasi pemrosesan, portabilitas data, dan keberatan. Untuk menggunakan hak-hak ini, silakan hubungi kami menggunakan informasi dalam Pemberitahuan Hukum.",
+    "changes": "Perubahan",
+    "changesText": "Kami berhak memperbarui kebijakan privasi ini. Versi terkini selalu tersedia di halaman ini."
+  },
+  "footer": {
+    "legal": "Hukum",
+    "imprint": "Pemberitahuan Hukum",
+    "privacy": "Kebijakan Privasi",
+    "product": "Produk",
+    "madeWith": "Dibuat dengan"
+  }
+}

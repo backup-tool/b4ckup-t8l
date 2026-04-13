@@ -33,10 +33,14 @@ import ur from "@/locales/ur.json";
 import bn from "@/locales/bn.json";
 import zh from "@/locales/zh.json";
 import ja from "@/locales/ja.json";
+import ko from "@/locales/ko.json";
+import vi from "@/locales/vi.json";
+import th from "@/locales/th.json";
+import id from "@/locales/id.json";
 
 const saved = localStorage.getItem("lang");
 const browserLang = navigator.language.split("-")[0];
-const supported = ["en", "de", "ru", "fr", "it", "es", "pt", "nl", "sv", "da", "no", "fi", "ro", "pl", "cs", "hu", "bg", "sr", "hr", "uk", "el", "tr", "ar", "he", "fa", "ku", "hy", "ps", "hi", "ur", "bn", "zh", "ja"];
+const supported = ["en", "de", "ru", "fr", "it", "es", "pt", "nl", "sv", "da", "no", "fi", "ro", "pl", "cs", "hu", "bg", "sr", "hr", "uk", "el", "tr", "ar", "he", "fa", "ku", "hy", "ps", "hi", "ur", "bn", "zh", "ja", "ko", "vi", "th", "id"];
 const browser = supported.includes(browserLang) ? browserLang : "en";
 
 i18n.use(initReactI18next).init({
@@ -74,6 +78,10 @@ i18n.use(initReactI18next).init({
     bn: { translation: bn },
     zh: { translation: zh },
     ja: { translation: ja },
+    ko: { translation: ko },
+    vi: { translation: vi },
+    th: { translation: th },
+    id: { translation: id },
   },
   lng: saved || browser,
   fallbackLng: "en",

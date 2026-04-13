@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "features": "Tính năng",
+    "download": "Tải xuống",
+    "contact": "Liên hệ"
+  },
+  "hero": {
+    "tagline": "Theo dõi, quản lý và giám sát tất cả bản sao lưu của bạn tại một nơi.",
+    "subtitle": "Không bao giờ mất dấu bản sao lưu nữa. B4cKuP T8L cung cấp cho bạn cái nhìn tổng quan đầy đủ về tất cả dữ liệu sao lưu trên mọi thiết bị và phương tiện lưu trữ.",
+    "cta": "Tải miễn phí",
+    "learnMore": "Tìm hiểu thêm"
+  },
+  "stats": {
+    "backups": "Quản lý không giới hạn bản sao lưu",
+    "platforms": "Windows, macOS & Linux",
+    "languages": "3 Ngôn ngữ",
+    "opensource": "Miễn phí & Mã nguồn mở"
+  },
+  "features": {
+    "title": "Mọi thứ bạn cần để quản lý bản sao lưu",
+    "subtitle": "B4cKuP T8L thay thế bảng tính sao lưu của bạn bằng một ứng dụng máy tính mạnh mẽ.",
+    "dashboard": "Bảng điều khiển",
+    "dashboardDesc": "Xem tổng quan đầy đủ tất cả bản sao lưu với chỉ báo trạng thái, biểu đồ dung lượng lưu trữ và kiểm tra quy tắc sao lưu 3-2-1.",
+    "tracking": "Theo dõi sao lưu",
+    "trackingDesc": "Ghi lại mọi bản sao lưu với ngày, kích thước, vị trí lưu trữ và ghi chú. Theo dõi lịch sử và thay đổi kích thước theo thời gian.",
+    "scan": "Quét tự động",
+    "scanDesc": "Trỏ đến một thư mục và tự động phát hiện các bản sao lưu hiện có. Kích thước được tính toán trong nền.",
+    "media": "Phương tiện lưu trữ",
+    "mediaDesc": "Quản lý tất cả thiết bị lưu trữ - NAS, ổ cứng ngoài, dịch vụ đám mây, SSD và nhiều hơn nữa. Theo dõi dung lượng và mã hóa.",
+    "matrix": "Ma trận tổng quan",
+    "matrixDesc": "Xem ngay bản sao lưu nào được lưu trữ trên phương tiện nào - giống như bảng tính nhưng tốt hơn.",
+    "notifications": "Thông báo thông minh",
+    "notificationsDesc": "Nhận thông báo khi bản sao lưu quá hạn. Khoảng thời gian nhắc nhở có thể tùy chỉnh cho mỗi bản sao lưu.",
+    "darkmode": "Chế độ tối",
+    "darkmodeDesc": "Giao diện sáng và tối đẹp mắt với màu nhấn tùy chỉnh. Theo tùy chọn hệ thống của bạn.",
+    "i18n": "Đa ngôn ngữ",
+    "i18nDesc": "Có sẵn bằng tiếng Anh, tiếng Đức và tiếng Nga. Có thể dễ dàng thêm nhiều ngôn ngữ khác.",
+    "tray": "Khay hệ thống",
+    "trayDesc": "Chạy im lặng trong nền. Trình theo dõi tệp tự động phát hiện bản sao lưu mới.",
+    "export": "Xuất dữ liệu",
+    "exportDesc": "Xuất tất cả dữ liệu sao lưu dưới dạng JSON hoặc CSV. Sao lưu cơ sở dữ liệu tự động giữ an toàn cho dữ liệu của bạn.",
+    "sources": "Quản lý nguồn",
+    "sourcesDesc": "Tổ chức bản sao lưu theo nguồn - thiết bị, dịch vụ đám mây, ổ cứng ngoài. CRUD đầy đủ với xóa mềm và thùng rác.",
+    "encryption": "Theo dõi mã hóa",
+    "encryptionDesc": "Theo dõi phương tiện lưu trữ nào được mã hóa, bằng phương pháp nào (VeraCrypt, BitLocker, FileVault) và nhãn khóa."
+  },
+  "download": {
+    "title": "Tải B4cKuP T8L",
+    "subtitle": "Có sẵn cho tất cả nền tảng chính. Miễn phí và mã nguồn mở.",
+    "version": "Phiên bản",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 trở lên",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) trở lên",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 trở lên",
+    "downloadBtn": "Tải xuống",
+    "comingSoon": "Sắp ra mắt"
+  },
+  "contact": {
+    "title": "Liên hệ",
+    "subtitle": "Có câu hỏi, phản hồi hoặc phát hiện lỗi? Hãy liên hệ với chúng tôi.",
+    "name": "Tên",
+    "email": "Email",
+    "message": "Tin nhắn",
+    "send": "Gửi tin nhắn",
+    "github": "Báo cáo vấn đề trên GitHub",
+    "emailDirect": "Hoặc gửi email trực tiếp cho chúng tôi tại"
+  },
+  "imprint": {
+    "title": "Thông báo pháp lý (Impressum)",
+    "according": "Thông tin theo Mục 5 TMG",
+    "responsible": "Chịu trách nhiệm về nội dung theo Mục 55 (2) RStV",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Đức",
+    "email": "Email: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Giải quyết tranh chấp",
+    "disputeText": "Ủy ban Châu Âu cung cấp nền tảng giải quyết tranh chấp trực tuyến (OS): https://ec.europa.eu/consumers/odr/. Chúng tôi không sẵn lòng hoặc có nghĩa vụ tham gia vào thủ tục giải quyết tranh chấp trước hội đồng trọng tài tiêu dùng."
+  },
+  "privacy": {
+    "title": "Chính sách bảo mật",
+    "intro": "Chúng tôi rất coi trọng việc bảo vệ dữ liệu cá nhân của bạn. Chính sách bảo mật này thông báo cho bạn về cách chúng tôi xử lý dữ liệu của bạn.",
+    "responsible": "Bên chịu trách nhiệm",
+    "responsibleText": "Bên chịu trách nhiệm xử lý dữ liệu trên trang web này được nêu trong Thông báo pháp lý.",
+    "hosting": "Lưu trữ",
+    "hostingText": "Trang web này được lưu trữ trên máy chủ riêng của chúng tôi. Khi bạn truy cập trang web này, trình duyệt của bạn tự động gửi thông tin (địa chỉ IP, ngày/giờ, trang truy cập) đến máy chủ của chúng tôi. Dữ liệu này được lưu trong tệp nhật ký máy chủ và tự động xóa sau 30 ngày.",
+    "cookies": "Cookie",
+    "cookiesText": "Trang web này không sử dụng cookie hoặc bất kỳ công nghệ theo dõi nào. Không có công cụ phân tích nào được sử dụng.",
+    "contact": "Biểu mẫu liên hệ",
+    "contactText": "Khi bạn gửi tin nhắn qua biểu mẫu liên hệ, dữ liệu của bạn (tên, email, tin nhắn) sẽ chỉ được sử dụng để trả lời yêu cầu của bạn. Chúng tôi không chia sẻ dữ liệu này với bên thứ ba.",
+    "downloads": "Tải xuống",
+    "downloadsText": "Khi bạn tải phần mềm của chúng tôi, không có dữ liệu cá nhân nào được thu thập. Các tệp tải xuống được cung cấp mà không cần đăng ký.",
+    "rights": "Quyền của bạn",
+    "rightsText": "Theo GDPR, bạn có quyền truy cập, chỉnh sửa, xóa, hạn chế xử lý, chuyển đổi dữ liệu và phản đối. Để thực hiện các quyền này, vui lòng liên hệ với chúng tôi bằng thông tin trong Thông báo pháp lý.",
+    "changes": "Thay đổi",
+    "changesText": "Chúng tôi có quyền cập nhật chính sách bảo mật này. Phiên bản hiện tại luôn có sẵn trên trang này."
+  },
+  "footer": {
+    "legal": "Pháp lý",
+    "imprint": "Thông báo pháp lý",
+    "privacy": "Chính sách bảo mật",
+    "product": "Sản phẩm",
+    "madeWith": "Được tạo với"
+  }
+}
