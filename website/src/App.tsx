@@ -63,6 +63,10 @@ export default function App() {
           <Route path="/hy/*" element={<LangRouter lang="hy"><AppRoutes /></LangRouter>} />
           <Route path="/ps/*" element={<LangRouter lang="ps"><AppRoutes /></LangRouter>} />
           <Route path="/hi/*" element={<LangRouter lang="hi"><AppRoutes /></LangRouter>} />
+          <Route path="/ur/*" element={<LangRouter lang="ur"><AppRoutes /></LangRouter>} />
+          <Route path="/bn/*" element={<LangRouter lang="bn"><AppRoutes /></LangRouter>} />
+          <Route path="/zh/*" element={<LangRouter lang="zh"><AppRoutes /></LangRouter>} />
+          <Route path="/ja/*" element={<LangRouter lang="ja"><AppRoutes /></LangRouter>} />
           {/* English = default, no prefix */}
           <Route path="*" element={<LangRouter lang="en"><AppRoutes /></LangRouter>} />
         </Routes>

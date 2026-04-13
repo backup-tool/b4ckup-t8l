@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "首页",
+    "features": "功能",
+    "download": "下载",
+    "contact": "联系我们"
+  },
+  "hero": {
+    "tagline": "在一个地方跟踪、管理和监控所有备份。",
+    "subtitle": "再也不会丢失备份记录。B4cKuP T8L 为您提供跨所有设备和存储介质的完整备份数据概览。",
+    "cta": "免费下载",
+    "learnMore": "了解更多"
+  },
+  "stats": {
+    "backups": "管理无限量备份",
+    "platforms": "Windows、macOS 和 Linux",
+    "languages": "3 种语言",
+    "opensource": "免费开源"
+  },
+  "features": {
+    "title": "管理备份所需的一切",
+    "subtitle": "B4cKuP T8L 用强大的桌面应用程序替代您的备份电子表格。",
+    "dashboard": "仪表盘",
+    "dashboardDesc": "通过状态指示器、存储使用图表和 3-2-1 备份规则检查，获取所有备份的完整概览。",
+    "tracking": "备份跟踪",
+    "trackingDesc": "记录每次备份的日期、大小、存储位置和备注。跟踪历史记录和大小随时间的变化。",
+    "scan": "自动扫描",
+    "scanDesc": "指向一个文件夹，自动检测现有备份。大小在后台计算。",
+    "media": "存储介质",
+    "mediaDesc": "管理所有存储设备——NAS、外置硬盘、云服务、SSD 等。跟踪容量和加密状态。",
+    "matrix": "概览矩阵",
+    "matrixDesc": "一目了然地查看哪个备份存储在哪个介质上——就像电子表格但更好。",
+    "notifications": "智能通知",
+    "notificationsDesc": "备份逾期时收到通知。每个备份可配置提醒间隔。",
+    "darkmode": "深色模式",
+    "darkmodeDesc": "提供自定义强调色的精美浅色和深色主题。跟随系统偏好设置。",
+    "i18n": "多语言",
+    "i18nDesc": "提供英语、德语和俄语版本。可以轻松添加更多语言。",
+    "tray": "系统托盘",
+    "trayDesc": "在后台安静运行。文件监视器自动检测新备份。",
+    "export": "数据导出",
+    "exportDesc": "将所有备份数据导出为 JSON 或 CSV。自动数据库备份确保数据安全。",
+    "sources": "来源管理",
+    "sourcesDesc": "按来源组织备份——设备、云服务、外置硬盘。支持完整的 CRUD 操作，含软删除和回收站。",
+    "encryption": "加密跟踪",
+    "encryptionDesc": "跟踪哪些存储介质已加密、使用的加密方法（VeraCrypt、BitLocker、FileVault）和密钥标签。"
+  },
+  "download": {
+    "title": "下载 B4cKuP T8L",
+    "subtitle": "适用于所有主流平台。免费开源。",
+    "version": "版本",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 或更高版本",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) 或更高版本",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04、Fedora 36 或更高版本",
+    "downloadBtn": "下载",
+    "comingSoon": "即将推出"
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "有问题、反馈或发现了错误？请与我们联系。",
+    "name": "姓名",
+    "email": "电子邮件",
+    "message": "消息",
+    "send": "发送消息",
+    "github": "在 GitHub 上报告问题",
+    "emailDirect": "或直接发送电子邮件至"
+  },
+  "imprint": {
+    "title": "法律声明 (Impressum)",
+    "according": "根据《电信媒体法》第 5 条提供的信息",
+    "responsible": "根据《广播国家条约》第 55 条第 2 款负责内容的人",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "德国",
+    "email": "电子邮件：contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "争议解决",
+    "disputeText": "欧盟委员会提供在线争议解决 (OS) 平台：https://ec.europa.eu/consumers/odr/。我们不愿意也没有义务参与消费者仲裁委员会的争议解决程序。"
+  },
+  "privacy": {
+    "title": "隐私政策",
+    "intro": "我们非常重视您的个人数据保护。本隐私政策告知您我们如何处理您的数据。",
+    "responsible": "责任方",
+    "responsibleText": "本网站数据处理的责任方已在法律声明中说明。",
+    "hosting": "托管",
+    "hostingText": "本网站托管在我们自己的服务器上。当您访问本网站时，您的浏览器会自动向我们的服务器发送信息（IP 地址、日期/时间、访问的页面）。这些数据存储在服务器日志文件中，30 天后自动删除。",
+    "cookies": "Cookies",
+    "cookiesText": "本网站不使用 Cookies 或任何跟踪技术。不使用任何分析工具。",
+    "contact": "联系表单",
+    "contactText": "当您通过联系表单向我们发送消息时，您的数据（姓名、电子邮件、消息）将仅用于回复您的咨询。我们不会与第三方共享这些数据。",
+    "downloads": "下载",
+    "downloadsText": "当您下载我们的软件时，不会收集任何个人数据。下载文件无需注册即可获取。",
+    "rights": "您的权利",
+    "rightsText": "根据 GDPR，您拥有访问、更正、删除、限制处理、数据可移植性和反对的权利。要行使这些权利，请使用法律声明中的信息与我们联系。",
+    "changes": "变更",
+    "changesText": "我们保留更新本隐私政策的权利。最新版本始终可在本页面上获取。"
+  },
+  "footer": {
+    "legal": "法律",
+    "imprint": "法律声明",
+    "privacy": "隐私政策",
+    "product": "产品",
+    "madeWith": "用心制作"
+  }
+}
