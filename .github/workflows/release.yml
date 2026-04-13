@@ -83,7 +83,7 @@ jobs:
 
       - name: Notarize macOS app
         if: matrix.platform == 'macos-latest'
-        timeout-minutes: 20
+        timeout-minutes: 45
         env:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
@@ -112,7 +112,7 @@ jobs:
               --password "$APPLE_PASSWORD" \
               --team-id "$APPLE_TEAM_ID" \
               --wait \
-              --timeout 15m && break
+              --timeout 30m && break
 
             if [ $ATTEMPT -eq 3 ]; then
               echo "::warning::Notarization failed after 3 attempts. App is signed but not notarized."
