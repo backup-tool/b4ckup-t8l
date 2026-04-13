@@ -7,7 +7,6 @@ import { langPrefix } from "./LangRouter";
 const LANGS = [
   { code: "en", label: "English" },
   { code: "de", label: "Deutsch" },
-  { code: "ru", label: "Русский" },
   { code: "fr", label: "Français" },
   { code: "it", label: "Italiano" },
   { code: "es", label: "Español" },
@@ -25,6 +24,7 @@ const LANGS = [
   { code: "sr", label: "Српски" },
   { code: "hr", label: "Hrvatski" },
   { code: "uk", label: "Українська" },
+  { code: "ru", label: "Русский" },
   { code: "el", label: "Ελληνικά" },
   { code: "tr", label: "Türkçe" },
   { code: "ar", label: "العربية" },
