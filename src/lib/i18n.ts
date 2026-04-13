@@ -31,6 +31,15 @@ import ps from "@/locales/ps.json";
 import hi from "@/locales/hi.json";
 import ur from "@/locales/ur.json";
 import bn from "@/locales/bn.json";
+import zh from "@/locales/zh.json";
+import ja from "@/locales/ja.json";
+import ko from "@/locales/ko.json";
+import vi from "@/locales/vi.json";
+import th from "@/locales/th.json";
+import id from "@/locales/id.json";
+import tl from "@/locales/tl.json";
+import sw from "@/locales/sw.json";
+import am from "@/locales/am.json";
 
 const resources: Record<string, { translation: any }> = {
   en: { translation: en }, de: { translation: de }, fr: { translation: fr },
@@ -43,7 +52,10 @@ const resources: Record<string, { translation: any }> = {
   tr: { translation: tr }, ar: { translation: ar }, he: { translation: he },
   fa: { translation: fa }, ku: { translation: ku }, hy: { translation: hy },
   ps: { translation: ps }, hi: { translation: hi }, ur: { translation: ur },
-  bn: { translation: bn },
+  bn: { translation: bn }, zh: { translation: zh }, ja: { translation: ja },
+  ko: { translation: ko }, vi: { translation: vi }, th: { translation: th },
+  id: { translation: id }, tl: { translation: tl }, sw: { translation: sw },
+  am: { translation: am },
 };
 
 const savedLang = localStorage.getItem("language");

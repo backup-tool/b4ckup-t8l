@@ -82,6 +82,15 @@ export function Settings() {
             { code: "hi", label: "settings.hindi" },
             { code: "ur", label: "settings.urdu" },
             { code: "bn", label: "settings.bengali" },
+            { code: "zh", label: "settings.chinese" },
+            { code: "ja", label: "settings.japanese" },
+            { code: "ko", label: "settings.korean" },
+            { code: "vi", label: "settings.vietnamese" },
+            { code: "th", label: "settings.thai" },
+            { code: "id", label: "settings.indonesian" },
+            { code: "tl", label: "settings.filipino" },
+            { code: "sw", label: "settings.swahili" },
+            { code: "am", label: "settings.amharic" },
           ].map((lang) => (
             <Button
               key={lang.code}
