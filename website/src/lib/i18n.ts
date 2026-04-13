@@ -37,10 +37,13 @@ import ko from "@/locales/ko.json";
 import vi from "@/locales/vi.json";
 import th from "@/locales/th.json";
 import id from "@/locales/id.json";
+import tl from "@/locales/tl.json";
+import sw from "@/locales/sw.json";
+import am from "@/locales/am.json";
 
 const saved = localStorage.getItem("lang");
 const browserLang = navigator.language.split("-")[0];
-const supported = ["en", "de", "ru", "fr", "it", "es", "pt", "nl", "sv", "da", "no", "fi", "ro", "pl", "cs", "hu", "bg", "sr", "hr", "uk", "el", "tr", "ar", "he", "fa", "ku", "hy", "ps", "hi", "ur", "bn", "zh", "ja", "ko", "vi", "th", "id"];
+const supported = ["en", "de", "ru", "fr", "it", "es", "pt", "nl", "sv", "da", "no", "fi", "ro", "pl", "cs", "hu", "bg", "sr", "hr", "uk", "el", "tr", "ar", "he", "fa", "ku", "hy", "ps", "hi", "ur", "bn", "zh", "ja", "ko", "vi", "th", "id", "tl", "sw", "am"];
 const browser = supported.includes(browserLang) ? browserLang : "en";
 
 i18n.use(initReactI18next).init({
@@ -82,6 +85,9 @@ i18n.use(initReactI18next).init({
     vi: { translation: vi },
     th: { translation: th },
     id: { translation: id },
+    tl: { translation: tl },
+    sw: { translation: sw },
+    am: { translation: am },
   },
   lng: saved || browser,
   fallbackLng: "en",

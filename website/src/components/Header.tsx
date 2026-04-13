@@ -42,6 +42,9 @@ const LANGS = [
   { code: "vi", label: "Tiếng Việt" },
   { code: "th", label: "ไทย" },
   { code: "id", label: "Bahasa Indonesia" },
+  { code: "tl", label: "Filipino" },
+  { code: "sw", label: "Kiswahili" },
+  { code: "am", label: "አማርኛ" },
 ];
 
 export function Header() {
@@ -76,7 +79,7 @@ export function Header() {
 
   function switchLang(newLang: string) {
     // Remove current lang prefix from path
-    const pathWithoutLang = location.pathname.replace(/^\/(de|ru|fr|it|es|pt|nl|sv|da|no|fi|ro|pl|cs|hu|bg|sr|hr|uk|el|tr|ar|he|fa|ku|hy|ps|hi|ur|bn|zh|ja|ko|vi|th|id)/, "");
+    const pathWithoutLang = location.pathname.replace(/^\/(de|ru|fr|it|es|pt|nl|sv|da|no|fi|ro|pl|cs|hu|bg|sr|hr|uk|el|tr|ar|he|fa|ku|hy|ps|hi|ur|bn|zh|ja|ko|vi|th|id|tl|sw|am)/, "");
     const newPrefix = newLang === "en" ? "" : `/${newLang}`;
     i18n.changeLanguage(newLang);
     localStorage.setItem("lang", newLang);

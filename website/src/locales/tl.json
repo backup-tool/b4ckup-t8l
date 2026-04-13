@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Tahanan",
+    "features": "Mga Tampok",
+    "download": "I-download",
+    "contact": "Makipag-ugnayan"
+  },
+  "hero": {
+    "tagline": "Subaybayan, pamahalaan at bantayan ang lahat ng iyong mga backup sa isang lugar.",
+    "subtitle": "Huwag nang mawalan ng track sa iyong mga backup. Binibigyan ka ng B4cKuP T8L ng kumpletong pangkalahatang-ideya ng lahat ng iyong backup data sa bawat device at storage medium.",
+    "cta": "I-download nang Libre",
+    "learnMore": "Matuto Pa"
+  },
+  "stats": {
+    "backups": "Pamahalaan ang walang limitasyong mga backup",
+    "platforms": "Windows, macOS at Linux",
+    "languages": "3 Wika",
+    "opensource": "Libre at Open Source"
+  },
+  "features": {
+    "title": "Lahat ng kailangan mo para pamahalaan ang iyong mga backup",
+    "subtitle": "Pinapalitan ng B4cKuP T8L ang iyong backup spreadsheet ng isang makapangyarihang desktop application.",
+    "dashboard": "Dashboard",
+    "dashboardDesc": "Makakuha ng kumpletong pangkalahatang-ideya ng lahat ng iyong mga backup na may mga status indicator, storage usage chart, at 3-2-1 backup rule check.",
+    "tracking": "Pagsubaybay ng Backup",
+    "trackingDesc": "Idokumento ang bawat backup na may petsa, laki, lokasyon ng storage, at mga tala. Subaybayan ang kasaysayan at mga pagbabago sa laki sa paglipas ng panahon.",
+    "scan": "Auto-Scan",
+    "scanDesc": "Ituro sa isang folder at awtomatikong tuklasin ang mga umiiral na backup. Ang mga laki ay kinakalkula sa background.",
+    "media": "Storage Media",
+    "mediaDesc": "Pamahalaan ang lahat ng iyong mga storage device - NAS, external drive, cloud service, SSD at iba pa. Subaybayan ang kapasidad at encryption.",
+    "matrix": "Overview Matrix",
+    "matrixDesc": "Tingnan sa isang sulyap kung aling backup ang naka-store sa aling medium - tulad ng spreadsheet pero mas magaling.",
+    "notifications": "Matalinong mga Abiso",
+    "notificationsDesc": "Maabisuhan kapag ang mga backup ay overdue. Nako-configure na mga pagitan ng paalala sa bawat backup.",
+    "darkmode": "Dark Mode",
+    "darkmodeDesc": "Magagandang light at dark na tema na may nako-customize na accent color. Sinusunod ang kagustuhan ng iyong sistema.",
+    "i18n": "Multilingual",
+    "i18nDesc": "Available sa English, German at Russian. Madaling maidagdag ang iba pang mga wika.",
+    "tray": "System Tray",
+    "trayDesc": "Tahimik na tumatakbo sa background. Ang mga file watcher ay awtomatikong nakaka-detect ng mga bagong backup.",
+    "export": "Data Export",
+    "exportDesc": "I-export ang lahat ng iyong backup data bilang JSON o CSV. Ang mga awtomatikong database backup ay nagpapanatiling ligtas ng iyong data.",
+    "sources": "Pamamahala ng Pinagmulan",
+    "sourcesDesc": "Ayusin ang mga backup ayon sa pinagmulan - mga device, cloud service, external drive. Kumpletong CRUD na may soft-delete at trash.",
+    "encryption": "Pagsubaybay ng Encryption",
+    "encryptionDesc": "Subaybayan kung aling storage media ang naka-encrypt, sa aling paraan (VeraCrypt, BitLocker, FileVault) at mga key label."
+  },
+  "download": {
+    "title": "I-download ang B4cKuP T8L",
+    "subtitle": "Available para sa lahat ng pangunahing platform. Libre at open source.",
+    "version": "Bersyon",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 o mas bago",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) o mas bago",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 o mas bago",
+    "downloadBtn": "I-download",
+    "comingSoon": "Malapit Na"
+  },
+  "contact": {
+    "title": "Makipag-ugnayan",
+    "subtitle": "May mga tanong, feedback o nakahanap ng bug? Makipag-ugnayan sa amin.",
+    "name": "Pangalan",
+    "email": "Email",
+    "message": "Mensahe",
+    "send": "Ipadala ang Mensahe",
+    "github": "Mag-ulat ng mga isyu sa GitHub",
+    "emailDirect": "O mag-email sa amin nang direkta sa"
+  },
+  "imprint": {
+    "title": "Abisong Legal (Impressum)",
+    "according": "Impormasyon ayon sa Seksyon 5 TMG",
+    "responsible": "Responsable para sa nilalaman ayon sa Seksyon 55 (2) RStV",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Alemanya",
+    "email": "Email: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Resolusyon ng Hindi Pagkakaunawaan",
+    "disputeText": "Ang European Commission ay nagbibigay ng platform para sa online dispute resolution (OS): https://ec.europa.eu/consumers/odr/. Hindi kami handang o obligadong lumahok sa mga proseso ng resolusyon ng hindi pagkakaunawaan sa harap ng isang consumer arbitration board."
+  },
+  "privacy": {
+    "title": "Patakaran sa Privacy",
+    "intro": "Sineseryoso namin ang proteksyon ng iyong personal na data. Ipinapaalam sa iyo ng patakarang ito sa privacy kung paano namin pinangangasiwaan ang iyong data.",
+    "responsible": "Responsableng Partido",
+    "responsibleText": "Ang responsableng partido para sa pagproseso ng data sa website na ito ay tinukoy sa Abisong Legal.",
+    "hosting": "Hosting",
+    "hostingText": "Ang website na ito ay naka-host sa aming sariling mga server. Kapag ina-access mo ang website na ito, awtomatikong nagpapadala ang iyong browser ng impormasyon (IP address, petsa/oras, page na na-access) sa aming server. Ang data na ito ay naka-store sa server log file at awtomatikong dine-delete pagkatapos ng 30 araw.",
+    "cookies": "Cookies",
+    "cookiesText": "Ang website na ito ay hindi gumagamit ng cookies o anumang mga teknolohiya sa pagsubaybay. Walang analytics tool na ginagamit.",
+    "contact": "Contact Form",
+    "contactText": "Kapag nagpadala ka sa amin ng mensahe sa pamamagitan ng contact form, ang iyong data (pangalan, email, mensahe) ay gagamitin lamang upang tumugon sa iyong pagtatanong. Hindi namin ibinabahagi ang data na ito sa mga third party.",
+    "downloads": "Mga Download",
+    "downloadsText": "Kapag dini-download mo ang aming software, walang personal na data na kinokolekta. Ang mga download file ay ibinibigay nang walang rehistrasyon.",
+    "rights": "Ang Iyong mga Karapatan",
+    "rightsText": "Sa ilalim ng GDPR, mayroon kang karapatan sa pag-access, pagwawasto, pagbubura, paghihigpit sa pagproseso, portability ng data, at pagtutol. Upang gamitin ang mga karapatang ito, mangyaring makipag-ugnayan sa amin gamit ang impormasyon sa Abisong Legal.",
+    "changes": "Mga Pagbabago",
+    "changesText": "Nakalaan sa amin ang karapatang i-update ang patakarang ito sa privacy. Ang kasalukuyang bersyon ay palaging available sa pahinang ito."
+  },
+  "footer": {
+    "legal": "Legal",
+    "imprint": "Abisong Legal",
+    "privacy": "Patakaran sa Privacy",
+    "product": "Produkto",
+    "madeWith": "Ginawa gamit ang"
+  }
+}

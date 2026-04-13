@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Nyumbani",
+    "features": "Vipengele",
+    "download": "Pakua",
+    "contact": "Wasiliana"
+  },
+  "hero": {
+    "tagline": "Fuatilia, simamia na ufuatilie nakala zako zote za akiba katika sehemu moja.",
+    "subtitle": "Usipoteze tena ufuatiliaji wa nakala zako za akiba. B4cKuP T8L inakupa muhtasari kamili wa data yako yote ya akiba katika kila kifaa na hifadhi.",
+    "cta": "Pakua Bure",
+    "learnMore": "Jifunze Zaidi"
+  },
+  "stats": {
+    "backups": "Simamia nakala za akiba zisizo na kikomo",
+    "platforms": "Windows, macOS na Linux",
+    "languages": "Lugha 3",
+    "opensource": "Bure na Chanzo Huria"
+  },
+  "features": {
+    "title": "Kila kitu unachohitaji kusimamia nakala zako za akiba",
+    "subtitle": "B4cKuP T8L inabadilisha lahajedwali yako ya akiba na programu ya eneo-kazi yenye nguvu.",
+    "dashboard": "Dashibodi",
+    "dashboardDesc": "Pata muhtasari kamili wa nakala zako zote za akiba na viashiria vya hali, chati za matumizi ya hifadhi, na ukaguzi wa kanuni ya akiba ya 3-2-1.",
+    "tracking": "Ufuatiliaji wa Akiba",
+    "trackingDesc": "Andika kila nakala ya akiba na tarehe, ukubwa, eneo la hifadhi, na maelezo. Fuatilia historia na mabadiliko ya ukubwa baada ya muda.",
+    "scan": "Utambuzi Otomatiki",
+    "scanDesc": "Elekeza kwenye folda na kugundua moja kwa moja nakala zilizopo za akiba. Ukubwa unahesabiwa nyuma.",
+    "media": "Vyombo vya Hifadhi",
+    "mediaDesc": "Simamia vifaa vyako vyote vya hifadhi - NAS, diski za nje, huduma za wingu, SSD na zaidi. Fuatilia uwezo na usimbaji fiche.",
+    "matrix": "Matriki ya Muhtasari",
+    "matrixDesc": "Ona kwa mtazamo mmoja ni akiba ipi imehifadhiwa katika chombo kipi - kama lahajedwali lakini bora zaidi.",
+    "notifications": "Arifa za Akili",
+    "notificationsDesc": "Pata taarifa wakati nakala za akiba zimechelewa. Vipindi vya ukumbusho vinavyoweza kusanidiwa kwa kila akiba.",
+    "darkmode": "Hali ya Giza",
+    "darkmodeDesc": "Mandhari mazuri ya mwanga na giza yenye rangi za lafudhi zinazoweza kubadilishwa. Inafuata mapendeleo ya mfumo wako.",
+    "i18n": "Lugha Nyingi",
+    "i18nDesc": "Inapatikana kwa Kiingereza, Kijerumani na Kirusi. Lugha zaidi zinaweza kuongezwa kwa urahisi.",
+    "tray": "Trei ya Mfumo",
+    "trayDesc": "Inafanya kazi kimya nyuma. Waangalizi wa faili hugundua nakala mpya za akiba moja kwa moja.",
+    "export": "Usafirishaji wa Data",
+    "exportDesc": "Safirisha data yako yote ya akiba kama JSON au CSV. Nakala otomatiki za hifadhidata za akiba huhifadhi data yako salama.",
+    "sources": "Usimamizi wa Vyanzo",
+    "sourcesDesc": "Panga nakala za akiba kwa chanzo - vifaa, huduma za wingu, diski za nje. CRUD kamili na ufutaji laini na tupio.",
+    "encryption": "Ufuatiliaji wa Usimbaji Fiche",
+    "encryptionDesc": "Fuatilia ni vyombo vipi vya hifadhi vilivyosimbwa kwa njia fiche, kwa njia ipi (VeraCrypt, BitLocker, FileVault) na lebo za funguo."
+  },
+  "download": {
+    "title": "Pakua B4cKuP T8L",
+    "subtitle": "Inapatikana kwa majukwaa yote makuu. Bure na chanzo huria.",
+    "version": "Toleo",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 au baadaye",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) au baadaye",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 au baadaye",
+    "downloadBtn": "Pakua",
+    "comingSoon": "Inakuja Hivi Karibuni"
+  },
+  "contact": {
+    "title": "Wasiliana",
+    "subtitle": "Una maswali, maoni au umepata hitilafu? Wasiliana nasi.",
+    "name": "Jina",
+    "email": "Barua pepe",
+    "message": "Ujumbe",
+    "send": "Tuma Ujumbe",
+    "github": "Ripoti matatizo kwenye GitHub",
+    "emailDirect": "Au tutumie barua pepe moja kwa moja kwa"
+  },
+  "imprint": {
+    "title": "Notisi ya Kisheria (Impressum)",
+    "according": "Taarifa kulingana na Kifungu cha 5 TMG",
+    "responsible": "Mhusika wa maudhui kulingana na Kifungu cha 55 (2) RStV",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Ujerumani",
+    "email": "Barua pepe: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Utatuzi wa Migogoro",
+    "disputeText": "Tume ya Ulaya inatoa jukwaa la utatuzi wa migogoro mtandaoni (OS): https://ec.europa.eu/consumers/odr/. Hatuko tayari wala hatuna wajibu wa kushiriki katika taratibu za utatuzi wa migogoro mbele ya bodi ya usuluhishi ya watumiaji."
+  },
+  "privacy": {
+    "title": "Sera ya Faragha",
+    "intro": "Tunachukulia ulinzi wa data yako binafsi kwa uzito mkubwa. Sera hii ya faragha inakujulisha jinsi tunavyoshughulikia data yako.",
+    "responsible": "Upande Unaohusika",
+    "responsibleText": "Upande unaohusika na uchakataji wa data kwenye tovuti hii umeainishwa katika Notisi ya Kisheria.",
+    "hosting": "Upangishaji",
+    "hostingText": "Tovuti hii inapangishwa kwenye seva zetu wenyewe. Unapofungua tovuti hii, kivinjari chako kinatuma moja kwa moja taarifa (anwani ya IP, tarehe/saa, ukurasa uliotembelewa) kwa seva yetu. Data hii huhifadhiwa katika faili za kumbukumbu za seva na kufutwa moja kwa moja baada ya siku 30.",
+    "cookies": "Vidakuzi",
+    "cookiesText": "Tovuti hii haitumii vidakuzi au teknolojia yoyote ya ufuatiliaji. Hakuna zana za uchanganuzi zinazotumika.",
+    "contact": "Fomu ya Mawasiliano",
+    "contactText": "Unapotutumia ujumbe kupitia fomu ya mawasiliano, data yako (jina, barua pepe, ujumbe) itatumika tu kujibu ombi lako. Hatushiriki data hii na wahusika wengine.",
+    "downloads": "Vipakuliwa",
+    "downloadsText": "Unapopakua programu yetu, hakuna data binafsi inayokusanywa. Faili za kupakua zinapatikana bila usajili.",
+    "rights": "Haki Zako",
+    "rightsText": "Chini ya GDPR, una haki ya ufikiaji, marekebisho, ufutaji, kizuizi cha uchakataji, uhamishaji wa data, na upinzani. Ili kutumia haki hizi, tafadhali wasiliana nasi kwa kutumia taarifa katika Notisi ya Kisheria.",
+    "changes": "Mabadiliko",
+    "changesText": "Tunahifadhi haki ya kusasisha sera hii ya faragha. Toleo la sasa linapatikana kila wakati kwenye ukurasa huu."
+  },
+  "footer": {
+    "legal": "Kisheria",
+    "imprint": "Notisi ya Kisheria",
+    "privacy": "Sera ya Faragha",
+    "product": "Bidhaa",
+    "madeWith": "Imetengenezwa kwa"
+  }
+}
