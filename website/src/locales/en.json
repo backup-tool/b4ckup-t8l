@@ -4,6 +4,7 @@
     "features": "Features",
     "download": "Download",
     "contact": "Contact",
+    "changelog": "Changelog",
     "donate": "Donate"
   },
   "hero": {
@@ -11,6 +12,12 @@
     "subtitle": "Never lose track of your backups again. B4cKuP T8L gives you a complete overview of all your backup data across every device and storage medium.",
     "cta": "Download for Free",
     "learnMore": "Learn More"
+  },
+  "preview": {
+    "title": "See It in Action",
+    "subtitle": "A clean, modern interface to manage all your backups.",
+    "dashboard": "Dashboard — Status overview at a glance",
+    "backups": "Backups — Track every backup with details"
   },
   "stats": {
     "backups": "Manage unlimited backups",
@@ -137,6 +144,11 @@
     "rightsText": "Under GDPR, you have the right to access, rectification, erasure, restriction of processing, data portability, and objection. To exercise these rights, please contact us using the information in the Legal Notice.",
     "changes": "Changes",
     "changesText": "We reserve the right to update this privacy policy. The current version is always available on this page."
+  },
+  "changelog": {
+    "title": "Changelog",
+    "subtitle": "See what's new in each release of B4cKuP T8L.",
+    "error": "Could not load releases. Please check GitHub."
   },
   "footer": {
     "legal": "Legal",

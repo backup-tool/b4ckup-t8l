@@ -8,6 +8,7 @@ import {
   Monitor,
   Grid3X3,
   Clock,
+  BarChart3,
   Settings,
   ChevronLeft,
 } from "lucide-react";
@@ -22,6 +23,7 @@ const navItems = [
   { to: "/devices", icon: Monitor, label: "nav.devices" },
   { to: "/matrix", icon: Grid3X3, label: "nav.matrix" },
   { to: "/history", icon: Clock, label: "nav.history" },
+  { to: "/statistics", icon: BarChart3, label: "nav.statistics" },
   { to: "/settings", icon: Settings, label: "nav.settings" },
 ];
 

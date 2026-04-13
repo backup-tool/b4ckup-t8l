@@ -9,6 +9,7 @@
     "devices": "Sources",
     "matrix": "Overview",
     "history": "History",
+    "statistics": "Statistics",
     "trash": "Trash",
     "settings": "Settings"
   },
@@ -139,6 +140,11 @@
     "backupNow": "Backup Now",
     "backupSuccess": "Backup created",
     "noBackups": "No backups yet.",
+    "importJSON": "Import JSON",
+    "importSuccess": "Import complete",
+    "importImported": "imported",
+    "importSkipped": "skipped",
+    "importError": "Import failed",
     "exportData": "Export Data",
     "exportJSON": "Export as JSON",
     "exportCSV": "Export as CSV",
@@ -200,6 +206,22 @@
     "restoreAll": "Restore All",
     "deleteAll": "Delete All Permanently",
     "confirmDeleteAll": "This will permanently delete all items in the trash. This cannot be undone."
+  },
+  "statistics": {
+    "title": "Statistics",
+    "totalBackups": "Total Backups",
+    "totalEntries": "Total Entries",
+    "totalMedia": "Storage Media",
+    "totalSize": "Total Size",
+    "sizePerMonth": "Storage per Month",
+    "cumulative": "Cumulative Storage",
+    "backupsPerMonth": "Backups per Month",
+    "topBackups": "Top 5 Largest Backups",
+    "avgPerSource": "Average per Source",
+    "size": "Size",
+    "total": "Total",
+    "avg": "Average",
+    "noData": "No data yet."
   },
   "update": {
     "available": "Update Available",

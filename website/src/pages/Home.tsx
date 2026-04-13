@@ -75,6 +75,28 @@ export function Home() {
         </div>
       </section>
 
+      {/* App Preview */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold mb-3">{t("preview.title")}</h2>
+          <p className="text-fg-muted max-w-xl mx-auto">{t("preview.subtitle")}</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {["dashboard", "backups"].map((key) => (
+            <div key={key} className="rounded-2xl border border-border overflow-hidden bg-bg-card shadow-sm">
+              <img
+                src={`/screenshots/${key}.png`}
+                alt={t(`preview.${key}`)}
+                className="w-full h-auto"
+                loading="lazy"
+                onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+              />
+              <p className="text-sm font-medium text-center py-3 text-fg-muted">{t(`preview.${key}`)}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Features preview */}
       <section className="max-w-6xl mx-auto px-6 py-20">
         <div className="text-center mb-14">

@@ -8,6 +8,7 @@ import { History } from "./pages/History";
 import { Devices } from "./pages/Devices";
 import { Matrix } from "./pages/Matrix";
 import { Settings } from "./pages/Settings";
+import { Statistics } from "./pages/Statistics";
 import { useAppStore } from "./lib/store";
 import { cn } from "./lib/cn";
 import { UpdateBanner } from "./components/ui/UpdateBanner";
@@ -34,6 +35,7 @@ export default function App() {
               <Route path="/media" element={<Media />} />
               <Route path="/matrix" element={<Matrix />} />
               <Route path="/history" element={<History />} />
+              <Route path="/statistics" element={<Statistics />} />
               <Route path="/devices" element={<Devices />} />
               <Route path="/settings" element={<Settings />} />
             </Routes>

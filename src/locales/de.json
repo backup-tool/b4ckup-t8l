@@ -9,6 +9,7 @@
     "devices": "Quellen",
     "matrix": "\u00dcbersicht",
     "history": "Verlauf",
+    "statistics": "Statistiken",
     "trash": "Papierkorb",
     "settings": "Einstellungen"
   },
@@ -139,6 +140,11 @@
     "backupNow": "Jetzt sichern",
     "backupSuccess": "Backup erstellt",
     "noBackups": "Noch keine Backups.",
+    "importJSON": "JSON importieren",
+    "importSuccess": "Import abgeschlossen",
+    "importImported": "importiert",
+    "importSkipped": "\u00fcbersprungen",
+    "importError": "Import fehlgeschlagen",
     "exportData": "Daten exportieren",
     "exportJSON": "Als JSON exportieren",
     "exportCSV": "Als CSV exportieren",
@@ -200,6 +206,22 @@
     "restoreAll": "Alle wiederherstellen",
     "deleteAll": "Alle endg\u00fcltig l\u00f6schen",
     "confirmDeleteAll": "Alle Elemente im Papierkorb werden endg\u00fcltig gel\u00f6scht. Dies kann nicht r\u00fcckg\u00e4ngig gemacht werden."
+  },
+  "statistics": {
+    "title": "Statistiken",
+    "totalBackups": "Backups gesamt",
+    "totalEntries": "Eintr\u00e4ge gesamt",
+    "totalMedia": "Speichermedien",
+    "totalSize": "Gesamtgr\u00f6\u00dfe",
+    "sizePerMonth": "Speicher pro Monat",
+    "cumulative": "Kumulativer Speicher",
+    "backupsPerMonth": "Backups pro Monat",
+    "topBackups": "Top 5 gr\u00f6\u00dfte Backups",
+    "avgPerSource": "Durchschnitt pro Quelle",
+    "size": "Gr\u00f6\u00dfe",
+    "total": "Gesamt",
+    "avg": "Durchschnitt",
+    "noData": "Noch keine Daten."
   },
   "update": {
     "available": "Update verf\u00fcgbar",

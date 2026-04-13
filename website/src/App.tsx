@@ -10,6 +10,7 @@ import { Contact } from "./pages/Contact";
 import { Imprint } from "./pages/Imprint";
 import { Privacy } from "./pages/Privacy";
 import { Donate } from "./pages/Donate";
+import { Changelog } from "./pages/Changelog";
 import { NotFound } from "./pages/NotFound";
 
 function AppRoutes() {
@@ -26,6 +27,7 @@ function AppRoutes() {
           <Route path="/imprint" element={<Imprint />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/donate" element={<Donate />} />
+          <Route path="/changelog" element={<Changelog />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

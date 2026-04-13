@@ -1,9 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
-import { Eye, FolderOpen, Sun, Moon, Monitor, Download, Database } from "lucide-react";
+import { Eye, FolderOpen, Sun, Moon, Monitor, Download, Upload, Database } from "lucide-react";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { getWatchedLocations, exportAllData } from "@/lib/db";
+import { getWatchedLocations, exportAllData, importData } from "@/lib/db";
 import { formatBytes } from "@/lib/format";
 import { invoke } from "@tauri-apps/api/core";
 import { useThemeStore } from "@/lib/store";
@@ -165,6 +165,31 @@ export function Settings() {
           <CardTitle>{t("settings.exportData")}</CardTitle>
         </CardHeader>
         <div className="flex gap-2">
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={async () => {
+              const input = document.createElement("input");
+              input.type = "file";
+              input.accept = ".json";
+              input.onchange = async () => {
+                const file = input.files?.[0];
+                if (!file) return;
+                try {
+                  const text = await file.text();
+                  const data = JSON.parse(text);
+                  const result = await importData(data);
+                  alert(`${t("settings.importSuccess")}: ${result.imported} ${t("settings.importImported")}, ${result.skipped} ${t("settings.importSkipped")}`);
+                } catch (err) {
+                  alert(`${t("settings.importError")}: ${err}`);
+                }
+              };
+              input.click();
+            }}
+          >
+            <Upload className="w-3.5 h-3.5" />
+            {t("settings.importJSON")}
+          </Button>
           <Button
             variant="secondary"
             size="sm"

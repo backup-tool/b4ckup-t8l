@@ -4,6 +4,7 @@
     "features": "Funktionen",
     "download": "Download",
     "contact": "Kontakt",
+    "changelog": "\u00c4nderungen",
     "donate": "Spenden"
   },
   "hero": {
@@ -11,6 +12,12 @@
     "subtitle": "Verliere nie wieder den \u00dcberblick \u00fcber deine Backups. B4cKuP T8L gibt dir eine vollst\u00e4ndige \u00dcbersicht \u00fcber all deine Backup-Daten auf jedem Ger\u00e4t und Speichermedium.",
     "cta": "Kostenlos herunterladen",
     "learnMore": "Mehr erfahren"
+  },
+  "preview": {
+    "title": "So sieht es aus",
+    "subtitle": "Eine moderne Oberfl\u00e4che f\u00fcr die Verwaltung aller deiner Backups.",
+    "dashboard": "Dashboard — Status\u00fcbersicht auf einen Blick",
+    "backups": "Backups — Jedes Backup mit Details tracken"
   },
   "stats": {
     "backups": "Unbegrenzte Backups verwalten",
@@ -137,6 +144,11 @@
     "rightsText": "Gem\u00e4\u00df DSGVO haben Sie das Recht auf Auskunft, Berichtigung, L\u00f6schung, Einschr\u00e4nkung der Verarbeitung, Daten\u00fcbertragbarkeit und Widerspruch. Zur Aus\u00fcbung dieser Rechte kontaktieren Sie uns bitte \u00fcber die Angaben im Impressum.",
     "changes": "\u00c4nderungen",
     "changesText": "Wir behalten uns vor, diese Datenschutzerkl\u00e4rung zu aktualisieren. Die aktuelle Version ist stets auf dieser Seite verf\u00fcgbar."
+  },
+  "changelog": {
+    "title": "\u00c4nderungen",
+    "subtitle": "Alle Neuerungen und Updates von B4cKuP T8L im \u00dcberblick.",
+    "error": "Releases konnten nicht geladen werden. Bitte auf GitHub pr\u00fcfen."
   },
   "footer": {
     "legal": "Rechtliches",

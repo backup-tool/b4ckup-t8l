@@ -188,7 +188,7 @@ export async function createMedia(data: {
     "INSERT INTO storage_media (name, type, total_capacity_gb, path, notes, is_encrypted, encryption_type, encryption_label) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
     [data.name, data.type, data.total_capacity_gb, data.path, data.notes, data.is_encrypted ? 1 : 0, data.encryption_type || null, data.encryption_label || null]
   );
-  return result.lastInsertId;
+  return result.lastInsertId!;
 }
 
 export async function updateMedia(
@@ -352,7 +352,7 @@ export async function createBackup(data: {
       data.reminder_interval_days,
     ]
   );
-  return result.lastInsertId;
+  return result.lastInsertId!;
 }
 
 export async function updateBackup(
@@ -465,7 +465,7 @@ export async function createEntry(data: {
     `INSERT OR IGNORE INTO backup_storage_locations (backup_id, storage_media_id) VALUES ($1, $2)`,
     [data.backup_id, data.storage_media_id]
   );
-  return result.lastInsertId;
+  return result.lastInsertId!;
 }
 
 export async function markEntryVerified(id: number) {
@@ -711,6 +711,117 @@ export async function exportAllData() {
      WHERE b.deleted_at IS NULL`
   );
   return { backups, media, devices, entries, locations };
+}
+
+// --- Import ---
+
+export async function importData(data: {
+  backups?: Array<Record<string, any>>;
+  media?: Array<Record<string, any>>;
+  devices?: Array<Record<string, any>>;
+  entries?: Array<Record<string, any>>;
+  locations?: Array<Record<string, any>>;
+}): Promise<{ imported: number; skipped: number }> {
+  const db = await getDb();
+  let imported = 0;
+  let skipped = 0;
+
+  // Maps old IDs to new IDs
+  const mediaIdMap = new Map<number, number>();
+  const backupIdMap = new Map<number, number>();
+
+  // 1. Import storage media
+  if (data.media) {
+    const existing = await db.select<Array<Record<string, any>>>("SELECT name FROM storage_media WHERE deleted_at IS NULL");
+    const existingNames = new Set(existing.map((m) => m.name as string));
+
+    for (const m of data.media) {
+      if (existingNames.has(m.name as string)) {
+        const rows = await db.select<Array<Record<string, any>>>("SELECT id FROM storage_media WHERE name=$1 AND deleted_at IS NULL", [m.name]);
+        if (rows[0]) mediaIdMap.set(m.id as number, rows[0].id as number);
+        skipped++;
+        continue;
+      }
+      const result = await db.execute(
+        "INSERT INTO storage_media (name, type, total_capacity_gb, path, notes, is_encrypted, encryption_type, encryption_label) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+        [m.name, m.type || "other", m.total_capacity_gb, m.path, m.notes, m.is_encrypted ? 1 : 0, m.encryption_type, m.encryption_label]
+      );
+      mediaIdMap.set(m.id as number, result.lastInsertId!);
+      imported++;
+    }
+  }
+
+  // 2. Import devices
+  if (data.devices) {
+    const existing = await db.select<Array<Record<string, any>>>("SELECT name FROM devices WHERE deleted_at IS NULL");
+    const existingNames = new Set(existing.map((d) => d.name as string));
+
+    for (const d of data.devices) {
+      if (existingNames.has(d.name as string)) {
+        skipped++;
+        continue;
+      }
+      await db.execute(
+        "INSERT INTO devices (name, type, os, model, serial_number, notes) VALUES ($1, $2, $3, $4, $5, $6)",
+        [d.name, d.type || "other", d.os, d.model, d.serial_number, d.notes]
+      );
+      imported++;
+    }
+  }
+
+  // 3. Import backups
+  if (data.backups) {
+    const existing = await db.select<Array<Record<string, any>>>("SELECT name, device_name FROM backups WHERE deleted_at IS NULL");
+    const existingKeys = new Set(existing.map((b) => `${b.name}|${b.device_name}`));
+
+    for (const b of data.backups) {
+      const key = `${b.name}|${b.device_name}`;
+      if (existingKeys.has(key)) {
+        const rows = await db.select<Array<Record<string, any>>>("SELECT id FROM backups WHERE name=$1 AND device_name=$2 AND deleted_at IS NULL", [b.name, b.device_name]);
+        if (rows[0]) backupIdMap.set(b.id as number, rows[0].id as number);
+        skipped++;
+        continue;
+      }
+      const result = await db.execute(
+        "INSERT INTO backups (name, device_name, category, tags, notes, encryption_info, reminder_interval_days) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+        [b.name, b.device_name || "", b.category || "other", b.tags, b.notes, b.encryption_info, b.reminder_interval_days || 30]
+      );
+      backupIdMap.set(b.id as number, result.lastInsertId!);
+      imported++;
+    }
+  }
+
+  // 4. Import storage locations
+  if (data.locations) {
+    for (const loc of data.locations) {
+      const newBackupId = backupIdMap.get(loc.backup_id as number);
+      const newMediaId = mediaIdMap.get(loc.storage_media_id as number);
+      if (!newBackupId || !newMediaId) { skipped++; continue; }
+      try {
+        await db.execute(
+          "INSERT OR IGNORE INTO backup_storage_locations (backup_id, storage_media_id, path_on_media, auto_detect, scan_mode) VALUES ($1, $2, $3, $4, $5)",
+          [newBackupId, newMediaId, loc.path_on_media, loc.auto_detect ? 1 : 0, loc.scan_mode || "subdirectories"]
+        );
+        imported++;
+      } catch { skipped++; }
+    }
+  }
+
+  // 5. Import entries
+  if (data.entries) {
+    for (const e of data.entries) {
+      const newBackupId = backupIdMap.get(e.backup_id as number);
+      const newMediaId = mediaIdMap.get(e.storage_media_id as number);
+      if (!newBackupId || !newMediaId) { skipped++; continue; }
+      await db.execute(
+        "INSERT INTO backup_entries (backup_id, storage_media_id, size_bytes, backup_date, notes, entry_number) VALUES ($1, $2, $3, $4, $5, $6)",
+        [newBackupId, newMediaId, e.size_bytes || 0, e.backup_date, e.notes, e.entry_number]
+      );
+      imported++;
+    }
+  }
+
+  return { imported, skipped };
 }
 
 export async function getMatrixData() {
