@@ -46,7 +46,7 @@ export function Contact() {
       </form>
 
       <div className="mt-8 space-y-3 text-sm text-fg-muted">
-        <a href="https://github.com" target="_blank" rel="noopener" className="flex items-center gap-2 hover:text-fg transition-colors">
+        <a href="https://github.com/backup-tool/b4ckup-t8l" target="_blank" rel="noopener" className="flex items-center gap-2 hover:text-fg transition-colors">
           <GitBranch className="w-4 h-4" />
           {t("contact.github")}
         </a>

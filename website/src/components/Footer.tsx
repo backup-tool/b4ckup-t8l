@@ -28,7 +28,7 @@ export function Footer() {
             <div className="space-y-2">
               <Link to="/features" className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("nav.features")}</Link>
               <Link to="/download" className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("nav.download")}</Link>
-              <a href="https://github.com" target="_blank" rel="noopener" className="block text-sm text-fg-muted hover:text-fg transition-colors">GitHub</a>
+              <a href="https://github.com/backup-tool/b4ckup-t8l" target="_blank" rel="noopener" className="block text-sm text-fg-muted hover:text-fg transition-colors">GitHub</a>
             </div>
           </div>
 
