@@ -46,6 +46,29 @@
     "encryption": "Encryption Tracking",
     "encryptionDesc": "Track which storage media are encrypted, with which method (VeraCrypt, BitLocker, FileVault) and key labels."
   },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Get started in three simple steps. No account needed, no cloud, no subscription.",
+    "step1": "Install the App",
+    "step1Desc": "Download B4cKuP T8L for your operating system. It runs natively on Windows, macOS and Linux with minimal resource usage.",
+    "step2": "Add Your Backups",
+    "step2Desc": "Register your backup sources (devices, apps, cloud services) and storage media (NAS, external drives, SSDs). Point to folders and auto-scan existing backups.",
+    "step3": "Stay on Top",
+    "step3Desc": "The dashboard shows you which backups are up to date, which are overdue, and which need attention. Smart notifications remind you before it's too late."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": "Is B4cKuP T8L really free?",
+    "a1": "Yes, B4cKuP T8L is completely free and open source under the GPL-3.0 license. There are no ads, no subscriptions, and no hidden costs. You can view the full source code on GitHub.",
+    "q2": "Does B4cKuP T8L actually perform backups?",
+    "a2": "No. B4cKuP T8L is a backup tracker, not a backup tool. It helps you keep track of when and where your backups were made, their sizes, and whether they are up to date. You continue using your existing backup methods (Time Machine, rsync, manual copies, etc.).",
+    "q3": "Where is my data stored?",
+    "a3": "All your data is stored locally in a SQLite database on your computer. Nothing is sent to the cloud or any external server. Your backup metadata stays private and under your control.",
+    "q4": "Which storage media are supported?",
+    "a4": "B4cKuP T8L supports any storage medium: NAS (Synology, QNAP, etc.), external hard drives, SSDs, USB sticks, SD cards, cloud storage (iCloud, Google Drive, OneDrive), tape drives, optical media, and network shares.",
+    "q5": "Can I track app backups like WhatsApp or iCloud?",
+    "a5": "Yes! You can create sources for individual apps (WhatsApp, Instagram, Apple Health, etc.) or online services (Gmail, iCloud, etc.) and track their backup history just like device backups."
+  },
   "download": {
     "title": "Download B4cKuP T8L",
     "subtitle": "Available for all major platforms. Free and open source.",

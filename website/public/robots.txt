@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://backup-tool.app/sitemap.xml

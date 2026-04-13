@@ -46,6 +46,29 @@
     "encryption": "Verschl\u00fcsselungs-Tracking",
     "encryptionDesc": "Tracke welche Speichermedien verschl\u00fcsselt sind, mit welcher Methode (VeraCrypt, BitLocker, FileVault) und Key-Labels."
   },
+  "howItWorks": {
+    "title": "So funktioniert's",
+    "subtitle": "In drei einfachen Schritten starten. Kein Account, keine Cloud, kein Abo.",
+    "step1": "App installieren",
+    "step1Desc": "Lade B4cKuP T8L f\u00fcr dein Betriebssystem herunter. Die App l\u00e4uft nativ auf Windows, macOS und Linux mit minimalem Ressourcenverbrauch.",
+    "step2": "Backups hinzuf\u00fcgen",
+    "step2Desc": "Registriere deine Backup-Quellen (Ger\u00e4te, Apps, Cloud-Dienste) und Speichermedien (NAS, externe Festplatten, SSDs). Zeige auf Ordner und scanne vorhandene Backups automatisch.",
+    "step3": "Den \u00dcberblick behalten",
+    "step3Desc": "Das Dashboard zeigt dir welche Backups aktuell sind, welche \u00fcberf\u00e4llig sind und welche Aufmerksamkeit brauchen. Intelligente Benachrichtigungen erinnern dich rechtzeitig."
+  },
+  "faq": {
+    "title": "H\u00e4ufige Fragen",
+    "q1": "Ist B4cKuP T8L wirklich kostenlos?",
+    "a1": "Ja, B4cKuP T8L ist komplett kostenlos und Open Source unter der GPL-3.0 Lizenz. Keine Werbung, keine Abos, keine versteckten Kosten. Der vollst\u00e4ndige Quellcode ist auf GitHub einsehbar.",
+    "q2": "F\u00fchrt B4cKuP T8L selbst Backups durch?",
+    "a2": "Nein. B4cKuP T8L ist ein Backup-Tracker, kein Backup-Tool. Es hilft dir den \u00dcberblick zu behalten, wann und wo deine Backups erstellt wurden, wie gro\u00df sie sind und ob sie aktuell sind. Du verwendest weiterhin deine bestehenden Backup-Methoden (Time Machine, rsync, manuelle Kopien, etc.).",
+    "q3": "Wo werden meine Daten gespeichert?",
+    "a3": "Alle Daten werden lokal in einer SQLite-Datenbank auf deinem Computer gespeichert. Nichts wird in die Cloud oder an externe Server gesendet. Deine Backup-Metadaten bleiben privat und unter deiner Kontrolle.",
+    "q4": "Welche Speichermedien werden unterst\u00fctzt?",
+    "a4": "B4cKuP T8L unterst\u00fctzt jedes Speichermedium: NAS (Synology, QNAP, etc.), externe Festplatten, SSDs, USB-Sticks, SD-Karten, Cloud-Speicher (iCloud, Google Drive, OneDrive), Bandlaufwerke, optische Medien und Netzwerkfreigaben.",
+    "q5": "Kann ich App-Backups wie WhatsApp oder iCloud tracken?",
+    "a5": "Ja! Du kannst Quellen f\u00fcr einzelne Apps (WhatsApp, Instagram, Apple Health, etc.) oder Online-Dienste (Gmail, iCloud, etc.) erstellen und deren Backup-Verlauf genauso tracken wie Ger\u00e4te-Backups."
+  },
   "download": {
     "title": "B4cKuP T8L herunterladen",
     "subtitle": "Verf\u00fcgbar f\u00fcr alle g\u00e4ngigen Plattformen. Kostenlos und Open Source.",

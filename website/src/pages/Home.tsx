@@ -108,6 +108,45 @@ export function Home() {
         </div>
       </section>
 
+      {/* How it works */}
+      <section className="border-t border-border bg-bg-card">
+        <div className="max-w-6xl mx-auto px-6 py-20">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl font-bold mb-3">{t("howItWorks.title")}</h2>
+            <p className="text-fg-muted max-w-xl mx-auto">{t("howItWorks.subtitle")}</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((step) => (
+              <div key={step} className="text-center">
+                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-lg font-bold text-accent">{step}</span>
+                </div>
+                <h3 className="font-semibold mb-2">{t(`howItWorks.step${step}`)}</h3>
+                <p className="text-sm text-fg-muted leading-relaxed">{t(`howItWorks.step${step}Desc`)}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="max-w-4xl mx-auto px-6 py-20">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl font-bold mb-3">{t("faq.title")}</h2>
+        </div>
+        <div className="space-y-4">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <details key={i} className="group rounded-xl border border-border bg-bg-card">
+              <summary className="flex items-center justify-between p-5 cursor-pointer font-medium text-sm">
+                {t(`faq.q${i}`)}
+                <ArrowRight className="w-4 h-4 text-fg-muted transition-transform group-open:rotate-90" />
+              </summary>
+              <p className="px-5 pb-5 text-sm text-fg-muted leading-relaxed">{t(`faq.a${i}`)}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="max-w-6xl mx-auto px-6 pb-20">
         <div className="rounded-2xl bg-gradient-to-r from-accent/10 to-accent/5 border border-accent/20 p-10 text-center">
