@@ -58,6 +58,15 @@ export function Settings() {
             { code: "es", label: "settings.spanish" },
             { code: "pt", label: "settings.portuguese" },
             { code: "nl", label: "settings.dutch" },
+            { code: "sv", label: "settings.swedish" },
+            { code: "da", label: "settings.danish" },
+            { code: "no", label: "settings.norwegian" },
+            { code: "fi", label: "settings.finnish" },
+            { code: "ro", label: "settings.romanian" },
+            { code: "pl", label: "settings.polish" },
+            { code: "cs", label: "settings.czech" },
+            { code: "hu", label: "settings.hungarian" },
+            { code: "bg", label: "settings.bulgarian" },
           ].map((lang) => (
             <Button
               key={lang.code}

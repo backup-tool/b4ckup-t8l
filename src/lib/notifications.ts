@@ -55,6 +55,15 @@ async function checkOverdueBackups() {
       es: `${newOverdue.length} copia(s) vencida(s)`,
       pt: `${newOverdue.length} cópia(s) atrasada(s)`,
       nl: `${newOverdue.length} back-up(s) verlopen`,
+      sv: `${newOverdue.length} säkerhetskopia(or) försenade`,
+      da: `${newOverdue.length} backup(s) forsinket`,
+      no: `${newOverdue.length} sikkerhetskopi(er) forfalt`,
+      fi: `${newOverdue.length} varmuuskopio(ta) myöhässä`,
+      ro: `${newOverdue.length} copie(i) de rezervă întârziate`,
+      pl: `${newOverdue.length} kopia(e) zaległa(e)`,
+      cs: `${newOverdue.length} záloha(y) po termínu`,
+      hu: `${newOverdue.length} biztonsági mentés lejárt`,
+      bg: `${newOverdue.length} резервно(и) копие(я) просрочени`,
     };
     const bodies: Record<string, string> = {
       de: `Kritisch: ${names}`,
@@ -63,6 +72,15 @@ async function checkOverdueBackups() {
       es: `Crítico: ${names}`,
       pt: `Crítico: ${names}`,
       nl: `Kritiek: ${names}`,
+      sv: `Kritisk: ${names}`,
+      da: `Kritisk: ${names}`,
+      no: `Kritisk: ${names}`,
+      fi: `Kriittinen: ${names}`,
+      ro: `Critic: ${names}`,
+      pl: `Krytyczny: ${names}`,
+      cs: `Kritické: ${names}`,
+      hu: `Kritikus: ${names}`,
+      bg: `Критично: ${names}`,
     };
     const title = titles[lang] || `${newOverdue.length} backup(s) overdue`;
     const body = bodies[lang] || `Critical: ${names}`;
