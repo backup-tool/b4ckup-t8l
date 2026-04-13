@@ -25,10 +25,14 @@ import tr from "@/locales/tr.json";
 import ar from "@/locales/ar.json";
 import he from "@/locales/he.json";
 import fa from "@/locales/fa.json";
+import ku from "@/locales/ku.json";
+import hy from "@/locales/hy.json";
+import ps from "@/locales/ps.json";
+import hi from "@/locales/hi.json";
 
 const saved = localStorage.getItem("lang");
 const browserLang = navigator.language.split("-")[0];
-const supported = ["en", "de", "ru", "fr", "it", "es", "pt", "nl", "sv", "da", "no", "fi", "ro", "pl", "cs", "hu", "bg", "sr", "hr", "uk", "el", "tr", "ar", "he", "fa"];
+const supported = ["en", "de", "ru", "fr", "it", "es", "pt", "nl", "sv", "da", "no", "fi", "ro", "pl", "cs", "hu", "bg", "sr", "hr", "uk", "el", "tr", "ar", "he", "fa", "ku", "hy", "ps", "hi"];
 const browser = supported.includes(browserLang) ? browserLang : "en";
 
 i18n.use(initReactI18next).init({
@@ -58,6 +62,10 @@ i18n.use(initReactI18next).init({
     ar: { translation: ar },
     he: { translation: he },
     fa: { translation: fa },
+    ku: { translation: ku },
+    hy: { translation: hy },
+    ps: { translation: ps },
+    hi: { translation: hi },
   },
   lng: saved || browser,
   fallbackLng: "en",

@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Destpêk",
+    "features": "Taybetmendî",
+    "download": "Daxistin",
+    "contact": "Têkilî"
+  },
+  "hero": {
+    "tagline": "Hemû paşgiriyên xwe di yek cihî de bişopînin, birêvebirin û çavdêrî bikin.",
+    "subtitle": "Êdî tu carî şopa paşgiriyên xwe winda nekin. B4cKuP T8L li ser her amûr û medyaya hilanînê nihêrînek bêkêmasî ya hemû daneyên paşgiriya we pêşkêşî we dike.",
+    "cta": "Belaş Daxînin",
+    "learnMore": "Bêtir Fêr Bibin"
+  },
+  "stats": {
+    "backups": "Paşgiriyên bêsînor birêve bibin",
+    "platforms": "Windows, macOS & Linux",
+    "languages": "3 Ziman",
+    "opensource": "Belaş & Çavkaniya Vekirî"
+  },
+  "features": {
+    "title": "Her tiştê ku hûn hewce ne ji bo birêvebirina paşgiriyên xwe",
+    "subtitle": "B4cKuP T8L tabloya paşgiriya we bi serlêdana sermaseyê ya hêzdar diguhezîne.",
+    "dashboard": "Dashboard",
+    "dashboardDesc": "Bi nîşaneyên rewşê, nexşeyên karanîna hilanînê, û kontrola qaîdeya paşgiriya 3-2-1 nihêrînek bêkêmasî ya hemû paşgiriyên xwe bistînin.",
+    "tracking": "Şopandina Paşgiriyê",
+    "trackingDesc": "Her paşgiriyê bi dîrok, mezinahî, cihê hilanînê, û nîşeyan belge bikin. Dîrok û guhertinên mezinahiyê bi demê re bişopînin.",
+    "scan": "Şopandina Otomatîk",
+    "scanDesc": "Peldankekê destnîşan bikin û paşgiriyên heyî bixweber bibînin. Mezinahî di paşperdeya de têne hesabkirin.",
+    "media": "Medyaya Hilanînê",
+    "mediaDesc": "Hemû amûrên hilanîna xwe birêve bibin - NAS, ajokerên derve, karûbarên ewr, SSD û bêtir. Kapasîte û şîfrekirinê bişopînin.",
+    "matrix": "Matrîsa Nihêrînê",
+    "matrixDesc": "Di yek nihêrînê de bibînin ku kîjan paşgirî li ser kîjan medyayê hatiye hilanîn - mîna tabloyek lê çêtir.",
+    "notifications": "Agahdariyên Biaqil",
+    "notificationsDesc": "Dema ku paşgirî dereng in agahdar bibin. Navberên bîranînê yên veavakirî ji bo her paşgiriyekê.",
+    "darkmode": "Moda Tarî",
+    "darkmodeDesc": "Temayên ronahî û tarî yên xweşik bi rengên aksanê yên kesanekirî. Li gorî tercîha pergala we dike.",
+    "i18n": "Pirziman",
+    "i18nDesc": "Bi Îngilîzî, Almanî û Rûsî peyda dibe. Zimanên din bi hêsanî dikarin werin zêdekirin.",
+    "tray": "Sêniya Pergalê",
+    "trayDesc": "Di paşperdeya de bêdeng dimeşe. Çavdêrên pelan paşgiriyên nû bixweber dibînin.",
+    "export": "Hinardekirina Daneyan",
+    "exportDesc": "Hemû daneyên paşgiriya xwe wekî JSON an CSV hinarde bikin. Paşgiriyên otomatîk ên databasê daneyên we ewle diparêzin.",
+    "sources": "Birêvebirina Çavkaniyê",
+    "sourcesDesc": "Paşgiriyan li gorî çavkaniyê rêxistin bikin - amûr, karûbarên ewr, ajokerên derve. CRUD-ya bêkêmasî bi jêbirina nerm û çopê.",
+    "encryption": "Şopandina Şîfrekirinê",
+    "encryptionDesc": "Bişopînin ka kîjan medyaya hilanînê şîfrekirî ye, bi kîjan rêbazê (VeraCrypt, BitLocker, FileVault) û etîketên mifteyê."
+  },
+  "download": {
+    "title": "B4cKuP T8L Daxînin",
+    "subtitle": "Ji bo hemû platformên sereke peyda dibe. Belaş û çavkaniya vekirî.",
+    "version": "Guherto",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 an paşê",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) an paşê",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 an paşê",
+    "downloadBtn": "Daxînin",
+    "comingSoon": "Zû Tê"
+  },
+  "contact": {
+    "title": "Têkilî",
+    "subtitle": "Pirs, bertek an xeletiyek we dît? Têkiliyê deynin.",
+    "name": "Nav",
+    "email": "E-peyam",
+    "message": "Peyam",
+    "send": "Peyamê Bişînin",
+    "github": "Li ser GitHub pirsgirêkan ragihînin",
+    "emailDirect": "An rasterast ji me re e-peyam bişînin li"
+  },
+  "imprint": {
+    "title": "Daxuyaniya Qanûnî (Impressum)",
+    "according": "Agahdarî li gorî Beşa 5 TMG",
+    "responsible": "Berpirsiyarê naverokê li gorî Beşa 55 (2) RStV",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Almanya",
+    "email": "E-peyam: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Çareserkirina Nakokiyan",
+    "disputeText": "Komîsyona Ewropî platformek ji bo çareserkirina nakokiyên serhêl (OS) pêşkêşî dike: https://ec.europa.eu/consumers/odr/. Em ne amade ne û ne jî mecbûr in ku beşdarî prosedurên çareserkirina nakokiyan li ber lijneya dadrêsiya xerîdar bibin."
+  },
+  "privacy": {
+    "title": "Polîtîkaya Nepenîtiyê",
+    "intro": "Em parastina daneyên weya kesane pir ciddî digirin. Ev polîtîkaya nepenîtiyê we agahdar dike ku em çawa bi daneyên we re tevdigerin.",
+    "responsible": "Aliyê Berpirsiyar",
+    "responsibleText": "Aliyê berpirsiyarê pêvajoya daneyan li ser vê malperê di Daxuyaniya Qanûnî de hatiye destnîşankirin.",
+    "hosting": "Mêvandarî",
+    "hostingText": "Ev malper li ser serverên me yên xwe tê mêvandarkirin. Dema ku hûn vê malperê digihîjin, geroka we bixweber agahdarî (navnîşana IP, dîrok/dem, rûpela gihîştî) ji servera me re dişîne. Ev dane di pelên qeydên serverê de têne hilanîn û piştî 30 rojan bixweber têne jêbirin.",
+    "cookies": "Cookies",
+    "cookiesText": "Ev malper cookies an teknolojiyên şopandinê bikar nayîne. Tu amûrên analîtîk nayên bikaranîn.",
+    "contact": "Forma Têkiliyê",
+    "contactText": "Dema ku hûn bi riya forma têkiliyê ji me re peyamek dişînin, daneyên we (nav, e-peyam, peyam) tenê ji bo bersivdana lêpirsîna we têne bikaranîn. Em van daneyan bi aliyên sêyemîn re parve nakin.",
+    "downloads": "Daxistin",
+    "downloadsText": "Dema ku hûn nermalava me daxînin, tu daneyên kesane nayên berhevkirin. Pelên daxistinê bêyî qeydkirinê têne pêşkêşkirin.",
+    "rights": "Mafên We",
+    "rightsText": "Li gorî GDPR, mafê we yê gihîştin, rastkirin, jêbirin, sînorkirina pêvajoyê, veguheztina daneyan, û nerazîbûnê heye. Ji bo bikaranîna van mafan, ji kerema xwe bi agahdariya di Daxuyaniya Qanûnî de bi me re têkilî daynin.",
+    "changes": "Guhertin",
+    "changesText": "Em mafê xwe yê nûvekirina vê polîtîkaya nepenîtiyê diparêzin. Guhertoya niha her dem li ser vê rûpelê peyda dibe."
+  },
+  "footer": {
+    "legal": "Qanûnî",
+    "imprint": "Daxuyaniya Qanûnî",
+    "privacy": "Polîtîkaya Nepenîtiyê",
+    "product": "Hilber",
+    "madeWith": "Bi hate çêkirin"
+  }
+}
