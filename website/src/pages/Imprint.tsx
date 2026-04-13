@@ -28,10 +28,6 @@ export function Imprint() {
           <p>{t("imprint.city")}</p>
         </section>
 
-        <section>
-          <h2 className="text-lg font-semibold text-fg mb-3">{t("imprint.dispute")}</h2>
-          <p>{t("imprint.disputeText")}</p>
-        </section>
       </div>
     </div>
   );
