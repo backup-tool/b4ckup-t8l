@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 বা তার পরবর্তী",
     "downloadBtn": "ডাউনলোড",
-    "comingSoon": "শীঘ্রই আসছে"
+    "comingSoon": "শীঘ্রই আসছে",
+    "allReleases": "সমস্ত রিলিজ ও পুরানো সংস্করণ",
+    "allReleasesDesc": "GitHub-এ সমস্ত পূর্ববর্তী সংস্করণ এবং রিলিজ নোট ব্রাউজ করুন।",
+    "sourceCode": "সোর্স কোড",
+    "sourceCodeDesc": "GitHub-এ সোর্স কোড দেখুন। GPL-3.0 লাইসেন্সের অধীনে।"
   },
   "contact": {
     "title": "যোগাযোগ",

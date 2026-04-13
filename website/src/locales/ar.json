@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04 أو Fedora 36 أو أحدث",
     "downloadBtn": "تحميل",
-    "comingSoon": "قريبًا"
+    "comingSoon": "قريبًا",
+    "allReleases": "جميع الإصدارات والإصدارات القديمة",
+    "allReleasesDesc": "تصفح جميع الإصدارات السابقة وملاحظات الإصدار على GitHub.",
+    "sourceCode": "الكود المصدري",
+    "sourceCodeDesc": "عرض الكود المصدري على GitHub. مرخص بموجب GPL-3.0."
   },
   "contact": {
     "title": "اتصل بنا",

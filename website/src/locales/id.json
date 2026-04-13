@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 atau lebih baru",
     "downloadBtn": "Unduh",
-    "comingSoon": "Segera Hadir"
+    "comingSoon": "Segera Hadir",
+    "allReleases": "Semua Rilis & Versi Lama",
+    "allReleasesDesc": "Telusuri semua versi sebelumnya dan catatan rilis di GitHub.",
+    "sourceCode": "Kode Sumber",
+    "sourceCodeDesc": "Lihat kode sumber di GitHub. Dilisensikan di bawah GPL-3.0."
   },
   "contact": {
     "title": "Kontak",

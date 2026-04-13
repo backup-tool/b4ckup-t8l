@@ -1,31 +1,37 @@
 import { useTranslation } from "react-i18next";
-import { Monitor, Apple, Terminal, Download as DownloadIcon } from "lucide-react";
+import { Monitor, Apple, Terminal, Download as DownloadIcon, GitBranch, History, FileDown } from "lucide-react";
 
 const GITHUB_REPO = "backup-tool/b4ckup-t8l";
+const R = `https://github.com/${GITHUB_REPO}/releases/latest/download`;
+
 const PLATFORMS = [
   {
     key: "windows",
     icon: Monitor,
-    file: "Backup.Tool_0.1.0_x64-setup.exe",
-    url: `https://github.com/${GITHUB_REPO}/releases/latest/download/Backup.Tool_0.1.0_x64-setup.exe`,
-    alt: { label: ".msi", url: `https://github.com/${GITHUB_REPO}/releases/latest/download/Backup.Tool_0.1.0_x64_en-US.msi` },
     reqKey: "windowsReq",
+    formats: [
+      { label: "Installer (.exe)", file: "Backup.Tool_0.1.0_x64-setup.exe", url: `${R}/Backup.Tool_0.1.0_x64-setup.exe`, primary: true },
+      { label: "MSI Installer", file: "Backup.Tool_0.1.0_x64_en-US.msi", url: `${R}/Backup.Tool_0.1.0_x64_en-US.msi`, primary: false },
+    ],
   },
   {
     key: "macos",
     icon: Apple,
-    file: "Backup.Tool_0.1.0_aarch64.dmg",
-    url: `https://github.com/${GITHUB_REPO}/releases/latest/download/Backup.Tool_0.1.0_aarch64.dmg`,
-    alt: null,
     reqKey: "macosReq",
+    formats: [
+      { label: "Apple Silicon (.dmg)", file: "Backup.Tool_0.1.0_aarch64.dmg", url: `${R}/Backup.Tool_0.1.0_aarch64.dmg`, primary: true },
+      { label: "Apple Silicon (.tar.gz)", file: "Backup.Tool_aarch64.app.tar.gz", url: `${R}/Backup.Tool_aarch64.app.tar.gz`, primary: false },
+    ],
   },
   {
     key: "linux",
     icon: Terminal,
-    file: "Backup.Tool_0.1.0_amd64.AppImage",
-    url: `https://github.com/${GITHUB_REPO}/releases/latest/download/Backup.Tool_0.1.0_amd64.AppImage`,
-    alt: { label: ".deb", url: `https://github.com/${GITHUB_REPO}/releases/latest/download/Backup.Tool_0.1.0_amd64.deb` },
     reqKey: "linuxReq",
+    formats: [
+      { label: "AppImage", file: "Backup.Tool_0.1.0_amd64.AppImage", url: `${R}/Backup.Tool_0.1.0_amd64.AppImage`, primary: true },
+      { label: "Debian / Ubuntu (.deb)", file: "Backup.Tool_0.1.0_amd64.deb", url: `${R}/Backup.Tool_0.1.0_amd64.deb`, primary: false },
+      { label: "Fedora / RHEL (.rpm)", file: "Backup.Tool-0.1.0-1.x86_64.rpm", url: `${R}/Backup.Tool-0.1.0-1.x86_64.rpm`, primary: false },
+    ],
   },
 ];
 
@@ -40,27 +46,68 @@ export function Download() {
         <p className="text-xs text-fg-muted mt-2">{t("download.version")} 0.1.0</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+      {/* Main downloads */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16">
         {PLATFORMS.map((p) => (
           <div
             key={p.key}
-            className="p-8 rounded-2xl bg-bg-card border border-border text-center hover:border-accent/30 transition-colors"
+            className="p-6 rounded-2xl bg-bg-card border border-border hover:border-accent/30 transition-colors"
           >
-            <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-5">
-              <p.icon className="w-7 h-7 text-accent" />
+            <div className="text-center mb-5">
+              <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                <p.icon className="w-7 h-7 text-accent" />
+              </div>
+              <h3 className="font-bold text-lg mb-1">{t(`download.${p.key}`)}</h3>
+              <p className="text-xs text-fg-muted">{t(`download.${p.reqKey}`)}</p>
             </div>
-            <h3 className="font-bold text-lg mb-1">{t(`download.${p.key}`)}</h3>
-            <p className="text-xs text-fg-muted mb-5">{t(`download.${p.reqKey}`)}</p>
-            <a
-              href={p.url}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-accent text-bg font-semibold text-sm hover:bg-accent-hover transition-colors"
-            >
-              <DownloadIcon className="w-4 h-4" />
-              {t("download.downloadBtn")}
-            </a>
-            <p className="text-[10px] text-fg-muted mt-3 font-mono">{p.file}</p>
+
+            <div className="space-y-2">
+              {p.formats.map((f) => (
+                <a
+                  key={f.file}
+                  href={f.url}
+                  className={`flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-sm transition-colors ${
+                    f.primary
+                      ? "bg-accent text-bg font-semibold hover:bg-accent-hover"
+                      : "border border-border text-fg-muted hover:text-fg hover:border-accent/30"
+                  }`}
+                >
+                  {f.primary ? <DownloadIcon className="w-4 h-4 shrink-0" /> : <FileDown className="w-4 h-4 shrink-0" />}
+                  <span className="truncate">{f.label}</span>
+                </a>
+              ))}
+            </div>
           </div>
         ))}
+      </div>
+
+      {/* Additional links */}
+      <div className="max-w-2xl mx-auto space-y-3">
+        <a
+          href={`https://github.com/${GITHUB_REPO}/releases`}
+          target="_blank"
+          rel="noopener"
+          className="flex items-center gap-3 p-4 rounded-xl bg-bg-card border border-border hover:border-accent/30 transition-colors"
+        >
+          <History className="w-5 h-5 text-fg-muted shrink-0" />
+          <div>
+            <p className="text-sm font-medium">{t("download.allReleases")}</p>
+            <p className="text-xs text-fg-muted">{t("download.allReleasesDesc")}</p>
+          </div>
+        </a>
+
+        <a
+          href={`https://github.com/${GITHUB_REPO}`}
+          target="_blank"
+          rel="noopener"
+          className="flex items-center gap-3 p-4 rounded-xl bg-bg-card border border-border hover:border-accent/30 transition-colors"
+        >
+          <GitBranch className="w-5 h-5 text-fg-muted shrink-0" />
+          <div>
+            <p className="text-sm font-medium">{t("download.sourceCode")}</p>
+            <p className="text-xs text-fg-muted">{t("download.sourceCodeDesc")}</p>
+          </div>
+        </a>
       </div>
     </div>
   );

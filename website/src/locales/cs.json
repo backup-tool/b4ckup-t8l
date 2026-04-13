@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 nebo novější",
     "downloadBtn": "Stáhnout",
-    "comingSoon": "Již brzy"
+    "comingSoon": "Již brzy",
+    "allReleases": "Všechna vydání & starší verze",
+    "allReleasesDesc": "Procházejte všechny předchozí verze a poznámky k vydání na GitHubu.",
+    "sourceCode": "Zdrojový kód",
+    "sourceCodeDesc": "Zobrazit zdrojový kód na GitHubu. Licencováno pod GPL-3.0."
   },
   "contact": {
     "title": "Kontakt",

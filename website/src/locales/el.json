@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 ή νεότερο",
     "downloadBtn": "Λήψη",
-    "comingSoon": "Σύντομα"
+    "comingSoon": "Σύντομα",
+    "allReleases": "Όλες οι εκδόσεις & παλαιότερες εκδόσεις",
+    "allReleasesDesc": "Περιηγηθείτε σε όλες τις προηγούμενες εκδόσεις και τις σημειώσεις έκδοσης στο GitHub.",
+    "sourceCode": "Πηγαίος κώδικας",
+    "sourceCodeDesc": "Δείτε τον πηγαίο κώδικα στο GitHub. Άδεια GPL-3.0."
   },
   "contact": {
     "title": "Επικοινωνία",

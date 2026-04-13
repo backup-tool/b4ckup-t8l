@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 sau mai nou",
     "downloadBtn": "Descarcă",
-    "comingSoon": "În curând"
+    "comingSoon": "În curând",
+    "allReleases": "Toate versiunile & versiuni mai vechi",
+    "allReleasesDesc": "Răsfoiți toate versiunile anterioare și notele de lansare pe GitHub.",
+    "sourceCode": "Cod sursă",
+    "sourceCodeDesc": "Vizualizați codul sursă pe GitHub. Licențiat sub GPL-3.0."
   },
   "contact": {
     "title": "Contact",

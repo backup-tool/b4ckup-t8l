@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 tai uudempi",
     "downloadBtn": "Lataa",
-    "comingSoon": "Tulossa pian"
+    "comingSoon": "Tulossa pian",
+    "allReleases": "Kaikki julkaisut & vanhemmat versiot",
+    "allReleasesDesc": "Selaa kaikkia aiempia versioita ja julkaisutietoja GitHubissa.",
+    "sourceCode": "Lähdekoodi",
+    "sourceCodeDesc": "Näytä lähdekoodi GitHubissa. Lisensoitu GPL-3.0-lisenssillä."
   },
   "contact": {
     "title": "Yhteystiedot",

@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 an paşê",
     "downloadBtn": "Daxînin",
-    "comingSoon": "Zû Tê"
+    "comingSoon": "Zû Tê",
+    "allReleases": "Hemû Weşan & Guhertoyên Kevin",
+    "allReleasesDesc": "Hemû guhertoyên berê û notên weşanê li GitHub bigerin.",
+    "sourceCode": "Koda Çavkaniyê",
+    "sourceCodeDesc": "Koda çavkaniyê li GitHub bibînin. Di bin lîsansa GPL-3.0 de ye."
   },
   "contact": {
     "title": "Têkilî",

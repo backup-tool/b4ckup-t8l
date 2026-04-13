@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 або новіше",
     "downloadBtn": "Завантажити",
-    "comingSoon": "Незабаром"
+    "comingSoon": "Незабаром",
+    "allReleases": "Усі релізи та старіші версії",
+    "allReleasesDesc": "Перегляньте всі попередні версії та примітки до випусків на GitHub.",
+    "sourceCode": "Вихідний код",
+    "sourceCodeDesc": "Переглянути вихідний код на GitHub. Ліцензія GPL-3.0."
   },
   "contact": {
     "title": "Контакт",

@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 lub nowszy",
     "downloadBtn": "Pobierz",
-    "comingSoon": "Wkrótce"
+    "comingSoon": "Wkrótce",
+    "allReleases": "Wszystkie wydania & starsze wersje",
+    "allReleasesDesc": "Przeglądaj wszystkie poprzednie wersje i informacje o wydaniach na GitHubie.",
+    "sourceCode": "Kod źródłowy",
+    "sourceCodeDesc": "Zobacz kod źródłowy na GitHubie. Licencja GPL-3.0."
   },
   "contact": {
     "title": "Kontakt",

@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 of hoger",
     "downloadBtn": "Downloaden",
-    "comingSoon": "Binnenkort beschikbaar"
+    "comingSoon": "Binnenkort beschikbaar",
+    "allReleases": "Alle versies & oudere versies",
+    "allReleasesDesc": "Blader door alle vorige versies en release-opmerkingen op GitHub.",
+    "sourceCode": "Broncode",
+    "sourceCodeDesc": "Bekijk de broncode op GitHub. Gelicentieerd onder GPL-3.0."
   },
   "contact": {
     "title": "Contact",

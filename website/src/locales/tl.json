@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 o mas bago",
     "downloadBtn": "I-download",
-    "comingSoon": "Malapit Na"
+    "comingSoon": "Malapit Na",
+    "allReleases": "Lahat ng Release at Lumang Bersyon",
+    "allReleasesDesc": "I-browse ang lahat ng nakaraang bersyon at release notes sa GitHub.",
+    "sourceCode": "Source Code",
+    "sourceCodeDesc": "Tingnan ang source code sa GitHub. Lisensiyado sa ilalim ng GPL-3.0."
   },
   "contact": {
     "title": "Makipag-ugnayan",

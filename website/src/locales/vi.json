@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 trở lên",
     "downloadBtn": "Tải xuống",
-    "comingSoon": "Sắp ra mắt"
+    "comingSoon": "Sắp ra mắt",
+    "allReleases": "Tất cả phiên bản & phiên bản cũ",
+    "allReleasesDesc": "Duyệt tất cả các phiên bản trước và ghi chú phát hành trên GitHub.",
+    "sourceCode": "Mã nguồn",
+    "sourceCodeDesc": "Xem mã nguồn trên GitHub. Được cấp phép theo GPL-3.0."
   },
   "contact": {
     "title": "Liên hệ",

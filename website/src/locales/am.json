@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04፣ Fedora 36 ወይም ከዚያ በኋላ",
     "downloadBtn": "አውርድ",
-    "comingSoon": "በቅርቡ ይመጣል"
+    "comingSoon": "በቅርቡ ይመጣል",
+    "allReleases": "ሁሉም ልቀቶች እና የቆዩ ስሪቶች",
+    "allReleasesDesc": "በ GitHub ላይ ሁሉንም ቀደም ያሉ ስሪቶች እና የልቀት ማስታወሻዎችን ያስሱ።",
+    "sourceCode": "ምንጭ ኮድ",
+    "sourceCodeDesc": "በ GitHub ላይ ምንጭ ኮዱን ይመልከቱ። በ GPL-3.0 ፈቃድ ስር።"
   },
   "contact": {
     "title": "ያግኙን",

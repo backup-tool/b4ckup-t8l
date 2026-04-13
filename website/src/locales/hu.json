@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 vagy újabb",
     "downloadBtn": "Letöltés",
-    "comingSoon": "Hamarosan"
+    "comingSoon": "Hamarosan",
+    "allReleases": "Összes kiadás & régebbi verziók",
+    "allReleasesDesc": "Böngésszen az összes korábbi verzió és kiadási jegyzet között a GitHubon.",
+    "sourceCode": "Forráskód",
+    "sourceCodeDesc": "Tekintse meg a forráskódot a GitHubon. GPL-3.0 licenc alatt."
   },
   "contact": {
     "title": "Kapcsolat",

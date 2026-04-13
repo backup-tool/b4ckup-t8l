@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04、Fedora 36 或更高版本",
     "downloadBtn": "下载",
-    "comingSoon": "即将推出"
+    "comingSoon": "即将推出",
+    "allReleases": "所有版本和旧版本",
+    "allReleasesDesc": "在 GitHub 上浏览所有历史版本和发布说明。",
+    "sourceCode": "源代码",
+    "sourceCodeDesc": "在 GitHub 上查看源代码。基于 GPL-3.0 许可证。"
   },
   "contact": {
     "title": "联系我们",

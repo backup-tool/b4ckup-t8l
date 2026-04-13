@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 au baadaye",
     "downloadBtn": "Pakua",
-    "comingSoon": "Inakuja Hivi Karibuni"
+    "comingSoon": "Inakuja Hivi Karibuni",
+    "allReleases": "Matoleo Yote na Matoleo ya Zamani",
+    "allReleasesDesc": "Vinjari matoleo yote ya awali na maelezo ya matoleo kwenye GitHub.",
+    "sourceCode": "Msimbo wa Chanzo",
+    "sourceCodeDesc": "Angalia msimbo wa chanzo kwenye GitHub. Imeidhinishwa chini ya GPL-3.0."
   },
   "contact": {
     "title": "Wasiliana",

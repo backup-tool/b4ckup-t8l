@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 ואילך",
     "downloadBtn": "הורדה",
-    "comingSoon": "בקרוב"
+    "comingSoon": "בקרוב",
+    "allReleases": "כל הגרסאות וגרסאות ישנות",
+    "allReleasesDesc": "עיינו בכל הגרסאות הקודמות והערות השחרור ב-GitHub.",
+    "sourceCode": "קוד מקור",
+    "sourceCodeDesc": "צפו בקוד המקור ב-GitHub. ברישיון GPL-3.0."
   },
   "contact": {
     "title": "צור קשר",

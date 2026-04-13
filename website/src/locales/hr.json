@@ -56,7 +56,11 @@
     "linux": "Linux",
     "linuxReq": "Ubuntu 20.04, Fedora 36 ili noviji",
     "downloadBtn": "Preuzmi",
-    "comingSoon": "Uskoro"
+    "comingSoon": "Uskoro",
+    "allReleases": "Sva izdanja & starije verzije",
+    "allReleasesDesc": "Pregledajte sva prethodna izdanja i bilješke o verzijama na GitHubu.",
+    "sourceCode": "Izvorni kod",
+    "sourceCodeDesc": "Pogledajte izvorni kod na GitHubu. Licencirano pod GPL-3.0."
   },
   "contact": {
     "title": "Kontakt",
