@@ -201,6 +201,15 @@
     "deleteAll": "Delete All Permanently",
     "confirmDeleteAll": "This will permanently delete all items in the trash. This cannot be undone."
   },
+  "update": {
+    "available": "Update Available",
+    "version": "New version:",
+    "install": "Install",
+    "downloading": "Downloading...",
+    "ready": "Update Ready",
+    "restartDesc": "Restart the app to apply the update.",
+    "restart": "Restart Now"
+  },
   "rule321": {
     "title": "3-2-1 Backup Rule",
     "desc": "3 copies, 2 different media types, 1 offsite",

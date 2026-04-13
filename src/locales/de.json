@@ -201,6 +201,15 @@
     "deleteAll": "Alle endg\u00fcltig l\u00f6schen",
     "confirmDeleteAll": "Alle Elemente im Papierkorb werden endg\u00fcltig gel\u00f6scht. Dies kann nicht r\u00fcckg\u00e4ngig gemacht werden."
   },
+  "update": {
+    "available": "Update verf\u00fcgbar",
+    "version": "Neue Version:",
+    "install": "Installieren",
+    "downloading": "Wird heruntergeladen...",
+    "ready": "Update bereit",
+    "restartDesc": "Starte die App neu um das Update anzuwenden.",
+    "restart": "Jetzt neu starten"
+  },
   "rule321": {
     "title": "3-2-1 Backup-Regel",
     "desc": "3 Kopien, 2 verschiedene Medientypen, 1 Offsite",

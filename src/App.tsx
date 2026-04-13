@@ -10,6 +10,7 @@ import { Matrix } from "./pages/Matrix";
 import { Settings } from "./pages/Settings";
 import { useAppStore } from "./lib/store";
 import { cn } from "./lib/cn";
+import { UpdateBanner } from "./components/ui/UpdateBanner";
 
 export default function App() {
   const collapsed = useAppStore((s) => s.sidebarCollapsed);
@@ -38,6 +39,7 @@ export default function App() {
             </Routes>
           </div>
         </main>
+        <UpdateBanner />
       </div>
     </BrowserRouter>
   );
