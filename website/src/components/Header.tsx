@@ -123,7 +123,7 @@ export function Header() {
               <ChevronDown className={`w-3 h-3 transition-transform ${langOpen ? "rotate-180" : ""}`} />
             </button>
             {langOpen && (
-              <div className="absolute right-0 bottom-full mb-2 w-44 max-h-80 overflow-y-auto rounded-xl border border-border bg-bg-card shadow-lg py-1 z-50 grid grid-cols-2 gap-0">
+              <div className="absolute right-0 mt-2 w-44 max-h-72 overflow-y-auto rounded-xl border border-border bg-bg-card shadow-lg py-1 z-50 grid grid-cols-2 gap-0">
                 {LANGS.map((l) => (
                   <button
                     key={l.code}
