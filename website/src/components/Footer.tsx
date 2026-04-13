@@ -57,7 +57,7 @@ export function Footer() {
         <div className="mt-10 pt-6 border-t border-border flex items-center justify-between text-xs text-fg-muted">
           <span>&copy; {new Date().getFullYear()} B4cKuP T8L</span>
           <span className="flex items-center gap-1">
-            {t("footer.madeWith")} <Heart className="w-3 h-3 text-accent fill-accent" />
+            Made with <Heart className="w-3 h-3 text-accent fill-accent" />
           </span>
         </div>
       </div>
