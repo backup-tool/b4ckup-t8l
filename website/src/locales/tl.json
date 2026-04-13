@@ -3,7 +3,8 @@
     "home": "Tahanan",
     "features": "Mga Tampok",
     "download": "I-download",
-    "contact": "Makipag-ugnayan"
+    "contact": "Makipag-ugnayan",
+    "donate": "Mag-donate"
   },
   "hero": {
     "tagline": "Subaybayan, pamahalaan at bantayan ang lahat ng iyong mga backup sa isang lugar.",
@@ -71,6 +72,15 @@
     "send": "Ipadala ang Mensahe",
     "github": "Mag-ulat ng mga isyu sa GitHub",
     "emailDirect": "O mag-email sa amin nang direkta sa"
+  },
+  "donate": {
+    "title": "Suportahan ang B4cKuP T8L",
+    "subtitle": "Ang B4cKuP T8L ay libre at open source. Kung nakikita mong kapaki-pakinabang ito, pag-isipang suportahan ang pagpapaunlad nito.",
+    "donateKofiDesc": "Ibilhan mo ako ng kape! Isang beses o buwanang suporta.",
+    "donatePaypalDesc": "Mabilis at madaling isang beses na donasyon sa pamamagitan ng PayPal.",
+    "donatePatreonDesc": "Maging patron para sa buwanang suporta at mga eksklusibong update.",
+    "donateBtn": "Mag-donate",
+    "thanks": "Salamat sa pag-iisip ng donasyon! Ang bawat kontribusyon ay nakakatulong na mapanatiling libre, maayos at patuloy na umuunlad ang B4cKuP T8L. Napakahalaga ng iyong suporta."
   },
   "imprint": {
     "title": "Abisong Legal (Impressum)",

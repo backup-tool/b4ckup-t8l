@@ -72,6 +72,7 @@ export function Header() {
     { to: `${prefix}/features`, label: t("nav.features") },
     { to: `${prefix}/download`, label: t("nav.download") },
     { to: `${prefix}/contact`, label: t("nav.contact") },
+    { to: `${prefix}/donate`, label: t("nav.donate") },
   ];
 
   // Fix: for English "/" should be end-matched, for others "/de" etc.

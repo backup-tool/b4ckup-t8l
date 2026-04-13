@@ -3,7 +3,8 @@
     "home": "홈",
     "features": "기능",
     "download": "다운로드",
-    "contact": "문의"
+    "contact": "문의",
+    "donate": "후원하기"
   },
   "hero": {
     "tagline": "모든 백업을 한 곳에서 추적, 관리 및 모니터링하세요.",
@@ -71,6 +72,15 @@
     "send": "메시지 보내기",
     "github": "GitHub에서 이슈 보고",
     "emailDirect": "또는 직접 이메일을 보내주세요"
+  },
+  "donate": {
+    "title": "B4cKuP T8L 후원하기",
+    "subtitle": "B4cKuP T8L은 무료 오픈 소스입니다. 유용하다고 생각하시면 개발을 지원해 주세요.",
+    "donateKofiDesc": "커피 한 잔 사주세요! 일회성 또는 월간 후원.",
+    "donatePaypalDesc": "PayPal을 통한 빠르고 간편한 일회성 기부.",
+    "donatePatreonDesc": "월간 후원과 독점 업데이트를 위해 패트론이 되어주세요.",
+    "donateBtn": "후원하기",
+    "thanks": "기부를 고려해 주셔서 감사합니다! 모든 기여는 B4cKuP T8L을 무료로, 잘 관리되고, 계속 발전하도록 유지하는 데 도움이 됩니다. 여러분의 지원은 큰 힘이 됩니다."
   },
   "imprint": {
     "title": "법적 고지 (Impressum)",

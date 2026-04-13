@@ -3,7 +3,8 @@
     "home": "Početna",
     "features": "Značajke",
     "download": "Preuzimanje",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "donate": "Donirajte"
   },
   "hero": {
     "tagline": "Pratite, upravljajte i nadzirite sve svoje sigurnosne kopije na jednom mjestu.",
@@ -71,6 +72,15 @@
     "send": "Pošaljite poruku",
     "github": "Prijavite probleme na GitHubu",
     "emailDirect": "Ili nam pišite izravno na"
+  },
+  "donate": {
+    "title": "Podržite B4cKuP T8L",
+    "subtitle": "B4cKuP T8L je besplatan i otvorenog koda. Ako vam je koristan, razmislite o podršci njegovom razvoju.",
+    "donateKofiDesc": "Kupite mi kavu! Jednokratna ili mjesečna podrška.",
+    "donatePaypalDesc": "Brza i jednostavna jednokratna donacija putem PayPala.",
+    "donatePatreonDesc": "Postanite pokrovitelj za mjesečnu podršku i ekskluzivna ažuriranja.",
+    "donateBtn": "Donirajte",
+    "thanks": "Hvala što razmišljate o donaciji! Svaki doprinos pomaže da B4cKuP T8L ostane besplatan, održavan i da se stalno poboljšava. Vaša podrška znači sve."
   },
   "imprint": {
     "title": "Pravna obavijest (Impressum)",

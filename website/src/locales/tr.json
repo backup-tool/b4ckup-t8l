@@ -3,7 +3,8 @@
     "home": "Ana Sayfa",
     "features": "Özellikler",
     "download": "İndir",
-    "contact": "İletişim"
+    "contact": "İletişim",
+    "donate": "Bağış Yap"
   },
   "hero": {
     "tagline": "Tüm yedeklemelerinizi tek bir yerden takip edin, yönetin ve izleyin.",
@@ -57,10 +58,10 @@
     "linuxReq": "Ubuntu 20.04, Fedora 36 veya üstü",
     "downloadBtn": "İndir",
     "comingSoon": "Yakında",
-    "allReleases": "T\u00fcm S\u00fcr\u00fcmler & Eski Versiyonlar",
-    "allReleasesDesc": "GitHub'da t\u00fcm \u00f6nceki s\u00fcr\u00fcmleri ve s\u00fcr\u00fcm notlar\u0131n\u0131 g\u00f6z at\u0131n.",
+    "allReleases": "Tüm Sürümler & Eski Versiyonlar",
+    "allReleasesDesc": "GitHub'da tüm önceki sürümleri ve sürüm notlarını göz atın.",
     "sourceCode": "Kaynak Kodu",
-    "sourceCodeDesc": "GitHub'da kaynak kodunu g\u00f6r\u00fcnt\u00fcleyin. GPL-3.0 lisans\u0131 alt\u0131nda."
+    "sourceCodeDesc": "GitHub'da kaynak kodunu görüntüleyin. GPL-3.0 lisansı altında."
   },
   "contact": {
     "title": "İletişim",
@@ -71,6 +72,15 @@
     "send": "Mesaj Gönder",
     "github": "Sorunları GitHub'da bildirin",
     "emailDirect": "Veya bize doğrudan e-posta gönderin"
+  },
+  "donate": {
+    "title": "B4cKuP T8L'yi Destekleyin",
+    "subtitle": "B4cKuP T8L ücretsiz ve açık kaynaklıdır. Faydalı buluyorsanız, geliştirilmesini desteklemeyi düşünün.",
+    "donateKofiDesc": "Bana bir kahve ısmarlayın! Tek seferlik veya aylık destek.",
+    "donatePaypalDesc": "PayPal üzerinden hızlı ve kolay tek seferlik bağış.",
+    "donatePatreonDesc": "Aylık destek ve özel güncellemeler için patron olun.",
+    "donateBtn": "Bağış Yap",
+    "thanks": "Bağış düşündüğünüz için teşekkürler! Her katkı B4cKuP T8L'yi ücretsiz, bakımlı ve sürekli gelişen tutmaya yardımcı olur. Desteğiniz çok değerli."
   },
   "imprint": {
     "title": "Yasal Bildirim (Impressum)",

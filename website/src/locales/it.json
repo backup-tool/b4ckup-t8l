@@ -3,7 +3,8 @@
     "home": "Home",
     "features": "Funzionalità",
     "download": "Download",
-    "contact": "Contatti"
+    "contact": "Contatti",
+    "donate": "Dona"
   },
   "hero": {
     "tagline": "Traccia, gestisci e monitora tutti i tuoi backup in un unico posto.",
@@ -71,6 +72,15 @@
     "send": "Invia messaggio",
     "github": "Segnala problemi su GitHub",
     "emailDirect": "Oppure scrivici direttamente a"
+  },
+  "donate": {
+    "title": "Supporta B4cKuP T8L",
+    "subtitle": "B4cKuP T8L è gratuito e open source. Se lo trovi utile, considera di supportare il suo sviluppo.",
+    "donateKofiDesc": "Offrimi un caffè! Supporto una tantum o mensile.",
+    "donatePaypalDesc": "Donazione rapida e facile una tantum tramite PayPal.",
+    "donatePatreonDesc": "Diventa un patron per supporto mensile e aggiornamenti esclusivi.",
+    "donateBtn": "Dona",
+    "thanks": "Grazie per aver considerato una donazione! Ogni contributo aiuta a mantenere B4cKuP T8L gratuito, manutenuto e in continuo miglioramento. Il tuo supporto significa tutto."
   },
   "imprint": {
     "title": "Note legali (Impressum)",

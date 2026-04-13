@@ -3,7 +3,8 @@
     "home": "Domů",
     "features": "Funkce",
     "download": "Stáhnout",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "donate": "Přispět"
   },
   "hero": {
     "tagline": "Sledujte, spravujte a monitorujte všechny své zálohy na jednom místě.",
@@ -71,6 +72,15 @@
     "send": "Odeslat zprávu",
     "github": "Nahlaste problémy na GitHubu",
     "emailDirect": "Nebo nám napište přímo na"
+  },
+  "donate": {
+    "title": "Podpořte B4cKuP T8L",
+    "subtitle": "B4cKuP T8L je zdarma a open source. Pokud vám přijde užitečný, zvažte podporu jeho vývoje.",
+    "donateKofiDesc": "Kupte mi kávu! Jednorázová nebo měsíční podpora.",
+    "donatePaypalDesc": "Rychlý a snadný jednorázový příspěvek přes PayPal.",
+    "donatePatreonDesc": "Staňte se patronem pro měsíční podporu a exkluzivní aktualizace.",
+    "donateBtn": "Přispět",
+    "thanks": "Děkujeme, že zvažujete příspěvek! Každý příspěvek pomáhá udržet B4cKuP T8L zdarma, udržovaný a stále se zlepšující. Vaše podpora znamená vše."
   },
   "imprint": {
     "title": "Právní upozornění (Impressum)",

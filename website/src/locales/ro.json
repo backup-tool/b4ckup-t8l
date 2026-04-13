@@ -3,7 +3,8 @@
     "home": "Acasă",
     "features": "Funcționalități",
     "download": "Descărcare",
-    "contact": "Contact"
+    "contact": "Contact",
+    "donate": "Donează"
   },
   "hero": {
     "tagline": "Urmărește, gestionează și monitorizează toate copiile de rezervă într-un singur loc.",
@@ -71,6 +72,15 @@
     "send": "Trimite mesajul",
     "github": "Raportează probleme pe GitHub",
     "emailDirect": "Sau trimite-ne un email direct la"
+  },
+  "donate": {
+    "title": "Sprijină B4cKuP T8L",
+    "subtitle": "B4cKuP T8L este gratuit și cu sursă deschisă. Dacă îl găsești util, ia în considerare sprijinirea dezvoltării sale.",
+    "donateKofiDesc": "Cumpără-mi o cafea! Sprijin unic sau lunar.",
+    "donatePaypalDesc": "Donație rapidă și ușoară, o singură dată, prin PayPal.",
+    "donatePatreonDesc": "Devino patron pentru sprijin lunar și actualizări exclusive.",
+    "donateBtn": "Donează",
+    "thanks": "Mulțumim că te gândești la o donație! Fiecare contribuție ajută la menținerea B4cKuP T8L gratuit, întreținut și în continuă îmbunătățire. Sprijinul tău înseamnă totul."
   },
   "imprint": {
     "title": "Notă legală (Impressum)",

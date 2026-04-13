@@ -3,7 +3,8 @@
     "home": "Trang chủ",
     "features": "Tính năng",
     "download": "Tải xuống",
-    "contact": "Liên hệ"
+    "contact": "Liên hệ",
+    "donate": "Ủng hộ"
   },
   "hero": {
     "tagline": "Theo dõi, quản lý và giám sát tất cả bản sao lưu của bạn tại một nơi.",
@@ -71,6 +72,15 @@
     "send": "Gửi tin nhắn",
     "github": "Báo cáo vấn đề trên GitHub",
     "emailDirect": "Hoặc gửi email trực tiếp cho chúng tôi tại"
+  },
+  "donate": {
+    "title": "Hỗ trợ B4cKuP T8L",
+    "subtitle": "B4cKuP T8L là phần mềm miễn phí và mã nguồn mở. Nếu bạn thấy hữu ích, hãy cân nhắc hỗ trợ phát triển.",
+    "donateKofiDesc": "Mua cho tôi một ly cà phê! Hỗ trợ một lần hoặc hàng tháng.",
+    "donatePaypalDesc": "Quyên góp nhanh chóng và dễ dàng một lần qua PayPal.",
+    "donatePatreonDesc": "Trở thành người bảo trợ để hỗ trợ hàng tháng và nhận cập nhật độc quyền.",
+    "donateBtn": "Ủng hộ",
+    "thanks": "Cảm ơn bạn đã cân nhắc quyên góp! Mỗi đóng góp giúp B4cKuP T8L luôn miễn phí, được duy trì và ngày càng tốt hơn. Sự hỗ trợ của bạn rất có ý nghĩa."
   },
   "imprint": {
     "title": "Thông báo pháp lý (Impressum)",

@@ -3,7 +3,8 @@
     "home": "首页",
     "features": "功能",
     "download": "下载",
-    "contact": "联系我们"
+    "contact": "联系我们",
+    "donate": "捐赠"
   },
   "hero": {
     "tagline": "在一个地方跟踪、管理和监控所有备份。",
@@ -71,6 +72,15 @@
     "send": "发送消息",
     "github": "在 GitHub 上报告问题",
     "emailDirect": "或直接发送电子邮件至"
+  },
+  "donate": {
+    "title": "支持 B4cKuP T8L",
+    "subtitle": "B4cKuP T8L 是免费的开源软件。如果您觉得它有用，请考虑支持它的开发。",
+    "donateKofiDesc": "请我喝杯咖啡！一次性或每月支持。",
+    "donatePaypalDesc": "通过 PayPal 快速便捷地进行一次性捐赠。",
+    "donatePatreonDesc": "成为赞助人，获得每月支持和独家更新。",
+    "donateBtn": "捐赠",
+    "thanks": "感谢您考虑捐赠！每一份贡献都有助于保持 B4cKuP T8L 免费、持续维护和不断改进。您的支持意义重大。"
   },
   "imprint": {
     "title": "法律声明 (Impressum)",

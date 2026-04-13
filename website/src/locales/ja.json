@@ -3,7 +3,8 @@
     "home": "ホーム",
     "features": "機能",
     "download": "ダウンロード",
-    "contact": "お問い合わせ"
+    "contact": "お問い合わせ",
+    "donate": "寄付する"
   },
   "hero": {
     "tagline": "すべてのバックアップを一か所で追跡、管理、監視。",
@@ -71,6 +72,15 @@
     "send": "メッセージを送信",
     "github": "GitHub で問題を報告",
     "emailDirect": "または直接メールでお問い合わせください"
+  },
+  "donate": {
+    "title": "B4cKuP T8Lを応援する",
+    "subtitle": "B4cKuP T8Lは無料のオープンソースソフトウェアです。お役に立てましたら、開発のサポートをご検討ください。",
+    "donateKofiDesc": "コーヒーをおごってください！一回限りまたは毎月のサポート。",
+    "donatePaypalDesc": "PayPalで簡単に一回限りの寄付ができます。",
+    "donatePatreonDesc": "毎月のサポートと限定アップデートのためにパトロンになりましょう。",
+    "donateBtn": "寄付する",
+    "thanks": "寄付をご検討いただきありがとうございます！すべての貢献がB4cKuP T8Lを無料で維持し、改善し続けるのに役立ちます。あなたのサポートは大きな力になります。"
   },
   "imprint": {
     "title": "法的通知 (Impressum)",

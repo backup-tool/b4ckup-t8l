@@ -3,7 +3,8 @@
     "home": "Accueil",
     "features": "Fonctionnalités",
     "download": "Télécharger",
-    "contact": "Contact"
+    "contact": "Contact",
+    "donate": "Faire un don"
   },
   "hero": {
     "tagline": "Suivez, gérez et surveillez toutes vos sauvegardes en un seul endroit.",
@@ -71,6 +72,15 @@
     "send": "Envoyer le message",
     "github": "Signaler des problèmes sur GitHub",
     "emailDirect": "Ou envoyez-nous un e-mail directement à"
+  },
+  "donate": {
+    "title": "Soutenez B4cKuP T8L",
+    "subtitle": "B4cKuP T8L est gratuit et open source. Si vous le trouvez utile, envisagez de soutenir son développement.",
+    "donateKofiDesc": "Offrez-moi un café ! Soutien ponctuel ou mensuel.",
+    "donatePaypalDesc": "Don rapide et facile en une fois via PayPal.",
+    "donatePatreonDesc": "Devenez mécène pour un soutien mensuel et des mises à jour exclusives.",
+    "donateBtn": "Faire un don",
+    "thanks": "Merci de considérer un don ! Chaque contribution aide à garder B4cKuP T8L gratuit, maintenu et en amélioration constante. Votre soutien compte énormément."
   },
   "imprint": {
     "title": "Mentions légales (Impressum)",

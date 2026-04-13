@@ -3,7 +3,8 @@
     "home": "Hem",
     "features": "Funktioner",
     "download": "Ladda ner",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "donate": "Donera"
   },
   "hero": {
     "tagline": "Spåra, hantera och övervaka alla dina säkerhetskopior på ett ställe.",
@@ -71,6 +72,15 @@
     "send": "Skicka meddelande",
     "github": "Rapportera problem på GitHub",
     "emailDirect": "Eller maila oss direkt på"
+  },
+  "donate": {
+    "title": "Stöd B4cKuP T8L",
+    "subtitle": "B4cKuP T8L är gratis och öppen källkod. Om du tycker det är användbart, överväg att stödja dess utveckling.",
+    "donateKofiDesc": "Köp mig en kaffe! Engångsstöd eller månatligt stöd.",
+    "donatePaypalDesc": "Snabb och enkel engångsdonation via PayPal.",
+    "donatePatreonDesc": "Bli patron för månatligt stöd och exklusiva uppdateringar.",
+    "donateBtn": "Donera",
+    "thanks": "Tack för att du överväger en donation! Varje bidrag hjälper till att hålla B4cKuP T8L gratis, underhållet och ständigt förbättrat. Ditt stöd betyder allt."
   },
   "imprint": {
     "title": "Juridiskt meddelande (Impressum)",

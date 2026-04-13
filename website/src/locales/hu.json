@@ -3,7 +3,8 @@
     "home": "Kezdőlap",
     "features": "Funkciók",
     "download": "Letöltés",
-    "contact": "Kapcsolat"
+    "contact": "Kapcsolat",
+    "donate": "Támogatás"
   },
   "hero": {
     "tagline": "Kövesse nyomon, kezelje és figyelje az összes biztonsági mentését egy helyen.",
@@ -71,6 +72,15 @@
     "send": "Üzenet küldése",
     "github": "Hibák jelentése a GitHubon",
     "emailDirect": "Vagy írjon nekünk közvetlenül a következő címre"
+  },
+  "donate": {
+    "title": "Támogasd a B4cKuP T8L-t",
+    "subtitle": "A B4cKuP T8L ingyenes és nyílt forráskódú. Ha hasznosnak találod, fontold meg a fejlesztés támogatását.",
+    "donateKofiDesc": "Vegyél nekem egy kávét! Egyszeri vagy havi támogatás.",
+    "donatePaypalDesc": "Gyors és egyszerű egyszeri adomány PayPal-on keresztül.",
+    "donatePatreonDesc": "Legyél patron havi támogatásért és exkluzív frissítésekért.",
+    "donateBtn": "Támogatás",
+    "thanks": "Köszönjük, hogy fontolóra veszed az adományozást! Minden hozzájárulás segít a B4cKuP T8L-t ingyenesen, karbantartottan és fejlődve tartani. A támogatásod mindent jelent."
   },
   "imprint": {
     "title": "Jogi nyilatkozat (Impressum)",

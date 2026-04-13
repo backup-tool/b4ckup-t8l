@@ -3,7 +3,8 @@
     "home": "Etusivu",
     "features": "Ominaisuudet",
     "download": "Lataa",
-    "contact": "Yhteystiedot"
+    "contact": "Yhteystiedot",
+    "donate": "Lahjoita"
   },
   "hero": {
     "tagline": "Seuraa, hallitse ja valvo kaikkia varmuuskopioitasi yhdessä paikassa.",
@@ -71,6 +72,15 @@
     "send": "Lähetä viesti",
     "github": "Ilmoita ongelmista GitHubissa",
     "emailDirect": "Tai lähetä meille sähköpostia suoraan osoitteeseen"
+  },
+  "donate": {
+    "title": "Tue B4cKuP T8L:ää",
+    "subtitle": "B4cKuP T8L on ilmainen ja avoimen lähdekoodin ohjelmisto. Jos pidät sitä hyödyllisenä, harkitse sen kehityksen tukemista.",
+    "donateKofiDesc": "Osta minulle kahvi! Kertaluonteinen tai kuukausittainen tuki.",
+    "donatePaypalDesc": "Nopea ja helppo kertaluonteinen lahjoitus PayPalin kautta.",
+    "donatePatreonDesc": "Ryhdy tukijaksi kuukausittaista tukea ja eksklusiivisia päivityksiä varten.",
+    "donateBtn": "Lahjoita",
+    "thanks": "Kiitos, että harkitset lahjoitusta! Jokainen lahjoitus auttaa pitämään B4cKuP T8L:n ilmaisena, ylläpidettynä ja kehittyvänä. Tukesi merkitsee paljon."
   },
   "imprint": {
     "title": "Oikeudellinen ilmoitus (Impressum)",

@@ -3,7 +3,8 @@
     "home": "Beranda",
     "features": "Fitur",
     "download": "Unduh",
-    "contact": "Kontak"
+    "contact": "Kontak",
+    "donate": "Donasi"
   },
   "hero": {
     "tagline": "Lacak, kelola, dan pantau semua cadangan Anda di satu tempat.",
@@ -71,6 +72,15 @@
     "send": "Kirim Pesan",
     "github": "Laporkan masalah di GitHub",
     "emailDirect": "Atau kirim email langsung kepada kami di"
+  },
+  "donate": {
+    "title": "Dukung B4cKuP T8L",
+    "subtitle": "B4cKuP T8L gratis dan bersumber terbuka. Jika Anda merasa berguna, pertimbangkan untuk mendukung pengembangannya.",
+    "donateKofiDesc": "Belikan saya kopi! Dukungan satu kali atau bulanan.",
+    "donatePaypalDesc": "Donasi satu kali yang cepat dan mudah melalui PayPal.",
+    "donatePatreonDesc": "Jadilah patron untuk dukungan bulanan dan pembaruan eksklusif.",
+    "donateBtn": "Donasi",
+    "thanks": "Terima kasih telah mempertimbangkan donasi! Setiap kontribusi membantu menjaga B4cKuP T8L tetap gratis, terpelihara, dan terus berkembang. Dukungan Anda sangat berarti."
   },
   "imprint": {
     "title": "Pemberitahuan Hukum (Impressum)",

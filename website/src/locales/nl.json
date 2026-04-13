@@ -3,7 +3,8 @@
     "home": "Home",
     "features": "Functies",
     "download": "Downloaden",
-    "contact": "Contact"
+    "contact": "Contact",
+    "donate": "Doneren"
   },
   "hero": {
     "tagline": "Volg, beheer en monitor al je back-ups op één plek.",
@@ -71,6 +72,15 @@
     "send": "Bericht verzenden",
     "github": "Meld problemen op GitHub",
     "emailDirect": "Of mail ons direct op"
+  },
+  "donate": {
+    "title": "Steun B4cKuP T8L",
+    "subtitle": "B4cKuP T8L is gratis en open source. Als je het nuttig vindt, overweeg dan de ontwikkeling te steunen.",
+    "donateKofiDesc": "Koop een koffie voor me! Eenmalige of maandelijkse steun.",
+    "donatePaypalDesc": "Snelle en eenvoudige eenmalige donatie via PayPal.",
+    "donatePatreonDesc": "Word patron voor maandelijkse steun en exclusieve updates.",
+    "donateBtn": "Doneren",
+    "thanks": "Bedankt dat je overweegt te doneren! Elke bijdrage helpt B4cKuP T8L gratis, onderhouden en verbeterend te houden. Je steun betekent alles."
   },
   "imprint": {
     "title": "Juridische kennisgeving (Impressum)",

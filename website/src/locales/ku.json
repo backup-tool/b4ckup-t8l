@@ -3,7 +3,8 @@
     "home": "Destpêk",
     "features": "Taybetmendî",
     "download": "Daxistin",
-    "contact": "Têkilî"
+    "contact": "Têkilî",
+    "donate": "Bexşîn"
   },
   "hero": {
     "tagline": "Hemû paşgiriyên xwe di yek cihî de bişopînin, birêvebirin û çavdêrî bikin.",
@@ -71,6 +72,15 @@
     "send": "Peyamê Bişînin",
     "github": "Li ser GitHub pirsgirêkan ragihînin",
     "emailDirect": "An rasterast ji me re e-peyam bişînin li"
+  },
+  "donate": {
+    "title": "Piştgiriya B4cKuP T8L bikin",
+    "subtitle": "B4cKuP T8L belaş û çavkaniya vekirî ye. Heke hûn wê bikêr dibînin, piştgiriya pêşkeftina wê bifikirin.",
+    "donateKofiDesc": "Ji min re qehweyekê bikirin! Piştgiriya carekê an mehane.",
+    "donatePaypalDesc": "Bexşîna bilez û hêsan a carekê bi rêya PayPal.",
+    "donatePatreonDesc": "Bibine patronek ji bo piştgiriya mehane û nûvekirinên taybet.",
+    "donateBtn": "Bexşîn",
+    "thanks": "Spas ku hûn li ser bexşînê difikirin! Her beşdarî dibe alîkar ku B4cKuP T8L belaş, parastin û baştir bimîne. Piştgiriya we tê wateya cîhanê."
   },
   "imprint": {
     "title": "Daxuyaniya Qanûnî (Impressum)",

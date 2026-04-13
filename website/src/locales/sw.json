@@ -3,7 +3,8 @@
     "home": "Nyumbani",
     "features": "Vipengele",
     "download": "Pakua",
-    "contact": "Wasiliana"
+    "contact": "Wasiliana",
+    "donate": "Changia"
   },
   "hero": {
     "tagline": "Fuatilia, simamia na ufuatilie nakala zako zote za akiba katika sehemu moja.",
@@ -71,6 +72,15 @@
     "send": "Tuma Ujumbe",
     "github": "Ripoti matatizo kwenye GitHub",
     "emailDirect": "Au tutumie barua pepe moja kwa moja kwa"
+  },
+  "donate": {
+    "title": "Saidia B4cKuP T8L",
+    "subtitle": "B4cKuP T8L ni bure na chanzo huria. Ukiiona inakusaidia, fikiria kuunga mkono maendeleo yake.",
+    "donateKofiDesc": "Ninunulie kahawa! Msaada wa mara moja au wa kila mwezi.",
+    "donatePaypalDesc": "Mchango wa haraka na rahisi wa mara moja kupitia PayPal.",
+    "donatePatreonDesc": "Kuwa mfadhili kwa msaada wa kila mwezi na masasisho ya kipekee.",
+    "donateBtn": "Changia",
+    "thanks": "Asante kwa kufikiria kuchangia! Kila mchango husaidia kuweka B4cKuP T8L bure, kudumishwa na kuendelea kuboreshwa. Msaada wako una maana kubwa."
   },
   "imprint": {
     "title": "Notisi ya Kisheria (Impressum)",

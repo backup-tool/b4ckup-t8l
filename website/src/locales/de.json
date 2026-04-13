@@ -3,7 +3,8 @@
     "home": "Start",
     "features": "Funktionen",
     "download": "Download",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "donate": "Spenden"
   },
   "hero": {
     "tagline": "Verwalte, tracke und \u00fcberwache alle deine Backups an einem Ort.",
@@ -71,6 +72,15 @@
     "send": "Nachricht senden",
     "github": "Probleme auf GitHub melden",
     "emailDirect": "Oder schreib uns direkt an"
+  },
+  "donate": {
+    "title": "B4cKuP T8L unterst\u00fctzen",
+    "subtitle": "B4cKuP T8L ist kostenlos und Open Source. Wenn du es n\u00fctzlich findest, erw\u00e4ge die Entwicklung zu unterst\u00fctzen.",
+    "donateKofiDesc": "Kauf mir einen Kaffee! Einmalige oder monatliche Unterst\u00fctzung.",
+    "donatePaypalDesc": "Schnelle und einfache Einmalspende \u00fcber PayPal.",
+    "donatePatreonDesc": "Werde Patron f\u00fcr monatliche Unterst\u00fctzung und exklusive Updates.",
+    "donateBtn": "Spenden",
+    "thanks": "Danke, dass du eine Spende in Betracht ziehst! Jeder Beitrag hilft, B4cKuP T8L kostenlos, gepflegt und stetig besser zu halten. Deine Unterst\u00fctzung bedeutet uns sehr viel."
   },
   "imprint": {
     "title": "Impressum",

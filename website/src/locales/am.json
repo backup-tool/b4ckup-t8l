@@ -3,7 +3,8 @@
     "home": "መነሻ",
     "features": "ባህሪያት",
     "download": "አውርድ",
-    "contact": "ያግኙን"
+    "contact": "ያግኙን",
+    "donate": "ለግሱ"
   },
   "hero": {
     "tagline": "ሁሉንም ምትኬዎችዎን በአንድ ቦታ ይከታተሉ፣ ያስተዳድሩ እና ይቆጣጠሩ።",
@@ -71,6 +72,15 @@
     "send": "መልዕክት ላክ",
     "github": "ችግሮችን በGitHub ላይ ሪፖርት ያድርጉ",
     "emailDirect": "ወይም በቀጥታ ኢሜይል ያድርጉልን በ"
+  },
+  "donate": {
+    "title": "B4cKuP T8L ይደግፉ",
+    "subtitle": "B4cKuP T8L ነጻ እና ክፍት ምንጭ ነው። ጠቃሚ ሆኖ ካገኙት የእድገቱን መደገፍ ያስቡ።",
+    "donateKofiDesc": "ቡና ይግዙልኝ! የአንድ ጊዜ ወይም ወርሃዊ ድጋፍ።",
+    "donatePaypalDesc": "በPayPal በኩል ፈጣን እና ቀላል የአንድ ጊዜ ልገሳ።",
+    "donatePatreonDesc": "ለወርሃዊ ድጋፍ እና ልዩ ዝመናዎች ደጋፊ ይሁኑ።",
+    "donateBtn": "ለግሱ",
+    "thanks": "ልገሳ ለማድረግ ስላሰቡ እናመሰግናለን! እያንዳንዱ አስተዋፅኦ B4cKuP T8L ነጻ፣ የተጠበቀ እና እየተሻሻለ እንዲቆይ ይረዳል። ድጋፍዎ ዓለም ማለት ነው።"
   },
   "imprint": {
     "title": "የሕግ ማስታወቂያ (Impressum)",

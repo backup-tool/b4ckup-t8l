@@ -3,7 +3,8 @@
     "home": "Hjem",
     "features": "Funksjoner",
     "download": "Last ned",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "donate": "Doner"
   },
   "hero": {
     "tagline": "Spor, administrer og overvåk alle sikkerhetskopiene dine på ett sted.",
@@ -71,6 +72,15 @@
     "send": "Send melding",
     "github": "Rapporter problemer på GitHub",
     "emailDirect": "Eller send oss en e-post direkte til"
+  },
+  "donate": {
+    "title": "Støtt B4cKuP T8L",
+    "subtitle": "B4cKuP T8L er gratis og åpen kildekode. Hvis du finner det nyttig, vurder å støtte utviklingen.",
+    "donateKofiDesc": "Kjøp meg en kaffe! Engangsstøtte eller månedlig støtte.",
+    "donatePaypalDesc": "Rask og enkel engangsdonasjon via PayPal.",
+    "donatePatreonDesc": "Bli patron for månedlig støtte og eksklusive oppdateringer.",
+    "donateBtn": "Doner",
+    "thanks": "Takk for at du vurderer en donasjon! Hvert bidrag hjelper med å holde B4cKuP T8L gratis, vedlikeholdt og i stadig forbedring. Din støtte betyr alt."
   },
   "imprint": {
     "title": "Juridisk merknad (Impressum)",

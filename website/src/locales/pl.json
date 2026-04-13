@@ -3,7 +3,8 @@
     "home": "Strona główna",
     "features": "Funkcje",
     "download": "Pobierz",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "donate": "Wspomóż"
   },
   "hero": {
     "tagline": "Śledź, zarządzaj i monitoruj wszystkie kopie zapasowe w jednym miejscu.",
@@ -71,6 +72,15 @@
     "send": "Wyślij wiadomość",
     "github": "Zgłoś problemy na GitHubie",
     "emailDirect": "Lub napisz do nas bezpośrednio na"
+  },
+  "donate": {
+    "title": "Wesprzyj B4cKuP T8L",
+    "subtitle": "B4cKuP T8L jest darmowy i open source. Jeśli uważasz go za przydatny, rozważ wsparcie jego rozwoju.",
+    "donateKofiDesc": "Kup mi kawę! Jednorazowe lub miesięczne wsparcie.",
+    "donatePaypalDesc": "Szybka i łatwa jednorazowa darowizna przez PayPal.",
+    "donatePatreonDesc": "Zostań patronem dla miesięcznego wsparcia i ekskluzywnych aktualizacji.",
+    "donateBtn": "Wspomóż",
+    "thanks": "Dziękujemy za rozważenie darowizny! Każdy wkład pomaga utrzymać B4cKuP T8L darmowym, utrzymanym i ciągle ulepszanym. Twoje wsparcie wiele znaczy."
   },
   "imprint": {
     "title": "Nota prawna (Impressum)",
