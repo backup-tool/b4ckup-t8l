@@ -15,7 +15,7 @@ const FEATURES = [
 ];
 
 export function Home() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <div>
@@ -38,14 +38,14 @@ export function Home() {
           </p>
           <div className="flex items-center justify-center gap-4">
             <Link
-              to="/download"
+              to={`/${i18n.language}/download`}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-bg font-semibold text-sm hover:bg-accent-hover transition-colors"
             >
               <Download className="w-4 h-4" />
               {t("hero.cta")}
             </Link>
             <Link
-              to="/features"
+              to={`/${i18n.language}/features`}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border text-sm hover:border-accent transition-colors"
             >
               {t("hero.learnMore")}
@@ -98,7 +98,7 @@ export function Home() {
         </div>
         <div className="text-center mt-10">
           <Link
-            to="/features"
+            to={`/${i18n.language}/features`}
             className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent-hover transition-colors"
           >
             {t("hero.learnMore")}
@@ -112,7 +112,7 @@ export function Home() {
         <div className="rounded-2xl bg-gradient-to-r from-accent/10 to-accent/5 border border-accent/20 p-10 text-center">
           <h2 className="text-2xl font-bold mb-3">{t("hero.tagline")}</h2>
           <Link
-            to="/download"
+            to={`/${i18n.language}/download`}
             className="inline-flex items-center gap-2 px-6 py-3 mt-4 rounded-xl bg-accent text-bg font-semibold text-sm hover:bg-accent-hover transition-colors"
           >
             <Download className="w-4 h-4" />

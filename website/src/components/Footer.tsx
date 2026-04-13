@@ -3,13 +3,13 @@ import { useTranslation } from "react-i18next";
 import { Heart } from "lucide-react";
 
 export function Footer() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
 
   return (
     <footer className="border-t border-border mt-20">
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-3">
               <img src="/icon.svg" alt="Logo" className="w-6 h-6 rounded" />
@@ -20,36 +20,33 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Product */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-fg-muted mb-3">
               {t("footer.product")}
             </h4>
             <div className="space-y-2">
-              <Link to="/features" className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("nav.features")}</Link>
-              <Link to="/download" className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("nav.download")}</Link>
+              <Link to={`/${lang}/features`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("nav.features")}</Link>
+              <Link to={`/${lang}/download`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("nav.download")}</Link>
               <a href="https://github.com/backup-tool/b4ckup-t8l" target="_blank" rel="noopener" className="block text-sm text-fg-muted hover:text-fg transition-colors">GitHub</a>
             </div>
           </div>
 
-          {/* Legal */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-fg-muted mb-3">
               {t("footer.legal")}
             </h4>
             <div className="space-y-2">
-              <Link to="/imprint" className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("footer.imprint")}</Link>
-              <Link to="/privacy" className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("footer.privacy")}</Link>
+              <Link to={`/${lang}/imprint`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("footer.imprint")}</Link>
+              <Link to={`/${lang}/privacy`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("footer.privacy")}</Link>
             </div>
           </div>
 
-          {/* Contact */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-fg-muted mb-3">
               {t("nav.contact")}
             </h4>
             <div className="space-y-2">
-              <Link to="/contact" className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("nav.contact")}</Link>
+              <Link to={`/${lang}/contact`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("nav.contact")}</Link>
             </div>
           </div>
         </div>
