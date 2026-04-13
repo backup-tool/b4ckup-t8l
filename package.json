@@ -6,15 +6,21 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
+    "@types/better-sqlite3": "^7.6.13",
     "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/coverage-v8": "^4.1.4",
     "autoprefixer": "^10.4.27",
+    "better-sqlite3": "^12.9.0",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2",
-    "vite": "^8.0.8"
+    "vite": "^8.0.8",
+    "vitest": "^4.1.4"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.10.1",
