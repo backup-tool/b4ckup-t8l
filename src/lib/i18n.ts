@@ -23,6 +23,14 @@ import ru from "@/locales/ru.json";
 import el from "@/locales/el.json";
 import tr from "@/locales/tr.json";
 import ar from "@/locales/ar.json";
+import he from "@/locales/he.json";
+import fa from "@/locales/fa.json";
+import ku from "@/locales/ku.json";
+import hy from "@/locales/hy.json";
+import ps from "@/locales/ps.json";
+import hi from "@/locales/hi.json";
+import ur from "@/locales/ur.json";
+import bn from "@/locales/bn.json";
 
 const resources: Record<string, { translation: any }> = {
   en: { translation: en }, de: { translation: de }, fr: { translation: fr },
@@ -32,7 +40,10 @@ const resources: Record<string, { translation: any }> = {
   pl: { translation: pl }, cs: { translation: cs }, hu: { translation: hu },
   bg: { translation: bg }, sr: { translation: sr }, hr: { translation: hr },
   uk: { translation: uk }, ru: { translation: ru }, el: { translation: el },
-  tr: { translation: tr }, ar: { translation: ar },
+  tr: { translation: tr }, ar: { translation: ar }, he: { translation: he },
+  fa: { translation: fa }, ku: { translation: ku }, hy: { translation: hy },
+  ps: { translation: ps }, hi: { translation: hi }, ur: { translation: ur },
+  bn: { translation: bn },
 };
 
 const savedLang = localStorage.getItem("language");

@@ -74,6 +74,14 @@ export function Settings() {
             { code: "el", label: "settings.greek" },
             { code: "tr", label: "settings.turkish" },
             { code: "ar", label: "settings.arabic" },
+            { code: "he", label: "settings.hebrew" },
+            { code: "fa", label: "settings.persian" },
+            { code: "ku", label: "settings.kurdish" },
+            { code: "hy", label: "settings.armenian" },
+            { code: "ps", label: "settings.pashto" },
+            { code: "hi", label: "settings.hindi" },
+            { code: "ur", label: "settings.urdu" },
+            { code: "bn", label: "settings.bengali" },
           ].map((lang) => (
             <Button
               key={lang.code}
