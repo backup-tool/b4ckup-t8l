@@ -36,7 +36,7 @@ function buildPlatforms(assets: ReleaseAsset[]) {
       reqKey: "macosReq",
       formats: [
         { label: "Apple Silicon (.dmg)", asset: findAsset(assets, "aarch64.dmg"), primary: true },
-        { label: "Apple Silicon (.tar.gz)", asset: findAsset(assets, "aarch64.app.tar.gz"), primary: false },
+        { label: "Intel (.dmg)", asset: findAsset(assets, "x64.dmg"), primary: false },
       ],
     },
     {
