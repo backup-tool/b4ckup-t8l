@@ -8,6 +8,7 @@ const PLATFORMS = [
     icon: Monitor,
     file: "Backup.Tool_0.1.0_x64-setup.exe",
     url: `https://github.com/${GITHUB_REPO}/releases/latest/download/Backup.Tool_0.1.0_x64-setup.exe`,
+    alt: { label: ".msi", url: `https://github.com/${GITHUB_REPO}/releases/latest/download/Backup.Tool_0.1.0_x64_en-US.msi` },
     reqKey: "windowsReq",
   },
   {
@@ -15,6 +16,7 @@ const PLATFORMS = [
     icon: Apple,
     file: "Backup.Tool_0.1.0_aarch64.dmg",
     url: `https://github.com/${GITHUB_REPO}/releases/latest/download/Backup.Tool_0.1.0_aarch64.dmg`,
+    alt: null,
     reqKey: "macosReq",
   },
   {
@@ -22,6 +24,7 @@ const PLATFORMS = [
     icon: Terminal,
     file: "Backup.Tool_0.1.0_amd64.AppImage",
     url: `https://github.com/${GITHUB_REPO}/releases/latest/download/Backup.Tool_0.1.0_amd64.AppImage`,
+    alt: { label: ".deb", url: `https://github.com/${GITHUB_REPO}/releases/latest/download/Backup.Tool_0.1.0_amd64.deb` },
     reqKey: "linuxReq",
   },
 ];
