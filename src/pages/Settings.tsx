@@ -67,6 +67,13 @@ export function Settings() {
             { code: "cs", label: "settings.czech" },
             { code: "hu", label: "settings.hungarian" },
             { code: "bg", label: "settings.bulgarian" },
+            { code: "sr", label: "settings.serbian" },
+            { code: "hr", label: "settings.croatian" },
+            { code: "uk", label: "settings.ukrainian" },
+            { code: "ru", label: "settings.russian" },
+            { code: "el", label: "settings.greek" },
+            { code: "tr", label: "settings.turkish" },
+            { code: "ar", label: "settings.arabic" },
           ].map((lang) => (
             <Button
               key={lang.code}

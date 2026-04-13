@@ -64,6 +64,13 @@ async function checkOverdueBackups() {
       cs: `${newOverdue.length} záloha(y) po termínu`,
       hu: `${newOverdue.length} biztonsági mentés lejárt`,
       bg: `${newOverdue.length} резервно(и) копие(я) просрочени`,
+      sr: `${newOverdue.length} резервна(е) копија(е) касни`,
+      hr: `${newOverdue.length} sigurnosna(e) kopija(e) kasni`,
+      uk: `${newOverdue.length} резервна(их) копія(й) прострочено`,
+      ru: `${newOverdue.length} бэкап(ов) просрочено`,
+      el: `${newOverdue.length} αντίγραφα ασφαλείας εκπρόθεσμα`,
+      tr: `${newOverdue.length} yedekleme gecikmiş`,
+      ar: `${newOverdue.length} نسخ احتياطية متأخرة`,
     };
     const bodies: Record<string, string> = {
       de: `Kritisch: ${names}`,
@@ -81,6 +88,13 @@ async function checkOverdueBackups() {
       cs: `Kritické: ${names}`,
       hu: `Kritikus: ${names}`,
       bg: `Критично: ${names}`,
+      sr: `Критично: ${names}`,
+      hr: `Kritično: ${names}`,
+      uk: `Критично: ${names}`,
+      ru: `Критические: ${names}`,
+      el: `Κρίσιμο: ${names}`,
+      tr: `Kritik: ${names}`,
+      ar: `حرج: ${names}`,
     };
     const title = titles[lang] || `${newOverdue.length} backup(s) overdue`;
     const body = bodies[lang] || `Critical: ${names}`;

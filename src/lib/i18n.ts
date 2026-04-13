@@ -16,24 +16,23 @@ import pl from "@/locales/pl.json";
 import cs from "@/locales/cs.json";
 import hu from "@/locales/hu.json";
 import bg from "@/locales/bg.json";
+import sr from "@/locales/sr.json";
+import hr from "@/locales/hr.json";
+import uk from "@/locales/uk.json";
+import ru from "@/locales/ru.json";
+import el from "@/locales/el.json";
+import tr from "@/locales/tr.json";
+import ar from "@/locales/ar.json";
 
 const resources: Record<string, { translation: any }> = {
-  en: { translation: en },
-  de: { translation: de },
-  fr: { translation: fr },
-  it: { translation: it },
-  es: { translation: es },
-  pt: { translation: pt },
-  nl: { translation: nl },
-  sv: { translation: sv },
-  da: { translation: da },
-  no: { translation: no },
-  fi: { translation: fi },
-  ro: { translation: ro },
-  pl: { translation: pl },
-  cs: { translation: cs },
-  hu: { translation: hu },
-  bg: { translation: bg },
+  en: { translation: en }, de: { translation: de }, fr: { translation: fr },
+  it: { translation: it }, es: { translation: es }, pt: { translation: pt },
+  nl: { translation: nl }, sv: { translation: sv }, da: { translation: da },
+  no: { translation: no }, fi: { translation: fi }, ro: { translation: ro },
+  pl: { translation: pl }, cs: { translation: cs }, hu: { translation: hu },
+  bg: { translation: bg }, sr: { translation: sr }, hr: { translation: hr },
+  uk: { translation: uk }, ru: { translation: ru }, el: { translation: el },
+  tr: { translation: tr }, ar: { translation: ar },
 };
 
 const savedLang = localStorage.getItem("language");
