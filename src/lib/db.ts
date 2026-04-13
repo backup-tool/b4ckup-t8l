@@ -618,14 +618,25 @@ export async function getBackupsWithStatus() {
 
 export async function getAllEntries(limit?: number) {
   const db = await getDb();
-  const limitClause = limit ? `LIMIT ${limit}` : "";
+  if (limit !== undefined) {
+    const safeLimit = Math.max(1, Math.min(Math.floor(limit), 10000));
+    return db.select<Array<Record<string, any>>>(
+      `SELECT be.*, b.name as backup_name, sm.name as media_name
+       FROM backup_entries be
+       JOIN backups b ON b.id = be.backup_id
+       JOIN storage_media sm ON sm.id = be.storage_media_id
+       WHERE b.deleted_at IS NULL AND be.deleted_at IS NULL
+       ORDER BY be.backup_date DESC LIMIT $1`,
+      [safeLimit]
+    );
+  }
   return db.select<Array<Record<string, any>>>(
     `SELECT be.*, b.name as backup_name, sm.name as media_name
      FROM backup_entries be
      JOIN backups b ON b.id = be.backup_id
      JOIN storage_media sm ON sm.id = be.storage_media_id
      WHERE b.deleted_at IS NULL AND be.deleted_at IS NULL
-     ORDER BY be.backup_date DESC ${limitClause}`
+     ORDER BY be.backup_date DESC`
   );
 }
 

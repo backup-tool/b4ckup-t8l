@@ -2,6 +2,7 @@ mod watcher;
 
 use serde::Serialize;
 use std::path::Path;
+use std::time::Duration;
 use tauri::Manager;
 
 #[derive(Serialize, Clone)]
@@ -90,12 +91,19 @@ pub fn run() {
 #[tauri::command]
 async fn get_dir_size(path: String) -> Result<u64, String> {
     let resolved = resolve_path(&path);
-    Ok(dir_size_recursive(&resolved, 100))
+    validate_path(&resolved)?;
+    tokio::time::timeout(Duration::from_secs(120), tokio::task::spawn_blocking(move || {
+        dir_size_recursive(&resolved, 100)
+    }))
+    .await
+    .map_err(|_| "Directory size calculation timed out after 120 seconds".to_string())?
+    .map_err(|e| format!("Task error: {}", e))
 }
 
 #[tauri::command]
 async fn watch_directory(path: String) -> Result<bool, String> {
     let p = resolve_path(&path);
+    validate_path(&p)?;
     if p.exists() && p.is_dir() {
         Ok(true)
     } else {
@@ -138,6 +146,43 @@ fn extract_date_from_name(name: &str) -> Option<String> {
     None
 }
 
+/// Validate that a path is safe to access (not a sensitive system directory)
+fn validate_path(path: &Path) -> Result<(), String> {
+    let path_str = path.to_string_lossy();
+
+    // Reject overly long paths
+    if path_str.len() > 4096 {
+        return Err("Path exceeds maximum length of 4096 characters".to_string());
+    }
+
+    // Block sensitive system directories
+    let blocked_prefixes: &[&str] = if cfg!(target_os = "macos") {
+        &["/System", "/usr", "/bin", "/sbin", "/private/etc", "/private/var/root"]
+    } else if cfg!(target_os = "windows") {
+        &["C:\\Windows", "C:\\Program Files", "C:\\ProgramData"]
+    } else {
+        &["/bin", "/sbin", "/usr", "/boot", "/proc", "/sys", "/etc"]
+    };
+
+    for prefix in blocked_prefixes {
+        if path_str.starts_with(prefix) {
+            return Err(format!("Access to system directory '{}' is not allowed", prefix));
+        }
+    }
+
+    // Reject paths with path traversal patterns
+    if path_str.contains("..") {
+        return Err("Path traversal ('..') is not allowed".to_string());
+    }
+
+    // Reject empty paths
+    if path_str.trim().is_empty() {
+        return Err("Path must not be empty".to_string());
+    }
+
+    Ok(())
+}
+
 fn resolve_path(path: &str) -> std::path::PathBuf {
     let p = path.trim();
 
@@ -165,7 +210,11 @@ fn resolve_path(path: &str) -> std::path::PathBuf {
 
 #[tauri::command]
 async fn scan_directory(path: String, mode: String) -> Result<Vec<ScanResult>, String> {
+    if mode != "subdirectories" && mode != "flat" {
+        return Err("Invalid scan mode. Must be 'subdirectories' or 'flat'.".to_string());
+    }
     let root = resolve_path(&path);
+    validate_path(&root)?;
     if !root.exists() || !root.is_dir() {
         return Err(format!("Path not accessible: {}. Resolved to: {}. Make sure the network share is mounted.", path, root.display()));
     }
