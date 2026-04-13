@@ -48,17 +48,24 @@ async function checkOverdueBackups() {
     const names = newOverdue.map((b: any) => b.name as string).join(", ");
     const lang = localStorage.getItem("language") || "en";
 
-    const title = lang === "de"
-      ? `${newOverdue.length} Backup(s) überfällig`
-      : lang === "ru"
-      ? `${newOverdue.length} бэкап(ов) просрочено`
-      : `${newOverdue.length} backup(s) overdue`;
-
-    const body = lang === "de"
-      ? `Kritisch: ${names}`
-      : lang === "ru"
-      ? `Критические: ${names}`
-      : `Critical: ${names}`;
+    const titles: Record<string, string> = {
+      de: `${newOverdue.length} Backup(s) überfällig`,
+      fr: `${newOverdue.length} sauvegarde(s) en retard`,
+      it: `${newOverdue.length} backup scaduti`,
+      es: `${newOverdue.length} copia(s) vencida(s)`,
+      pt: `${newOverdue.length} cópia(s) atrasada(s)`,
+      nl: `${newOverdue.length} back-up(s) verlopen`,
+    };
+    const bodies: Record<string, string> = {
+      de: `Kritisch: ${names}`,
+      fr: `Critique : ${names}`,
+      it: `Critico: ${names}`,
+      es: `Crítico: ${names}`,
+      pt: `Crítico: ${names}`,
+      nl: `Kritiek: ${names}`,
+    };
+    const title = titles[lang] || `${newOverdue.length} backup(s) overdue`;
+    const body = bodies[lang] || `Critical: ${names}`;
 
     sendNotification({ title, body });
 

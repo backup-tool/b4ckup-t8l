@@ -49,28 +49,25 @@ export function Settings() {
         <CardHeader>
           <CardTitle>{t("settings.language")}</CardTitle>
         </CardHeader>
-        <div className="flex gap-2">
-          <Button
-            variant={i18n.language === "de" ? "primary" : "secondary"}
-            size="sm"
-            onClick={() => changeLang("de")}
-          >
-            {t("settings.german")}
-          </Button>
-          <Button
-            variant={i18n.language === "en" ? "primary" : "secondary"}
-            size="sm"
-            onClick={() => changeLang("en")}
-          >
-            {t("settings.english")}
-          </Button>
-          <Button
-            variant={i18n.language === "ru" ? "primary" : "secondary"}
-            size="sm"
-            onClick={() => changeLang("ru")}
-          >
-            {t("settings.russian")}
-          </Button>
+        <div className="flex flex-wrap gap-2">
+          {[
+            { code: "en", label: "settings.english" },
+            { code: "de", label: "settings.german" },
+            { code: "fr", label: "settings.french" },
+            { code: "it", label: "settings.italian" },
+            { code: "es", label: "settings.spanish" },
+            { code: "pt", label: "settings.portuguese" },
+            { code: "nl", label: "settings.dutch" },
+          ].map((lang) => (
+            <Button
+              key={lang.code}
+              variant={i18n.language === lang.code ? "primary" : "secondary"}
+              size="sm"
+              onClick={() => changeLang(lang.code)}
+            >
+              {t(lang.label)}
+            </Button>
+          ))}
         </div>
       </Card>
 
