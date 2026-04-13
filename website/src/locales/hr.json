@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Početna",
+    "features": "Značajke",
+    "download": "Preuzimanje",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "tagline": "Pratite, upravljajte i nadzirite sve svoje sigurnosne kopije na jednom mjestu.",
+    "subtitle": "Nikada više ne gubite pregled nad sigurnosnim kopijama. B4cKuP T8L vam pruža potpuni pregled svih vaših sigurnosnih podataka na svim uređajima i medijima za pohranu.",
+    "cta": "Preuzmite besplatno",
+    "learnMore": "Saznajte više"
+  },
+  "stats": {
+    "backups": "Upravljajte neograničenim brojem sigurnosnih kopija",
+    "platforms": "Windows, macOS i Linux",
+    "languages": "3 jezika",
+    "opensource": "Besplatno i otvorenog koda"
+  },
+  "features": {
+    "title": "Sve što vam treba za upravljanje sigurnosnim kopijama",
+    "subtitle": "B4cKuP T8L zamjenjuje vašu tablicu za sigurnosne kopije moćnom desktop aplikacijom.",
+    "dashboard": "Nadzorna ploča",
+    "dashboardDesc": "Dobijte potpuni pregled svih sigurnosnih kopija s indikatorima statusa, grafikonima korištenja pohrane i provjerom pravila sigurnosnog kopiranja 3-2-1.",
+    "tracking": "Praćenje sigurnosnih kopija",
+    "trackingDesc": "Dokumentirajte svaku sigurnosnu kopiju s datumom, veličinom, lokacijom pohrane i bilješkama. Pratite povijest i promjene veličine tijekom vremena.",
+    "scan": "Automatsko skeniranje",
+    "scanDesc": "Usmjerite na mapu i automatski otkrijte postojeće sigurnosne kopije. Veličine se izračunavaju u pozadini.",
+    "media": "Mediji za pohranu",
+    "mediaDesc": "Upravljajte svim uređajima za pohranu - NAS, vanjski diskovi, usluge u oblaku, SSD-ovi i više. Pratite kapacitet i enkripciju.",
+    "matrix": "Matrica pregleda",
+    "matrixDesc": "Pogledajte na prvi pogled koja sigurnosna kopija je pohranjena na kojem mediju - poput tablice, ali bolje.",
+    "notifications": "Pametne obavijesti",
+    "notificationsDesc": "Primajte obavijesti kada sigurnosne kopije kasne. Podesivi intervali podsjetnika po sigurnosnoj kopiji.",
+    "darkmode": "Tamni način",
+    "darkmodeDesc": "Lijepe svijetle i tamne teme s prilagodljivim bojama naglaska. Prati postavke vašeg sustava.",
+    "i18n": "Višejezičnost",
+    "i18nDesc": "Dostupno na engleskom, njemačkom i ruskom. Dodatni jezici se lako mogu dodati.",
+    "tray": "Sistemska traka",
+    "trayDesc": "Radi tiho u pozadini. Promatrači datoteka automatski otkrivaju nove sigurnosne kopije.",
+    "export": "Izvoz podataka",
+    "exportDesc": "Izvezite sve podatke o sigurnosnim kopijama kao JSON ili CSV. Automatske sigurnosne kopije baze podataka čuvaju vaše podatke sigurnima.",
+    "sources": "Upravljanje izvorima",
+    "sourcesDesc": "Organizirajte sigurnosne kopije po izvoru - uređaji, usluge u oblaku, vanjski diskovi. Potpuni CRUD s mekim brisanjem i košem za smeće.",
+    "encryption": "Praćenje enkripcije",
+    "encryptionDesc": "Pratite koji mediji za pohranu su šifrirani, kojom metodom (VeraCrypt, BitLocker, FileVault) i oznakama ključeva."
+  },
+  "download": {
+    "title": "Preuzmite B4cKuP T8L",
+    "subtitle": "Dostupno za sve glavne platforme. Besplatno i otvorenog koda.",
+    "version": "Verzija",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 ili noviji",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) ili noviji",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 ili noviji",
+    "downloadBtn": "Preuzmi",
+    "comingSoon": "Uskoro"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Imate pitanja, povratne informacije ili ste pronašli grešku? Javite nam se.",
+    "name": "Ime",
+    "email": "E-pošta",
+    "message": "Poruka",
+    "send": "Pošaljite poruku",
+    "github": "Prijavite probleme na GitHubu",
+    "emailDirect": "Ili nam pišite izravno na"
+  },
+  "imprint": {
+    "title": "Pravna obavijest (Impressum)",
+    "according": "Informacije u skladu s člankom 5 TMG",
+    "responsible": "Odgovoran za sadržaj u skladu s člankom 55 (2) RStV",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Njemačka",
+    "email": "E-pošta: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Rješavanje sporova",
+    "disputeText": "Europska komisija pruža platformu za online rješavanje sporova (OS): https://ec.europa.eu/consumers/odr/. Nismo voljni niti obvezni sudjelovati u postupcima rješavanja sporova pred potrošačkim arbitražnim odborom."
+  },
+  "privacy": {
+    "title": "Politika privatnosti",
+    "intro": "Vrlo ozbiljno shvaćamo zaštitu vaših osobnih podataka. Ova politika privatnosti vas informira o tome kako postupamo s vašim podacima.",
+    "responsible": "Odgovorna strana",
+    "responsibleText": "Odgovorna strana za obradu podataka na ovoj web stranici navedena je u Pravnoj obavijesti.",
+    "hosting": "Hosting",
+    "hostingText": "Ova web stranica je hostirana na našim vlastitim poslužiteljima. Kada pristupite ovoj web stranici, vaš preglednik automatski šalje informacije (IP adresa, datum/vrijeme, pristupljena stranica) našem poslužitelju. Ovi podaci se pohranjuju u log datotekama poslužitelja i automatski brišu nakon 30 dana.",
+    "cookies": "Kolačići",
+    "cookiesText": "Ova web stranica ne koristi kolačiće niti tehnologije praćenja. Ne koriste se alati za analitiku.",
+    "contact": "Kontakt obrazac",
+    "contactText": "Kada nam pošaljete poruku putem kontakt obrasca, vaši podaci (ime, e-pošta, poruka) koristit će se isključivo za odgovor na vaš upit. Ne dijelimo ove podatke s trećim stranama.",
+    "downloads": "Preuzimanja",
+    "downloadsText": "Prilikom preuzimanja našeg softvera ne prikupljaju se osobni podaci. Datoteke za preuzimanje se pružaju bez registracije.",
+    "rights": "Vaša prava",
+    "rightsText": "Prema GDPR-u, imate pravo na pristup, ispravak, brisanje, ograničenje obrade, prenosivost podataka i prigovor. Za ostvarivanje ovih prava, kontaktirajte nas koristeći informacije iz Pravne obavijesti.",
+    "changes": "Izmjene",
+    "changesText": "Zadržavamo pravo na ažuriranje ove politike privatnosti. Trenutna verzija je uvijek dostupna na ovoj stranici."
+  },
+  "footer": {
+    "legal": "Pravno",
+    "imprint": "Pravna obavijest",
+    "privacy": "Politika privatnosti",
+    "product": "Proizvod",
+    "madeWith": "Napravljeno s"
+  }
+}
