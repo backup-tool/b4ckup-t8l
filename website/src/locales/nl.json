@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Functies",
+    "download": "Downloaden",
+    "contact": "Contact"
+  },
+  "hero": {
+    "tagline": "Volg, beheer en monitor al je back-ups op één plek.",
+    "subtitle": "Verlies nooit meer het overzicht over je back-ups. B4cKuP T8L geeft je een compleet overzicht van al je back-upgegevens op elk apparaat en opslagmedium.",
+    "cta": "Gratis downloaden",
+    "learnMore": "Meer informatie"
+  },
+  "stats": {
+    "backups": "Beheer onbeperkt back-ups",
+    "platforms": "Windows, macOS & Linux",
+    "languages": "3 talen",
+    "opensource": "Gratis & Open Source"
+  },
+  "features": {
+    "title": "Alles wat je nodig hebt om je back-ups te beheren",
+    "subtitle": "B4cKuP T8L vervangt je back-up-spreadsheet door een krachtige desktopapplicatie.",
+    "dashboard": "Dashboard",
+    "dashboardDesc": "Krijg een compleet overzicht van al je back-ups met statusindicatoren, opslaggebruikgrafieken en de 3-2-1 back-upregelcontrole.",
+    "tracking": "Back-up bijhouden",
+    "trackingDesc": "Documenteer elke back-up met datum, grootte, opslaglocatie en notities. Volg de geschiedenis en groottewijzigingen in de loop van de tijd.",
+    "scan": "Automatisch scannen",
+    "scanDesc": "Wijs naar een map en detecteer automatisch bestaande back-ups. Groottes worden op de achtergrond berekend.",
+    "media": "Opslagmedia",
+    "mediaDesc": "Beheer al je opslagapparaten - NAS, externe schijven, clouddiensten, SSD's en meer. Volg capaciteit en versleuteling.",
+    "matrix": "Overzichtsmatrix",
+    "matrixDesc": "Zie in één oogopslag welke back-up op welk medium is opgeslagen - net als een spreadsheet maar beter.",
+    "notifications": "Slimme meldingen",
+    "notificationsDesc": "Ontvang een melding wanneer back-ups achterstallig zijn. Configureerbare herinneringsintervallen per back-up.",
+    "darkmode": "Donkere modus",
+    "darkmodeDesc": "Mooie lichte en donkere thema's met aanpasbare accentkleuren. Volgt je systeemvoorkeur.",
+    "i18n": "Meertalig",
+    "i18nDesc": "Beschikbaar in het Engels, Duits en Russisch. Meer talen kunnen eenvoudig worden toegevoegd.",
+    "tray": "Systeemvak",
+    "trayDesc": "Draait stil op de achtergrond. Bestandswatchers detecteren automatisch nieuwe back-ups.",
+    "export": "Gegevensexport",
+    "exportDesc": "Exporteer al je back-upgegevens als JSON of CSV. Automatische databaseback-ups houden je gegevens veilig.",
+    "sources": "Bronbeheer",
+    "sourcesDesc": "Organiseer back-ups op bron - apparaten, clouddiensten, externe schijven. Volledige CRUD met soft-delete en prullenbak.",
+    "encryption": "Versleutelingsbeheer",
+    "encryptionDesc": "Volg welke opslagmedia versleuteld zijn, met welke methode (VeraCrypt, BitLocker, FileVault) en sleutellabels."
+  },
+  "download": {
+    "title": "Download B4cKuP T8L",
+    "subtitle": "Beschikbaar voor alle grote platforms. Gratis en open source.",
+    "version": "Versie",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 of hoger",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) of hoger",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 of hoger",
+    "downloadBtn": "Downloaden",
+    "comingSoon": "Binnenkort beschikbaar"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Heb je vragen, feedback of een bug gevonden? Neem contact op.",
+    "name": "Naam",
+    "email": "E-mail",
+    "message": "Bericht",
+    "send": "Bericht verzenden",
+    "github": "Meld problemen op GitHub",
+    "emailDirect": "Of mail ons direct op"
+  },
+  "imprint": {
+    "title": "Juridische kennisgeving (Impressum)",
+    "according": "Informatie volgens § 5 TMG",
+    "responsible": "Verantwoordelijk voor de inhoud volgens § 55 (2) RStV",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Duitsland",
+    "email": "E-mail: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Geschillenbeslechting",
+    "disputeText": "De Europese Commissie biedt een platform voor onlinegeschillenbeslechting (OS): https://ec.europa.eu/consumers/odr/. Wij zijn niet bereid of verplicht om deel te nemen aan geschillenbeslechtingsprocedures voor een consumentenarbitragecommissie."
+  },
+  "privacy": {
+    "title": "Privacybeleid",
+    "intro": "Wij nemen de bescherming van uw persoonlijke gegevens zeer serieus. Dit privacybeleid informeert u over hoe wij met uw gegevens omgaan.",
+    "responsible": "Verantwoordelijke partij",
+    "responsibleText": "De verantwoordelijke partij voor gegevensverwerking op deze website is vermeld in de Juridische kennisgeving.",
+    "hosting": "Hosting",
+    "hostingText": "Deze website wordt gehost op onze eigen servers. Wanneer u deze website bezoekt, stuurt uw browser automatisch informatie (IP-adres, datum/tijd, bezochte pagina) naar onze server. Deze gegevens worden opgeslagen in serverlogbestanden en na 30 dagen automatisch verwijderd.",
+    "cookies": "Cookies",
+    "cookiesText": "Deze website gebruikt geen cookies of trackingtechnologieën. Er worden geen analysetools gebruikt.",
+    "contact": "Contactformulier",
+    "contactText": "Wanneer u ons een bericht stuurt via het contactformulier, worden uw gegevens (naam, e-mail, bericht) uitsluitend gebruikt om uw vraag te beantwoorden. Wij delen deze gegevens niet met derden.",
+    "downloads": "Downloads",
+    "downloadsText": "Bij het downloaden van onze software worden geen persoonlijke gegevens verzameld. De downloadbestanden worden zonder registratie aangeboden.",
+    "rights": "Uw rechten",
+    "rightsText": "Op grond van de AVG heeft u recht op inzage, rectificatie, wissing, beperking van verwerking, gegevensoverdraagbaarheid en bezwaar. Om deze rechten uit te oefenen, kunt u contact met ons opnemen via de informatie in de Juridische kennisgeving.",
+    "changes": "Wijzigingen",
+    "changesText": "Wij behouden ons het recht voor om dit privacybeleid bij te werken. De huidige versie is altijd beschikbaar op deze pagina."
+  },
+  "footer": {
+    "legal": "Juridisch",
+    "imprint": "Juridische kennisgeving",
+    "privacy": "Privacybeleid",
+    "product": "Product",
+    "madeWith": "Gemaakt met"
+  }
+}

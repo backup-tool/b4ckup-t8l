@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Etusivu",
+    "features": "Ominaisuudet",
+    "download": "Lataa",
+    "contact": "Yhteystiedot"
+  },
+  "hero": {
+    "tagline": "Seuraa, hallitse ja valvo kaikkia varmuuskopioitasi yhdessä paikassa.",
+    "subtitle": "Älä koskaan menetä varmuuskopioiden hallintaa. B4cKuP T8L antaa sinulle täydellisen yleiskuvan kaikista varmuuskopiointitiedoistasi kaikilla laitteilla ja tallennusvälineillä.",
+    "cta": "Lataa ilmaiseksi",
+    "learnMore": "Lue lisää"
+  },
+  "stats": {
+    "backups": "Hallitse rajattomasti varmuuskopioita",
+    "platforms": "Windows, macOS & Linux",
+    "languages": "3 kieltä",
+    "opensource": "Ilmainen ja avoin lähdekoodi"
+  },
+  "features": {
+    "title": "Kaikki mitä tarvitset varmuuskopioiden hallintaan",
+    "subtitle": "B4cKuP T8L korvaa varmuuskopiointitaulukkolaskentasi tehokkaalla työpöytäsovelluksella.",
+    "dashboard": "Kojelauta",
+    "dashboardDesc": "Saat täydellisen yleiskuvan kaikista varmuuskopioistasi tilaindikaattoreiden, tallennustilan käyttökaavioiden ja 3-2-1 varmuuskopiointisäännön tarkistuksen avulla.",
+    "tracking": "Varmuuskopioiden seuranta",
+    "trackingDesc": "Dokumentoi jokainen varmuuskopio päivämäärällä, koolla, tallennuspaikalla ja muistiinpanoilla. Seuraa historiaa ja kokomuutoksia ajan myötä.",
+    "scan": "Automaattinen skannaus",
+    "scanDesc": "Osoita kansioon ja tunnista automaattisesti olemassa olevat varmuuskopiot. Koot lasketaan taustalla.",
+    "media": "Tallennusvälineet",
+    "mediaDesc": "Hallitse kaikkia tallennuslaitteitasi - NAS, ulkoiset asemat, pilvipalvelut, SSD:t ja paljon muuta. Seuraa kapasiteettia ja salausta.",
+    "matrix": "Yleiskuvausmatriisi",
+    "matrixDesc": "Näe yhdellä silmäyksellä mikä varmuuskopio on tallennettu millekin välineelle - aivan kuten taulukkolaskenta, mutta parempi.",
+    "notifications": "Älykkäät ilmoitukset",
+    "notificationsDesc": "Saat ilmoituksen kun varmuuskopiot ovat myöhässä. Määritettävät muistutusvälit varmuuskopiota kohden.",
+    "darkmode": "Tumma tila",
+    "darkmodeDesc": "Kauniit vaaleat ja tummat teemat mukautettavilla korostusväreillä. Seuraa järjestelmäasetustasi.",
+    "i18n": "Monikielinen",
+    "i18nDesc": "Saatavilla englanniksi, saksaksi ja venäjäksi. Lisää kieliä voidaan lisätä helposti.",
+    "tray": "Ilmaisinalue",
+    "trayDesc": "Toimii hiljaa taustalla. Tiedostontarkkailijat havaitsevat uudet varmuuskopiot automaattisesti.",
+    "export": "Tietojen vienti",
+    "exportDesc": "Vie kaikki varmuuskopiointitietosi JSON- tai CSV-muodossa. Automaattiset tietokantavarmuuskopiot pitävät tietosi turvassa.",
+    "sources": "Lähteiden hallinta",
+    "sourcesDesc": "Järjestä varmuuskopiot lähteen mukaan - laitteet, pilvipalvelut, ulkoiset asemat. Täysi CRUD pehmeällä poistolla ja roskakorilla.",
+    "encryption": "Salauksen seuranta",
+    "encryptionDesc": "Seuraa mitkä tallennusvälineet ovat salattuja, millä menetelmällä (VeraCrypt, BitLocker, FileVault) ja avaintunnisteilla."
+  },
+  "download": {
+    "title": "Lataa B4cKuP T8L",
+    "subtitle": "Saatavilla kaikille suurille alustoille. Ilmainen ja avoin lähdekoodi.",
+    "version": "Versio",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 tai uudempi",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) tai uudempi",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 tai uudempi",
+    "downloadBtn": "Lataa",
+    "comingSoon": "Tulossa pian"
+  },
+  "contact": {
+    "title": "Yhteystiedot",
+    "subtitle": "Onko sinulla kysyttävää, palautetta tai löysitkö virheen? Ota yhteyttä.",
+    "name": "Nimi",
+    "email": "Sähköposti",
+    "message": "Viesti",
+    "send": "Lähetä viesti",
+    "github": "Ilmoita ongelmista GitHubissa",
+    "emailDirect": "Tai lähetä meille sähköpostia suoraan osoitteeseen"
+  },
+  "imprint": {
+    "title": "Oikeudellinen ilmoitus (Impressum)",
+    "according": "Tiedot § 5 TMG:n mukaan",
+    "responsible": "Vastuuhenkilö sisällöstä § 55 (2) RStV:n mukaan",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Saksa",
+    "email": "Sähköposti: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Riitojenratkaisu",
+    "disputeText": "Euroopan komissio tarjoaa verkkovälitteisen riidanratkaisufoorumin (OS): https://ec.europa.eu/consumers/odr/. Emme ole halukkaita tai velvollisia osallistumaan riidanratkaisumenettelyihin kuluttajien välimiesoikeudessa."
+  },
+  "privacy": {
+    "title": "Tietosuojakäytäntö",
+    "intro": "Otamme henkilötietojesi suojan erittäin vakavasti. Tämä tietosuojakäytäntö kertoo, miten käsittelemme tietojasi.",
+    "responsible": "Vastuullinen osapuoli",
+    "responsibleText": "Tämän verkkosivuston tietojenkäsittelystä vastuussa oleva osapuoli on ilmoitettu oikeudellisessa ilmoituksessa.",
+    "hosting": "Hosting",
+    "hostingText": "Tämä verkkosivusto on isännöity omilla palvelimillamme. Kun vierailet tällä verkkosivustolla, selaimesi lähettää automaattisesti tietoja (IP-osoite, päivämäärä/aika, vierailtu sivu) palvelimellemme. Nämä tiedot tallennetaan palvelimen lokitiedostoihin ja poistetaan automaattisesti 30 päivän kuluttua.",
+    "cookies": "Evästeet",
+    "cookiesText": "Tämä verkkosivusto ei käytä evästeitä tai seurantateknologioita. Analytiikkatyökaluja ei käytetä.",
+    "contact": "Yhteydenottolomake",
+    "contactText": "Kun lähetät meille viestin yhteydenottolomakkeen kautta, tietojasi (nimi, sähköposti, viesti) käytetään ainoastaan kyselyysi vastaamiseen. Emme jaa näitä tietoja kolmansille osapuolille.",
+    "downloads": "Lataukset",
+    "downloadsText": "Kun lataat ohjelmistomme, henkilötietoja ei kerätä. Lataustiedostot tarjotaan ilman rekisteröitymistä.",
+    "rights": "Oikeutesi",
+    "rightsText": "GDPR:n mukaan sinulla on oikeus tietojen saantiin, oikaisuun, poistamiseen, käsittelyn rajoittamiseen, tietojen siirrettävyyteen ja vastustamiseen. Näiden oikeuksien käyttämiseksi ota meihin yhteyttä oikeudellisessa ilmoituksessa annettujen tietojen avulla.",
+    "changes": "Muutokset",
+    "changesText": "Pidätämme oikeuden päivittää tätä tietosuojakäytäntöä. Nykyinen versio on aina saatavilla tällä sivulla."
+  },
+  "footer": {
+    "legal": "Oikeudellinen",
+    "imprint": "Oikeudellinen ilmoitus",
+    "privacy": "Tietosuojakäytäntö",
+    "product": "Tuote",
+    "madeWith": "Tehty"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Hem",
+    "features": "Funktioner",
+    "download": "Ladda ner",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "tagline": "Spåra, hantera och övervaka alla dina säkerhetskopior på ett ställe.",
+    "subtitle": "Tappa aldrig koll på dina säkerhetskopior igen. B4cKuP T8L ger dig en komplett översikt över all din säkerhetskopieringsdata på alla enheter och lagringsmedier.",
+    "cta": "Ladda ner gratis",
+    "learnMore": "Läs mer"
+  },
+  "stats": {
+    "backups": "Hantera obegränsade säkerhetskopior",
+    "platforms": "Windows, macOS & Linux",
+    "languages": "3 språk",
+    "opensource": "Gratis & öppen källkod"
+  },
+  "features": {
+    "title": "Allt du behöver för att hantera dina säkerhetskopior",
+    "subtitle": "B4cKuP T8L ersätter ditt kalkylark för säkerhetskopior med en kraftfull skrivbordsapplikation.",
+    "dashboard": "Instrumentpanel",
+    "dashboardDesc": "Få en komplett översikt över alla dina säkerhetskopior med statusindikatorer, lagringsanvändningsdiagram och 3-2-1 säkerhetskopieringsregelkontroll.",
+    "tracking": "Säkerhetskopieringsspårning",
+    "trackingDesc": "Dokumentera varje säkerhetskopia med datum, storlek, lagringsplats och anteckningar. Spåra historik och storleksändringar över tid.",
+    "scan": "Automatisk skanning",
+    "scanDesc": "Peka på en mapp och upptäck automatiskt befintliga säkerhetskopior. Storlekar beräknas i bakgrunden.",
+    "media": "Lagringsmedier",
+    "mediaDesc": "Hantera alla dina lagringsenheter - NAS, externa enheter, molntjänster, SSD:er och mer. Spåra kapacitet och kryptering.",
+    "matrix": "Översiktsmatris",
+    "matrixDesc": "Se med en blick vilken säkerhetskopia som finns på vilket medium - precis som ett kalkylark men bättre.",
+    "notifications": "Smarta aviseringar",
+    "notificationsDesc": "Få aviseringar när säkerhetskopior är försenade. Konfigurerbara påminnelseintervall per säkerhetskopia.",
+    "darkmode": "Mörkt läge",
+    "darkmodeDesc": "Vackra ljusa och mörka teman med anpassningsbara accentfärger. Följer din systeminställning.",
+    "i18n": "Flerspråkig",
+    "i18nDesc": "Tillgänglig på engelska, tyska och ryska. Fler språk kan enkelt läggas till.",
+    "tray": "Systemfält",
+    "trayDesc": "Körs tyst i bakgrunden. Filbevakare upptäcker nya säkerhetskopior automatiskt.",
+    "export": "Dataexport",
+    "exportDesc": "Exportera all din säkerhetskopieringsdata som JSON eller CSV. Automatiska databasbackuper håller dina data säkra.",
+    "sources": "Källhantering",
+    "sourcesDesc": "Organisera säkerhetskopior efter källa - enheter, molntjänster, externa enheter. Fullständig CRUD med mjuk radering och papperskorg.",
+    "encryption": "Krypteringsspårning",
+    "encryptionDesc": "Spåra vilka lagringsmedier som är krypterade, med vilken metod (VeraCrypt, BitLocker, FileVault) och nyckeletiketter."
+  },
+  "download": {
+    "title": "Ladda ner B4cKuP T8L",
+    "subtitle": "Tillgänglig för alla stora plattformar. Gratis och öppen källkod.",
+    "version": "Version",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 eller senare",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) eller senare",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 eller senare",
+    "downloadBtn": "Ladda ner",
+    "comingSoon": "Kommer snart"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Har du frågor, feedback eller hittat en bugg? Hör av dig.",
+    "name": "Namn",
+    "email": "E-post",
+    "message": "Meddelande",
+    "send": "Skicka meddelande",
+    "github": "Rapportera problem på GitHub",
+    "emailDirect": "Eller maila oss direkt på"
+  },
+  "imprint": {
+    "title": "Juridiskt meddelande (Impressum)",
+    "according": "Information enligt § 5 TMG",
+    "responsible": "Ansvarig för innehållet enligt § 55 (2) RStV",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Tyskland",
+    "email": "E-post: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Tvistlösning",
+    "disputeText": "Europeiska kommissionen tillhandahåller en plattform för tvistlösning online (OS): https://ec.europa.eu/consumers/odr/. Vi är inte villiga eller skyldiga att delta i tvistlösningsförfaranden inför en konsumentskiljenämnd."
+  },
+  "privacy": {
+    "title": "Integritetspolicy",
+    "intro": "Vi tar skyddet av dina personuppgifter på största allvar. Denna integritetspolicy informerar dig om hur vi hanterar dina data.",
+    "responsible": "Ansvarig part",
+    "responsibleText": "Den ansvariga parten för databehandling på denna webbplats anges i det juridiska meddelandet.",
+    "hosting": "Hosting",
+    "hostingText": "Denna webbplats är hostad på våra egna servrar. När du besöker denna webbplats skickar din webbläsare automatiskt information (IP-adress, datum/tid, besökt sida) till vår server. Dessa data lagras i serverloggfiler och raderas automatiskt efter 30 dagar.",
+    "cookies": "Cookies",
+    "cookiesText": "Denna webbplats använder inga cookies eller spårningstekniker. Inga analysverktyg används.",
+    "contact": "Kontaktformulär",
+    "contactText": "När du skickar ett meddelande via kontaktformuläret används dina data (namn, e-post, meddelande) uteslutande för att svara på din förfrågan. Vi delar inte dessa data med tredje part.",
+    "downloads": "Nedladdningar",
+    "downloadsText": "När du laddar ner vår programvara samlas inga personuppgifter in. Nedladdningsfilerna tillhandahålls utan registrering.",
+    "rights": "Dina rättigheter",
+    "rightsText": "Enligt GDPR har du rätt till tillgång, rättelse, radering, begränsning av behandling, dataportabilitet och invändning. För att utöva dessa rättigheter, kontakta oss med informationen i det juridiska meddelandet.",
+    "changes": "Ändringar",
+    "changesText": "Vi förbehåller oss rätten att uppdatera denna integritetspolicy. Den aktuella versionen finns alltid tillgänglig på denna sida."
+  },
+  "footer": {
+    "legal": "Juridiskt",
+    "imprint": "Juridiskt meddelande",
+    "privacy": "Integritetspolicy",
+    "product": "Produkt",
+    "madeWith": "Gjord med"
+  }
+}

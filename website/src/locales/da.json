@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Hjem",
+    "features": "Funktioner",
+    "download": "Download",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "tagline": "Spor, administrer og overvåg alle dine sikkerhedskopier ét sted.",
+    "subtitle": "Mist aldrig overblikket over dine sikkerhedskopier igen. B4cKuP T8L giver dig et komplet overblik over alle dine sikkerhedskopieringsdata på tværs af alle enheder og lagringsmedier.",
+    "cta": "Download gratis",
+    "learnMore": "Læs mere"
+  },
+  "stats": {
+    "backups": "Administrer ubegrænsede sikkerhedskopier",
+    "platforms": "Windows, macOS & Linux",
+    "languages": "3 sprog",
+    "opensource": "Gratis & Open Source"
+  },
+  "features": {
+    "title": "Alt hvad du behøver for at administrere dine sikkerhedskopier",
+    "subtitle": "B4cKuP T8L erstatter dit sikkerhedskopieringsregneark med en kraftfuld desktopapplikation.",
+    "dashboard": "Kontrolpanel",
+    "dashboardDesc": "Få et komplet overblik over alle dine sikkerhedskopier med statusindikatorer, lagringsforbrugsdiagrammer og 3-2-1 sikkerhedskopieringsregelkontrol.",
+    "tracking": "Sikkerhedskopieringssporing",
+    "trackingDesc": "Dokumenter hver sikkerhedskopi med dato, størrelse, lagringsplacering og noter. Spor historik og størrelsesændringer over tid.",
+    "scan": "Automatisk scanning",
+    "scanDesc": "Peg på en mappe og registrer automatisk eksisterende sikkerhedskopier. Størrelser beregnes i baggrunden.",
+    "media": "Lagringsmedier",
+    "mediaDesc": "Administrer alle dine lagringsenheder - NAS, eksterne drev, cloudtjenester, SSD'er og mere. Spor kapacitet og kryptering.",
+    "matrix": "Oversigtsmatrix",
+    "matrixDesc": "Se med ét blik hvilken sikkerhedskopi der er gemt på hvilket medie - ligesom et regneark men bedre.",
+    "notifications": "Smarte notifikationer",
+    "notificationsDesc": "Bliv underrettet når sikkerhedskopier er forsinket. Konfigurerbare påmindelsesintervaller pr. sikkerhedskopi.",
+    "darkmode": "Mørk tilstand",
+    "darkmodeDesc": "Smukke lyse og mørke temaer med tilpasselige accentfarver. Følger din systemindstilling.",
+    "i18n": "Flersproget",
+    "i18nDesc": "Tilgængelig på engelsk, tysk og russisk. Flere sprog kan nemt tilføjes.",
+    "tray": "Systembakke",
+    "trayDesc": "Kører stille i baggrunden. Filovervågere registrerer automatisk nye sikkerhedskopier.",
+    "export": "Dataeksport",
+    "exportDesc": "Eksporter alle dine sikkerhedskopieringsdata som JSON eller CSV. Automatiske databasesikkerhedskopier holder dine data sikre.",
+    "sources": "Kildestyring",
+    "sourcesDesc": "Organiser sikkerhedskopier efter kilde - enheder, cloudtjenester, eksterne drev. Fuld CRUD med blød sletning og papirkurv.",
+    "encryption": "Krypteringssporing",
+    "encryptionDesc": "Spor hvilke lagringsmedier der er krypteret, med hvilken metode (VeraCrypt, BitLocker, FileVault) og nøglelabels."
+  },
+  "download": {
+    "title": "Download B4cKuP T8L",
+    "subtitle": "Tilgængelig til alle større platforme. Gratis og open source.",
+    "version": "Version",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 eller nyere",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) eller nyere",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 eller nyere",
+    "downloadBtn": "Download",
+    "comingSoon": "Kommer snart"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Har du spørgsmål, feedback eller fundet en fejl? Kontakt os.",
+    "name": "Navn",
+    "email": "E-mail",
+    "message": "Besked",
+    "send": "Send besked",
+    "github": "Rapporter problemer på GitHub",
+    "emailDirect": "Eller send os en e-mail direkte på"
+  },
+  "imprint": {
+    "title": "Juridisk meddelelse (Impressum)",
+    "according": "Information i henhold til § 5 TMG",
+    "responsible": "Ansvarlig for indholdet i henhold til § 55 (2) RStV",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Tyskland",
+    "email": "E-mail: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Tvistbilæggelse",
+    "disputeText": "Europa-Kommissionen stiller en platform til rådighed for onlinetvistbilæggelse (OS): https://ec.europa.eu/consumers/odr/. Vi er ikke villige til eller forpligtet til at deltage i tvistbilæggelsesprocedurer ved et forbrugervoldgiftsnævn."
+  },
+  "privacy": {
+    "title": "Privatlivspolitik",
+    "intro": "Vi tager beskyttelsen af dine personlige data meget alvorligt. Denne privatlivspolitik informerer dig om, hvordan vi håndterer dine data.",
+    "responsible": "Ansvarlig part",
+    "responsibleText": "Den ansvarlige part for databehandling på denne hjemmeside er angivet i den juridiske meddelelse.",
+    "hosting": "Hosting",
+    "hostingText": "Denne hjemmeside er hostet på vores egne servere. Når du besøger denne hjemmeside, sender din browser automatisk information (IP-adresse, dato/tid, besøgt side) til vores server. Disse data gemmes i serverlogfiler og slettes automatisk efter 30 dage.",
+    "cookies": "Cookies",
+    "cookiesText": "Denne hjemmeside bruger ingen cookies eller sporingsteknologier. Der bruges ingen analyseværktøjer.",
+    "contact": "Kontaktformular",
+    "contactText": "Når du sender os en besked via kontaktformularen, vil dine data (navn, e-mail, besked) udelukkende blive brugt til at besvare din henvendelse. Vi deler ikke disse data med tredjeparter.",
+    "downloads": "Downloads",
+    "downloadsText": "Når du downloader vores software, indsamles ingen personlige data. Downloadfilerne stilles til rådighed uden registrering.",
+    "rights": "Dine rettigheder",
+    "rightsText": "I henhold til GDPR har du ret til indsigt, berigtigelse, sletning, begrænsning af behandling, dataportabilitet og indsigelse. For at udøve disse rettigheder, kontakt os venligst med oplysningerne i den juridiske meddelelse.",
+    "changes": "Ændringer",
+    "changesText": "Vi forbeholder os retten til at opdatere denne privatlivspolitik. Den aktuelle version er altid tilgængelig på denne side."
+  },
+  "footer": {
+    "legal": "Juridisk",
+    "imprint": "Juridisk meddelelse",
+    "privacy": "Privatlivspolitik",
+    "product": "Produkt",
+    "madeWith": "Lavet med"
+  }
+}
