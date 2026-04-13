@@ -26,6 +26,7 @@ export function Imprint() {
           <p>{t("imprint.name")}</p>
           <p>{t("imprint.address")}</p>
           <p>{t("imprint.city")}</p>
+          <p>{t("imprint.country")}</p>
         </section>
 
       </div>
