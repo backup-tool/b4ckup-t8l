@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "features": "Özellikler",
+    "download": "İndir",
+    "contact": "İletişim"
+  },
+  "hero": {
+    "tagline": "Tüm yedeklemelerinizi tek bir yerden takip edin, yönetin ve izleyin.",
+    "subtitle": "Yedeklemelerinizi bir daha asla gözden kaçırmayın. B4cKuP T8L, tüm cihazlarınız ve depolama ortamlarınızdaki yedekleme verilerinizin eksiksiz bir genel görünümünü sunar.",
+    "cta": "Ücretsiz İndir",
+    "learnMore": "Daha Fazla Bilgi"
+  },
+  "stats": {
+    "backups": "Sınırsız yedekleme yönetin",
+    "platforms": "Windows, macOS & Linux",
+    "languages": "3 Dil",
+    "opensource": "Ücretsiz & Açık Kaynak"
+  },
+  "features": {
+    "title": "Yedeklemelerinizi yönetmek için ihtiyacınız olan her şey",
+    "subtitle": "B4cKuP T8L, yedekleme tablonuzu güçlü bir masaüstü uygulamasıyla değiştirir.",
+    "dashboard": "Kontrol Paneli",
+    "dashboardDesc": "Durum göstergeleri, depolama kullanım grafikleri ve 3-2-1 yedekleme kuralı kontrolü ile tüm yedeklemelerinizin eksiksiz bir genel görünümünü alın.",
+    "tracking": "Yedekleme Takibi",
+    "trackingDesc": "Her yedeklemeyi tarih, boyut, depolama konumu ve notlarla belgeleyin. Geçmişi ve boyut değişikliklerini zaman içinde takip edin.",
+    "scan": "Otomatik Tarama",
+    "scanDesc": "Bir klasöre yönlendirin ve mevcut yedeklemeleri otomatik olarak algılayın. Boyutlar arka planda hesaplanır.",
+    "media": "Depolama Ortamları",
+    "mediaDesc": "Tüm depolama cihazlarınızı yönetin - NAS, harici diskler, bulut hizmetleri, SSD'ler ve daha fazlası. Kapasite ve şifrelemeyi takip edin.",
+    "matrix": "Genel Bakış Matrisi",
+    "matrixDesc": "Hangi yedeklemenin hangi ortamda depolandığını bir bakışta görün - tıpkı bir elektronik tablo gibi ama daha iyi.",
+    "notifications": "Akıllı Bildirimler",
+    "notificationsDesc": "Yedeklemelerin süresi dolduğunda bildirim alın. Yedekleme başına yapılandırılabilir hatırlatma aralıkları.",
+    "darkmode": "Karanlık Mod",
+    "darkmodeDesc": "Özelleştirilebilir vurgu renkleriyle güzel açık ve koyu temalar. Sistem tercihinizi takip eder.",
+    "i18n": "Çok Dilli",
+    "i18nDesc": "İngilizce, Almanca ve Rusça olarak mevcuttur. Daha fazla dil kolayca eklenebilir.",
+    "tray": "Sistem Tepsisi",
+    "trayDesc": "Arka planda sessizce çalışır. Dosya izleyiciler yeni yedeklemeleri otomatik olarak algılar.",
+    "export": "Veri Dışa Aktarma",
+    "exportDesc": "Tüm yedekleme verilerinizi JSON veya CSV olarak dışa aktarın. Otomatik veritabanı yedeklemeleri verilerinizi güvende tutar.",
+    "sources": "Kaynak Yönetimi",
+    "sourcesDesc": "Yedeklemeleri kaynağa göre düzenleyin - cihazlar, bulut hizmetleri, harici diskler. Yumuşak silme ve çöp kutusu ile tam CRUD.",
+    "encryption": "Şifreleme Takibi",
+    "encryptionDesc": "Hangi depolama ortamlarının şifrelendiğini, hangi yöntemle (VeraCrypt, BitLocker, FileVault) ve anahtar etiketleriyle takip edin."
+  },
+  "download": {
+    "title": "B4cKuP T8L İndir",
+    "subtitle": "Tüm büyük platformlar için mevcuttur. Ücretsiz ve açık kaynak.",
+    "version": "Sürüm",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 veya üstü",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) veya üstü",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 veya üstü",
+    "downloadBtn": "İndir",
+    "comingSoon": "Yakında"
+  },
+  "contact": {
+    "title": "İletişim",
+    "subtitle": "Sorularınız, geri bildirimleriniz mi var veya bir hata mı buldunuz? Bize ulaşın.",
+    "name": "Ad",
+    "email": "E-posta",
+    "message": "Mesaj",
+    "send": "Mesaj Gönder",
+    "github": "Sorunları GitHub'da bildirin",
+    "emailDirect": "Veya bize doğrudan e-posta gönderin"
+  },
+  "imprint": {
+    "title": "Yasal Bildirim (Impressum)",
+    "according": "TMG Bölüm 5'e göre bilgiler",
+    "responsible": "RStV Bölüm 55 (2)'ye göre içerikten sorumlu",
+    "name": "Luca Efinger",
+    "company": "Luca Efinger",
+    "address": "Friedrich-Ebert-Ring 16",
+    "city": "97072 Würzburg",
+    "country": "Almanya",
+    "email": "E-posta: contact@backup-tool.app",
+    "phone": "",
+    "vatId": "",
+    "dispute": "Uyuşmazlık Çözümü",
+    "disputeText": "Avrupa Komisyonu çevrimiçi uyuşmazlık çözümü (OS) için bir platform sağlamaktadır: https://ec.europa.eu/consumers/odr/. Bir tüketici tahkim kurulu önünde uyuşmazlık çözüm sürecine katılmaya istekli veya zorunlu değiliz."
+  },
+  "privacy": {
+    "title": "Gizlilik Politikası",
+    "intro": "Kişisel verilerinizin korunmasını çok ciddiye alıyoruz. Bu gizlilik politikası, verilerinizi nasıl işlediğimiz hakkında sizi bilgilendirir.",
+    "responsible": "Sorumlu Taraf",
+    "responsibleText": "Bu web sitesinde veri işlemeden sorumlu taraf Yasal Bildirim'de belirtilmiştir.",
+    "hosting": "Barındırma",
+    "hostingText": "Bu web sitesi kendi sunucularımızda barındırılmaktadır. Bu web sitesine eriştiğinizde, tarayıcınız otomatik olarak sunucumuza bilgi gönderir (IP adresi, tarih/saat, erişilen sayfa). Bu veriler sunucu günlük dosyalarında saklanır ve 30 gün sonra otomatik olarak silinir.",
+    "cookies": "Çerezler",
+    "cookiesText": "Bu web sitesi çerez veya herhangi bir izleme teknolojisi kullanmaz. Hiçbir analiz aracı kullanılmamaktadır.",
+    "contact": "İletişim Formu",
+    "contactText": "Bize iletişim formu aracılığıyla bir mesaj gönderdiğinizde, verileriniz (ad, e-posta, mesaj) yalnızca sorgunuza yanıt vermek için kullanılacaktır. Bu verileri üçüncü taraflarla paylaşmıyoruz.",
+    "downloads": "İndirmeler",
+    "downloadsText": "Yazılımımızı indirdiğinizde hiçbir kişisel veri toplanmaz. İndirme dosyaları kayıt olmadan sağlanır.",
+    "rights": "Haklarınız",
+    "rightsText": "GDPR kapsamında erişim, düzeltme, silme, işlemenin kısıtlanması, veri taşınabilirliği ve itiraz haklarına sahipsiniz. Bu hakları kullanmak için lütfen Yasal Bildirim'deki bilgileri kullanarak bize ulaşın.",
+    "changes": "Değişiklikler",
+    "changesText": "Bu gizlilik politikasını güncelleme hakkımızı saklı tutarız. Güncel sürüm her zaman bu sayfada mevcuttur."
+  },
+  "footer": {
+    "legal": "Yasal",
+    "imprint": "Yasal Bildirim",
+    "privacy": "Gizlilik Politikası",
+    "product": "Ürün",
+    "madeWith": "Şununla yapıldı"
+  }
+}
