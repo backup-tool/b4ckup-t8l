@@ -9,6 +9,7 @@ import { Download } from "./pages/Download";
 import { Contact } from "./pages/Contact";
 import { Imprint } from "./pages/Imprint";
 import { Privacy } from "./pages/Privacy";
+import { NotFound } from "./pages/NotFound";
 
 function AppRoutes() {
   return (
@@ -23,6 +24,7 @@ function AppRoutes() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/imprint" element={<Imprint />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
