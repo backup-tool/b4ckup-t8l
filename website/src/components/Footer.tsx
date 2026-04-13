@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Heart } from "lucide-react";
+import { langPrefix } from "./LangRouter";
 
 export function Footer() {
   const { t, i18n } = useTranslation();
@@ -25,8 +26,8 @@ export function Footer() {
               {t("footer.product")}
             </h4>
             <div className="space-y-2">
-              <Link to={`/${lang}/features`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("nav.features")}</Link>
-              <Link to={`/${lang}/download`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("nav.download")}</Link>
+              <Link to={`${langPrefix(lang)}/features`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("nav.features")}</Link>
+              <Link to={`${langPrefix(lang)}/download`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("nav.download")}</Link>
               <a href="https://github.com/backup-tool/b4ckup-t8l" target="_blank" rel="noopener" className="block text-sm text-fg-muted hover:text-fg transition-colors">GitHub</a>
             </div>
           </div>
@@ -36,8 +37,8 @@ export function Footer() {
               {t("footer.legal")}
             </h4>
             <div className="space-y-2">
-              <Link to={`/${lang}/imprint`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("footer.imprint")}</Link>
-              <Link to={`/${lang}/privacy`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("footer.privacy")}</Link>
+              <Link to={`${langPrefix(lang)}/imprint`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("footer.imprint")}</Link>
+              <Link to={`${langPrefix(lang)}/privacy`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("footer.privacy")}</Link>
             </div>
           </div>
 
@@ -46,7 +47,7 @@ export function Footer() {
               {t("nav.contact")}
             </h4>
             <div className="space-y-2">
-              <Link to={`/${lang}/contact`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("nav.contact")}</Link>
+              <Link to={`${langPrefix(lang)}/contact`} className="block text-sm text-fg-muted hover:text-fg transition-colors">{t("nav.contact")}</Link>
             </div>
           </div>
         </div>

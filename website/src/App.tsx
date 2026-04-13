@@ -35,12 +35,10 @@ export default function App() {
     <BrowserRouter>
       <div className="min-h-screen flex flex-col">
         <Routes>
-          {/* Language-prefixed routes */}
-          <Route path="/en/*" element={<LangRouter lang="en"><AppRoutes /></LangRouter>} />
           <Route path="/de/*" element={<LangRouter lang="de"><AppRoutes /></LangRouter>} />
           <Route path="/ru/*" element={<LangRouter lang="ru"><AppRoutes /></LangRouter>} />
-          {/* Default: redirect to /en */}
-          <Route path="*" element={<LangRouter lang=""><AppRoutes /></LangRouter>} />
+          {/* English = default, no prefix */}
+          <Route path="*" element={<LangRouter lang="en"><AppRoutes /></LangRouter>} />
         </Routes>
       </div>
     </BrowserRouter>
