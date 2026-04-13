@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "download": "Download",
+    "contact": "Contact"
+  },
+  "hero": {
+    "tagline": "Track, manage and monitor all your backups in one place.",
+    "subtitle": "Never lose track of your backups again. B4cKuP T8L gives you a complete overview of all your backup data across every device and storage medium.",
+    "cta": "Download for Free",
+    "learnMore": "Learn More"
+  },
+  "stats": {
+    "backups": "Manage unlimited backups",
+    "platforms": "Windows, macOS & Linux",
+    "languages": "3 Languages",
+    "opensource": "Free & Open Source"
+  },
+  "features": {
+    "title": "Everything you need to manage your backups",
+    "subtitle": "B4cKuP T8L replaces your backup spreadsheet with a powerful desktop application.",
+    "dashboard": "Dashboard",
+    "dashboardDesc": "Get a complete overview of all your backups with status indicators, storage usage charts, and the 3-2-1 backup rule check.",
+    "tracking": "Backup Tracking",
+    "trackingDesc": "Document every backup with date, size, storage location, and notes. Track the history and size changes over time.",
+    "scan": "Auto-Scan",
+    "scanDesc": "Point to a folder and automatically detect existing backups. Sizes are calculated in the background.",
+    "media": "Storage Media",
+    "mediaDesc": "Manage all your storage devices - NAS, external drives, cloud services, SSDs and more. Track capacity and encryption.",
+    "matrix": "Overview Matrix",
+    "matrixDesc": "See at a glance which backup is stored on which medium - just like a spreadsheet but better.",
+    "notifications": "Smart Notifications",
+    "notificationsDesc": "Get notified when backups are overdue. Configurable reminder intervals per backup.",
+    "darkmode": "Dark Mode",
+    "darkmodeDesc": "Beautiful light and dark themes with customizable accent colors. Follows your system preference.",
+    "i18n": "Multilingual",
+    "i18nDesc": "Available in English, German and Russian. More languages can be added easily.",
+    "tray": "System Tray",
+    "trayDesc": "Runs quietly in the background. File watchers detect new backups automatically.",
+    "export": "Data Export",
+    "exportDesc": "Export all your backup data as JSON or CSV. Automatic database backups keep your data safe.",
+    "sources": "Source Management",
+    "sourcesDesc": "Organize backups by source - devices, cloud services, external drives. Full CRUD with soft-delete and trash.",
+    "encryption": "Encryption Tracking",
+    "encryptionDesc": "Track which storage media are encrypted, with which method (VeraCrypt, BitLocker, FileVault) and key labels."
+  },
+  "download": {
+    "title": "Download B4cKuP T8L",
+    "subtitle": "Available for all major platforms. Free and open source.",
+    "version": "Version",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 or later",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) or later",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 or later",
+    "downloadBtn": "Download",
+    "comingSoon": "Coming Soon"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Have questions, feedback or found a bug? Get in touch.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "github": "Report issues on GitHub",
+    "emailDirect": "Or email us directly at"
+  },
+  "imprint": {
+    "title": "Legal Notice (Impressum)",
+    "according": "Information according to Section 5 TMG",
+    "responsible": "Responsible for the content according to Section 55 (2) RStV",
+    "name": "[Your Name]",
+    "company": "[Your Company Name]",
+    "address": "[Your Street Address]",
+    "city": "[ZIP Code, City]",
+    "country": "Germany",
+    "email": "Email: [your@email.com]",
+    "phone": "Phone: [your phone number]",
+    "vatId": "VAT ID: [if applicable]",
+    "dispute": "Dispute Resolution",
+    "disputeText": "The European Commission provides a platform for online dispute resolution (OS): https://ec.europa.eu/consumers/odr/. We are not willing or obligated to participate in dispute resolution proceedings before a consumer arbitration board."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "intro": "We take the protection of your personal data very seriously. This privacy policy informs you about how we handle your data.",
+    "responsible": "Responsible Party",
+    "responsibleText": "The responsible party for data processing on this website is specified in the Legal Notice.",
+    "hosting": "Hosting",
+    "hostingText": "This website is hosted on our own servers. When you access this website, your browser automatically sends information (IP address, date/time, page accessed) to our server. This data is stored in server log files and automatically deleted after 30 days.",
+    "cookies": "Cookies",
+    "cookiesText": "This website does not use cookies or any tracking technologies. No analytics tools are used.",
+    "contact": "Contact Form",
+    "contactText": "When you send us a message via the contact form, your data (name, email, message) will be used solely to respond to your inquiry. We do not share this data with third parties.",
+    "downloads": "Downloads",
+    "downloadsText": "When you download our software, no personal data is collected. The download files are provided without registration.",
+    "rights": "Your Rights",
+    "rightsText": "Under GDPR, you have the right to access, rectification, erasure, restriction of processing, data portability, and objection. To exercise these rights, please contact us using the information in the Legal Notice.",
+    "changes": "Changes",
+    "changesText": "We reserve the right to update this privacy policy. The current version is always available on this page."
+  },
+  "footer": {
+    "legal": "Legal",
+    "imprint": "Legal Notice",
+    "privacy": "Privacy Policy",
+    "product": "Product",
+    "madeWith": "Made with"
+  }
+}

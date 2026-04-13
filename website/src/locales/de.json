@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Start",
+    "features": "Funktionen",
+    "download": "Download",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "tagline": "Verwalte, tracke und \u00fcberwache alle deine Backups an einem Ort.",
+    "subtitle": "Verliere nie wieder den \u00dcberblick \u00fcber deine Backups. B4cKuP T8L gibt dir eine vollst\u00e4ndige \u00dcbersicht \u00fcber all deine Backup-Daten auf jedem Ger\u00e4t und Speichermedium.",
+    "cta": "Kostenlos herunterladen",
+    "learnMore": "Mehr erfahren"
+  },
+  "stats": {
+    "backups": "Unbegrenzte Backups verwalten",
+    "platforms": "Windows, macOS & Linux",
+    "languages": "3 Sprachen",
+    "opensource": "Kostenlos & Open Source"
+  },
+  "features": {
+    "title": "Alles was du brauchst um deine Backups zu verwalten",
+    "subtitle": "B4cKuP T8L ersetzt deine Backup-Tabelle durch eine leistungsstarke Desktop-Anwendung.",
+    "dashboard": "Dashboard",
+    "dashboardDesc": "Erhalte einen vollst\u00e4ndigen \u00dcberblick \u00fcber all deine Backups mit Status-Ampel, Speicher-Charts und 3-2-1 Regel-Check.",
+    "tracking": "Backup-Tracking",
+    "trackingDesc": "Dokumentiere jedes Backup mit Datum, Gr\u00f6\u00dfe, Speicherort und Notizen. Verfolge den Verlauf und Gr\u00f6\u00dfen\u00e4nderungen \u00fcber die Zeit.",
+    "scan": "Auto-Scan",
+    "scanDesc": "Zeige auf einen Ordner und erkenne vorhandene Backups automatisch. Gr\u00f6\u00dfen werden im Hintergrund berechnet.",
+    "media": "Speichermedien",
+    "mediaDesc": "Verwalte alle deine Speicherger\u00e4te - NAS, externe Festplatten, Cloud-Dienste, SSDs und mehr. Tracke Kapazit\u00e4t und Verschl\u00fcsselung.",
+    "matrix": "\u00dcbersichts-Matrix",
+    "matrixDesc": "Sieh auf einen Blick welches Backup auf welchem Medium gespeichert ist - wie eine Tabelle, aber besser.",
+    "notifications": "Intelligente Benachrichtigungen",
+    "notificationsDesc": "Werde benachrichtigt wenn Backups \u00fcberf\u00e4llig sind. Konfigurierbare Erinnerungsintervalle pro Backup.",
+    "darkmode": "Dark Mode",
+    "darkmodeDesc": "Sch\u00f6ne helle und dunkle Themes mit anpassbaren Akzentfarben. Folgt deiner System-Einstellung.",
+    "i18n": "Mehrsprachig",
+    "i18nDesc": "Verf\u00fcgbar auf Englisch, Deutsch und Russisch. Weitere Sprachen k\u00f6nnen einfach hinzugef\u00fcgt werden.",
+    "tray": "System Tray",
+    "trayDesc": "L\u00e4uft leise im Hintergrund. File-Watcher erkennen neue Backups automatisch.",
+    "export": "Daten-Export",
+    "exportDesc": "Exportiere alle Backup-Daten als JSON oder CSV. Automatische Datenbank-Backups halten deine Daten sicher.",
+    "sources": "Quellen-Verwaltung",
+    "sourcesDesc": "Organisiere Backups nach Quelle - Ger\u00e4te, Cloud-Dienste, externe Festplatten. Vollst\u00e4ndiges CRUD mit Papierkorb.",
+    "encryption": "Verschl\u00fcsselungs-Tracking",
+    "encryptionDesc": "Tracke welche Speichermedien verschl\u00fcsselt sind, mit welcher Methode (VeraCrypt, BitLocker, FileVault) und Key-Labels."
+  },
+  "download": {
+    "title": "B4cKuP T8L herunterladen",
+    "subtitle": "Verf\u00fcgbar f\u00fcr alle g\u00e4ngigen Plattformen. Kostenlos und Open Source.",
+    "version": "Version",
+    "windows": "Windows",
+    "windowsReq": "Windows 10 oder h\u00f6her",
+    "macos": "macOS",
+    "macosReq": "macOS 11 (Big Sur) oder h\u00f6her",
+    "linux": "Linux",
+    "linuxReq": "Ubuntu 20.04, Fedora 36 oder h\u00f6her",
+    "downloadBtn": "Herunterladen",
+    "comingSoon": "Bald verf\u00fcgbar"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Fragen, Feedback oder einen Bug gefunden? Schreib uns.",
+    "name": "Name",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "send": "Nachricht senden",
+    "github": "Probleme auf GitHub melden",
+    "emailDirect": "Oder schreib uns direkt an"
+  },
+  "imprint": {
+    "title": "Impressum",
+    "according": "Angaben gem\u00e4\u00df \u00a7 5 TMG",
+    "responsible": "Verantwortlich f\u00fcr den Inhalt nach \u00a7 55 Abs. 2 RSt",
+    "name": "[Dein Name]",
+    "company": "[Dein Firmenname]",
+    "address": "[Deine Stra\u00dfe]",
+    "city": "[PLZ, Stadt]",
+    "country": "Deutschland",
+    "email": "E-Mail: [deine@email.de]",
+    "phone": "Telefon: [deine Telefonnummer]",
+    "vatId": "USt-IdNr.: [falls vorhanden]",
+    "dispute": "Streitschlichtung",
+    "disputeText": "Die Europ\u00e4ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr/. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+  },
+  "privacy": {
+    "title": "Datenschutzerkl\u00e4rung",
+    "intro": "Wir nehmen den Schutz Ihrer pers\u00f6nlichen Daten sehr ernst. Diese Datenschutzerkl\u00e4rung informiert Sie dar\u00fcber, wie wir mit Ihren Daten umgehen.",
+    "responsible": "Verantwortliche Stelle",
+    "responsibleText": "Die verantwortliche Stelle f\u00fcr die Datenverarbeitung auf dieser Website ist im Impressum angegeben.",
+    "hosting": "Hosting",
+    "hostingText": "Diese Website wird auf eigenen Servern gehostet. Beim Zugriff auf diese Website sendet Ihr Browser automatisch Informationen (IP-Adresse, Datum/Uhrzeit, aufgerufene Seite) an unseren Server. Diese Daten werden in Server-Logdateien gespeichert und nach 30 Tagen automatisch gel\u00f6scht.",
+    "cookies": "Cookies",
+    "cookiesText": "Diese Website verwendet keine Cookies oder Tracking-Technologien. Es werden keine Analyse-Tools eingesetzt.",
+    "contact": "Kontaktformular",
+    "contactText": "Wenn Sie uns \u00fcber das Kontaktformular eine Nachricht senden, werden Ihre Daten (Name, E-Mail, Nachricht) ausschlie\u00dflich zur Beantwortung Ihrer Anfrage verwendet. Wir geben diese Daten nicht an Dritte weiter.",
+    "downloads": "Downloads",
+    "downloadsText": "Beim Herunterladen unserer Software werden keine pers\u00f6nlichen Daten erhoben. Die Download-Dateien werden ohne Registrierung bereitgestellt.",
+    "rights": "Ihre Rechte",
+    "rightsText": "Gem\u00e4\u00df DSGVO haben Sie das Recht auf Auskunft, Berichtigung, L\u00f6schung, Einschr\u00e4nkung der Verarbeitung, Daten\u00fcbertragbarkeit und Widerspruch. Zur Aus\u00fcbung dieser Rechte kontaktieren Sie uns bitte \u00fcber die Angaben im Impressum.",
+    "changes": "\u00c4nderungen",
+    "changesText": "Wir behalten uns vor, diese Datenschutzerkl\u00e4rung zu aktualisieren. Die aktuelle Version ist stets auf dieser Seite verf\u00fcgbar."
+  },
+  "footer": {
+    "legal": "Rechtliches",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "product": "Produkt",
+    "madeWith": "Gemacht mit"
+  }
+}
