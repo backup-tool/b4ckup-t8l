@@ -65,17 +65,14 @@ jobs:
       - name: Install frontend dependencies
         run: npm ci
 
-      - name: Build Tauri app
+      - name: Build Tauri app (sign only, no notarization)
         uses: tauri-apps/tauri-action@v0
-        timeout-minutes: 30
+        timeout-minutes: 15
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
           APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
           APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
-          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         with:
           tagName: ${{ github.ref_name }}
           releaseName: 'B4cKuP T8L ${{ github.ref_name }}'
@@ -83,3 +80,69 @@ jobs:
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
+
+      - name: Notarize macOS app
+        if: matrix.platform == 'macos-latest'
+        timeout-minutes: 20
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        shell: bash
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          TARGET="${{ matrix.target }}"
+          ARCH="${TARGET%%-*}"
+
+          # Find the .dmg or .app bundle to notarize
+          DMG=$(find src-tauri/target/${TARGET}/release/bundle -name "*.dmg" 2>/dev/null | head -1)
+
+          if [ -z "$DMG" ]; then
+            echo "No .dmg found, skipping notarization"
+            exit 0
+          fi
+
+          echo "Notarizing: $DMG"
+
+          # Submit for notarization with 15 min timeout
+          for ATTEMPT in 1 2 3; do
+            echo "Attempt $ATTEMPT of 3..."
+            xcrun notarytool submit "$DMG" \
+              --apple-id "$APPLE_ID" \
+              --password "$APPLE_PASSWORD" \
+              --team-id "$APPLE_TEAM_ID" \
+              --wait \
+              --timeout 15m && break
+
+            if [ $ATTEMPT -eq 3 ]; then
+              echo "::warning::Notarization failed after 3 attempts. App is signed but not notarized."
+              exit 0
+            fi
+            echo "Retrying in 30 seconds..."
+            sleep 30
+          done
+
+          # Staple the notarization ticket
+          xcrun stapler staple "$DMG"
+          echo "Notarization and stapling complete!"
+
+      - name: Upload notarized DMG to release
+        if: matrix.platform == 'macos-latest'
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          TARGET="${{ matrix.target }}"
+
+          DMG=$(find src-tauri/target/${TARGET}/release/bundle -name "*.dmg" 2>/dev/null | head -1)
+
+          if [ -z "$DMG" ]; then
+            exit 0
+          fi
+
+          FILENAME=$(basename "$DMG")
+
+          # Delete the unsigned DMG from the release and upload the notarized one
+          gh release upload "$GITHUB_REF_NAME" "$DMG" --repo "$GITHUB_REPOSITORY" --clobber
+          echo "Uploaded notarized $FILENAME"
