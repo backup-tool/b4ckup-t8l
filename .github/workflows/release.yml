@@ -150,25 +150,22 @@ jobs:
           gh release upload "$GITHUB_REF_NAME" "$DMG" --repo "$GITHUB_REPOSITORY" --clobber
           echo "Uploaded notarized $FILENAME"
 
-      - name: Upload update signatures
+      - name: Upload update bundles and signatures
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Find and upload all .sig files and updater bundles (.tar.gz, .zip)
           TARGET="${{ matrix.target }}"
-          SEARCH_DIR="src-tauri/target/${TARGET:-}/release/bundle"
-          [ -z "$TARGET" ] && SEARCH_DIR="src-tauri/target/release/bundle"
+          if [ -n "$TARGET" ]; then
+            SEARCH_DIR="src-tauri/target/${TARGET}/release/bundle"
+          else
+            SEARCH_DIR="src-tauri/target/release/bundle"
+          fi
 
-          for SIG in $(find "$SEARCH_DIR" -name "*.sig" 2>/dev/null); do
-            echo "Uploading signature: $(basename "$SIG")"
-            gh release upload "$GITHUB_REF_NAME" "$SIG" --repo "$GITHUB_REPOSITORY" --clobber || true
-          done
-
-          # Upload updater bundles (.tar.gz for macOS, .zip for Windows/Linux)
-          for BUNDLE in $(find "$SEARCH_DIR" \( -name "*.app.tar.gz" -o -name "*.msi.zip" -o -name "*.nsis.zip" -o -name "*.AppImage.tar.gz" \) 2>/dev/null); do
-            echo "Uploading updater bundle: $(basename "$BUNDLE")"
-            gh release upload "$GITHUB_REF_NAME" "$BUNDLE" --repo "$GITHUB_REPOSITORY" --clobber || true
+          echo "Searching in: $SEARCH_DIR"
+          find "$SEARCH_DIR" -type f \( -name "*.sig" -o -name "*.tar.gz" -o -name "*.msi.zip" -o -name "*.nsis.zip" \) -print0 | while IFS= read -r -d '' FILE; do
+            echo "Uploading: $(basename "$FILE")"
+            gh release upload "$GITHUB_REF_NAME" "$FILE" --repo "$GITHUB_REPOSITORY" --clobber || true
           done
 
   updater:
@@ -187,69 +184,84 @@ jobs:
           DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           BASE_URL="https://github.com/${REPO}/releases/download/${TAG}"
 
-          # Wait for all assets to be available
-          sleep 10
+          # Wait for assets to be fully available
+          sleep 15
 
-          # Get all release assets
-          ASSETS=$(gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets[].name')
+          # List all assets
+          echo "=== Release assets ==="
+          gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets[].name'
 
-          # Find signatures
-          get_sig() {
+          # Download all .sig files
+          mkdir -p /tmp/sigs
+          gh release download "$TAG" --repo "$REPO" --pattern "*.sig" --dir /tmp/sigs --clobber 2>/dev/null || true
+
+          echo "=== Downloaded .sig files ==="
+          ls -la /tmp/sigs/ || true
+
+          # Read signature content from .sig files
+          read_sig() {
             local pattern="$1"
-            local sig_file=$(echo "$ASSETS" | grep -F "${pattern}.sig" | head -1)
-            if [ -n "$sig_file" ]; then
-              gh release download "$TAG" --repo "$REPO" --pattern "$sig_file" --dir /tmp --clobber
-              cat "/tmp/$sig_file"
+            local sig_file=$(find /tmp/sigs -name "*${pattern}*" -type f 2>/dev/null | head -1)
+            if [ -n "$sig_file" ] && [ -f "$sig_file" ]; then
+              cat "$sig_file"
+            else
+              echo ""
             fi
           }
 
-          # macOS ARM64
-          MAC_ARM_SIG=$(get_sig "aarch64.app.tar.gz")
-          MAC_ARM_URL="${BASE_URL}/Backup.Tool_aarch64.app.tar.gz"
+          MAC_ARM_SIG=$(read_sig "aarch64.app.tar.gz.sig")
+          MAC_X64_SIG=$(read_sig "x64.app.tar.gz.sig")
+          LINUX_SIG=$(read_sig "AppImage.tar.gz.sig")
+          WIN_NSIS_SIG=$(read_sig "nsis.zip.sig")
 
-          # macOS Intel
-          MAC_X64_SIG=$(get_sig "x64.app.tar.gz")
-          MAC_X64_URL="${BASE_URL}/Backup.Tool_x64.app.tar.gz"
+          echo "=== Signatures found ==="
+          echo "macOS ARM64: ${MAC_ARM_SIG:0:20}..."
+          echo "macOS Intel: ${MAC_X64_SIG:0:20}..."
+          echo "Linux: ${LINUX_SIG:0:20}..."
+          echo "Windows: ${WIN_NSIS_SIG:0:20}..."
 
-          # Linux
-          LINUX_SIG=$(get_sig "amd64.AppImage.tar.gz")
-          LINUX_URL="${BASE_URL}/Backup.Tool_${VERSION}_amd64.AppImage.tar.gz"
+          # Determine correct asset names from release
+          ASSETS=$(gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets[].name')
 
-          # Windows NSIS
-          WIN_NSIS_SIG=$(get_sig "x64-setup.exe.sig" || get_sig "x64-setup.nsis.zip")
-          WIN_NSIS_URL="${BASE_URL}/Backup.Tool_${VERSION}_x64-setup.nsis.zip"
+          MAC_ARM_ASSET=$(echo "$ASSETS" | grep "aarch64.app.tar.gz" | grep -v ".sig" | head -1)
+          MAC_X64_ASSET=$(echo "$ASSETS" | grep "x64.app.tar.gz" | grep -v ".sig" | head -1)
+          LINUX_ASSET=$(echo "$ASSETS" | grep "AppImage.tar.gz" | grep -v ".sig" | head -1)
+          WIN_ASSET=$(echo "$ASSETS" | grep "nsis.zip" | grep -v ".sig" | head -1)
 
-          # Windows MSI
-          WIN_MSI_SIG=$(get_sig "x64_en-US.msi.zip")
-          WIN_MSI_URL="${BASE_URL}/Backup.Tool_${VERSION}_x64_en-US.msi.zip"
+          # URL-encode spaces in asset names
+          urlencode() { echo "$1" | sed 's/ /%20/g'; }
 
-          cat > /tmp/latest.json << ENDJSON
-          {
-            "version": "${VERSION}",
-            "notes": "B4cKuP T8L ${TAG}",
-            "pub_date": "${DATE}",
-            "platforms": {
-              "darwin-aarch64": {
-                "signature": "${MAC_ARM_SIG}",
-                "url": "${MAC_ARM_URL}"
-              },
-              "darwin-x86_64": {
-                "signature": "${MAC_X64_SIG}",
-                "url": "${MAC_X64_URL}"
-              },
-              "linux-x86_64": {
-                "signature": "${LINUX_SIG}",
-                "url": "${LINUX_URL}"
-              },
-              "windows-x86_64": {
-                "signature": "${WIN_NSIS_SIG}",
-                "url": "${WIN_NSIS_URL}"
+          MAC_ARM_URL="${BASE_URL}/$(urlencode "${MAC_ARM_ASSET:-Backup.Tool_aarch64.app.tar.gz}")"
+          MAC_X64_URL="${BASE_URL}/$(urlencode "${MAC_X64_ASSET:-Backup.Tool_x64.app.tar.gz}")"
+          LINUX_URL="${BASE_URL}/$(urlencode "${LINUX_ASSET:-Backup.Tool_${VERSION}_amd64.AppImage.tar.gz}")"
+          WIN_URL="${BASE_URL}/$(urlencode "${WIN_ASSET:-Backup.Tool_${VERSION}_x64-setup.nsis.zip}")"
+
+          # Generate JSON using jq for proper escaping
+          jq -n \
+            --arg version "$VERSION" \
+            --arg notes "B4cKuP T8L ${TAG}" \
+            --arg date "$DATE" \
+            --arg mac_arm_sig "$MAC_ARM_SIG" \
+            --arg mac_arm_url "$MAC_ARM_URL" \
+            --arg mac_x64_sig "$MAC_X64_SIG" \
+            --arg mac_x64_url "$MAC_X64_URL" \
+            --arg linux_sig "$LINUX_SIG" \
+            --arg linux_url "$LINUX_URL" \
+            --arg win_sig "$WIN_NSIS_SIG" \
+            --arg win_url "$WIN_URL" \
+            '{
+              version: $version,
+              notes: $notes,
+              pub_date: $date,
+              platforms: {
+                "darwin-aarch64": { signature: $mac_arm_sig, url: $mac_arm_url },
+                "darwin-x86_64": { signature: $mac_x64_sig, url: $mac_x64_url },
+                "linux-x86_64": { signature: $linux_sig, url: $linux_url },
+                "windows-x86_64": { signature: $win_sig, url: $win_url }
               }
-            }
-          }
-          ENDJSON
+            }' > /tmp/latest.json
 
-          echo "Generated latest.json:"
+          echo "=== Generated latest.json ==="
           cat /tmp/latest.json
 
           gh release upload "$TAG" /tmp/latest.json --repo "$REPO" --clobber
