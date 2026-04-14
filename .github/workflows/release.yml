@@ -63,60 +63,35 @@ jobs:
         run: npm ci
 
       - name: Build Tauri app
-        shell: bash
+        uses: tauri-apps/tauri-action@v0
         timeout-minutes: 15
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
           APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
           APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
-        run: |
-          if [ -n "${{ matrix.target }}" ]; then
-            npx tauri build --target ${{ matrix.target }}
-          else
-            npx tauri build
-          fi
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: 'B4cKuP T8L ${{ github.ref_name }}'
+          releaseBody: 'Download B4cKuP T8L for your platform below.'
+          releaseDraft: false
+          prerelease: false
+          includeUpdaterJson: false
+          args: ${{ matrix.args }}
 
-      - name: Create release if needed
-        shell: bash
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release view "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 || \
-          gh release create "$GITHUB_REF_NAME" \
-            --repo "$GITHUB_REPOSITORY" \
-            --title "B4cKuP T8L $GITHUB_REF_NAME" \
-            --notes "Download B4cKuP T8L for your platform below."
-
-      - name: Upload all build artifacts
-        shell: bash
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          TARGET="${{ matrix.target }}"
-          if [ -n "$TARGET" ]; then
-            SEARCH_DIR="src-tauri/target/${TARGET}/release/bundle"
-          else
-            SEARCH_DIR="src-tauri/target/release/bundle"
-          fi
-
-          echo "=== All bundle files ==="
-          find "$SEARCH_DIR" -type f 2>/dev/null | sort
-
-          echo ""
-          echo "=== Uploading installers, bundles, and signatures ==="
-          find "$SEARCH_DIR" -type f \( \
-            -name "*.dmg" -o -name "*.app.tar.gz" -o -name "*.app.tar.gz.sig" \
-            -o -name "*.deb" -o -name "*.rpm" -o -name "*.AppImage" \
-            -o -name "*.AppImage.tar.gz" -o -name "*.AppImage.tar.gz.sig" \
-            -o -name "*.exe" -o -name "*.msi" \
-            -o -name "*.nsis.zip" -o -name "*.nsis.zip.sig" \
-            -o -name "*.msi.zip" -o -name "*.msi.zip.sig" \
-          \) -print0 2>/dev/null | while IFS= read -r -d '' FILE; do
-            echo "  -> $(basename "$FILE")"
-            gh release upload "$GITHUB_REF_NAME" "$FILE" --repo "$GITHUB_REPOSITORY" --clobber || true
-          done
+      - name: Save sig files as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sigs-${{ matrix.name }}
+          path: |
+            src-tauri/target/**/release/bundle/**/*.sig
+            src-tauri/target/**/release/bundle/**/*.tar.gz
+            src-tauri/target/**/release/bundle/**/*.nsis.zip
+            src-tauri/target/**/release/bundle/**/*.msi.zip
+          if-no-files-found: warn
+          retention-days: 1
 
       - name: Notarize macOS app
         if: matrix.platform == 'macos-latest'
@@ -155,8 +130,6 @@ jobs:
           done
 
           xcrun stapler staple "$DMG"
-
-          # Re-upload notarized DMG
           gh release upload "$GITHUB_REF_NAME" "$DMG" --repo "$GITHUB_REPOSITORY" --clobber
           echo "Uploaded notarized $(basename "$DMG")"
 
@@ -166,6 +139,27 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Download all sig artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: /tmp/artifacts
+          pattern: sigs-*
+          merge-multiple: true
+
+      - name: List downloaded artifacts
+        run: |
+          echo "=== All downloaded files ==="
+          find /tmp/artifacts -type f 2>/dev/null | sort || echo "No files"
+
+      - name: Upload sigs to release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          find /tmp/artifacts -type f -name "*.sig" -print0 2>/dev/null | while IFS= read -r -d '' FILE; do
+            echo "Uploading sig: $(basename "$FILE")"
+            gh release upload "$GITHUB_REF_NAME" "$FILE" --repo "$GITHUB_REPOSITORY" --clobber || true
+          done
+
       - name: Generate latest.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -176,20 +170,12 @@ jobs:
           DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           BASE_URL="https://github.com/${REPO}/releases/download/${TAG}"
 
-          sleep 10
-
           echo "=== Release assets ==="
           gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets[].name'
 
-          mkdir -p /tmp/sigs
-          gh release download "$TAG" --repo "$REPO" --pattern "*.sig" --dir /tmp/sigs --clobber 2>/dev/null || true
-
-          echo "=== Downloaded .sig files ==="
-          ls -la /tmp/sigs/ 2>/dev/null || echo "Empty"
-
           read_sig() {
             local pattern="$1"
-            local sig_file=$(find /tmp/sigs -name "*${pattern}*" -type f 2>/dev/null | head -1)
+            local sig_file=$(find /tmp/artifacts -name "*${pattern}*" -type f 2>/dev/null | head -1)
             if [ -n "$sig_file" ] && [ -f "$sig_file" ]; then
               cat "$sig_file"
             fi
@@ -207,12 +193,13 @@ jobs:
           [ -n "$WIN_SIG" ] && echo "Windows: found" || echo "Windows: MISSING"
 
           ASSETS=$(gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets[].name')
-          urlencode() { python3 -c "import urllib.parse; print(urllib.parse.quote('$1', safe=''))"; }
 
           MAC_ARM_ASSET=$(echo "$ASSETS" | grep "aarch64.app.tar.gz$" | head -1)
           MAC_X64_ASSET=$(echo "$ASSETS" | grep "x64.app.tar.gz$" | head -1)
           LINUX_ASSET=$(echo "$ASSETS" | grep "AppImage.tar.gz$" | head -1)
           WIN_ASSET=$(echo "$ASSETS" | grep "nsis.zip$" | head -1)
+
+          urlencode() { python3 -c "import urllib.parse; print(urllib.parse.quote('$1', safe=''))"; }
 
           MAC_ARM_URL="${BASE_URL}/$(urlencode "${MAC_ARM_ASSET}")"
           MAC_X64_URL="${BASE_URL}/$(urlencode "${MAC_X64_ASSET}")"
