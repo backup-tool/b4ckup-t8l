@@ -62,36 +62,60 @@ jobs:
       - name: Install frontend dependencies
         run: npm ci
 
+      - name: Install Tauri CLI
+        run: npm install -g @tauri-apps/cli@latest
+
       - name: Build Tauri app
-        uses: tauri-apps/tauri-action@v0
+        shell: bash
         timeout-minutes: 15
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
           APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
           APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
-        with:
-          tagName: ${{ github.ref_name }}
-          releaseName: 'B4cKuP T8L ${{ github.ref_name }}'
-          releaseBody: 'Download B4cKuP T8L for your platform below.'
-          releaseDraft: false
-          prerelease: false
-          includeUpdaterJson: false
-          args: ${{ matrix.args }}
+        run: |
+          if [ -n "${{ matrix.target }}" ]; then
+            npx tauri build --target ${{ matrix.target }}
+          else
+            npx tauri build
+          fi
 
-      - name: Save sig files as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: sigs-${{ matrix.name }}
-          path: |
-            src-tauri/target/**/release/bundle/**/*.sig
-            src-tauri/target/**/release/bundle/**/*.tar.gz
-            src-tauri/target/**/release/bundle/**/*.nsis.zip
-            src-tauri/target/**/release/bundle/**/*.msi.zip
-          if-no-files-found: warn
-          retention-days: 1
+      - name: Create release
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 || \
+          gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" \
+            --title "B4cKuP T8L $GITHUB_REF_NAME" \
+            --notes "Download B4cKuP T8L for your platform below."
+
+      - name: Upload all artifacts to release
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TARGET="${{ matrix.target }}"
+          if [ -n "$TARGET" ]; then
+            SEARCH_DIR="src-tauri/target/${TARGET}/release/bundle"
+          else
+            SEARCH_DIR="src-tauri/target/release/bundle"
+          fi
+
+          echo "=== All bundle files ==="
+          find "$SEARCH_DIR" -type f 2>/dev/null | sort
+
+          # Upload each relevant file
+          find "$SEARCH_DIR" -type f \( \
+            -name "*.dmg" -o -name "*.deb" -o -name "*.rpm" \
+            -o -name "*.AppImage" -o -name "*.exe" -o -name "*.msi" \
+            -o -name "*.sig" -o -name "*.tar.gz" \
+            -o -name "*.nsis.zip" -o -name "*.msi.zip" \
+          \) -print0 2>/dev/null | while IFS= read -r -d '' FILE; do
+            echo "Uploading: $(basename "$FILE")"
+            gh release upload "$GITHUB_REF_NAME" "$FILE" --repo "$GITHUB_REPOSITORY" --clobber || true
+          done
 
       - name: Notarize macOS app
         if: matrix.platform == 'macos-latest'
@@ -139,27 +163,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Download all sig artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: /tmp/artifacts
-          pattern: sigs-*
-          merge-multiple: true
-
-      - name: List downloaded artifacts
-        run: |
-          echo "=== All downloaded files ==="
-          find /tmp/artifacts -type f 2>/dev/null | sort || echo "No files"
-
-      - name: Upload sigs to release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          find /tmp/artifacts -type f -name "*.sig" -print0 2>/dev/null | while IFS= read -r -d '' FILE; do
-            echo "Uploading sig: $(basename "$FILE")"
-            gh release upload "$GITHUB_REF_NAME" "$FILE" --repo "$GITHUB_REPOSITORY" --clobber || true
-          done
-
       - name: Generate latest.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -173,9 +176,15 @@ jobs:
           echo "=== Release assets ==="
           gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets[].name'
 
+          # Download all sig files from release
+          mkdir -p /tmp/sigs
+          gh release download "$TAG" --repo "$REPO" --pattern "*.sig" --dir /tmp/sigs --clobber 2>/dev/null || true
+          echo "=== Downloaded sigs ==="
+          ls -la /tmp/sigs/ 2>/dev/null || echo "Empty"
+
           read_sig() {
             local pattern="$1"
-            local sig_file=$(find /tmp/artifacts -name "*${pattern}*" -type f 2>/dev/null | head -1)
+            local sig_file=$(find /tmp/sigs -name "*${pattern}*" -type f 2>/dev/null | head -1)
             if [ -n "$sig_file" ] && [ -f "$sig_file" ]; then
               cat "$sig_file"
             fi
