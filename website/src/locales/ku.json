@@ -4,13 +4,20 @@
     "features": "Taybetmendî",
     "download": "Daxistin",
     "contact": "Têkilî",
-    "donate": "Bexşîn"
+    "donate": "Bexşîn",
+    "changelog": "Lîsteya Guhertinan"
   },
   "hero": {
     "tagline": "Hemû paşgiriyên xwe di yek cihî de bişopînin, birêvebirin û çavdêrî bikin.",
     "subtitle": "Êdî tu carî şopa paşgiriyên xwe winda nekin. B4cKuP T8L li ser her amûr û medyaya hilanînê nihêrînek bêkêmasî ya hemû daneyên paşgiriya we pêşkêşî we dike.",
     "cta": "Belaş Daxînin",
     "learnMore": "Bêtir Fêr Bibin"
+  },
+  "preview": {
+    "title": "Wê di Çalakiyê de Bibînin",
+    "subtitle": "Navberek paqij û modern ji bo birêvebirina hemû paşgiriyên we.",
+    "dashboard": "Dashboard — Nihêrîna rewşê bi yek nihêrînê",
+    "backups": "Paşgirî — Her paşgiriyekê bi hûrguliyan bişopînin"
   },
   "stats": {
     "backups": "Paşgiriyên bêsînor birêve bibin",
@@ -45,6 +52,34 @@
     "sourcesDesc": "Paşgiriyan li gorî çavkaniyê rêxistin bikin - amûr, karûbarên ewr, ajokerên derve. CRUD-ya bêkêmasî bi jêbirina nerm û çopê.",
     "encryption": "Şopandina Şîfrekirinê",
     "encryptionDesc": "Bişopînin ka kîjan medyaya hilanînê şîfrekirî ye, bi kîjan rêbazê (VeraCrypt, BitLocker, FileVault) û etîketên mifteyê."
+  },
+  "howItWorks": {
+    "title": "Çawa Dixebite",
+    "subtitle": "Di sê gavên hêsan de dest pê bikin. Ne hewcedariya hesab, ewr an aboneyê heye.",
+    "step1": "Serlêdanê Saz Bikin",
+    "step1Desc": "B4cKuP T8L ji bo pergala xweya xebitandinê daxînin. Bi bikaranîna çavkaniyên hindik li ser Windows, macOS û Linux bi xwezayî dimeşe.",
+    "step2": "Paşgiriyên Xwe Zêde Bikin",
+    "step2Desc": "Çavkaniyên paşgiriya xwe (amûr, serlêdan, karûbarên ewr) û medyaya hilanînê (NAS, ajokerên derve, SSD) qeyd bikin. Peldankan destnîşan bikin û paşgiriyên heyî bixweber bişopînin.",
+    "step3": "Li Ser Pêş Bimînin",
+    "step3Desc": "Dashboard nîşanî we dide kîjan paşgirî nûvekirî ne, kîjan dereng in û kîjan hewcedariya baldariyê heye. Agahdariyên biaqil berî ku dereng be we tînin bîra we."
+  },
+  "faq": {
+    "title": "Pirsên Pir Pirsîn",
+    "q1": "Ma B4cKuP T8L bi rastî belaş e?",
+    "a1": "Erê, B4cKuP T8L bi tevahî belaş û di bin lîsansa GPL-3.0 de çavkaniya vekirî ye. Tu reklam, abone an lêçûnên veşartî tune ne. Hûn dikarin koda çavkaniyê ya bêkêmasî li GitHub bibînin.",
+    "q2": "Ma B4cKuP T8L bi rastî paşgiriyan çêdike?",
+    "a2": "Na. B4cKuP T8L amûrek şopandina paşgiriyê ye, ne amûrek paşgiriyê. Ew ji we re dibe alîkar ku hûn şopandinê bikin ka kengê û li ku derê paşgiriyên we hatine çêkirin, mezinahiya wan û gelo ew nûvekirî ne. Hûn bi rêbazên paşgiriya xwe yên heyî (Time Machine, rsync, kopiyên bi destan, hwd.) berdewam dikin.",
+    "q3": "Daneyên min li ku têne hilanîn?",
+    "a3": "Hemû daneyên we bi herêmî di databasê SQLite de li ser komputera we têne hilanîn. Tiştek ji ewrê an serverek derve re nayê şandin. Metadaneyên paşgiriya we taybet û di bin kontrola we de dimînin.",
+    "q4": "Kîjan medyayên hilanînê têne piştgirîkirin?",
+    "a4": "B4cKuP T8L her medyaya hilanînê piştgirî dike: NAS (Synology, QNAP, hwd.), ajokerên hişk ên derve, SSD, stîkên USB, qertên SD, hilanîna ewr (iCloud, Google Drive, OneDrive), ajokerên kasêtê, medyaya optîk û parvekirinên torê.",
+    "q5": "Ma ez dikarim paşgiriyên serlêdanên wekî WhatsApp an iCloud bişopînim?",
+    "a5": "Erê! Hûn dikarin ji bo serlêdanên takekesî (WhatsApp, Instagram, Apple Health, hwd.) an karûbarên serhêl (Gmail, iCloud, hwd.) çavkaniyan biafirînin û dîroka paşgiriya wan mîna paşgiriyên amûrê bişopînin."
+  },
+  "changelog": {
+    "title": "Lîsteya Guhertinan",
+    "subtitle": "Bibînin di her weşana B4cKuP T8L de çi nû ye.",
+    "error": "Weşan nehatin barkirin. Ji kerema xwe GitHub kontrol bikin."
   },
   "download": {
     "title": "B4cKuP T8L Daxînin",
