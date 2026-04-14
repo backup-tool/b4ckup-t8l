@@ -22,3 +22,65 @@
 }
 
 html { scroll-behavior: smooth; }
+
+/* Brand name — reusable across header, footer, hero */
+.brand-name {
+  font-family: "Space Grotesk", sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+.brand-main {
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.brand-divider {
+  width: 2px;
+  height: 1.1em;
+  background: linear-gradient(180deg, transparent, #4ade80, transparent);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.brand-sub {
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, #4ade80, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+/* Inline variant for copyright text */
+.brand-name-inline { font-family: "Space Grotesk", sans-serif; }
+.brand-sub-inline {
+  font-weight: 300;
+  background: linear-gradient(135deg, #4ade80, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero title — larger version of brand */
+.hero-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+}
+.hero-title .brand-main,
+.hero-title .hero-main {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f1f5f9;
+}
+.hero-title .brand-divider,
+.hero-title .hero-divider {
+  width: 3px;
+  height: 1.5em;
+}
+.hero-title .brand-sub,
+.hero-title .hero-sub {
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}

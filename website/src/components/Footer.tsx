@@ -14,7 +14,11 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-3">
               <img src="/icon.png" alt="Logo" className="w-6 h-6 rounded" />
-              <span className="font-bold">B4cKuP T8L</span>
+              <span className="brand-name text-sm">
+                <span className="brand-main">B4cKuP</span>
+                <span className="brand-divider" />
+                <span className="brand-sub">T8L</span>
+              </span>
             </div>
             <p className="text-xs text-fg-muted leading-relaxed">
               {t("hero.tagline")}
@@ -53,7 +57,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 pt-6 border-t border-border flex items-center justify-between text-xs text-fg-muted">
-          <span>&copy; {new Date().getFullYear()} B4cKuP T8L</span>
+          <span>&copy; {new Date().getFullYear()} <span className="brand-name-inline"><span className="brand-main">B4cKuP</span> <span className="brand-sub-inline">T8L</span></span></span>
           <span className="flex items-center gap-1">
             Made with <Heart className="w-3 h-3 text-accent fill-accent" />
           </span>

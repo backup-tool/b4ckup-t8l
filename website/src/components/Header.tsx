@@ -95,7 +95,11 @@ export function Header() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to={homeLink} className="flex items-center gap-2.5">
           <img src="/icon.png" alt="Logo" className="w-8 h-8 rounded-lg" />
-          <span className="font-bold text-lg">B4cKuP T8L</span>
+          <span className="brand-name text-lg">
+            <span className="brand-main">B4cKuP</span>
+            <span className="brand-divider" />
+            <span className="brand-sub">T8L</span>
+          </span>
         </Link>
 
         {/* Desktop nav */}

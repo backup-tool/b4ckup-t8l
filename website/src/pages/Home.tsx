@@ -28,8 +28,10 @@ export function Home() {
             <Shield className="w-3.5 h-3.5 text-accent" />
             {t("stats.opensource")}
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
-            B4cKuP T8L
+          <h1 className="mb-6 hero-title">
+            <span className="brand-main">B4cKuP</span>
+            <span className="brand-divider" />
+            <span className="brand-sub">T8L</span>
           </h1>
           <p className="text-xl md:text-2xl text-fg-muted max-w-2xl mx-auto mb-4">
             {t("hero.tagline")}
