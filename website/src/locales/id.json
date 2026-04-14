@@ -4,7 +4,8 @@
     "features": "Fitur",
     "download": "Unduh",
     "contact": "Kontak",
-    "donate": "Donasi"
+    "donate": "Donasi",
+    "changelog": "Catatan Perubahan"
   },
   "hero": {
     "tagline": "Lacak, kelola, dan pantau semua cadangan Anda di satu tempat.",
@@ -121,5 +122,39 @@
     "privacy": "Kebijakan Privasi",
     "product": "Produk",
     "madeWith": "Dibuat dengan"
+  },
+  "preview": {
+    "title": "Lihat Langsung",
+    "subtitle": "Antarmuka bersih dan modern untuk mengelola semua cadangan Anda.",
+    "dashboard": "Dasbor — Ringkasan status dalam sekejap",
+    "backups": "Cadangan — Lacak setiap cadangan secara detail"
+  },
+  "howItWorks": {
+    "title": "Cara Kerja",
+    "subtitle": "Mulai dalam tiga langkah sederhana. Tanpa akun, tanpa cloud, tanpa langganan.",
+    "step1": "Instal Aplikasi",
+    "step1Desc": "Unduh B4cKuP T8L untuk sistem operasi Anda. Berjalan secara native di Windows, macOS, dan Linux dengan penggunaan sumber daya minimal.",
+    "step2": "Tambahkan Cadangan Anda",
+    "step2Desc": "Daftarkan sumber cadangan (perangkat, aplikasi, layanan cloud) dan media penyimpanan (NAS, hard drive eksternal, SSD). Arahkan ke folder dan pindai cadangan yang ada secara otomatis.",
+    "step3": "Tetap Terkendali",
+    "step3Desc": "Dasbor menampilkan cadangan mana yang terbaru, mana yang terlambat, dan mana yang perlu perhatian. Notifikasi cerdas mengingatkan Anda sebelum terlambat."
+  },
+  "faq": {
+    "title": "Pertanyaan yang Sering Diajukan",
+    "q1": "Apakah B4cKuP T8L benar-benar gratis?",
+    "a1": "Ya, B4cKuP T8L sepenuhnya gratis dan bersumber terbuka di bawah lisensi GPL-3.0. Tidak ada iklan, tidak ada langganan, dan tidak ada biaya tersembunyi. Anda dapat melihat seluruh kode sumber di GitHub.",
+    "q2": "Apakah B4cKuP T8L benar-benar melakukan pencadangan?",
+    "a2": "Tidak. B4cKuP T8L adalah pelacak cadangan, bukan alat pencadangan. Aplikasi ini membantu Anda melacak kapan dan di mana cadangan dibuat, ukurannya, dan apakah sudah terbaru. Anda tetap menggunakan metode pencadangan yang sudah ada (Time Machine, rsync, salinan manual, dll.).",
+    "q3": "Di mana data saya disimpan?",
+    "a3": "Semua data Anda disimpan secara lokal dalam database SQLite di komputer Anda. Tidak ada yang dikirim ke cloud atau server eksternal mana pun. Metadata cadangan Anda tetap privat dan di bawah kendali Anda.",
+    "q4": "Media penyimpanan apa saja yang didukung?",
+    "a4": "B4cKuP T8L mendukung semua media penyimpanan: NAS (Synology, QNAP, dll.), hard drive eksternal, SSD, flash drive USB, kartu SD, penyimpanan cloud (iCloud, Google Drive, OneDrive), tape drive, media optik, dan berbagi jaringan.",
+    "q5": "Bisakah saya melacak cadangan aplikasi seperti WhatsApp atau iCloud?",
+    "a5": "Ya! Anda dapat membuat sumber untuk aplikasi individual (WhatsApp, Instagram, Apple Health, dll.) atau layanan online (Gmail, iCloud, dll.) dan melacak riwayat cadangannya seperti cadangan perangkat."
+  },
+  "changelog": {
+    "title": "Catatan Perubahan",
+    "subtitle": "Lihat yang baru di setiap rilis B4cKuP T8L.",
+    "error": "Tidak dapat memuat rilis. Silakan periksa GitHub."
   }
 }

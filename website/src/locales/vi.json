@@ -4,7 +4,8 @@
     "features": "Tính năng",
     "download": "Tải xuống",
     "contact": "Liên hệ",
-    "donate": "Ủng hộ"
+    "donate": "Ủng hộ",
+    "changelog": "Nhật ký thay đổi"
   },
   "hero": {
     "tagline": "Theo dõi, quản lý và giám sát tất cả bản sao lưu của bạn tại một nơi.",
@@ -121,5 +122,39 @@
     "privacy": "Chính sách bảo mật",
     "product": "Sản phẩm",
     "madeWith": "Được tạo với"
+  },
+  "preview": {
+    "title": "Xem ứng dụng hoạt động",
+    "subtitle": "Giao diện gọn gàng, hiện đại để quản lý tất cả bản sao lưu của bạn.",
+    "dashboard": "Bảng điều khiển — Tổng quan trạng thái trong nháy mắt",
+    "backups": "Bản sao lưu — Theo dõi mọi bản sao lưu với chi tiết đầy đủ"
+  },
+  "howItWorks": {
+    "title": "Cách hoạt động",
+    "subtitle": "Bắt đầu chỉ với ba bước đơn giản. Không cần tài khoản, không cần đám mây, không cần đăng ký.",
+    "step1": "Cài đặt ứng dụng",
+    "step1Desc": "Tải B4cKuP T8L cho hệ điều hành của bạn. Ứng dụng chạy gốc trên Windows, macOS và Linux với mức sử dụng tài nguyên tối thiểu.",
+    "step2": "Thêm bản sao lưu",
+    "step2Desc": "Đăng ký các nguồn sao lưu (thiết bị, ứng dụng, dịch vụ đám mây) và phương tiện lưu trữ (NAS, ổ cứng ngoài, SSD). Chỉ định thư mục và tự động quét các bản sao lưu hiện có.",
+    "step3": "Luôn nắm bắt",
+    "step3Desc": "Bảng điều khiển cho bạn biết bản sao lưu nào đã cập nhật, bản nào quá hạn và bản nào cần chú ý. Thông báo thông minh nhắc nhở bạn trước khi quá muộn."
+  },
+  "faq": {
+    "title": "Câu hỏi thường gặp",
+    "q1": "B4cKuP T8L có thực sự miễn phí không?",
+    "a1": "Có, B4cKuP T8L hoàn toàn miễn phí và mã nguồn mở theo giấy phép GPL-3.0. Không có quảng cáo, không đăng ký, không chi phí ẩn. Bạn có thể xem toàn bộ mã nguồn trên GitHub.",
+    "q2": "B4cKuP T8L có thực sự sao lưu dữ liệu không?",
+    "a2": "Không. B4cKuP T8L là công cụ theo dõi sao lưu, không phải công cụ sao lưu. Nó giúp bạn theo dõi thời gian, vị trí sao lưu, dung lượng và tình trạng cập nhật. Bạn vẫn sử dụng các phương pháp sao lưu hiện tại (Time Machine, rsync, sao chép thủ công, v.v.).",
+    "q3": "Dữ liệu của tôi được lưu ở đâu?",
+    "a3": "Tất cả dữ liệu được lưu trữ cục bộ trong cơ sở dữ liệu SQLite trên máy tính của bạn. Không có gì được gửi lên đám mây hay máy chủ bên ngoài. Siêu dữ liệu sao lưu của bạn được giữ riêng tư và nằm trong tầm kiểm soát của bạn.",
+    "q4": "Những phương tiện lưu trữ nào được hỗ trợ?",
+    "a4": "B4cKuP T8L hỗ trợ mọi phương tiện lưu trữ: NAS (Synology, QNAP, v.v.), ổ cứng ngoài, SSD, USB, thẻ SD, lưu trữ đám mây (iCloud, Google Drive, OneDrive), ổ băng từ, đĩa quang và chia sẻ mạng.",
+    "q5": "Tôi có thể theo dõi sao lưu ứng dụng như WhatsApp hoặc iCloud không?",
+    "a5": "Có! Bạn có thể tạo nguồn cho từng ứng dụng (WhatsApp, Instagram, Apple Health, v.v.) hoặc dịch vụ trực tuyến (Gmail, iCloud, v.v.) và theo dõi lịch sử sao lưu giống như sao lưu thiết bị."
+  },
+  "changelog": {
+    "title": "Nhật ký thay đổi",
+    "subtitle": "Xem những gì mới trong mỗi phiên bản của B4cKuP T8L.",
+    "error": "Không thể tải thông tin phiên bản. Vui lòng kiểm tra GitHub."
   }
 }

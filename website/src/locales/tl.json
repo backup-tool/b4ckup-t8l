@@ -4,7 +4,8 @@
     "features": "Mga Tampok",
     "download": "I-download",
     "contact": "Makipag-ugnayan",
-    "donate": "Mag-donate"
+    "donate": "Mag-donate",
+    "changelog": "Talaan ng mga Pagbabago"
   },
   "hero": {
     "tagline": "Subaybayan, pamahalaan at bantayan ang lahat ng iyong mga backup sa isang lugar.",
@@ -121,5 +122,39 @@
     "privacy": "Patakaran sa Privacy",
     "product": "Produkto",
     "madeWith": "Ginawa gamit ang"
+  },
+  "preview": {
+    "title": "Tingnan sa Aksyon",
+    "subtitle": "Malinis at modernong interface para pamahalaan ang lahat ng iyong backup.",
+    "dashboard": "Dashboard — Buod ng status sa isang sulyap",
+    "backups": "Mga Backup — Subaybayan ang bawat backup nang detalyado"
+  },
+  "howItWorks": {
+    "title": "Paano Ito Gumagana",
+    "subtitle": "Magsimula sa tatlong simpleng hakbang. Walang account na kailangan, walang cloud, walang subscription.",
+    "step1": "I-install ang App",
+    "step1Desc": "I-download ang B4cKuP T8L para sa iyong operating system. Tumatakbo ito nang native sa Windows, macOS at Linux na may minimal na paggamit ng resources.",
+    "step2": "Idagdag ang Iyong mga Backup",
+    "step2Desc": "Irehistro ang iyong mga backup source (devices, apps, cloud services) at storage media (NAS, external drives, SSDs). Ituro sa mga folder at awtomatikong i-scan ang mga kasalukuyang backup.",
+    "step3": "Manatiling Updated",
+    "step3Desc": "Ipinapakita ng dashboard kung aling mga backup ang napapanahon, alin ang overdue, at alin ang nangangailangan ng atensyon. Ang mga smart notification ay magpapaalala sa iyo bago pa mahuli."
+  },
+  "faq": {
+    "title": "Mga Madalas Itanong",
+    "q1": "Libre ba talaga ang B4cKuP T8L?",
+    "a1": "Oo, ang B4cKuP T8L ay ganap na libre at open source sa ilalim ng GPL-3.0 na lisensya. Walang ads, walang subscription, at walang nakatagong bayarin. Maaari mong tingnan ang buong source code sa GitHub.",
+    "q2": "Gumagawa ba talaga ng backup ang B4cKuP T8L?",
+    "a2": "Hindi. Ang B4cKuP T8L ay isang backup tracker, hindi backup tool. Tinutulungan ka nitong subaybayan kung kailan at saan ginawa ang iyong mga backup, ang kanilang laki, at kung napapanahon ang mga ito. Patuloy mong gagamitin ang iyong mga kasalukuyang paraan ng pag-backup (Time Machine, rsync, manual copies, atbp.).",
+    "q3": "Saan iniimbak ang aking data?",
+    "a3": "Ang lahat ng iyong data ay iniimbak nang lokal sa isang SQLite database sa iyong computer. Walang ipinapadala sa cloud o anumang external server. Ang iyong backup metadata ay nananatiling pribado at nasa ilalim ng iyong kontrol.",
+    "q4": "Anong mga storage media ang sinusuportahan?",
+    "a4": "Sinusuportahan ng B4cKuP T8L ang anumang storage medium: NAS (Synology, QNAP, atbp.), external hard drives, SSDs, USB sticks, SD cards, cloud storage (iCloud, Google Drive, OneDrive), tape drives, optical media, at network shares.",
+    "q5": "Maaari ko bang subaybayan ang mga app backup tulad ng WhatsApp o iCloud?",
+    "a5": "Oo! Maaari kang lumikha ng mga source para sa mga indibidwal na app (WhatsApp, Instagram, Apple Health, atbp.) o online services (Gmail, iCloud, atbp.) at subaybayan ang kanilang backup history tulad ng mga device backup."
+  },
+  "changelog": {
+    "title": "Talaan ng mga Pagbabago",
+    "subtitle": "Tingnan ang mga bago sa bawat release ng B4cKuP T8L.",
+    "error": "Hindi ma-load ang mga release. Pakitingnan ang GitHub."
   }
 }

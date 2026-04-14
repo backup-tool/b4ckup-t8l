@@ -4,7 +4,8 @@
     "features": "Funzionalità",
     "download": "Download",
     "contact": "Contatti",
-    "donate": "Dona"
+    "donate": "Dona",
+    "changelog": "Registro modifiche"
   },
   "hero": {
     "tagline": "Traccia, gestisci e monitora tutti i tuoi backup in un unico posto.",
@@ -121,5 +122,39 @@
     "privacy": "Privacy",
     "product": "Prodotto",
     "madeWith": "Fatto con"
+  },
+  "preview": {
+    "title": "Guardalo in azione",
+    "subtitle": "Un'interfaccia pulita e moderna per gestire tutti i tuoi backup.",
+    "dashboard": "Dashboard — Panoramica dello stato a colpo d'occhio",
+    "backups": "Backup — Tieni traccia di ogni backup nei dettagli"
+  },
+  "howItWorks": {
+    "title": "Come funziona",
+    "subtitle": "Inizia in tre semplici passaggi. Nessun account, nessun cloud, nessun abbonamento.",
+    "step1": "Installa l'app",
+    "step1Desc": "Scarica B4cKuP T8L per il tuo sistema operativo. Funziona nativamente su Windows, macOS e Linux con un utilizzo minimo delle risorse.",
+    "step2": "Aggiungi i tuoi backup",
+    "step2Desc": "Registra le tue fonti di backup (dispositivi, app, servizi cloud) e i tuoi supporti di archiviazione (NAS, dischi esterni, SSD). Punta alle cartelle e scansiona automaticamente i backup esistenti.",
+    "step3": "Resta al comando",
+    "step3Desc": "La dashboard ti mostra quali backup sono aggiornati, quali sono in ritardo e quali richiedono attenzione. Notifiche intelligenti ti avvisano prima che sia troppo tardi."
+  },
+  "faq": {
+    "title": "Domande frequenti",
+    "q1": "B4cKuP T8L è davvero gratuito?",
+    "a1": "Sì, B4cKuP T8L è completamente gratuito e open source con licenza GPL-3.0. Nessuna pubblicità, nessun abbonamento, nessun costo nascosto. Puoi consultare il codice sorgente completo su GitHub.",
+    "q2": "B4cKuP T8L esegue effettivamente i backup?",
+    "a2": "No. B4cKuP T8L è un tracker di backup, non uno strumento di backup. Ti aiuta a tenere traccia di quando e dove sono stati effettuati i tuoi backup, delle loro dimensioni e se sono aggiornati. Continui a usare i tuoi metodi di backup abituali (Time Machine, rsync, copie manuali, ecc.).",
+    "q3": "Dove vengono archiviati i miei dati?",
+    "a3": "Tutti i tuoi dati vengono archiviati localmente in un database SQLite sul tuo computer. Nulla viene inviato al cloud o a server esterni. I metadati dei tuoi backup restano privati e sotto il tuo controllo.",
+    "q4": "Quali supporti di archiviazione sono supportati?",
+    "a4": "B4cKuP T8L supporta qualsiasi supporto di archiviazione: NAS (Synology, QNAP, ecc.), dischi rigidi esterni, SSD, chiavette USB, schede SD, archiviazione cloud (iCloud, Google Drive, OneDrive), unità a nastro, supporti ottici e condivisioni di rete.",
+    "q5": "Posso monitorare i backup di app come WhatsApp o iCloud?",
+    "a5": "Sì! Puoi creare fonti per singole app (WhatsApp, Instagram, Apple Health, ecc.) o servizi online (Gmail, iCloud, ecc.) e monitorare la cronologia dei loro backup proprio come i backup dei dispositivi."
+  },
+  "changelog": {
+    "title": "Registro modifiche",
+    "subtitle": "Scopri le novità di ogni versione di B4cKuP T8L.",
+    "error": "Impossibile caricare le versioni. Controlla su GitHub."
   }
 }

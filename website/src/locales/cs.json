@@ -4,7 +4,8 @@
     "features": "Funkce",
     "download": "Stáhnout",
     "contact": "Kontakt",
-    "donate": "Přispět"
+    "donate": "Přispět",
+    "changelog": "Historie změn"
   },
   "hero": {
     "tagline": "Sledujte, spravujte a monitorujte všechny své zálohy na jednom místě.",
@@ -121,5 +122,39 @@
     "privacy": "Ochrana osobních údajů",
     "product": "Produkt",
     "madeWith": "Vytvořeno s"
+  },
+  "preview": {
+    "title": "Podívejte se, jak to funguje",
+    "subtitle": "Přehledné, moderní rozhraní pro správu všech vašich záloh.",
+    "dashboard": "Přehled — Stav záloh na první pohled",
+    "backups": "Zálohy — Sledujte každou zálohu s podrobnostmi"
+  },
+  "howItWorks": {
+    "title": "Jak to funguje",
+    "subtitle": "Začněte ve třech jednoduchých krocích. Bez účtu, bez cloudu, bez předplatného.",
+    "step1": "Nainstalujte aplikaci",
+    "step1Desc": "Stáhněte si B4cKuP T8L pro svůj operační systém. Běží nativně na Windows, macOS a Linuxu s minimální spotřebou zdrojů.",
+    "step2": "Přidejte své zálohy",
+    "step2Desc": "Zaregistrujte zdroje záloh (zařízení, aplikace, cloudové služby) a úložná média (NAS, externí disky, SSD). Nastavte složky a automaticky prohledejte existující zálohy.",
+    "step3": "Mějte přehled",
+    "step3Desc": "Přehledový panel ukazuje, které zálohy jsou aktuální, které jsou po termínu a které vyžadují pozornost. Chytrá upozornění vás upozorní, než bude pozdě."
+  },
+  "faq": {
+    "title": "Často kladené otázky",
+    "q1": "Je B4cKuP T8L opravdu zdarma?",
+    "a1": "Ano, B4cKuP T8L je zcela zdarma a open source pod licencí GPL-3.0. Žádné reklamy, žádné předplatné a žádné skryté náklady. Celý zdrojový kód si můžete prohlédnout na GitHubu.",
+    "q2": "Provádí B4cKuP T8L skutečně zálohy?",
+    "a2": "Ne. B4cKuP T8L je nástroj pro sledování záloh, nikoli zálohovací nástroj. Pomáhá vám sledovat, kdy a kam byly zálohy vytvořeny, jejich velikosti a zda jsou aktuální. Své stávající metody zálohování (Time Machine, rsync, ruční kopie atd.) používáte dál.",
+    "q3": "Kde jsou uložena moje data?",
+    "a3": "Všechna vaše data jsou uložena lokálně v databázi SQLite na vašem počítači. Nic se neodesílá do cloudu ani na žádný externí server. Metadata vašich záloh zůstávají soukromá a pod vaší kontrolou.",
+    "q4": "Která úložná média jsou podporována?",
+    "a4": "B4cKuP T8L podporuje jakékoli úložné médium: NAS (Synology, QNAP atd.), externí pevné disky, SSD, USB flash disky, SD karty, cloudové úložiště (iCloud, Google Drive, OneDrive), páskové mechaniky, optická média a síťové disky.",
+    "q5": "Mohu sledovat zálohy aplikací jako WhatsApp nebo iCloud?",
+    "a5": "Ano! Můžete vytvářet zdroje pro jednotlivé aplikace (WhatsApp, Instagram, Apple Health atd.) nebo online služby (Gmail, iCloud atd.) a sledovat jejich historii záloh stejně jako zálohy zařízení."
+  },
+  "changelog": {
+    "title": "Historie změn",
+    "subtitle": "Podívejte se, co je nového v každém vydání B4cKuP T8L.",
+    "error": "Nepodařilo se načíst vydání. Zkontrolujte GitHub."
   }
 }

@@ -4,7 +4,8 @@
     "features": "Funktioner",
     "download": "Download",
     "contact": "Kontakt",
-    "donate": "Donér"
+    "donate": "Donér",
+    "changelog": "Ændringslog"
   },
   "hero": {
     "tagline": "Spor, administrer og overvåg alle dine sikkerhedskopier ét sted.",
@@ -121,5 +122,39 @@
     "privacy": "Privatlivspolitik",
     "product": "Produkt",
     "madeWith": "Lavet med"
+  },
+  "preview": {
+    "title": "Se det i aktion",
+    "subtitle": "En ren, moderne grænseflade til at administrere alle dine sikkerhedskopier.",
+    "dashboard": "Dashboard — Statusoversigt med et enkelt blik",
+    "backups": "Sikkerhedskopier — Følg hver sikkerhedskopi i detaljer"
+  },
+  "howItWorks": {
+    "title": "Sådan fungerer det",
+    "subtitle": "Kom i gang med tre enkle trin. Ingen konto, ingen sky, intet abonnement.",
+    "step1": "Installér appen",
+    "step1Desc": "Download B4cKuP T8L til dit operativsystem. Appen kører nativt på Windows, macOS og Linux med minimalt ressourceforbrug.",
+    "step2": "Tilføj dine sikkerhedskopier",
+    "step2Desc": "Registrér dine sikkerhedskopieringskilder (enheder, apps, skytjenester) og lagringsmedier (NAS, eksterne diske, SSD'er). Peg på mapper og scan automatisk eksisterende sikkerhedskopier.",
+    "step3": "Bevar overblikket",
+    "step3Desc": "Dashboardet viser dig, hvilke sikkerhedskopier der er opdaterede, hvilke der er forsinkede, og hvilke der kræver opmærksomhed. Smarte notifikationer minder dig, før det er for sent."
+  },
+  "faq": {
+    "title": "Ofte stillede spørgsmål",
+    "q1": "Er B4cKuP T8L virkelig gratis?",
+    "a1": "Ja, B4cKuP T8L er helt gratis og open source under GPL-3.0-licensen. Ingen reklamer, ingen abonnementer og ingen skjulte omkostninger. Du kan se den fulde kildekode på GitHub.",
+    "q2": "Laver B4cKuP T8L faktisk sikkerhedskopier?",
+    "a2": "Nej. B4cKuP T8L er en sikkerhedskopieringstracker, ikke et sikkerhedskopieringsværktøj. Det hjælper dig med at holde styr på, hvornår og hvor dine sikkerhedskopier blev lavet, deres størrelse, og om de er opdaterede. Du fortsætter med at bruge dine eksisterende metoder (Time Machine, rsync, manuelle kopier osv.).",
+    "q3": "Hvor gemmes mine data?",
+    "a3": "Alle dine data gemmes lokalt i en SQLite-database på din computer. Intet sendes til skyen eller nogen ekstern server. Metadata for dine sikkerhedskopier forbliver private og under din kontrol.",
+    "q4": "Hvilke lagringsmedier understøttes?",
+    "a4": "B4cKuP T8L understøtter alle lagringsmedier: NAS (Synology, QNAP m.fl.), eksterne harddiske, SSD'er, USB-nøgler, SD-kort, skylagring (iCloud, Google Drive, OneDrive), bånddrev, optiske medier og netværksdrev.",
+    "q5": "Kan jeg spore app-sikkerhedskopier som WhatsApp eller iCloud?",
+    "a5": "Ja! Du kan oprette kilder for individuelle apps (WhatsApp, Instagram, Apple Health m.fl.) eller onlinetjenester (Gmail, iCloud m.fl.) og spore deres sikkerhedskopieringshistorik ligesom sikkerhedskopier af enheder."
+  },
+  "changelog": {
+    "title": "Ændringslog",
+    "subtitle": "Se hvad der er nyt i hver udgave af B4cKuP T8L.",
+    "error": "Kunne ikke indlæse udgivelser. Tjek venligst GitHub."
   }
 }

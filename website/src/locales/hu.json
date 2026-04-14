@@ -4,7 +4,8 @@
     "features": "Funkciók",
     "download": "Letöltés",
     "contact": "Kapcsolat",
-    "donate": "Támogatás"
+    "donate": "Támogatás",
+    "changelog": "Változásnapló"
   },
   "hero": {
     "tagline": "Kövesse nyomon, kezelje és figyelje az összes biztonsági mentését egy helyen.",
@@ -121,5 +122,39 @@
     "privacy": "Adatvédelmi szabályzat",
     "product": "Termék",
     "madeWith": "Készítve"
+  },
+  "preview": {
+    "title": "Nézd meg működés közben",
+    "subtitle": "Letisztult, modern felület az összes mentésed kezeléséhez.",
+    "dashboard": "Vezérlőpult — Állapotáttekintés egyetlen pillantással",
+    "backups": "Mentések — Kövesd nyomon minden mentést részletesen"
+  },
+  "howItWorks": {
+    "title": "Hogyan működik",
+    "subtitle": "Kezdd el három egyszerű lépésben. Nincs szükség fiókra, felhőre vagy előfizetésre.",
+    "step1": "Telepítsd az alkalmazást",
+    "step1Desc": "Töltsd le a B4cKuP T8L-t az operációs rendszeredhez. Natívan fut Windows, macOS és Linux rendszeren, minimális erőforrás-felhasználással.",
+    "step2": "Add hozzá a mentéseidet",
+    "step2Desc": "Regisztráld a mentési forrásokat (eszközök, alkalmazások, felhőszolgáltatások) és a tárolóeszközöket (NAS, külső meghajtók, SSD-k). Mutass mappákra, és automatikusan keresd meg a meglévő mentéseket.",
+    "step3": "Tartsd kézben",
+    "step3Desc": "A vezérlőpult megmutatja, mely mentések naprakészek, melyek késésben vannak, és melyek igényelnek figyelmet. Az intelligens értesítések emlékeztetnek, mielőtt túl késő lenne."
+  },
+  "faq": {
+    "title": "Gyakran ismételt kérdések",
+    "q1": "A B4cKuP T8L tényleg ingyenes?",
+    "a1": "Igen, a B4cKuP T8L teljesen ingyenes és nyílt forráskódú a GPL-3.0 licenc alatt. Nincsenek hirdetések, előfizetések és rejtett költségek. A teljes forráskód megtekinthető a GitHubon.",
+    "q2": "A B4cKuP T8L ténylegesen készít mentéseket?",
+    "a2": "Nem. A B4cKuP T8L egy mentéskövető, nem egy mentési eszköz. Segít nyomon követni, mikor és hová készültek a mentéseid, mekkora a méretük, és naprakészek-e. Továbbra is a meglévő mentési módszereidet használod (Time Machine, rsync, kézi másolatok stb.).",
+    "q3": "Hol tárolódnak az adataim?",
+    "a3": "Minden adatod helyben, a számítógépeden lévő SQLite adatbázisban tárolódik. Semmi sem kerül a felhőbe vagy külső szerverre. A mentések metaadatai privátok maradnak, és a te ellenőrzésed alatt állnak.",
+    "q4": "Milyen tárolóeszközök támogatottak?",
+    "a4": "A B4cKuP T8L bármilyen tárolóeszközt támogat: NAS (Synology, QNAP stb.), külső merevlemezek, SSD-k, USB meghajtók, SD kártyák, felhőtárhely (iCloud, Google Drive, OneDrive), szalagos meghajtók, optikai adathordozók és hálózati megosztások.",
+    "q5": "Nyomon követhetem az alkalmazás-mentéseket, mint a WhatsApp vagy az iCloud?",
+    "a5": "Igen! Létrehozhatsz forrásokat egyedi alkalmazásokhoz (WhatsApp, Instagram, Apple Health stb.) vagy online szolgáltatásokhoz (Gmail, iCloud stb.), és ugyanúgy nyomon követheted a mentési előzményeiket, mint az eszközmentéseket."
+  },
+  "changelog": {
+    "title": "Változásnapló",
+    "subtitle": "Nézd meg, mi újdonság a B4cKuP T8L egyes kiadásaiban.",
+    "error": "Nem sikerült betölteni a kiadásokat. Kérjük, ellenőrizd a GitHubot."
   }
 }

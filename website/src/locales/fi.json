@@ -4,7 +4,8 @@
     "features": "Ominaisuudet",
     "download": "Lataa",
     "contact": "Yhteystiedot",
-    "donate": "Lahjoita"
+    "donate": "Lahjoita",
+    "changelog": "Muutosloki"
   },
   "hero": {
     "tagline": "Seuraa, hallitse ja valvo kaikkia varmuuskopioitasi yhdessä paikassa.",
@@ -121,5 +122,39 @@
     "privacy": "Tietosuojakäytäntö",
     "product": "Tuote",
     "madeWith": "Tehty"
+  },
+  "preview": {
+    "title": "Katso toiminnassa",
+    "subtitle": "Selkeä, moderni käyttöliittymä kaikkien varmuuskopioidesi hallintaan.",
+    "dashboard": "Hallintapaneeli — Tilanneyhteenveto yhdellä silmäyksellä",
+    "backups": "Varmuuskopiot — Seuraa jokaista varmuuskopiota yksityiskohtaisesti"
+  },
+  "howItWorks": {
+    "title": "Näin se toimii",
+    "subtitle": "Aloita kolmella yksinkertaisella vaiheella. Ei tiliä, ei pilveä, ei tilausta.",
+    "step1": "Asenna sovellus",
+    "step1Desc": "Lataa B4cKuP T8L käyttöjärjestelmällesi. Sovellus toimii natiivisti Windowsissa, macOS:ssä ja Linuxissa minimaalisella resurssien käytöllä.",
+    "step2": "Lisää varmuuskopiosi",
+    "step2Desc": "Rekisteröi varmuuskopiolähteesi (laitteet, sovellukset, pilvipalvelut) ja tallennusmediat (NAS, ulkoiset levyt, SSD:t). Osoita kansioihin ja skannaa olemassa olevat varmuuskopiot automaattisesti.",
+    "step3": "Pysy ajan tasalla",
+    "step3Desc": "Hallintapaneeli näyttää, mitkä varmuuskopiot ovat ajan tasalla, mitkä ovat myöhässä ja mitkä vaativat huomiota. Älykkäät ilmoitukset muistuttavat sinua ennen kuin on liian myöhäistä."
+  },
+  "faq": {
+    "title": "Usein kysytyt kysymykset",
+    "q1": "Onko B4cKuP T8L todella ilmainen?",
+    "a1": "Kyllä, B4cKuP T8L on täysin ilmainen ja avoimen lähdekoodin ohjelmisto GPL-3.0-lisenssillä. Ei mainoksia, ei tilauksia, ei piilokustannuksia. Voit tarkastella koko lähdekoodia GitHubissa.",
+    "q2": "Tekeekö B4cKuP T8L varmuuskopioita?",
+    "a2": "Ei. B4cKuP T8L on varmuuskopioiden seurantatyökalu, ei varmuuskopiointityökalu. Se auttaa sinua seuraamaan, milloin ja minne varmuuskopiosi on tehty, niiden kokoa ja ovatko ne ajan tasalla. Jatkat olemassa olevien varmuuskopiointimenetelmien käyttöä (Time Machine, rsync, manuaaliset kopiot jne.).",
+    "q3": "Minne tietoni tallennetaan?",
+    "a3": "Kaikki tietosi tallennetaan paikallisesti SQLite-tietokantaan tietokoneellasi. Mitään ei lähetetä pilveen eikä millekään ulkoiselle palvelimelle. Varmuuskopioiden metatiedot pysyvät yksityisinä ja hallinnassasi.",
+    "q4": "Mitä tallennusmedioita tuetaan?",
+    "a4": "B4cKuP T8L tukee kaikkia tallennusmedioita: NAS (Synology, QNAP jne.), ulkoiset kiintolevyt, SSD:t, USB-muistit, SD-kortit, pilvitallennustila (iCloud, Google Drive, OneDrive), nauha-asemat, optiset mediat ja verkkoresurssit.",
+    "q5": "Voinko seurata sovellusten varmuuskopioita kuten WhatsApp tai iCloud?",
+    "a5": "Kyllä! Voit luoda lähteitä yksittäisille sovelluksille (WhatsApp, Instagram, Apple Health jne.) tai verkkopalveluille (Gmail, iCloud jne.) ja seurata niiden varmuuskopiohistoriaa aivan kuten laitteiden varmuuskopioita."
+  },
+  "changelog": {
+    "title": "Muutosloki",
+    "subtitle": "Katso mitä uutta B4cKuP T8L:n jokaisessa versiossa on.",
+    "error": "Julkaisuja ei voitu ladata. Tarkista GitHub."
   }
 }

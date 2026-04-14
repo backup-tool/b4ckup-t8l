@@ -4,7 +4,8 @@
     "features": "Функције",
     "download": "Преузимање",
     "contact": "Контакт",
-    "donate": "Донирајте"
+    "donate": "Донирајте",
+    "changelog": "Istorija promena"
   },
   "hero": {
     "tagline": "Пратите, управљајте и надгледајте све своје резервне копије на једном месту.",
@@ -121,5 +122,39 @@
     "privacy": "Политика приватности",
     "product": "Производ",
     "madeWith": "Направљено са"
+  },
+  "preview": {
+    "title": "Pogledajte kako radi",
+    "subtitle": "Čist, moderan interfejs za upravljanje svim vašim rezervnim kopijama.",
+    "dashboard": "Kontrolna tabla — Pregled statusa na prvi pogled",
+    "backups": "Rezervne kopije — Pratite svaku rezervnu kopiju sa detaljima"
+  },
+  "howItWorks": {
+    "title": "Kako funkcioniše",
+    "subtitle": "Počnite u tri jednostavna koraka. Bez naloga, bez oblaka, bez pretplate.",
+    "step1": "Instalirajte aplikaciju",
+    "step1Desc": "Preuzmite B4cKuP T8L za vaš operativni sistem. Radi nativno na Windows, macOS i Linux sistemima sa minimalnim korišćenjem resursa.",
+    "step2": "Dodajte svoje rezervne kopije",
+    "step2Desc": "Registrujte izvore rezervnih kopija (uređaje, aplikacije, cloud servise) i medije za skladištenje (NAS, eksterne diskove, SSD-ove). Usmerite na foldere i automatski skenirajte postojeće rezervne kopije.",
+    "step3": "Budite u toku",
+    "step3Desc": "Kontrolna tabla vam prikazuje koje su rezervne kopije ažurne, koje kasne i koje zahtevaju pažnju. Pametna obaveštenja vas podsećaju pre nego što bude kasno."
+  },
+  "faq": {
+    "title": "Često postavljana pitanja",
+    "q1": "Da li je B4cKuP T8L zaista besplatan?",
+    "a1": "Da, B4cKuP T8L je potpuno besplatan i otvorenog koda pod GPL-3.0 licencom. Nema reklama, pretplata ni skrivenih troškova. Kompletan izvorni kod možete pogledati na GitHub-u.",
+    "q2": "Da li B4cKuP T8L zaista pravi rezervne kopije?",
+    "a2": "Ne. B4cKuP T8L je alat za praćenje rezervnih kopija, a ne za njihovo pravljenje. Pomaže vam da pratite kada i gde su rezervne kopije napravljene, njihove veličine i da li su ažurne. Nastavljate da koristite postojeće metode za pravljenje rezervnih kopija (Time Machine, rsync, ručne kopije itd.).",
+    "q3": "Gde se čuvaju moji podaci?",
+    "a3": "Svi vaši podaci se čuvaju lokalno u SQLite bazi podataka na vašem računaru. Ništa se ne šalje u oblak niti na bilo koji spoljni server. Metapodaci vaših rezervnih kopija ostaju privatni i pod vašom kontrolom.",
+    "q4": "Koji mediji za skladištenje su podržani?",
+    "a4": "B4cKuP T8L podržava bilo koji medij za skladištenje: NAS (Synology, QNAP itd.), eksterne hard diskove, SSD-ove, USB memorije, SD kartice, cloud skladište (iCloud, Google Drive, OneDrive), tračne jedinice, optičke medije i mrežne deljene resurse.",
+    "q5": "Mogu li da pratim rezervne kopije aplikacija poput WhatsApp-a ili iCloud-a?",
+    "a5": "Da! Možete kreirati izvore za pojedinačne aplikacije (WhatsApp, Instagram, Apple Health itd.) ili onlajn servise (Gmail, iCloud itd.) i pratiti njihovu istoriju rezervnih kopija isto kao i rezervne kopije uređaja."
+  },
+  "changelog": {
+    "title": "Istorija promena",
+    "subtitle": "Pogledajte šta je novo u svakom izdanju B4cKuP T8L.",
+    "error": "Nije moguće učitati izdanja. Proverite GitHub."
   }
 }

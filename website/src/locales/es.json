@@ -4,7 +4,8 @@
     "features": "Funcionalidades",
     "download": "Descargar",
     "contact": "Contacto",
-    "donate": "Donar"
+    "donate": "Donar",
+    "changelog": "Registro de cambios"
   },
   "hero": {
     "tagline": "Rastrea, gestiona y supervisa todas tus copias de seguridad en un solo lugar.",
@@ -121,5 +122,39 @@
     "privacy": "Privacidad",
     "product": "Producto",
     "madeWith": "Hecho con"
+  },
+  "preview": {
+    "title": "Míralo en acción",
+    "subtitle": "Una interfaz limpia y moderna para gestionar todas tus copias de seguridad.",
+    "dashboard": "Panel — Vista general del estado de un vistazo",
+    "backups": "Copias de seguridad — Rastrea cada copia con detalle"
+  },
+  "howItWorks": {
+    "title": "Cómo funciona",
+    "subtitle": "Empieza en tres sencillos pasos. Sin cuenta, sin nube, sin suscripción.",
+    "step1": "Instala la aplicación",
+    "step1Desc": "Descarga B4cKuP T8L para tu sistema operativo. Funciona de forma nativa en Windows, macOS y Linux con un uso mínimo de recursos.",
+    "step2": "Añade tus copias de seguridad",
+    "step2Desc": "Registra tus fuentes de respaldo (dispositivos, aplicaciones, servicios en la nube) y tus medios de almacenamiento (NAS, discos externos, SSD). Apunta a carpetas y escanea automáticamente las copias existentes.",
+    "step3": "Mantén el control",
+    "step3Desc": "El panel te muestra qué copias de seguridad están al día, cuáles están atrasadas y cuáles necesitan atención. Las notificaciones inteligentes te avisan antes de que sea demasiado tarde."
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "q1": "¿B4cKuP T8L es realmente gratis?",
+    "a1": "Sí, B4cKuP T8L es completamente gratuito y de código abierto bajo la licencia GPL-3.0. Sin anuncios, sin suscripciones y sin costes ocultos. Puedes consultar el código fuente completo en GitHub.",
+    "q2": "¿B4cKuP T8L realiza copias de seguridad?",
+    "a2": "No. B4cKuP T8L es un rastreador de copias de seguridad, no una herramienta de respaldo. Te ayuda a llevar un registro de cuándo y dónde se hicieron tus copias, su tamaño y si están al día. Sigues usando tus métodos de respaldo habituales (Time Machine, rsync, copias manuales, etc.).",
+    "q3": "¿Dónde se almacenan mis datos?",
+    "a3": "Todos tus datos se almacenan localmente en una base de datos SQLite en tu ordenador. Nada se envía a la nube ni a ningún servidor externo. Los metadatos de tus copias de seguridad permanecen privados y bajo tu control.",
+    "q4": "¿Qué medios de almacenamiento son compatibles?",
+    "a4": "B4cKuP T8L es compatible con cualquier medio de almacenamiento: NAS (Synology, QNAP, etc.), discos duros externos, SSD, memorias USB, tarjetas SD, almacenamiento en la nube (iCloud, Google Drive, OneDrive), unidades de cinta, medios ópticos y recursos compartidos de red.",
+    "q5": "¿Puedo rastrear copias de seguridad de apps como WhatsApp o iCloud?",
+    "a5": "¡Sí! Puedes crear fuentes para aplicaciones individuales (WhatsApp, Instagram, Apple Health, etc.) o servicios en línea (Gmail, iCloud, etc.) y rastrear su historial de copias de seguridad igual que las copias de dispositivos."
+  },
+  "changelog": {
+    "title": "Registro de cambios",
+    "subtitle": "Consulta las novedades de cada versión de B4cKuP T8L.",
+    "error": "No se pudieron cargar las versiones. Por favor, consulta GitHub."
   }
 }

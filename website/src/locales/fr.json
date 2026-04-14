@@ -4,7 +4,8 @@
     "features": "Fonctionnalités",
     "download": "Télécharger",
     "contact": "Contact",
-    "donate": "Faire un don"
+    "donate": "Faire un don",
+    "changelog": "Journal des modifications"
   },
   "hero": {
     "tagline": "Suivez, gérez et surveillez toutes vos sauvegardes en un seul endroit.",
@@ -121,5 +122,39 @@
     "privacy": "Confidentialité",
     "product": "Produit",
     "madeWith": "Fait avec"
+  },
+  "preview": {
+    "title": "Voyez par vous-même",
+    "subtitle": "Une interface claire et moderne pour gérer toutes vos sauvegardes.",
+    "dashboard": "Tableau de bord — Aperçu de l'état en un coup d'œil",
+    "backups": "Sauvegardes — Suivez chaque sauvegarde en détail"
+  },
+  "howItWorks": {
+    "title": "Comment ça marche",
+    "subtitle": "Démarrez en trois étapes simples. Pas de compte, pas de cloud, pas d'abonnement.",
+    "step1": "Installez l'application",
+    "step1Desc": "Téléchargez B4cKuP T8L pour votre système d'exploitation. L'application fonctionne nativement sur Windows, macOS et Linux avec une utilisation minimale des ressources.",
+    "step2": "Ajoutez vos sauvegardes",
+    "step2Desc": "Enregistrez vos sources de sauvegarde (appareils, applications, services cloud) et vos supports de stockage (NAS, disques externes, SSD). Pointez vers des dossiers et analysez automatiquement les sauvegardes existantes.",
+    "step3": "Gardez le contrôle",
+    "step3Desc": "Le tableau de bord vous indique quelles sauvegardes sont à jour, lesquelles sont en retard et lesquelles nécessitent votre attention. Des notifications intelligentes vous préviennent avant qu'il ne soit trop tard."
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "q1": "B4cKuP T8L est-il vraiment gratuit ?",
+    "a1": "Oui, B4cKuP T8L est entièrement gratuit et open source sous licence GPL-3.0. Pas de publicités, pas d'abonnement, pas de coûts cachés. Vous pouvez consulter l'intégralité du code source sur GitHub.",
+    "q2": "B4cKuP T8L effectue-t-il réellement des sauvegardes ?",
+    "a2": "Non. B4cKuP T8L est un outil de suivi de sauvegardes, pas un outil de sauvegarde. Il vous aide à suivre quand et où vos sauvegardes ont été effectuées, leur taille et si elles sont à jour. Vous continuez à utiliser vos méthodes de sauvegarde habituelles (Time Machine, rsync, copies manuelles, etc.).",
+    "q3": "Où sont stockées mes données ?",
+    "a3": "Toutes vos données sont stockées localement dans une base de données SQLite sur votre ordinateur. Rien n'est envoyé vers le cloud ni vers un serveur externe. Les métadonnées de vos sauvegardes restent privées et sous votre contrôle.",
+    "q4": "Quels supports de stockage sont pris en charge ?",
+    "a4": "B4cKuP T8L prend en charge tout type de support de stockage : NAS (Synology, QNAP, etc.), disques durs externes, SSD, clés USB, cartes SD, stockage cloud (iCloud, Google Drive, OneDrive), lecteurs de bandes, supports optiques et partages réseau.",
+    "q5": "Puis-je suivre les sauvegardes d'applications comme WhatsApp ou iCloud ?",
+    "a5": "Oui ! Vous pouvez créer des sources pour des applications individuelles (WhatsApp, Instagram, Apple Health, etc.) ou des services en ligne (Gmail, iCloud, etc.) et suivre leur historique de sauvegarde comme pour les sauvegardes d'appareils."
+  },
+  "changelog": {
+    "title": "Journal des modifications",
+    "subtitle": "Découvrez les nouveautés de chaque version de B4cKuP T8L.",
+    "error": "Impossible de charger les versions. Veuillez consulter GitHub."
   }
 }

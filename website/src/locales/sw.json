@@ -4,7 +4,8 @@
     "features": "Vipengele",
     "download": "Pakua",
     "contact": "Wasiliana",
-    "donate": "Changia"
+    "donate": "Changia",
+    "changelog": "Rekodi ya Mabadiliko"
   },
   "hero": {
     "tagline": "Fuatilia, simamia na ufuatilie nakala zako zote za akiba katika sehemu moja.",
@@ -121,5 +122,39 @@
     "privacy": "Sera ya Faragha",
     "product": "Bidhaa",
     "madeWith": "Imetengenezwa kwa"
+  },
+  "preview": {
+    "title": "Ione Ikifanya Kazi",
+    "subtitle": "Kiolesura safi na cha kisasa cha kudhibiti nakala zako zote za hifadhi.",
+    "dashboard": "Dashibodi — Muhtasari wa hali kwa mtazamo mmoja",
+    "backups": "Nakala za Hifadhi — Fuatilia kila nakala ya hifadhi kwa undani"
+  },
+  "howItWorks": {
+    "title": "Jinsi Inavyofanya Kazi",
+    "subtitle": "Anza kwa hatua tatu rahisi. Hakuna akaunti inayohitajika, hakuna wingu, hakuna usajili.",
+    "step1": "Sakinisha Programu",
+    "step1Desc": "Pakua B4cKuP T8L kwa mfumo wako wa uendeshaji. Inafanya kazi asili kwenye Windows, macOS na Linux kwa matumizi madogo ya rasilimali.",
+    "step2": "Ongeza Nakala Zako za Hifadhi",
+    "step2Desc": "Sajili vyanzo vyako vya hifadhi (vifaa, programu, huduma za wingu) na vyombo vya kuhifadhi (NAS, diski za nje, SSD). Elekeza kwenye folda na skani otomatiki nakala za hifadhi zilizopo.",
+    "step3": "Dhibiti Kila Wakati",
+    "step3Desc": "Dashibodi inakuonyesha ni nakala zipi za hifadhi zimesasishwa, zipi zimechelewa, na zipi zinahitaji uangalifu. Arifa mahiri zinakukumbusha kabla haijachelewa."
+  },
+  "faq": {
+    "title": "Maswali Yanayoulizwa Mara kwa Mara",
+    "q1": "Je, B4cKuP T8L ni bure kweli?",
+    "a1": "Ndiyo, B4cKuP T8L ni bure kabisa na ni programu huria chini ya leseni ya GPL-3.0. Hakuna matangazo, hakuna usajili, na hakuna gharama zilizofichwa. Unaweza kuona msimbo wote wa chanzo kwenye GitHub.",
+    "q2": "Je, B4cKuP T8L inafanya hifadhi rudufu kweli?",
+    "a2": "Hapana. B4cKuP T8L ni kifuatiliaji cha hifadhi rudufu, si chombo cha hifadhi rudufu. Inakusaidia kufuatilia lini na wapi nakala zako za hifadhi zilifanywa, ukubwa wake, na kama zimesasishwa. Unaendelea kutumia njia zako za hifadhi zilizopo (Time Machine, rsync, nakala za mikono, n.k.).",
+    "q3": "Data yangu inahifadhiwa wapi?",
+    "a3": "Data yako yote inahifadhiwa ndani ya hifadhidata ya SQLite kwenye kompyuta yako. Hakuna kinachotumwa kwenye wingu au seva yoyote ya nje. Metadata yako ya hifadhi rudufu inabaki ya faragha na chini ya udhibiti wako.",
+    "q4": "Ni vyombo vipi vya kuhifadhi vinavyosaidiwa?",
+    "a4": "B4cKuP T8L inasaidia chombo chochote cha kuhifadhi: NAS (Synology, QNAP, n.k.), diski ngumu za nje, SSD, vifaa vya USB, kadi za SD, hifadhi ya wingu (iCloud, Google Drive, OneDrive), viendeshi vya tepu, vyombo vya macho, na kushiriki mtandao.",
+    "q5": "Je, naweza kufuatilia nakala za hifadhi za programu kama WhatsApp au iCloud?",
+    "a5": "Ndiyo! Unaweza kuunda vyanzo kwa programu binafsi (WhatsApp, Instagram, Apple Health, n.k.) au huduma za mtandaoni (Gmail, iCloud, n.k.) na kufuatilia historia yao ya hifadhi rudufu kama vile hifadhi za vifaa."
+  },
+  "changelog": {
+    "title": "Rekodi ya Mabadiliko",
+    "subtitle": "Ona yaliyopya katika kila toleo la B4cKuP T8L.",
+    "error": "Haikuweza kupakia matoleo. Tafadhali angalia GitHub."
   }
 }

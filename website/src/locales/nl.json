@@ -4,7 +4,8 @@
     "features": "Functies",
     "download": "Downloaden",
     "contact": "Contact",
-    "donate": "Doneren"
+    "donate": "Doneren",
+    "changelog": "Wijzigingslogboek"
   },
   "hero": {
     "tagline": "Volg, beheer en monitor al je back-ups op één plek.",
@@ -121,5 +122,39 @@
     "privacy": "Privacybeleid",
     "product": "Product",
     "madeWith": "Gemaakt met"
+  },
+  "preview": {
+    "title": "Bekijk het in actie",
+    "subtitle": "Een strakke, moderne interface om al je back-ups te beheren.",
+    "dashboard": "Dashboard — Statusoverzicht in één oogopslag",
+    "backups": "Back-ups — Volg elke back-up in detail"
+  },
+  "howItWorks": {
+    "title": "Hoe het werkt",
+    "subtitle": "Begin in drie eenvoudige stappen. Geen account nodig, geen cloud, geen abonnement.",
+    "step1": "Installeer de app",
+    "step1Desc": "Download B4cKuP T8L voor jouw besturingssysteem. De app draait native op Windows, macOS en Linux met minimaal resourcegebruik.",
+    "step2": "Voeg je back-ups toe",
+    "step2Desc": "Registreer je back-upbronnen (apparaten, apps, clouddiensten) en opslagmedia (NAS, externe schijven, SSD's). Wijs naar mappen en scan automatisch bestaande back-ups.",
+    "step3": "Blijf in controle",
+    "step3Desc": "Het dashboard laat zien welke back-ups up-to-date zijn, welke achterstallig zijn en welke aandacht nodig hebben. Slimme meldingen herinneren je voordat het te laat is."
+  },
+  "faq": {
+    "title": "Veelgestelde vragen",
+    "q1": "Is B4cKuP T8L echt gratis?",
+    "a1": "Ja, B4cKuP T8L is volledig gratis en open source onder de GPL-3.0-licentie. Geen advertenties, geen abonnementen en geen verborgen kosten. Je kunt de volledige broncode bekijken op GitHub.",
+    "q2": "Maakt B4cKuP T8L daadwerkelijk back-ups?",
+    "a2": "Nee. B4cKuP T8L is een back-uptracker, geen back-uptool. Het helpt je bij te houden wanneer en waar je back-ups zijn gemaakt, hoe groot ze zijn en of ze up-to-date zijn. Je blijft je bestaande back-upmethoden gebruiken (Time Machine, rsync, handmatige kopieën, enz.).",
+    "q3": "Waar worden mijn gegevens opgeslagen?",
+    "a3": "Al je gegevens worden lokaal opgeslagen in een SQLite-database op je computer. Er wordt niets naar de cloud of een externe server gestuurd. De metadata van je back-ups blijven privé en onder jouw controle.",
+    "q4": "Welke opslagmedia worden ondersteund?",
+    "a4": "B4cKuP T8L ondersteunt elk opslagmedium: NAS (Synology, QNAP, enz.), externe harde schijven, SSD's, USB-sticks, SD-kaarten, cloudopslag (iCloud, Google Drive, OneDrive), tapestations, optische media en netwerkshares.",
+    "q5": "Kan ik app-back-ups zoals WhatsApp of iCloud volgen?",
+    "a5": "Ja! Je kunt bronnen aanmaken voor individuele apps (WhatsApp, Instagram, Apple Health, enz.) of onlinediensten (Gmail, iCloud, enz.) en hun back-upgeschiedenis volgen net als back-ups van apparaten."
+  },
+  "changelog": {
+    "title": "Wijzigingslogboek",
+    "subtitle": "Bekijk wat er nieuw is in elke versie van B4cKuP T8L.",
+    "error": "Kan releases niet laden. Controleer GitHub."
   }
 }

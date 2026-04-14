@@ -4,7 +4,8 @@
     "features": "Funkcje",
     "download": "Pobierz",
     "contact": "Kontakt",
-    "donate": "Wspomóż"
+    "donate": "Wspomóż",
+    "changelog": "Historia zmian"
   },
   "hero": {
     "tagline": "Śledź, zarządzaj i monitoruj wszystkie kopie zapasowe w jednym miejscu.",
@@ -121,5 +122,39 @@
     "privacy": "Polityka prywatności",
     "product": "Produkt",
     "madeWith": "Stworzone z"
+  },
+  "preview": {
+    "title": "Zobacz w akcji",
+    "subtitle": "Przejrzysty, nowoczesny interfejs do zarządzania wszystkimi kopiami zapasowymi.",
+    "dashboard": "Panel główny — Przegląd statusu na pierwszy rzut oka",
+    "backups": "Kopie zapasowe — Śledź każdą kopię zapasową ze szczegółami"
+  },
+  "howItWorks": {
+    "title": "Jak to działa",
+    "subtitle": "Zacznij w trzech prostych krokach. Bez konta, bez chmury, bez subskrypcji.",
+    "step1": "Zainstaluj aplikację",
+    "step1Desc": "Pobierz B4cKuP T8L na swój system operacyjny. Działa natywnie na Windows, macOS i Linux przy minimalnym zużyciu zasobów.",
+    "step2": "Dodaj swoje kopie zapasowe",
+    "step2Desc": "Zarejestruj źródła kopii zapasowych (urządzenia, aplikacje, usługi chmurowe) oraz nośniki danych (NAS, dyski zewnętrzne, SSD). Wskaż foldery i automatycznie skanuj istniejące kopie zapasowe.",
+    "step3": "Miej wszystko pod kontrolą",
+    "step3Desc": "Panel główny pokazuje, które kopie zapasowe są aktualne, które są zaległe i które wymagają uwagi. Inteligentne powiadomienia przypominają, zanim będzie za późno."
+  },
+  "faq": {
+    "title": "Często zadawane pytania",
+    "q1": "Czy B4cKuP T8L jest naprawdę darmowy?",
+    "a1": "Tak, B4cKuP T8L jest całkowicie darmowy i open source na licencji GPL-3.0. Bez reklam, bez subskrypcji i bez ukrytych kosztów. Pełny kod źródłowy możesz zobaczyć na GitHubie.",
+    "q2": "Czy B4cKuP T8L wykonuje kopie zapasowe?",
+    "a2": "Nie. B4cKuP T8L to narzędzie do śledzenia kopii zapasowych, a nie do ich tworzenia. Pomaga śledzić, kiedy i gdzie zostały wykonane kopie zapasowe, ich rozmiary oraz czy są aktualne. Nadal używasz swoich dotychczasowych metod tworzenia kopii zapasowych (Time Machine, rsync, ręczne kopie itp.).",
+    "q3": "Gdzie przechowywane są moje dane?",
+    "a3": "Wszystkie dane są przechowywane lokalnie w bazie danych SQLite na Twoim komputerze. Nic nie jest wysyłane do chmury ani na żaden zewnętrzny serwer. Metadane Twoich kopii zapasowych pozostają prywatne i pod Twoją kontrolą.",
+    "q4": "Jakie nośniki danych są obsługiwane?",
+    "a4": "B4cKuP T8L obsługuje dowolne nośniki danych: NAS (Synology, QNAP itp.), zewnętrzne dyski twarde, SSD, pamięci USB, karty SD, chmurę (iCloud, Google Drive, OneDrive), napędy taśmowe, nośniki optyczne oraz udziały sieciowe.",
+    "q5": "Czy mogę śledzić kopie zapasowe aplikacji takich jak WhatsApp czy iCloud?",
+    "a5": "Tak! Możesz tworzyć źródła dla poszczególnych aplikacji (WhatsApp, Instagram, Apple Health itp.) lub usług online (Gmail, iCloud itp.) i śledzić ich historię kopii zapasowych tak samo jak kopie zapasowe urządzeń."
+  },
+  "changelog": {
+    "title": "Historia zmian",
+    "subtitle": "Zobacz, co nowego w każdym wydaniu B4cKuP T8L.",
+    "error": "Nie udało się załadować wydań. Sprawdź GitHub."
   }
 }

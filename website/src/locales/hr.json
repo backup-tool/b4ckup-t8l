@@ -4,7 +4,8 @@
     "features": "Značajke",
     "download": "Preuzimanje",
     "contact": "Kontakt",
-    "donate": "Donirajte"
+    "donate": "Donirajte",
+    "changelog": "Povijest promjena"
   },
   "hero": {
     "tagline": "Pratite, upravljajte i nadzirite sve svoje sigurnosne kopije na jednom mjestu.",
@@ -121,5 +122,39 @@
     "privacy": "Politika privatnosti",
     "product": "Proizvod",
     "madeWith": "Napravljeno s"
+  },
+  "preview": {
+    "title": "Pogledajte kako radi",
+    "subtitle": "Čisto, moderno sučelje za upravljanje svim vašim sigurnosnim kopijama.",
+    "dashboard": "Nadzorna ploča — Pregled statusa na prvi pogled",
+    "backups": "Sigurnosne kopije — Pratite svaku sigurnosnu kopiju s detaljima"
+  },
+  "howItWorks": {
+    "title": "Kako funkcionira",
+    "subtitle": "Započnite u tri jednostavna koraka. Bez računa, bez oblaka, bez pretplate.",
+    "step1": "Instalirajte aplikaciju",
+    "step1Desc": "Preuzmite B4cKuP T8L za svoj operacijski sustav. Radi izvorno na Windowsu, macOS-u i Linuxu s minimalnom potrošnjom resursa.",
+    "step2": "Dodajte svoje sigurnosne kopije",
+    "step2Desc": "Registrirajte izvore sigurnosnih kopija (uređaje, aplikacije, usluge u oblaku) i medije za pohranu (NAS, vanjski diskovi, SSD-ovi). Usmjerite na mape i automatski pretražite postojeće sigurnosne kopije.",
+    "step3": "Budite u tijeku",
+    "step3Desc": "Nadzorna ploča prikazuje koje su sigurnosne kopije ažurne, koje kasne i koje zahtijevaju pozornost. Pametne obavijesti podsjećaju vas prije nego što bude prekasno."
+  },
+  "faq": {
+    "title": "Često postavljana pitanja",
+    "q1": "Je li B4cKuP T8L zaista besplatan?",
+    "a1": "Da, B4cKuP T8L je potpuno besplatan i otvorenog koda pod licencom GPL-3.0. Nema oglasa, pretplata ni skrivenih troškova. Cjelokupni izvorni kod možete pogledati na GitHubu.",
+    "q2": "Radi li B4cKuP T8L zapravo sigurnosne kopije?",
+    "a2": "Ne. B4cKuP T8L je alat za praćenje sigurnosnih kopija, a ne alat za njihovo stvaranje. Pomaže vam pratiti kada i gdje su sigurnosne kopije napravljene, njihove veličine i jesu li ažurne. Nastavljate koristiti svoje postojeće metode sigurnosnog kopiranja (Time Machine, rsync, ručne kopije itd.).",
+    "q3": "Gdje se pohranjuju moji podaci?",
+    "a3": "Svi vaši podaci pohranjuju se lokalno u SQLite bazi podataka na vašem računalu. Ništa se ne šalje u oblak niti na bilo koji vanjski poslužitelj. Metapodaci vaših sigurnosnih kopija ostaju privatni i pod vašom kontrolom.",
+    "q4": "Koji mediji za pohranu su podržani?",
+    "a4": "B4cKuP T8L podržava bilo koji medij za pohranu: NAS (Synology, QNAP itd.), vanjske tvrde diskove, SSD-ove, USB memorije, SD kartice, pohranu u oblaku (iCloud, Google Drive, OneDrive), tračne pogone, optičke medije i mrežne dijeljene resurse.",
+    "q5": "Mogu li pratiti sigurnosne kopije aplikacija poput WhatsAppa ili iClouda?",
+    "a5": "Da! Možete stvoriti izvore za pojedinačne aplikacije (WhatsApp, Instagram, Apple Health itd.) ili mrežne usluge (Gmail, iCloud itd.) i pratiti njihovu povijest sigurnosnih kopija jednako kao i sigurnosne kopije uređaja."
+  },
+  "changelog": {
+    "title": "Povijest promjena",
+    "subtitle": "Pogledajte što je novo u svakom izdanju B4cKuP T8L.",
+    "error": "Nije moguće učitati izdanja. Provjerite GitHub."
   }
 }

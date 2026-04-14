@@ -4,7 +4,8 @@
     "features": "Özellikler",
     "download": "İndir",
     "contact": "İletişim",
-    "donate": "Bağış Yap"
+    "donate": "Bağış Yap",
+    "changelog": "Değişiklik Günlüğü"
   },
   "hero": {
     "tagline": "Tüm yedeklemelerinizi tek bir yerden takip edin, yönetin ve izleyin.",
@@ -121,5 +122,39 @@
     "privacy": "Gizlilik Politikası",
     "product": "Ürün",
     "madeWith": "Şununla yapıldı"
+  },
+  "preview": {
+    "title": "Çalışırken Görün",
+    "subtitle": "Tüm yedeklerinizi yönetmek için temiz, modern bir arayüz.",
+    "dashboard": "Kontrol Paneli — Duruma bir bakışta genel bakış",
+    "backups": "Yedeklemeler — Her yedeği ayrıntılarıyla takip edin"
+  },
+  "howItWorks": {
+    "title": "Nasıl Çalışır",
+    "subtitle": "Üç basit adımda başlayın. Hesap gerektirmez, bulut gerektirmez, abonelik gerektirmez.",
+    "step1": "Uygulamayı Kurun",
+    "step1Desc": "İşletim sisteminiz için B4cKuP T8L'yi indirin. Windows, macOS ve Linux üzerinde minimum kaynak kullanımıyla yerel olarak çalışır.",
+    "step2": "Yedeklerinizi Ekleyin",
+    "step2Desc": "Yedekleme kaynaklarınızı (cihazlar, uygulamalar, bulut hizmetleri) ve depolama ortamlarınızı (NAS, harici diskler, SSD'ler) kaydedin. Klasörleri belirtin ve mevcut yedekleri otomatik olarak tarayın.",
+    "step3": "Her Şeyin Üstünde Olun",
+    "step3Desc": "Kontrol paneli hangi yedeklerin güncel olduğunu, hangilerinin geciktiğini ve hangilerinin ilgi gerektirdiğini gösterir. Akıllı bildirimler çok geç olmadan hatırlatır."
+  },
+  "faq": {
+    "title": "Sıkça Sorulan Sorular",
+    "q1": "B4cKuP T8L gerçekten ücretsiz mi?",
+    "a1": "Evet, B4cKuP T8L tamamen ücretsiz ve GPL-3.0 lisansı altında açık kaynaklıdır. Reklam, abonelik ve gizli maliyet yoktur. Kaynak kodunun tamamını GitHub'da görüntüleyebilirsiniz.",
+    "q2": "B4cKuP T8L gerçekten yedekleme yapıyor mu?",
+    "a2": "Hayır. B4cKuP T8L bir yedekleme takip aracıdır, yedekleme aracı değildir. Yedeklemelerin ne zaman ve nereye yapıldığını, boyutlarını ve güncel olup olmadıklarını takip etmenize yardımcı olur. Mevcut yedekleme yöntemlerinizi (Time Machine, rsync, elle kopyalama vb.) kullanmaya devam edersiniz.",
+    "q3": "Verilerim nerede saklanıyor?",
+    "a3": "Tüm verileriniz bilgisayarınızdaki bir SQLite veritabanında yerel olarak saklanır. Buluta veya herhangi bir harici sunucuya hiçbir şey gönderilmez. Yedekleme meta verileriniz gizli kalır ve sizin kontrolünüz altındadır.",
+    "q4": "Hangi depolama ortamları destekleniyor?",
+    "a4": "B4cKuP T8L her türlü depolama ortamını destekler: NAS (Synology, QNAP vb.), harici sabit diskler, SSD'ler, USB bellekler, SD kartlar, bulut depolama (iCloud, Google Drive, OneDrive), teyp sürücüler, optik ortamlar ve ağ paylaşımları.",
+    "q5": "WhatsApp veya iCloud gibi uygulama yedeklerini takip edebilir miyim?",
+    "a5": "Evet! Tek tek uygulamalar (WhatsApp, Instagram, Apple Health vb.) veya çevrimiçi hizmetler (Gmail, iCloud vb.) için kaynaklar oluşturabilir ve yedekleme geçmişlerini cihaz yedekleri gibi takip edebilirsiniz."
+  },
+  "changelog": {
+    "title": "Değişiklik Günlüğü",
+    "subtitle": "B4cKuP T8L'nin her sürümündeki yenilikleri görün.",
+    "error": "Sürümler yüklenemedi. Lütfen GitHub'ı kontrol edin."
   }
 }

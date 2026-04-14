@@ -4,7 +4,8 @@
     "features": "功能",
     "download": "下载",
     "contact": "联系我们",
-    "donate": "捐赠"
+    "donate": "捐赠",
+    "changelog": "更新日志"
   },
   "hero": {
     "tagline": "在一个地方跟踪、管理和监控所有备份。",
@@ -121,5 +122,39 @@
     "privacy": "隐私政策",
     "product": "产品",
     "madeWith": "用心制作"
+  },
+  "preview": {
+    "title": "查看实际效果",
+    "subtitle": "简洁、现代的界面，轻松管理所有备份。",
+    "dashboard": "仪表盘 — 一目了然的状态概览",
+    "backups": "备份 — 详细追踪每一次备份"
+  },
+  "howItWorks": {
+    "title": "工作原理",
+    "subtitle": "三个简单步骤即可开始。无需账户、无需云端、无需订阅。",
+    "step1": "安装应用",
+    "step1Desc": "下载适用于您操作系统的 B4cKuP T8L。它在 Windows、macOS 和 Linux 上原生运行，资源占用极低。",
+    "step2": "添加您的备份",
+    "step2Desc": "注册您的备份来源（设备、应用、云服务）和存储介质（NAS、外置硬盘、SSD）。指定文件夹并自动扫描已有备份。",
+    "step3": "保持掌控",
+    "step3Desc": "仪表盘会显示哪些备份是最新的、哪些已过期、哪些需要关注。智能通知会在为时已晚之前提醒您。"
+  },
+  "faq": {
+    "title": "常见问题",
+    "q1": "B4cKuP T8L 真的免费吗？",
+    "a1": "是的，B4cKuP T8L 完全免费且基于 GPL-3.0 许可证开源。没有广告、没有订阅、没有隐藏费用。您可以在 GitHub 上查看完整的源代码。",
+    "q2": "B4cKuP T8L 会执行备份操作吗？",
+    "a2": "不会。B4cKuP T8L 是一个备份追踪器，而非备份工具。它帮助您记录备份的时间、位置、大小，以及备份是否是最新的。您可以继续使用现有的备份方式（Time Machine、rsync、手动复制等）。",
+    "q3": "我的数据存储在哪里？",
+    "a3": "您的所有数据都存储在计算机上的本地 SQLite 数据库中。不会发送到云端或任何外部服务器。您的备份元数据完全私密，完全由您掌控。",
+    "q4": "支持哪些存储介质？",
+    "a4": "B4cKuP T8L 支持任何存储介质：NAS（群晖、威联通等）、外置硬盘、SSD、U 盘、SD 卡、云存储（iCloud、Google Drive、OneDrive）、磁带驱动器、光学介质和网络共享。",
+    "q5": "我可以追踪 WhatsApp 或 iCloud 等应用的备份吗？",
+    "a5": "当然可以！您可以为单个应用（WhatsApp、Instagram、Apple Health 等）或在线服务（Gmail、iCloud 等）创建来源，并像追踪设备备份一样追踪它们的备份历史。"
+  },
+  "changelog": {
+    "title": "更新日志",
+    "subtitle": "查看 B4cKuP T8L 每个版本的新功能。",
+    "error": "无法加载版本信息。请查看 GitHub。"
   }
 }

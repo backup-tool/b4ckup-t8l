@@ -4,7 +4,8 @@
     "features": "Funcționalități",
     "download": "Descărcare",
     "contact": "Contact",
-    "donate": "Donează"
+    "donate": "Donează",
+    "changelog": "Jurnal de modificări"
   },
   "hero": {
     "tagline": "Urmărește, gestionează și monitorizează toate copiile de rezervă într-un singur loc.",
@@ -121,5 +122,39 @@
     "privacy": "Politica de confidențialitate",
     "product": "Produs",
     "madeWith": "Realizat cu"
+  },
+  "preview": {
+    "title": "Vezi cum funcționează",
+    "subtitle": "O interfață curată și modernă pentru a gestiona toate copiile tale de rezervă.",
+    "dashboard": "Panou de control — Prezentare generală a stării dintr-o privire",
+    "backups": "Copii de rezervă — Urmărește fiecare copie de rezervă în detaliu"
+  },
+  "howItWorks": {
+    "title": "Cum funcționează",
+    "subtitle": "Începe în trei pași simpli. Fără cont, fără cloud, fără abonament.",
+    "step1": "Instalează aplicația",
+    "step1Desc": "Descarcă B4cKuP T8L pentru sistemul tău de operare. Aplicația rulează nativ pe Windows, macOS și Linux cu un consum minim de resurse.",
+    "step2": "Adaugă copiile de rezervă",
+    "step2Desc": "Înregistrează sursele de backup (dispozitive, aplicații, servicii cloud) și mediile de stocare (NAS, discuri externe, SSD-uri). Indică folderele și scanează automat copiile de rezervă existente.",
+    "step3": "Rămâi la curent",
+    "step3Desc": "Panoul de control îți arată care copii de rezervă sunt la zi, care sunt întârziate și care necesită atenție. Notificările inteligente te avertizează înainte să fie prea târziu."
+  },
+  "faq": {
+    "title": "Întrebări frecvente",
+    "q1": "B4cKuP T8L este cu adevărat gratuit?",
+    "a1": "Da, B4cKuP T8L este complet gratuit și open source sub licența GPL-3.0. Fără reclame, fără abonamente și fără costuri ascunse. Poți consulta codul sursă complet pe GitHub.",
+    "q2": "B4cKuP T8L efectuează copii de rezervă?",
+    "a2": "Nu. B4cKuP T8L este un instrument de urmărire a copiilor de rezervă, nu un instrument de backup. Te ajută să ții evidența când și unde au fost făcute copiile de rezervă, dimensiunea lor și dacă sunt la zi. Continui să folosești metodele tale obișnuite de backup (Time Machine, rsync, copii manuale etc.).",
+    "q3": "Unde sunt stocate datele mele?",
+    "a3": "Toate datele tale sunt stocate local într-o bază de date SQLite pe computerul tău. Nimic nu este trimis în cloud sau către vreun server extern. Metadatele copiilor de rezervă rămân private și sub controlul tău.",
+    "q4": "Ce medii de stocare sunt acceptate?",
+    "a4": "B4cKuP T8L acceptă orice mediu de stocare: NAS (Synology, QNAP etc.), discuri dure externe, SSD-uri, stick-uri USB, carduri SD, stocare cloud (iCloud, Google Drive, OneDrive), unități de bandă, medii optice și resurse de rețea.",
+    "q5": "Pot urmări copiile de rezervă ale aplicațiilor precum WhatsApp sau iCloud?",
+    "a5": "Da! Poți crea surse pentru aplicații individuale (WhatsApp, Instagram, Apple Health etc.) sau servicii online (Gmail, iCloud etc.) și urmări istoricul copiilor de rezervă la fel ca pentru copiile de rezervă ale dispozitivelor."
+  },
+  "changelog": {
+    "title": "Jurnal de modificări",
+    "subtitle": "Vezi ce este nou în fiecare versiune a B4cKuP T8L.",
+    "error": "Nu s-au putut încărca versiunile. Te rugăm să verifici pe GitHub."
   }
 }
