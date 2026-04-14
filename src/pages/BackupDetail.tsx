@@ -2,8 +2,8 @@ import { useEffect, useState, useCallback, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
-  LineChart,
-  Line,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   Tooltip,
@@ -51,7 +51,7 @@ import {
   getBackupsWithStatus,
   toggleBackupPaused,
 } from "@/lib/db";
-import { BACKUP_CATEGORIES, CATEGORY_LABELS, SIZE_UNITS, SIZE_MULTIPLIERS } from "@/lib/types";
+import { BACKUP_CATEGORIES, SIZE_UNITS, SIZE_MULTIPLIERS } from "@/lib/types";
 import type { BackupStatus } from "@/lib/types";
 import { formatBytes, formatDate, todayISO } from "@/lib/format";
 import { useAppStore } from "@/lib/store";
@@ -67,7 +67,7 @@ interface ScanResult {
 export function BackupDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const triggerRefresh = useAppStore((s) => s.triggerRefresh);
   const [backup, setBackup] = useState<Record<string, any> | null>(null);
   const [status, setStatus] = useState<BackupStatus>("critical");
@@ -256,7 +256,6 @@ export function BackupDetail() {
 
   if (!backup) return null;
 
-  const lang = i18n.language as "en" | "de" | "ru";
 
   function openEdit() {
     if (!backup) return;
@@ -549,7 +548,7 @@ export function BackupDetail() {
           <p className="text-sm text-muted-foreground">
             {backup.device_name as string}
             {backup.category
-              ? ` · ${CATEGORY_LABELS[backup.category as string]?.[lang] || backup.category}`
+              ? ` · ${t(`categories.${backup.category}`, { defaultValue: backup.category as string })}`
               : ""}
             {backup.tags ? ` · ${backup.tags}` : ""}
           </p>
@@ -607,30 +606,38 @@ export function BackupDetail() {
           ) : (
             <div className="h-52">
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={chartData} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" vertical={false} />
+                <AreaChart data={chartData} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
+                  <defs>
+                    <linearGradient id="detailGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#4ade80" stopOpacity={0.3} />
+                      <stop offset="100%" stopColor="#4ade80" stopOpacity={0.02} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" vertical={false} opacity={0.5} />
                   <XAxis dataKey="date" tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} />
                   <YAxis tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} unit=" GB" width={55} />
                   <Tooltip
                     contentStyle={{
-                      borderRadius: "8px",
+                      borderRadius: "12px",
                       border: "1px solid var(--border)",
                       backgroundColor: "var(--card)",
                       color: "var(--fg)",
-                      boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
                       fontSize: "12px",
+                      padding: "8px 12px",
                     }}
                     formatter={(value: any) => [`${value} GB`, t("backups.size")]}
                   />
-                  <Line
+                  <Area
                     type="monotone"
                     dataKey="size"
-                    stroke="var(--chart-line)"
-                    strokeWidth={2}
-                    dot={{ r: 4, fill: "var(--chart-dot)", stroke: "var(--chart-line)", strokeWidth: 2 }}
-                    activeDot={{ r: 6, fill: "var(--chart-line)" }}
+                    stroke="#4ade80"
+                    fill="url(#detailGradient)"
+                    strokeWidth={2.5}
+                    dot={{ r: 3, fill: "#4ade80", stroke: "#4ade80", strokeWidth: 0 }}
+                    activeDot={{ r: 5, fill: "#4ade80", stroke: "var(--card)", strokeWidth: 2 }}
                   />
-                </LineChart>
+                </AreaChart>
               </ResponsiveContainer>
             </div>
           )}
@@ -1086,7 +1093,7 @@ export function BackupDetail() {
               }
               options={BACKUP_CATEGORIES.map((cat) => ({
                 value: cat,
-                label: CATEGORY_LABELS[cat]?.[lang] || cat,
+                label: t(`categories.${cat}`, { defaultValue: cat }),
               }))}
             />
           </div>

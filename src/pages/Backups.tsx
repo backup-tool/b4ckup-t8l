@@ -22,13 +22,13 @@ import {
   getAllDevices,
   createDevice,
 } from "@/lib/db";
-import { BACKUP_CATEGORIES, CATEGORY_LABELS } from "@/lib/types";
+import { BACKUP_CATEGORIES } from "@/lib/types";
 import type { BackupStatus } from "@/lib/types";
 import { formatBytes, formatDate, daysAgo } from "@/lib/format";
 import { useAppStore } from "@/lib/store";
 
 export function Backups() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const refreshKey = useAppStore((s) => s.refreshKey);
   const triggerRefresh = useAppStore((s) => s.triggerRefresh);
   const [backups, setBackups] = useState<Array<Record<string, any>>>([]);
@@ -118,7 +118,6 @@ export function Backups() {
     await loadAll();
   }
 
-  const lang = i18n.language as "en" | "de" | "ru";
 
   const filtered = backups.filter((b) => {
     const matchesSearch =
@@ -200,7 +199,7 @@ export function Backups() {
             { value: "all", label: t("backups.filterAll") },
             ...BACKUP_CATEGORIES.map((cat) => ({
               value: cat,
-              label: CATEGORY_LABELS[cat]?.[lang] || cat,
+              label: t(`categories.${cat}`, { defaultValue: cat }),
             })),
           ]}
         />
@@ -312,7 +311,7 @@ export function Backups() {
                                   {b.name as string}
                                 </h3>
                                 <p className="text-xs text-muted-foreground">
-                                  {CATEGORY_LABELS[b.category as string]?.[lang] || (b.category as string)}
+                                  {t(`categories.${b.category}`, { defaultValue: b.category as string })}
                                   {b.tags ? ` · ${b.tags}` : ""}
                                 </p>
                               </div>
@@ -401,7 +400,7 @@ export function Backups() {
               onChange={(val) => setForm({ ...form, category: val })}
               options={BACKUP_CATEGORIES.map((cat) => ({
                 value: cat,
-                label: CATEGORY_LABELS[cat]?.[lang] || cat,
+                label: t(`categories.${cat}`, { defaultValue: cat }),
               }))}
             />
           </div>

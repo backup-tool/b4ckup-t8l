@@ -130,6 +130,9 @@
     "spanish": "Espagnol",
     "portuguese": "Portugais",
     "dutch": "Néerlandais",
+    "notifications": "Notifications",
+    "notificationsEnabled": "Activer les notifications",
+    "checkInterval": "Intervalle de vérification",
     "theme": "Thème",
     "light": "Clair",
     "dark": "Sombre",
@@ -235,6 +238,39 @@
     "ready": "Mise à jour prête",
     "restartDesc": "Redémarrez l'application pour appliquer la mise à jour.",
     "restart": "Redémarrer maintenant"
+  },
+  "calendar": {
+    "title": "Calendrier des sauvegardes",
+    "entries": "entrées"
+  },
+  "bulk": {
+    "selected": "sélectionné(s)",
+    "select": "Sélectionner",
+    "deleteConfirm": "sauvegardes seront déplacées vers la corbeille."
+  },
+  "comparison": {
+    "title": "Comparaison des tailles"
+  },
+  "categories": {
+    "photos": "Photos", "videos": "Vidéos", "music": "Musique", "documents": "Documents",
+    "desktop": "Bureau", "system": "Système", "system_image": "Image système",
+    "vm": "Machine virtuelle", "database": "Base de données", "media": "Médias", "code": "Code",
+    "projects": "Projets", "email": "E-mail", "contacts": "Contacts", "calendar": "Calendrier",
+    "messages": "Messages", "health": "Santé", "social_media": "Réseaux sociaux",
+    "finance": "Finance", "games": "Jeux", "applications": "Applications",
+    "config": "Configuration", "other": "Autre"
+  },
+  "deviceTypes": {
+    "desktop": "PC de bureau", "laptop": "Ordinateur portable", "phone": "Téléphone", "tablet": "Tablette",
+    "server": "Serveur", "nas": "NAS", "cloud": "Service cloud",
+    "external_drive": "Disque externe", "camera": "Appareil photo", "console": "Console",
+    "smart_home": "Maison connectée", "app": "App", "service": "Service en ligne", "other": "Autre"
+  },
+  "storageTypes": {
+    "nas": "NAS", "external_drive": "Disque dur externe", "internal_drive": "Disque dur interne",
+    "ssd": "SSD", "usb_stick": "Clé USB", "sd_card": "Carte SD", "cloud": "Cloud",
+    "tape": "Bande", "optical": "Optique (CD/DVD/BD)", "network_share": "Partage réseau",
+    "local": "Local", "other": "Autre"
   },
   "rule321": {
     "title": "Règle de sauvegarde 3-2-1",

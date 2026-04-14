@@ -285,6 +285,27 @@
     "restartDesc": "Restart the app to apply the update.",
     "restart": "Restart Now"
   },
+  "categories": {
+    "photos": "Photos", "videos": "Videos", "music": "Music", "documents": "Documents",
+    "desktop": "Desktop", "system": "System", "system_image": "System Image",
+    "vm": "Virtual Machine", "database": "Database", "media": "Media", "code": "Code",
+    "projects": "Projects", "email": "Email", "contacts": "Contacts", "calendar": "Calendar",
+    "messages": "Messages", "health": "Health", "social_media": "Social Media",
+    "finance": "Finance", "games": "Games", "applications": "Applications",
+    "config": "Configuration", "other": "Other"
+  },
+  "deviceTypes": {
+    "desktop": "Desktop PC", "laptop": "Laptop", "phone": "Phone", "tablet": "Tablet",
+    "server": "Server", "nas": "NAS", "cloud": "Cloud Service",
+    "external_drive": "External Drive", "camera": "Camera", "console": "Console",
+    "smart_home": "Smart Home", "app": "App", "service": "Online Service", "other": "Other"
+  },
+  "storageTypes": {
+    "nas": "NAS", "external_drive": "External HDD", "internal_drive": "Internal HDD",
+    "ssd": "SSD", "usb_stick": "USB Stick", "sd_card": "SD Card", "cloud": "Cloud",
+    "tape": "Tape", "optical": "Optical (CD/DVD/BD)", "network_share": "Network Share",
+    "local": "Local", "other": "Other"
+  },
   "rule321": {
     "title": "3-2-1 Backup Rule",
     "desc": "3 copies, 2 different media types, 1 offsite",

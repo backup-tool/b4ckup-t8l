@@ -18,12 +18,11 @@ import {
   permanentDeleteEntry,
   permanentDeleteDevice,
 } from "@/lib/db";
-import { STORAGE_TYPE_LABELS, CATEGORY_LABELS, DEVICE_TYPE_LABELS } from "@/lib/types";
 import { formatDate, formatBytes } from "@/lib/format";
 import { useAppStore } from "@/lib/store";
 
 export function Trash() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const refreshKey = useAppStore((s) => s.refreshKey);
   const triggerRefresh = useAppStore((s) => s.triggerRefresh);
   const [deletedBackups, setDeletedBackups] = useState<Array<Record<string, any>>>([]);
@@ -126,7 +125,6 @@ export function Trash() {
     await loadAll();
   }
 
-  const lang = i18n.language as "en" | "de" | "ru";
   const isEmpty =
     deletedBackups.length === 0 &&
     deletedMedia.length === 0 &&
@@ -182,7 +180,7 @@ export function Trash() {
                       <p className="text-xs text-muted-foreground">
                         {b.device_name as string}
                         {b.category && (
-                          <> &middot; {CATEGORY_LABELS[b.category as string]?.[lang] || b.category}</>
+                          <> &middot; {t(`categories.${b.category}`, { defaultValue: b.category as string })}</>
                         )}
                         {b.deleted_at && (
                           <> &middot; {t("trash.deletedAt")}: {formatDate(b.deleted_at as string)}</>
@@ -290,7 +288,7 @@ export function Trash() {
                     <div>
                       <p className="text-sm font-medium">{m.name as string}</p>
                       <p className="text-xs text-muted-foreground">
-                        {STORAGE_TYPE_LABELS[m.type as string]?.[lang] || m.type}
+                        {t(`storageTypes.${m.type}`, { defaultValue: m.type as string })}
                         {m.deleted_at && (
                           <> &middot; {t("trash.deletedAt")}: {formatDate(m.deleted_at as string)}</>
                         )}
@@ -340,7 +338,7 @@ export function Trash() {
                     <div>
                       <p className="text-sm font-medium">{d.name as string}</p>
                       <p className="text-xs text-muted-foreground">
-                        {DEVICE_TYPE_LABELS[d.type as string]?.[lang] || d.type}
+                        {t(`deviceTypes.${d.type}`, { defaultValue: d.type as string })}
                         {d.model && <> &middot; {d.model as string}</>}
                         {d.deleted_at && (
                           <> &middot; {t("trash.deletedAt")}: {formatDate(d.deleted_at as string)}</>

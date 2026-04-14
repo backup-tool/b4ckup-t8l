@@ -99,13 +99,31 @@ export function Statistics() {
   const totalMedia = media.length;
 
   const tooltipStyle = {
-    borderRadius: "8px",
+    borderRadius: "12px",
     border: "1px solid var(--border)",
     backgroundColor: "var(--card)",
     color: "var(--fg)",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+    boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
     fontSize: "12px",
+    padding: "8px 12px",
   };
+
+  const GradientDefs = () => (
+    <defs>
+      <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#4ade80" stopOpacity={0.9} />
+        <stop offset="100%" stopColor="#22c55e" stopOpacity={0.6} />
+      </linearGradient>
+      <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#4ade80" stopOpacity={0.3} />
+        <stop offset="100%" stopColor="#4ade80" stopOpacity={0.02} />
+      </linearGradient>
+      <linearGradient id="barGradient2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#60a5fa" stopOpacity={0.9} />
+        <stop offset="100%" stopColor="#3b82f6" stopOpacity={0.6} />
+      </linearGradient>
+    </defs>
+  );
 
   return (
     <div className="space-y-6">
@@ -140,12 +158,13 @@ export function Statistics() {
           </CardHeader>
           {sizePerMonth.length > 0 ? (
             <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={sizePerMonth}>
-                <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" vertical={false} />
+              <BarChart data={sizePerMonth} barCategoryGap="20%">
+                <GradientDefs />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" vertical={false} opacity={0.5} />
                 <XAxis dataKey="month" tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} />
                 <YAxis tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} unit=" GB" width={55} />
-                <Tooltip contentStyle={tooltipStyle} formatter={(v: any) => [`${v} GB`, t("statistics.size")]} />
-                <Bar dataKey="gb" fill="var(--accent)" radius={[4, 4, 0, 0]} />
+                <Tooltip contentStyle={tooltipStyle} cursor={{ fill: "var(--muted)", opacity: 0.3 }} formatter={(v: any) => [`${v} GB`, t("statistics.size")]} />
+                <Bar dataKey="gb" fill="url(#barGradient)" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           ) : (
@@ -161,11 +180,12 @@ export function Statistics() {
           {cumulativeData.length > 0 ? (
             <ResponsiveContainer width="100%" height={250}>
               <AreaChart data={cumulativeData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" vertical={false} />
+                <GradientDefs />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" vertical={false} opacity={0.5} />
                 <XAxis dataKey="month" tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} />
                 <YAxis tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} unit=" GB" width={55} />
                 <Tooltip contentStyle={tooltipStyle} formatter={(v: any) => [`${v} GB`, t("statistics.total")]} />
-                <Area type="monotone" dataKey="gb" stroke="var(--chart-line)" fill="var(--accent)" fillOpacity={0.1} strokeWidth={2} />
+                <Area type="monotone" dataKey="gb" stroke="#4ade80" fill="url(#areaGradient)" strokeWidth={2.5} dot={{ r: 3, fill: "#4ade80", stroke: "#4ade80", strokeWidth: 0 }} activeDot={{ r: 5, fill: "#4ade80", stroke: "var(--card)", strokeWidth: 2 }} />
               </AreaChart>
             </ResponsiveContainer>
           ) : (
@@ -180,12 +200,13 @@ export function Statistics() {
           </CardHeader>
           {countPerMonth.length > 0 ? (
             <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={countPerMonth}>
-                <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" vertical={false} />
+              <BarChart data={countPerMonth} barCategoryGap="20%">
+                <GradientDefs />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" vertical={false} opacity={0.5} />
                 <XAxis dataKey="month" tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} />
                 <YAxis tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} width={35} />
-                <Tooltip contentStyle={tooltipStyle} />
-                <Bar dataKey="count" fill="var(--accent)" radius={[4, 4, 0, 0]} />
+                <Tooltip contentStyle={tooltipStyle} cursor={{ fill: "var(--muted)", opacity: 0.3 }} />
+                <Bar dataKey="count" fill="url(#barGradient2)" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           ) : (

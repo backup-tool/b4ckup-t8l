@@ -17,10 +17,10 @@ import {
   restoreDevice,
   permanentDeleteDevice,
 } from "@/lib/db";
-import { DEVICE_TYPES, DEVICE_TYPE_LABELS } from "@/lib/types";
+import { DEVICE_TYPES } from "@/lib/types";
 
 export function Devices() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [devices, setDevices] = useState<Array<Record<string, any>>>([]);
   const [loading, setLoading] = useState(true);
   const [deleted, setDeleted] = useState<Array<Record<string, any>>>([]);
@@ -118,13 +118,12 @@ export function Devices() {
     await loadDevices();
   }
 
-  const lang = i18n.language as "en" | "de" | "ru";
 
   const sorted = [...devices].sort((a, b) => {
     const key = sortField;
     const mult = sortDir === "desc" ? -1 : 1;
     if (key === "name") return mult * (a.name as string).localeCompare(b.name as string);
-    if (key === "type") return mult * ((DEVICE_TYPE_LABELS[a.type as string]?.[lang] || "").localeCompare(DEVICE_TYPE_LABELS[b.type as string]?.[lang] || ""));
+    if (key === "type") return mult * ((t(`deviceTypes.${a.type}`, { defaultValue: "" })).localeCompare(t(`deviceTypes.${b.type}`, { defaultValue: "" })));
     if (key === "backups") return mult * ((a.backup_count as number) - (b.backup_count as number));
     return 0;
   });
@@ -161,7 +160,7 @@ export function Devices() {
             items={deleted.map((d) => ({
               id: d.id as number,
               title: d.name as string,
-              subtitle: DEVICE_TYPE_LABELS[d.type as string]?.[lang] || (d.type as string),
+              subtitle: t(`deviceTypes.${d.type}`, { defaultValue: d.type as string }),
               deleted_at: d.deleted_at as string,
             }))}
             onRestore={async (id) => { await restoreDevice(id); await loadDevices(); }}
@@ -194,7 +193,7 @@ export function Devices() {
                   <div className="min-w-0">
                     <h3 className="font-semibold text-sm truncate">{d.name as string}</h3>
                     <p className="text-xs text-muted-foreground truncate">
-                      {DEVICE_TYPE_LABELS[d.type as string]?.[lang] || d.type}
+                      {t(`deviceTypes.${d.type}`, { defaultValue: d.type as string })}
                     </p>
                   </div>
                 </div>
@@ -272,7 +271,7 @@ export function Devices() {
               onChange={(val) => setForm({ ...form, type: val })}
               options={DEVICE_TYPES.map((type) => ({
                 value: type,
-                label: DEVICE_TYPE_LABELS[type]?.[lang] || type,
+                label: t(`deviceTypes.${type}`, { defaultValue: type }),
               }))}
             />
           </div>

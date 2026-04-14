@@ -17,12 +17,12 @@ import {
   restoreMedia,
   permanentDeleteMedia,
 } from "@/lib/db";
-import { STORAGE_TYPES, STORAGE_TYPE_LABELS, SIZE_UNITS, SIZE_MULTIPLIERS } from "@/lib/types";
+import { STORAGE_TYPES, SIZE_UNITS, SIZE_MULTIPLIERS } from "@/lib/types";
 import { formatBytes } from "@/lib/format";
 import { useAppStore } from "@/lib/store";
 
 export function Media() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const refreshKey = useAppStore((s) => s.refreshKey);
   const triggerRefresh = useAppStore((s) => s.triggerRefresh);
   const [media, setMedia] = useState<Array<Record<string, any>>>([]);
@@ -143,13 +143,12 @@ export function Media() {
     await loadAll();
   }
 
-  const lang = i18n.language as "en" | "de" | "ru";
 
   const sorted = [...media].sort((a, b) => {
     const key = sortField;
     const mult = sortDir === "desc" ? -1 : 1;
     if (key === "name") return mult * (a.name as string).localeCompare(b.name as string);
-    if (key === "type") return mult * ((STORAGE_TYPE_LABELS[a.type as string]?.[lang] || "").localeCompare(STORAGE_TYPE_LABELS[b.type as string]?.[lang] || ""));
+    if (key === "type") return mult * ((t(`storageTypes.${a.type}`, { defaultValue: "" })).localeCompare(t(`storageTypes.${b.type}`, { defaultValue: "" })));
     if (key === "capacity") return mult * (((a.total_capacity_gb as number) || 0) - ((b.total_capacity_gb as number) || 0));
     if (key === "used") return mult * ((a.used_gb as number) - (b.used_gb as number));
     if (key === "backups") return mult * ((a.backup_count as number) - (b.backup_count as number));
@@ -190,7 +189,7 @@ export function Media() {
             items={deleted.map((m) => ({
               id: m.id as number,
               title: m.name as string,
-              subtitle: STORAGE_TYPE_LABELS[m.type as string]?.[lang] || (m.type as string),
+              subtitle: t(`storageTypes.${m.type}`, { defaultValue: m.type as string }),
               deleted_at: m.deleted_at as string,
             }))}
             onRestore={async (id) => { await restoreMedia(id); triggerRefresh(); await loadAll(); }}
@@ -224,7 +223,7 @@ export function Media() {
                   <div>
                     <h3 className="font-semibold text-sm">{m.name as string}</h3>
                     <p className="text-xs text-muted-foreground">
-                      {STORAGE_TYPE_LABELS[m.type as string]?.[lang] || (m.type as string)}
+                      {t(`storageTypes.${m.type}`, { defaultValue: m.type as string })}
                       {m.is_encrypted ? (
                         <span className="ml-1.5 text-[10px] text-amber-600 font-medium">
                           🔒 {m.encryption_label || t("media.encrypted")}
@@ -300,7 +299,7 @@ export function Media() {
               onChange={(val) => setForm({ ...form, type: val })}
               options={STORAGE_TYPES.map((type) => ({
                 value: type,
-                label: STORAGE_TYPE_LABELS[type]?.[lang] || type,
+                label: t(`storageTypes.${type}`, { defaultValue: type }),
               }))}
             />
           </div>

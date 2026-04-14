@@ -28,6 +28,8 @@ export function Settings() {
   const [watchers, setWatchers] = useState<Array<Record<string, any>>>([]);
   const [dbBackups, setDbBackups] = useState<Array<{ name: string; size_bytes: number; created: string }>>([]);
   const { mode, accent, setMode, setAccent } = useThemeStore();
+  const [notifEnabled, setNotifEnabled] = useState(isNotificationsEnabled());
+  const [notifInterval, setNotifInterval] = useState(getNotificationInterval());
 
   useEffect(() => {
     async function load() {
@@ -51,59 +53,53 @@ export function Settings() {
         <CardHeader>
           <CardTitle>{t("settings.language")}</CardTitle>
         </CardHeader>
-        <div className="flex flex-wrap gap-2">
-          {[
-            { code: "en", label: "settings.english" },
-            { code: "de", label: "settings.german" },
-            { code: "fr", label: "settings.french" },
-            { code: "it", label: "settings.italian" },
-            { code: "es", label: "settings.spanish" },
-            { code: "pt", label: "settings.portuguese" },
-            { code: "nl", label: "settings.dutch" },
-            { code: "sv", label: "settings.swedish" },
-            { code: "da", label: "settings.danish" },
-            { code: "no", label: "settings.norwegian" },
-            { code: "fi", label: "settings.finnish" },
-            { code: "ro", label: "settings.romanian" },
-            { code: "pl", label: "settings.polish" },
-            { code: "cs", label: "settings.czech" },
-            { code: "hu", label: "settings.hungarian" },
-            { code: "bg", label: "settings.bulgarian" },
-            { code: "sr", label: "settings.serbian" },
-            { code: "hr", label: "settings.croatian" },
-            { code: "uk", label: "settings.ukrainian" },
-            { code: "ru", label: "settings.russian" },
-            { code: "el", label: "settings.greek" },
-            { code: "tr", label: "settings.turkish" },
-            { code: "ar", label: "settings.arabic" },
-            { code: "he", label: "settings.hebrew" },
-            { code: "fa", label: "settings.persian" },
-            { code: "ku", label: "settings.kurdish" },
-            { code: "hy", label: "settings.armenian" },
-            { code: "ps", label: "settings.pashto" },
-            { code: "hi", label: "settings.hindi" },
-            { code: "ur", label: "settings.urdu" },
-            { code: "bn", label: "settings.bengali" },
-            { code: "zh", label: "settings.chinese" },
-            { code: "ja", label: "settings.japanese" },
-            { code: "ko", label: "settings.korean" },
-            { code: "vi", label: "settings.vietnamese" },
-            { code: "th", label: "settings.thai" },
-            { code: "id", label: "settings.indonesian" },
-            { code: "tl", label: "settings.filipino" },
-            { code: "sw", label: "settings.swahili" },
-            { code: "am", label: "settings.amharic" },
-          ].map((lang) => (
-            <Button
-              key={lang.code}
-              variant={i18n.language === lang.code ? "primary" : "secondary"}
-              size="sm"
-              onClick={() => changeLang(lang.code)}
-            >
-              {t(lang.label)}
-            </Button>
-          ))}
-        </div>
+        <CustomSelect
+          className="w-64"
+          value={i18n.language}
+          onChange={changeLang}
+          options={[
+            { value: "en", label: "\ud83c\uddec\ud83c\udde7  English" },
+            { value: "de", label: "\ud83c\udde9\ud83c\uddea  Deutsch" },
+            { value: "fr", label: "\ud83c\uddeb\ud83c\uddf7  Fran\u00e7ais" },
+            { value: "it", label: "\ud83c\uddee\ud83c\uddf9  Italiano" },
+            { value: "es", label: "\ud83c\uddea\ud83c\uddf8  Espa\u00f1ol" },
+            { value: "pt", label: "\ud83c\uddf5\ud83c\uddf9  Portugu\u00eas" },
+            { value: "nl", label: "\ud83c\uddf3\ud83c\uddf1  Nederlands" },
+            { value: "sv", label: "\ud83c\uddf8\ud83c\uddea  Svenska" },
+            { value: "da", label: "\ud83c\udde9\ud83c\uddf0  Dansk" },
+            { value: "no", label: "\ud83c\uddf3\ud83c\uddf4  Norsk" },
+            { value: "fi", label: "\ud83c\uddeb\ud83c\uddee  Suomi" },
+            { value: "ro", label: "\ud83c\uddf7\ud83c\uddf4  Rom\u00e2n\u0103" },
+            { value: "pl", label: "\ud83c\uddf5\ud83c\uddf1  Polski" },
+            { value: "cs", label: "\ud83c\udde8\ud83c\uddff  \u010ce\u0161tina" },
+            { value: "hu", label: "\ud83c\udded\ud83c\uddfa  Magyar" },
+            { value: "bg", label: "\ud83c\udde7\ud83c\uddec  \u0411\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438" },
+            { value: "sr", label: "\ud83c\uddf7\ud83c\uddf8  \u0421\u0440\u043f\u0441\u043a\u0438" },
+            { value: "hr", label: "\ud83c\udded\ud83c\uddf7  Hrvatski" },
+            { value: "uk", label: "\ud83c\uddfa\ud83c\udde6  \u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430" },
+            { value: "ru", label: "\ud83c\uddf7\ud83c\uddfa  \u0420\u0443\u0441\u0441\u043a\u0438\u0439" },
+            { value: "el", label: "\ud83c\uddec\ud83c\uddf7  \u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac" },
+            { value: "tr", label: "\ud83c\uddf9\ud83c\uddf7  T\u00fcrk\u00e7e" },
+            { value: "ar", label: "\ud83c\uddf8\ud83c\udde6  \u0627\u0644\u0639\u0631\u0628\u064a\u0629" },
+            { value: "he", label: "\ud83c\uddee\ud83c\uddf1  \u05e2\u05d1\u05e8\u05d9\u05ea" },
+            { value: "fa", label: "\ud83c\uddee\ud83c\uddf7  \u0641\u0627\u0631\u0633\u06cc" },
+            { value: "ku", label: "\ud83c\uddee\ud83c\uddf6  Kurd\u00ee" },
+            { value: "hy", label: "\ud83c\udde6\ud83c\uddf2  \u0540\u0561\u0575\u0565\u0580\u0565\u0576" },
+            { value: "ps", label: "\ud83c\udde6\ud83c\uddeb  \u067e\u069a\u062a\u0648" },
+            { value: "hi", label: "\ud83c\uddee\ud83c\uddf3  \u0939\u093f\u0928\u094d\u0926\u0940" },
+            { value: "ur", label: "\ud83c\uddf5\ud83c\uddf0  \u0627\u0631\u062f\u0648" },
+            { value: "bn", label: "\ud83c\udde7\ud83c\udde9  \u09ac\u09be\u0982\u09b2\u09be" },
+            { value: "zh", label: "\ud83c\udde8\ud83c\uddf3  \u4e2d\u6587" },
+            { value: "ja", label: "\ud83c\uddef\ud83c\uddf5  \u65e5\u672c\u8a9e" },
+            { value: "ko", label: "\ud83c\uddf0\ud83c\uddf7  \ud55c\uad6d\uc5b4" },
+            { value: "vi", label: "\ud83c\uddfb\ud83c\uddf3  Ti\u1ebfng Vi\u1ec7t" },
+            { value: "th", label: "\ud83c\uddf9\ud83c\udded  \u0e44\u0e17\u0e22" },
+            { value: "id", label: "\ud83c\uddee\ud83c\udde9  Bahasa Indonesia" },
+            { value: "tl", label: "\ud83c\uddf5\ud83c\udded  Filipino" },
+            { value: "sw", label: "\ud83c\uddf0\ud83c\uddea  Kiswahili" },
+            { value: "am", label: "\ud83c\uddea\ud83c\uddf9  \u12a0\u121b\u122d\u129b" },
+          ]}
+        />
       </Card>
 
       {/* Theme Mode */}
@@ -172,18 +168,19 @@ export function Settings() {
             <span className="text-sm">{t("settings.notificationsEnabled")}</span>
             <button
               onClick={() => {
-                const enabled = !isNotificationsEnabled();
-                localStorage.setItem("notification-enabled", String(enabled));
+                const next = !notifEnabled;
+                setNotifEnabled(next);
+                localStorage.setItem("notification-enabled", String(next));
                 restartReminders();
               }}
               className={cn(
-                "w-10 h-5 rounded-full transition-colors relative",
-                isNotificationsEnabled() ? "bg-primary" : "bg-muted"
+                "w-11 h-6 rounded-full transition-colors relative shrink-0",
+                notifEnabled ? "bg-emerald-500" : "bg-muted"
               )}
             >
               <span className={cn(
-                "absolute top-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform",
-                isNotificationsEnabled() ? "translate-x-5" : "translate-x-0.5"
+                "absolute top-[2px] left-[2px] w-5 h-5 rounded-full bg-white shadow transition-transform",
+                notifEnabled ? "translate-x-5" : "translate-x-0"
               )} />
             </button>
           </div>
@@ -191,8 +188,9 @@ export function Settings() {
             <span className="text-sm">{t("settings.checkInterval")}</span>
             <CustomSelect
               className="w-28"
-              value={getNotificationInterval()}
+              value={notifInterval}
               onChange={(val) => {
+                setNotifInterval(val);
                 localStorage.setItem("notification-interval", val);
                 restartReminders();
               }}

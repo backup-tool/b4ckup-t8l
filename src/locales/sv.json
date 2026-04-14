@@ -6,7 +6,7 @@
   "media": { "title": "Lagringsmedia", "create": "Nytt medium", "edit": "Redigera medium", "delete": "Radera", "deleteConfirm": "Är du säker på att du vill radera detta lagringsmedium?", "name": "Namn", "type": "Typ", "capacity": "Kapacitet", "path": "Sökväg", "notes": "Anteckningar", "used": "Använt", "backupCount": "Säkerhetskopior", "save": "Spara", "cancel": "Avbryt", "noMedia": "Inga lagringsmedia ännu. Skapa ditt första medium för att komma igång.", "encrypted": "Krypterad", "encryptionType": "Krypteringstyp", "encryptionLabel": "Etikett / Nyckel-ID" },
   "devices": { "title": "Enheter", "create": "Ny källa", "edit": "Redigera källa", "delete": "Radera", "deleteConfirm": "Är du säker på att du vill radera denna källa?", "name": "Namn", "type": "Typ", "os": "Operativsystem", "model": "Modell", "serialNumber": "Serienummer", "notes": "Anteckningar", "backupCount": "Säkerhetskopior", "noDevices": "Inga källor ännu. Skapa din första källa för att komma igång.", "save": "Spara", "cancel": "Avbryt" },
   "history": { "title": "Historik", "timeline": "Tidslinje", "sizeOverTime": "Storlek över tid", "allBackups": "Alla säkerhetskopior", "period": "Period", "last30": "Senaste 30 dagarna", "last90": "Senaste 90 dagarna", "lastYear": "Senaste året", "allTime": "All tid", "noHistory": "Ingen säkerhetskopieringshistorik ännu." },
-  "settings": { "title": "Inställningar", "language": "Språk", "english": "English", "german": "Deutsch", "french": "Français", "italian": "Italiano", "spanish": "Español", "portuguese": "Português", "dutch": "Nederlands", "swedish": "Svenska", "danish": "Dansk", "norwegian": "Norsk", "finnish": "Suomi", "romanian": "Română", "polish": "Polski", "czech": "Čeština", "hungarian": "Magyar", "bulgarian": "Български", "theme": "Tema", "light": "Ljust", "dark": "Mörkt", "system": "System", "accentColor": "Accentfärg", "watchers": "Filbevakare", "watcherDesc": "Identifiera automatiskt nya säkerhetskopior i konfigurerade mappar.", "noWatchers": "Inga bevakare konfigurerade. Tilldela bevakningssökvägar till dina säkerhetskopior.", "active": "Aktiv", "dbBackup": "Databassäkerhetskopiering", "dbBackupDesc": "Din databas säkerhetskopieras automatiskt en gång om dagen. De senaste 10 säkerhetskopiorna sparas.", "backupNow": "Säkerhetskopiera nu", "backupSuccess": "Säkerhetskopia skapad", "noBackups": "Inga säkerhetskopior ännu.", "importJSON": "Importera JSON", "importSuccess": "Import klar", "importImported": "importerade", "importSkipped": "överhoppade", "importError": "Import misslyckades", "exportData": "Exportera data", "exportJSON": "Exportera som JSON", "exportCSV": "Exportera som CSV", "exportSuccess": "Data exporterades framgångsrikt" },
+  "settings": { "title": "Inställningar", "language": "Språk", "english": "English", "german": "Deutsch", "french": "Français", "italian": "Italiano", "spanish": "Español", "portuguese": "Português", "dutch": "Nederlands", "swedish": "Svenska", "danish": "Dansk", "norwegian": "Norsk", "finnish": "Suomi", "romanian": "Română", "polish": "Polski", "czech": "Čeština", "hungarian": "Magyar", "bulgarian": "Български", "notifications": "Aviseringar", "notificationsEnabled": "Aktivera aviseringar", "checkInterval": "Kontrollintervall", "theme": "Tema", "light": "Ljust", "dark": "Mörkt", "system": "System", "accentColor": "Accentfärg", "watchers": "Filbevakare", "watcherDesc": "Identifiera automatiskt nya säkerhetskopior i konfigurerade mappar.", "noWatchers": "Inga bevakare konfigurerade. Tilldela bevakningssökvägar till dina säkerhetskopior.", "active": "Aktiv", "dbBackup": "Databassäkerhetskopiering", "dbBackupDesc": "Din databas säkerhetskopieras automatiskt en gång om dagen. De senaste 10 säkerhetskopiorna sparas.", "backupNow": "Säkerhetskopiera nu", "backupSuccess": "Säkerhetskopia skapad", "noBackups": "Inga säkerhetskopior ännu.", "importJSON": "Importera JSON", "importSuccess": "Import klar", "importImported": "importerade", "importSkipped": "överhoppade", "importError": "Import misslyckades", "exportData": "Exportera data", "exportJSON": "Exportera som JSON", "exportCSV": "Exportera som CSV", "exportSuccess": "Data exporterades framgångsrikt" },
   "common": { "save": "Spara", "cancel": "Avbryt", "delete": "Radera", "edit": "Redigera", "close": "Stäng", "confirm": "Bekräfta", "gb": "GB", "mb": "MB", "kb": "KB", "bytes": "Byte", "ago": "sedan", "days": "dagar", "today": "Idag", "yesterday": "Igår" },
   "status": { "ok": "Uppdaterad", "warning": "Föråldrad", "critical": "Kritisk", "paused": "Pausad" },
   "matrix": { "title": "Överblick", "noData": "Ingen data ännu. Skapa säkerhetskopior och tilldela lagringsplatser." },
@@ -14,5 +14,38 @@
   "trash": { "title": "Papperskorg", "empty": "Papperskorgen är tom.", "restore": "Återställ", "deletePermanent": "Radera permanent", "confirmSoftDelete": "Detta flyttar objektet till papperskorgen. Du kan återställa det senare.", "confirmSoftDeleteBackup": "Denna säkerhetskopia flyttas till papperskorgen. Du kan återställa den senare.", "confirmSoftDeleteMedia": "Detta lagringsmedium flyttas till papperskorgen. Du kan återställa det senare.", "confirmPermanent": "Detta raderar objektet permanent. Denna åtgärd kan inte ångras.", "confirmPermanentBackup": "Denna säkerhetskopia och alla dess poster raderas permanent. Detta kan inte ångras.", "confirmPermanentMedia": "Detta lagringsmedium och alla länkade poster raderas permanent. Detta kan inte ångras.", "deletedAt": "Raderad", "moveToTrash": "Flytta till papperskorgen", "restoreAll": "Återställ alla", "deleteAll": "Radera alla permanent", "confirmDeleteAll": "Detta raderar permanent alla objekt i papperskorgen. Detta kan inte ångras." },
   "statistics": { "title": "Statistik", "totalBackups": "Totalt antal säkerhetskopior", "totalEntries": "Totalt antal poster", "totalMedia": "Lagringsmedia", "totalSize": "Total storlek", "sizePerMonth": "Lagring per månad", "cumulative": "Kumulativ lagring", "backupsPerMonth": "Säkerhetskopior per månad", "topBackups": "Topp 5 största säkerhetskopior", "avgPerSource": "Genomsnitt per källa", "size": "Storlek", "total": "Totalt", "avg": "Genomsnitt", "noData": "Ingen data ännu." },
   "update": { "available": "Uppdatering tillgänglig", "version": "Ny version:", "install": "Installera", "downloading": "Laddar ner...", "ready": "Uppdatering klar", "restartDesc": "Starta om appen för att tillämpa uppdateringen.", "restart": "Starta om nu" },
+  "calendar": {
+    "title": "Säkerhetskopieringskalender",
+    "entries": "poster"
+  },
+  "bulk": {
+    "selected": "valda",
+    "select": "Välj",
+    "deleteConfirm": "säkerhetskopior flyttas till papperskorgen."
+  },
+  "comparison": {
+    "title": "Storleksjämförelse"
+  },
+  "categories": {
+    "photos": "Foton", "videos": "Videor", "music": "Musik", "documents": "Dokument",
+    "desktop": "Skrivbord", "system": "System", "system_image": "Systemavbild",
+    "vm": "Virtuell maskin", "database": "Databas", "media": "Media", "code": "Kod",
+    "projects": "Projekt", "email": "E-post", "contacts": "Kontakter", "calendar": "Kalender",
+    "messages": "Meddelanden", "health": "Hälsa", "social_media": "Sociala medier",
+    "finance": "Ekonomi", "games": "Spel", "applications": "Applikationer",
+    "config": "Konfiguration", "other": "Övrigt"
+  },
+  "deviceTypes": {
+    "desktop": "Stationär dator", "laptop": "Bärbar dator", "phone": "Telefon", "tablet": "Surfplatta",
+    "server": "Server", "nas": "NAS", "cloud": "Molntjänst",
+    "external_drive": "Extern hårddisk", "camera": "Kamera", "console": "Konsol",
+    "smart_home": "Smart hem", "app": "App", "service": "Onlinetjänst", "other": "Övrigt"
+  },
+  "storageTypes": {
+    "nas": "NAS", "external_drive": "Extern HDD", "internal_drive": "Intern HDD",
+    "ssd": "SSD", "usb_stick": "USB-minne", "sd_card": "SD-kort", "cloud": "Moln",
+    "tape": "Band", "optical": "Optisk (CD/DVD/BD)", "network_share": "Nätverksdelning",
+    "local": "Lokal", "other": "Övrigt"
+  },
   "rule321": { "title": "3-2-1-säkerhetskopieringsregeln", "desc": "3 kopior, 2 olika mediatyper, 1 extern", "copies": "kopior", "mediaTypes": "mediatyper", "offsite": "extern" }
 }

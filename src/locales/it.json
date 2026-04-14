@@ -130,6 +130,9 @@
     "spanish": "Spagnolo",
     "portuguese": "Portoghese",
     "dutch": "Olandese",
+    "notifications": "Notifiche",
+    "notificationsEnabled": "Abilita notifiche",
+    "checkInterval": "Intervallo di controllo",
     "theme": "Tema",
     "light": "Chiaro",
     "dark": "Scuro",
@@ -235,6 +238,39 @@
     "ready": "Aggiornamento pronto",
     "restartDesc": "Riavvia l'applicazione per applicare l'aggiornamento.",
     "restart": "Riavvia ora"
+  },
+  "calendar": {
+    "title": "Calendario dei backup",
+    "entries": "voci"
+  },
+  "bulk": {
+    "selected": "selezionati",
+    "select": "Seleziona",
+    "deleteConfirm": "backup verranno spostati nel cestino."
+  },
+  "comparison": {
+    "title": "Confronto dimensioni"
+  },
+  "categories": {
+    "photos": "Foto", "videos": "Video", "music": "Musica", "documents": "Documenti",
+    "desktop": "Desktop", "system": "Sistema", "system_image": "Immagine di sistema",
+    "vm": "Macchina virtuale", "database": "Database", "media": "Media", "code": "Codice",
+    "projects": "Progetti", "email": "E-mail", "contacts": "Contatti", "calendar": "Calendario",
+    "messages": "Messaggi", "health": "Salute", "social_media": "Social media",
+    "finance": "Finanza", "games": "Giochi", "applications": "Applicazioni",
+    "config": "Configurazione", "other": "Altro"
+  },
+  "deviceTypes": {
+    "desktop": "PC desktop", "laptop": "Portatile", "phone": "Telefono", "tablet": "Tablet",
+    "server": "Server", "nas": "NAS", "cloud": "Servizio cloud",
+    "external_drive": "Disco esterno", "camera": "Fotocamera", "console": "Console",
+    "smart_home": "Casa intelligente", "app": "App", "service": "Servizio online", "other": "Altro"
+  },
+  "storageTypes": {
+    "nas": "NAS", "external_drive": "HDD esterno", "internal_drive": "HDD interno",
+    "ssd": "SSD", "usb_stick": "Chiavetta USB", "sd_card": "Scheda SD", "cloud": "Cloud",
+    "tape": "Nastro", "optical": "Ottico (CD/DVD/BD)", "network_share": "Condivisione di rete",
+    "local": "Locale", "other": "Altro"
   },
   "rule321": {
     "title": "Regola di backup 3-2-1",

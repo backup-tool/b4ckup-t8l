@@ -130,6 +130,9 @@
     "spanish": "Español",
     "portuguese": "Portugués",
     "dutch": "Neerlandés",
+    "notifications": "Notificaciones",
+    "notificationsEnabled": "Activar notificaciones",
+    "checkInterval": "Intervalo de comprobación",
     "theme": "Tema",
     "light": "Claro",
     "dark": "Oscuro",
@@ -235,6 +238,39 @@
     "ready": "Actualización lista",
     "restartDesc": "Reinicia la aplicación para aplicar la actualización.",
     "restart": "Reiniciar ahora"
+  },
+  "calendar": {
+    "title": "Calendario de copias",
+    "entries": "entradas"
+  },
+  "bulk": {
+    "selected": "seleccionados",
+    "select": "Seleccionar",
+    "deleteConfirm": "copias se moverán a la papelera."
+  },
+  "comparison": {
+    "title": "Comparación de tamaños"
+  },
+  "categories": {
+    "photos": "Fotos", "videos": "Vídeos", "music": "Música", "documents": "Documentos",
+    "desktop": "Escritorio", "system": "Sistema", "system_image": "Imagen del sistema",
+    "vm": "Máquina virtual", "database": "Base de datos", "media": "Medios", "code": "Código",
+    "projects": "Proyectos", "email": "Correo electrónico", "contacts": "Contactos", "calendar": "Calendario",
+    "messages": "Mensajes", "health": "Salud", "social_media": "Redes sociales",
+    "finance": "Finanzas", "games": "Juegos", "applications": "Aplicaciones",
+    "config": "Configuración", "other": "Otro"
+  },
+  "deviceTypes": {
+    "desktop": "PC de escritorio", "laptop": "Portátil", "phone": "Teléfono", "tablet": "Tableta",
+    "server": "Servidor", "nas": "NAS", "cloud": "Servicio en la nube",
+    "external_drive": "Disco externo", "camera": "Cámara", "console": "Consola",
+    "smart_home": "Hogar inteligente", "app": "App", "service": "Servicio en línea", "other": "Otro"
+  },
+  "storageTypes": {
+    "nas": "NAS", "external_drive": "HDD externo", "internal_drive": "HDD interno",
+    "ssd": "SSD", "usb_stick": "Memoria USB", "sd_card": "Tarjeta SD", "cloud": "Nube",
+    "tape": "Cinta", "optical": "Óptico (CD/DVD/BD)", "network_share": "Recurso compartido de red",
+    "local": "Local", "other": "Otro"
   },
   "rule321": {
     "title": "Regla de respaldo 3-2-1",

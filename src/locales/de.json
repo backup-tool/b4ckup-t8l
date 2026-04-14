@@ -285,6 +285,27 @@
     "restartDesc": "Starte die App neu um das Update anzuwenden.",
     "restart": "Jetzt neu starten"
   },
+  "categories": {
+    "photos": "Fotos", "videos": "Videos", "music": "Musik", "documents": "Dokumente",
+    "desktop": "Desktop", "system": "System", "system_image": "System-Image",
+    "vm": "Virtuelle Maschine", "database": "Datenbank", "media": "Medien", "code": "Code",
+    "projects": "Projekte", "email": "E-Mail", "contacts": "Kontakte", "calendar": "Kalender",
+    "messages": "Nachrichten", "health": "Gesundheit", "social_media": "Social Media",
+    "finance": "Finanzen", "games": "Spiele", "applications": "Anwendungen",
+    "config": "Konfiguration", "other": "Sonstiges"
+  },
+  "deviceTypes": {
+    "desktop": "Desktop-PC", "laptop": "Laptop", "phone": "Smartphone", "tablet": "Tablet",
+    "server": "Server", "nas": "NAS", "cloud": "Cloud-Dienst",
+    "external_drive": "Externe Festplatte", "camera": "Kamera", "console": "Konsole",
+    "smart_home": "Smart Home", "app": "App", "service": "Online-Dienst", "other": "Sonstiges"
+  },
+  "storageTypes": {
+    "nas": "NAS", "external_drive": "Externe Festplatte", "internal_drive": "Interne Festplatte",
+    "ssd": "SSD", "usb_stick": "USB-Stick", "sd_card": "SD-Karte", "cloud": "Cloud",
+    "tape": "Bandlaufwerk", "optical": "Optisch (CD/DVD/BD)", "network_share": "Netzwerkfreigabe",
+    "local": "Lokal", "other": "Sonstiges"
+  },
   "rule321": {
     "title": "3-2-1 Backup-Regel",
     "desc": "3 Kopien, 2 verschiedene Medientypen, 1 Offsite",
