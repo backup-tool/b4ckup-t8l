@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Card } from "@/components/ui/Card";
@@ -11,9 +11,16 @@ import {
   eachDayOfInterval, format, isSameMonth, isSameDay,
   addMonths, subMonths,
 } from "date-fns";
+import { de, fr, it, es, pt, nl, sv, da, nb, fi, ro, pl, cs, hu, bg, sr, hr, uk, ru, el, tr, ar, he, hi, bn, zhCN, ja, ko, vi, th, id as idLocale } from "date-fns/locale";
+
+const DATE_LOCALES: Record<string, any> = {
+  de, fr, it, es, pt, nl, sv, da, no: nb, fi, ro, pl, cs, hu, bg, sr, hr, uk, ru, el, tr, ar, he, hi, bn,
+  zh: zhCN, ja, ko, vi, th, id: idLocale,
+};
 
 export function Calendar() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const dateLocale = DATE_LOCALES[i18n.language];
   const refreshKey = useAppStore((s) => s.refreshKey);
   const [entries, setEntries] = useState<Array<Record<string, any>>>([]);
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -38,7 +45,15 @@ export function Calendar() {
   const calEnd = endOfWeek(monthEnd, { weekStartsOn: 1 });
   const days = eachDayOfInterval({ start: calStart, end: calEnd });
 
-  const weekDays = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+  // Generate localized weekday names
+  const weekDays = useMemo(() => {
+    const base = startOfWeek(new Date(), { weekStartsOn: 1 });
+    return Array.from({ length: 7 }, (_, i) => {
+      const day = new Date(base);
+      day.setDate(base.getDate() + i);
+      return format(day, "EEEEEE", { locale: dateLocale });
+    });
+  }, [dateLocale]);
 
   const selectedEntries = selectedDay
     ? entryMap.get(format(selectedDay, "yyyy-MM-dd")) || []
@@ -55,7 +70,7 @@ export function Calendar() {
             <ChevronLeft className="w-4 h-4" />
           </Button>
           <h2 className="text-sm font-semibold">
-            {format(currentMonth, "MMMM yyyy")}
+            {format(currentMonth, "MMMM yyyy", { locale: dateLocale })}
           </h2>
           <Button variant="ghost" size="sm" onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}>
             <ChevronRight className="w-4 h-4" />
@@ -113,7 +128,7 @@ export function Calendar() {
       {selectedDay && selectedEntries.length > 0 && (
         <Card>
           <h3 className="text-sm font-semibold mb-3">
-            {format(selectedDay, "EEEE, d MMMM yyyy")} — {selectedEntries.length} {t("calendar.entries")}
+            {format(selectedDay, "EEEE, d MMMM yyyy", { locale: dateLocale })} — {selectedEntries.length} {t("calendar.entries")}
           </h3>
           <div className="space-y-1.5">
             {selectedEntries.map((e, i) => (
