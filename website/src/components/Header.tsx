@@ -162,20 +162,21 @@ export function Header() {
               {l.label}
             </NavLink>
           ))}
-          <div className="flex gap-2 pt-2 border-t border-border">
-            {LANGS.map((l) => (
-              <button
-                key={l.code}
-                onClick={() => { switchLang(l.code); setMenuOpen(false); }}
-                className={`text-xs px-3 py-1.5 rounded-full ${
-                  lang === l.code
-                    ? "bg-accent text-bg font-medium"
-                    : "border border-border text-fg-muted"
-                }`}
+          <div className="pt-2 border-t border-border">
+            <div className="relative">
+              <select
+                value={lang}
+                onChange={(e) => { switchLang(e.target.value); setMenuOpen(false); }}
+                className="w-full appearance-none bg-bg-card border border-border rounded-xl px-4 py-2.5 pr-10 text-sm text-fg focus:outline-none focus:border-accent transition-colors"
               >
-                {l.label}
-              </button>
-            ))}
+                {LANGS.map((l) => (
+                  <option key={l.code} value={l.code}>{l.label}</option>
+                ))}
+              </select>
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                <Globe className="w-4 h-4 text-fg-muted" />
+              </div>
+            </div>
           </div>
         </nav>
       )}
