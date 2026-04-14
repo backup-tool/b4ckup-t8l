@@ -1,6 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
-import { Eye, FolderOpen, Sun, Moon, Monitor, Download, Upload, Database } from "lucide-react";
+import { Eye, FolderOpen, Sun, Moon, Monitor, Download, Upload, Database, RefreshCw, Loader2, CheckCircle } from "lucide-react";
+import { check } from "@tauri-apps/plugin-updater";
+import { relaunch } from "@tauri-apps/plugin-process";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { getWatchedLocations, exportAllData, importData } from "@/lib/db";
@@ -30,6 +32,12 @@ export function Settings() {
   const { mode, accent, setMode, setAccent } = useThemeStore();
   const [notifEnabled, setNotifEnabled] = useState(isNotificationsEnabled());
   const [notifInterval, setNotifInterval] = useState(getNotificationInterval());
+  const [updateChecking, setUpdateChecking] = useState(false);
+  const [updateResult, setUpdateResult] = useState<any>(null);
+  const [updateError, setUpdateError] = useState<string | null>(null);
+  const [updateDownloading, setUpdateDownloading] = useState(false);
+  const [updateProgress, setUpdateProgress] = useState(0);
+  const [updateReady, setUpdateReady] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -42,6 +50,47 @@ export function Settings() {
   function changeLang(lang: string) {
     i18n.changeLanguage(lang);
     localStorage.setItem("language", lang);
+  }
+
+  async function handleCheckUpdate() {
+    setUpdateChecking(true);
+    setUpdateError(null);
+    setUpdateResult(null);
+    try {
+      const result = await check();
+      if (result?.available) {
+        setUpdateResult(result);
+      } else {
+        setUpdateResult("up-to-date");
+      }
+    } catch (err) {
+      setUpdateError(String(err));
+    } finally {
+      setUpdateChecking(false);
+    }
+  }
+
+  async function handleDownloadUpdate() {
+    if (!updateResult || updateResult === "up-to-date") return;
+    setUpdateDownloading(true);
+    try {
+      let totalSize = 0;
+      let downloaded = 0;
+      await updateResult.downloadAndInstall((event: any) => {
+        if (event.event === "Started" && event.data?.contentLength) {
+          totalSize = event.data.contentLength;
+        } else if (event.event === "Progress" && event.data?.chunkLength) {
+          downloaded += event.data.chunkLength;
+          if (totalSize > 0) setUpdateProgress(Math.round((downloaded / totalSize) * 100));
+        } else if (event.event === "Finished") {
+          setUpdateReady(true);
+        }
+      });
+      setUpdateReady(true);
+    } catch (err) {
+      setUpdateError(String(err));
+      setUpdateDownloading(false);
+    }
   }
 
   return (
@@ -359,6 +408,48 @@ export function Settings() {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+      </Card>
+
+      {/* Updates */}
+      <Card>
+        <CardHeader>
+          <CardTitle>{t("settings.updates")}</CardTitle>
+        </CardHeader>
+        <div className="flex items-center gap-3">
+          {updateReady ? (
+            <Button onClick={() => relaunch()} size="sm">
+              <RefreshCw className="w-3.5 h-3.5" />
+              {t("update.restart")}
+            </Button>
+          ) : updateResult && updateResult !== "up-to-date" ? (
+            <Button onClick={handleDownloadUpdate} disabled={updateDownloading} size="sm">
+              {updateDownloading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Download className="w-3.5 h-3.5" />}
+              {updateDownloading ? t("update.downloading") : t("update.install")} {updateResult.version}
+            </Button>
+          ) : (
+            <Button onClick={handleCheckUpdate} disabled={updateChecking} size="sm" variant="secondary">
+              {updateChecking ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RefreshCw className="w-3.5 h-3.5" />}
+              {t("settings.checkUpdates")}
+            </Button>
+          )}
+          {updateResult === "up-to-date" && (
+            <span className="flex items-center gap-1.5 text-sm text-emerald-600">
+              <CheckCircle className="w-4 h-4" />
+              {t("settings.upToDate")}
+            </span>
+          )}
+          {updateError && (
+            <span className="text-sm text-destructive">{updateError}</span>
+          )}
+        </div>
+        {updateDownloading && !updateReady && (
+          <div className="mt-3">
+            <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+              <div className="h-full bg-primary rounded-full transition-all duration-300" style={{ width: `${updateProgress}%` }} />
+            </div>
+            <p className="text-[10px] text-muted-foreground mt-1 tabular-nums">{updateProgress}%</p>
           </div>
         )}
       </Card>

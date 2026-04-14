@@ -180,7 +180,10 @@
     "exportData": "ডেটা রপ্তানি করুন",
     "exportJSON": "JSON হিসেবে রপ্তানি করুন",
     "exportCSV": "CSV হিসেবে রপ্তানি করুন",
-    "exportSuccess": "ডেটা সফলভাবে রপ্তানি হয়েছে"
+    "exportSuccess": "ডেটা সফলভাবে রপ্তানি হয়েছে",
+    "updates": "আপডেট",
+    "checkUpdates": "আপডেট চেক করুন",
+    "upToDate": "আপনি আপ টু ডেট!"
   },
   "common": {
     "save": "সংরক্ষণ করুন",

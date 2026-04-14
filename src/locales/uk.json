@@ -172,7 +172,10 @@
     "exportData": "Експортувати дані",
     "exportJSON": "Експорт як JSON",
     "exportCSV": "Експорт як CSV",
-    "exportSuccess": "Дані успішно експортовано"
+    "exportSuccess": "Дані успішно експортовано",
+    "updates": "Оновлення",
+    "checkUpdates": "Перевірити оновлення",
+    "upToDate": "Ви маєте останню версію!"
   },
   "common": {
     "save": "Зберегти",

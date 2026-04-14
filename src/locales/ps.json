@@ -180,7 +180,10 @@
     "exportSuccess": "معلومات په بریالیتوب سره صادر شول",
     "notifications": "Notifications",
     "notificationsEnabled": "Enable notifications",
-    "checkInterval": "Check interval"
+    "checkInterval": "Check interval",
+    "updates": "تازه کارونه",
+    "checkUpdates": "د تازه کارونو لټون",
+    "upToDate": "تاسو تازه یاست!"
   },
   "common": {
     "save": "خوندي کړئ",

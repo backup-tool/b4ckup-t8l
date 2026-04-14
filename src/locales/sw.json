@@ -189,7 +189,10 @@
     "exportData": "Hamisha Data",
     "exportJSON": "Hamisha kama JSON",
     "exportCSV": "Hamisha kama CSV",
-    "exportSuccess": "Data imehamishwa kwa mafanikio"
+    "exportSuccess": "Data imehamishwa kwa mafanikio",
+    "updates": "Masasisho",
+    "checkUpdates": "Angalia masasisho",
+    "upToDate": "Umesasishwa!"
   },
   "common": {
     "save": "Hifadhi",

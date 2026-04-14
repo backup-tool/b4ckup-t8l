@@ -180,7 +180,10 @@
     "exportData": "ڈیٹا برآمد کریں",
     "exportJSON": "JSON کے طور پر برآمد کریں",
     "exportCSV": "CSV کے طور پر برآمد کریں",
-    "exportSuccess": "ڈیٹا کامیابی سے برآمد ہوا"
+    "exportSuccess": "ڈیٹا کامیابی سے برآمد ہوا",
+    "updates": "اپ ڈیٹس",
+    "checkUpdates": "اپ ڈیٹس چیک کریں",
+    "upToDate": "آپ اپ ٹو ڈیٹ ہیں!"
   },
   "common": {
     "save": "محفوظ کریں",

@@ -189,7 +189,10 @@
     "exportData": "データをエクスポート",
     "exportJSON": "JSON としてエクスポート",
     "exportCSV": "CSV としてエクスポート",
-    "exportSuccess": "データのエクスポートに成功しました"
+    "exportSuccess": "データのエクスポートに成功しました",
+    "updates": "アップデート",
+    "checkUpdates": "アップデートを確認",
+    "upToDate": "最新です！"
   },
   "common": {
     "save": "保存",

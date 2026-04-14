@@ -172,7 +172,10 @@
     "exportData": "Verileri Dışa Aktar",
     "exportJSON": "JSON Olarak Dışa Aktar",
     "exportCSV": "CSV Olarak Dışa Aktar",
-    "exportSuccess": "Veriler başarıyla dışa aktarıldı"
+    "exportSuccess": "Veriler başarıyla dışa aktarıldı",
+    "updates": "Güncellemeler",
+    "checkUpdates": "Güncellemeleri kontrol et",
+    "upToDate": "Güncelsiniz!"
   },
   "common": {
     "save": "Kaydet",

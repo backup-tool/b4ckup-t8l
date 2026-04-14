@@ -165,7 +165,10 @@
     "exportData": "Exportă date",
     "exportJSON": "Exportă ca JSON",
     "exportCSV": "Exportă ca CSV",
-    "exportSuccess": "Datele au fost exportate cu succes"
+    "exportSuccess": "Datele au fost exportate cu succes",
+    "updates": "Actualizări",
+    "checkUpdates": "Verifică actualizări",
+    "upToDate": "Ești la zi!"
   },
   "common": {
     "save": "Salvează",

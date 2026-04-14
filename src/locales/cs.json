@@ -165,7 +165,10 @@
     "exportData": "Exportovat data",
     "exportJSON": "Exportovat jako JSON",
     "exportCSV": "Exportovat jako CSV",
-    "exportSuccess": "Data úspěšně exportována"
+    "exportSuccess": "Data úspěšně exportována",
+    "updates": "Aktualizace",
+    "checkUpdates": "Zkontrolovat aktualizace",
+    "upToDate": "Máte nejnovější verzi!"
   },
   "common": {
     "save": "Uložit",

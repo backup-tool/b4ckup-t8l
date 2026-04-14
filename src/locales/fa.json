@@ -180,7 +180,10 @@
     "exportData": "صادر کردن داده‌ها",
     "exportJSON": "صادر کردن به‌عنوان JSON",
     "exportCSV": "صادر کردن به‌عنوان CSV",
-    "exportSuccess": "داده‌ها با موفقیت صادر شدند"
+    "exportSuccess": "داده‌ها با موفقیت صادر شدند",
+    "updates": "به‌روزرسانی‌ها",
+    "checkUpdates": "بررسی به‌روزرسانی",
+    "upToDate": "شما به‌روز هستید!"
   },
   "common": {
     "save": "ذخیره",

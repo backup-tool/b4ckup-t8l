@@ -189,7 +189,10 @@
     "exportData": "ውሂብ ላክ",
     "exportJSON": "እንደ JSON ላክ",
     "exportCSV": "እንደ CSV ላክ",
-    "exportSuccess": "ውሂብ በተሳካ ሁኔታ ተልኳል"
+    "exportSuccess": "ውሂብ በተሳካ ሁኔታ ተልኳል",
+    "updates": "ማperbarui",
+    "checkUpdates": "ዝdelays ፈልግ",
+    "upToDate": "ወdelays ነdelays!"
   },
   "common": {
     "save": "አስቀምጥ",

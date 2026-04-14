@@ -189,7 +189,10 @@
     "exportData": "ส่งออกข้อมูล",
     "exportJSON": "ส่งออกเป็น JSON",
     "exportCSV": "ส่งออกเป็น CSV",
-    "exportSuccess": "ส่งออกข้อมูลสำเร็จ"
+    "exportSuccess": "ส่งออกข้อมูลสำเร็จ",
+    "updates": "อัปเดต",
+    "checkUpdates": "ตรวจสอบอัปเดต",
+    "upToDate": "คุณอัปเดตแล้ว!"
   },
   "common": {
     "save": "บันทึก",

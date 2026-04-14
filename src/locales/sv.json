@@ -165,7 +165,10 @@
     "exportData": "Exportera data",
     "exportJSON": "Exportera som JSON",
     "exportCSV": "Exportera som CSV",
-    "exportSuccess": "Data exporterades framgångsrikt"
+    "exportSuccess": "Data exporterades framgångsrikt",
+    "updates": "Uppdateringar",
+    "checkUpdates": "Sök efter uppdateringar",
+    "upToDate": "Du är uppdaterad!"
   },
   "common": {
     "save": "Spara",

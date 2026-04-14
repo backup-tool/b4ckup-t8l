@@ -165,7 +165,10 @@
     "exportData": "Vie tiedot",
     "exportJSON": "Vie JSON-muodossa",
     "exportCSV": "Vie CSV-muodossa",
-    "exportSuccess": "Tiedot viety onnistuneesti"
+    "exportSuccess": "Tiedot viety onnistuneesti",
+    "updates": "Päivitykset",
+    "checkUpdates": "Tarkista päivitykset",
+    "upToDate": "Olet ajan tasalla!"
   },
   "common": {
     "save": "Tallenna",

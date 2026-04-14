@@ -165,7 +165,10 @@
     "exportData": "Eksportér data",
     "exportJSON": "Eksportér som JSON",
     "exportCSV": "Eksportér som CSV",
-    "exportSuccess": "Data eksporteret"
+    "exportSuccess": "Data eksporteret",
+    "updates": "Opdateringer",
+    "checkUpdates": "Søg efter opdateringer",
+    "upToDate": "Du er opdateret!"
   },
   "common": {
     "save": "Gem",

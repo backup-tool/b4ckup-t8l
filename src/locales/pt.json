@@ -156,7 +156,10 @@
     "exportData": "Exportar dados",
     "exportJSON": "Exportar como JSON",
     "exportCSV": "Exportar como CSV",
-    "exportSuccess": "Dados exportados com sucesso"
+    "exportSuccess": "Dados exportados com sucesso",
+    "updates": "Atualizações",
+    "checkUpdates": "Verificar atualizações",
+    "upToDate": "Está atualizado!"
   },
   "common": {
     "save": "Guardar",

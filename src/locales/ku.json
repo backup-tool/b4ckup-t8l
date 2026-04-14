@@ -180,7 +180,10 @@
     "exportData": "Daneyan Derxe",
     "exportJSON": "Wekî JSON Derxe",
     "exportCSV": "Wekî CSV Derxe",
-    "exportSuccess": "Dane bi serkeftî hatin derxistin"
+    "exportSuccess": "Dane bi serkeftî hatin derxistin",
+    "updates": "Nûvekirin",
+    "checkUpdates": "Li nûvekirinan bigerin",
+    "upToDate": "Hûn nûvekirî ne!"
   },
   "common": {
     "save": "Tomar bike",

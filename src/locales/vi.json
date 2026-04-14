@@ -189,7 +189,10 @@
     "exportData": "Xuất dữ liệu",
     "exportJSON": "Xuất dạng JSON",
     "exportCSV": "Xuất dạng CSV",
-    "exportSuccess": "Xuất dữ liệu thành công"
+    "exportSuccess": "Xuất dữ liệu thành công",
+    "updates": "Cập nhật",
+    "checkUpdates": "Kiểm tra cập nhật",
+    "upToDate": "Bạn đã cập nhật!"
   },
   "common": {
     "save": "Lưu",

@@ -189,7 +189,10 @@
     "exportData": "데이터 내보내기",
     "exportJSON": "JSON으로 내보내기",
     "exportCSV": "CSV로 내보내기",
-    "exportSuccess": "데이터가 성공적으로 내보내졌습니다"
+    "exportSuccess": "데이터가 성공적으로 내보내졌습니다",
+    "updates": "업데이트",
+    "checkUpdates": "업데이트 확인",
+    "upToDate": "최신 버전입니다!"
   },
   "common": {
     "save": "저장",

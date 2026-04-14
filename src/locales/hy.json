@@ -180,7 +180,10 @@
     "exportSuccess": "Տվյալները հաջողությամբ արտահանվեցին",
     "notifications": "Notifications",
     "notificationsEnabled": "Enable notifications",
-    "checkInterval": "Check interval"
+    "checkInterval": "Check interval",
+    "updates": "Թարdelaysdelays",
+    "checkUpdates": " Delays sts",
+    "upToDate": "Delays!"
   },
   "common": {
     "save": "Պահպանել",

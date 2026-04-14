@@ -172,7 +172,10 @@
     "exportData": "Εξαγωγή δεδομένων",
     "exportJSON": "Εξαγωγή ως JSON",
     "exportCSV": "Εξαγωγή ως CSV",
-    "exportSuccess": "Τα δεδομένα εξήχθησαν επιτυχώς"
+    "exportSuccess": "Τα δεδομένα εξήχθησαν επιτυχώς",
+    "updates": "Ενημερώσεις",
+    "checkUpdates": "Έλεγχος ενημερώσεων",
+    "upToDate": "Είστε ενημερωμένοι!"
   },
   "common": {
     "save": "Αποθήκευση",

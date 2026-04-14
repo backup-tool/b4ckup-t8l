@@ -165,7 +165,10 @@
     "exportData": "Adatok exportálása",
     "exportJSON": "Exportálás JSON-ként",
     "exportCSV": "Exportálás CSV-ként",
-    "exportSuccess": "Adatok sikeresen exportálva"
+    "exportSuccess": "Adatok sikeresen exportálva",
+    "updates": "Frissítések",
+    "checkUpdates": "Frissítések keresése",
+    "upToDate": "Naprakész vagy!"
   },
   "common": {
     "save": "Mentés",

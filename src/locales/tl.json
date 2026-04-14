@@ -189,7 +189,10 @@
     "exportData": "I-export ang Data",
     "exportJSON": "I-export bilang JSON",
     "exportCSV": "I-export bilang CSV",
-    "exportSuccess": "Matagumpay na na-export ang data"
+    "exportSuccess": "Matagumpay na na-export ang data",
+    "updates": "Mga Update",
+    "checkUpdates": "Suriin ang mga update",
+    "upToDate": "Na-update ka na!"
   },
   "common": {
     "save": "I-save",

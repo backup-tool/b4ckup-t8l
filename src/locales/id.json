@@ -189,7 +189,10 @@
     "exportData": "Ekspor Data",
     "exportJSON": "Ekspor sebagai JSON",
     "exportCSV": "Ekspor sebagai CSV",
-    "exportSuccess": "Data berhasil diekspor"
+    "exportSuccess": "Data berhasil diekspor",
+    "updates": "Pembaruan",
+    "checkUpdates": "Periksa pembaruan",
+    "upToDate": "Anda sudah terbaru!"
   },
   "common": {
     "save": "Simpan",

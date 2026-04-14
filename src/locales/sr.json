@@ -172,7 +172,10 @@
     "exportData": "Извези податке",
     "exportJSON": "Извези као JSON",
     "exportCSV": "Извези као CSV",
-    "exportSuccess": "Подаци успешно извезени"
+    "exportSuccess": "Подаци успешно извезени",
+    "updates": "Ажурирања",
+    "checkUpdates": "Провери ажурирања",
+    "upToDate": "Ажурни сте!"
   },
   "common": {
     "save": "Сачувај",

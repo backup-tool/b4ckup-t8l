@@ -172,7 +172,10 @@
     "exportData": "تصدير البيانات",
     "exportJSON": "تصدير كـ JSON",
     "exportCSV": "تصدير كـ CSV",
-    "exportSuccess": "تم تصدير البيانات بنجاح"
+    "exportSuccess": "تم تصدير البيانات بنجاح",
+    "updates": "التحديثات",
+    "checkUpdates": "التحقق من التحديثات",
+    "upToDate": "أنت محدّث!"
   },
   "common": {
     "save": "حفظ",

@@ -180,7 +180,10 @@
     "exportData": "ייצוא נתונים",
     "exportJSON": "ייצוא כ-JSON",
     "exportCSV": "ייצוא כ-CSV",
-    "exportSuccess": "הנתונים יוצאו בהצלחה"
+    "exportSuccess": "הנתונים יוצאו בהצלחה",
+    "updates": "עדכונים",
+    "checkUpdates": "בדוק עדכונים",
+    "upToDate": "אתה מעודכן!"
   },
   "common": {
     "save": "שמירה",
