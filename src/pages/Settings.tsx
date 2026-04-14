@@ -12,7 +12,7 @@ import { CustomSelect } from "@/components/ui/CustomSelect";
 import { isNotificationsEnabled, getNotificationInterval, restartReminders } from "@/lib/notifications";
 
 const ACCENT_COLORS = [
-  { id: "b4ckup" as const, color: "#1a1a2e", darkColor: "#1a1a2e", label: "B4cKuP" },
+  { id: "b4ckup" as const, color: "#111111", darkColor: "#111111", label: "B4cKuP" },
   { id: "default" as const, color: "#171717", darkColor: "#fafafa", label: "Default" },
   { id: "blue" as const, color: "#3b82f6", darkColor: "#3b82f6", label: "Blue" },
   { id: "purple" as const, color: "#8b5cf6", darkColor: "#8b5cf6", label: "Purple" },
@@ -148,10 +148,13 @@ export function Settings() {
               className={cn(
                 "w-8 h-8 rounded-full transition-all",
                 accent === c.id
-                  ? "ring-2 ring-offset-2 ring-offset-background ring-foreground scale-110"
+                  ? c.id === "b4ckup" ? "ring-2 ring-offset-2 ring-offset-background ring-[#4ade80] scale-110" : "ring-2 ring-offset-2 ring-offset-background ring-foreground scale-110"
                   : "hover:scale-110"
               )}
-              style={{ backgroundColor: mode === "dark" || (mode === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches) ? c.darkColor : c.color }}
+              style={{
+                backgroundColor: mode === "dark" || (mode === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches) ? c.darkColor : c.color,
+                ...(c.id === "b4ckup" ? { boxShadow: "inset 0 0 0 2.5px #4ade80" } : {}),
+              }}
               title={c.label}
             />
           ))}

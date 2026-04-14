@@ -325,12 +325,15 @@ export function Dashboard() {
                 <YAxis tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} unit=" GB" width={55} />
                 <Tooltip
                   contentStyle={{
-                    borderRadius: "8px",
+                    borderRadius: "12px",
                     border: "1px solid var(--border)",
                     backgroundColor: "var(--card)",
                     color: "var(--fg)",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
                     fontSize: "12px",
+                    padding: "8px 12px",
                   }}
+                  formatter={(value: any) => [`${value} GB`, t("dashboard.totalSize")]}
                 />
                 <Line
                   type="monotone"

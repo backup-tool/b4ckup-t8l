@@ -75,10 +75,10 @@
 .dark .bg-black\/40 { background-color: rgba(0, 0, 0, 0.6); }
 
 /* Accent color overrides */
-[data-accent="b4ckup"] { --accent: #1a1a2e; --accent-fg: #ffffff; --ring: #4ade80; }
-.dark[data-accent="b4ckup"] { --accent: #e2e8f0; --accent-fg: #0f0f23; --ring: #4ade80; }
+[data-accent="b4ckup"] { --accent: #111111; --accent-fg: #ffffff; }
+.dark[data-accent="b4ckup"] { --accent: #111111; --accent-fg: #ffffff; }
 
-/* B4cKuP theme: subtle green accents */
+/* B4cKuP theme: green border accents matching logo */
 [data-accent="b4ckup"] button:focus-visible,
 [data-accent="b4ckup"] a:focus-visible,
 [data-accent="b4ckup"] input:focus {
@@ -86,7 +86,10 @@
   box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.5);
 }
 [data-accent="b4ckup"] .bg-primary {
-  box-shadow: inset 0 0 0 1.5px #4ade80;
+  box-shadow: inset 0 0 0 2.5px #4ade80;
+}
+.dark[data-accent="b4ckup"] .bg-primary {
+  box-shadow: inset 0 0 0 2.5px #4ade80;
 }
 [data-accent="b4ckup"] .hover\:bg-muted:hover {
   background-color: rgba(74, 222, 128, 0.08);
