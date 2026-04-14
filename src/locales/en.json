@@ -57,6 +57,7 @@
     "noEntries": "No backup entries yet.",
     "storageLocations": "Storage Locations",
     "addLocation": "Add Location",
+    "editLocation": "Edit Location",
     "pathOnMedia": "Path on Media",
     "sizeHistory": "Size History",
     "save": "Save",

@@ -47,6 +47,7 @@ import {
   getAllDevices,
   createDevice,
   addStorageLocation,
+  updateStorageLocation,
   removeStorageLocation,
   getBackupsWithStatus,
   toggleBackupPaused,
@@ -78,6 +79,7 @@ export function BackupDetail() {
   const [entryModalOpen, setEntryModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [locationModalOpen, setLocationModalOpen] = useState(false);
+  const [editLocationId, setEditLocationId] = useState<number | null>(null);
   const [deleteLocationId, setDeleteLocationId] = useState<number | null>(null);
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [deleteEntryId, setDeleteEntryId] = useState<number | null>(null);
@@ -411,6 +413,29 @@ export function BackupDetail() {
     await load();
   }
 
+  function openEditLocation(loc: Record<string, any>) {
+    setEditLocationId(loc.id as number);
+    setLocationForm({
+      storage_media_id: String(loc.storage_media_id),
+      path_on_media: (loc.path_on_media as string) || "",
+      auto_detect: Boolean(loc.auto_detect),
+      scan_mode: (loc.scan_mode as string) || "subdirectories",
+    });
+  }
+
+  async function handleEditLocation() {
+    if (editLocationId == null) return;
+    await updateStorageLocation(editLocationId, {
+      path_on_media: locationForm.path_on_media || null,
+      auto_detect: locationForm.auto_detect,
+      scan_mode: locationForm.scan_mode,
+    });
+    setEditLocationId(null);
+    setLocationForm({ storage_media_id: "", path_on_media: "", auto_detect: false, scan_mode: "subdirectories" });
+    triggerRefresh();
+    await load();
+  }
+
   async function handleScan(loc: Record<string, any>) {
     let path = loc.path_on_media as string;
     const mode = (loc.scan_mode as string) || "subdirectories";
@@ -733,6 +758,12 @@ export function BackupDetail() {
                         </Button>
                       )}
                       <button
+                        onClick={() => openEditLocation(loc)}
+                        className="p-1.5 rounded hover:bg-muted transition-colors"
+                      >
+                        <Pencil className="w-3.5 h-3.5 text-muted-foreground" />
+                      </button>
+                      <button
                         onClick={() => setDeleteLocationId(loc.id as number)}
                         className="p-1.5 rounded hover:bg-muted transition-colors"
                       >
@@ -1048,6 +1079,77 @@ export function BackupDetail() {
               onClick={handleAddLocation}
               disabled={!locationForm.storage_media_id}
             >
+              {t("common.save")}
+            </Button>
+          </div>
+        </div>
+      </Modal>
+
+      {/* Edit Location Modal */}
+      <Modal
+        open={editLocationId !== null}
+        onClose={() => { setEditLocationId(null); setLocationForm({ storage_media_id: "", path_on_media: "", auto_detect: false, scan_mode: "subdirectories" }); }}
+        onSave={handleEditLocation}
+        title={t("backups.editLocation")}
+      >
+        <div className="space-y-4">
+          <div>
+            <Label>{t("backups.pathOnMedia")}</Label>
+            <div className="flex gap-2">
+              <Input
+                value={locationForm.path_on_media}
+                onChange={(e) =>
+                  setLocationForm({
+                    ...locationForm,
+                    path_on_media: e.target.value,
+                  })
+                }
+                placeholder="/Volumes/NAS/Backups/MacBook"
+                className="flex-1"
+              />
+              <Button
+                type="button"
+                variant="secondary"
+                size="sm"
+                onClick={handleBrowseForLocation}
+              >
+                ...
+              </Button>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              id="edit_loc_auto_detect"
+              checked={locationForm.auto_detect}
+              onChange={(e) =>
+                setLocationForm({ ...locationForm, auto_detect: e.target.checked })
+              }
+              className="rounded"
+            />
+            <label htmlFor="edit_loc_auto_detect" className="text-sm">
+              {t("backups.autoDetect")}
+            </label>
+          </div>
+          <div>
+            <Label>{t("scan.mode")}</Label>
+            <CustomSelect
+              value={locationForm.scan_mode}
+              onChange={(val) => setLocationForm({ ...locationForm, scan_mode: val })}
+              options={[
+                { value: "subdirectories", label: t("scan.modeSubdirs") },
+                { value: "flat", label: t("scan.modeFlat") },
+              ]}
+            />
+          </div>
+          <div className="flex justify-end gap-2 pt-2">
+            <Button
+              variant="secondary"
+              onClick={() => { setEditLocationId(null); setLocationForm({ storage_media_id: "", path_on_media: "", auto_detect: false, scan_mode: "subdirectories" }); }}
+            >
+              {t("common.cancel")}
+            </Button>
+            <Button onClick={handleEditLocation}>
               {t("common.save")}
             </Button>
           </div>
