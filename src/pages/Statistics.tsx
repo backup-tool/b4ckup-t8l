@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
   BarChart, Bar, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer,
@@ -65,6 +66,7 @@ export function Statistics() {
   const backupSizes = backups.map((b) => {
     const latest = b.latest_entry as Record<string, any> | null;
     return {
+      id: b.id as number,
       name: b.name as string,
       device: b.device_name as string,
       size: latest ? (latest.size_bytes as number) : 0,
@@ -221,14 +223,14 @@ export function Statistics() {
           </CardHeader>
           {backupSizes.length > 0 ? (
             <div className="space-y-2">
-              {backupSizes.map((b, i) => (
-                <div key={i} className="flex items-center justify-between py-2 px-3 rounded-lg bg-muted/50">
+              {backupSizes.map((b) => (
+                <Link key={b.id} to={`/backups/${b.id}`} className="flex items-center justify-between py-2 px-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors cursor-pointer">
                   <div className="min-w-0">
                     <p className="text-sm font-medium truncate">{b.name}</p>
                     <p className="text-[10px] text-muted-foreground">{b.device}</p>
                   </div>
                   <span className="text-sm font-medium tabular-nums shrink-0 ml-4">{formatBytes(b.size)}</span>
-                </div>
+                </Link>
               ))}
             </div>
           ) : (
@@ -245,7 +247,7 @@ export function Statistics() {
           </CardHeader>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
             {avgPerDevice.map((d) => (
-              <div key={d.device} className="py-3 px-4 rounded-lg bg-muted/50">
+              <Link key={d.device} to={`/backups?source=${encodeURIComponent(d.device)}`} className="py-3 px-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors cursor-pointer block">
                 <p className="text-sm font-medium truncate">{d.device}</p>
                 <p className="text-xs text-muted-foreground mt-1">
                   {d.count} {t("nav.backups")} · {formatBytes(d.total)} {t("statistics.total")}
@@ -253,7 +255,7 @@ export function Statistics() {
                 <p className="text-xs font-medium mt-0.5">
                   {t("statistics.avg")}: {formatBytes(d.avg)}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
         </Card>

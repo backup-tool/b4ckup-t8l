@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Card } from "@/components/ui/Card";
@@ -132,7 +133,7 @@ export function Calendar() {
           </h3>
           <div className="space-y-1.5">
             {selectedEntries.map((e, i) => (
-              <div key={i} className="flex items-center justify-between py-2 px-3 rounded-lg bg-muted/50">
+              <Link key={i} to={`/backups/${e.backup_id}`} className="flex items-center justify-between py-2 px-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors cursor-pointer">
                 <div className="min-w-0">
                   <p className="text-sm font-medium truncate">{e.backup_name as string}</p>
                   <p className="text-[10px] text-muted-foreground">{e.media_name as string}</p>
@@ -140,7 +141,7 @@ export function Calendar() {
                 <span className="text-xs font-medium tabular-nums shrink-0 ml-4">
                   {(e.size_bytes as number) > 0 ? formatBytes(e.size_bytes as number) : "—"}
                 </span>
-              </div>
+              </Link>
             ))}
           </div>
         </Card>
