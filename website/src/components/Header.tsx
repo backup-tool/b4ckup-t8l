@@ -95,7 +95,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-border bg-bg/80 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to={homeLink} className="flex items-center gap-2.5">
-          <img src="/icon.svg" alt="Logo" className="w-8 h-8 rounded-lg" />
+          <img src="/icon.png" alt="Logo" className="w-8 h-8 rounded-lg" />
           <span className="font-bold text-lg">B4cKuP T8L</span>
         </Link>
 

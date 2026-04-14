@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import logoImg from "@/assets/logo.png";
 import {
   LayoutDashboard,
   HardDrive,
@@ -67,14 +68,7 @@ export function Sidebar() {
           )}
           title={collapsed ? t("app.title") : undefined}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-7 h-7 shrink-0">
-            <rect width="512" height="512" rx="80" fill="#000000"/>
-            <path d="M256 72 L408 138 L408 280 Q408 388 256 448 Q104 388 104 280 L104 138 Z"
-                  fill="none" stroke="#4ade80" strokeWidth="36" strokeLinejoin="round"/>
-            <path d="M256 190 L256 348" stroke="#ffffff" strokeWidth="40" strokeLinecap="round"/>
-            <path d="M186 260 L256 190 L326 260" stroke="#ffffff" strokeWidth="40" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-            <line x1="200" y1="348" x2="312" y2="348" stroke="#4ade80" strokeWidth="24" strokeLinecap="round"/>
-          </svg>
+          <img src={logoImg} alt="B4cKuP T8L" className="w-7 h-7 shrink-0 rounded" />
           {!collapsed && (
             <span className="font-semibold text-sm truncate">
               {t("app.title")}

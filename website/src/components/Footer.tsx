@@ -13,7 +13,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-3">
-              <img src="/icon.svg" alt="Logo" className="w-6 h-6 rounded" />
+              <img src="/icon.png" alt="Logo" className="w-6 h-6 rounded" />
               <span className="font-bold">B4cKuP T8L</span>
             </div>
             <p className="text-xs text-fg-muted leading-relaxed">
