@@ -71,7 +71,6 @@ export function Header() {
     { to: `${prefix}/`, label: t("nav.home"), end: true },
     { to: `${prefix}/features`, label: t("nav.features") },
     { to: `${prefix}/download`, label: t("nav.download") },
-    { to: `${prefix}/changelog`, label: t("nav.changelog") },
     { to: `${prefix}/donate`, label: t("nav.donate") },
     { to: `${prefix}/contact`, label: t("nav.contact") },
   ];
