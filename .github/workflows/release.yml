@@ -55,17 +55,14 @@ jobs:
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           echo "Setting version to $VERSION"
-          # Update tauri.conf.json
           sed -i.bak "s/\"version\": \".*\"/\"version\": \"$VERSION\"/" src-tauri/tauri.conf.json && rm -f src-tauri/tauri.conf.json.bak
-          # Update Cargo.toml
           sed -i.bak "s/^version = \".*\"/version = \"$VERSION\"/" src-tauri/Cargo.toml && rm -f src-tauri/Cargo.toml.bak
-          # Update package.json
           sed -i.bak "s/\"version\": \".*\"/\"version\": \"$VERSION\"/" package.json && rm -f package.json.bak
 
       - name: Install frontend dependencies
         run: npm ci
 
-      - name: Build Tauri app (sign only, no notarization)
+      - name: Build Tauri app
         uses: tauri-apps/tauri-action@v0
         timeout-minutes: 15
         env:
@@ -81,8 +78,30 @@ jobs:
           releaseBody: 'Download B4cKuP T8L for your platform below.'
           releaseDraft: false
           prerelease: false
-          updaterJsonKeepUniversal: true
+          includeUpdaterJson: false
           args: ${{ matrix.args }}
+
+      - name: Upload sig files to release
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TARGET="${{ matrix.target }}"
+          if [ -n "$TARGET" ]; then
+            SEARCH_DIR="src-tauri/target/${TARGET}/release/bundle"
+          else
+            SEARCH_DIR="src-tauri/target/release/bundle"
+          fi
+
+          echo "=== All files in bundle dir ==="
+          find "$SEARCH_DIR" -type f \( -name "*.sig" -o -name "*.tar.gz" -o -name "*.nsis.zip" -o -name "*.msi.zip" \) 2>/dev/null || true
+
+          # Upload .sig files and updater bundles
+          find "$SEARCH_DIR" -type f \( -name "*.sig" -o -name "*.tar.gz" -o -name "*.nsis.zip" -o -name "*.msi.zip" \) -print0 2>/dev/null | while IFS= read -r -d '' FILE; do
+            BASENAME=$(basename "$FILE")
+            echo "Uploading: $BASENAME"
+            gh release upload "$GITHUB_REF_NAME" "$FILE" --repo "$GITHUB_REPOSITORY" --clobber || true
+          done
 
       - name: Notarize macOS app
         if: matrix.platform == 'macos-latest'
@@ -95,9 +114,7 @@ jobs:
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           TARGET="${{ matrix.target }}"
-          ARCH="${TARGET%%-*}"
 
-          # Find the .dmg or .app bundle to notarize
           DMG=$(find src-tauri/target/${TARGET}/release/bundle -name "*.dmg" 2>/dev/null | head -1)
 
           if [ -z "$DMG" ]; then
@@ -107,7 +124,6 @@ jobs:
 
           echo "Notarizing: $DMG"
 
-          # Submit for notarization with 15 min timeout
           for ATTEMPT in 1 2 3; do
             echo "Attempt $ATTEMPT of 3..."
             xcrun notarytool submit "$DMG" \
@@ -125,7 +141,6 @@ jobs:
             sleep 30
           done
 
-          # Staple the notarization ticket
           xcrun stapler staple "$DMG"
           echo "Notarization and stapling complete!"
 
@@ -135,38 +150,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VERSION="${GITHUB_REF_NAME#v}"
           TARGET="${{ matrix.target }}"
-
           DMG=$(find src-tauri/target/${TARGET}/release/bundle -name "*.dmg" 2>/dev/null | head -1)
 
           if [ -z "$DMG" ]; then
             exit 0
           fi
 
-          FILENAME=$(basename "$DMG")
-
-          # Delete the unsigned DMG from the release and upload the notarized one
           gh release upload "$GITHUB_REF_NAME" "$DMG" --repo "$GITHUB_REPOSITORY" --clobber
-          echo "Uploaded notarized $FILENAME"
-
-      - name: Upload update bundles and signatures
-        shell: bash
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          TARGET="${{ matrix.target }}"
-          if [ -n "$TARGET" ]; then
-            SEARCH_DIR="src-tauri/target/${TARGET}/release/bundle"
-          else
-            SEARCH_DIR="src-tauri/target/release/bundle"
-          fi
-
-          echo "Searching in: $SEARCH_DIR"
-          find "$SEARCH_DIR" -type f \( -name "*.sig" -o -name "*.tar.gz" -o -name "*.msi.zip" -o -name "*.nsis.zip" \) -print0 | while IFS= read -r -d '' FILE; do
-            echo "Uploading: $(basename "$FILE")"
-            gh release upload "$GITHUB_REF_NAME" "$FILE" --repo "$GITHUB_REPOSITORY" --clobber || true
-          done
+          echo "Uploaded notarized $(basename "$DMG")"
 
   updater:
     needs: build
@@ -184,10 +176,8 @@ jobs:
           DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           BASE_URL="https://github.com/${REPO}/releases/download/${TAG}"
 
-          # Wait for assets to be fully available
           sleep 15
 
-          # List all assets
           echo "=== Release assets ==="
           gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets[].name'
 
@@ -196,9 +186,9 @@ jobs:
           gh release download "$TAG" --repo "$REPO" --pattern "*.sig" --dir /tmp/sigs --clobber 2>/dev/null || true
 
           echo "=== Downloaded .sig files ==="
-          ls -la /tmp/sigs/ || true
+          ls -la /tmp/sigs/ 2>/dev/null || echo "No .sig files found"
 
-          # Read signature content from .sig files
+          # Read signature content
           read_sig() {
             local pattern="$1"
             local sig_file=$(find /tmp/sigs -name "*${pattern}*" -type f 2>/dev/null | head -1)
@@ -215,12 +205,12 @@ jobs:
           WIN_NSIS_SIG=$(read_sig "nsis.zip.sig")
 
           echo "=== Signatures found ==="
-          echo "macOS ARM64: ${MAC_ARM_SIG:0:20}..."
-          echo "macOS Intel: ${MAC_X64_SIG:0:20}..."
-          echo "Linux: ${LINUX_SIG:0:20}..."
-          echo "Windows: ${WIN_NSIS_SIG:0:20}..."
+          echo "macOS ARM64: $(echo "$MAC_ARM_SIG" | head -c 30)..."
+          echo "macOS Intel: $(echo "$MAC_X64_SIG" | head -c 30)..."
+          echo "Linux: $(echo "$LINUX_SIG" | head -c 30)..."
+          echo "Windows: $(echo "$WIN_NSIS_SIG" | head -c 30)..."
 
-          # Determine correct asset names from release
+          # Find correct asset names
           ASSETS=$(gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets[].name')
 
           MAC_ARM_ASSET=$(echo "$ASSETS" | grep "aarch64.app.tar.gz" | grep -v ".sig" | head -1)
@@ -228,15 +218,19 @@ jobs:
           LINUX_ASSET=$(echo "$ASSETS" | grep "AppImage.tar.gz" | grep -v ".sig" | head -1)
           WIN_ASSET=$(echo "$ASSETS" | grep "nsis.zip" | grep -v ".sig" | head -1)
 
-          # URL-encode spaces in asset names
           urlencode() { echo "$1" | sed 's/ /%20/g'; }
 
-          MAC_ARM_URL="${BASE_URL}/$(urlencode "${MAC_ARM_ASSET:-Backup.Tool_aarch64.app.tar.gz}")"
-          MAC_X64_URL="${BASE_URL}/$(urlencode "${MAC_X64_ASSET:-Backup.Tool_x64.app.tar.gz}")"
-          LINUX_URL="${BASE_URL}/$(urlencode "${LINUX_ASSET:-Backup.Tool_${VERSION}_amd64.AppImage.tar.gz}")"
-          WIN_URL="${BASE_URL}/$(urlencode "${WIN_ASSET:-Backup.Tool_${VERSION}_x64-setup.nsis.zip}")"
+          MAC_ARM_URL="${BASE_URL}/$(urlencode "${MAC_ARM_ASSET}")"
+          MAC_X64_URL="${BASE_URL}/$(urlencode "${MAC_X64_ASSET}")"
+          LINUX_URL="${BASE_URL}/$(urlencode "${LINUX_ASSET}")"
+          WIN_URL="${BASE_URL}/$(urlencode "${WIN_ASSET}")"
 
-          # Generate JSON using jq for proper escaping
+          echo "=== URLs ==="
+          echo "macOS ARM: $MAC_ARM_URL"
+          echo "macOS x64: $MAC_X64_URL"
+          echo "Linux: $LINUX_URL"
+          echo "Windows: $WIN_URL"
+
           jq -n \
             --arg version "$VERSION" \
             --arg notes "B4cKuP T8L ${TAG}" \
