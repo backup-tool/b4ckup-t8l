@@ -83,22 +83,13 @@ jobs:
           updaterJsonPreferNsis: true
           args: ${{ matrix.args }}
 
-      - name: Upload update bundles with signatures
+      - name: Sign and upload update bundles
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
         run: |
-          # Install minisign
-          if command -v apt-get &>/dev/null; then
-            sudo apt-get install -y minisign 2>/dev/null || cargo install minisign
-          elif command -v brew &>/dev/null; then
-            brew install minisign
-          elif command -v choco &>/dev/null; then
-            choco install minisign -y
-          fi
-
           TARGET="${{ matrix.target }}"
           if [ -n "$TARGET" ]; then
             SEARCH_DIR="src-tauri/target/${TARGET}/release/bundle"
@@ -107,25 +98,20 @@ jobs:
           fi
 
           echo "=== Looking for update bundles ==="
-          # Find updater bundles (.app.tar.gz, .nsis.zip, .AppImage.tar.gz, .msi.zip)
           find "$SEARCH_DIR" -type f \( \
             -name "*.app.tar.gz" -o -name "*.nsis.zip" \
             -o -name "*.AppImage.tar.gz" -o -name "*.msi.zip" \
           \) 2>/dev/null | while IFS= read -r BUNDLE; do
             SIG_FILE="${BUNDLE}.sig"
             if [ ! -f "$SIG_FILE" ]; then
-              echo "Generating signature for: $(basename "$BUNDLE")"
-              echo "$TAURI_SIGNING_PRIVATE_KEY" > /tmp/tauri_key.key
-              if [ -n "$TAURI_SIGNING_PRIVATE_KEY_PASSWORD" ]; then
-                echo "$TAURI_SIGNING_PRIVATE_KEY_PASSWORD" | minisign -Sm "$BUNDLE" -s /tmp/tauri_key.key
-              else
-                minisign -Sm "$BUNDLE" -s /tmp/tauri_key.key -W
-              fi
-              rm -f /tmp/tauri_key.key
+              echo "Signing: $(basename "$BUNDLE")"
+              npx tauri signer sign -k "$TAURI_SIGNING_PRIVATE_KEY" -p "$TAURI_SIGNING_PRIVATE_KEY_PASSWORD" "$BUNDLE" || true
             fi
             if [ -f "$SIG_FILE" ]; then
-              echo "Uploading sig: $(basename "$SIG_FILE")"
+              echo "Uploading: $(basename "$SIG_FILE")"
               gh release upload "$GITHUB_REF_NAME" "$SIG_FILE" --repo "$GITHUB_REPOSITORY" --clobber || true
+            else
+              echo "WARNING: No sig file for $(basename "$BUNDLE")"
             fi
           done
 
