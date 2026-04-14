@@ -248,7 +248,7 @@ export function Statistics() {
               <div key={d.device} className="py-3 px-4 rounded-lg bg-muted/50">
                 <p className="text-sm font-medium truncate">{d.device}</p>
                 <p className="text-xs text-muted-foreground mt-1">
-                  {d.count} Backups · {formatBytes(d.total)} {t("statistics.total")}
+                  {d.count} {t("nav.backups")} · {formatBytes(d.total)} {t("statistics.total")}
                 </p>
                 <p className="text-xs font-medium mt-0.5">
                   {t("statistics.avg")}: {formatBytes(d.avg)}

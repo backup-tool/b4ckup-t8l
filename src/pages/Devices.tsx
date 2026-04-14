@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Plus, Pencil, Trash2, Monitor } from "lucide-react";
+import { ViewToggle } from "@/components/ui/ViewToggle";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
@@ -27,6 +28,8 @@ export function Devices() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<Record<string, any> | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
+  const [view, setView] = useState<"grid" | "list">("grid");
+  const [editMode, setEditMode] = useState(false);
   const [sortField, setSortField] = useState("name");
   const [sortDir, setSortDir] = useState("asc");
   const [form, setForm] = useState({
@@ -135,6 +138,7 @@ export function Devices() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <h1 className="text-xl font-bold">{t("devices.title")}</h1>
+          <ViewToggle view={view} onViewChange={setView} editMode={editMode} onEditModeChange={setEditMode} />
           <CustomSelect
             className="w-32"
             value={sortField}
@@ -156,7 +160,7 @@ export function Devices() {
           />
         </div>
         <div className="flex items-center gap-2">
-          <TrashSection
+          {editMode && <TrashSection
             items={deleted.map((d) => ({
               id: d.id as number,
               title: d.name as string,
@@ -168,7 +172,7 @@ export function Devices() {
             onRestoreAll={async () => { for (const d of deleted) await restoreDevice(d.id as number); await loadDevices(); }}
             onDeleteAll={async () => { for (const d of deleted) await permanentDeleteDevice(d.id as number); await loadDevices(); }}
             permanentDeleteMessage={t("trash.confirmPermanent")}
-          />
+          />}
           <Button onClick={openCreate}>
             <Plus className="w-4 h-4" />
             {t("devices.create")}
@@ -197,7 +201,7 @@ export function Devices() {
                     </p>
                   </div>
                 </div>
-                <div className="flex gap-1">
+                {editMode && <div className="flex gap-1">
                   <button
                     onClick={() => openEdit(d)}
                     className="p-1 rounded hover:bg-muted transition-colors"
@@ -210,7 +214,7 @@ export function Devices() {
                   >
                     <Trash2 className="w-3.5 h-3.5 text-muted-foreground" />
                   </button>
-                </div>
+                </div>}
               </div>
 
               <div className="space-y-1 text-xs text-muted-foreground mt-3">

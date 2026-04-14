@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Plus, Search, Database, Trash2, Monitor, Pause, Play } from "lucide-react";
+import { ViewToggle } from "@/components/ui/ViewToggle";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
@@ -44,6 +45,8 @@ export function Backups() {
   const [softDeleteId, setSoftDeleteId] = useState<number | null>(null);
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
   const [bulkConfirmOpen, setBulkConfirmOpen] = useState(false);
+  const [view, setView] = useState<"grid" | "list">("list");
+  const [editMode, setEditMode] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -158,9 +161,12 @@ export function Backups() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold">{t("backups.title")}</h1>
+        <div className="flex items-center gap-3">
+          <h1 className="text-xl font-bold">{t("backups.title")}</h1>
+          <ViewToggle view={view} onViewChange={setView} editMode={editMode} onEditModeChange={(v) => { setEditMode(v); if (!v) setSelectedIds(new Set()); }} />
+        </div>
         <div className="flex items-center gap-2">
-          <TrashSection
+          {editMode && <TrashSection
             items={deleted.map((b) => ({
               id: b.id as number,
               title: b.name as string,
@@ -172,7 +178,7 @@ export function Backups() {
             onRestoreAll={async () => { for (const b of deleted) await restoreBackup(b.id as number); triggerRefresh(); await loadAll(); }}
             onDeleteAll={async () => { for (const b of deleted) await permanentDeleteBackup(b.id as number); triggerRefresh(); await loadAll(); }}
             permanentDeleteMessage={t("trash.confirmPermanentBackup")}
-          />
+          />}
           <Button onClick={() => setModalOpen(true)}>
             <Plus className="w-4 h-4" />
             {t("backups.create")}
@@ -239,7 +245,7 @@ export function Backups() {
       </div>
 
       {/* Bulk actions toolbar */}
-      {selectedIds.size > 0 && (
+      {editMode && selectedIds.size > 0 && (
         <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-primary/5 border border-primary/20">
           <span className="text-sm font-medium">{selectedIds.size} {t("bulk.selected")}</span>
           <div className="flex gap-2 ml-auto">
@@ -269,6 +275,50 @@ export function Backups() {
           <Database className="w-10 h-10 mx-auto text-muted-foreground mb-3" />
           <p className="text-muted-foreground">{t("dashboard.noBackups")}</p>
         </Card>
+      ) : view === "grid" ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {sorted.map((b) => {
+            const latest = b.latest_entry as Record<string, any> | null;
+            return (
+              <div key={b.id as number} className="relative">
+                {editMode && (
+                  <input
+                    type="checkbox"
+                    checked={selectedIds.has(b.id as number)}
+                    onChange={(e) => {
+                      const next = new Set(selectedIds);
+                      if (e.target.checked) next.add(b.id as number);
+                      else next.delete(b.id as number);
+                      setSelectedIds(next);
+                    }}
+                    className="absolute top-3 left-3 rounded z-10"
+                  />
+                )}
+                <Link to={`/backups/${b.id}`}>
+                  <Card className="hover:border-primary/30 transition-colors cursor-pointer h-full">
+                    <div className="flex items-start justify-between mb-2">
+                      <div className="min-w-0">
+                        <h3 className="font-semibold text-sm truncate">{b.name as string}</h3>
+                        <p className="text-xs text-muted-foreground truncate">
+                          {b.device_name as string} · {t(`categories.${b.category}`, { defaultValue: b.category as string })}
+                        </p>
+                      </div>
+                      <StatusBadge status={b.status as BackupStatus} />
+                    </div>
+                    <div className="flex items-center justify-between mt-3 pt-3 border-t border-border">
+                      <span className="text-xs text-muted-foreground">
+                        {latest ? `${formatDate(latest.backup_date as string)}` : t("backups.never")}
+                      </span>
+                      <span className="text-sm font-medium tabular-nums">
+                        {latest ? formatBytes(latest.size_bytes as number) : "—"}
+                      </span>
+                    </div>
+                  </Card>
+                </Link>
+              </div>
+            );
+          })}
+        </div>
       ) : (
         <div className="space-y-6">
           {(() => {
@@ -291,18 +341,20 @@ export function Backups() {
                     const latest = b.latest_entry as Record<string, any> | null;
                     return (
                       <div key={b.id as number} className="flex items-center gap-2">
-                        <input
-                          type="checkbox"
-                          checked={selectedIds.has(b.id as number)}
-                          onChange={(e) => {
-                            const next = new Set(selectedIds);
-                            if (e.target.checked) next.add(b.id as number);
-                            else next.delete(b.id as number);
-                            setSelectedIds(next);
-                          }}
-                          className="rounded shrink-0"
-                          aria-label={`${t("bulk.select")} ${b.name}`}
-                        />
+                        {editMode && (
+                          <input
+                            type="checkbox"
+                            checked={selectedIds.has(b.id as number)}
+                            onChange={(e) => {
+                              const next = new Set(selectedIds);
+                              if (e.target.checked) next.add(b.id as number);
+                              else next.delete(b.id as number);
+                              setSelectedIds(next);
+                            }}
+                            className="rounded shrink-0"
+                            aria-label={`${t("bulk.select")} ${b.name}`}
+                          />
+                        )}
                         <Link to={`/backups/${b.id}`} className="block flex-1">
                           <Card className="hover:border-primary/30 transition-colors cursor-pointer py-3">
                             <div className="flex items-center justify-between">
@@ -333,27 +385,31 @@ export function Backups() {
                             </div>
                           </Card>
                         </Link>
-                        <button
-                          onClick={async () => {
-                            await toggleBackupPaused(b.id as number, !b.is_paused);
-                            triggerRefresh();
-                            await loadAll();
-                          }}
-                          className="p-2 rounded-lg hover:bg-muted transition-colors shrink-0"
-                          title={b.is_paused ? t("backups.resume") : t("backups.pause")}
-                        >
-                          {b.is_paused ? (
-                            <Play className="w-4 h-4 text-muted-foreground" />
-                          ) : (
-                            <Pause className="w-4 h-4 text-muted-foreground" />
-                          )}
-                        </button>
-                        <button
-                          onClick={() => setSoftDeleteId(b.id as number)}
-                          className="p-2 rounded-lg hover:bg-muted transition-colors shrink-0"
-                        >
-                          <Trash2 className="w-4 h-4 text-muted-foreground" />
-                        </button>
+                        {editMode && (
+                          <>
+                            <button
+                              onClick={async () => {
+                                await toggleBackupPaused(b.id as number, !b.is_paused);
+                                triggerRefresh();
+                                await loadAll();
+                              }}
+                              className="p-2 rounded-lg hover:bg-muted transition-colors shrink-0"
+                              title={b.is_paused ? t("backups.resume") : t("backups.pause")}
+                            >
+                              {b.is_paused ? (
+                                <Play className="w-4 h-4 text-muted-foreground" />
+                              ) : (
+                                <Pause className="w-4 h-4 text-muted-foreground" />
+                              )}
+                            </button>
+                            <button
+                              onClick={() => setSoftDeleteId(b.id as number)}
+                              className="p-2 rounded-lg hover:bg-muted transition-colors shrink-0"
+                            >
+                              <Trash2 className="w-4 h-4 text-muted-foreground" />
+                            </button>
+                          </>
+                        )}
                       </div>
                     );
                   })}

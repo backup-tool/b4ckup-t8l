@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Plus, Pencil, Trash2, HardDrive } from "lucide-react";
+import { ViewToggle } from "@/components/ui/ViewToggle";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
@@ -31,6 +32,8 @@ export function Media() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<Record<string, any> | null>(null);
   const [softDeleteId, setSoftDeleteId] = useState<number | null>(null);
+  const [view, setView] = useState<"grid" | "list">("grid");
+  const [editMode, setEditMode] = useState(false);
   const [sortField, setSortField] = useState("name");
   const [sortDir, setSortDir] = useState("asc");
 
@@ -162,6 +165,7 @@ export function Media() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <h1 className="text-xl font-bold">{t("media.title")}</h1>
+          <ViewToggle view={view} onViewChange={setView} editMode={editMode} onEditModeChange={setEditMode} />
           <CustomSelect
             className="w-32"
             value={sortField}
@@ -185,7 +189,7 @@ export function Media() {
           />
         </div>
         <div className="flex items-center gap-2">
-          <TrashSection
+          {editMode && <TrashSection
             items={deleted.map((m) => ({
               id: m.id as number,
               title: m.name as string,
@@ -197,7 +201,7 @@ export function Media() {
             onRestoreAll={async () => { for (const m of deleted) await restoreMedia(m.id as number); triggerRefresh(); await loadAll(); }}
             onDeleteAll={async () => { for (const m of deleted) await permanentDeleteMedia(m.id as number); triggerRefresh(); await loadAll(); }}
             permanentDeleteMessage={t("trash.confirmPermanentMedia")}
-          />
+          />}
           <Button onClick={openCreate}>
             <Plus className="w-4 h-4" />
             {t("media.create")}
@@ -231,7 +235,7 @@ export function Media() {
                       ) : null}
                     </p>
                   </div>
-                  <div className="flex gap-1">
+                  {editMode && <div className="flex gap-1">
                     <button
                       onClick={() => openEdit(m)}
                       className="p-1 rounded hover:bg-muted transition-colors"
@@ -244,7 +248,7 @@ export function Media() {
                     >
                       <Trash2 className="w-3.5 h-3.5 text-muted-foreground" />
                     </button>
-                  </div>
+                  </div>}
                 </div>
 
                 {total && (
