@@ -149,3 +149,108 @@ jobs:
           # Delete the unsigned DMG from the release and upload the notarized one
           gh release upload "$GITHUB_REF_NAME" "$DMG" --repo "$GITHUB_REPOSITORY" --clobber
           echo "Uploaded notarized $FILENAME"
+
+      - name: Upload update signatures
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Find and upload all .sig files and updater bundles (.tar.gz, .zip)
+          TARGET="${{ matrix.target }}"
+          SEARCH_DIR="src-tauri/target/${TARGET:-}/release/bundle"
+          [ -z "$TARGET" ] && SEARCH_DIR="src-tauri/target/release/bundle"
+
+          for SIG in $(find "$SEARCH_DIR" -name "*.sig" 2>/dev/null); do
+            echo "Uploading signature: $(basename "$SIG")"
+            gh release upload "$GITHUB_REF_NAME" "$SIG" --repo "$GITHUB_REPOSITORY" --clobber || true
+          done
+
+          # Upload updater bundles (.tar.gz for macOS, .zip for Windows/Linux)
+          for BUNDLE in $(find "$SEARCH_DIR" \( -name "*.app.tar.gz" -o -name "*.msi.zip" -o -name "*.nsis.zip" -o -name "*.AppImage.tar.gz" \) 2>/dev/null); do
+            echo "Uploading updater bundle: $(basename "$BUNDLE")"
+            gh release upload "$GITHUB_REF_NAME" "$BUNDLE" --repo "$GITHUB_REPOSITORY" --clobber || true
+          done
+
+  updater:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Generate latest.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          TAG="${GITHUB_REF_NAME}"
+          REPO="${GITHUB_REPOSITORY}"
+          DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          BASE_URL="https://github.com/${REPO}/releases/download/${TAG}"
+
+          # Wait for all assets to be available
+          sleep 10
+
+          # Get all release assets
+          ASSETS=$(gh release view "$TAG" --repo "$REPO" --json assets --jq '.assets[].name')
+
+          # Find signatures
+          get_sig() {
+            local pattern="$1"
+            local sig_file=$(echo "$ASSETS" | grep -F "${pattern}.sig" | head -1)
+            if [ -n "$sig_file" ]; then
+              gh release download "$TAG" --repo "$REPO" --pattern "$sig_file" --dir /tmp --clobber
+              cat "/tmp/$sig_file"
+            fi
+          }
+
+          # macOS ARM64
+          MAC_ARM_SIG=$(get_sig "aarch64.app.tar.gz")
+          MAC_ARM_URL="${BASE_URL}/Backup.Tool_aarch64.app.tar.gz"
+
+          # macOS Intel
+          MAC_X64_SIG=$(get_sig "x64.app.tar.gz")
+          MAC_X64_URL="${BASE_URL}/Backup.Tool_x64.app.tar.gz"
+
+          # Linux
+          LINUX_SIG=$(get_sig "amd64.AppImage.tar.gz")
+          LINUX_URL="${BASE_URL}/Backup.Tool_${VERSION}_amd64.AppImage.tar.gz"
+
+          # Windows NSIS
+          WIN_NSIS_SIG=$(get_sig "x64-setup.exe.sig" || get_sig "x64-setup.nsis.zip")
+          WIN_NSIS_URL="${BASE_URL}/Backup.Tool_${VERSION}_x64-setup.nsis.zip"
+
+          # Windows MSI
+          WIN_MSI_SIG=$(get_sig "x64_en-US.msi.zip")
+          WIN_MSI_URL="${BASE_URL}/Backup.Tool_${VERSION}_x64_en-US.msi.zip"
+
+          cat > /tmp/latest.json << ENDJSON
+          {
+            "version": "${VERSION}",
+            "notes": "B4cKuP T8L ${TAG}",
+            "pub_date": "${DATE}",
+            "platforms": {
+              "darwin-aarch64": {
+                "signature": "${MAC_ARM_SIG}",
+                "url": "${MAC_ARM_URL}"
+              },
+              "darwin-x86_64": {
+                "signature": "${MAC_X64_SIG}",
+                "url": "${MAC_X64_URL}"
+              },
+              "linux-x86_64": {
+                "signature": "${LINUX_SIG}",
+                "url": "${LINUX_URL}"
+              },
+              "windows-x86_64": {
+                "signature": "${WIN_NSIS_SIG}",
+                "url": "${WIN_NSIS_URL}"
+              }
+            }
+          }
+          ENDJSON
+
+          echo "Generated latest.json:"
+          cat /tmp/latest.json
+
+          gh release upload "$TAG" /tmp/latest.json --repo "$REPO" --clobber
+          echo "Uploaded latest.json to release"
