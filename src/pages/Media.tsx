@@ -214,6 +214,43 @@ export function Media() {
           <HardDrive className="w-10 h-10 mx-auto text-muted-foreground mb-3" />
           <p className="text-muted-foreground">{t("media.noMedia")}</p>
         </Card>
+      ) : view === "list" ? (
+        <div className="space-y-1.5">
+          {sorted.map((m) => {
+            const used = m.used_gb as number;
+            const total = m.total_capacity_gb as number | null;
+            return (
+              <Card key={m.id as number} className="py-3">
+                <div className="flex items-center gap-4">
+                  <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center shrink-0">
+                    <HardDrive className="w-4 h-4 text-muted-foreground" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-sm font-semibold truncate">{m.name as string}</h3>
+                    <p className="text-xs text-muted-foreground truncate">
+                      {t(`storageTypes.${m.type}`, { defaultValue: m.type as string })}
+                      {m.is_encrypted ? ` · 🔒 ${m.encryption_label || t("media.encrypted")}` : ""}
+                    </p>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <p className="text-sm font-medium tabular-nums">
+                      {total ? formatBytes(total * 1024 ** 3) : "—"}
+                    </p>
+                    <p className="text-[10px] text-muted-foreground">
+                      {formatBytes(used * 1024 ** 3)} {t("media.used")} · {m.backup_count as number} {t("media.backupCount")}
+                    </p>
+                  </div>
+                  {editMode && (
+                    <div className="flex gap-1 shrink-0">
+                      <button onClick={() => openEdit(m)} className="p-1 rounded hover:bg-muted"><Pencil className="w-3.5 h-3.5 text-muted-foreground" /></button>
+                      <button onClick={() => setSoftDeleteId(m.id as number)} className="p-1 rounded hover:bg-muted"><Trash2 className="w-3.5 h-3.5 text-muted-foreground" /></button>
+                    </div>
+                  )}
+                </div>
+              </Card>
+            );
+          })}
+        </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {sorted.map((m) => {
@@ -236,43 +273,26 @@ export function Media() {
                     </p>
                   </div>
                   {editMode && <div className="flex gap-1">
-                    <button
-                      onClick={() => openEdit(m)}
-                      className="p-1 rounded hover:bg-muted transition-colors"
-                    >
-                      <Pencil className="w-3.5 h-3.5 text-muted-foreground" />
-                    </button>
-                    <button
-                      onClick={() => setSoftDeleteId(m.id as number)}
-                      className="p-1 rounded hover:bg-muted transition-colors"
-                    >
-                      <Trash2 className="w-3.5 h-3.5 text-muted-foreground" />
-                    </button>
+                    <button onClick={() => openEdit(m)} className="p-1 rounded hover:bg-muted"><Pencil className="w-3.5 h-3.5 text-muted-foreground" /></button>
+                    <button onClick={() => setSoftDeleteId(m.id as number)} className="p-1 rounded hover:bg-muted"><Trash2 className="w-3.5 h-3.5 text-muted-foreground" /></button>
                   </div>}
                 </div>
 
                 {total && (
                   <div className="mb-2">
                     <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-primary rounded-full transition-all"
-                        style={{ width: `${pct}%` }}
-                      />
+                      <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${pct}%` }} />
                     </div>
                     <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                      <span>{formatBytes(used * 1024 * 1024 * 1024)} {t("media.used")}</span>
-                      <span>{formatBytes(total * 1024 * 1024 * 1024)}</span>
+                      <span>{formatBytes(used * 1024 ** 3)} {t("media.used")}</span>
+                      <span>{formatBytes(total * 1024 ** 3)}</span>
                     </div>
                   </div>
                 )}
 
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
-                  <span>
-                    {m.backup_count as number} {t("media.backupCount")}
-                  </span>
-                  {m.path && (
-                    <span className="truncate max-w-[150px]">{String(m.path)}</span>
-                  )}
+                  <span>{m.backup_count as number} {t("media.backupCount")}</span>
+                  {m.path && <span className="truncate max-w-[150px]">{String(m.path)}</span>}
                 </div>
               </Card>
             );

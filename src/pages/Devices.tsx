@@ -185,6 +185,33 @@ export function Devices() {
           <Monitor className="w-10 h-10 mx-auto text-muted-foreground mb-3" />
           <p className="text-muted-foreground">{t("devices.noDevices")}</p>
         </Card>
+      ) : view === "list" ? (
+        <div className="space-y-1.5">
+          {sorted.map((d) => (
+            <Card key={d.id as number} className="py-3">
+              <div className="flex items-center gap-4">
+                <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center shrink-0">
+                  <Monitor className="w-4 h-4 text-muted-foreground" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-sm font-semibold truncate">{d.name as string}</h3>
+                  <p className="text-xs text-muted-foreground truncate">
+                    {t(`deviceTypes.${d.type}`, { defaultValue: d.type as string })}
+                    {d.os ? ` · ${d.os}` : ""}
+                    {d.model ? ` · ${d.model}` : ""}
+                  </p>
+                </div>
+                <span className="text-xs text-muted-foreground shrink-0">{d.backup_count as number} {t("devices.backupCount")}</span>
+                {editMode && (
+                  <div className="flex gap-1 shrink-0">
+                    <button onClick={() => openEdit(d)} className="p-1 rounded hover:bg-muted"><Pencil className="w-3.5 h-3.5 text-muted-foreground" /></button>
+                    <button onClick={() => setDeleteId(d.id as number)} className="p-1 rounded hover:bg-muted"><Trash2 className="w-3.5 h-3.5 text-muted-foreground" /></button>
+                  </div>
+                )}
+              </div>
+            </Card>
+          ))}
+        </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {sorted.map((d) => (
