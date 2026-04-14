@@ -636,6 +636,45 @@ export function BackupDetail() {
           )}
         </Card>
 
+        {/* Size Comparison */}
+        {entries.length >= 2 && (() => {
+          const sorted = [...entries]
+            .filter((e) => (e.size_bytes as number) > 0)
+            .sort((a, b) => (a.backup_date as string).localeCompare(b.backup_date as string));
+          if (sorted.length < 2) return null;
+          return (
+            <Card>
+              <CardHeader>
+                <CardTitle>{t("comparison.title")}</CardTitle>
+              </CardHeader>
+              <div className="space-y-1">
+                {sorted.map((entry, i) => {
+                  if (i === 0) return null;
+                  const prev = sorted[i - 1];
+                  const curSize = entry.size_bytes as number;
+                  const prevSize = prev.size_bytes as number;
+                  const delta = curSize - prevSize;
+                  const pct = prevSize > 0 ? ((delta / prevSize) * 100).toFixed(1) : "—";
+                  const isGrowth = delta > 0;
+                  return (
+                    <div key={entry.id as number} className="flex items-center justify-between py-2 px-3 rounded-lg bg-muted/50 text-xs">
+                      <span className="text-muted-foreground">
+                        {formatDate((prev.backup_date as string))} → {formatDate((entry.backup_date as string))}
+                      </span>
+                      <div className="flex items-center gap-3">
+                        <span className="tabular-nums">{formatBytes(curSize)}</span>
+                        <span className={`tabular-nums font-medium ${isGrowth ? "text-red-500" : "text-emerald-500"}`}>
+                          {isGrowth ? "+" : ""}{formatBytes(Math.abs(delta))} ({isGrowth ? "+" : ""}{pct}%)
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </Card>
+          );
+        })()}
+
         {/* Storage locations */}
         <Card>
           <CardHeader>

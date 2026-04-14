@@ -7,6 +7,8 @@ export function StatusBadge({ status }: { status: BackupStatus }) {
 
   return (
     <span
+      role="status"
+      aria-label={t(`status.${status}`)}
       className={cn(
         "inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium",
         status === "ok" && "bg-emerald-50 text-emerald-700",

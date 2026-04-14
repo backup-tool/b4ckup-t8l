@@ -9,6 +9,7 @@ import {
   Grid3X3,
   Clock,
   BarChart3,
+  CalendarDays,
   Settings,
   ChevronLeft,
 } from "lucide-react";
@@ -24,6 +25,7 @@ const navItems = [
   { to: "/matrix", icon: Grid3X3, label: "nav.matrix" },
   { to: "/history", icon: Clock, label: "nav.history" },
   { to: "/statistics", icon: BarChart3, label: "nav.statistics" },
+  { to: "/calendar", icon: CalendarDays, label: "nav.calendar" },
   { to: "/settings", icon: Settings, label: "nav.settings" },
 ];
 
@@ -111,8 +113,9 @@ export function Sidebar() {
                   : "text-muted-foreground hover:bg-muted hover:text-foreground"
               )
             }
+            aria-label={collapsed ? t(item.label) : undefined}
           >
-            <item.icon className="w-4 h-4 shrink-0" />
+            <item.icon className="w-4 h-4 shrink-0" aria-hidden="true" />
             {!collapsed && <span className="truncate">{t(item.label)}</span>}
           </NavLink>
         ))}

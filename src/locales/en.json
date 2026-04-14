@@ -10,6 +10,7 @@
     "matrix": "Overview",
     "history": "History",
     "statistics": "Statistics",
+    "calendar": "Calendar",
     "trash": "Trash",
     "settings": "Settings"
   },
@@ -182,6 +183,9 @@
     "importImported": "imported",
     "importSkipped": "skipped",
     "importError": "Import failed",
+    "notifications": "Notifications",
+    "notificationsEnabled": "Enable notifications",
+    "checkInterval": "Check interval",
     "exportData": "Export Data",
     "exportJSON": "Export as JSON",
     "exportCSV": "Export as CSV",
@@ -259,6 +263,18 @@
     "total": "Total",
     "avg": "Average",
     "noData": "No data yet."
+  },
+  "calendar": {
+    "title": "Backup Calendar",
+    "entries": "entries"
+  },
+  "bulk": {
+    "selected": "selected",
+    "select": "Select",
+    "deleteConfirm": "backups will be moved to trash."
+  },
+  "comparison": {
+    "title": "Size Comparison"
   },
   "update": {
     "available": "Update Available",

@@ -10,6 +10,7 @@
     "matrix": "\u00dcbersicht",
     "history": "Verlauf",
     "statistics": "Statistiken",
+    "calendar": "Kalender",
     "trash": "Papierkorb",
     "settings": "Einstellungen"
   },
@@ -182,6 +183,9 @@
     "importImported": "importiert",
     "importSkipped": "\u00fcbersprungen",
     "importError": "Import fehlgeschlagen",
+    "notifications": "Benachrichtigungen",
+    "notificationsEnabled": "Benachrichtigungen aktivieren",
+    "checkInterval": "Pr\u00fcfintervall",
     "exportData": "Daten exportieren",
     "exportJSON": "Als JSON exportieren",
     "exportCSV": "Als CSV exportieren",
@@ -259,6 +263,18 @@
     "total": "Gesamt",
     "avg": "Durchschnitt",
     "noData": "Noch keine Daten."
+  },
+  "calendar": {
+    "title": "Backup-Kalender",
+    "entries": "Eintr\u00e4ge"
+  },
+  "bulk": {
+    "selected": "ausgew\u00e4hlt",
+    "select": "Ausw\u00e4hlen",
+    "deleteConfirm": "Backups werden in den Papierkorb verschoben."
+  },
+  "comparison": {
+    "title": "Gr\u00f6\u00dfenvergleich"
   },
   "update": {
     "available": "Update verf\u00fcgbar",

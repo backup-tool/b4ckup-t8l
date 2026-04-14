@@ -8,6 +8,8 @@ import { formatBytes } from "@/lib/format";
 import { invoke } from "@tauri-apps/api/core";
 import { useThemeStore } from "@/lib/store";
 import { cn } from "@/lib/cn";
+import { CustomSelect } from "@/components/ui/CustomSelect";
+import { isNotificationsEnabled, getNotificationInterval, restartReminders } from "@/lib/notifications";
 
 const ACCENT_COLORS = [
   { id: "b4ckup" as const, color: "#1a1a2e", darkColor: "#1a1a2e", label: "B4cKuP" },
@@ -157,6 +159,51 @@ export function Settings() {
               title={c.label}
             />
           ))}
+        </div>
+      </Card>
+
+      {/* Notifications */}
+      <Card>
+        <CardHeader>
+          <CardTitle>{t("settings.notifications")}</CardTitle>
+        </CardHeader>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-sm">{t("settings.notificationsEnabled")}</span>
+            <button
+              onClick={() => {
+                const enabled = !isNotificationsEnabled();
+                localStorage.setItem("notification-enabled", String(enabled));
+                restartReminders();
+              }}
+              className={cn(
+                "w-10 h-5 rounded-full transition-colors relative",
+                isNotificationsEnabled() ? "bg-primary" : "bg-muted"
+              )}
+            >
+              <span className={cn(
+                "absolute top-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform",
+                isNotificationsEnabled() ? "translate-x-5" : "translate-x-0.5"
+              )} />
+            </button>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-sm">{t("settings.checkInterval")}</span>
+            <CustomSelect
+              className="w-28"
+              value={getNotificationInterval()}
+              onChange={(val) => {
+                localStorage.setItem("notification-interval", val);
+                restartReminders();
+              }}
+              options={[
+                { value: "1h", label: "1h" },
+                { value: "6h", label: "6h" },
+                { value: "12h", label: "12h" },
+                { value: "24h", label: "24h" },
+              ]}
+            />
+          </div>
         </div>
       </Card>
 

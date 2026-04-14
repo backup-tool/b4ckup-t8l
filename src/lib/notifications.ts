@@ -3,13 +3,34 @@ import { getBackupsWithStatus } from "./db";
 
 let checkInterval: ReturnType<typeof setInterval> | null = null;
 
+const INTERVAL_MAP: Record<string, number> = {
+  "1h": 60 * 60 * 1000,
+  "6h": 6 * 60 * 60 * 1000,
+  "12h": 12 * 60 * 60 * 1000,
+  "24h": 24 * 60 * 60 * 1000,
+};
+
+export function isNotificationsEnabled(): boolean {
+  return localStorage.getItem("notification-enabled") !== "false";
+}
+
+export function getNotificationInterval(): string {
+  return localStorage.getItem("notification-interval") || "1h";
+}
+
 export async function startBackupReminders() {
-  // Check immediately on start
+  if (!isNotificationsEnabled()) return;
+
   await checkOverdueBackups();
 
-  // Then check every 60 minutes
+  const interval = INTERVAL_MAP[getNotificationInterval()] || INTERVAL_MAP["1h"];
   if (checkInterval) clearInterval(checkInterval);
-  checkInterval = setInterval(checkOverdueBackups, 60 * 60 * 1000);
+  checkInterval = setInterval(checkOverdueBackups, interval);
+}
+
+export function restartReminders() {
+  if (checkInterval) clearInterval(checkInterval);
+  startBackupReminders();
 }
 
 async function checkOverdueBackups() {

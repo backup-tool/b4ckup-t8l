@@ -42,6 +42,8 @@ export function Backups() {
   const [sortField, setSortField] = useState("name");
   const [sortDir, setSortDir] = useState("asc");
   const [softDeleteId, setSoftDeleteId] = useState<number | null>(null);
+  const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
+  const [bulkConfirmOpen, setBulkConfirmOpen] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -237,6 +239,32 @@ export function Backups() {
         />
       </div>
 
+      {/* Bulk actions toolbar */}
+      {selectedIds.size > 0 && (
+        <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-primary/5 border border-primary/20">
+          <span className="text-sm font-medium">{selectedIds.size} {t("bulk.selected")}</span>
+          <div className="flex gap-2 ml-auto">
+            <Button size="sm" variant="secondary" onClick={async () => {
+              for (const id of selectedIds) await toggleBackupPaused(id, true);
+              setSelectedIds(new Set());
+              triggerRefresh(); await loadAll();
+            }}>
+              {t("backups.pause")}
+            </Button>
+            <Button size="sm" variant="secondary" onClick={async () => {
+              for (const id of selectedIds) await toggleBackupPaused(id, false);
+              setSelectedIds(new Set());
+              triggerRefresh(); await loadAll();
+            }}>
+              {t("backups.resume")}
+            </Button>
+            <Button size="sm" variant="destructive" onClick={() => setBulkConfirmOpen(true)}>
+              {t("common.delete")}
+            </Button>
+          </div>
+        </div>
+      )}
+
       {sorted.length === 0 ? (
         <Card className="text-center py-12">
           <Database className="w-10 h-10 mx-auto text-muted-foreground mb-3" />
@@ -264,6 +292,18 @@ export function Backups() {
                     const latest = b.latest_entry as Record<string, any> | null;
                     return (
                       <div key={b.id as number} className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          checked={selectedIds.has(b.id as number)}
+                          onChange={(e) => {
+                            const next = new Set(selectedIds);
+                            if (e.target.checked) next.add(b.id as number);
+                            else next.delete(b.id as number);
+                            setSelectedIds(next);
+                          }}
+                          className="rounded shrink-0"
+                          aria-label={`${t("bulk.select")} ${b.name}`}
+                        />
                         <Link to={`/backups/${b.id}`} className="block flex-1">
                           <Card className="hover:border-primary/30 transition-colors cursor-pointer py-3">
                             <div className="flex items-center justify-between">
@@ -422,6 +462,21 @@ export function Backups() {
         cancelLabel={t("common.cancel")}
       />
 
+      <ConfirmDialog
+        open={bulkConfirmOpen}
+        onClose={() => setBulkConfirmOpen(false)}
+        onConfirm={async () => {
+          for (const id of selectedIds) await softDeleteBackup(id);
+          setSelectedIds(new Set());
+          setBulkConfirmOpen(false);
+          triggerRefresh(); await loadAll();
+        }}
+        title={t("trash.moveToTrash")}
+        message={`${selectedIds.size} ${t("bulk.deleteConfirm")}`}
+        confirmLabel={t("trash.moveToTrash")}
+        cancelLabel={t("common.cancel")}
+        variant="danger"
+      />
     </div>
   );
 }
