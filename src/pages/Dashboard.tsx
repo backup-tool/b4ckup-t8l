@@ -290,7 +290,7 @@ export function Dashboard() {
                   <p className="text-xs text-muted-foreground">{t("dashboard.ruleFail")}</p>
                 </div>
               </div>
-              <div className="space-y-1 max-h-40 overflow-y-auto">
+              <div className="space-y-1">
                 {rule321Results.map((r) => (
                   <div
                     key={r.name}
