@@ -265,7 +265,7 @@ export function Devices() {
           unfiledCollapsed={unfiledCollapsed}
           setUnfiledCollapsed={setUnfiledCollapsed}
           t={t}
-          makeDraggable={makeDraggable}
+          makeDraggable={editMode ? makeDraggable : undefined}
           registerDropTarget={registerDropTarget}
           isDragOver={isDragOver}
         />
@@ -296,7 +296,7 @@ export function Devices() {
             openEdit={openEdit}
             setDeleteId={setDeleteId}
             t={t}
-            makeDraggable={makeDraggable}
+            makeDraggable={editMode ? makeDraggable : undefined}
           />
         </div>
       ) : (
@@ -312,7 +312,7 @@ export function Devices() {
           openEdit={openEdit}
           setDeleteId={setDeleteId}
           t={t}
-          makeDraggable={editMode && folderHook.viewMode !== "flat" ? makeDraggable : undefined}
+          makeDraggable={editMode ? makeDraggable : undefined}
         />
       )}
 
@@ -667,7 +667,7 @@ function DevicesExpandedView({
               openEdit={openEdit}
               setDeleteId={setDeleteId}
               t={t}
-              makeDraggable={makeDraggable}
+              makeDraggable={editMode ? makeDraggable : undefined}
             />
           </FolderSection>
         );

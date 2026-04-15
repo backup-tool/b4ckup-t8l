@@ -295,7 +295,7 @@ export function Media() {
           unfiledCollapsed={unfiledCollapsed}
           setUnfiledCollapsed={setUnfiledCollapsed}
           t={t}
-          makeDraggable={makeDraggable}
+          makeDraggable={editMode ? makeDraggable : undefined}
           registerDropTarget={registerDropTarget}
           isDragOver={isDragOver}
         />
@@ -326,7 +326,7 @@ export function Media() {
             openEdit={openEdit}
             setSoftDeleteId={setSoftDeleteId}
             t={t}
-            makeDraggable={makeDraggable}
+            makeDraggable={editMode ? makeDraggable : undefined}
           />
         </div>
       ) : (
@@ -342,7 +342,7 @@ export function Media() {
           openEdit={openEdit}
           setSoftDeleteId={setSoftDeleteId}
           t={t}
-          makeDraggable={editMode && folderHook.viewMode !== "flat" ? makeDraggable : undefined}
+          makeDraggable={editMode ? makeDraggable : undefined}
         />
       )}
 
@@ -741,7 +741,7 @@ function MediaExpandedView({
               openEdit={openEdit}
               setSoftDeleteId={setSoftDeleteId}
               t={t}
-              makeDraggable={makeDraggable}
+              makeDraggable={editMode ? makeDraggable : undefined}
             />
           </FolderSection>
         );

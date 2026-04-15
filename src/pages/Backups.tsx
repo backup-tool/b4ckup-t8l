@@ -349,7 +349,7 @@ export function Backups() {
           t={t}
           triggerRefresh={triggerRefresh}
           loadAll={loadAll}
-          makeDraggable={makeDraggable}
+          makeDraggable={editMode ? makeDraggable : undefined}
           registerDropTarget={registerDropTarget}
           isDragOver={isDragOver}
         />
@@ -383,7 +383,7 @@ export function Backups() {
             t={t}
             triggerRefresh={triggerRefresh}
             loadAll={loadAll}
-            makeDraggable={makeDraggable}
+            makeDraggable={editMode ? makeDraggable : undefined}
           />
         </div>
       ) : (
@@ -401,7 +401,7 @@ export function Backups() {
           t={t}
           triggerRefresh={triggerRefresh}
           loadAll={loadAll}
-          makeDraggable={editMode && folderHook.viewMode !== "flat" ? makeDraggable : undefined}
+          makeDraggable={editMode ? makeDraggable : undefined}
         />
       )}
 
@@ -821,7 +821,7 @@ function BackupsExpandedView({
               t={t}
               triggerRefresh={triggerRefresh}
               loadAll={loadAll}
-              makeDraggable={makeDraggable}
+              makeDraggable={editMode ? makeDraggable : undefined}
             />
           </FolderSection>
         );
