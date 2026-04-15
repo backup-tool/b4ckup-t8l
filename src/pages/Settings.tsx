@@ -314,7 +314,7 @@ export function Settings() {
               input.click();
             }}
           >
-            <Upload className="w-3.5 h-3.5" />
+            <Download className="w-3.5 h-3.5" />
             {t("settings.importJSON")}
           </Button>
           <Button
@@ -331,7 +331,7 @@ export function Settings() {
               URL.revokeObjectURL(url);
             }}
           >
-            <Download className="w-3.5 h-3.5" />
+            <Upload className="w-3.5 h-3.5" />
             {t("settings.exportJSON")}
           </Button>
           <Button
@@ -361,7 +361,7 @@ export function Settings() {
               URL.revokeObjectURL(url);
             }}
           >
-            <Download className="w-3.5 h-3.5" />
+            <Upload className="w-3.5 h-3.5" />
             {t("settings.exportCSV")}
           </Button>
         </div>
