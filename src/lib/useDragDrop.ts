@@ -19,13 +19,19 @@ export function useDragDrop(
     (itemId: number, selectedIds: Set<number>) => ({
       draggable: true,
       onDragStart: (e: DragEvent) => {
-        // If this item is in the selection, drag all selected; otherwise drag just this one
         const ids =
           selectedIds.size > 0 && selectedIds.has(itemId)
             ? Array.from(selectedIds)
             : [itemId];
         e.dataTransfer.setData(DRAG_DATA_KEY, JSON.stringify(ids));
         e.dataTransfer.effectAllowed = "move";
+        // Dim the dragged element
+        const el = e.currentTarget as HTMLElement;
+        requestAnimationFrame(() => { el.style.opacity = "0.4"; });
+      },
+      onDragEnd: (e: DragEvent) => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.opacity = "1";
       },
     }),
     []
