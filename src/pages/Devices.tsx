@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Plus, Pencil, Trash2, Monitor } from "lucide-react";
+import { Plus, Pencil, Trash2, Monitor, GripVertical } from "lucide-react";
 import { ViewToggle } from "@/components/ui/ViewToggle";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -312,7 +312,7 @@ export function Devices() {
           openEdit={openEdit}
           setDeleteId={setDeleteId}
           t={t}
-          makeDraggable={folderHook.viewMode !== "flat" ? makeDraggable : undefined}
+          makeDraggable={editMode && folderHook.viewMode !== "flat" ? makeDraggable : undefined}
         />
       )}
 
@@ -473,6 +473,9 @@ function DevicesItemList({
             className="flex items-center gap-2"
             {...(makeDraggable ? makeDraggable(d.id as number, selectedIds, d.name as string) : {})}
           >
+            {makeDraggable && (
+              <GripVertical className="w-4 h-4 text-muted-foreground/40 shrink-0 cursor-grab" />
+            )}
             {editMode && (
               <input
                 type="checkbox"
