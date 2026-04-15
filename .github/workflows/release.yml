@@ -168,12 +168,39 @@ jobs:
             local file="$1"
             if [ ! -f "$file" ]; then return; fi
             echo "Signing: $(basename "$file")" >&2
-            npx @tauri-apps/cli signer sign "$file" 2>&1 >&2 || true
+
+            local cmd="npx @tauri-apps/cli signer sign -k \"$TAURI_SIGNING_PRIVATE_KEY\""
+            if [ -n "$TAURI_SIGNING_PRIVATE_KEY_PASSWORD" ]; then
+              cmd="$cmd -p \"$TAURI_SIGNING_PRIVATE_KEY_PASSWORD\""
+            fi
+            cmd="$cmd \"$file\""
+
+            local output
+            output=$(eval $cmd 2>/tmp/sign_err.log) || true
+
             if [ -f "${file}.sig" ]; then
-              echo "  OK" >&2
+              echo "  OK (from .sig file)" >&2
               cat "${file}.sig"
+            elif [ -n "$output" ] && ! echo "$output" | grep -qi "error\|incorrect\|invalid"; then
+              echo "  OK (from stdout)" >&2
+              echo "$output"
             else
-              echo "  No .sig created" >&2
+              echo "  FAILED" >&2
+              echo "  stderr: $(cat /tmp/sign_err.log 2>/dev/null)" >&2
+              echo "  stdout: ${output:0:100}" >&2
+              # Try without password as fallback
+              echo "  Retrying without password..." >&2
+              output=$(npx @tauri-apps/cli signer sign -k "$TAURI_SIGNING_PRIVATE_KEY" "$file" 2>/tmp/sign_err2.log) || true
+              if [ -f "${file}.sig" ]; then
+                echo "  OK without password (from .sig file)" >&2
+                cat "${file}.sig"
+              elif [ -n "$output" ] && ! echo "$output" | grep -qi "error\|incorrect\|invalid"; then
+                echo "  OK without password (from stdout)" >&2
+                echo "$output"
+              else
+                echo "  FAILED without password too" >&2
+                echo "  stderr: $(cat /tmp/sign_err2.log 2>/dev/null)" >&2
+              fi
             fi
           }
 
