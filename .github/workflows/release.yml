@@ -164,19 +164,32 @@ jobs:
           ls -la /tmp/bundles/ 2>/dev/null || echo "Empty"
 
           # Sign each bundle with tauri signer
-          sign_bundle() {
+          # Test signing with a simple approach - sign directly and read output
+          sign_and_get_sig() {
             local file="$1"
-            if [ -f "$file" ]; then
-              >&2 echo "Signing: $(basename "$file")"
-              >&2 npx tauri signer sign -k "$TAURI_SIGNING_PRIVATE_KEY" -p "$TAURI_SIGNING_PRIVATE_KEY_PASSWORD" "$file" || true
-              >&2 echo "Looking for sig at: ${file}.sig"
-              >&2 ls -la "${file}.sig" 2>/dev/null || >&2 echo "  NOT FOUND"
-              # Also check if sig was placed next to the file without the full path
-              >&2 ls -la "$(dirname "$file")/"*.sig 2>/dev/null || true
-              if [ -f "${file}.sig" ]; then
-                cat "${file}.sig"
-              fi
+            if [ ! -f "$file" ]; then return; fi
+            echo "Signing: $(basename "$file")" >&2
+
+            # Try tauri signer - it outputs the signature to stdout
+            local sig=$(npx tauri signer sign -k "$TAURI_SIGNING_PRIVATE_KEY" -p "$TAURI_SIGNING_PRIVATE_KEY_PASSWORD" "$file" 2>/tmp/signer_err.log)
+
+            if [ -n "$sig" ]; then
+              echo "  Got signature from stdout (${#sig} chars)" >&2
+              echo "$sig"
+              return
             fi
+
+            # Check if .sig file was created
+            if [ -f "${file}.sig" ]; then
+              echo "  Got signature from .sig file" >&2
+              cat "${file}.sig"
+              return
+            fi
+
+            echo "  FAILED - stderr:" >&2
+            cat /tmp/signer_err.log >&2
+            echo "  Checking npx tauri signer --help:" >&2
+            npx tauri signer --help 2>&1 | head -5 >&2
           }
 
           MAC_ARM_FILE=$(find /tmp/bundles -name "*aarch64*app.tar.gz" -type f 2>/dev/null | head -1)
@@ -184,10 +197,10 @@ jobs:
           LINUX_FILE=$(find /tmp/bundles -name "*AppImage" -type f 2>/dev/null | head -1)
           WIN_FILE=$(find /tmp/bundles -name "*x64-setup.exe" -type f 2>/dev/null | head -1)
 
-          MAC_ARM_SIG=$(sign_bundle "$MAC_ARM_FILE")
-          MAC_X64_SIG=$(sign_bundle "$MAC_X64_FILE")
-          LINUX_SIG=$(sign_bundle "$LINUX_FILE")
-          WIN_SIG=$(sign_bundle "$WIN_FILE")
+          MAC_ARM_SIG=$(sign_and_get_sig "$MAC_ARM_FILE")
+          MAC_X64_SIG=$(sign_and_get_sig "$MAC_X64_FILE")
+          LINUX_SIG=$(sign_and_get_sig "$LINUX_FILE")
+          WIN_SIG=$(sign_and_get_sig "$WIN_FILE")
 
           [ -n "$MAC_ARM_SIG" ] && echo "macOS ARM: found" || echo "macOS ARM: MISSING"
           [ -n "$MAC_X64_SIG" ] && echo "macOS x64: found" || echo "macOS x64: MISSING"
