@@ -1,86 +1,134 @@
-import { useState, useCallback, DragEvent } from "react";
-
-const DRAG_DATA_KEY = "application/x-folder-item-ids";
+import { useState, useCallback, useRef, useEffect } from "react";
 
 /**
- * Shared drag & drop logic for moving items into/out of folders.
- * Items set their IDs on dragStart; folder targets read them on drop.
+ * Mouse-based drag & drop for moving items into folders.
+ * Uses mousedown/mousemove/mouseup instead of HTML5 drag API
+ * because Tauri/WebKit on macOS blocks native drag events.
  */
 export function useDragDrop(
   onDrop: (itemIds: number[], folderId: number | null) => Promise<void>
 ) {
-  const [dragOverFolderId, setDragOverFolderId] = useState<
-    number | null | "unfiled" | undefined
-  >(undefined);
+  const [dragging, setDragging] = useState(false);
+  const [dragIds, setDragIds] = useState<number[]>([]);
+  const [dragOverFolderId, setDragOverFolderId] = useState<number | null | undefined>(undefined);
+  const [ghostPos, setGhostPos] = useState<{ x: number; y: number } | null>(null);
+  const [dragLabel, setDragLabel] = useState("");
+  const dropTargets = useRef(new Map<number | "unfiled", HTMLElement>());
 
-  // --- Draggable item handlers ---
+  // Global mouse handlers during drag
+  useEffect(() => {
+    if (!dragging) return;
 
+    function onMouseMove(e: MouseEvent) {
+      setGhostPos({ x: e.clientX, y: e.clientY });
+
+      // Check which drop target we're over
+      let foundTarget: number | null | undefined = undefined;
+      for (const [key, el] of dropTargets.current.entries()) {
+        const rect = el.getBoundingClientRect();
+        if (
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom
+        ) {
+          foundTarget = key === "unfiled" ? null : (key as number);
+          break;
+        }
+      }
+      setDragOverFolderId(foundTarget);
+    }
+
+    async function onMouseUp(e: MouseEvent) {
+      // Check final drop target
+      let finalTarget: number | null | undefined = undefined;
+      for (const [key, el] of dropTargets.current.entries()) {
+        const rect = el.getBoundingClientRect();
+        if (
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom
+        ) {
+          finalTarget = key === "unfiled" ? null : (key as number);
+          break;
+        }
+      }
+
+      if (finalTarget !== undefined && dragIds.length > 0) {
+        await onDrop(dragIds, finalTarget);
+      }
+
+      setDragging(false);
+      setDragIds([]);
+      setDragOverFolderId(undefined);
+      setGhostPos(null);
+      setDragLabel("");
+    }
+
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+    };
+  }, [dragging, dragIds, onDrop]);
+
+  // Make an item draggable
   const makeDraggable = useCallback(
-    (itemId: number, selectedIds: Set<number>) => ({
-      draggable: true,
-      onDragStart: (e: DragEvent) => {
+    (itemId: number, selectedIds: Set<number>, label?: string) => ({
+      onMouseDown: (e: React.MouseEvent) => {
+        // Only left click, ignore if on a button/input/link
+        if (e.button !== 0) return;
+        const tag = (e.target as HTMLElement).tagName;
+        if (tag === "INPUT" || tag === "BUTTON" || tag === "A" || tag === "SELECT") return;
+        // Check if target or parent is a link
+        if ((e.target as HTMLElement).closest("a, button, input")) return;
+
+        e.preventDefault();
         const ids =
           selectedIds.size > 0 && selectedIds.has(itemId)
             ? Array.from(selectedIds)
             : [itemId];
-        e.dataTransfer.setData(DRAG_DATA_KEY, JSON.stringify(ids));
-        e.dataTransfer.effectAllowed = "move";
-        // Dim the dragged element
-        const el = e.currentTarget as HTMLElement;
-        requestAnimationFrame(() => { el.style.opacity = "0.4"; });
+        setDragIds(ids);
+        setDragging(true);
+        setGhostPos({ x: e.clientX, y: e.clientY });
+        setDragLabel(label || `${ids.length} item${ids.length > 1 ? "s" : ""}`);
       },
-      onDragEnd: (e: DragEvent) => {
-        const el = e.currentTarget as HTMLElement;
-        el.style.opacity = "1";
-      },
+      style: { cursor: "grab", userSelect: "none" } as React.CSSProperties,
     }),
     []
   );
 
-  // --- Drop target handlers ---
-
-  const makeDropTarget = useCallback(
-    (folderId: number | null) => {
+  // Register a folder element as a drop target
+  const registerDropTarget = useCallback(
+    (folderId: number | null, el: HTMLElement | null) => {
       const key = folderId === null ? "unfiled" : folderId;
-      return {
-        onDragOver: (e: DragEvent) => {
-          e.preventDefault();
-          e.dataTransfer.dropEffect = "move";
-          setDragOverFolderId(key as any);
-        },
-        onDragLeave: (e: DragEvent) => {
-          // Only clear if we're actually leaving the element (not entering a child)
-          const related = e.relatedTarget as Node | null;
-          if (!e.currentTarget.contains(related)) {
-            setDragOverFolderId(undefined);
-          }
-        },
-        onDrop: async (e: DragEvent) => {
-          e.preventDefault();
-          setDragOverFolderId(undefined);
-          const raw = e.dataTransfer.getData(DRAG_DATA_KEY);
-          if (!raw) return;
-          try {
-            const ids: number[] = JSON.parse(raw);
-            if (ids.length > 0) {
-              await onDrop(ids, folderId);
-            }
-          } catch {
-            // invalid data, ignore
-          }
-        },
-      };
+      if (el) {
+        dropTargets.current.set(key as any, el);
+      } else {
+        dropTargets.current.delete(key as any);
+      }
     },
-    [onDrop]
+    []
   );
 
   const isDragOver = useCallback(
     (folderId: number | null) => {
-      if (folderId === null) return dragOverFolderId === "unfiled";
+      if (!dragging) return false;
+      if (folderId === null) return dragOverFolderId === null;
       return dragOverFolderId === folderId;
     },
-    [dragOverFolderId]
+    [dragging, dragOverFolderId]
   );
 
-  return { makeDraggable, makeDropTarget, isDragOver, dragOverFolderId };
+  return {
+    makeDraggable,
+    registerDropTarget,
+    isDragOver,
+    dragging,
+    ghostPos,
+    dragLabel,
+    dragIds,
+  };
 }

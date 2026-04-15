@@ -20,6 +20,7 @@ import {
   FolderModal,
   FolderDeleteConfirm,
   MoveToFolderMenu,
+  DragGhost,
 } from "@/components/ui/FolderView";
 import {
   getBackupsWithStatus,
@@ -69,7 +70,7 @@ export function Backups() {
   const [unfiledCollapsed, setUnfiledCollapsed] = useState(false);
 
   // Drag & drop for folder moves
-  const { makeDraggable, makeDropTarget, isDragOver } = useDragDrop(
+  const { makeDraggable, registerDropTarget, isDragOver, dragging, ghostPos, dragLabel } = useDragDrop(
     async (itemIds, folderId) => {
       await folderHook.moveItems(itemIds, folderId);
       setSelectedIds(new Set());
@@ -321,7 +322,7 @@ export function Backups() {
         <FolderBreadcrumb
           currentFolder={folderHook.currentFolder}
           onNavigateBack={() => folderHook.navigateToFolder(null)}
-          dropTargetProps={makeDropTarget(null)}
+          dropRef={(el: HTMLElement | null) => registerDropTarget(null, el)}
           isDropOver={isDragOver(null)}
         />
       )}
@@ -349,7 +350,7 @@ export function Backups() {
           triggerRefresh={triggerRefresh}
           loadAll={loadAll}
           makeDraggable={makeDraggable}
-          makeDropTarget={makeDropTarget}
+          registerDropTarget={registerDropTarget}
           isDragOver={isDragOver}
         />
       ) : folderHook.viewMode === "folder" && folderHook.currentFolderId === null ? (
@@ -368,7 +369,7 @@ export function Backups() {
             onRename={(folder) => setRenamingFolder(folder)}
             onDelete={(folder) => setDeletingFolder(folder)}
             editMode={editMode}
-            makeDropTarget={makeDropTarget}
+            registerDropTarget={registerDropTarget}
             isDragOver={isDragOver}
           />
           {/* Show unfiled items below folders */}
@@ -551,6 +552,7 @@ export function Backups() {
           }
         }}
       />
+      <DragGhost visible={dragging} pos={ghostPos} label={dragLabel} />
     </div>
   );
 }
@@ -764,7 +766,7 @@ function BackupsExpandedView({
   triggerRefresh,
   loadAll,
   makeDraggable,
-  makeDropTarget,
+  registerDropTarget,
   isDragOver,
 }: {
   sorted: Array<Record<string, any>>;
@@ -782,7 +784,7 @@ function BackupsExpandedView({
   triggerRefresh: () => void;
   loadAll: () => Promise<void>;
   makeDraggable: (itemId: number, selectedIds: Set<number>) => Record<string, any>;
-  makeDropTarget: (folderId: number | null) => Record<string, any>;
+  registerDropTarget: (folderId: number | null, el: HTMLElement | null) => void;
   isDragOver: (folderId: number | null) => boolean;
 }) {
   const groups = folderHook.groupItemsByFolder(sorted);
@@ -809,7 +811,7 @@ function BackupsExpandedView({
             onDelete={folder ? () => setDeletingFolder(folder) : undefined}
             editMode={editMode}
             itemCount={group.items.length}
-            dropTargetProps={makeDropTarget(folder?.id ?? null)}
+            dropRef={(el: HTMLElement | null) => registerDropTarget(folder?.id ?? null, el)}
             isDropOver={isDragOver(folder?.id ?? null)}
           >
             <BackupsItemList

@@ -17,7 +17,6 @@ import { Button } from "@/components/ui/Button";
 import { Modal } from "@/components/ui/Modal";
 import { Input, Label } from "@/components/ui/Input";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
-import { Card } from "@/components/ui/Card";
 import { cn } from "@/lib/cn";
 import type { FolderViewMode } from "@/lib/types";
 import type { FolderData } from "@/lib/useFolders";
@@ -87,12 +86,12 @@ export function FolderToolbar({
 export function FolderBreadcrumb({
   currentFolder,
   onNavigateBack,
-  dropTargetProps,
+  dropRef,
   isDropOver,
 }: {
   currentFolder: FolderData | null;
   onNavigateBack: () => void;
-  dropTargetProps?: Record<string, any>;
+  dropRef?: (el: HTMLElement | null) => void;
   isDropOver?: boolean;
 }) {
   const { t } = useTranslation();
@@ -102,6 +101,7 @@ export function FolderBreadcrumb({
   return (
     <div className="flex items-center gap-1.5 text-sm">
       <button
+        ref={dropRef as any}
         onClick={onNavigateBack}
         className={cn(
           "px-2 py-1 rounded-md transition-colors",
@@ -109,7 +109,6 @@ export function FolderBreadcrumb({
             ? "bg-primary/10 text-primary ring-2 ring-primary/40"
             : "text-muted-foreground hover:text-foreground"
         )}
-        {...dropTargetProps}
       >
         {t("folders.allFolders")}
       </button>
@@ -131,7 +130,7 @@ export function FolderCard({
   onRename,
   onDelete,
   editMode,
-  dropTargetProps,
+  dropRef,
   isDropOver,
 }: {
   folder: FolderData;
@@ -140,21 +139,21 @@ export function FolderCard({
   onRename: () => void;
   onDelete: () => void;
   editMode: boolean;
-  dropTargetProps?: Record<string, any>;
+  dropRef?: (el: HTMLElement | null) => void;
   isDropOver?: boolean;
 }) {
   const { t } = useTranslation();
 
   return (
-    <Card
+    <div
+      ref={dropRef}
       className={cn(
-        "transition-colors cursor-pointer",
+        "bg-card rounded-xl border border-border p-5 transition-colors cursor-pointer",
         isDropOver
           ? "border-primary ring-2 ring-primary/40 bg-primary/5"
           : "hover:border-primary/30"
       )}
       onClick={editMode ? undefined : onOpen}
-      {...dropTargetProps}
     >
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
@@ -189,7 +188,7 @@ export function FolderCard({
           </div>
         )}
       </div>
-    </Card>
+    </div>
   );
 }
 
@@ -202,7 +201,7 @@ export function FolderGrid({
   onRename,
   onDelete,
   editMode,
-  makeDropTarget,
+  registerDropTarget,
   isDragOver,
 }: {
   folders: FolderData[];
@@ -211,7 +210,7 @@ export function FolderGrid({
   onRename: (folder: FolderData) => void;
   onDelete: (folder: FolderData) => void;
   editMode: boolean;
-  makeDropTarget?: (folderId: number | null) => Record<string, any>;
+  registerDropTarget?: (folderId: number | null, el: HTMLElement | null) => void;
   isDragOver?: (folderId: number | null) => boolean;
 }) {
   if (folders.length === 0) return null;
@@ -227,7 +226,7 @@ export function FolderGrid({
           onRename={() => onRename(folder)}
           onDelete={() => onDelete(folder)}
           editMode={editMode}
-          dropTargetProps={makeDropTarget?.(folder.id)}
+          dropRef={registerDropTarget ? (el) => registerDropTarget(folder.id, el) : undefined}
           isDropOver={isDragOver?.(folder.id)}
         />
       ))}
@@ -246,7 +245,7 @@ export function FolderSection({
   editMode,
   itemCount,
   children,
-  dropTargetProps,
+  dropRef,
   isDropOver,
 }: {
   folder: FolderData | null;
@@ -257,7 +256,7 @@ export function FolderSection({
   editMode: boolean;
   itemCount: number;
   children: React.ReactNode;
-  dropTargetProps?: Record<string, any>;
+  dropRef?: (el: HTMLElement | null) => void;
   isDropOver?: boolean;
 }) {
   const { t } = useTranslation();
@@ -266,11 +265,11 @@ export function FolderSection({
   return (
     <div className="space-y-2">
       <div
+        ref={dropRef}
         className={cn(
           "flex items-center gap-2 rounded-md px-1 -mx-1 transition-colors",
           isDropOver && "bg-primary/10 ring-2 ring-primary/40"
         )}
-        {...dropTargetProps}
       >
         <button
           onClick={onToggleCollapsed}
@@ -464,5 +463,28 @@ export function FolderDeleteConfirm({
       cancelLabel={t("common.cancel")}
       variant="danger"
     />
+  );
+}
+
+// --- Drag Ghost (floating element following cursor during drag) ---
+
+export function DragGhost({
+  visible,
+  pos,
+  label,
+}: {
+  visible: boolean;
+  pos: { x: number; y: number } | null;
+  label: string;
+}) {
+  if (!visible || !pos) return null;
+
+  return (
+    <div
+      className="fixed z-[9999] pointer-events-none px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-medium shadow-lg"
+      style={{ left: pos.x + 12, top: pos.y + 12 }}
+    >
+      {label}
+    </div>
   );
 }

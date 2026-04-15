@@ -17,6 +17,7 @@ import {
   FolderModal,
   FolderDeleteConfirm,
   MoveToFolderMenu,
+  DragGhost,
 } from "@/components/ui/FolderView";
 import {
   getMediaWithUsage,
@@ -58,7 +59,7 @@ export function Media() {
   const [unfiledCollapsed, setUnfiledCollapsed] = useState(false);
 
   // Drag & drop for folder moves
-  const { makeDraggable, makeDropTarget, isDragOver } = useDragDrop(
+  const { makeDraggable, registerDropTarget, isDragOver, dragging, ghostPos, dragLabel } = useDragDrop(
     async (itemIds, folderId) => {
       await folderHook.moveItems(itemIds, folderId);
       setSelectedIds(new Set());
@@ -269,7 +270,7 @@ export function Media() {
         <FolderBreadcrumb
           currentFolder={folderHook.currentFolder}
           onNavigateBack={() => folderHook.navigateToFolder(null)}
-          dropTargetProps={makeDropTarget(null)}
+          dropRef={(el: HTMLElement | null) => registerDropTarget(null, el)}
           isDropOver={isDragOver(null)}
         />
       )}
@@ -295,7 +296,7 @@ export function Media() {
           setUnfiledCollapsed={setUnfiledCollapsed}
           t={t}
           makeDraggable={makeDraggable}
-          makeDropTarget={makeDropTarget}
+          registerDropTarget={registerDropTarget}
           isDragOver={isDragOver}
         />
       ) : folderHook.viewMode === "folder" && folderHook.currentFolderId === null ? (
@@ -313,7 +314,7 @@ export function Media() {
             onRename={(folder) => setRenamingFolder(folder)}
             onDelete={(folder) => setDeletingFolder(folder)}
             editMode={editMode}
-            makeDropTarget={makeDropTarget}
+            registerDropTarget={registerDropTarget}
             isDragOver={isDragOver}
           />
           <MediaItemList
@@ -503,6 +504,7 @@ export function Media() {
           }
         }}
       />
+      <DragGhost visible={dragging} pos={ghostPos} label={dragLabel} />
     </div>
   );
 }
@@ -683,7 +685,7 @@ function MediaExpandedView({
   setUnfiledCollapsed,
   t,
   makeDraggable,
-  makeDropTarget,
+  registerDropTarget,
   isDragOver,
 }: {
   sorted: Array<Record<string, any>>;
@@ -700,7 +702,7 @@ function MediaExpandedView({
   setUnfiledCollapsed: (v: boolean) => void;
   t: (key: string, opts?: any) => string;
   makeDraggable: (itemId: number, selectedIds: Set<number>) => Record<string, any>;
-  makeDropTarget: (folderId: number | null) => Record<string, any>;
+  registerDropTarget: (folderId: number | null, el: HTMLElement | null) => void;
   isDragOver: (folderId: number | null) => boolean;
 }) {
   const groups = folderHook.groupItemsByFolder(sorted);
@@ -727,7 +729,7 @@ function MediaExpandedView({
             onDelete={folder ? () => setDeletingFolder(folder) : undefined}
             editMode={editMode}
             itemCount={group.items.length}
-            dropTargetProps={makeDropTarget(folder?.id ?? null)}
+            dropRef={(el: HTMLElement | null) => registerDropTarget(folder?.id ?? null, el)}
             isDropOver={isDragOver(folder?.id ?? null)}
           >
             <MediaItemList
