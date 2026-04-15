@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef, useEffect, type CSSProperties } from "react";
 
 /**
  * Mouse-based drag & drop for moving items into folders.
@@ -12,8 +12,11 @@ export function useDragDrop(
   const [dragIds, setDragIds] = useState<number[]>([]);
   const [dragOverFolderId, setDragOverFolderId] = useState<number | null | undefined>(undefined);
   const [ghostPos, setGhostPos] = useState<{ x: number; y: number } | null>(null);
+  const [ghostSize, setGhostSize] = useState<{ w: number; h: number } | null>(null);
+  const [ghostOffset, setGhostOffset] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [dragLabel, setDragLabel] = useState("");
   const dropTargets = useRef(new Map<number | "unfiled", HTMLElement>());
+  const dragSourceEl = useRef<HTMLElement | null>(null);
 
   // Global mouse handlers during drag
   useEffect(() => {
@@ -59,10 +62,17 @@ export function useDragDrop(
         await onDrop(dragIds, finalTarget);
       }
 
+      // Restore source element
+      if (dragSourceEl.current) {
+        dragSourceEl.current.style.opacity = "1";
+        dragSourceEl.current = null;
+      }
+
       setDragging(false);
       setDragIds([]);
       setDragOverFolderId(undefined);
       setGhostPos(null);
+      setGhostSize(null);
       setDragLabel("");
     }
 
@@ -78,24 +88,32 @@ export function useDragDrop(
   const makeDraggable = useCallback(
     (itemId: number, selectedIds: Set<number>, label?: string) => ({
       onMouseDown: (e: React.MouseEvent) => {
-        // Only left click, ignore if on a button/input/link
         if (e.button !== 0) return;
-        const tag = (e.target as HTMLElement).tagName;
-        if (tag === "INPUT" || tag === "BUTTON" || tag === "A" || tag === "SELECT") return;
-        // Check if target or parent is a link
-        if ((e.target as HTMLElement).closest("a, button, input")) return;
+        if ((e.target as HTMLElement).closest("a, button, input, select")) return;
 
         e.preventDefault();
         const ids =
           selectedIds.size > 0 && selectedIds.has(itemId)
             ? Array.from(selectedIds)
             : [itemId];
+
+        // Capture the dragged element's position for the ghost
+        const el = e.currentTarget as HTMLElement;
+        const rect = el.getBoundingClientRect();
+        dragSourceEl.current = el;
+
         setDragIds(ids);
         setDragging(true);
         setGhostPos({ x: e.clientX, y: e.clientY });
+        setGhostSize({ w: rect.width, h: Math.min(rect.height, 80) });
+        setGhostOffset({ x: e.clientX - rect.left, y: e.clientY - rect.top });
         setDragLabel(label || `${ids.length} item${ids.length > 1 ? "s" : ""}`);
+
+        // Dim the source element
+        el.style.opacity = "0.3";
+        el.style.transition = "opacity 0.15s";
       },
-      style: { cursor: "grab", userSelect: "none" } as React.CSSProperties,
+      style: { cursor: "grab", userSelect: "none" } as CSSProperties,
     }),
     []
   );
@@ -128,6 +146,8 @@ export function useDragDrop(
     isDragOver,
     dragging,
     ghostPos,
+    ghostSize,
+    ghostOffset,
     dragLabel,
     dragIds,
   };

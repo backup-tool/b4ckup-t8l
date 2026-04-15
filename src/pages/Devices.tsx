@@ -55,7 +55,7 @@ export function Devices() {
   const [unfiledCollapsed, setUnfiledCollapsed] = useState(false);
 
   // Drag & drop for folder moves
-  const { makeDraggable, registerDropTarget, isDragOver, dragging, ghostPos, dragLabel } = useDragDrop(
+  const { makeDraggable, registerDropTarget, isDragOver, dragging, ghostPos, ghostSize, ghostOffset, dragLabel, dragIds } = useDragDrop(
     async (itemIds, folderId) => {
       await folderHook.moveItems(itemIds, folderId);
       setSelectedIds(new Set());
@@ -427,7 +427,7 @@ export function Devices() {
           }
         }}
       />
-      <DragGhost visible={dragging} pos={ghostPos} label={dragLabel} />
+      <DragGhost visible={dragging} pos={ghostPos} size={ghostSize} offset={ghostOffset} label={dragLabel} count={dragIds.length} />
     </div>
   );
 }
@@ -453,7 +453,7 @@ function DevicesItemList({
   openEdit: (d: Record<string, any>) => void;
   setDeleteId: (id: number | null) => void;
   t: (key: string, opts?: any) => string;
-  makeDraggable?: (itemId: number, selectedIds: Set<number>) => Record<string, any>;
+  makeDraggable?: (itemId: number, selectedIds: Set<number>, label?: string) => Record<string, any>;
 }) {
   if (items.length === 0) {
     return (
@@ -471,7 +471,7 @@ function DevicesItemList({
           <div
             key={d.id as number}
             className="flex items-center gap-2"
-            {...(makeDraggable ? makeDraggable(d.id as number, selectedIds) : {})}
+            {...(makeDraggable ? makeDraggable(d.id as number, selectedIds, d.name as string) : {})}
           >
             {makeDraggable && (
               <GripVertical className="w-4 h-4 text-muted-foreground/40 shrink-0 cursor-grab" />
@@ -523,7 +523,7 @@ function DevicesItemList({
         <div
           key={d.id as number}
           className="relative"
-          {...(makeDraggable ? makeDraggable(d.id as number, selectedIds) : {})}
+          {...(makeDraggable ? makeDraggable(d.id as number, selectedIds, d.name as string) : {})}
         >
           {editMode && (
             <input
@@ -627,7 +627,7 @@ function DevicesExpandedView({
   unfiledCollapsed: boolean;
   setUnfiledCollapsed: (v: boolean) => void;
   t: (key: string, opts?: any) => string;
-  makeDraggable: (itemId: number, selectedIds: Set<number>) => Record<string, any>;
+  makeDraggable?: (itemId: number, selectedIds: Set<number>, label?: string) => Record<string, any>;
   registerDropTarget: (folderId: number | null, el: HTMLElement | null) => void;
   isDragOver: (folderId: number | null) => boolean;
 }) {

@@ -471,20 +471,43 @@ export function FolderDeleteConfirm({
 export function DragGhost({
   visible,
   pos,
+  size,
+  offset,
   label,
+  count,
 }: {
   visible: boolean;
   pos: { x: number; y: number } | null;
+  size?: { w: number; h: number } | null;
+  offset?: { x: number; y: number };
   label: string;
+  count?: number;
 }) {
   if (!visible || !pos) return null;
 
+  const ox = offset?.x ?? 0;
+  const oy = offset?.y ?? 0;
+  const w = size?.w ?? 200;
+
   return (
     <div
-      className="fixed z-[9999] pointer-events-none px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-medium shadow-lg"
-      style={{ left: pos.x + 12, top: pos.y + 12 }}
+      className="fixed z-[9999] pointer-events-none"
+      style={{ left: pos.x - ox, top: pos.y - oy }}
     >
-      {label}
+      <div
+        className="bg-card border-2 border-primary rounded-xl shadow-2xl px-4 py-3 opacity-90"
+        style={{ width: w, maxWidth: "90vw" }}
+      >
+        <div className="flex items-center gap-2">
+          <Folder className="w-4 h-4 text-primary shrink-0" />
+          <span className="text-sm font-medium truncate">{label}</span>
+        </div>
+      </div>
+      {(count ?? 0) > 1 && (
+        <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center shadow-md">
+          {count}
+        </div>
+      )}
     </div>
   );
 }
