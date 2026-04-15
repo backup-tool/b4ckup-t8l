@@ -164,32 +164,17 @@ jobs:
           ls -la /tmp/bundles/ 2>/dev/null || echo "Empty"
 
           # Sign each bundle with tauri signer
-          # Test signing with a simple approach - sign directly and read output
           sign_and_get_sig() {
             local file="$1"
             if [ ! -f "$file" ]; then return; fi
             echo "Signing: $(basename "$file")" >&2
-
-            # Try tauri signer - it outputs the signature to stdout
-            local sig=$(npx tauri signer sign -k "$TAURI_SIGNING_PRIVATE_KEY" -p "$TAURI_SIGNING_PRIVATE_KEY_PASSWORD" "$file" 2>/tmp/signer_err.log)
-
-            if [ -n "$sig" ]; then
-              echo "  Got signature from stdout (${#sig} chars)" >&2
-              echo "$sig"
-              return
-            fi
-
-            # Check if .sig file was created
+            npx @tauri-apps/cli signer sign "$file" 2>&1 >&2 || true
             if [ -f "${file}.sig" ]; then
-              echo "  Got signature from .sig file" >&2
+              echo "  OK" >&2
               cat "${file}.sig"
-              return
+            else
+              echo "  No .sig created" >&2
             fi
-
-            echo "  FAILED - stderr:" >&2
-            cat /tmp/signer_err.log >&2
-            echo "  Checking npx tauri signer --help:" >&2
-            npx tauri signer --help 2>&1 | head -5 >&2
           }
 
           MAC_ARM_FILE=$(find /tmp/bundles -name "*aarch64*app.tar.gz" -type f 2>/dev/null | head -1)
