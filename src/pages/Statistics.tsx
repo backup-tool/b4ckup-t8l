@@ -165,7 +165,7 @@ export function Statistics() {
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" vertical={false} opacity={0.5} />
                 <XAxis dataKey="month" tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} />
                 <YAxis tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} unit=" GB" width={55} />
-                <Tooltip contentStyle={tooltipStyle} cursor={{ fill: "var(--muted)", opacity: 0.3 }} formatter={(v: any) => [`${v} GB`, t("statistics.size")]} />
+                <Tooltip contentStyle={tooltipStyle} cursor={{ fill: "var(--muted)", opacity: 0.3 }} formatter={(v: any) => [`${v} GB`, ""]} />
                 <Bar dataKey="gb" fill="url(#barGradient)" radius={[6, 6, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
@@ -186,7 +186,7 @@ export function Statistics() {
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" vertical={false} opacity={0.5} />
                 <XAxis dataKey="month" tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} />
                 <YAxis tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} unit=" GB" width={55} />
-                <Tooltip contentStyle={tooltipStyle} formatter={(v: any) => [`${v} GB`, t("statistics.total")]} />
+                <Tooltip contentStyle={tooltipStyle} formatter={(v: any) => [`${v} GB`, ""]} />
                 <Area type="monotone" dataKey="gb" stroke="#4ade80" fill="url(#areaGradient)" strokeWidth={2.5} dot={{ r: 3, fill: "#4ade80", stroke: "#4ade80", strokeWidth: 0 }} activeDot={{ r: 5, fill: "#4ade80", stroke: "var(--card)", strokeWidth: 2 }} />
               </AreaChart>
             </ResponsiveContainer>

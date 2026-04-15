@@ -651,7 +651,7 @@ export function BackupDetail() {
                       fontSize: "12px",
                       padding: "8px 12px",
                     }}
-                    formatter={(value: any) => [`${value} GB`, t("backups.size")]}
+                    formatter={(value: any) => [`${value} GB`, ""]}
                   />
                   <Area
                     type="monotone"

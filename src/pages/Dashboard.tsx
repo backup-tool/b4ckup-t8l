@@ -333,7 +333,7 @@ export function Dashboard() {
                     fontSize: "12px",
                     padding: "8px 12px",
                   }}
-                  formatter={(value: any) => [`${value} GB`, t("dashboard.totalSize")]}
+                  formatter={(value: any) => [`${value} GB`, ""]}
                 />
                 <Line
                   type="monotone"
