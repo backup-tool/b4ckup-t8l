@@ -13,6 +13,15 @@ import { ComboSelect } from "@/components/ui/ComboSelect";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { TrashSection } from "@/components/ui/TrashSection";
 import {
+  FolderToolbar,
+  FolderBreadcrumb,
+  FolderGrid,
+  FolderSection,
+  FolderModal,
+  FolderDeleteConfirm,
+  MoveToFolderMenu,
+} from "@/components/ui/FolderView";
+import {
   getBackupsWithStatus,
   getDeletedBackups,
   createBackup,
@@ -27,6 +36,8 @@ import { BACKUP_CATEGORIES } from "@/lib/types";
 import type { BackupStatus } from "@/lib/types";
 import { formatBytes, formatDate, daysAgo } from "@/lib/format";
 import { useAppStore } from "@/lib/store";
+import { useFolders } from "@/lib/useFolders";
+import type { FolderData } from "@/lib/useFolders";
 
 export function Backups() {
   const { t } = useTranslation();
@@ -47,6 +58,14 @@ export function Backups() {
   const [bulkConfirmOpen, setBulkConfirmOpen] = useState(false);
   const [view, setView] = useState<"grid" | "list">("list");
   const [editMode, setEditMode] = useState(false);
+
+  // Folder support
+  const folderHook = useFolders("backup", refreshKey);
+  const [folderModalOpen, setFolderModalOpen] = useState(false);
+  const [renamingFolder, setRenamingFolder] = useState<FolderData | null>(null);
+  const [deletingFolder, setDeletingFolder] = useState<FolderData | null>(null);
+  // Track collapsed state locally for unfiled section in expanded mode
+  const [unfiledCollapsed, setUnfiledCollapsed] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -164,6 +183,11 @@ export function Backups() {
         <div className="flex items-center gap-3">
           <h1 className="text-xl font-bold">{t("backups.title")}</h1>
           <ViewToggle view={view} onViewChange={setView} editMode={editMode} onEditModeChange={(v) => { setEditMode(v); if (!v) setSelectedIds(new Set()); }} />
+          <FolderToolbar
+            viewMode={folderHook.viewMode}
+            onViewModeChange={folderHook.setViewMode}
+            onCreateFolder={() => setFolderModalOpen(true)}
+          />
         </div>
         <div className="flex items-center gap-2">
           {editMode && <TrashSection
@@ -249,6 +273,17 @@ export function Backups() {
         <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-primary/5 border border-primary/20">
           <span className="text-sm font-medium">{selectedIds.size} {t("bulk.selected")}</span>
           <div className="flex gap-2 ml-auto">
+            {folderHook.viewMode !== "flat" && (
+              <MoveToFolderMenu
+                folders={folderHook.folders}
+                onMove={async (folderId) => {
+                  await folderHook.moveItems(Array.from(selectedIds), folderId);
+                  setSelectedIds(new Set());
+                  triggerRefresh();
+                  await loadAll();
+                }}
+              />
+            )}
             <Button size="sm" variant="secondary" onClick={async () => {
               for (const id of selectedIds) await toggleBackupPaused(id, true);
               setSelectedIds(new Set());
@@ -270,154 +305,83 @@ export function Backups() {
         </div>
       )}
 
-      {sorted.length === 0 ? (
+      {/* Folder breadcrumb for folder mode */}
+      {folderHook.viewMode === "folder" && folderHook.currentFolder && (
+        <FolderBreadcrumb
+          currentFolder={folderHook.currentFolder}
+          onNavigateBack={() => folderHook.navigateToFolder(null)}
+        />
+      )}
+
+      {sorted.length === 0 && folderHook.viewMode === "flat" ? (
         <Card className="text-center py-12">
           <Database className="w-10 h-10 mx-auto text-muted-foreground mb-3" />
           <p className="text-muted-foreground">{t("dashboard.noBackups")}</p>
         </Card>
-      ) : view === "grid" ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {sorted.map((b) => {
-            const latest = b.latest_entry as Record<string, any> | null;
-            return (
-              <div key={b.id as number} className="relative">
-                {editMode && (
-                  <input
-                    type="checkbox"
-                    checked={selectedIds.has(b.id as number)}
-                    onChange={(e) => {
-                      const next = new Set(selectedIds);
-                      if (e.target.checked) next.add(b.id as number);
-                      else next.delete(b.id as number);
-                      setSelectedIds(next);
-                    }}
-                    className="absolute top-3 left-3 rounded z-10"
-                  />
-                )}
-                <Link to={`/backups/${b.id}`}>
-                  <Card className="hover:border-primary/30 transition-colors cursor-pointer h-full">
-                    <div className="flex items-start justify-between mb-2">
-                      <div className="min-w-0">
-                        <h3 className="font-semibold text-sm truncate">{b.name as string}</h3>
-                        <p className="text-xs text-muted-foreground truncate">
-                          {b.device_name as string} · {t(`categories.${b.category}`, { defaultValue: b.category as string })}
-                        </p>
-                      </div>
-                      <StatusBadge status={b.status as BackupStatus} />
-                    </div>
-                    <div className="flex items-center justify-between mt-3 pt-3 border-t border-border">
-                      <span className="text-xs text-muted-foreground">
-                        {latest ? `${formatDate(latest.backup_date as string)}` : t("backups.never")}
-                      </span>
-                      <span className="text-sm font-medium tabular-nums">
-                        {latest ? formatBytes(latest.size_bytes as number) : "—"}
-                      </span>
-                    </div>
-                  </Card>
-                </Link>
-              </div>
-            );
-          })}
+      ) : folderHook.viewMode === "expanded" ? (
+        /* Expanded mode: all items grouped by folders */
+        <BackupsExpandedView
+          sorted={sorted}
+          folderHook={folderHook}
+          view={view}
+          editMode={editMode}
+          selectedIds={selectedIds}
+          setSelectedIds={setSelectedIds}
+          setSoftDeleteId={setSoftDeleteId}
+          setRenamingFolder={setRenamingFolder}
+          setDeletingFolder={setDeletingFolder}
+          unfiledCollapsed={unfiledCollapsed}
+          setUnfiledCollapsed={setUnfiledCollapsed}
+          t={t}
+          triggerRefresh={triggerRefresh}
+          loadAll={loadAll}
+        />
+      ) : folderHook.viewMode === "folder" && folderHook.currentFolderId === null ? (
+        /* Folder mode root: show folder cards + unfiled items */
+        <div>
+          <FolderGrid
+            folders={folderHook.folders}
+            itemCounts={(() => {
+              const counts = new Map<number, number>();
+              for (const f of folderHook.folders) {
+                counts.set(f.id, sorted.filter((b) => (b.folder_id as number | null) === f.id).length);
+              }
+              return counts;
+            })()}
+            onOpen={(folderId) => folderHook.navigateToFolder(folderId)}
+            onRename={(folder) => setRenamingFolder(folder)}
+            onDelete={(folder) => setDeletingFolder(folder)}
+            editMode={editMode}
+          />
+          {/* Show unfiled items below folders */}
+          <BackupsItemList
+            items={sorted.filter((b) => !(b.folder_id as number | null))}
+            view={view}
+            editMode={editMode}
+            selectedIds={selectedIds}
+            setSelectedIds={setSelectedIds}
+            setSoftDeleteId={setSoftDeleteId}
+            t={t}
+            triggerRefresh={triggerRefresh}
+            loadAll={loadAll}
+          />
         </div>
       ) : (
-        <div className="space-y-6">
-          {(() => {
-            // Group by device
-            const groups = new Map<string, typeof filtered>();
-            for (const b of sorted) {
-              const device = (b.device_name as string) || t("backups.filterAll");
-              if (!groups.has(device)) groups.set(device, []);
-              groups.get(device)!.push(b);
-            }
-            return Array.from(groups.entries()).map(([device, items]) => (
-              <div key={device}>
-                <div className="flex items-center gap-2 mb-2">
-                  <Monitor className="w-4 h-4 text-muted-foreground" />
-                  <h2 className="text-sm font-semibold text-muted-foreground">{device}</h2>
-                  <span className="text-xs text-muted-foreground">({items.length})</span>
-                </div>
-                <div className="space-y-1.5 ml-6">
-                  {items.map((b) => {
-                    const latest = b.latest_entry as Record<string, any> | null;
-                    return (
-                      <div key={b.id as number} className="flex items-center gap-2">
-                        {editMode && (
-                          <input
-                            type="checkbox"
-                            checked={selectedIds.has(b.id as number)}
-                            onChange={(e) => {
-                              const next = new Set(selectedIds);
-                              if (e.target.checked) next.add(b.id as number);
-                              else next.delete(b.id as number);
-                              setSelectedIds(next);
-                            }}
-                            className="rounded shrink-0"
-                            aria-label={`${t("bulk.select")} ${b.name}`}
-                          />
-                        )}
-                        <Link to={`/backups/${b.id}`} className="block flex-1">
-                          <Card className="hover:border-primary/30 transition-colors cursor-pointer py-3">
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <h3 className="font-semibold text-sm">
-                                  {b.name as string}
-                                </h3>
-                                <p className="text-xs text-muted-foreground">
-                                  {t(`categories.${b.category}`, { defaultValue: b.category as string })}
-                                  {b.tags ? ` · ${b.tags}` : ""}
-                                </p>
-                              </div>
-                              <div className="flex items-center gap-6">
-                                <div className="text-right">
-                                  <p className="text-sm">
-                                    {latest
-                                      ? formatBytes(latest.size_bytes as number)
-                                      : "—"}
-                                  </p>
-                                  <p className="text-xs text-muted-foreground">
-                                    {latest
-                                      ? `${formatDate(latest.backup_date as string)} (${daysAgo(latest.backup_date as string)} ${t("common.days")})`
-                                      : t("backups.never")}
-                                  </p>
-                                </div>
-                                <StatusBadge status={b.status as BackupStatus} />
-                              </div>
-                            </div>
-                          </Card>
-                        </Link>
-                        {editMode && (
-                          <>
-                            <button
-                              onClick={async () => {
-                                await toggleBackupPaused(b.id as number, !b.is_paused);
-                                triggerRefresh();
-                                await loadAll();
-                              }}
-                              className="p-2 rounded-lg hover:bg-muted transition-colors shrink-0"
-                              title={b.is_paused ? t("backups.resume") : t("backups.pause")}
-                            >
-                              {b.is_paused ? (
-                                <Play className="w-4 h-4 text-muted-foreground" />
-                              ) : (
-                                <Pause className="w-4 h-4 text-muted-foreground" />
-                              )}
-                            </button>
-                            <button
-                              onClick={() => setSoftDeleteId(b.id as number)}
-                              className="p-2 rounded-lg hover:bg-muted transition-colors shrink-0"
-                            >
-                              <Trash2 className="w-4 h-4 text-muted-foreground" />
-                            </button>
-                          </>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            ));
-          })()}
-        </div>
+        /* Flat mode or inside a folder */
+        <BackupsItemList
+          items={folderHook.viewMode === "folder"
+            ? sorted.filter((b) => (b.folder_id as number | null) === folderHook.currentFolderId)
+            : sorted
+          }
+          view={view}
+          editMode={editMode}
+          selectedIds={selectedIds}
+          setSelectedIds={setSelectedIds}
+          setSoftDeleteId={setSoftDeleteId}
+          t={t}
+          triggerRefresh={triggerRefresh}
+          loadAll={loadAll}
+        />
       )}
 
       {/* Create Modal */}
@@ -532,6 +496,292 @@ export function Backups() {
         cancelLabel={t("common.cancel")}
         variant="danger"
       />
+
+      {/* Folder create/rename modal */}
+      <FolderModal
+        open={folderModalOpen}
+        onClose={() => setFolderModalOpen(false)}
+        onSave={async (name) => {
+          await folderHook.createFolder(name);
+          triggerRefresh();
+        }}
+      />
+      <FolderModal
+        open={renamingFolder !== null}
+        onClose={() => setRenamingFolder(null)}
+        onSave={async (name) => {
+          if (renamingFolder) {
+            await folderHook.renameFolder(renamingFolder.id, name);
+            triggerRefresh();
+          }
+        }}
+        initialName={renamingFolder?.name}
+        isRename
+      />
+      <FolderDeleteConfirm
+        open={deletingFolder !== null}
+        folderName={deletingFolder?.name || ""}
+        onClose={() => setDeletingFolder(null)}
+        onConfirm={async () => {
+          if (deletingFolder) {
+            await folderHook.deleteFolder(deletingFolder.id);
+            setDeletingFolder(null);
+            triggerRefresh();
+            await loadAll();
+          }
+        }}
+      />
+    </div>
+  );
+}
+
+// --- Sub-components for backup items ---
+
+function BackupsItemList({
+  items,
+  view,
+  editMode,
+  selectedIds,
+  setSelectedIds,
+  setSoftDeleteId,
+  t,
+  triggerRefresh,
+  loadAll,
+}: {
+  items: Array<Record<string, any>>;
+  view: "grid" | "list";
+  editMode: boolean;
+  selectedIds: Set<number>;
+  setSelectedIds: (s: Set<number>) => void;
+  setSoftDeleteId: (id: number | null) => void;
+  t: (key: string, opts?: any) => string;
+  triggerRefresh: () => void;
+  loadAll: () => Promise<void>;
+}) {
+  if (items.length === 0) {
+    return (
+      <Card className="text-center py-12">
+        <Database className="w-10 h-10 mx-auto text-muted-foreground mb-3" />
+        <p className="text-muted-foreground">{t("dashboard.noBackups")}</p>
+      </Card>
+    );
+  }
+
+  if (view === "grid") {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {items.map((b) => {
+          const latest = b.latest_entry as Record<string, any> | null;
+          return (
+            <div key={b.id as number} className="relative">
+              {editMode && (
+                <input
+                  type="checkbox"
+                  checked={selectedIds.has(b.id as number)}
+                  onChange={(e) => {
+                    const next = new Set(selectedIds);
+                    if (e.target.checked) next.add(b.id as number);
+                    else next.delete(b.id as number);
+                    setSelectedIds(next);
+                  }}
+                  className="absolute top-3 left-3 rounded z-10"
+                />
+              )}
+              <Link to={`/backups/${b.id}`}>
+                <Card className="hover:border-primary/30 transition-colors cursor-pointer h-full">
+                  <div className="flex items-start justify-between mb-2">
+                    <div className="min-w-0">
+                      <h3 className="font-semibold text-sm truncate">{b.name as string}</h3>
+                      <p className="text-xs text-muted-foreground truncate">
+                        {b.device_name as string} · {t(`categories.${b.category}`, { defaultValue: b.category as string })}
+                      </p>
+                    </div>
+                    <StatusBadge status={b.status as BackupStatus} />
+                  </div>
+                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-border">
+                    <span className="text-xs text-muted-foreground">
+                      {latest ? `${formatDate(latest.backup_date as string)}` : t("backups.never")}
+                    </span>
+                    <span className="text-sm font-medium tabular-nums">
+                      {latest ? formatBytes(latest.size_bytes as number) : "\u2014"}
+                    </span>
+                  </div>
+                </Card>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
+  // List view: group by device
+  const groups = new Map<string, typeof items>();
+  for (const b of items) {
+    const device = (b.device_name as string) || t("backups.filterAll");
+    if (!groups.has(device)) groups.set(device, []);
+    groups.get(device)!.push(b);
+  }
+
+  return (
+    <div className="space-y-6">
+      {Array.from(groups.entries()).map(([device, deviceItems]) => (
+        <div key={device}>
+          <div className="flex items-center gap-2 mb-2">
+            <Monitor className="w-4 h-4 text-muted-foreground" />
+            <h2 className="text-sm font-semibold text-muted-foreground">{device}</h2>
+            <span className="text-xs text-muted-foreground">({deviceItems.length})</span>
+          </div>
+          <div className="space-y-1.5 ml-6">
+            {deviceItems.map((b) => {
+              const latest = b.latest_entry as Record<string, any> | null;
+              return (
+                <div key={b.id as number} className="flex items-center gap-2">
+                  {editMode && (
+                    <input
+                      type="checkbox"
+                      checked={selectedIds.has(b.id as number)}
+                      onChange={(e) => {
+                        const next = new Set(selectedIds);
+                        if (e.target.checked) next.add(b.id as number);
+                        else next.delete(b.id as number);
+                        setSelectedIds(next);
+                      }}
+                      className="rounded shrink-0"
+                      aria-label={`${t("bulk.select")} ${b.name}`}
+                    />
+                  )}
+                  <Link to={`/backups/${b.id}`} className="block flex-1">
+                    <Card className="hover:border-primary/30 transition-colors cursor-pointer py-3">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="font-semibold text-sm">{b.name as string}</h3>
+                          <p className="text-xs text-muted-foreground">
+                            {t(`categories.${b.category}`, { defaultValue: b.category as string })}
+                            {b.tags ? ` \u00b7 ${b.tags}` : ""}
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-6">
+                          <div className="text-right">
+                            <p className="text-sm">
+                              {latest ? formatBytes(latest.size_bytes as number) : "\u2014"}
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                              {latest
+                                ? `${formatDate(latest.backup_date as string)} (${daysAgo(latest.backup_date as string)} ${t("common.days")})`
+                                : t("backups.never")}
+                            </p>
+                          </div>
+                          <StatusBadge status={b.status as BackupStatus} />
+                        </div>
+                      </div>
+                    </Card>
+                  </Link>
+                  {editMode && (
+                    <>
+                      <button
+                        onClick={async () => {
+                          await toggleBackupPaused(b.id as number, !b.is_paused);
+                          triggerRefresh();
+                          await loadAll();
+                        }}
+                        className="p-2 rounded-lg hover:bg-muted transition-colors shrink-0"
+                        title={b.is_paused ? t("backups.resume") : t("backups.pause")}
+                      >
+                        {b.is_paused ? (
+                          <Play className="w-4 h-4 text-muted-foreground" />
+                        ) : (
+                          <Pause className="w-4 h-4 text-muted-foreground" />
+                        )}
+                      </button>
+                      <button
+                        onClick={() => setSoftDeleteId(b.id as number)}
+                        className="p-2 rounded-lg hover:bg-muted transition-colors shrink-0"
+                      >
+                        <Trash2 className="w-4 h-4 text-muted-foreground" />
+                      </button>
+                    </>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function BackupsExpandedView({
+  sorted,
+  folderHook,
+  view,
+  editMode,
+  selectedIds,
+  setSelectedIds,
+  setSoftDeleteId,
+  setRenamingFolder,
+  setDeletingFolder,
+  unfiledCollapsed,
+  setUnfiledCollapsed,
+  t,
+  triggerRefresh,
+  loadAll,
+}: {
+  sorted: Array<Record<string, any>>;
+  folderHook: ReturnType<typeof useFolders>;
+  view: "grid" | "list";
+  editMode: boolean;
+  selectedIds: Set<number>;
+  setSelectedIds: (s: Set<number>) => void;
+  setSoftDeleteId: (id: number | null) => void;
+  setRenamingFolder: (f: FolderData | null) => void;
+  setDeletingFolder: (f: FolderData | null) => void;
+  unfiledCollapsed: boolean;
+  setUnfiledCollapsed: (v: boolean) => void;
+  t: (key: string, opts?: any) => string;
+  triggerRefresh: () => void;
+  loadAll: () => Promise<void>;
+}) {
+  const groups = folderHook.groupItemsByFolder(sorted);
+
+  return (
+    <div className="space-y-6">
+      {groups.map((group) => {
+        const folder = group.folder;
+        const isCollapsed = folder ? folder.collapsed : unfiledCollapsed;
+
+        return (
+          <FolderSection
+            key={folder ? folder.id : "unfiled"}
+            folder={folder}
+            collapsed={isCollapsed}
+            onToggleCollapsed={() => {
+              if (folder) {
+                folderHook.toggleCollapsed(folder.id);
+              } else {
+                setUnfiledCollapsed(!unfiledCollapsed);
+              }
+            }}
+            onRename={folder ? () => setRenamingFolder(folder) : undefined}
+            onDelete={folder ? () => setDeletingFolder(folder) : undefined}
+            editMode={editMode}
+            itemCount={group.items.length}
+          >
+            <BackupsItemList
+              items={group.items}
+              view={view}
+              editMode={editMode}
+              selectedIds={selectedIds}
+              setSelectedIds={setSelectedIds}
+              setSoftDeleteId={setSoftDeleteId}
+              t={t}
+              triggerRefresh={triggerRefresh}
+              loadAll={loadAll}
+            />
+          </FolderSection>
+        );
+      })}
     </div>
   );
 }

@@ -344,6 +344,20 @@
     "local": "Lokal",
     "other": "Lainnya"
   },
+  "folders": {
+      "create": "Folder Baru",
+      "rename": "Ganti Nama Folder",
+      "deleteFolder": "Hapus Folder",
+      "deleteConfirm": "Hapus folder \"{{name}}\"? Item akan dipindahkan ke Belum Dikategorikan.",
+      "folderName": "Nama Folder",
+      "moveToFolder": "Pindah ke Folder",
+      "unfiled": "Belum Dikategorikan",
+      "allFolders": "Semua",
+      "items": "item",
+      "viewFlat": "Tampilan Datar",
+      "viewFolder": "Tampilan Folder",
+      "viewExpanded": "Tampilan Diperluas"
+  },
   "rule321": {
     "title": "Aturan Cadangan 3-2-1",
     "desc": "3 salinan, 2 tipe media berbeda, 1 di luar lokasi",

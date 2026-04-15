@@ -84,6 +84,18 @@ async function runMigrations(db: Database) {
     )
   `);
 
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS folders (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      entity_type TEXT NOT NULL,
+      sort_order INTEGER NOT NULL DEFAULT 0,
+      collapsed INTEGER NOT NULL DEFAULT 0,
+      deleted_at TEXT DEFAULT NULL,
+      created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    )
+  `);
+
   // Migrations for existing databases
   try {
     await db.execute("ALTER TABLE storage_media ADD COLUMN deleted_at TEXT DEFAULT NULL");
@@ -135,6 +147,15 @@ async function runMigrations(db: Database) {
   } catch { /* column already exists */ }
   try {
     await db.execute("ALTER TABLE backups ADD COLUMN is_paused INTEGER DEFAULT 0");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backups ADD COLUMN folder_id INTEGER DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE storage_media ADD COLUMN folder_id INTEGER DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE devices ADD COLUMN folder_id INTEGER DEFAULT NULL");
   } catch { /* column already exists */ }
 }
 
@@ -682,6 +703,65 @@ export async function reorderDevices(ids: number[]) {
   }
 }
 
+// --- Folders ---
+
+export async function getFolders(entityType: string) {
+  const db = await getDb();
+  return db.select<Array<Record<string, any>>>(
+    "SELECT * FROM folders WHERE entity_type=$1 AND deleted_at IS NULL ORDER BY sort_order, name",
+    [entityType]
+  );
+}
+
+export async function createFolder(name: string, entityType: string) {
+  const db = await getDb();
+  const result = await db.execute(
+    "INSERT INTO folders (name, entity_type) VALUES ($1, $2)",
+    [name, entityType]
+  );
+  return result.lastInsertId!;
+}
+
+export async function updateFolder(id: number, name: string) {
+  const db = await getDb();
+  await db.execute("UPDATE folders SET name=$1 WHERE id=$2", [name, id]);
+}
+
+export async function softDeleteFolder(id: number) {
+  const db = await getDb();
+  await db.execute("UPDATE folders SET deleted_at=datetime('now') WHERE id=$1", [id]);
+  // Move items back to unfiled
+  await db.execute("UPDATE backups SET folder_id=NULL WHERE folder_id=$1", [id]);
+  await db.execute("UPDATE storage_media SET folder_id=NULL WHERE folder_id=$1", [id]);
+  await db.execute("UPDATE devices SET folder_id=NULL WHERE folder_id=$1", [id]);
+}
+
+export async function updateFolderCollapsed(id: number, collapsed: boolean) {
+  const db = await getDb();
+  await db.execute("UPDATE folders SET collapsed=$1 WHERE id=$2", [collapsed ? 1 : 0, id]);
+}
+
+export async function moveItemToFolder(entityType: string, itemId: number, folderId: number | null) {
+  const db = await getDb();
+  const table = entityType === "backup" ? "backups" : entityType === "media" ? "storage_media" : "devices";
+  await db.execute(`UPDATE ${table} SET folder_id=$1 WHERE id=$2`, [folderId, itemId]);
+}
+
+export async function moveItemsToFolder(entityType: string, itemIds: number[], folderId: number | null) {
+  const db = await getDb();
+  const table = entityType === "backup" ? "backups" : entityType === "media" ? "storage_media" : "devices";
+  for (const id of itemIds) {
+    await db.execute(`UPDATE ${table} SET folder_id=$1 WHERE id=$2`, [folderId, id]);
+  }
+}
+
+export async function reorderFolders(ids: number[]) {
+  const db = await getDb();
+  for (let i = 0; i < ids.length; i++) {
+    await db.execute("UPDATE folders SET sort_order=$1 WHERE id=$2", [i, ids[i]]);
+  }
+}
+
 // --- Export ---
 
 export async function exportAllData() {
@@ -710,7 +790,10 @@ export async function exportAllData() {
      JOIN storage_media sm ON sm.id = bsl.storage_media_id
      WHERE b.deleted_at IS NULL`
   );
-  return { backups, media, devices, entries, locations };
+  const folders = await db.select<Array<Record<string, any>>>(
+    "SELECT * FROM folders WHERE deleted_at IS NULL ORDER BY entity_type, sort_order, name"
+  );
+  return { backups, media, devices, entries, locations, folders };
 }
 
 // --- Import ---
@@ -721,6 +804,7 @@ export async function importData(data: {
   devices?: Array<Record<string, any>>;
   entries?: Array<Record<string, any>>;
   locations?: Array<Record<string, any>>;
+  folders?: Array<Record<string, any>>;
 }): Promise<{ imported: number; skipped: number }> {
   const db = await getDb();
   let imported = 0;
@@ -729,6 +813,28 @@ export async function importData(data: {
   // Maps old IDs to new IDs
   const mediaIdMap = new Map<number, number>();
   const backupIdMap = new Map<number, number>();
+  const folderIdMap = new Map<number, number>();
+
+  // 0. Import folders
+  if (data.folders) {
+    for (const f of data.folders) {
+      const existing = await db.select<Array<Record<string, any>>>(
+        "SELECT id FROM folders WHERE name=$1 AND entity_type=$2 AND deleted_at IS NULL",
+        [f.name, f.entity_type]
+      );
+      if (existing.length > 0) {
+        folderIdMap.set(f.id as number, existing[0].id as number);
+        skipped++;
+      } else {
+        const result = await db.execute(
+          "INSERT INTO folders (name, entity_type, sort_order) VALUES ($1, $2, $3)",
+          [f.name, f.entity_type, f.sort_order || 0]
+        );
+        folderIdMap.set(f.id as number, result.lastInsertId!);
+        imported++;
+      }
+    }
+  }
 
   // 1. Import storage media
   if (data.media) {

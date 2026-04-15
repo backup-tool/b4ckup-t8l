@@ -344,6 +344,20 @@
     "local": "የአካባቢ",
     "other": "ሌላ"
   },
+  "folders": {
+      "create": "አዲስ ፎልደር",
+      "rename": "ፎልደር ሰም ቀይር",
+      "deleteFolder": "ፎልደር ሰርዝ",
+      "deleteConfirm": "\"{{name}}\" ፎልደር ይሰርዝ? ንጥሎች ወደ ያልተመደቡ ይዘዋወራሉ።",
+      "folderName": "የፎልደር ስም",
+      "moveToFolder": "ወደ ፎልደር አንቀሳቅስ",
+      "unfiled": "ያልተመደቡ",
+      "allFolders": "ሁሉም",
+      "items": "ንጥሎች",
+      "viewFlat": "ጠፍጣፋ ዕይታ",
+      "viewFolder": "የፎልደር ዕይታ",
+      "viewExpanded": "የተዘረጋ ዕይታ"
+  },
   "rule321": {
     "title": "የ3-2-1 ምትኬ ደንብ",
     "desc": "3 ቅጂዎች፣ 2 የተለያዩ የሚዲያ ዓይነቶች፣ 1 ከቦታ ውጪ",

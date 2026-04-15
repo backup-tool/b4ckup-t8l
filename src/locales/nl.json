@@ -344,6 +344,20 @@
     "local": "Lokaal",
     "other": "Overig"
   },
+  "folders": {
+      "create": "Nieuwe map",
+      "rename": "Map hernoemen",
+      "deleteFolder": "Map verwijderen",
+      "deleteConfirm": "Map \"{{name}}\" verwijderen? Items worden verplaatst naar Niet ingedeeld.",
+      "folderName": "Mapnaam",
+      "moveToFolder": "Verplaats naar map",
+      "unfiled": "Niet ingedeeld",
+      "allFolders": "Alle",
+      "items": "items",
+      "viewFlat": "Platte weergave",
+      "viewFolder": "Mapweergave",
+      "viewExpanded": "Uitgevouwen weergave"
+  },
   "rule321": {
     "title": "3-2-1 back-upregel",
     "desc": "3 kopieën, 2 verschillende mediatypes, 1 extern",

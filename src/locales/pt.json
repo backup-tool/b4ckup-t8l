@@ -344,6 +344,20 @@
     "local": "Local",
     "other": "Outro"
   },
+  "folders": {
+      "create": "Nova pasta",
+      "rename": "Renomear pasta",
+      "deleteFolder": "Excluir pasta",
+      "deleteConfirm": "Excluir pasta \"{{name}}\"? Os itens serão movidos para Sem pasta.",
+      "folderName": "Nome da pasta",
+      "moveToFolder": "Mover para pasta",
+      "unfiled": "Sem pasta",
+      "allFolders": "Todos",
+      "items": "itens",
+      "viewFlat": "Vista plana",
+      "viewFolder": "Vista de pastas",
+      "viewExpanded": "Vista expandida"
+  },
   "rule321": {
     "title": "Regra de cópia de segurança 3-2-1",
     "desc": "3 cópias, 2 tipos de suporte diferentes, 1 fora do local",

@@ -344,6 +344,20 @@
     "local": "Lokalno",
     "other": "Ostalo"
   },
+  "folders": {
+      "create": "Nova mapa",
+      "rename": "Preimenuj mapu",
+      "deleteFolder": "Obriši mapu",
+      "deleteConfirm": "Obrisati mapu \"{{name}}\"? Stavke će biti premještene u Nesortirано.",
+      "folderName": "Naziv mape",
+      "moveToFolder": "Premjesti u mapu",
+      "unfiled": "Nesortirано",
+      "allFolders": "Sve",
+      "items": "stavki",
+      "viewFlat": "Ravni prikaz",
+      "viewFolder": "Prikaz mapa",
+      "viewExpanded": "Prošireni prikaz"
+  },
   "rule321": {
     "title": "Pravilo sigurnosnih kopija 3-2-1",
     "desc": "3 kopije, 2 različite vrste medija, 1 izvan lokacije",

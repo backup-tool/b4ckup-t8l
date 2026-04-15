@@ -1,3 +1,16 @@
+export type FolderEntityType = "backup" | "media" | "device";
+export type FolderViewMode = "flat" | "folder" | "expanded";
+
+export interface Folder {
+  id: number;
+  name: string;
+  entity_type: FolderEntityType;
+  sort_order: number;
+  collapsed: boolean;
+  deleted_at: string | null;
+  created_at: string;
+}
+
 export interface StorageMedia {
   id: number;
   name: string;
@@ -5,6 +18,7 @@ export interface StorageMedia {
   total_capacity_gb: number | null;
   path: string | null;
   notes: string | null;
+  folder_id: number | null;
   created_at: string;
   updated_at: string;
 }
@@ -20,6 +34,7 @@ export interface Backup {
   reminder_interval_days: number | null;
   watch_path: string | null;
   auto_detect: boolean;
+  folder_id: number | null;
   created_at: string;
   updated_at: string;
 }

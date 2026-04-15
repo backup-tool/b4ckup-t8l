@@ -344,6 +344,20 @@
     "local": "Ndani",
     "other": "Nyingine"
   },
+  "folders": {
+      "create": "Folda Mpya",
+      "rename": "Badilisha Jina la Folda",
+      "deleteFolder": "Futa Folda",
+      "deleteConfirm": "Futa folda \"{{name}}\"? Vipengee vitahamishiwa Bila Folda.",
+      "folderName": "Jina la Folda",
+      "moveToFolder": "Hamisha hadi Folda",
+      "unfiled": "Bila Folda",
+      "allFolders": "Zote",
+      "items": "vipengee",
+      "viewFlat": "Mtazamo Tambarare",
+      "viewFolder": "Mtazamo wa Folda",
+      "viewExpanded": "Mtazamo Uliopanuliwa"
+  },
   "rule321": {
     "title": "Kanuni ya Nakala Rudufu 3-2-1",
     "desc": "Nakala 3, aina 2 tofauti za vyombo, 1 nje ya eneo",

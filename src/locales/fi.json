@@ -344,6 +344,20 @@
     "local": "Paikallinen",
     "other": "Muu"
   },
+  "folders": {
+      "create": "Uusi kansio",
+      "rename": "Nimeä kansio uudelleen",
+      "deleteFolder": "Poista kansio",
+      "deleteConfirm": "Poista kansio \"{{name}}\"? Kohteet siirretään Lajittelemattomat-kansioon.",
+      "folderName": "Kansion nimi",
+      "moveToFolder": "Siirrä kansioon",
+      "unfiled": "Lajittelemattomat",
+      "allFolders": "Kaikki",
+      "items": "kohdetta",
+      "viewFlat": "Tasanäkymä",
+      "viewFolder": "Kansionäkymä",
+      "viewExpanded": "Laajennettu näkymä"
+  },
   "rule321": {
     "title": "3-2-1-varmuuskopiointisääntö",
     "desc": "3 kopiota, 2 eri mediatyyppiä, 1 ulkopuolinen",

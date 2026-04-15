@@ -344,6 +344,20 @@
     "local": "Herêmî",
     "other": "Din"
   },
+  "folders": {
+      "create": "Pûşeya nû",
+      "rename": "Navê pûşeyê biguherîne",
+      "deleteFolder": "Pûşeyê jê bibe",
+      "deleteConfirm": "Pûşeya \"{{name}}\" jê bibe? Tişt dê bên veguheztin bo Nebûyî.",
+      "folderName": "Navê pûşeyê",
+      "moveToFolder": "Bibe pûşeyê",
+      "unfiled": "Nebûyî",
+      "allFolders": "Hemî",
+      "items": "tişt",
+      "viewFlat": "Dîmena dûz",
+      "viewFolder": "Dîmena pûşeyê",
+      "viewExpanded": "Dîmena berfireh"
+  },
   "rule321": {
     "title": "Rêgeza Paştgirtinê 3-2-1",
     "desc": "3 kopi, 2 cureyên medyayê yên cuda, 1 li derve",

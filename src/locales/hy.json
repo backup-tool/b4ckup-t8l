@@ -277,6 +277,20 @@
     "restartDesc": "Վերագործարկեք հավելվածը թարմացումը կիրառելու համար։",
     "restart": "Վերագործարկել հիմա"
   },
+  "folders": {
+    "create": "New Folder",
+    "rename": "Rename Folder",
+    "deleteFolder": "Delete Folder",
+    "deleteConfirm": "Delete folder \"{{name}}\"? Items inside will be moved to unfiled.",
+    "folderName": "Folder Name",
+    "moveToFolder": "Move to Folder",
+    "unfiled": "Unfiled",
+    "allFolders": "All",
+    "items": "items",
+    "viewFlat": "Flat View",
+    "viewFolder": "Folder View",
+    "viewExpanded": "Expanded View"
+  },
   "rule321": {
     "title": "Պահուստի կանոն 3-2-1",
     "desc": "3 պատճեն, 2 տարբեր կրիչի տեսակ, 1 արտաքին",

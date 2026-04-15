@@ -344,6 +344,20 @@
     "local": "Lokální",
     "other": "Ostatní"
   },
+  "folders": {
+      "create": "Nová složka",
+      "rename": "Přejmenovat složku",
+      "deleteFolder": "Smazat složku",
+      "deleteConfirm": "Smazat složku \"{{name}}\"? Položky budou přesunuty do Nezařazené.",
+      "folderName": "Název složky",
+      "moveToFolder": "Přesunout do složky",
+      "unfiled": "Nezařazené",
+      "allFolders": "Vše",
+      "items": "položek",
+      "viewFlat": "Plochý pohled",
+      "viewFolder": "Pohled složek",
+      "viewExpanded": "Rozbalený pohled"
+  },
   "rule321": {
     "title": "Pravidlo zálohování 3-2-1",
     "desc": "3 kopie, 2 různé typy médií, 1 mimo pracoviště",

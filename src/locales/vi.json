@@ -344,6 +344,20 @@
     "local": "Cục bộ",
     "other": "Khác"
   },
+  "folders": {
+      "create": "Thư mục mới",
+      "rename": "Đổi tên thư mục",
+      "deleteFolder": "Xóa thư mục",
+      "deleteConfirm": "Xóa thư mục \"{{name}}\"? Các mục sẽ được chuyển sang Chưa phân loại.",
+      "folderName": "Tên thư mục",
+      "moveToFolder": "Chuyển vào thư mục",
+      "unfiled": "Chưa phân loại",
+      "allFolders": "Tất cả",
+      "items": "mục",
+      "viewFlat": "Xem phẳng",
+      "viewFolder": "Xem thư mục",
+      "viewExpanded": "Xem mở rộng"
+  },
   "rule321": {
     "title": "Quy tắc sao lưu 3-2-1",
     "desc": "3 bản sao, 2 loại phương tiện khác nhau, 1 bản ngoài cơ sở",

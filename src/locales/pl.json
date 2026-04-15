@@ -344,6 +344,20 @@
     "local": "Lokalny",
     "other": "Inne"
   },
+  "folders": {
+      "create": "Nowy folder",
+      "rename": "Zmień nazwę folderu",
+      "deleteFolder": "Usuń folder",
+      "deleteConfirm": "Usunąć folder \"{{name}}\"? Elementy zostaną przeniesione do Niesortowane.",
+      "folderName": "Nazwa folderu",
+      "moveToFolder": "Przenieś do folderu",
+      "unfiled": "Niesortowane",
+      "allFolders": "Wszystkie",
+      "items": "elementów",
+      "viewFlat": "Widok płaski",
+      "viewFolder": "Widok folderów",
+      "viewExpanded": "Widok rozwinięty"
+  },
   "rule321": {
     "title": "Reguła kopii zapasowych 3-2-1",
     "desc": "3 kopie, 2 różne typy nośników, 1 poza siedzibą",

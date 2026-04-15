@@ -344,6 +344,20 @@
     "local": "Lokal",
     "other": "Annet"
   },
+  "folders": {
+      "create": "Ny mappe",
+      "rename": "Gi nytt navn til mappe",
+      "deleteFolder": "Slett mappe",
+      "deleteConfirm": "Slette mappen \"{{name}}\"? Elementer flyttes til Usortert.",
+      "folderName": "Mappenavn",
+      "moveToFolder": "Flytt til mappe",
+      "unfiled": "Usortert",
+      "allFolders": "Alle",
+      "items": "elementer",
+      "viewFlat": "Flat visning",
+      "viewFolder": "Mappevisning",
+      "viewExpanded": "Utvidet visning"
+  },
   "rule321": {
     "title": "3-2-1-sikkerhetskopieringsregelen",
     "desc": "3 kopier, 2 forskjellige medietyper, 1 ekstern",

@@ -344,6 +344,20 @@
     "local": "Lokal",
     "other": "Iba pa"
   },
+  "folders": {
+      "create": "Bagong Folder",
+      "rename": "Palitan ang Pangalan ng Folder",
+      "deleteFolder": "Burahin ang Folder",
+      "deleteConfirm": "Burahin ang folder na \"{{name}}\"? Ang mga item ay ililipat sa Hindi Nakaayos.",
+      "folderName": "Pangalan ng Folder",
+      "moveToFolder": "Ilipat sa Folder",
+      "unfiled": "Hindi Nakaayos",
+      "allFolders": "Lahat",
+      "items": "mga item",
+      "viewFlat": "Patag na View",
+      "viewFolder": "Folder View",
+      "viewExpanded": "Pinalawak na View"
+  },
   "rule321": {
     "title": "Panuntunang 3-2-1 sa Backup",
     "desc": "3 kopya, 2 magkaibang uri ng media, 1 offsite",

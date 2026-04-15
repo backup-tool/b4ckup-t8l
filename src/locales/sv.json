@@ -344,6 +344,20 @@
     "local": "Lokal",
     "other": "Övrigt"
   },
+  "folders": {
+      "create": "Ny mapp",
+      "rename": "Byt namn på mapp",
+      "deleteFolder": "Ta bort mapp",
+      "deleteConfirm": "Ta bort mappen \"{{name}}\"? Objekt flyttas till Osorterade.",
+      "folderName": "Mappnamn",
+      "moveToFolder": "Flytta till mapp",
+      "unfiled": "Osorterade",
+      "allFolders": "Alla",
+      "items": "objekt",
+      "viewFlat": "Platt vy",
+      "viewFolder": "Mappvy",
+      "viewExpanded": "Expanderad vy"
+  },
   "rule321": {
     "title": "3-2-1-säkerhetskopieringsregeln",
     "desc": "3 kopior, 2 olika mediatyper, 1 extern",

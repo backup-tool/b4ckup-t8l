@@ -344,6 +344,20 @@
     "local": "ローカル",
     "other": "その他"
   },
+  "folders": {
+      "create": "新規フォルダ",
+      "rename": "フォルダ名変更",
+      "deleteFolder": "フォルダ削除",
+      "deleteConfirm": "フォルダ\"{{name}}\"を削除しますか？アイテムは未分類に移動されます。",
+      "folderName": "フォルダ名",
+      "moveToFolder": "フォルダに移動",
+      "unfiled": "未分類",
+      "allFolders": "すべて",
+      "items": "件",
+      "viewFlat": "フラット表示",
+      "viewFolder": "フォルダ表示",
+      "viewExpanded": "展開表示"
+  },
   "rule321": {
     "title": "3-2-1 バックアップルール",
     "desc": "3つのコピー、2種類のメディア、1つはオフサイト",

@@ -344,6 +344,20 @@
     "local": "Helyi",
     "other": "Egyéb"
   },
+  "folders": {
+      "create": "Új mappa",
+      "rename": "Mappa átnevezése",
+      "deleteFolder": "Mappa törlése",
+      "deleteConfirm": "Törli a(z) \"{{name}}\" mappát? Az elemek a Besorolatlan kategóriába kerülnek.",
+      "folderName": "Mappa neve",
+      "moveToFolder": "Áthelyezés mappába",
+      "unfiled": "Besorolatlan",
+      "allFolders": "Összes",
+      "items": "elem",
+      "viewFlat": "Sima nézet",
+      "viewFolder": "Mappa nézet",
+      "viewExpanded": "Kibontott nézet"
+  },
   "rule321": {
     "title": "3-2-1 biztonsági mentési szabály",
     "desc": "3 másolat, 2 különböző médiatípus, 1 távoli",

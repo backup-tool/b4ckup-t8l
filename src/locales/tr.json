@@ -344,6 +344,20 @@
     "local": "Yerel",
     "other": "Diğer"
   },
+  "folders": {
+      "create": "Yeni Klasör",
+      "rename": "Klasörü Yeniden Adlandır",
+      "deleteFolder": "Klasörü Sil",
+      "deleteConfirm": "\"{{name}}\" klasörünü silmek istiyor musunuz? Öğeler Sınıflandırılmamış bölümüne taşınacak.",
+      "folderName": "Klasör Adı",
+      "moveToFolder": "Klasöre Taşı",
+      "unfiled": "Sınıflandırılmamış",
+      "allFolders": "Tümü",
+      "items": "öğe",
+      "viewFlat": "Düz Görünüm",
+      "viewFolder": "Klasör Görünümü",
+      "viewExpanded": "Genişletilmiş Görünüm"
+  },
   "rule321": {
     "title": "3-2-1 Yedekleme Kuralı",
     "desc": "3 kopya, 2 farklı ortam türü, 1 uzak konum",

@@ -344,6 +344,20 @@
     "local": "本地",
     "other": "其他"
   },
+  "folders": {
+      "create": "新建文件夹",
+      "rename": "重命名文件夹",
+      "deleteFolder": "删除文件夹",
+      "deleteConfirm": "删除文件夹\"{{name}}\"？项目将移至未分类。",
+      "folderName": "文件夹名称",
+      "moveToFolder": "移至文件夹",
+      "unfiled": "未分类",
+      "allFolders": "全部",
+      "items": "个项目",
+      "viewFlat": "平铺视图",
+      "viewFolder": "文件夹视图",
+      "viewExpanded": "展开视图"
+  },
   "rule321": {
     "title": "3-2-1 备份规则",
     "desc": "3 份副本，2 种不同介质类型，1 份异地存储",

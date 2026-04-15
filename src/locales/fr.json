@@ -344,6 +344,20 @@
     "local": "Local",
     "other": "Autre"
   },
+  "folders": {
+      "create": "Nouveau dossier",
+      "rename": "Renommer le dossier",
+      "deleteFolder": "Supprimer le dossier",
+      "deleteConfirm": "Supprimer le dossier \"{{name}}\" ? Les éléments seront déplacés vers Non classé.",
+      "folderName": "Nom du dossier",
+      "moveToFolder": "Déplacer vers le dossier",
+      "unfiled": "Non classé",
+      "allFolders": "Tous",
+      "items": "éléments",
+      "viewFlat": "Vue plate",
+      "viewFolder": "Vue dossier",
+      "viewExpanded": "Vue étendue"
+  },
   "rule321": {
     "title": "Règle de sauvegarde 3-2-1",
     "desc": "3 copies, 2 types de supports différents, 1 hors site",

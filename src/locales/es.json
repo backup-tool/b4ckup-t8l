@@ -344,6 +344,20 @@
     "local": "Local",
     "other": "Otro"
   },
+  "folders": {
+      "create": "Nueva carpeta",
+      "rename": "Renombrar carpeta",
+      "deleteFolder": "Eliminar carpeta",
+      "deleteConfirm": "Eliminar carpeta \"{{name}}\"? Los elementos se moverán a Sin carpeta.",
+      "folderName": "Nombre de carpeta",
+      "moveToFolder": "Mover a carpeta",
+      "unfiled": "Sin carpeta",
+      "allFolders": "Todos",
+      "items": "elementos",
+      "viewFlat": "Vista plana",
+      "viewFolder": "Vista de carpetas",
+      "viewExpanded": "Vista expandida"
+  },
   "rule321": {
     "title": "Regla de respaldo 3-2-1",
     "desc": "3 copias, 2 tipos de soporte diferentes, 1 fuera del sitio",

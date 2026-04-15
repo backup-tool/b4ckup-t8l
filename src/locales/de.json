@@ -344,6 +344,20 @@
     "local": "Lokal",
     "other": "Sonstiges"
   },
+  "folders": {
+      "create": "Neuer Ordner",
+      "rename": "Ordner umbenennen",
+      "deleteFolder": "Ordner löschen",
+      "deleteConfirm": "Ordner \"{{name}}\" löschen? Elemente werden zu Nicht einsortiert verschoben.",
+      "folderName": "Ordnername",
+      "moveToFolder": "In Ordner verschieben",
+      "unfiled": "Nicht einsortiert",
+      "allFolders": "Alle",
+      "items": "Elemente",
+      "viewFlat": "Flache Ansicht",
+      "viewFolder": "Ordneransicht",
+      "viewExpanded": "Erweiterte Ansicht"
+  },
   "rule321": {
     "title": "3-2-1 Backup-Regel",
     "desc": "3 Kopien, 2 verschiedene Medientypen, 1 Offsite",

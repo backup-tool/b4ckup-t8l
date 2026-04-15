@@ -344,6 +344,20 @@
     "local": "로컬",
     "other": "기타"
   },
+  "folders": {
+      "create": "새 폴더",
+      "rename": "폴더 이름 변경",
+      "deleteFolder": "폴더 삭제",
+      "deleteConfirm": "\"{{name}}\" 폴더를 삭제하시겠습니까? 항목은 미분류로 이동됩니다.",
+      "folderName": "폴더 이름",
+      "moveToFolder": "폴더로 이동",
+      "unfiled": "미분류",
+      "allFolders": "전체",
+      "items": "항목",
+      "viewFlat": "평면 보기",
+      "viewFolder": "폴더 보기",
+      "viewExpanded": "확장 보기"
+  },
   "rule321": {
     "title": "3-2-1 백업 규칙",
     "desc": "3개의 사본, 2가지 매체 유형, 1개는 오프사이트",

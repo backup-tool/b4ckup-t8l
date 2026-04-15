@@ -344,6 +344,20 @@
     "local": "Local",
     "other": "Altele"
   },
+  "folders": {
+      "create": "Dosar nou",
+      "rename": "Redenumire dosar",
+      "deleteFolder": "Șterge dosar",
+      "deleteConfirm": "Ștergeți dosarul \"{{name}}\"? Elementele vor fi mutate în Neclasificate.",
+      "folderName": "Numele dosarului",
+      "moveToFolder": "Mută în dosar",
+      "unfiled": "Neclasificate",
+      "allFolders": "Toate",
+      "items": "elemente",
+      "viewFlat": "Vedere plată",
+      "viewFolder": "Vedere dosare",
+      "viewExpanded": "Vedere extinsă"
+  },
   "rule321": {
     "title": "Regula de backup 3-2-1",
     "desc": "3 copii, 2 tipuri diferite de medii, 1 extern",

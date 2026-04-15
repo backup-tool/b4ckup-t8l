@@ -344,6 +344,20 @@
     "local": "Locale",
     "other": "Altro"
   },
+  "folders": {
+      "create": "Nuova cartella",
+      "rename": "Rinomina cartella",
+      "deleteFolder": "Elimina cartella",
+      "deleteConfirm": "Eliminare la cartella \"{{name}}\"? Gli elementi verranno spostati in Non archiviato.",
+      "folderName": "Nome cartella",
+      "moveToFolder": "Sposta in cartella",
+      "unfiled": "Non archiviato",
+      "allFolders": "Tutti",
+      "items": "elementi",
+      "viewFlat": "Vista piatta",
+      "viewFolder": "Vista cartelle",
+      "viewExpanded": "Vista espansa"
+  },
   "rule321": {
     "title": "Regola di backup 3-2-1",
     "desc": "3 copie, 2 tipi di supporto diversi, 1 fuori sede",
