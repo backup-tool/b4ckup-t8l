@@ -87,9 +87,13 @@ export function FolderToolbar({
 export function FolderBreadcrumb({
   currentFolder,
   onNavigateBack,
+  dropTargetProps,
+  isDropOver,
 }: {
   currentFolder: FolderData | null;
   onNavigateBack: () => void;
+  dropTargetProps?: Record<string, any>;
+  isDropOver?: boolean;
 }) {
   const { t } = useTranslation();
 
@@ -99,7 +103,13 @@ export function FolderBreadcrumb({
     <div className="flex items-center gap-1.5 text-sm">
       <button
         onClick={onNavigateBack}
-        className="text-muted-foreground hover:text-foreground transition-colors"
+        className={cn(
+          "px-2 py-1 rounded-md transition-colors",
+          isDropOver
+            ? "bg-primary/10 text-primary ring-2 ring-primary/40"
+            : "text-muted-foreground hover:text-foreground"
+        )}
+        {...dropTargetProps}
       >
         {t("folders.allFolders")}
       </button>
@@ -121,6 +131,8 @@ export function FolderCard({
   onRename,
   onDelete,
   editMode,
+  dropTargetProps,
+  isDropOver,
 }: {
   folder: FolderData;
   itemCount: number;
@@ -128,13 +140,21 @@ export function FolderCard({
   onRename: () => void;
   onDelete: () => void;
   editMode: boolean;
+  dropTargetProps?: Record<string, any>;
+  isDropOver?: boolean;
 }) {
   const { t } = useTranslation();
 
   return (
     <Card
-      className="hover:border-primary/30 transition-colors cursor-pointer"
+      className={cn(
+        "transition-colors cursor-pointer",
+        isDropOver
+          ? "border-primary ring-2 ring-primary/40 bg-primary/5"
+          : "hover:border-primary/30"
+      )}
       onClick={editMode ? undefined : onOpen}
+      {...dropTargetProps}
     >
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
@@ -182,6 +202,8 @@ export function FolderGrid({
   onRename,
   onDelete,
   editMode,
+  makeDropTarget,
+  isDragOver,
 }: {
   folders: FolderData[];
   itemCounts: Map<number, number>;
@@ -189,6 +211,8 @@ export function FolderGrid({
   onRename: (folder: FolderData) => void;
   onDelete: (folder: FolderData) => void;
   editMode: boolean;
+  makeDropTarget?: (folderId: number | null) => Record<string, any>;
+  isDragOver?: (folderId: number | null) => boolean;
 }) {
   if (folders.length === 0) return null;
 
@@ -203,6 +227,8 @@ export function FolderGrid({
           onRename={() => onRename(folder)}
           onDelete={() => onDelete(folder)}
           editMode={editMode}
+          dropTargetProps={makeDropTarget?.(folder.id)}
+          isDropOver={isDragOver?.(folder.id)}
         />
       ))}
     </div>
@@ -220,6 +246,8 @@ export function FolderSection({
   editMode,
   itemCount,
   children,
+  dropTargetProps,
+  isDropOver,
 }: {
   folder: FolderData | null;
   collapsed: boolean;
@@ -229,13 +257,21 @@ export function FolderSection({
   editMode: boolean;
   itemCount: number;
   children: React.ReactNode;
+  dropTargetProps?: Record<string, any>;
+  isDropOver?: boolean;
 }) {
   const { t } = useTranslation();
   const isUnfiled = folder === null;
 
   return (
     <div className="space-y-2">
-      <div className="flex items-center gap-2">
+      <div
+        className={cn(
+          "flex items-center gap-2 rounded-md px-1 -mx-1 transition-colors",
+          isDropOver && "bg-primary/10 ring-2 ring-primary/40"
+        )}
+        {...dropTargetProps}
+      >
         <button
           onClick={onToggleCollapsed}
           className="flex items-center gap-2 hover:text-primary transition-colors"

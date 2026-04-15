@@ -37,6 +37,7 @@ import type { BackupStatus } from "@/lib/types";
 import { formatBytes, formatDate, daysAgo } from "@/lib/format";
 import { useAppStore } from "@/lib/store";
 import { useFolders } from "@/lib/useFolders";
+import { useDragDrop } from "@/lib/useDragDrop";
 import type { FolderData } from "@/lib/useFolders";
 
 export function Backups() {
@@ -66,6 +67,16 @@ export function Backups() {
   const [deletingFolder, setDeletingFolder] = useState<FolderData | null>(null);
   // Track collapsed state locally for unfiled section in expanded mode
   const [unfiledCollapsed, setUnfiledCollapsed] = useState(false);
+
+  // Drag & drop for folder moves
+  const { makeDraggable, makeDropTarget, isDragOver } = useDragDrop(
+    async (itemIds, folderId) => {
+      await folderHook.moveItems(itemIds, folderId);
+      setSelectedIds(new Set());
+      triggerRefresh();
+      await loadAll();
+    }
+  );
 
   const [form, setForm] = useState({
     name: "",
@@ -310,6 +321,8 @@ export function Backups() {
         <FolderBreadcrumb
           currentFolder={folderHook.currentFolder}
           onNavigateBack={() => folderHook.navigateToFolder(null)}
+          dropTargetProps={makeDropTarget(null)}
+          isDropOver={isDragOver(null)}
         />
       )}
 
@@ -335,6 +348,9 @@ export function Backups() {
           t={t}
           triggerRefresh={triggerRefresh}
           loadAll={loadAll}
+          makeDraggable={makeDraggable}
+          makeDropTarget={makeDropTarget}
+          isDragOver={isDragOver}
         />
       ) : folderHook.viewMode === "folder" && folderHook.currentFolderId === null ? (
         /* Folder mode root: show folder cards + unfiled items */
@@ -352,6 +368,8 @@ export function Backups() {
             onRename={(folder) => setRenamingFolder(folder)}
             onDelete={(folder) => setDeletingFolder(folder)}
             editMode={editMode}
+            makeDropTarget={makeDropTarget}
+            isDragOver={isDragOver}
           />
           {/* Show unfiled items below folders */}
           <BackupsItemList
@@ -364,6 +382,7 @@ export function Backups() {
             t={t}
             triggerRefresh={triggerRefresh}
             loadAll={loadAll}
+            makeDraggable={makeDraggable}
           />
         </div>
       ) : (
@@ -381,6 +400,7 @@ export function Backups() {
           t={t}
           triggerRefresh={triggerRefresh}
           loadAll={loadAll}
+          makeDraggable={folderHook.viewMode !== "flat" ? makeDraggable : undefined}
         />
       )}
 
@@ -547,6 +567,7 @@ function BackupsItemList({
   t,
   triggerRefresh,
   loadAll,
+  makeDraggable,
 }: {
   items: Array<Record<string, any>>;
   view: "grid" | "list";
@@ -557,6 +578,7 @@ function BackupsItemList({
   t: (key: string, opts?: any) => string;
   triggerRefresh: () => void;
   loadAll: () => Promise<void>;
+  makeDraggable?: (itemId: number, selectedIds: Set<number>) => Record<string, any>;
 }) {
   if (items.length === 0) {
     return (
@@ -573,7 +595,11 @@ function BackupsItemList({
         {items.map((b) => {
           const latest = b.latest_entry as Record<string, any> | null;
           return (
-            <div key={b.id as number} className="relative">
+            <div
+              key={b.id as number}
+              className="relative"
+              {...(makeDraggable ? makeDraggable(b.id as number, selectedIds) : {})}
+            >
               {editMode && (
                 <input
                   type="checkbox"
@@ -587,7 +613,7 @@ function BackupsItemList({
                   className="absolute top-3 left-3 rounded z-10"
                 />
               )}
-              <Link to={`/backups/${b.id}`}>
+              <Link to={`/backups/${b.id}`} draggable={false}>
                 <Card className="hover:border-primary/30 transition-colors cursor-pointer h-full">
                   <div className="flex items-start justify-between mb-2">
                     <div className="min-w-0">
@@ -636,7 +662,11 @@ function BackupsItemList({
             {deviceItems.map((b) => {
               const latest = b.latest_entry as Record<string, any> | null;
               return (
-                <div key={b.id as number} className="flex items-center gap-2">
+                <div
+                  key={b.id as number}
+                  className="flex items-center gap-2"
+                  {...(makeDraggable ? makeDraggable(b.id as number, selectedIds) : {})}
+                >
                   {editMode && (
                     <input
                       type="checkbox"
@@ -651,7 +681,7 @@ function BackupsItemList({
                       aria-label={`${t("bulk.select")} ${b.name}`}
                     />
                   )}
-                  <Link to={`/backups/${b.id}`} className="block flex-1">
+                  <Link to={`/backups/${b.id}`} className="block flex-1" draggable={false}>
                     <Card className="hover:border-primary/30 transition-colors cursor-pointer py-3">
                       <div className="flex items-center justify-between">
                         <div>
@@ -727,6 +757,9 @@ function BackupsExpandedView({
   t,
   triggerRefresh,
   loadAll,
+  makeDraggable,
+  makeDropTarget,
+  isDragOver,
 }: {
   sorted: Array<Record<string, any>>;
   folderHook: ReturnType<typeof useFolders>;
@@ -742,6 +775,9 @@ function BackupsExpandedView({
   t: (key: string, opts?: any) => string;
   triggerRefresh: () => void;
   loadAll: () => Promise<void>;
+  makeDraggable: (itemId: number, selectedIds: Set<number>) => Record<string, any>;
+  makeDropTarget: (folderId: number | null) => Record<string, any>;
+  isDragOver: (folderId: number | null) => boolean;
 }) {
   const groups = folderHook.groupItemsByFolder(sorted);
 
@@ -767,6 +803,8 @@ function BackupsExpandedView({
             onDelete={folder ? () => setDeletingFolder(folder) : undefined}
             editMode={editMode}
             itemCount={group.items.length}
+            dropTargetProps={makeDropTarget(folder?.id ?? null)}
+            isDropOver={isDragOver(folder?.id ?? null)}
           >
             <BackupsItemList
               items={group.items}
@@ -778,6 +816,7 @@ function BackupsExpandedView({
               t={t}
               triggerRefresh={triggerRefresh}
               loadAll={loadAll}
+              makeDraggable={makeDraggable}
             />
           </FolderSection>
         );

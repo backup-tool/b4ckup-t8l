@@ -31,6 +31,7 @@ import { STORAGE_TYPES, SIZE_UNITS, SIZE_MULTIPLIERS } from "@/lib/types";
 import { formatBytes } from "@/lib/format";
 import { useAppStore } from "@/lib/store";
 import { useFolders } from "@/lib/useFolders";
+import { useDragDrop } from "@/lib/useDragDrop";
 import type { FolderData } from "@/lib/useFolders";
 
 export function Media() {
@@ -55,6 +56,16 @@ export function Media() {
   const [renamingFolder, setRenamingFolder] = useState<FolderData | null>(null);
   const [deletingFolder, setDeletingFolder] = useState<FolderData | null>(null);
   const [unfiledCollapsed, setUnfiledCollapsed] = useState(false);
+
+  // Drag & drop for folder moves
+  const { makeDraggable, makeDropTarget, isDragOver } = useDragDrop(
+    async (itemIds, folderId) => {
+      await folderHook.moveItems(itemIds, folderId);
+      setSelectedIds(new Set());
+      triggerRefresh();
+      await loadAll();
+    }
+  );
 
   const [form, setForm] = useState({
     name: "",
@@ -258,6 +269,8 @@ export function Media() {
         <FolderBreadcrumb
           currentFolder={folderHook.currentFolder}
           onNavigateBack={() => folderHook.navigateToFolder(null)}
+          dropTargetProps={makeDropTarget(null)}
+          isDropOver={isDragOver(null)}
         />
       )}
 
@@ -281,6 +294,9 @@ export function Media() {
           unfiledCollapsed={unfiledCollapsed}
           setUnfiledCollapsed={setUnfiledCollapsed}
           t={t}
+          makeDraggable={makeDraggable}
+          makeDropTarget={makeDropTarget}
+          isDragOver={isDragOver}
         />
       ) : folderHook.viewMode === "folder" && folderHook.currentFolderId === null ? (
         <div>
@@ -297,6 +313,8 @@ export function Media() {
             onRename={(folder) => setRenamingFolder(folder)}
             onDelete={(folder) => setDeletingFolder(folder)}
             editMode={editMode}
+            makeDropTarget={makeDropTarget}
+            isDragOver={isDragOver}
           />
           <MediaItemList
             items={sorted.filter((m) => !(m.folder_id as number | null))}
@@ -307,6 +325,7 @@ export function Media() {
             openEdit={openEdit}
             setSoftDeleteId={setSoftDeleteId}
             t={t}
+            makeDraggable={makeDraggable}
           />
         </div>
       ) : (
@@ -322,6 +341,7 @@ export function Media() {
           openEdit={openEdit}
           setSoftDeleteId={setSoftDeleteId}
           t={t}
+          makeDraggable={folderHook.viewMode !== "flat" ? makeDraggable : undefined}
         />
       )}
 
@@ -498,6 +518,7 @@ function MediaItemList({
   openEdit,
   setSoftDeleteId,
   t,
+  makeDraggable,
 }: {
   items: Array<Record<string, any>>;
   view: "grid" | "list";
@@ -507,6 +528,7 @@ function MediaItemList({
   openEdit: (m: Record<string, any>) => void;
   setSoftDeleteId: (id: number | null) => void;
   t: (key: string, opts?: any) => string;
+  makeDraggable?: (itemId: number, selectedIds: Set<number>) => Record<string, any>;
 }) {
   if (items.length === 0) {
     return (
@@ -524,7 +546,11 @@ function MediaItemList({
           const used = m.used_gb as number;
           const total = m.total_capacity_gb as number | null;
           return (
-            <div key={m.id as number} className="flex items-center gap-2">
+            <div
+            key={m.id as number}
+            className="flex items-center gap-2"
+            {...(makeDraggable ? makeDraggable(m.id as number, selectedIds) : {})}
+          >
               {editMode && (
                 <input
                   type="checkbox"
@@ -580,7 +606,11 @@ function MediaItemList({
         const total = m.total_capacity_gb as number | null;
         const pct = total ? Math.min((used / total) * 100, 100) : 0;
         return (
-          <div key={m.id as number} className="relative">
+          <div
+            key={m.id as number}
+            className="relative"
+            {...(makeDraggable ? makeDraggable(m.id as number, selectedIds) : {})}
+          >
             {editMode && (
               <input
                 type="checkbox"
@@ -649,6 +679,9 @@ function MediaExpandedView({
   unfiledCollapsed,
   setUnfiledCollapsed,
   t,
+  makeDraggable,
+  makeDropTarget,
+  isDragOver,
 }: {
   sorted: Array<Record<string, any>>;
   folderHook: ReturnType<typeof useFolders>;
@@ -663,6 +696,9 @@ function MediaExpandedView({
   unfiledCollapsed: boolean;
   setUnfiledCollapsed: (v: boolean) => void;
   t: (key: string, opts?: any) => string;
+  makeDraggable: (itemId: number, selectedIds: Set<number>) => Record<string, any>;
+  makeDropTarget: (folderId: number | null) => Record<string, any>;
+  isDragOver: (folderId: number | null) => boolean;
 }) {
   const groups = folderHook.groupItemsByFolder(sorted);
 
@@ -688,6 +724,8 @@ function MediaExpandedView({
             onDelete={folder ? () => setDeletingFolder(folder) : undefined}
             editMode={editMode}
             itemCount={group.items.length}
+            dropTargetProps={makeDropTarget(folder?.id ?? null)}
+            isDropOver={isDragOver(folder?.id ?? null)}
           >
             <MediaItemList
               items={group.items}
@@ -698,6 +736,7 @@ function MediaExpandedView({
               openEdit={openEdit}
               setSoftDeleteId={setSoftDeleteId}
               t={t}
+              makeDraggable={makeDraggable}
             />
           </FolderSection>
         );
