@@ -11,27 +11,15 @@ export function UpdateBanner() {
   const [progress, setProgress] = useState(0);
   const [dismissed, setDismissed] = useState(false);
   const [ready, setReady] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [debugLog, setDebugLog] = useState<string[]>([]);
-
-  function log(msg: string) {
-    console.log(`[Updater] ${msg}`);
-    setDebugLog((prev) => [...prev.slice(-10), msg]);
-  }
 
   useEffect(() => {
     const timer = setTimeout(async () => {
       try {
-        log("Checking for updates...");
         const result = await check();
-        log(`Check result: available=${result?.available}, version=${result?.version}`);
         if (result?.available) {
           setUpdate(result);
-          log(`Current version: ${result.currentVersion}, new: ${result.version}`);
-          log(`Update body: ${result.body || "none"}`);
         }
       } catch (err) {
-        log(`Check failed: ${err}`);
         console.warn("Update check failed:", err);
       }
     }, 5000);
@@ -42,45 +30,30 @@ export function UpdateBanner() {
 
   async function handleInstall() {
     setDownloading(true);
-    setError(null);
     try {
       let totalSize = 0;
       let downloaded = 0;
-      log("Starting downloadAndInstall...");
       await update.downloadAndInstall((event: any) => {
-        log(`Event: ${event.event} ${JSON.stringify(event.data || {})}`);
         if (event.event === "Started" && event.data?.contentLength) {
           totalSize = event.data.contentLength;
-          log(`Download started: ${(totalSize / 1024 / 1024).toFixed(1)} MB`);
         } else if (event.event === "Progress" && event.data?.chunkLength) {
           downloaded += event.data.chunkLength;
           if (totalSize > 0) {
             setProgress(Math.round((downloaded / totalSize) * 100));
           }
         } else if (event.event === "Finished") {
-          log("Download finished, installing...");
           setReady(true);
         }
       });
-      log("downloadAndInstall() completed successfully");
       setReady(true);
-    } catch (err: any) {
-      const errMsg = err?.message || String(err);
-      log(`Install error: ${errMsg}`);
+    } catch (err) {
       console.error("Update failed:", err);
-      setError(errMsg);
       setDownloading(false);
     }
   }
 
   async function handleRelaunch() {
-    log("Relaunching...");
-    try {
-      await relaunch();
-    } catch (err: any) {
-      log(`Relaunch error: ${err?.message || err}`);
-      setError(`Relaunch failed: ${err?.message || err}`);
-    }
+    await relaunch();
   }
 
   return (
@@ -110,17 +83,6 @@ export function UpdateBanner() {
                 </div>
                 <p className="text-[10px] text-muted-foreground mt-1 tabular-nums">{progress}%</p>
               </div>
-            )}
-            {error && (
-              <p className="text-[10px] text-red-400 mt-1 break-all">{error}</p>
-            )}
-            {debugLog.length > 0 && (
-              <details className="mt-1">
-                <summary className="text-[10px] text-muted-foreground cursor-pointer">Debug log</summary>
-                <div className="text-[9px] text-muted-foreground mt-1 max-h-24 overflow-y-auto font-mono">
-                  {debugLog.map((l, i) => <div key={i}>{l}</div>)}
-                </div>
-              </details>
             )}
             <div className="flex gap-2 mt-3">
               {ready ? (
