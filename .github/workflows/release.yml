@@ -168,7 +168,11 @@ jobs:
             local file="$1"
             if [ -f "$file" ]; then
               >&2 echo "Signing: $(basename "$file")"
-              npx tauri signer sign -k "$TAURI_SIGNING_PRIVATE_KEY" -p "$TAURI_SIGNING_PRIVATE_KEY_PASSWORD" "$file" >/dev/null 2>&1 || true
+              >&2 npx tauri signer sign -k "$TAURI_SIGNING_PRIVATE_KEY" -p "$TAURI_SIGNING_PRIVATE_KEY_PASSWORD" "$file" || true
+              >&2 echo "Looking for sig at: ${file}.sig"
+              >&2 ls -la "${file}.sig" 2>/dev/null || >&2 echo "  NOT FOUND"
+              # Also check if sig was placed next to the file without the full path
+              >&2 ls -la "$(dirname "$file")/"*.sig 2>/dev/null || true
               if [ -f "${file}.sig" ]; then
                 cat "${file}.sig"
               fi
