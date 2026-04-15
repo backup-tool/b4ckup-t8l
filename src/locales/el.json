@@ -11,7 +11,8 @@
     "history": "Ιστορικό",
     "statistics": "Στατιστικά",
     "trash": "Κάδος",
-    "settings": "Ρυθμίσεις"
+    "settings": "Ρυθμίσεις",
+    "calendar": "Ημερολόγιο"
   },
   "dashboard": {
     "title": "Πίνακας ελέγχου",
@@ -175,7 +176,24 @@
     "exportSuccess": "Τα δεδομένα εξήχθησαν επιτυχώς",
     "updates": "Ενημερώσεις",
     "checkUpdates": "Έλεγχος ενημερώσεων",
-    "upToDate": "Είστε ενημερωμένοι!"
+    "upToDate": "Είστε ενημερωμένοι!",
+    "hebrew": "עברית",
+    "persian": "فارسی",
+    "kurdish": "Kurdî",
+    "armenian": "Հայերեն",
+    "pashto": "پښتو",
+    "hindi": "हिन्दी",
+    "urdu": "اردو",
+    "bengali": "বাংলা",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "Αποθήκευση",

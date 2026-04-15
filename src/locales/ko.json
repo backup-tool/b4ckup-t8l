@@ -11,7 +11,8 @@
     "history": "기록",
     "statistics": "통계",
     "trash": "휴지통",
-    "settings": "설정"
+    "settings": "설정",
+    "calendar": "캘린더"
   },
   "dashboard": {
     "title": "대시보드",

@@ -11,7 +11,8 @@
     "history": "היסטוריה",
     "statistics": "סטטיסטיקות",
     "trash": "פח אשפה",
-    "settings": "הגדרות"
+    "settings": "הגדרות",
+    "calendar": "לוח שנה"
   },
   "dashboard": {
     "title": "לוח בקרה",
@@ -183,7 +184,16 @@
     "exportSuccess": "הנתונים יוצאו בהצלחה",
     "updates": "עדכונים",
     "checkUpdates": "בדוק עדכונים",
-    "upToDate": "אתה מעודכן!"
+    "upToDate": "אתה מעודכן!",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "שמירה",

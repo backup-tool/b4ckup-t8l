@@ -11,7 +11,8 @@
     "history": "Historie",
     "statistics": "Statistiky",
     "trash": "Koš",
-    "settings": "Nastavení"
+    "settings": "Nastavení",
+    "calendar": "Kalendář"
   },
   "dashboard": {
     "title": "Přehled",
@@ -168,7 +169,31 @@
     "exportSuccess": "Data úspěšně exportována",
     "updates": "Aktualizace",
     "checkUpdates": "Zkontrolovat aktualizace",
-    "upToDate": "Máte nejnovější verzi!"
+    "upToDate": "Máte nejnovější verzi!",
+    "serbian": "Српски",
+    "croatian": "Hrvatski",
+    "ukrainian": "Українська",
+    "russian": "Русский",
+    "greek": "Ελληνικά",
+    "turkish": "Türkçe",
+    "arabic": "العربية",
+    "hebrew": "עברית",
+    "persian": "فارسی",
+    "kurdish": "Kurdî",
+    "armenian": "Հայերեն",
+    "pashto": "پښتو",
+    "hindi": "हिन्दी",
+    "urdu": "اردو",
+    "bengali": "বাংলা",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "Uložit",

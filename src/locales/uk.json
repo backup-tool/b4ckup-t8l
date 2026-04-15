@@ -11,7 +11,8 @@
     "history": "Історія",
     "statistics": "Статистика",
     "trash": "Кошик",
-    "settings": "Налаштування"
+    "settings": "Налаштування",
+    "calendar": "Календар"
   },
   "dashboard": {
     "title": "Панель керування",
@@ -175,7 +176,24 @@
     "exportSuccess": "Дані успішно експортовано",
     "updates": "Оновлення",
     "checkUpdates": "Перевірити оновлення",
-    "upToDate": "Ви маєте останню версію!"
+    "upToDate": "Ви маєте останню версію!",
+    "hebrew": "עברית",
+    "persian": "فارسی",
+    "kurdish": "Kurdî",
+    "armenian": "Հայերեն",
+    "pashto": "پښتو",
+    "hindi": "हिन्दी",
+    "urdu": "اردو",
+    "bengali": "বাংলা",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "Зберегти",

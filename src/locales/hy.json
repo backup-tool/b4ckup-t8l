@@ -11,7 +11,8 @@
     "history": "Պատմություն",
     "statistics": "Վիճակագրություն",
     "trash": "Աղբաման",
-    "settings": "Կարգավորումներ"
+    "settings": "Կարգավորումներ",
+    "calendar": "Օրdelays"
   },
   "dashboard": {
     "title": "Տախտակ",
@@ -183,7 +184,16 @@
     "checkInterval": "Check interval",
     "updates": "Թարdelaysdelays",
     "checkUpdates": " Delays sts",
-    "upToDate": "Delays!"
+    "upToDate": "Delays!",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "Պահպանել",

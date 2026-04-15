@@ -11,7 +11,8 @@
     "history": "История",
     "statistics": "Статистика",
     "trash": "Корзина",
-    "settings": "Настройки"
+    "settings": "Настройки",
+    "calendar": "Календарь"
   },
   "dashboard": {
     "title": "Панель управления",
@@ -175,7 +176,24 @@
     "exportSuccess": "Данные успешно экспортированы",
     "updates": "Обновления",
     "checkUpdates": "Проверить обновления",
-    "upToDate": "Обновлений нет!"
+    "upToDate": "Обновлений нет!",
+    "hebrew": "עברית",
+    "persian": "فارسی",
+    "kurdish": "Kurdî",
+    "armenian": "Հայերեն",
+    "pashto": "پښتو",
+    "hindi": "हिन्दी",
+    "urdu": "اردو",
+    "bengali": "বাংলা",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "Сохранить",

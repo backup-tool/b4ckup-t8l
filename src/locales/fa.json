@@ -11,7 +11,8 @@
     "history": "تاریخچه",
     "statistics": "آمار",
     "trash": "زباله‌دان",
-    "settings": "تنظیمات"
+    "settings": "تنظیمات",
+    "calendar": "تقویم"
   },
   "dashboard": {
     "title": "داشبورد",
@@ -183,7 +184,16 @@
     "exportSuccess": "داده‌ها با موفقیت صادر شدند",
     "updates": "به‌روزرسانی‌ها",
     "checkUpdates": "بررسی به‌روزرسانی",
-    "upToDate": "شما به‌روز هستید!"
+    "upToDate": "شما به‌روز هستید!",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "ذخیره",

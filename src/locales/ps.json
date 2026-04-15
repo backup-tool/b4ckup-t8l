@@ -11,7 +11,8 @@
     "history": "تاریخچه",
     "statistics": "احصایې",
     "trash": "کثافتدان",
-    "settings": "تنظیمات"
+    "settings": "تنظیمات",
+    "calendar": "کalendar"
   },
   "dashboard": {
     "title": "کنټرول پانل",
@@ -183,7 +184,16 @@
     "checkInterval": "Check interval",
     "updates": "تازه کارونه",
     "checkUpdates": "د تازه کارونو لټون",
-    "upToDate": "تاسو تازه یاست!"
+    "upToDate": "تاسو تازه یاست!",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "خوندي کړئ",

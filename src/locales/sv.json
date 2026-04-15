@@ -11,7 +11,8 @@
     "history": "Historik",
     "statistics": "Statistik",
     "trash": "Papperskorg",
-    "settings": "Inställningar"
+    "settings": "Inställningar",
+    "calendar": "Kalender"
   },
   "dashboard": {
     "title": "Översikt",
@@ -168,7 +169,31 @@
     "exportSuccess": "Data exporterades framgångsrikt",
     "updates": "Uppdateringar",
     "checkUpdates": "Sök efter uppdateringar",
-    "upToDate": "Du är uppdaterad!"
+    "upToDate": "Du är uppdaterad!",
+    "serbian": "Српски",
+    "croatian": "Hrvatski",
+    "ukrainian": "Українська",
+    "russian": "Русский",
+    "greek": "Ελληνικά",
+    "turkish": "Türkçe",
+    "arabic": "العربية",
+    "hebrew": "עברית",
+    "persian": "فارسی",
+    "kurdish": "Kurdî",
+    "armenian": "Հայերեն",
+    "pashto": "پښتو",
+    "hindi": "हिन्दी",
+    "urdu": "اردو",
+    "bengali": "বাংলা",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "Spara",

@@ -11,7 +11,8 @@
     "history": "Historia",
     "statistics": "Tilastot",
     "trash": "Roskakori",
-    "settings": "Asetukset"
+    "settings": "Asetukset",
+    "calendar": "Kalenteri"
   },
   "dashboard": {
     "title": "Hallintapaneeli",
@@ -168,7 +169,31 @@
     "exportSuccess": "Tiedot viety onnistuneesti",
     "updates": "Päivitykset",
     "checkUpdates": "Tarkista päivitykset",
-    "upToDate": "Olet ajan tasalla!"
+    "upToDate": "Olet ajan tasalla!",
+    "serbian": "Српски",
+    "croatian": "Hrvatski",
+    "ukrainian": "Українська",
+    "russian": "Русский",
+    "greek": "Ελληνικά",
+    "turkish": "Türkçe",
+    "arabic": "العربية",
+    "hebrew": "עברית",
+    "persian": "فارسی",
+    "kurdish": "Kurdî",
+    "armenian": "Հայերեն",
+    "pashto": "پښتو",
+    "hindi": "हिन्दी",
+    "urdu": "اردو",
+    "bengali": "বাংলা",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "Tallenna",

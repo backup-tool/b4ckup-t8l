@@ -11,7 +11,8 @@
     "history": "Povijest",
     "statistics": "Statistika",
     "trash": "Smeće",
-    "settings": "Postavke"
+    "settings": "Postavke",
+    "calendar": "Kalendar"
   },
   "dashboard": {
     "title": "Nadzorna ploča",
@@ -175,7 +176,24 @@
     "exportSuccess": "Podaci uspješno izvezeni",
     "updates": "Ažuriranja",
     "checkUpdates": "Provjeri ažuriranja",
-    "upToDate": "Ažurni ste!"
+    "upToDate": "Ažurni ste!",
+    "hebrew": "עברית",
+    "persian": "فارسی",
+    "kurdish": "Kurdî",
+    "armenian": "Հայերեն",
+    "pashto": "پښتو",
+    "hindi": "हिन्दी",
+    "urdu": "اردو",
+    "bengali": "বাংলা",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "Spremi",

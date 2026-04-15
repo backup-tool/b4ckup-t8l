@@ -11,7 +11,8 @@
     "history": "تاریخچہ",
     "statistics": "اعدادوشمار",
     "trash": "کچرا دان",
-    "settings": "ترتیبات"
+    "settings": "ترتیبات",
+    "calendar": "کیلنder"
   },
   "dashboard": {
     "title": "ڈیش بورڈ",
@@ -183,7 +184,16 @@
     "exportSuccess": "ڈیٹا کامیابی سے برآمد ہوا",
     "updates": "اپ ڈیٹس",
     "checkUpdates": "اپ ڈیٹس چیک کریں",
-    "upToDate": "آپ اپ ٹو ڈیٹ ہیں!"
+    "upToDate": "آپ اپ ٹو ڈیٹ ہیں!",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "محفوظ کریں",

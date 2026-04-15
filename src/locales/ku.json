@@ -11,7 +11,8 @@
     "history": "Dîrok",
     "statistics": "Amar",
     "trash": "Çopxane",
-    "settings": "Mîheng"
+    "settings": "Mîheng",
+    "calendar": "Salname"
   },
   "dashboard": {
     "title": "Panel",
@@ -183,7 +184,16 @@
     "exportSuccess": "Dane bi serkeftî hatin derxistin",
     "updates": "Nûvekirin",
     "checkUpdates": "Li nûvekirinan bigerin",
-    "upToDate": "Hûn nûvekirî ne!"
+    "upToDate": "Hûn nûvekirî ne!",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "Tomar bike",

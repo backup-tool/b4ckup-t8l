@@ -11,7 +11,8 @@
     "history": "Historik",
     "statistics": "Statistik",
     "trash": "Papirkurv",
-    "settings": "Indstillinger"
+    "settings": "Indstillinger",
+    "calendar": "Kalender"
   },
   "dashboard": {
     "title": "Kontrolpanel",
@@ -168,7 +169,31 @@
     "exportSuccess": "Data eksporteret",
     "updates": "Opdateringer",
     "checkUpdates": "Søg efter opdateringer",
-    "upToDate": "Du er opdateret!"
+    "upToDate": "Du er opdateret!",
+    "serbian": "Српски",
+    "croatian": "Hrvatski",
+    "ukrainian": "Українська",
+    "russian": "Русский",
+    "greek": "Ελληνικά",
+    "turkish": "Türkçe",
+    "arabic": "العربية",
+    "hebrew": "עברית",
+    "persian": "فارسی",
+    "kurdish": "Kurdî",
+    "armenian": "Հայերեն",
+    "pashto": "پښتو",
+    "hindi": "हिन्दी",
+    "urdu": "اردو",
+    "bengali": "বাংলা",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "Gem",

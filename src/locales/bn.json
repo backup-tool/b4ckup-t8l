@@ -11,7 +11,8 @@
     "history": "ইতিহাস",
     "statistics": "পরিসংখ্যান",
     "trash": "ট্র্যাশ",
-    "settings": "সেটিংস"
+    "settings": "সেটিংস",
+    "calendar": "ক্যdelaysdelays"
   },
   "dashboard": {
     "title": "ড্যাশবোর্ড",
@@ -183,7 +184,16 @@
     "exportSuccess": "ডেটা সফলভাবে রপ্তানি হয়েছে",
     "updates": "আপডেট",
     "checkUpdates": "আপডেট চেক করুন",
-    "upToDate": "আপনি আপ টু ডেট!"
+    "upToDate": "আপনি আপ টু ডেট!",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "সংরক্ষণ করুন",

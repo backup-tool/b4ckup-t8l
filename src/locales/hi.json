@@ -11,7 +11,8 @@
     "history": "इतिहास",
     "statistics": "आँकड़े",
     "trash": "कचरा",
-    "settings": "सेटिंग्स"
+    "settings": "सेटिंग्स",
+    "calendar": "कैलेंडर"
   },
   "dashboard": {
     "title": "डैशबोर्ड",
@@ -183,7 +184,16 @@
     "exportSuccess": "डेटा सफलतापूर्वक निर्यात किया गया",
     "updates": "अपडेट",
     "checkUpdates": "अपडेट की जाँच करें",
-    "upToDate": "आप अप टू डेट हैं!"
+    "upToDate": "आप अप टू डेट हैं!",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "सहेजें",

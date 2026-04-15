@@ -11,7 +11,8 @@
     "history": "Historikk",
     "statistics": "Statistikk",
     "trash": "Papirkurv",
-    "settings": "Innstillinger"
+    "settings": "Innstillinger",
+    "calendar": "Kalender"
   },
   "dashboard": {
     "title": "Kontrollpanel",
@@ -168,7 +169,31 @@
     "exportSuccess": "Data eksportert",
     "updates": "Oppdateringer",
     "checkUpdates": "Søk etter oppdateringer",
-    "upToDate": "Du er oppdatert!"
+    "upToDate": "Du er oppdatert!",
+    "serbian": "Српски",
+    "croatian": "Hrvatski",
+    "ukrainian": "Українська",
+    "russian": "Русский",
+    "greek": "Ελληνικά",
+    "turkish": "Türkçe",
+    "arabic": "العربية",
+    "hebrew": "עברית",
+    "persian": "فارسی",
+    "kurdish": "Kurdî",
+    "armenian": "Հայերեն",
+    "pashto": "پښتو",
+    "hindi": "हिन्दी",
+    "urdu": "اردو",
+    "bengali": "বাংলা",
+    "chinese": "中文",
+    "japanese": "日本語",
+    "korean": "한국어",
+    "vietnamese": "Tiếng Việt",
+    "thai": "ไทย",
+    "indonesian": "Bahasa Indonesia",
+    "filipino": "Filipino",
+    "swahili": "Kiswahili",
+    "amharic": "አማርኛ"
   },
   "common": {
     "save": "Lagre",
