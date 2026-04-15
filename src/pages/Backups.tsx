@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Plus, Search, Database, Trash2, Monitor, Pause, Play, GripVertical } from "lucide-react";
+import { Plus, Search, Database, Trash2, Monitor, Pause, Play } from "lucide-react";
 import { ViewToggle } from "@/components/ui/ViewToggle";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -602,9 +602,6 @@ function BackupsItemList({
               className="relative"
               {...(makeDraggable ? makeDraggable(b.id as number, selectedIds, b.name as string) : {})}
             >
-              {makeDraggable && (
-                <GripVertical className="absolute top-3 right-3 w-4 h-4 text-muted-foreground/40 z-10 cursor-grab" />
-              )}
               {editMode && (
                 <input
                   type="checkbox"
@@ -672,9 +669,6 @@ function BackupsItemList({
                   className="flex items-center gap-2"
                   {...(makeDraggable ? makeDraggable(b.id as number, selectedIds, b.name as string) : {})}
                 >
-                  {makeDraggable && (
-                    <GripVertical className="w-4 h-4 text-muted-foreground/40 shrink-0 cursor-grab" />
-                  )}
                   {editMode && (
                     <input
                       type="checkbox"
