@@ -157,9 +157,8 @@ jobs:
           # Download update bundles from release and sign them
           mkdir -p /tmp/bundles
           gh release download "$TAG" --repo "$REPO" --pattern "*.app.tar.gz" --dir /tmp/bundles --clobber 2>/dev/null || true
-          gh release download "$TAG" --repo "$REPO" --pattern "*.nsis.zip" --dir /tmp/bundles --clobber 2>/dev/null || true
-          gh release download "$TAG" --repo "$REPO" --pattern "*.AppImage.tar.gz" --dir /tmp/bundles --clobber 2>/dev/null || true
-          gh release download "$TAG" --repo "$REPO" --pattern "*.msi.zip" --dir /tmp/bundles --clobber 2>/dev/null || true
+          gh release download "$TAG" --repo "$REPO" --pattern "*.AppImage" --dir /tmp/bundles --clobber 2>/dev/null || true
+          gh release download "$TAG" --repo "$REPO" --pattern "*x64-setup.exe" --dir /tmp/bundles --clobber 2>/dev/null || true
 
           echo "=== Downloaded bundles ==="
           ls -la /tmp/bundles/ 2>/dev/null || echo "Empty"
@@ -168,8 +167,8 @@ jobs:
           sign_bundle() {
             local file="$1"
             if [ -f "$file" ]; then
-              echo "Signing: $(basename "$file")"
-              npx tauri signer sign -k "$TAURI_SIGNING_PRIVATE_KEY" -p "$TAURI_SIGNING_PRIVATE_KEY_PASSWORD" "$file" 2>&1 || true
+              >&2 echo "Signing: $(basename "$file")"
+              npx tauri signer sign -k "$TAURI_SIGNING_PRIVATE_KEY" -p "$TAURI_SIGNING_PRIVATE_KEY_PASSWORD" "$file" >/dev/null 2>&1 || true
               if [ -f "${file}.sig" ]; then
                 cat "${file}.sig"
               fi
@@ -178,8 +177,8 @@ jobs:
 
           MAC_ARM_FILE=$(find /tmp/bundles -name "*aarch64*app.tar.gz" -type f 2>/dev/null | head -1)
           MAC_X64_FILE=$(find /tmp/bundles -name "*x64*app.tar.gz" -type f 2>/dev/null | head -1)
-          LINUX_FILE=$(find /tmp/bundles -name "*AppImage.tar.gz" -type f 2>/dev/null | head -1)
-          WIN_FILE=$(find /tmp/bundles -name "*nsis.zip" -type f 2>/dev/null | head -1)
+          LINUX_FILE=$(find /tmp/bundles -name "*AppImage" -type f 2>/dev/null | head -1)
+          WIN_FILE=$(find /tmp/bundles -name "*x64-setup.exe" -type f 2>/dev/null | head -1)
 
           MAC_ARM_SIG=$(sign_bundle "$MAC_ARM_FILE")
           MAC_X64_SIG=$(sign_bundle "$MAC_X64_FILE")
@@ -195,8 +194,8 @@ jobs:
 
           MAC_ARM_ASSET=$(echo "$ASSETS" | grep "aarch64.app.tar.gz$" | head -1)
           MAC_X64_ASSET=$(echo "$ASSETS" | grep "x64.app.tar.gz$" | head -1)
-          LINUX_ASSET=$(echo "$ASSETS" | grep "AppImage.tar.gz$" | head -1)
-          WIN_ASSET=$(echo "$ASSETS" | grep "nsis.zip$" | head -1)
+          LINUX_ASSET=$(echo "$ASSETS" | grep "AppImage$" | head -1)
+          WIN_ASSET=$(echo "$ASSETS" | grep "x64-setup.exe$" | head -1)
 
           urlencode() { python3 -c "import urllib.parse; print(urllib.parse.quote('$1', safe=''))"; }
 
