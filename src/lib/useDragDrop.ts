@@ -89,7 +89,10 @@ export function useDragDrop(
     (itemId: number, selectedIds: Set<number>, label?: string) => ({
       onMouseDown: (e: React.MouseEvent) => {
         if (e.button !== 0) return;
-        if ((e.target as HTMLElement).closest("a, button, input, select")) return;
+        const tag = (e.target as HTMLElement).tagName;
+        // Only block drag on actual interactive controls, not links wrapping content
+        if (tag === "INPUT" || tag === "SELECT" || tag === "TEXTAREA") return;
+        if ((e.target as HTMLElement).closest("button")) return;
 
         e.preventDefault();
         const ids =
@@ -113,7 +116,7 @@ export function useDragDrop(
         el.style.opacity = "0.3";
         el.style.transition = "opacity 0.15s";
       },
-      style: { cursor: "grab", userSelect: "none" } as CSSProperties,
+      style: { userSelect: "none" } as CSSProperties,
     }),
     []
   );
