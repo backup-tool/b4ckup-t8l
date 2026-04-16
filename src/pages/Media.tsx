@@ -788,7 +788,7 @@ function MediaItemList({
                 <h3 className="text-sm font-semibold truncate">{m.name as string}</h3>
                 <p className="text-xs text-muted-foreground truncate">
                   {t(`storageTypes.${m.type}`, { defaultValue: m.type as string })}
-                  {m.is_encrypted ? ` \u00b7 \ud83d\udd12 ${m.encryption_label || t("media.encrypted")}` : ""}
+                  {m.is_encrypted ? ` · 🔒 ${m.encryption_label || t("media.encrypted")}` : ""}
                 </p>
               </div>
               <div className="text-right shrink-0">
@@ -853,7 +853,7 @@ function MediaItemList({
               {t(`storageTypes.${m.type}`, { defaultValue: m.type as string })}
               {m.is_encrypted ? (
                 <span className="ml-1.5 text-[10px] text-amber-600 font-medium">
-                  \ud83d\udd12 {m.encryption_label || t("media.encrypted")}
+                  🔒 {m.encryption_label || t("media.encrypted")}
                 </span>
               ) : null}
             </p>
