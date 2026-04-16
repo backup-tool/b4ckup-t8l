@@ -255,7 +255,9 @@
     "resetFilter": "I-reset ang mga filter",
     "yes": "Oo",
     "no": "Hindi",
-    "done": "Tapos"
+    "done": "Tapos",
+    "older": "mas lumang mga entry",
+    "showLess": "Ipakita ang mas kaunti"
   },
   "status": {
     "ok": "Napapanahon",
@@ -394,6 +396,13 @@
     "usb_stick": "USB Stick",
     "sd_card": "SD Card",
     "optical": "Optical (CD/DVD/BD)",
+    "laptop": "Laptop",
+    "desktop_pc": "Desktop PC",
+    "phone": "Telepono",
+    "tablet": "Tablet",
+    "server": "Server",
+    "camera": "Kamera",
+    "console": "Console",
     "nas": "NAS",
     "network_share": "Network Share",
     "ftp": "FTP / SFTP",

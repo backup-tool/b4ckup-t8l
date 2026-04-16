@@ -333,7 +333,8 @@ export function Dashboard() {
                     fontSize: "12px",
                     padding: "8px 12px",
                   }}
-                  formatter={(value: any) => [`${value} GB`, ""]}
+                  formatter={(value: any) => [`${value} GB`]}
+                  separator=""
                 />
                 <Line
                   type="monotone"

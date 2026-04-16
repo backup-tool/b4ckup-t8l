@@ -255,7 +255,9 @@
     "resetFilter": "फ़िल्टर रीसेट करें",
     "yes": "हाँ",
     "no": "नहीं",
-    "done": "हो गया"
+    "done": "हो गया",
+    "older": "पुरानी प्रविष्टियाँ",
+    "showLess": "कम दिखाएँ"
   },
   "status": {
     "ok": "अद्यतित",
@@ -394,6 +396,13 @@
     "usb_stick": "USB स्टिक",
     "sd_card": "SD कार्ड",
     "optical": "ऑप्टिकल (CD/DVD/BD)",
+    "laptop": "लैपटॉप",
+    "desktop_pc": "डेस्कटॉप PC",
+    "phone": "फ़ोन",
+    "tablet": "टैबलेट",
+    "server": "सर्वर",
+    "camera": "कैमरा",
+    "console": "कंसोल",
     "nas": "NAS",
     "network_share": "नेटवर्क शेयर",
     "ftp": "FTP / SFTP",

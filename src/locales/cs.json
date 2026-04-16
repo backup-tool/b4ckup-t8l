@@ -255,7 +255,9 @@
     "resetFilter": "Resetovat filtry",
     "yes": "Ano",
     "no": "Ne",
-    "done": "Hotovo"
+    "done": "Hotovo",
+    "older": "starší záznamy",
+    "showLess": "Zobrazit méně"
   },
   "status": {
     "ok": "Aktuální",
@@ -394,6 +396,13 @@
     "usb_stick": "USB flash disk",
     "sd_card": "SD karta",
     "optical": "Optický (CD/DVD/BD)",
+    "laptop": "Notebook",
+    "desktop_pc": "Stolní PC",
+    "phone": "Telefon",
+    "tablet": "Tablet",
+    "server": "Server",
+    "camera": "Fotoaparát",
+    "console": "Konzole",
     "nas": "NAS",
     "network_share": "Síťové sdílení",
     "ftp": "FTP / SFTP",

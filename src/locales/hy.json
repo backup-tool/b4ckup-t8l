@@ -255,7 +255,9 @@
     "resetFilter": "Reset filters",
     "yes": "Yes",
     "no": "No",
-    "done": "Done"
+    "done": "Done",
+    "older": "older entries",
+    "showLess": "Show less"
   },
   "status": {
     "ok": "Թարմացված",
@@ -394,6 +396,13 @@
     "usb_stick": "USB կրիչ",
     "sd_card": "SD քարտ",
     "optical": "Օպտիկական (CD/DVD/BD)",
+    "laptop": "Նութբուք",
+    "desktop_pc": "Աշխատասեղանի ՀՀ",
+    "phone": "Հեռախոս",
+    "tablet": "Պլանշետ",
+    "server": "Սերվեր",
+    "camera": "Տեսախցիկ",
+    "console": "Կոնսոլ",
     "nas": "NAS",
     "network_share": "Ցանցի համաօգտագործում",
     "ftp": "FTP / SFTP",

@@ -255,7 +255,9 @@
     "resetFilter": "Poništi filtre",
     "yes": "Da",
     "no": "Ne",
-    "done": "Gotovo"
+    "done": "Gotovo",
+    "older": "stariji zapisi",
+    "showLess": "Prikaži manje"
   },
   "status": {
     "ok": "Ažurno",
@@ -394,6 +396,13 @@
     "usb_stick": "USB stick",
     "sd_card": "SD kartica",
     "optical": "Optički (CD/DVD/BD)",
+    "laptop": "Prijenosnik",
+    "desktop_pc": "Stolno računalo",
+    "phone": "Telefon",
+    "tablet": "Tablet",
+    "server": "Poslužitelj",
+    "camera": "Kamera",
+    "console": "Konzola",
     "nas": "NAS",
     "network_share": "Mrežno dijeljenje",
     "ftp": "FTP / SFTP",

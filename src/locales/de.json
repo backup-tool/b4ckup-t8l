@@ -255,7 +255,9 @@
     "resetFilter": "Filter zur\u00fccksetzen",
     "yes": "Ja",
     "no": "Nein",
-    "done": "Fertig"
+    "done": "Fertig",
+    "older": "ältere Einträge",
+    "showLess": "Weniger anzeigen"
   },
   "status": {
     "ok": "Aktuell",
@@ -370,6 +372,8 @@
     "internal_drive": "Interne Festplatte", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Externe Festplatte",
     "usb_stick": "USB-Stick", "sd_card": "SD-Karte", "optical": "Optisch (CD/DVD/BD)",
+    "laptop": "Laptop", "desktop_pc": "Desktop-PC", "phone": "Smartphone", "tablet": "Tablet",
+    "server": "Server", "camera": "Kamera", "console": "Konsole",
     "nas": "NAS", "network_share": "Netzwerkfreigabe", "ftp": "FTP / SFTP", "webdav": "WebDAV",
     "cloud": "Cloud", "object_storage": "Objektspeicher (S3)",
     "tape": "Bandlaufwerk", "raid": "RAID",

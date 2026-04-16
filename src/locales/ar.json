@@ -255,7 +255,9 @@
     "resetFilter": "إعادة تعيين التصفية",
     "yes": "نعم",
     "no": "لا",
-    "done": "تم"
+    "done": "تم",
+    "older": "إدخالات أقدم",
+    "showLess": "عرض أقل"
   },
   "status": {
     "ok": "محدّث",
@@ -394,6 +396,13 @@
     "usb_stick": "ذاكرة USB",
     "sd_card": "بطاقة SD",
     "optical": "بصري (CD/DVD/BD)",
+    "laptop": "كمبيوتر محمول",
+    "desktop_pc": "كمبيوتر مكتبي",
+    "phone": "هاتف",
+    "tablet": "جهاز لوحي",
+    "server": "خادم",
+    "camera": "كاميرا",
+    "console": "وحدة تحكم",
     "nas": "NAS",
     "network_share": "مشاركة شبكة",
     "ftp": "FTP / SFTP",

@@ -255,7 +255,9 @@
     "resetFilter": "איפוס מסננים",
     "yes": "כן",
     "no": "לא",
-    "done": "סיום"
+    "done": "סיום",
+    "older": "רשומות ישנות יותר",
+    "showLess": "הצג פחות"
   },
   "status": {
     "ok": "מעודכן",
@@ -394,6 +396,13 @@
     "usb_stick": "כונן USB",
     "sd_card": "כרטיס SD",
     "optical": "אופטי (CD/DVD/BD)",
+    "laptop": "מחשב נייד",
+    "desktop_pc": "מחשב שולחני",
+    "phone": "טלפון",
+    "tablet": "טאבלט",
+    "server": "שרת",
+    "camera": "מצלמה",
+    "console": "קונסולה",
     "nas": "NAS",
     "network_share": "שיתוף רשת",
     "ftp": "FTP / SFTP",

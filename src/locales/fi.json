@@ -255,7 +255,9 @@
     "resetFilter": "Nollaa suodattimet",
     "yes": "Kyllä",
     "no": "Ei",
-    "done": "Valmis"
+    "done": "Valmis",
+    "older": "vanhemmat merkinnät",
+    "showLess": "Näytä vähemmän"
   },
   "status": {
     "ok": "Ajan tasalla",
@@ -394,6 +396,13 @@
     "usb_stick": "USB-tikku",
     "sd_card": "SD-kortti",
     "optical": "Optinen (CD/DVD/BD)",
+    "laptop": "Kannettava",
+    "desktop_pc": "Pöytätietokone",
+    "phone": "Puhelin",
+    "tablet": "Tabletti",
+    "server": "Palvelin",
+    "camera": "Kamera",
+    "console": "Konsoli",
     "nas": "NAS",
     "network_share": "Verkkojako",
     "ftp": "FTP / SFTP",

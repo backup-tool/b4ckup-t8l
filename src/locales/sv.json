@@ -255,7 +255,9 @@
     "resetFilter": "Återställ filter",
     "yes": "Ja",
     "no": "Nej",
-    "done": "Klar"
+    "done": "Klar",
+    "older": "äldre poster",
+    "showLess": "Visa mindre"
   },
   "status": {
     "ok": "Uppdaterad",
@@ -394,6 +396,13 @@
     "usb_stick": "USB-minne",
     "sd_card": "SD-kort",
     "optical": "Optisk (CD/DVD/BD)",
+    "laptop": "Bärbar dator",
+    "desktop_pc": "Stationär dator",
+    "phone": "Telefon",
+    "tablet": "Surfplatta",
+    "server": "Server",
+    "camera": "Kamera",
+    "console": "Konsol",
     "nas": "NAS",
     "network_share": "Nätverksdelning",
     "ftp": "FTP / SFTP",

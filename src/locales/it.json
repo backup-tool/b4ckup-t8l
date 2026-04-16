@@ -255,7 +255,9 @@
     "resetFilter": "Reimposta filtri",
     "yes": "Sì",
     "no": "No",
-    "done": "Fatto"
+    "done": "Fatto",
+    "older": "voci precedenti",
+    "showLess": "Mostra meno"
   },
   "status": {
     "ok": "Aggiornato",
@@ -394,6 +396,13 @@
     "usb_stick": "Chiavetta USB",
     "sd_card": "Scheda SD",
     "optical": "Ottico (CD/DVD/BD)",
+    "laptop": "Portatile",
+    "desktop_pc": "PC desktop",
+    "phone": "Telefono",
+    "tablet": "Tablet",
+    "server": "Server",
+    "camera": "Fotocamera",
+    "console": "Console",
     "nas": "NAS",
     "network_share": "Condivisione di rete",
     "ftp": "FTP / SFTP",

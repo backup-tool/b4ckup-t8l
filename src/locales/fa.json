@@ -255,7 +255,9 @@
     "resetFilter": "بازنشانی فیلترها",
     "yes": "بله",
     "no": "خیر",
-    "done": "انجام"
+    "done": "انجام",
+    "older": "ورودی‌های قدیمی‌تر",
+    "showLess": "نمایش کمتر"
   },
   "status": {
     "ok": "به‌روز",
@@ -394,6 +396,13 @@
     "usb_stick": "فلش USB",
     "sd_card": "کارت SD",
     "optical": "نوری (CD/DVD/BD)",
+    "laptop": "لپ‌تاپ",
+    "desktop_pc": "رایانه رومیزی",
+    "phone": "تلفن",
+    "tablet": "تبلت",
+    "server": "سرور",
+    "camera": "دوربین",
+    "console": "کنسول",
     "nas": "NAS",
     "network_share": "اشتراک شبکه",
     "ftp": "FTP / SFTP",

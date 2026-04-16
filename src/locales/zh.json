@@ -255,7 +255,9 @@
     "resetFilter": "重置筛选",
     "yes": "是",
     "no": "否",
-    "done": "完成"
+    "done": "完成",
+    "older": "较早的条目",
+    "showLess": "收起"
   },
   "status": {
     "ok": "已更新",
@@ -394,6 +396,13 @@
     "usb_stick": "U盘",
     "sd_card": "SD 卡",
     "optical": "光盘 (CD/DVD/BD)",
+    "laptop": "笔记本电脑",
+    "desktop_pc": "台式电脑",
+    "phone": "手机",
+    "tablet": "平板电脑",
+    "server": "服务器",
+    "camera": "相机",
+    "console": "游戏主机",
     "nas": "NAS",
     "network_share": "网络共享",
     "ftp": "FTP / SFTP",

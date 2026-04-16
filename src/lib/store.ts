@@ -14,6 +14,46 @@ export const useAppStore = create<AppState>((set) => ({
   triggerRefresh: () => set((s) => ({ refreshKey: s.refreshKey + 1 })),
 }));
 
+// --- Persisted View Preferences per page ---
+
+interface PagePrefs {
+  view: "grid" | "list";
+  sortField: string;
+  sortDir: string;
+  filters: Record<string, string>;
+  search: string;
+}
+
+interface ViewPrefsState {
+  pages: Record<string, PagePrefs>;
+  get: (page: string) => PagePrefs;
+  set: (page: string, prefs: Partial<PagePrefs>) => void;
+}
+
+const STORAGE_KEY = "view-prefs";
+const DEFAULTS: PagePrefs = { view: "list", sortField: "name", sortDir: "asc", filters: {}, search: "" };
+
+function loadPrefs(): Record<string, PagePrefs> {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+  } catch { return {}; }
+}
+
+function savePrefs(pages: Record<string, PagePrefs>) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(pages));
+}
+
+export const useViewPrefs = create<ViewPrefsState>((set, getState) => ({
+  pages: loadPrefs(),
+  get: (page) => ({ ...DEFAULTS, ...getState().pages[page] }),
+  set: (page, prefs) =>
+    set((s) => {
+      const pages = { ...s.pages, [page]: { ...DEFAULTS, ...s.pages[page], ...prefs } };
+      savePrefs(pages);
+      return { pages };
+    }),
+}));
+
 // --- Theme ---
 
 type ThemeMode = "light" | "dark" | "system";

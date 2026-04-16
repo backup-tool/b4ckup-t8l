@@ -255,7 +255,9 @@
     "resetFilter": "フィルターをリセット",
     "yes": "はい",
     "no": "いいえ",
-    "done": "完了"
+    "done": "完了",
+    "older": "過去のエントリ",
+    "showLess": "折りたたむ"
   },
   "status": {
     "ok": "最新",
@@ -394,6 +396,13 @@
     "usb_stick": "USBメモリ",
     "sd_card": "SDカード",
     "optical": "光学 (CD/DVD/BD)",
+    "laptop": "ノートパソコン",
+    "desktop_pc": "デスクトップPC",
+    "phone": "スマートフォン",
+    "tablet": "タブレット",
+    "server": "サーバー",
+    "camera": "カメラ",
+    "console": "ゲーム機",
     "nas": "NAS",
     "network_share": "ネットワーク共有",
     "ftp": "FTP / SFTP",

@@ -255,7 +255,9 @@
     "resetFilter": "Resetuj filtry",
     "yes": "Tak",
     "no": "Nie",
-    "done": "Gotowe"
+    "done": "Gotowe",
+    "older": "starsze wpisy",
+    "showLess": "Pokaż mniej"
   },
   "status": {
     "ok": "Aktualne",
@@ -394,6 +396,13 @@
     "usb_stick": "Pendrive",
     "sd_card": "Karta SD",
     "optical": "Optyczny (CD/DVD/BD)",
+    "laptop": "Laptop",
+    "desktop_pc": "Komputer stacjonarny",
+    "phone": "Telefon",
+    "tablet": "Tablet",
+    "server": "Serwer",
+    "camera": "Aparat",
+    "console": "Konsola",
     "nas": "NAS",
     "network_share": "Udział sieciowy",
     "ftp": "FTP / SFTP",

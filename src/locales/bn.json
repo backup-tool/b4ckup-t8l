@@ -255,7 +255,9 @@
     "resetFilter": "ফিল্টার রিসেট করুন",
     "yes": "হ্যাঁ",
     "no": "না",
-    "done": "সম্পন্ন"
+    "done": "সম্পন্ন",
+    "older": "পুরানো এন্ট্রি",
+    "showLess": "কম দেখান"
   },
   "status": {
     "ok": "হালনাগাদ",
@@ -394,6 +396,13 @@
     "usb_stick": "USB স্টিক",
     "sd_card": "SD কার্ড",
     "optical": "অপটিক্যাল (CD/DVD/BD)",
+    "laptop": "ল্যাপটপ",
+    "desktop_pc": "ডেস্কটপ PC",
+    "phone": "ফোন",
+    "tablet": "ট্যাবলেট",
+    "server": "সার্ভার",
+    "camera": "ক্যামেরা",
+    "console": "কনসোল",
     "nas": "NAS",
     "network_share": "নেটওয়ার্ক শেয়ার",
     "ftp": "FTP / SFTP",

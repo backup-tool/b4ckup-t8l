@@ -255,7 +255,9 @@
     "resetFilter": "Επαναφορά φίλτρων",
     "yes": "Ναι",
     "no": "Όχι",
-    "done": "Τέλος"
+    "done": "Τέλος",
+    "older": "παλαιότερες εγγραφές",
+    "showLess": "Εμφάνιση λιγότερων"
   },
   "status": {
     "ok": "Ενημερωμένο",
@@ -394,6 +396,13 @@
     "usb_stick": "USB stick",
     "sd_card": "Κάρτα SD",
     "optical": "Οπτικό (CD/DVD/BD)",
+    "laptop": "Φορητός υπολογιστής",
+    "desktop_pc": "Σταθερός υπολογιστής",
+    "phone": "Τηλέφωνο",
+    "tablet": "Tablet",
+    "server": "Διακομιστής",
+    "camera": "Κάμερα",
+    "console": "Κονσόλα",
     "nas": "NAS",
     "network_share": "Κοινόχρηστος φάκελος δικτύου",
     "ftp": "FTP / SFTP",

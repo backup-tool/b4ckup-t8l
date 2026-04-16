@@ -255,7 +255,9 @@
     "resetFilter": "Сбросить фильтры",
     "yes": "Да",
     "no": "Нет",
-    "done": "Готово"
+    "done": "Готово",
+    "older": "старые записи",
+    "showLess": "Показать меньше"
   },
   "status": {
     "ok": "Актуально",
@@ -394,6 +396,13 @@
     "usb_stick": "USB-флешка",
     "sd_card": "SD-карта",
     "optical": "Оптический (CD/DVD/BD)",
+    "laptop": "Ноутбук",
+    "desktop_pc": "Настольный ПК",
+    "phone": "Телефон",
+    "tablet": "Планшет",
+    "server": "Сервер",
+    "camera": "Камера",
+    "console": "Консоль",
     "nas": "NAS",
     "network_share": "Сетевой ресурс",
     "ftp": "FTP / SFTP",

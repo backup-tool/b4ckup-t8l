@@ -255,7 +255,9 @@
     "resetFilter": "필터 초기화",
     "yes": "예",
     "no": "아니오",
-    "done": "완료"
+    "done": "완료",
+    "older": "이전 항목",
+    "showLess": "간략히 보기"
   },
   "status": {
     "ok": "최신 상태",
@@ -394,6 +396,13 @@
     "usb_stick": "USB 메모리",
     "sd_card": "SD 카드",
     "optical": "광학 (CD/DVD/BD)",
+    "laptop": "노트북",
+    "desktop_pc": "데스크톱 PC",
+    "phone": "휴대전화",
+    "tablet": "태블릿",
+    "server": "서버",
+    "camera": "카메라",
+    "console": "콘솔",
     "nas": "NAS",
     "network_share": "네트워크 공유",
     "ftp": "FTP / SFTP",

@@ -21,6 +21,7 @@ import {
   Loader2,
   Pause,
   Play,
+  ChevronDown,
 } from "lucide-react";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -221,14 +222,18 @@ export function BackupDetail() {
         const { listen } = await import("@tauri-apps/api/event");
         unlisten = await listen<any>("size-progress", (event) => {
           const d = event.payload;
-          setSizeCalcProgress((prev) => ({
-            ...prev,
-            [d.taskId]: {
-              bytes: d.bytes || 0,
-              elapsed: d.elapsed || 0,
-              phase: d.phase,
-            },
-          }));
+          const taskId = d.taskId as string;
+          const newBytes = d.bytes || 0;
+          const newElapsed = d.elapsed || 0;
+          const newPhase = d.phase as string;
+          setSizeCalcProgress((prev) => {
+            const old = prev[taskId];
+            // Only update if bytes actually increased or phase changed (prevents flicker)
+            if (old && newPhase === "calculating" && old.phase === "calculating" && newBytes < old.bytes) {
+              return prev;
+            }
+            return { ...prev, [taskId]: { bytes: newBytes, elapsed: newElapsed, phase: newPhase } };
+          });
         });
       } catch (err) {
         console.warn("Failed to set up progress listener:", err);
@@ -568,13 +573,17 @@ export function BackupDetail() {
 
 
 
-  // Chart data
-  // Chart data — only show entries with final sizes (no live progress)
+  // Chart data — auto-detect best unit based on max size
+  const rawSizes = entries.map((e) => e.size_bytes as number).filter((s) => s > 0);
+  const maxBytes = rawSizes.length > 0 ? Math.max(...rawSizes) : 0;
+  const chartUnit = maxBytes >= 1024 ** 4 ? "TB" : maxBytes >= 1024 ** 3 ? "GB" : maxBytes >= 1024 ** 2 ? "MB" : maxBytes >= 1024 ? "KB" : "Bytes";
+  const chartDivisor = maxBytes >= 1024 ** 4 ? 1024 ** 4 : maxBytes >= 1024 ** 3 ? 1024 ** 3 : maxBytes >= 1024 ** 2 ? 1024 ** 2 : maxBytes >= 1024 ? 1024 : 1;
+
   const chartData = [...entries]
     .reverse()
     .map((e) => ({
       date: formatDate(e.backup_date as string),
-      size: Number(((e.size_bytes as number) / (1024 * 1024 * 1024)).toFixed(2)),
+      size: Number(((e.size_bytes as number) / chartDivisor).toFixed(2)),
     }));
 
   return (
@@ -676,7 +685,7 @@ export function BackupDetail() {
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" vertical={false} opacity={0.5} />
                   <XAxis dataKey="date" tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} />
-                  <YAxis tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} unit=" GB" width={55} />
+                  <YAxis tick={{ fontSize: 10, fill: "var(--muted-fg)" }} tickLine={false} axisLine={false} unit={` ${chartUnit}`} width={65} />
                   <Tooltip
                     contentStyle={{
                       borderRadius: "12px",
@@ -687,7 +696,8 @@ export function BackupDetail() {
                       fontSize: "12px",
                       padding: "8px 12px",
                     }}
-                    formatter={(value: any) => [`${value} GB`, ""]}
+                    formatter={(value: any) => [`${value} ${chartUnit}`]}
+                    separator=""
                   />
                   <Area
                     type="monotone"
@@ -710,35 +720,24 @@ export function BackupDetail() {
             .filter((e) => (e.size_bytes as number) > 0)
             .sort((a, b) => (a.backup_date as string).localeCompare(b.backup_date as string));
           if (sorted.length < 2) return null;
+          const comparisons = sorted.slice(1).map((entry, i) => {
+            const prev = sorted[i];
+            const curSize = entry.size_bytes as number;
+            const prevSize = prev.size_bytes as number;
+            const delta = curSize - prevSize;
+            const pct = prevSize > 0 ? ((delta / prevSize) * 100).toFixed(1) : "—";
+            const isGrowth = delta > 0;
+            return { id: entry.id as number, prev, entry, curSize, delta, pct, isGrowth };
+          });
+          const VISIBLE_COUNT = 5;
+          const recent = comparisons.slice(-VISIBLE_COUNT);
+          const older = comparisons.slice(0, -VISIBLE_COUNT);
           return (
             <Card>
               <CardHeader>
                 <CardTitle>{t("comparison.title")}</CardTitle>
               </CardHeader>
-              <div className="space-y-1">
-                {sorted.map((entry, i) => {
-                  if (i === 0) return null;
-                  const prev = sorted[i - 1];
-                  const curSize = entry.size_bytes as number;
-                  const prevSize = prev.size_bytes as number;
-                  const delta = curSize - prevSize;
-                  const pct = prevSize > 0 ? ((delta / prevSize) * 100).toFixed(1) : "—";
-                  const isGrowth = delta > 0;
-                  return (
-                    <div key={entry.id as number} className="flex items-center justify-between py-2 px-3 rounded-lg bg-muted/50 text-xs">
-                      <span className="text-muted-foreground">
-                        {formatDate((prev.backup_date as string))} → {formatDate((entry.backup_date as string))}
-                      </span>
-                      <div className="flex items-center gap-3">
-                        <span className="tabular-nums">{formatBytes(curSize)}</span>
-                        <span className={`tabular-nums font-medium ${isGrowth ? "text-red-500" : "text-emerald-500"}`}>
-                          {isGrowth ? "+" : ""}{formatBytes(Math.abs(delta))} ({isGrowth ? "+" : ""}{pct}%)
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+              <ComparisonList items={recent} older={older} t={t} />
             </Card>
           );
         })()}
@@ -882,9 +881,11 @@ export function BackupDetail() {
                       const liveBytes = prog?.phase === "calculating" ? prog.bytes : 0;
                       const displayBytes = size > 0 ? size : liveBytes;
                       if (displayBytes > 0) {
+                        const isLive = size === 0 && liveBytes > 0;
                         return (
-                          <span className={`text-xs tabular-nums ml-1 ${size > 0 ? "font-medium" : "text-muted-foreground"}`}>
-                            {formatBytes(displayBytes)}
+                          <span className={`text-xs ml-1 ${size > 0 ? "font-medium" : "text-muted-foreground"}`}>
+                            <span className="tabular-nums inline-block min-w-[5em] text-right">{formatBytes(displayBytes)}</span>
+                            {isLive && <span className="text-[10px] ml-0.5">...</span>}
                           </span>
                         );
                       }
@@ -900,11 +901,11 @@ export function BackupDetail() {
                       const tooltip = "Speicherplatz wird im Hintergrund berechnet.\nBitte die App nicht schließen.";
                       if (prog && prog.phase === "calculating") {
                         const elapsed = prog.elapsed;
-                        const timeStr = elapsed < 60 ? `${elapsed}s` : `${Math.floor(elapsed / 60)}m ${elapsed % 60}s`;
+                        const timeStr = elapsed < 60 ? `${elapsed}s` : `${Math.floor(elapsed / 60)}m ${(elapsed % 60).toString().padStart(2, "0")}s`;
                         return (
                           <span className="text-[10px] text-muted-foreground inline-flex items-center gap-1.5 cursor-default" title={tooltip}>
                             <Loader2 className="w-3 h-3 animate-spin text-primary shrink-0" />
-                            <span className="tabular-nums">{timeStr}</span>
+                            <span className="tabular-nums inline-block min-w-[3em]">{timeStr}</span>
                           </span>
                         );
                       } else if (prog && prog.phase === "waiting") {
@@ -1596,6 +1597,54 @@ export function BackupDetail() {
           </div>
         )}
       </Modal>
+    </div>
+  );
+}
+
+// --- Comparison sub-component with expand/collapse ---
+
+interface ComparisonItem {
+  id: number;
+  prev: Record<string, any>;
+  entry: Record<string, any>;
+  curSize: number;
+  delta: number;
+  pct: string;
+  isGrowth: boolean;
+}
+
+function ComparisonList({ items, older, t }: { items: ComparisonItem[]; older: ComparisonItem[]; t: (k: string) => string }) {
+  const [expanded, setExpanded] = useState(false);
+
+  const renderRow = (c: ComparisonItem) => (
+    <div key={c.id} className="flex items-center justify-between py-2 px-3 rounded-lg bg-muted/50 text-xs">
+      <span className="text-muted-foreground">
+        {formatDate(c.prev.backup_date as string)} → {formatDate(c.entry.backup_date as string)}
+      </span>
+      <div className="flex items-center gap-3">
+        <span className="tabular-nums">{formatBytes(c.curSize)}</span>
+        <span className={`tabular-nums font-medium ${c.isGrowth ? "text-red-500" : "text-emerald-500"}`}>
+          {c.isGrowth ? "+" : ""}{formatBytes(Math.abs(c.delta))} ({c.isGrowth ? "+" : ""}{c.pct}%)
+        </span>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="space-y-1">
+      {older.length > 0 && (
+        <>
+          {expanded && older.map(renderRow)}
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="flex items-center gap-1 w-full py-2 px-3 text-xs text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ChevronDown className={`w-3.5 h-3.5 transition-transform ${expanded ? "rotate-180" : ""}`} />
+            {expanded ? t("common.showLess") : `${older.length} ${t("common.older")}`}
+          </button>
+        </>
+      )}
+      {items.map(renderRow)}
     </div>
   );
 }

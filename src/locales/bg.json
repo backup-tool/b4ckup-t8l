@@ -255,7 +255,9 @@
     "resetFilter": "Нулиране на филтрите",
     "yes": "Да",
     "no": "Не",
-    "done": "Готово"
+    "done": "Готово",
+    "older": "по-стари записи",
+    "showLess": "Покажи по-малко"
   },
   "status": {
     "ok": "Актуално",
@@ -394,6 +396,13 @@
     "usb_stick": "USB флаш",
     "sd_card": "SD карта",
     "optical": "Оптичен (CD/DVD/BD)",
+    "laptop": "Лаптоп",
+    "desktop_pc": "Настолен компютър",
+    "phone": "Телефон",
+    "tablet": "Таблет",
+    "server": "Сървър",
+    "camera": "Камера",
+    "console": "Конзола",
     "nas": "NAS",
     "network_share": "Мрежово споделяне",
     "ftp": "FTP / SFTP",

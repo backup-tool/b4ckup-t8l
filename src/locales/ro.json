@@ -255,7 +255,9 @@
     "resetFilter": "Resetare filtre",
     "yes": "Da",
     "no": "Nu",
-    "done": "Gata"
+    "done": "Gata",
+    "older": "intrări mai vechi",
+    "showLess": "Afișează mai puțin"
   },
   "status": {
     "ok": "La zi",
@@ -394,6 +396,13 @@
     "usb_stick": "Stick USB",
     "sd_card": "Card SD",
     "optical": "Optic (CD/DVD/BD)",
+    "laptop": "Laptop",
+    "desktop_pc": "PC desktop",
+    "phone": "Telefon",
+    "tablet": "Tabletă",
+    "server": "Server",
+    "camera": "Cameră",
+    "console": "Consolă",
     "nas": "NAS",
     "network_share": "Partajare în rețea",
     "ftp": "FTP / SFTP",

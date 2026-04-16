@@ -255,7 +255,9 @@
     "resetFilter": "Nulstil filtre",
     "yes": "Ja",
     "no": "Nej",
-    "done": "Færdig"
+    "done": "Færdig",
+    "older": "ældre poster",
+    "showLess": "Vis mindre"
   },
   "status": {
     "ok": "Opdateret",
@@ -394,6 +396,13 @@
     "usb_stick": "USB-nøgle",
     "sd_card": "SD-kort",
     "optical": "Optisk (CD/DVD/BD)",
+    "laptop": "Bærbar",
+    "desktop_pc": "Stationær PC",
+    "phone": "Telefon",
+    "tablet": "Tablet",
+    "server": "Server",
+    "camera": "Kamera",
+    "console": "Konsol",
     "nas": "NAS",
     "network_share": "Netværksdeling",
     "ftp": "FTP / SFTP",

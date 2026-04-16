@@ -255,7 +255,9 @@
     "resetFilter": "Szűrők visszaállítása",
     "yes": "Igen",
     "no": "Nem",
-    "done": "Kész"
+    "done": "Kész",
+    "older": "régebbi bejegyzések",
+    "showLess": "Kevesebb mutatása"
   },
   "status": {
     "ok": "Naprakész",
@@ -394,6 +396,13 @@
     "usb_stick": "USB pendrive",
     "sd_card": "SD kártya",
     "optical": "Optikai (CD/DVD/BD)",
+    "laptop": "Laptop",
+    "desktop_pc": "Asztali PC",
+    "phone": "Telefon",
+    "tablet": "Tablet",
+    "server": "Szerver",
+    "camera": "Kamera",
+    "console": "Konzol",
     "nas": "NAS",
     "network_share": "Hálózati megosztás",
     "ftp": "FTP / SFTP",

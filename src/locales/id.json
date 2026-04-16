@@ -255,7 +255,9 @@
     "resetFilter": "Atur ulang filter",
     "yes": "Ya",
     "no": "Tidak",
-    "done": "Selesai"
+    "done": "Selesai",
+    "older": "entri lebih lama",
+    "showLess": "Tampilkan lebih sedikit"
   },
   "status": {
     "ok": "Terbaru",
@@ -394,6 +396,13 @@
     "usb_stick": "Flash Drive USB",
     "sd_card": "Kartu SD",
     "optical": "Optik (CD/DVD/BD)",
+    "laptop": "Laptop",
+    "desktop_pc": "PC Desktop",
+    "phone": "Telepon",
+    "tablet": "Tablet",
+    "server": "Server",
+    "camera": "Kamera",
+    "console": "Konsol",
     "nas": "NAS",
     "network_share": "Berbagi Jaringan",
     "ftp": "FTP / SFTP",

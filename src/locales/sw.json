@@ -255,7 +255,9 @@
     "resetFilter": "Weka upya vichujio",
     "yes": "Ndiyo",
     "no": "Hapana",
-    "done": "Imekamilika"
+    "done": "Imekamilika",
+    "older": "maingizo ya zamani",
+    "showLess": "Onyesha kidogo"
   },
   "status": {
     "ok": "Imesasishwa",
@@ -394,6 +396,13 @@
     "usb_stick": "Kijiti cha USB",
     "sd_card": "Kadi ya SD",
     "optical": "Macho (CD/DVD/BD)",
+    "laptop": "Kompyuta Ndogo",
+    "desktop_pc": "Kompyuta ya Mezani",
+    "phone": "Simu",
+    "tablet": "Kompyuta Kibao",
+    "server": "Seva",
+    "camera": "Kamera",
+    "console": "Konsoli",
     "nas": "NAS",
     "network_share": "Kushiriki Mtandao",
     "ftp": "FTP / SFTP",

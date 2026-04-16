@@ -255,7 +255,9 @@
     "resetFilter": "فلٹرز ری سیٹ کریں",
     "yes": "ہاں",
     "no": "نہیں",
-    "done": "ہو گیا"
+    "done": "ہو گیا",
+    "older": "پرانے اندراجات",
+    "showLess": "کم دکھائیں"
   },
   "status": {
     "ok": "تازہ ترین",
@@ -394,6 +396,13 @@
     "usb_stick": "USB اسٹک",
     "sd_card": "SD کارڈ",
     "optical": "آپٹیکل (CD/DVD/BD)",
+    "laptop": "لیپ ٹاپ",
+    "desktop_pc": "ڈیسک ٹاپ PC",
+    "phone": "فون",
+    "tablet": "ٹیبلٹ",
+    "server": "سرور",
+    "camera": "کیمرا",
+    "console": "کنسول",
     "nas": "NAS",
     "network_share": "نیٹ ورک شیئر",
     "ftp": "FTP / SFTP",

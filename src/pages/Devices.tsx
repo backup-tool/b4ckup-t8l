@@ -31,7 +31,8 @@ import {
   restoreDevice,
   permanentDeleteDevice,
 } from "@/lib/db";
-import { DEVICE_TYPES, getDeviceFields } from "@/lib/types";
+import { DEVICE_TYPES, SIZE_UNITS, getDeviceFields } from "@/lib/types";
+import { useViewPrefs } from "@/lib/store";
 import { useFolders } from "@/lib/useFolders";
 import { useDragDrop } from "@/lib/useDragDrop";
 import type { FolderData } from "@/lib/useFolders";
@@ -44,12 +45,19 @@ export function Devices() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<Record<string, any> | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
-  const [view, setView] = useState<"grid" | "list">("grid");
+  const prefs = useViewPrefs((s) => s.get("devices"));
+  const setPrefs = useViewPrefs((s) => s.set);
+  const [view, _setView] = useState<"grid" | "list">(prefs.view as "grid" | "list");
+  const setView = (v: "grid" | "list") => { _setView(v); setPrefs("devices", { view: v }); };
   const [editMode, setEditMode] = useState(false);
-  const [search, setSearch] = useState("");
-  const [filterDeviceType, setFilterDeviceType] = useState("all");
-  const [sortField, setSortField] = useState("name");
-  const [sortDir, setSortDir] = useState("asc");
+  const [search, _setSearch] = useState(prefs.search);
+  const setSearch = (v: string) => { _setSearch(v); setPrefs("devices", { search: v }); };
+  const [filterDeviceType, _setFilterDeviceType] = useState(prefs.filters.type || "all");
+  const setFilterDeviceType = (v: string) => { _setFilterDeviceType(v); setPrefs("devices", { filters: { ...prefs.filters, type: v } }); };
+  const [sortField, _setSortField] = useState(prefs.sortField);
+  const setSortField = (v: string) => { _setSortField(v); setPrefs("devices", { sortField: v }); };
+  const [sortDir, _setSortDir] = useState(prefs.sortDir);
+  const setSortDir = (v: string) => { _setSortDir(v); setPrefs("devices", { sortDir: v }); };
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
   const [bulkConfirmOpen, setBulkConfirmOpen] = useState(false);
   const [lastClickedId, setLastClickedId] = useState<number | null>(null);
@@ -81,7 +89,8 @@ export function Devices() {
     provider: "",
     ip_address: "",
     url: "",
-    storage_capacity: "",
+    storage_capacity_value: "",
+    storage_capacity_unit: "GB",
   });
 
   useEffect(() => {
@@ -137,7 +146,7 @@ export function Devices() {
     setLoading(false);
   }
 
-  const emptyForm = { name: "", type: "laptop", os: "", model: "", serial_number: "", notes: "", brand: "", provider: "", ip_address: "", url: "", storage_capacity: "" };
+  const emptyForm = { name: "", type: "laptop", os: "", model: "", serial_number: "", notes: "", brand: "", provider: "", ip_address: "", url: "", storage_capacity_value: "", storage_capacity_unit: "GB" };
 
   function openCreate() {
     setEditing(null);
@@ -158,9 +167,18 @@ export function Devices() {
       provider: (d.provider as string) || "",
       ip_address: (d.ip_address as string) || "",
       url: (d.url as string) || "",
-      storage_capacity: (d.storage_capacity as string) || "",
+      ...parseCapacity((d.storage_capacity as string) || ""),
     });
     setModalOpen(true);
+  }
+
+  function parseCapacity(str: string) {
+    const match = str.match(/^([\d.]+)\s*(.+)$/);
+    if (match) {
+      const unit = SIZE_UNITS.find((u) => u.value === match[2])?.value || "GB";
+      return { storage_capacity_value: match[1], storage_capacity_unit: unit };
+    }
+    return { storage_capacity_value: str ? str.replace(/[^\d.]/g, "") : "", storage_capacity_unit: "GB" };
   }
 
   const deviceData = () => ({
@@ -174,7 +192,7 @@ export function Devices() {
     provider: form.provider || null,
     ip_address: form.ip_address || null,
     url: form.url || null,
-    storage_capacity: form.storage_capacity || null,
+    storage_capacity: form.storage_capacity_value ? `${form.storage_capacity_value} ${form.storage_capacity_unit}` : null,
   });
 
   async function handleSave() {
@@ -556,11 +574,21 @@ export function Devices() {
                 {fields.includes("storage_capacity") && (
                   <div>
                     <Label>{t("devices.storageCapacity")}</Label>
-                    <Input
-                      value={form.storage_capacity}
-                      onChange={(e) => setForm({ ...form, storage_capacity: e.target.value })}
-                      placeholder="512 GB, 2 TB..."
-                    />
+                    <div className="flex gap-2">
+                      <Input
+                        type="number"
+                        value={form.storage_capacity_value}
+                        onChange={(e) => setForm({ ...form, storage_capacity_value: e.target.value })}
+                        placeholder="512"
+                        className="flex-1"
+                      />
+                      <CustomSelect
+                        className="w-24"
+                        value={form.storage_capacity_unit}
+                        onChange={(val) => setForm({ ...form, storage_capacity_unit: val })}
+                        options={SIZE_UNITS.map((u) => ({ value: u.value, label: u.label }))}
+                      />
+                    </div>
                   </div>
                 )}
               </>

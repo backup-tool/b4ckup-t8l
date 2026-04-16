@@ -83,6 +83,8 @@ export const STORAGE_TYPES = [
   "internal_drive", "ssd", "nvme", "external_drive",
   // Portable
   "usb_stick", "sd_card", "optical",
+  // Devices
+  "laptop", "desktop_pc", "phone", "tablet", "server", "camera", "console",
   // Network
   "nas", "network_share", "ftp", "webdav",
   // Cloud
@@ -122,6 +124,13 @@ export const STORAGE_TYPE_LABELS: Record<string, L> = {
   usb_stick: { en: "USB Stick", de: "USB-Stick", ru: "USB-\u043d\u0430\u043a\u043e\u043f\u0438\u0442\u0435\u043b\u044c" },
   sd_card: { en: "SD Card", de: "SD-Karte", ru: "SD-\u043a\u0430\u0440\u0442\u0430" },
   optical: { en: "Optical (CD/DVD/BD)", de: "Optisch (CD/DVD/BD)", ru: "\u041e\u043f\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 (CD/DVD/BD)" },
+  laptop: { en: "Laptop", de: "Laptop", ru: "\u041d\u043e\u0443\u0442\u0431\u0443\u043a" },
+  desktop_pc: { en: "Desktop PC", de: "Desktop-PC", ru: "\u041d\u0430\u0441\u0442\u043e\u043b\u044c\u043d\u044b\u0439 \u041f\u041a" },
+  phone: { en: "Phone", de: "Smartphone", ru: "\u0422\u0435\u043b\u0435\u0444\u043e\u043d" },
+  tablet: { en: "Tablet", de: "Tablet", ru: "\u041f\u043b\u0430\u043d\u0448\u0435\u0442" },
+  server: { en: "Server", de: "Server", ru: "\u0421\u0435\u0440\u0432\u0435\u0440" },
+  camera: { en: "Camera", de: "Kamera", ru: "\u041a\u0430\u043c\u0435\u0440\u0430" },
+  console: { en: "Console", de: "Konsole", ru: "\u041a\u043e\u043d\u0441\u043e\u043b\u044c" },
   nas: { en: "NAS", de: "NAS", ru: "NAS" },
   network_share: { en: "Network Share", de: "Netzwerkfreigabe", ru: "\u0421\u0435\u0442\u0435\u0432\u043e\u0439 \u0440\u0435\u0441\u0443\u0440\u0441" },
   ftp: { en: "FTP / SFTP", de: "FTP / SFTP", ru: "FTP / SFTP" },

@@ -255,7 +255,9 @@
     "resetFilter": "Đặt lại bộ lọc",
     "yes": "Có",
     "no": "Không",
-    "done": "Xong"
+    "done": "Xong",
+    "older": "mục cũ hơn",
+    "showLess": "Thu gọn"
   },
   "status": {
     "ok": "Đã cập nhật",
@@ -394,6 +396,13 @@
     "usb_stick": "USB",
     "sd_card": "Thẻ SD",
     "optical": "Quang (CD/DVD/BD)",
+    "laptop": "Máy tính xách tay",
+    "desktop_pc": "Máy tính bàn",
+    "phone": "Điện thoại",
+    "tablet": "Máy tính bảng",
+    "server": "Máy chủ",
+    "camera": "Máy ảnh",
+    "console": "Máy chơi game",
     "nas": "NAS",
     "network_share": "Chia sẻ mạng",
     "ftp": "FTP / SFTP",

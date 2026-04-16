@@ -255,7 +255,9 @@
     "resetFilter": "Filtreleri sıfırla",
     "yes": "Evet",
     "no": "Hayır",
-    "done": "Tamam"
+    "done": "Tamam",
+    "older": "eski kayıtlar",
+    "showLess": "Daha az göster"
   },
   "status": {
     "ok": "Güncel",
@@ -394,6 +396,13 @@
     "usb_stick": "USB Bellek",
     "sd_card": "SD Kart",
     "optical": "Optik (CD/DVD/BD)",
+    "laptop": "Dizüstü",
+    "desktop_pc": "Masaüstü PC",
+    "phone": "Telefon",
+    "tablet": "Tablet",
+    "server": "Sunucu",
+    "camera": "Kamera",
+    "console": "Konsol",
     "nas": "NAS",
     "network_share": "Ağ Paylaşımı",
     "ftp": "FTP / SFTP",

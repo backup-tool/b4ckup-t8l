@@ -255,7 +255,9 @@
     "resetFilter": "Parzûnan nû bike",
     "yes": "Erê",
     "no": "Na",
-    "done": "Temam"
+    "done": "Temam",
+    "older": "older entries",
+    "showLess": "Show less"
   },
   "status": {
     "ok": "Nûvekirî",
@@ -394,6 +396,13 @@
     "usb_stick": "Stîka USB",
     "sd_card": "Karta SD",
     "optical": "Optîk (CD/DVD/BD)",
+    "laptop": "Laptop",
+    "desktop_pc": "PC-ya Sermasê",
+    "phone": "Telefon",
+    "tablet": "Tablet",
+    "server": "Pêşkêşker",
+    "camera": "Kamera",
+    "console": "Konsol",
     "nas": "NAS",
     "network_share": "Parvekirina Torê",
     "ftp": "FTP / SFTP",

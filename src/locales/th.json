@@ -255,7 +255,9 @@
     "resetFilter": "รีเซ็ตตัวกรอง",
     "yes": "ใช่",
     "no": "ไม่",
-    "done": "เสร็จ"
+    "done": "เสร็จ",
+    "older": "รายการเก่า",
+    "showLess": "แสดงน้อยลง"
   },
   "status": {
     "ok": "เป็นปัจจุบัน",
@@ -394,6 +396,13 @@
     "usb_stick": "แฟลชไดรฟ์ USB",
     "sd_card": "การ์ด SD",
     "optical": "แผ่นออปติคัล (CD/DVD/BD)",
+    "laptop": "แล็ปท็อป",
+    "desktop_pc": "คอมพิวเตอร์ตั้งโต๊ะ",
+    "phone": "โทรศัพท์",
+    "tablet": "แท็บเล็ต",
+    "server": "เซิร์ฟเวอร์",
+    "camera": "กล้อง",
+    "console": "คอนโซล",
     "nas": "NAS",
     "network_share": "แชร์เครือข่าย",
     "ftp": "FTP / SFTP",

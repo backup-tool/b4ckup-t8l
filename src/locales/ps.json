@@ -255,7 +255,9 @@
     "resetFilter": "فیلټرونه بیا تنظیم کړئ",
     "yes": "هو",
     "no": "نه",
-    "done": "Done"
+    "done": "Done",
+    "older": "older entries",
+    "showLess": "Show less"
   },
   "status": {
     "ok": "تازه",
@@ -394,6 +396,13 @@
     "usb_stick": "USB Stick",
     "sd_card": "SD Card",
     "optical": "Optical (CD/DVD/BD)",
+    "laptop": "Laptop",
+    "desktop_pc": "Desktop PC",
+    "phone": "Phone",
+    "tablet": "Tablet",
+    "server": "Server",
+    "camera": "Camera",
+    "console": "Console",
     "nas": "NAS",
     "network_share": "Network Share",
     "ftp": "FTP / SFTP",

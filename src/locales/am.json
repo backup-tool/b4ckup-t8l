@@ -255,7 +255,9 @@
     "resetFilter": "ማጣሪያዎችን ዳግም አስጀምር",
     "yes": "አዎ",
     "no": "አይ",
-    "done": "Done"
+    "done": "Done",
+    "older": "older entries",
+    "showLess": "Show less"
   },
   "status": {
     "ok": "ወቅታዊ",
@@ -394,6 +396,13 @@
     "usb_stick": "USB ማህደረ ትውስታ",
     "sd_card": "SD ካርድ",
     "optical": "ኦፕቲካል (CD/DVD/BD)",
+    "laptop": "ላፕቶፕ",
+    "desktop_pc": "ዴስክቶፕ ኮምፒውተር",
+    "phone": "ስልክ",
+    "tablet": "ታብሌት",
+    "server": "ሰርቨር",
+    "camera": "ካሜራ",
+    "console": "ኮንሶል",
     "nas": "NAS",
     "network_share": "የአውታረ መረብ ማጋራት",
     "ftp": "FTP / SFTP",

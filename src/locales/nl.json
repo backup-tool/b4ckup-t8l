@@ -255,7 +255,9 @@
     "resetFilter": "Filters resetten",
     "yes": "Ja",
     "no": "Nee",
-    "done": "Klaar"
+    "done": "Klaar",
+    "older": "oudere items",
+    "showLess": "Minder tonen"
   },
   "status": {
     "ok": "Actueel",
@@ -394,6 +396,13 @@
     "usb_stick": "USB-stick",
     "sd_card": "SD-kaart",
     "optical": "Optisch (CD/DVD/BD)",
+    "laptop": "Laptop",
+    "desktop_pc": "Desktop-PC",
+    "phone": "Telefoon",
+    "tablet": "Tablet",
+    "server": "Server",
+    "camera": "Camera",
+    "console": "Console",
     "nas": "NAS",
     "network_share": "Netwerkshare",
     "ftp": "FTP / SFTP",
