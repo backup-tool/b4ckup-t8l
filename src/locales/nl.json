@@ -71,7 +71,34 @@
     "entryNumber": "Nummer",
     "pause": "Pauzeren",
     "resume": "Hervatten",
-    "editLocation": "Locatie bewerken"
+    "editLocation": "Locatie bewerken",
+    "mode": "Modus",
+    "manual": "Handmatig",
+    "automatic": "Automatisch",
+    "frequency": "Frequentie",
+    "time": "Tijd",
+    "weekday": "Weekdag",
+    "monthDay": "Dag van de maand",
+    "customIntervalDays": "Interval (dagen)",
+    "scheduleNote": "Planningsnotitie",
+    "scheduleNotePlaceholder": "bijv. Synology Task Scheduler, cron job...",
+    "customCategory": "Aangepast"
+  },
+  "schedule": {
+    "daily": "Dagelijks",
+    "weekly": "Wekelijks",
+    "monthly": "Maandelijks",
+    "yearly": "Jaarlijks",
+    "custom": "Aangepast"
+  },
+  "weekdays": {
+    "0": "Zondag",
+    "1": "Maandag",
+    "2": "Dinsdag",
+    "3": "Woensdag",
+    "4": "Donderdag",
+    "5": "Vrijdag",
+    "6": "Zaterdag"
   },
   "media": {
     "title": "Opslagmedia",
@@ -275,6 +302,20 @@
     "avg": "Gemiddeld",
     "noData": "Nog geen gegevens."
   },
+  "calendar": {
+    "title": "Back-upkalender",
+    "entries": "vermeldingen"
+  },
+  "bulk": {
+    "selected": "geselecteerd",
+    "select": "Selecteren",
+    "deleteConfirm": "back-ups worden naar de prullenbak verplaatst.",
+    "deleteConfirmMedia": "opslagmedia worden naar de prullenbak verplaatst.",
+    "deleteConfirmDevices": "bronnen worden naar de prullenbak verplaatst."
+  },
+  "comparison": {
+    "title": "Groottevergelijking"
+  },
   "update": {
     "available": "Update beschikbaar",
     "version": "Nieuwe versie:",
@@ -283,18 +324,6 @@
     "ready": "Update gereed",
     "restartDesc": "Herstart de app om de update toe te passen.",
     "restart": "Nu herstarten"
-  },
-  "calendar": {
-    "title": "Back-upkalender",
-    "entries": "vermeldingen"
-  },
-  "bulk": {
-    "selected": "geselecteerd",
-    "select": "Selecteren",
-    "deleteConfirm": "back-ups worden naar de prullenbak verplaatst."
-  },
-  "comparison": {
-    "title": "Groottevergelijking"
   },
   "categories": {
     "photos": "Foto's",
@@ -319,7 +348,15 @@
     "games": "Games",
     "applications": "Applicaties",
     "config": "Configuratie",
-    "other": "Overig"
+    "other": "Overig",
+    "logs": "Logboeken",
+    "credentials": "Inloggegevens",
+    "container": "Container",
+    "cloud_data": "Cloudgegevens",
+    "bookmarks": "Bladwijzers",
+    "passwords": "Wachtwoorden",
+    "notes": "Notities",
+    "education": "Onderwijs"
   },
   "deviceTypes": {
     "desktop": "Desktop-PC",
@@ -338,27 +375,37 @@
     "other": "Overig"
   },
   "storageTypes": {
-    "internal_drive": "Interne HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Interne HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Externe HDD",
-    "usb_stick": "USB-stick", "sd_card": "SD-kaart", "optical": "Optisch (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Netwerkshare", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Cloud", "object_storage": "Objectopslag (S3)",
-    "tape": "Tape", "raid": "RAID",
-    "local": "Lokaal", "other": "Overig"
+    "usb_stick": "USB-stick",
+    "sd_card": "SD-kaart",
+    "optical": "Optisch (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Netwerkshare",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Cloud",
+    "object_storage": "Objectopslag (S3)",
+    "tape": "Tape",
+    "raid": "RAID",
+    "local": "Lokaal",
+    "other": "Overig"
   },
   "folders": {
-      "create": "Nieuwe map",
-      "rename": "Map hernoemen",
-      "deleteFolder": "Map verwijderen",
-      "deleteConfirm": "Map \"{{name}}\" verwijderen? Items worden verplaatst naar Niet ingedeeld.",
-      "folderName": "Mapnaam",
-      "moveToFolder": "Verplaats naar map",
-      "unfiled": "Niet ingedeeld",
-      "allFolders": "Alle",
-      "items": "items",
-      "viewFlat": "Platte weergave",
-      "viewFolder": "Mapweergave",
-      "viewExpanded": "Uitgevouwen weergave"
+    "create": "Nieuwe map",
+    "rename": "Map hernoemen",
+    "deleteFolder": "Map verwijderen",
+    "deleteConfirm": "Map \"{{name}}\" verwijderen? Items worden verplaatst naar Niet ingedeeld.",
+    "folderName": "Mapnaam",
+    "moveToFolder": "Verplaats naar map",
+    "unfiled": "Niet ingedeeld",
+    "allFolders": "Alle",
+    "items": "items",
+    "viewFlat": "Platte weergave",
+    "viewFolder": "Mapweergave",
+    "viewExpanded": "Uitgevouwen weergave"
   },
   "rule321": {
     "title": "3-2-1 back-upregel",

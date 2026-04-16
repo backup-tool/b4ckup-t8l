@@ -71,7 +71,34 @@
     "entryNumber": "نمبر",
     "pause": "روکیں",
     "resume": "دوبارہ شروع کریں",
-    "editLocation": "مقام میں ترمیم کریں"
+    "editLocation": "مقام میں ترمیم کریں",
+    "mode": "موڈ",
+    "manual": "دستی",
+    "automatic": "خودکار",
+    "frequency": "تعدد",
+    "time": "وقت",
+    "weekday": "ہفتے کا دن",
+    "monthDay": "مہینے کا دن",
+    "customIntervalDays": "وقفہ (دن)",
+    "scheduleNote": "شیڈیول نوٹ",
+    "scheduleNotePlaceholder": "مثلاً Synology Task Scheduler, cron job...",
+    "customCategory": "منفرد"
+  },
+  "schedule": {
+    "daily": "روزانہ",
+    "weekly": "ہفتہ وار",
+    "monthly": "ماہانہ",
+    "yearly": "سالانہ",
+    "custom": "منفرد"
+  },
+  "weekdays": {
+    "0": "اتوار",
+    "1": "پیر",
+    "2": "منگل",
+    "3": "بدھ",
+    "4": "جمعرات",
+    "5": "جمعہ",
+    "6": "ہفتہ"
   },
   "media": {
     "title": "اسٹوریج میڈیا",
@@ -275,6 +302,20 @@
     "avg": "اوسط",
     "noData": "ابھی تک کوئی ڈیٹا نہیں۔"
   },
+  "calendar": {
+    "title": "بیک اپ کیلنڈر",
+    "entries": "اندراجات"
+  },
+  "bulk": {
+    "selected": "منتخب",
+    "select": "منتخب کریں",
+    "deleteConfirm": "بیک اپ کچرا دان میں بھیجے جائیں گے۔",
+    "deleteConfirmMedia": "ذخیرہ میڈیا کو کوڑےدان میں منتقل کیا جائے گا۔",
+    "deleteConfirmDevices": "ذرائع کو کوڑےدان میں منتقل کیا جائے گا۔"
+  },
+  "comparison": {
+    "title": "سائز کا موازنہ"
+  },
   "update": {
     "available": "اپ ڈیٹ دستیاب",
     "version": "نیا ورژن:",
@@ -283,18 +324,6 @@
     "ready": "اپ ڈیٹ تیار",
     "restartDesc": "اپ ڈیٹ لاگو کرنے کے لیے ایپ دوبارہ شروع کریں۔",
     "restart": "ابھی دوبارہ شروع کریں"
-  },
-  "calendar": {
-    "title": "بیک اپ کیلنڈر",
-    "entries": "اندراجات"
-  },
-  "bulk": {
-    "selected": "منتخب",
-    "select": "منتخب کریں",
-    "deleteConfirm": "بیک اپ کچرا دان میں بھیجے جائیں گے۔"
-  },
-  "comparison": {
-    "title": "سائز کا موازنہ"
   },
   "categories": {
     "photos": "تصاویر",
@@ -319,7 +348,15 @@
     "games": "گیمز",
     "applications": "ایپلیکیشنز",
     "config": "ترتیب",
-    "other": "دیگر"
+    "other": "دیگر",
+    "logs": "لاگز",
+    "credentials": "اسناد",
+    "container": "کنٹینر",
+    "cloud_data": "کلاؤڈ ڈیٹا",
+    "bookmarks": "بک مارکس",
+    "passwords": "پاس ورڈز",
+    "notes": "نوٹس",
+    "education": "تعلیم"
   },
   "deviceTypes": {
     "desktop": "ڈیسک ٹاپ PC",
@@ -338,27 +375,37 @@
     "other": "دیگر"
   },
   "storageTypes": {
-    "internal_drive": "اندرونی HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "اندرونی HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "بیرونی HDD",
-    "usb_stick": "USB اسٹک", "sd_card": "SD کارڈ", "optical": "آپٹیکل (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "نیٹ ورک شیئر", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "کلاؤڈ", "object_storage": "آبجیکٹ اسٹوریج (S3)",
-    "tape": "ٹیپ", "raid": "RAID",
-    "local": "مقامی", "other": "دیگر"
+    "usb_stick": "USB اسٹک",
+    "sd_card": "SD کارڈ",
+    "optical": "آپٹیکل (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "نیٹ ورک شیئر",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "کلاؤڈ",
+    "object_storage": "آبجیکٹ اسٹوریج (S3)",
+    "tape": "ٹیپ",
+    "raid": "RAID",
+    "local": "مقامی",
+    "other": "دیگر"
   },
   "folders": {
-      "create": "نیا فولڈر",
-      "rename": "فولڈر کا نام تبدیل کریں",
-      "deleteFolder": "فولڈر حذف کریں",
-      "deleteConfirm": "فولڈر \"{{name}}\" حذف کریں؟ آئٹمز غیر مرتب میں منتقل ہو جائیں گے۔",
-      "folderName": "فولڈر کا نام",
-      "moveToFolder": "فولڈر میں منتقل کریں",
-      "unfiled": "غیر مرتب",
-      "allFolders": "سب",
-      "items": "آئٹمز",
-      "viewFlat": "فلیٹ ویو",
-      "viewFolder": "فولڈر ویو",
-      "viewExpanded": "توسیعی ویو"
+    "create": "نیا فولڈر",
+    "rename": "فولڈر کا نام تبدیل کریں",
+    "deleteFolder": "فولڈر حذف کریں",
+    "deleteConfirm": "فولڈر \"{{name}}\" حذف کریں؟ آئٹمز غیر مرتب میں منتقل ہو جائیں گے۔",
+    "folderName": "فولڈر کا نام",
+    "moveToFolder": "فولڈر میں منتقل کریں",
+    "unfiled": "غیر مرتب",
+    "allFolders": "سب",
+    "items": "آئٹمز",
+    "viewFlat": "فلیٹ ویو",
+    "viewFolder": "فولڈر ویو",
+    "viewExpanded": "توسیعی ویو"
   },
   "rule321": {
     "title": "3-2-1 بیک اپ اصول",

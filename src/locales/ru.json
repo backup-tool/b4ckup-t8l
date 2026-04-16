@@ -71,7 +71,34 @@
     "entryNumber": "Номер",
     "pause": "Приостановить",
     "resume": "Возобновить",
-    "editLocation": "Изменить расположение"
+    "editLocation": "Изменить расположение",
+    "mode": "Режим",
+    "manual": "Ручной",
+    "automatic": "Автоматический",
+    "frequency": "Частота",
+    "time": "Время",
+    "weekday": "День недели",
+    "monthDay": "День месяца",
+    "customIntervalDays": "Интервал (дни)",
+    "scheduleNote": "Заметка расписания",
+    "scheduleNotePlaceholder": "напр. Synology Task Scheduler, cron job...",
+    "customCategory": "Пользовательский"
+  },
+  "schedule": {
+    "daily": "Ежедневно",
+    "weekly": "Еженедельно",
+    "monthly": "Ежемесячно",
+    "yearly": "Ежегодно",
+    "custom": "Пользовательский"
+  },
+  "weekdays": {
+    "0": "Воскресенье",
+    "1": "Понедельник",
+    "2": "Вторник",
+    "3": "Среда",
+    "4": "Четверг",
+    "5": "Пятница",
+    "6": "Суббота"
   },
   "media": {
     "title": "Носители данных",
@@ -275,6 +302,20 @@
     "avg": "Среднее",
     "noData": "Данных пока нет."
   },
+  "calendar": {
+    "title": "Календарь резервных копий",
+    "entries": "записей"
+  },
+  "bulk": {
+    "selected": "выбрано",
+    "select": "Выбрать",
+    "deleteConfirm": "резервных копий будут перемещены в корзину.",
+    "deleteConfirmMedia": "носителей будет перемещено в корзину.",
+    "deleteConfirmDevices": "источников будет перемещено в корзину."
+  },
+  "comparison": {
+    "title": "Сравнение размеров"
+  },
   "update": {
     "available": "Доступно обновление",
     "version": "Новая версия:",
@@ -283,18 +324,6 @@
     "ready": "Обновление готово",
     "restartDesc": "Перезапустите приложение, чтобы применить обновление.",
     "restart": "Перезапустить сейчас"
-  },
-  "calendar": {
-    "title": "Календарь резервных копий",
-    "entries": "записей"
-  },
-  "bulk": {
-    "selected": "выбрано",
-    "select": "Выбрать",
-    "deleteConfirm": "резервных копий будут перемещены в корзину."
-  },
-  "comparison": {
-    "title": "Сравнение размеров"
   },
   "categories": {
     "photos": "Фотографии",
@@ -319,7 +348,15 @@
     "games": "Игры",
     "applications": "Приложения",
     "config": "Конфигурация",
-    "other": "Прочее"
+    "other": "Прочее",
+    "logs": "Логи",
+    "credentials": "Учётные данные",
+    "container": "Контейнер",
+    "cloud_data": "Облачные данные",
+    "bookmarks": "Закладки",
+    "passwords": "Пароли",
+    "notes": "Заметки",
+    "education": "Образование"
   },
   "deviceTypes": {
     "desktop": "Настольный ПК",
@@ -338,27 +375,37 @@
     "other": "Прочее"
   },
   "storageTypes": {
-    "internal_drive": "Внутренний HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Внутренний HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Внешний HDD",
-    "usb_stick": "USB-флешка", "sd_card": "SD-карта", "optical": "Оптический (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Сетевой ресурс", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Облако", "object_storage": "Объектное хранилище (S3)",
-    "tape": "Лента", "raid": "RAID",
-    "local": "Локальный", "other": "Прочее"
+    "usb_stick": "USB-флешка",
+    "sd_card": "SD-карта",
+    "optical": "Оптический (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Сетевой ресурс",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Облако",
+    "object_storage": "Объектное хранилище (S3)",
+    "tape": "Лента",
+    "raid": "RAID",
+    "local": "Локальный",
+    "other": "Прочее"
   },
   "folders": {
-      "create": "Новая папка",
-      "rename": "Переименовать папку",
-      "deleteFolder": "Удалить папку",
-      "deleteConfirm": "Удалить папку \"{{name}}\"? Элементы будут перемещены в Несортированные.",
-      "folderName": "Имя папки",
-      "moveToFolder": "Переместить в папку",
-      "unfiled": "Несортированные",
-      "allFolders": "Все",
-      "items": "элементов",
-      "viewFlat": "Плоский вид",
-      "viewFolder": "Вид папок",
-      "viewExpanded": "Развёрнутый вид"
+    "create": "Новая папка",
+    "rename": "Переименовать папку",
+    "deleteFolder": "Удалить папку",
+    "deleteConfirm": "Удалить папку \"{{name}}\"? Элементы будут перемещены в Несортированные.",
+    "folderName": "Имя папки",
+    "moveToFolder": "Переместить в папку",
+    "unfiled": "Несортированные",
+    "allFolders": "Все",
+    "items": "элементов",
+    "viewFlat": "Плоский вид",
+    "viewFolder": "Вид папок",
+    "viewExpanded": "Развёрнутый вид"
   },
   "rule321": {
     "title": "Правило резервных копий 3-2-1",

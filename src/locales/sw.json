@@ -71,7 +71,34 @@
     "entryNumber": "Nambari",
     "pause": "Sitisha",
     "resume": "Endelea",
-    "editLocation": "Hariri Eneo"
+    "editLocation": "Hariri Eneo",
+    "mode": "Hali",
+    "manual": "Mwenyewe",
+    "automatic": "Kiotomatiki",
+    "frequency": "Mara",
+    "time": "Wakati",
+    "weekday": "Siku ya wiki",
+    "monthDay": "Siku ya mwezi",
+    "customIntervalDays": "Muda (siku)",
+    "scheduleNote": "Dokezo la ratiba",
+    "scheduleNotePlaceholder": "mf. Synology Task Scheduler, cron job...",
+    "customCategory": "Maalum"
+  },
+  "schedule": {
+    "daily": "Kila siku",
+    "weekly": "Kila wiki",
+    "monthly": "Kila mwezi",
+    "yearly": "Kila mwaka",
+    "custom": "Maalum"
+  },
+  "weekdays": {
+    "0": "Jumapili",
+    "1": "Jumatatu",
+    "2": "Jumanne",
+    "3": "Jumatano",
+    "4": "Alhamisi",
+    "5": "Ijumaa",
+    "6": "Jumamosi"
   },
   "media": {
     "title": "Vyombo vya Hifadhi",
@@ -275,6 +302,20 @@
     "avg": "Wastani",
     "noData": "Hakuna data bado."
   },
+  "calendar": {
+    "title": "Kalenda ya Nakala Rudufu",
+    "entries": "maingizo"
+  },
+  "bulk": {
+    "selected": "zimechaguliwa",
+    "select": "Chagua",
+    "deleteConfirm": "nakala rudufu zitahamishwa kwenye tupio.",
+    "deleteConfirmMedia": "vyombo vya kuhifadhi vitahamishwa kwenye tupio.",
+    "deleteConfirmDevices": "vyanzo vitahamishwa kwenye tupio."
+  },
+  "comparison": {
+    "title": "Ulinganisho wa Ukubwa"
+  },
   "update": {
     "available": "Sasisho Linapatikana",
     "version": "Toleo jipya:",
@@ -283,18 +324,6 @@
     "ready": "Sasisho Liko Tayari",
     "restartDesc": "Anzisha upya programu ili kutumia sasisho.",
     "restart": "Anzisha Upya Sasa"
-  },
-  "calendar": {
-    "title": "Kalenda ya Nakala Rudufu",
-    "entries": "maingizo"
-  },
-  "bulk": {
-    "selected": "zimechaguliwa",
-    "select": "Chagua",
-    "deleteConfirm": "nakala rudufu zitahamishwa kwenye tupio."
-  },
-  "comparison": {
-    "title": "Ulinganisho wa Ukubwa"
   },
   "categories": {
     "photos": "Picha",
@@ -319,7 +348,15 @@
     "games": "Michezo",
     "applications": "Programu",
     "config": "Usanidi",
-    "other": "Nyingine"
+    "other": "Nyingine",
+    "logs": "Kumbukumbu",
+    "credentials": "Vitambulisho",
+    "container": "Chombo",
+    "cloud_data": "Data ya Wingu",
+    "bookmarks": "Alama",
+    "passwords": "Nywila",
+    "notes": "Maelezo",
+    "education": "Elimu"
   },
   "deviceTypes": {
     "desktop": "Kompyuta ya Mezani",
@@ -338,27 +375,37 @@
     "other": "Nyingine"
   },
   "storageTypes": {
-    "internal_drive": "HDD ya Ndani", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "HDD ya Ndani",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "HDD ya Nje",
-    "usb_stick": "Kijiti cha USB", "sd_card": "Kadi ya SD", "optical": "Macho (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Kushiriki Mtandao", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Wingu", "object_storage": "Hifadhi ya Vitu (S3)",
-    "tape": "Tepu", "raid": "RAID",
-    "local": "Ndani", "other": "Nyingine"
+    "usb_stick": "Kijiti cha USB",
+    "sd_card": "Kadi ya SD",
+    "optical": "Macho (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Kushiriki Mtandao",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Wingu",
+    "object_storage": "Hifadhi ya Vitu (S3)",
+    "tape": "Tepu",
+    "raid": "RAID",
+    "local": "Ndani",
+    "other": "Nyingine"
   },
   "folders": {
-      "create": "Folda Mpya",
-      "rename": "Badilisha Jina la Folda",
-      "deleteFolder": "Futa Folda",
-      "deleteConfirm": "Futa folda \"{{name}}\"? Vipengee vitahamishiwa Bila Folda.",
-      "folderName": "Jina la Folda",
-      "moveToFolder": "Hamisha hadi Folda",
-      "unfiled": "Bila Folda",
-      "allFolders": "Zote",
-      "items": "vipengee",
-      "viewFlat": "Mtazamo Tambarare",
-      "viewFolder": "Mtazamo wa Folda",
-      "viewExpanded": "Mtazamo Uliopanuliwa"
+    "create": "Folda Mpya",
+    "rename": "Badilisha Jina la Folda",
+    "deleteFolder": "Futa Folda",
+    "deleteConfirm": "Futa folda \"{{name}}\"? Vipengee vitahamishiwa Bila Folda.",
+    "folderName": "Jina la Folda",
+    "moveToFolder": "Hamisha hadi Folda",
+    "unfiled": "Bila Folda",
+    "allFolders": "Zote",
+    "items": "vipengee",
+    "viewFlat": "Mtazamo Tambarare",
+    "viewFolder": "Mtazamo wa Folda",
+    "viewExpanded": "Mtazamo Uliopanuliwa"
   },
   "rule321": {
     "title": "Kanuni ya Nakala Rudufu 3-2-1",

@@ -71,7 +71,34 @@
     "entryNumber": "Číslo",
     "pause": "Pozastavit",
     "resume": "Obnovit",
-    "editLocation": "Upravit umístění"
+    "editLocation": "Upravit umístění",
+    "mode": "Režim",
+    "manual": "Ruční",
+    "automatic": "Automatický",
+    "frequency": "Frekvence",
+    "time": "Čas",
+    "weekday": "Den v týdnu",
+    "monthDay": "Den v měsíci",
+    "customIntervalDays": "Interval (dny)",
+    "scheduleNote": "Poznámka k plánu",
+    "scheduleNotePlaceholder": "např. Synology Task Scheduler, cron job...",
+    "customCategory": "Vlastní"
+  },
+  "schedule": {
+    "daily": "Denně",
+    "weekly": "Týně",
+    "monthly": "Měsíčně",
+    "yearly": "Ročně",
+    "custom": "Vlastní"
+  },
+  "weekdays": {
+    "0": "Neděle",
+    "1": "Pondělí",
+    "2": "Úterý",
+    "3": "Středa",
+    "4": "Čtvrtek",
+    "5": "Pátek",
+    "6": "Sobota"
   },
   "media": {
     "title": "Úložná média",
@@ -275,6 +302,20 @@
     "avg": "Průměr",
     "noData": "Zatím žádná data."
   },
+  "calendar": {
+    "title": "Kalendář záloh",
+    "entries": "záznamů"
+  },
+  "bulk": {
+    "selected": "vybráno",
+    "select": "Vybrat",
+    "deleteConfirm": "záloh bude přesunuto do koše.",
+    "deleteConfirmMedia": "médií bude přesunuto do koše.",
+    "deleteConfirmDevices": "zdrojů bude přesunuto do koše."
+  },
+  "comparison": {
+    "title": "Porovnání velikostí"
+  },
   "update": {
     "available": "Dostupná aktualizace",
     "version": "Nová verze:",
@@ -283,18 +324,6 @@
     "ready": "Aktualizace připravena",
     "restartDesc": "Restartujte aplikaci pro použití aktualizace.",
     "restart": "Restartovat nyní"
-  },
-  "calendar": {
-    "title": "Kalendář záloh",
-    "entries": "záznamů"
-  },
-  "bulk": {
-    "selected": "vybráno",
-    "select": "Vybrat",
-    "deleteConfirm": "záloh bude přesunuto do koše."
-  },
-  "comparison": {
-    "title": "Porovnání velikostí"
   },
   "categories": {
     "photos": "Fotografie",
@@ -319,7 +348,15 @@
     "games": "Hry",
     "applications": "Aplikace",
     "config": "Konfigurace",
-    "other": "Ostatní"
+    "other": "Ostatní",
+    "logs": "Logy",
+    "credentials": "Přihlašovací údaje",
+    "container": "Kontejner",
+    "cloud_data": "Cloudová data",
+    "bookmarks": "Záložky",
+    "passwords": "Hesla",
+    "notes": "Poznámky",
+    "education": "Vzdělávání"
   },
   "deviceTypes": {
     "desktop": "Stolní PC",
@@ -338,27 +375,37 @@
     "other": "Ostatní"
   },
   "storageTypes": {
-    "internal_drive": "Interní HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Interní HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Externí HDD",
-    "usb_stick": "USB flash disk", "sd_card": "SD karta", "optical": "Optický (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Síťové sdílení", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Cloud", "object_storage": "Objektové úložiště (S3)",
-    "tape": "Páska", "raid": "RAID",
-    "local": "Lokální", "other": "Ostatní"
+    "usb_stick": "USB flash disk",
+    "sd_card": "SD karta",
+    "optical": "Optický (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Síťové sdílení",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Cloud",
+    "object_storage": "Objektové úložiště (S3)",
+    "tape": "Páska",
+    "raid": "RAID",
+    "local": "Lokální",
+    "other": "Ostatní"
   },
   "folders": {
-      "create": "Nová složka",
-      "rename": "Přejmenovat složku",
-      "deleteFolder": "Smazat složku",
-      "deleteConfirm": "Smazat složku \"{{name}}\"? Položky budou přesunuty do Nezařazené.",
-      "folderName": "Název složky",
-      "moveToFolder": "Přesunout do složky",
-      "unfiled": "Nezařazené",
-      "allFolders": "Vše",
-      "items": "položek",
-      "viewFlat": "Plochý pohled",
-      "viewFolder": "Pohled složek",
-      "viewExpanded": "Rozbalený pohled"
+    "create": "Nová složka",
+    "rename": "Přejmenovat složku",
+    "deleteFolder": "Smazat složku",
+    "deleteConfirm": "Smazat složku \"{{name}}\"? Položky budou přesunuty do Nezařazené.",
+    "folderName": "Název složky",
+    "moveToFolder": "Přesunout do složky",
+    "unfiled": "Nezařazené",
+    "allFolders": "Vše",
+    "items": "položek",
+    "viewFlat": "Plochý pohled",
+    "viewFolder": "Pohled složek",
+    "viewExpanded": "Rozbalený pohled"
   },
   "rule321": {
     "title": "Pravidlo zálohování 3-2-1",

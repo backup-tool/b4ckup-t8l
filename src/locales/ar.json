@@ -71,7 +71,34 @@
     "entryNumber": "الرقم",
     "pause": "إيقاف مؤقت",
     "resume": "استئناف",
-    "editLocation": "تعديل الموقع"
+    "editLocation": "تعديل الموقع",
+    "mode": "الوضع",
+    "manual": "يدوي",
+    "automatic": "تلقائي",
+    "frequency": "التكرار",
+    "time": "الوقت",
+    "weekday": "يوم الأسبوع",
+    "monthDay": "يوم الشهر",
+    "customIntervalDays": "الفاصل (أيام)",
+    "scheduleNote": "ملاحظة الجدولة",
+    "scheduleNotePlaceholder": "مثل Synology Task Scheduler, cron job...",
+    "customCategory": "مخصص"
+  },
+  "schedule": {
+    "daily": "يومي",
+    "weekly": "أسبوعي",
+    "monthly": "شهري",
+    "yearly": "سنوي",
+    "custom": "مخصص"
+  },
+  "weekdays": {
+    "0": "الأحد",
+    "1": "الاثنين",
+    "2": "الثلاثاء",
+    "3": "الأربعاء",
+    "4": "الخميس",
+    "5": "الجمعة",
+    "6": "السبت"
   },
   "media": {
     "title": "وسائط التخزين",
@@ -275,6 +302,20 @@
     "avg": "المتوسط",
     "noData": "لا توجد بيانات بعد."
   },
+  "calendar": {
+    "title": "تقويم النسخ الاحتياطية",
+    "entries": "سجلات"
+  },
+  "bulk": {
+    "selected": "محدد",
+    "select": "تحديد",
+    "deleteConfirm": "نسخ احتياطية سيتم نقلها إلى سلة المحذوفات.",
+    "deleteConfirmMedia": "وسائط التخزين سيتم نقلها إلى سلة المحذوفات.",
+    "deleteConfirmDevices": "المصادر سيتم نقلها إلى سلة المحذوفات."
+  },
+  "comparison": {
+    "title": "مقارنة الأحجام"
+  },
   "update": {
     "available": "يتوفر تحديث",
     "version": "الإصدار الجديد:",
@@ -283,18 +324,6 @@
     "ready": "التحديث جاهز",
     "restartDesc": "أعد تشغيل التطبيق لتطبيق التحديث.",
     "restart": "إعادة التشغيل الآن"
-  },
-  "calendar": {
-    "title": "تقويم النسخ الاحتياطية",
-    "entries": "سجلات"
-  },
-  "bulk": {
-    "selected": "محدد",
-    "select": "تحديد",
-    "deleteConfirm": "نسخ احتياطية سيتم نقلها إلى سلة المحذوفات."
-  },
-  "comparison": {
-    "title": "مقارنة الأحجام"
   },
   "categories": {
     "photos": "صور",
@@ -319,7 +348,15 @@
     "games": "ألعاب",
     "applications": "تطبيقات",
     "config": "إعدادات",
-    "other": "أخرى"
+    "other": "أخرى",
+    "logs": "سجلات",
+    "credentials": "بيانات الاعتماد",
+    "container": "حاوية",
+    "cloud_data": "بيانات سحابية",
+    "bookmarks": "إشارات مرجعية",
+    "passwords": "كلمات المرور",
+    "notes": "ملاحظات",
+    "education": "تعليم"
   },
   "deviceTypes": {
     "desktop": "كمبيوتر مكتبي",
@@ -338,27 +375,37 @@
     "other": "أخرى"
   },
   "storageTypes": {
-    "internal_drive": "HDD داخلي", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "HDD داخلي",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "HDD خارجي",
-    "usb_stick": "ذاكرة USB", "sd_card": "بطاقة SD", "optical": "بصري (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "مشاركة شبكة", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "سحابة", "object_storage": "تخزين كائنات (S3)",
-    "tape": "شريط", "raid": "RAID",
-    "local": "محلي", "other": "أخرى"
+    "usb_stick": "ذاكرة USB",
+    "sd_card": "بطاقة SD",
+    "optical": "بصري (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "مشاركة شبكة",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "سحابة",
+    "object_storage": "تخزين كائنات (S3)",
+    "tape": "شريط",
+    "raid": "RAID",
+    "local": "محلي",
+    "other": "أخرى"
   },
   "folders": {
-      "create": "مجلد جديد",
-      "rename": "إعادة تسمية المجلد",
-      "deleteFolder": "حذف المجلد",
-      "deleteConfirm": "حذف المجلد \"{{name}}\"؟ سيتم نقل العناصر إلى غير مصنف.",
-      "folderName": "اسم المجلد",
-      "moveToFolder": "نقل إلى مجلد",
-      "unfiled": "غير مصنف",
-      "allFolders": "الكل",
-      "items": "عناصر",
-      "viewFlat": "عرض مسطح",
-      "viewFolder": "عرض المجلدات",
-      "viewExpanded": "عرض موسع"
+    "create": "مجلد جديد",
+    "rename": "إعادة تسمية المجلد",
+    "deleteFolder": "حذف المجلد",
+    "deleteConfirm": "حذف المجلد \"{{name}}\"؟ سيتم نقل العناصر إلى غير مصنف.",
+    "folderName": "اسم المجلد",
+    "moveToFolder": "نقل إلى مجلد",
+    "unfiled": "غير مصنف",
+    "allFolders": "الكل",
+    "items": "عناصر",
+    "viewFlat": "عرض مسطح",
+    "viewFolder": "عرض المجلدات",
+    "viewExpanded": "عرض موسع"
   },
   "rule321": {
     "title": "قاعدة النسخ الاحتياطي 3-2-1",

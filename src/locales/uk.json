@@ -71,7 +71,34 @@
     "entryNumber": "Номер",
     "pause": "Призупинити",
     "resume": "Відновити",
-    "editLocation": "Редагувати розташування"
+    "editLocation": "Редагувати розташування",
+    "mode": "Режим",
+    "manual": "Ручний",
+    "automatic": "Автоматичний",
+    "frequency": "Частота",
+    "time": "Час",
+    "weekday": "День тижня",
+    "monthDay": "День місяця",
+    "customIntervalDays": "Інтервал (дні)",
+    "scheduleNote": "Примітка розкладу",
+    "scheduleNotePlaceholder": "напр. Synology Task Scheduler, cron job...",
+    "customCategory": "Користувацький"
+  },
+  "schedule": {
+    "daily": "Щодня",
+    "weekly": "Щотижня",
+    "monthly": "Щомісяця",
+    "yearly": "Щороку",
+    "custom": "Користувацький"
+  },
+  "weekdays": {
+    "0": "Неділя",
+    "1": "Понеділок",
+    "2": "Вівторок",
+    "3": "Середа",
+    "4": "Четвер",
+    "5": "П'ятниця",
+    "6": "Субота"
   },
   "media": {
     "title": "Носії даних",
@@ -275,6 +302,20 @@
     "avg": "Середнє",
     "noData": "Даних ще немає."
   },
+  "calendar": {
+    "title": "Календар резервних копій",
+    "entries": "записів"
+  },
+  "bulk": {
+    "selected": "обрано",
+    "select": "Обрати",
+    "deleteConfirm": "резервних копій буде переміщено до кошика.",
+    "deleteConfirmMedia": "носіїв буде переміщено до кошика.",
+    "deleteConfirmDevices": "джерел буде переміщено до кошика."
+  },
+  "comparison": {
+    "title": "Порівняння розмірів"
+  },
   "update": {
     "available": "Доступне оновлення",
     "version": "Нова версія:",
@@ -283,18 +324,6 @@
     "ready": "Оновлення готове",
     "restartDesc": "Перезапустіть програму, щоб застосувати оновлення.",
     "restart": "Перезапустити зараз"
-  },
-  "calendar": {
-    "title": "Календар резервних копій",
-    "entries": "записів"
-  },
-  "bulk": {
-    "selected": "обрано",
-    "select": "Обрати",
-    "deleteConfirm": "резервних копій буде переміщено до кошика."
-  },
-  "comparison": {
-    "title": "Порівняння розмірів"
   },
   "categories": {
     "photos": "Фотографії",
@@ -319,7 +348,15 @@
     "games": "Ігри",
     "applications": "Програми",
     "config": "Конфігурація",
-    "other": "Інше"
+    "other": "Інше",
+    "logs": "Логи",
+    "credentials": "Облікові дані",
+    "container": "Контейнер",
+    "cloud_data": "Хмарні дані",
+    "bookmarks": "Закладки",
+    "passwords": "Паролі",
+    "notes": "Нотатки",
+    "education": "Освіта"
   },
   "deviceTypes": {
     "desktop": "Настільний ПК",
@@ -338,27 +375,37 @@
     "other": "Інше"
   },
   "storageTypes": {
-    "internal_drive": "Внутрішній HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Внутрішній HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Зовнішній HDD",
-    "usb_stick": "USB-флешка", "sd_card": "SD-картка", "optical": "Оптичний (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Мережевий ресурс", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Хмара", "object_storage": "Об'єктне сховище (S3)",
-    "tape": "Стрічка", "raid": "RAID",
-    "local": "Локальний", "other": "Інше"
+    "usb_stick": "USB-флешка",
+    "sd_card": "SD-картка",
+    "optical": "Оптичний (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Мережевий ресурс",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Хмара",
+    "object_storage": "Об'єктне сховище (S3)",
+    "tape": "Стрічка",
+    "raid": "RAID",
+    "local": "Локальний",
+    "other": "Інше"
   },
   "folders": {
-      "create": "Нова папка",
-      "rename": "Перейменувати папку",
-      "deleteFolder": "Видалити папку",
-      "deleteConfirm": "Видалити папку \"{{name}}\"? Елементи будуть переміщені до Несортовані.",
-      "folderName": "Назва папки",
-      "moveToFolder": "Перемістити до папки",
-      "unfiled": "Несортовані",
-      "allFolders": "Усі",
-      "items": "елементів",
-      "viewFlat": "Плоский вигляд",
-      "viewFolder": "Вигляд папок",
-      "viewExpanded": "Розгорнутий вигляд"
+    "create": "Нова папка",
+    "rename": "Перейменувати папку",
+    "deleteFolder": "Видалити папку",
+    "deleteConfirm": "Видалити папку \"{{name}}\"? Елементи будуть переміщені до Несортовані.",
+    "folderName": "Назва папки",
+    "moveToFolder": "Перемістити до папки",
+    "unfiled": "Несортовані",
+    "allFolders": "Усі",
+    "items": "елементів",
+    "viewFlat": "Плоский вигляд",
+    "viewFolder": "Вигляд папок",
+    "viewExpanded": "Розгорнутий вигляд"
   },
   "rule321": {
     "title": "Правило резервних копій 3-2-1",

@@ -71,7 +71,34 @@
     "entryNumber": "Hejmar",
     "pause": "Raweste",
     "resume": "Bidomîne",
-    "editLocation": "Cihê Biguherîne"
+    "editLocation": "Cihê Biguherîne",
+    "mode": "Mod",
+    "manual": "Destî",
+    "automatic": "Otömatik",
+    "frequency": "Frekans",
+    "time": "Dem",
+    "weekday": "Roja heftê",
+    "monthDay": "Roja mehê",
+    "customIntervalDays": "Navîn (roj)",
+    "scheduleNote": "Nîtîa bername",
+    "scheduleNotePlaceholder": "mîn. Synology Task Scheduler, cron job...",
+    "customCategory": "Taybet"
+  },
+  "schedule": {
+    "daily": "Rojane",
+    "weekly": "Heftane",
+    "monthly": "Mehane",
+    "yearly": "Salane",
+    "custom": "Taybet"
+  },
+  "weekdays": {
+    "0": "Yîkşem",
+    "1": "Duşem",
+    "2": "Sêşem",
+    "3": "Çarşem",
+    "4": "Pêncşem",
+    "5": "În",
+    "6": "Şem"
   },
   "media": {
     "title": "Medyaya Hilanînê",
@@ -275,6 +302,20 @@
     "avg": "Navîn",
     "noData": "Hîn dane tune."
   },
+  "calendar": {
+    "title": "Salnameya Paştgirtinê",
+    "entries": "tomar"
+  },
+  "bulk": {
+    "selected": "hatine hilbijartin",
+    "select": "Hilbijêre",
+    "deleteConfirm": "paştgirtin dê bên veguheztin çopxanê.",
+    "deleteConfirmMedia": "medêyayê hilaninê dê berin zibilê.",
+    "deleteConfirmDevices": "çavkaniyan dê berin zibilê."
+  },
+  "comparison": {
+    "title": "Berhevkirina Mezinahiyê"
+  },
   "update": {
     "available": "Nûvekirin Amade ye",
     "version": "Guhertoya nû:",
@@ -283,18 +324,6 @@
     "ready": "Nûvekirin Amade ye",
     "restartDesc": "Ji bo sepandina nûvekirinê sepanê ji nû ve dest pê bike.",
     "restart": "Niha ji Nû ve Dest pê bike"
-  },
-  "calendar": {
-    "title": "Salnameya Paştgirtinê",
-    "entries": "tomar"
-  },
-  "bulk": {
-    "selected": "hatine hilbijartin",
-    "select": "Hilbijêre",
-    "deleteConfirm": "paştgirtin dê bên veguheztin çopxanê."
-  },
-  "comparison": {
-    "title": "Berhevkirina Mezinahiyê"
   },
   "categories": {
     "photos": "Wêne",
@@ -319,7 +348,15 @@
     "games": "Lîstik",
     "applications": "Sepan",
     "config": "Mîhengkirin",
-    "other": "Din"
+    "other": "Din",
+    "logs": "Tömârker",
+    "credentials": "Nasnamê",
+    "container": "Container",
+    "cloud_data": "Daneêyê ewrê",
+    "bookmarks": "Nişanêker",
+    "passwords": "Şîfre",
+    "notes": "Not",
+    "education": "Pêrwerdê"
   },
   "deviceTypes": {
     "desktop": "PC-ya Sermasê",
@@ -338,27 +375,37 @@
     "other": "Din"
   },
   "storageTypes": {
-    "internal_drive": "HDD-ya Hundurîn", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "HDD-ya Hundurîn",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "HDD-ya Derve",
-    "usb_stick": "Stîka USB", "sd_card": "Karta SD", "optical": "Optîk (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Parvekirina Torê", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Ewr", "object_storage": "Hilanîna Objeyê (S3)",
-    "tape": "Teyp", "raid": "RAID",
-    "local": "Herêmî", "other": "Din"
+    "usb_stick": "Stîka USB",
+    "sd_card": "Karta SD",
+    "optical": "Optîk (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Parvekirina Torê",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Ewr",
+    "object_storage": "Hilanîna Objeyê (S3)",
+    "tape": "Teyp",
+    "raid": "RAID",
+    "local": "Herêmî",
+    "other": "Din"
   },
   "folders": {
-      "create": "Pûşeya nû",
-      "rename": "Navê pûşeyê biguherîne",
-      "deleteFolder": "Pûşeyê jê bibe",
-      "deleteConfirm": "Pûşeya \"{{name}}\" jê bibe? Tişt dê bên veguheztin bo Nebûyî.",
-      "folderName": "Navê pûşeyê",
-      "moveToFolder": "Bibe pûşeyê",
-      "unfiled": "Nebûyî",
-      "allFolders": "Hemî",
-      "items": "tişt",
-      "viewFlat": "Dîmena dûz",
-      "viewFolder": "Dîmena pûşeyê",
-      "viewExpanded": "Dîmena berfireh"
+    "create": "Pûşeya nû",
+    "rename": "Navê pûşeyê biguherîne",
+    "deleteFolder": "Pûşeyê jê bibe",
+    "deleteConfirm": "Pûşeya \"{{name}}\" jê bibe? Tişt dê bên veguheztin bo Nebûyî.",
+    "folderName": "Navê pûşeyê",
+    "moveToFolder": "Bibe pûşeyê",
+    "unfiled": "Nebûyî",
+    "allFolders": "Hemî",
+    "items": "tişt",
+    "viewFlat": "Dîmena dûz",
+    "viewFolder": "Dîmena pûşeyê",
+    "viewExpanded": "Dîmena berfireh"
   },
   "rule321": {
     "title": "Rêgeza Paştgirtinê 3-2-1",

@@ -71,7 +71,34 @@
     "entryNumber": "Numara",
     "pause": "Duraklat",
     "resume": "Devam Et",
-    "editLocation": "Konumu düzenle"
+    "editLocation": "Konumu düzenle",
+    "mode": "Mod",
+    "manual": "Manuel",
+    "automatic": "Otomatik",
+    "frequency": "Sıklık",
+    "time": "Saat",
+    "weekday": "Haftanın günü",
+    "monthDay": "Ayın günü",
+    "customIntervalDays": "Aralık (gün)",
+    "scheduleNote": "Zamanlama notu",
+    "scheduleNotePlaceholder": "örn. Synology Task Scheduler, cron job...",
+    "customCategory": "Özel"
+  },
+  "schedule": {
+    "daily": "Günlük",
+    "weekly": "Haftalık",
+    "monthly": "Aylık",
+    "yearly": "Yıllık",
+    "custom": "Özel"
+  },
+  "weekdays": {
+    "0": "Pazar",
+    "1": "Pazartesi",
+    "2": "Salı",
+    "3": "Çarşamba",
+    "4": "Perşembe",
+    "5": "Cuma",
+    "6": "Cumartesi"
   },
   "media": {
     "title": "Depolama Ortamları",
@@ -275,6 +302,20 @@
     "avg": "Ortalama",
     "noData": "Henüz veri yok."
   },
+  "calendar": {
+    "title": "Yedek Takvimi",
+    "entries": "kayıt"
+  },
+  "bulk": {
+    "selected": "seçili",
+    "select": "Seç",
+    "deleteConfirm": "yedek çöp kutusuna taşınacak.",
+    "deleteConfirmMedia": "depolama ortamı çöp kutusuna taşınacak.",
+    "deleteConfirmDevices": "kaynak çöp kutusuna taşınacak."
+  },
+  "comparison": {
+    "title": "Boyut Karşılaştırması"
+  },
   "update": {
     "available": "Güncelleme Mevcut",
     "version": "Yeni sürüm:",
@@ -283,18 +324,6 @@
     "ready": "Güncelleme Hazır",
     "restartDesc": "Güncellemeyi uygulamak için uygulamayı yeniden başlatın.",
     "restart": "Şimdi Yeniden Başlat"
-  },
-  "calendar": {
-    "title": "Yedek Takvimi",
-    "entries": "kayıt"
-  },
-  "bulk": {
-    "selected": "seçili",
-    "select": "Seç",
-    "deleteConfirm": "yedek çöp kutusuna taşınacak."
-  },
-  "comparison": {
-    "title": "Boyut Karşılaştırması"
   },
   "categories": {
     "photos": "Fotoğraflar",
@@ -319,7 +348,15 @@
     "games": "Oyunlar",
     "applications": "Uygulamalar",
     "config": "Yapılandırma",
-    "other": "Diğer"
+    "other": "Diğer",
+    "logs": "Günlükler",
+    "credentials": "Kimlik bilgileri",
+    "container": "Container",
+    "cloud_data": "Bulut verileri",
+    "bookmarks": "Yer imleri",
+    "passwords": "Şifreler",
+    "notes": "Notlar",
+    "education": "Eğitim"
   },
   "deviceTypes": {
     "desktop": "Masaüstü PC",
@@ -338,27 +375,37 @@
     "other": "Diğer"
   },
   "storageTypes": {
-    "internal_drive": "Dahili HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Dahili HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Harici HDD",
-    "usb_stick": "USB Bellek", "sd_card": "SD Kart", "optical": "Optik (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Ağ Paylaşımı", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Bulut", "object_storage": "Nesne Depolama (S3)",
-    "tape": "Teyp", "raid": "RAID",
-    "local": "Yerel", "other": "Diğer"
+    "usb_stick": "USB Bellek",
+    "sd_card": "SD Kart",
+    "optical": "Optik (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Ağ Paylaşımı",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Bulut",
+    "object_storage": "Nesne Depolama (S3)",
+    "tape": "Teyp",
+    "raid": "RAID",
+    "local": "Yerel",
+    "other": "Diğer"
   },
   "folders": {
-      "create": "Yeni Klasör",
-      "rename": "Klasörü Yeniden Adlandır",
-      "deleteFolder": "Klasörü Sil",
-      "deleteConfirm": "\"{{name}}\" klasörünü silmek istiyor musunuz? Öğeler Sınıflandırılmamış bölümüne taşınacak.",
-      "folderName": "Klasör Adı",
-      "moveToFolder": "Klasöre Taşı",
-      "unfiled": "Sınıflandırılmamış",
-      "allFolders": "Tümü",
-      "items": "öğe",
-      "viewFlat": "Düz Görünüm",
-      "viewFolder": "Klasör Görünümü",
-      "viewExpanded": "Genişletilmiş Görünüm"
+    "create": "Yeni Klasör",
+    "rename": "Klasörü Yeniden Adlandır",
+    "deleteFolder": "Klasörü Sil",
+    "deleteConfirm": "\"{{name}}\" klasörünü silmek istiyor musunuz? Öğeler Sınıflandırılmamış bölümüne taşınacak.",
+    "folderName": "Klasör Adı",
+    "moveToFolder": "Klasöre Taşı",
+    "unfiled": "Sınıflandırılmamış",
+    "allFolders": "Tümü",
+    "items": "öğe",
+    "viewFlat": "Düz Görünüm",
+    "viewFolder": "Klasör Görünümü",
+    "viewExpanded": "Genişletilmiş Görünüm"
   },
   "rule321": {
     "title": "3-2-1 Yedekleme Kuralı",

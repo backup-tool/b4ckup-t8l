@@ -71,7 +71,34 @@
     "entryNumber": "编号",
     "pause": "暂停",
     "resume": "恢复",
-    "editLocation": "编辑位置"
+    "editLocation": "编辑位置",
+    "mode": "模式",
+    "manual": "手动",
+    "automatic": "自动",
+    "frequency": "频率",
+    "time": "时间",
+    "weekday": "星期几",
+    "monthDay": "每月几号",
+    "customIntervalDays": "间隔（天）",
+    "scheduleNote": "计划备注",
+    "scheduleNotePlaceholder": "例如 Synology Task Scheduler, cron job...",
+    "customCategory": "自定义"
+  },
+  "schedule": {
+    "daily": "每日",
+    "weekly": "每周",
+    "monthly": "每月",
+    "yearly": "每年",
+    "custom": "自定义"
+  },
+  "weekdays": {
+    "0": "星期日",
+    "1": "星期一",
+    "2": "星期二",
+    "3": "星期三",
+    "4": "星期四",
+    "5": "星期五",
+    "6": "星期六"
   },
   "media": {
     "title": "存储介质",
@@ -275,6 +302,20 @@
     "avg": "平均",
     "noData": "暂无数据。"
   },
+  "calendar": {
+    "title": "备份日历",
+    "entries": "条目"
+  },
+  "bulk": {
+    "selected": "已选",
+    "select": "选择",
+    "deleteConfirm": "个备份将被移至回收站。",
+    "deleteConfirmMedia": "个存储介质将被移至回收站。",
+    "deleteConfirmDevices": "个来源将被移至回收站。"
+  },
+  "comparison": {
+    "title": "大小对比"
+  },
   "update": {
     "available": "有可用更新",
     "version": "新版本：",
@@ -283,18 +324,6 @@
     "ready": "更新就绪",
     "restartDesc": "重启应用以应用更新。",
     "restart": "立即重启"
-  },
-  "calendar": {
-    "title": "备份日历",
-    "entries": "条目"
-  },
-  "bulk": {
-    "selected": "已选",
-    "select": "选择",
-    "deleteConfirm": "个备份将被移至回收站。"
-  },
-  "comparison": {
-    "title": "大小对比"
   },
   "categories": {
     "photos": "照片",
@@ -319,7 +348,15 @@
     "games": "游戏",
     "applications": "应用程序",
     "config": "配置",
-    "other": "其他"
+    "other": "其他",
+    "logs": "日志",
+    "credentials": "凭据",
+    "container": "容器",
+    "cloud_data": "云数据",
+    "bookmarks": "书签",
+    "passwords": "密码",
+    "notes": "笔记",
+    "education": "教育"
   },
   "deviceTypes": {
     "desktop": "台式电脑",
@@ -338,27 +375,37 @@
     "other": "其他"
   },
   "storageTypes": {
-    "internal_drive": "内置 HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "内置 HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "外置 HDD",
-    "usb_stick": "U盘", "sd_card": "SD 卡", "optical": "光盘 (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "网络共享", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "云端", "object_storage": "对象存储 (S3)",
-    "tape": "磁带", "raid": "RAID",
-    "local": "本地", "other": "其他"
+    "usb_stick": "U盘",
+    "sd_card": "SD 卡",
+    "optical": "光盘 (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "网络共享",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "云端",
+    "object_storage": "对象存储 (S3)",
+    "tape": "磁带",
+    "raid": "RAID",
+    "local": "本地",
+    "other": "其他"
   },
   "folders": {
-      "create": "新建文件夹",
-      "rename": "重命名文件夹",
-      "deleteFolder": "删除文件夹",
-      "deleteConfirm": "删除文件夹\"{{name}}\"？项目将移至未分类。",
-      "folderName": "文件夹名称",
-      "moveToFolder": "移至文件夹",
-      "unfiled": "未分类",
-      "allFolders": "全部",
-      "items": "个项目",
-      "viewFlat": "平铺视图",
-      "viewFolder": "文件夹视图",
-      "viewExpanded": "展开视图"
+    "create": "新建文件夹",
+    "rename": "重命名文件夹",
+    "deleteFolder": "删除文件夹",
+    "deleteConfirm": "删除文件夹\"{{name}}\"？项目将移至未分类。",
+    "folderName": "文件夹名称",
+    "moveToFolder": "移至文件夹",
+    "unfiled": "未分类",
+    "allFolders": "全部",
+    "items": "个项目",
+    "viewFlat": "平铺视图",
+    "viewFolder": "文件夹视图",
+    "viewExpanded": "展开视图"
   },
   "rule321": {
     "title": "3-2-1 备份规则",

@@ -71,7 +71,34 @@
     "entryNumber": "Nummer",
     "pause": "Pausa",
     "resume": "Återuppta",
-    "editLocation": "Redigera plats"
+    "editLocation": "Redigera plats",
+    "mode": "Läge",
+    "manual": "Manuell",
+    "automatic": "Automatisk",
+    "frequency": "Frekvens",
+    "time": "Tid",
+    "weekday": "Veckodag",
+    "monthDay": "Dag i månaden",
+    "customIntervalDays": "Intervall (dagar)",
+    "scheduleNote": "Schemaanteckning",
+    "scheduleNotePlaceholder": "t.ex. Synology Task Scheduler, cron job...",
+    "customCategory": "Anpassad"
+  },
+  "schedule": {
+    "daily": "Dagligen",
+    "weekly": "Veckovis",
+    "monthly": "Månatligen",
+    "yearly": "Årligen",
+    "custom": "Anpassad"
+  },
+  "weekdays": {
+    "0": "Söndag",
+    "1": "Måndag",
+    "2": "Tisdag",
+    "3": "Onsdag",
+    "4": "Torsdag",
+    "5": "Fredag",
+    "6": "Lördag"
   },
   "media": {
     "title": "Lagringsmedia",
@@ -275,6 +302,20 @@
     "avg": "Genomsnitt",
     "noData": "Ingen data ännu."
   },
+  "calendar": {
+    "title": "Säkerhetskopieringskalender",
+    "entries": "poster"
+  },
+  "bulk": {
+    "selected": "valda",
+    "select": "Välj",
+    "deleteConfirm": "säkerhetskopior flyttas till papperskorgen.",
+    "deleteConfirmMedia": "lagringsmedia kommer att flyttas till papperskorgen.",
+    "deleteConfirmDevices": "källor kommer att flyttas till papperskorgen."
+  },
+  "comparison": {
+    "title": "Storleksjämförelse"
+  },
   "update": {
     "available": "Uppdatering tillgänglig",
     "version": "Ny version:",
@@ -283,18 +324,6 @@
     "ready": "Uppdatering klar",
     "restartDesc": "Starta om appen för att tillämpa uppdateringen.",
     "restart": "Starta om nu"
-  },
-  "calendar": {
-    "title": "Säkerhetskopieringskalender",
-    "entries": "poster"
-  },
-  "bulk": {
-    "selected": "valda",
-    "select": "Välj",
-    "deleteConfirm": "säkerhetskopior flyttas till papperskorgen."
-  },
-  "comparison": {
-    "title": "Storleksjämförelse"
   },
   "categories": {
     "photos": "Foton",
@@ -319,7 +348,15 @@
     "games": "Spel",
     "applications": "Applikationer",
     "config": "Konfiguration",
-    "other": "Övrigt"
+    "other": "Övrigt",
+    "logs": "Loggar",
+    "credentials": "Autentiseringsuppgifter",
+    "container": "Container",
+    "cloud_data": "Molndata",
+    "bookmarks": "Bokmärken",
+    "passwords": "Lösenord",
+    "notes": "Anteckningar",
+    "education": "Utbildning"
   },
   "deviceTypes": {
     "desktop": "Stationär dator",
@@ -338,27 +375,37 @@
     "other": "Övrigt"
   },
   "storageTypes": {
-    "internal_drive": "Intern HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Intern HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Extern HDD",
-    "usb_stick": "USB-minne", "sd_card": "SD-kort", "optical": "Optisk (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Nätverksdelning", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Moln", "object_storage": "Objektlagring (S3)",
-    "tape": "Band", "raid": "RAID",
-    "local": "Lokal", "other": "Övrigt"
+    "usb_stick": "USB-minne",
+    "sd_card": "SD-kort",
+    "optical": "Optisk (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Nätverksdelning",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Moln",
+    "object_storage": "Objektlagring (S3)",
+    "tape": "Band",
+    "raid": "RAID",
+    "local": "Lokal",
+    "other": "Övrigt"
   },
   "folders": {
-      "create": "Ny mapp",
-      "rename": "Byt namn på mapp",
-      "deleteFolder": "Ta bort mapp",
-      "deleteConfirm": "Ta bort mappen \"{{name}}\"? Objekt flyttas till Osorterade.",
-      "folderName": "Mappnamn",
-      "moveToFolder": "Flytta till mapp",
-      "unfiled": "Osorterade",
-      "allFolders": "Alla",
-      "items": "objekt",
-      "viewFlat": "Platt vy",
-      "viewFolder": "Mappvy",
-      "viewExpanded": "Expanderad vy"
+    "create": "Ny mapp",
+    "rename": "Byt namn på mapp",
+    "deleteFolder": "Ta bort mapp",
+    "deleteConfirm": "Ta bort mappen \"{{name}}\"? Objekt flyttas till Osorterade.",
+    "folderName": "Mappnamn",
+    "moveToFolder": "Flytta till mapp",
+    "unfiled": "Osorterade",
+    "allFolders": "Alla",
+    "items": "objekt",
+    "viewFlat": "Platt vy",
+    "viewFolder": "Mappvy",
+    "viewExpanded": "Expanderad vy"
   },
   "rule321": {
     "title": "3-2-1-säkerhetskopieringsregeln",

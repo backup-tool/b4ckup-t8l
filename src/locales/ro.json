@@ -71,7 +71,34 @@
     "entryNumber": "Număr",
     "pause": "Pauză",
     "resume": "Reia",
-    "editLocation": "Editare locație"
+    "editLocation": "Editare locație",
+    "mode": "Mod",
+    "manual": "Manual",
+    "automatic": "Automat",
+    "frequency": "Frecvență",
+    "time": "Oră",
+    "weekday": "Ziua săptămânii",
+    "monthDay": "Ziua lunii",
+    "customIntervalDays": "Interval (zile)",
+    "scheduleNote": "Notă de programare",
+    "scheduleNotePlaceholder": "ex. Synology Task Scheduler, cron job...",
+    "customCategory": "Personalizat"
+  },
+  "schedule": {
+    "daily": "Zilnic",
+    "weekly": "Săptămânal",
+    "monthly": "Lunar",
+    "yearly": "Anual",
+    "custom": "Personalizat"
+  },
+  "weekdays": {
+    "0": "Duminică",
+    "1": "Luni",
+    "2": "Marți",
+    "3": "Miercuri",
+    "4": "Joi",
+    "5": "Vineri",
+    "6": "Sâmbătă"
   },
   "media": {
     "title": "Medii de stocare",
@@ -275,6 +302,20 @@
     "avg": "Medie",
     "noData": "Nicio dată încă."
   },
+  "calendar": {
+    "title": "Calendar copii de siguranță",
+    "entries": "intrări"
+  },
+  "bulk": {
+    "selected": "selectate",
+    "select": "Selectează",
+    "deleteConfirm": "copii de siguranță vor fi mutate în coșul de gunoi.",
+    "deleteConfirmMedia": "medii de stocare vor fi mutate în coșul de gunoi.",
+    "deleteConfirmDevices": "surse vor fi mutate în coșul de gunoi."
+  },
+  "comparison": {
+    "title": "Comparare dimensiuni"
+  },
   "update": {
     "available": "Actualizare disponibilă",
     "version": "Versiune nouă:",
@@ -283,18 +324,6 @@
     "ready": "Actualizare pregătită",
     "restartDesc": "Repornește aplicația pentru a aplica actualizarea.",
     "restart": "Repornește acum"
-  },
-  "calendar": {
-    "title": "Calendar copii de siguranță",
-    "entries": "intrări"
-  },
-  "bulk": {
-    "selected": "selectate",
-    "select": "Selectează",
-    "deleteConfirm": "copii de siguranță vor fi mutate în coșul de gunoi."
-  },
-  "comparison": {
-    "title": "Comparare dimensiuni"
   },
   "categories": {
     "photos": "Fotografii",
@@ -319,7 +348,15 @@
     "games": "Jocuri",
     "applications": "Aplicații",
     "config": "Configurare",
-    "other": "Altele"
+    "other": "Altele",
+    "logs": "Jurnale",
+    "credentials": "Acreditări",
+    "container": "Container",
+    "cloud_data": "Date cloud",
+    "bookmarks": "Marcaje",
+    "passwords": "Parole",
+    "notes": "Note",
+    "education": "Educație"
   },
   "deviceTypes": {
     "desktop": "PC desktop",
@@ -338,27 +375,37 @@
     "other": "Altele"
   },
   "storageTypes": {
-    "internal_drive": "HDD intern", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "HDD intern",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "HDD extern",
-    "usb_stick": "Stick USB", "sd_card": "Card SD", "optical": "Optic (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Partajare în rețea", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Cloud", "object_storage": "Stocare obiecte (S3)",
-    "tape": "Bandă", "raid": "RAID",
-    "local": "Local", "other": "Altele"
+    "usb_stick": "Stick USB",
+    "sd_card": "Card SD",
+    "optical": "Optic (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Partajare în rețea",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Cloud",
+    "object_storage": "Stocare obiecte (S3)",
+    "tape": "Bandă",
+    "raid": "RAID",
+    "local": "Local",
+    "other": "Altele"
   },
   "folders": {
-      "create": "Dosar nou",
-      "rename": "Redenumire dosar",
-      "deleteFolder": "Șterge dosar",
-      "deleteConfirm": "Ștergeți dosarul \"{{name}}\"? Elementele vor fi mutate în Neclasificate.",
-      "folderName": "Numele dosarului",
-      "moveToFolder": "Mută în dosar",
-      "unfiled": "Neclasificate",
-      "allFolders": "Toate",
-      "items": "elemente",
-      "viewFlat": "Vedere plată",
-      "viewFolder": "Vedere dosare",
-      "viewExpanded": "Vedere extinsă"
+    "create": "Dosar nou",
+    "rename": "Redenumire dosar",
+    "deleteFolder": "Șterge dosar",
+    "deleteConfirm": "Ștergeți dosarul \"{{name}}\"? Elementele vor fi mutate în Neclasificate.",
+    "folderName": "Numele dosarului",
+    "moveToFolder": "Mută în dosar",
+    "unfiled": "Neclasificate",
+    "allFolders": "Toate",
+    "items": "elemente",
+    "viewFlat": "Vedere plată",
+    "viewFolder": "Vedere dosare",
+    "viewExpanded": "Vedere extinsă"
   },
   "rule321": {
     "title": "Regula de backup 3-2-1",

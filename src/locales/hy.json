@@ -12,7 +12,7 @@
     "statistics": "Վիճակագրություն",
     "trash": "Աղբաման",
     "settings": "Կարգավորումներ",
-    "calendar": "Օրdelays"
+    "calendar": "Օրացույց"
   },
   "dashboard": {
     "title": "Տախտակ",
@@ -71,7 +71,34 @@
     "entryNumber": "Համար",
     "pause": "Դադարեցնել",
     "resume": "Վերսկսել",
-    "editLocation": "Խմբագրել տdelays"
+    "editLocation": "Խմբագրել վայրը",
+    "mode": "Mode",
+    "manual": "Manual",
+    "automatic": "Automatic",
+    "frequency": "Frequency",
+    "time": "Time",
+    "weekday": "Weekday",
+    "monthDay": "Day of Month",
+    "customIntervalDays": "Interval (days)",
+    "scheduleNote": "Schedule Note",
+    "scheduleNotePlaceholder": "e.g. Synology Task Scheduler, cron job...",
+    "customCategory": "Custom"
+  },
+  "schedule": {
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "custom": "Custom"
+  },
+  "weekdays": {
+    "0": "Sunday",
+    "1": "Monday",
+    "2": "Tuesday",
+    "3": "Wednesday",
+    "4": "Thursday",
+    "5": "Friday",
+    "6": "Saturday"
   },
   "media": {
     "title": "Պահեստային կրիչ",
@@ -186,12 +213,12 @@
     "exportJSON": "Արտահանել որպես JSON",
     "exportCSV": "Արտահանել որպես CSV",
     "exportSuccess": "Տվյալները հաջողությամբ արտահանվեցին",
-    "notifications": "Notifications",
-    "notificationsEnabled": "Enable notifications",
-    "checkInterval": "Check interval",
-    "updates": "Թարdelaysdelays",
-    "checkUpdates": " Delays sts",
-    "upToDate": "Delays!",
+    "notifications": "Ծանուցումներ",
+    "notificationsEnabled": "Միացնել ծանուցումները",
+    "checkInterval": "Ստուգման միջակայք",
+    "updates": "Թարմացումներ",
+    "checkUpdates": "Ստուգել թարմացումները",
+    "upToDate": "Դուք թարմացնել եք։",
     "chinese": "中文",
     "japanese": "日本語",
     "korean": "한국어",
@@ -275,6 +302,20 @@
     "avg": "Միջին",
     "noData": "Տվյալներ դեռ չկան։"
   },
+  "calendar": {
+    "title": "Պահուստի օրացույց",
+    "entries": "գրառումներ"
+  },
+  "bulk": {
+    "selected": "ընտրված",
+    "select": "Ընտրել",
+    "deleteConfirm": "պահուստներ կտեղափոխվեն աղբաման։",
+    "deleteConfirmMedia": "storage media will be moved to trash.",
+    "deleteConfirmDevices": "sources will be moved to trash."
+  },
+  "comparison": {
+    "title": "Չափսի համեմատություն"
+  },
   "update": {
     "available": "Թարմացում հասանելի է",
     "version": "Նոր տարբերակ՝",
@@ -284,19 +325,87 @@
     "restartDesc": "Վերագործարկեք հավելվածը թարմացումը կիրառելու համար։",
     "restart": "Վերագործարկել հիմա"
   },
+  "categories": {
+    "photos": "Լուսանկարներ",
+    "videos": "Տեսանյութեր",
+    "music": "Երաժշտություն",
+    "documents": "Փաստաթղթեր",
+    "desktop": "Աշխատասեղան",
+    "system": "Համակարգ",
+    "system_image": "Համակարգի պատկեր",
+    "vm": "Վիրտուալ մեքենա",
+    "database": "Տվյալների բազա",
+    "media": "Մեդիա",
+    "code": "Կոդ",
+    "projects": "Նախագծեր",
+    "email": "Էլ. փոստ",
+    "contacts": "Կոնտակտներ",
+    "calendar": "Օրացույց",
+    "messages": "Հաղորդագրություններ",
+    "health": "Առողثություն",
+    "social_media": "Սոցիալական մեդիա",
+    "finance": "Ֆինանսներ",
+    "games": "Խաղեր",
+    "applications": "Հավելվածներ",
+    "config": "Կարգավորում",
+    "other": "Այլ",
+    "logs": "Logs",
+    "credentials": "Credentials",
+    "container": "Container",
+    "cloud_data": "Cloud Data",
+    "bookmarks": "Bookmarks",
+    "passwords": "Passwords",
+    "notes": "Notes",
+    "education": "Education"
+  },
+  "deviceTypes": {
+    "desktop": "Աշխատասեղանի ՀՀ",
+    "laptop": "Նութբուք",
+    "phone": "Հեռախոս",
+    "tablet": "Պլանշետ",
+    "server": "Սերվեր",
+    "nas": "NAS",
+    "cloud": "Ամպային ծառայություն",
+    "external_drive": "Արտաքին սկավառակ",
+    "camera": "Տեսախցիկ",
+    "console": "Կոնսոլ",
+    "smart_home": "Խելացի տուն",
+    "app": "App",
+    "service": "Առցանց ծառայություն",
+    "other": "Այլ"
+  },
+  "storageTypes": {
+    "internal_drive": "Ներքին HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
+    "external_drive": "Արտաքին HDD",
+    "usb_stick": "USB կրիչ",
+    "sd_card": "SD քարտ",
+    "optical": "Օպտիկական (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Ցանցի համաօգտագործում",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Ամպային",
+    "object_storage": "Օբյեկտային պահեստ (S3)",
+    "tape": "Ջիրան",
+    "raid": "RAID",
+    "local": "Տեղական",
+    "other": "Այլ"
+  },
   "folders": {
-    "create": "New Folder",
-    "rename": "Rename Folder",
-    "deleteFolder": "Delete Folder",
-    "deleteConfirm": "Delete folder \"{{name}}\"? Items inside will be moved to unfiled.",
-    "folderName": "Folder Name",
-    "moveToFolder": "Move to Folder",
-    "unfiled": "Unfiled",
-    "allFolders": "All",
-    "items": "items",
-    "viewFlat": "Flat View",
-    "viewFolder": "Folder View",
-    "viewExpanded": "Expanded View"
+    "create": "Նոր թղթապանակ",
+    "rename": "Վերանունել թղթապանակը",
+    "deleteFolder": "Ջնջել թղթապանակը",
+    "deleteConfirm": "Ջնջել թղթապանակը \"{{name}}\"? Ներսի տառրերը կտեղափոխվեն չդասակարգվածներին։",
+    "folderName": "Թղթապանակի անուն",
+    "moveToFolder": "Տեղափոխել թղթապանակ",
+    "unfiled": "Չդասակարգված",
+    "allFolders": "Բոլորը",
+    "items": "տառրեր",
+    "viewFlat": "Հարթ տեսք",
+    "viewFolder": "Թղթապանակի տեսք",
+    "viewExpanded": "Ընդլայնված տեսք"
   },
   "rule321": {
     "title": "Պահուստի կանոն 3-2-1",
@@ -304,67 +413,5 @@
     "copies": "պատճեն",
     "mediaTypes": "կրիչի տեսակներ",
     "offsite": "արտաքին"
-  },
-  "categories": {
-    "photos": "Photos",
-    "videos": "Videos",
-    "music": "Music",
-    "documents": "Documents",
-    "desktop": "Desktop",
-    "system": "System",
-    "system_image": "System Image",
-    "vm": "Virtual Machine",
-    "database": "Database",
-    "media": "Media",
-    "code": "Code",
-    "projects": "Projects",
-    "email": "Email",
-    "contacts": "Contacts",
-    "calendar": "Calendar",
-    "messages": "Messages",
-    "health": "Health",
-    "social_media": "Social Media",
-    "finance": "Finance",
-    "games": "Games",
-    "applications": "Applications",
-    "config": "Configuration",
-    "other": "Other"
-  },
-  "deviceTypes": {
-    "desktop": "Desktop PC",
-    "laptop": "Laptop",
-    "phone": "Phone",
-    "tablet": "Tablet",
-    "server": "Server",
-    "nas": "NAS",
-    "cloud": "Cloud Service",
-    "external_drive": "External Drive",
-    "camera": "Camera",
-    "console": "Console",
-    "smart_home": "Smart Home",
-    "app": "App",
-    "service": "Online Service",
-    "other": "Other"
-  },
-  "storageTypes": {
-    "internal_drive": "Internal HDD", "ssd": "SSD", "nvme": "NVMe",
-    "external_drive": "External HDD",
-    "usb_stick": "USB Stick", "sd_card": "SD Card", "optical": "Optical (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Network Share", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Cloud", "object_storage": "Object Storage (S3)",
-    "tape": "Tape", "raid": "RAID",
-    "local": "Local", "other": "Other"
-  },
-  "calendar": {
-    "title": "Backup Calendar",
-    "entries": "entries"
-  },
-  "bulk": {
-    "selected": "selected",
-    "select": "Select",
-    "deleteConfirm": "backups will be moved to trash."
-  },
-  "comparison": {
-    "title": "Size Comparison"
   }
 }

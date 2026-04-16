@@ -71,7 +71,34 @@
     "entryNumber": "Szám",
     "pause": "Szüneteltetés",
     "resume": "Folytatás",
-    "editLocation": "Hely szerkesztése"
+    "editLocation": "Hely szerkesztése",
+    "mode": "Mód",
+    "manual": "Kézi",
+    "automatic": "Automatikus",
+    "frequency": "Gyakoriság",
+    "time": "Idő",
+    "weekday": "Hét napja",
+    "monthDay": "Hónap napja",
+    "customIntervalDays": "Intervallum (napok)",
+    "scheduleNote": "Ütemezési megjegyzés",
+    "scheduleNotePlaceholder": "pl. Synology Task Scheduler, cron job...",
+    "customCategory": "Egyéni"
+  },
+  "schedule": {
+    "daily": "Naponta",
+    "weekly": "Hetente",
+    "monthly": "Havonta",
+    "yearly": "Évente",
+    "custom": "Egyéni"
+  },
+  "weekdays": {
+    "0": "Vasárnap",
+    "1": "Hétfő",
+    "2": "Kedd",
+    "3": "Szerda",
+    "4": "Csütörtök",
+    "5": "Péntek",
+    "6": "Szombat"
   },
   "media": {
     "title": "Tárolóeszközök",
@@ -275,6 +302,20 @@
     "avg": "Átlag",
     "noData": "Még nincsenek adatok."
   },
+  "calendar": {
+    "title": "Mentési naptár",
+    "entries": "bejegyzés"
+  },
+  "bulk": {
+    "selected": "kiválasztva",
+    "select": "Kiválasztás",
+    "deleteConfirm": "biztonsági mentés a kukába kerül.",
+    "deleteConfirmMedia": "tárolómédia át lesz helyezve a kukába.",
+    "deleteConfirmDevices": "forrás át lesz helyezve a kukába."
+  },
+  "comparison": {
+    "title": "Méretösszehasonlítás"
+  },
   "update": {
     "available": "Frissítés elérhető",
     "version": "Új verzió:",
@@ -283,18 +324,6 @@
     "ready": "Frissítés kész",
     "restartDesc": "Indítsd újra az alkalmazást a frissítés alkalmazásához.",
     "restart": "Újraindítás most"
-  },
-  "calendar": {
-    "title": "Mentési naptár",
-    "entries": "bejegyzés"
-  },
-  "bulk": {
-    "selected": "kiválasztva",
-    "select": "Kiválasztás",
-    "deleteConfirm": "biztonsági mentés a kukába kerül."
-  },
-  "comparison": {
-    "title": "Méretösszehasonlítás"
   },
   "categories": {
     "photos": "Fotók",
@@ -319,7 +348,15 @@
     "games": "Játékok",
     "applications": "Alkalmazások",
     "config": "Konfiguráció",
-    "other": "Egyéb"
+    "other": "Egyéb",
+    "logs": "Naplók",
+    "credentials": "Hitelesítő adatok",
+    "container": "Konténer",
+    "cloud_data": "Felhőadatok",
+    "bookmarks": "Könyvjelzők",
+    "passwords": "Jelszavak",
+    "notes": "Jegyzetek",
+    "education": "Oktatás"
   },
   "deviceTypes": {
     "desktop": "Asztali PC",
@@ -338,27 +375,37 @@
     "other": "Egyéb"
   },
   "storageTypes": {
-    "internal_drive": "Belső HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Belső HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Külső HDD",
-    "usb_stick": "USB pendrive", "sd_card": "SD kártya", "optical": "Optikai (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Hálózati megosztás", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Felhő", "object_storage": "Objektumtár (S3)",
-    "tape": "Szalag", "raid": "RAID",
-    "local": "Helyi", "other": "Egyéb"
+    "usb_stick": "USB pendrive",
+    "sd_card": "SD kártya",
+    "optical": "Optikai (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Hálózati megosztás",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Felhő",
+    "object_storage": "Objektumtár (S3)",
+    "tape": "Szalag",
+    "raid": "RAID",
+    "local": "Helyi",
+    "other": "Egyéb"
   },
   "folders": {
-      "create": "Új mappa",
-      "rename": "Mappa átnevezése",
-      "deleteFolder": "Mappa törlése",
-      "deleteConfirm": "Törli a(z) \"{{name}}\" mappát? Az elemek a Besorolatlan kategóriába kerülnek.",
-      "folderName": "Mappa neve",
-      "moveToFolder": "Áthelyezés mappába",
-      "unfiled": "Besorolatlan",
-      "allFolders": "Összes",
-      "items": "elem",
-      "viewFlat": "Sima nézet",
-      "viewFolder": "Mappa nézet",
-      "viewExpanded": "Kibontott nézet"
+    "create": "Új mappa",
+    "rename": "Mappa átnevezése",
+    "deleteFolder": "Mappa törlése",
+    "deleteConfirm": "Törli a(z) \"{{name}}\" mappát? Az elemek a Besorolatlan kategóriába kerülnek.",
+    "folderName": "Mappa neve",
+    "moveToFolder": "Áthelyezés mappába",
+    "unfiled": "Besorolatlan",
+    "allFolders": "Összes",
+    "items": "elem",
+    "viewFlat": "Sima nézet",
+    "viewFolder": "Mappa nézet",
+    "viewExpanded": "Kibontott nézet"
   },
   "rule321": {
     "title": "3-2-1 biztonsági mentési szabály",

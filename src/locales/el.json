@@ -71,7 +71,34 @@
     "entryNumber": "Αριθμός",
     "pause": "Παύση",
     "resume": "Συνέχιση",
-    "editLocation": "Επεξεργασία τοποθεσίας"
+    "editLocation": "Επεξεργασία τοποθεσίας",
+    "mode": "Λειτουργία",
+    "manual": "Χειροκίνητο",
+    "automatic": "Αυτόματο",
+    "frequency": "Συχνότητα",
+    "time": "Ώρα",
+    "weekday": "Ημέρα εβδομάδας",
+    "monthDay": "Ημέρα μήνα",
+    "customIntervalDays": "Διάστημα (ημέρες)",
+    "scheduleNote": "Σημείωση προγραμματισμού",
+    "scheduleNotePlaceholder": "π.χ. Synology Task Scheduler, cron job...",
+    "customCategory": "Προσαρμοσμένο"
+  },
+  "schedule": {
+    "daily": "Ημερήσια",
+    "weekly": "Εβδομαδιαία",
+    "monthly": "Μηνιαία",
+    "yearly": "Ετήσια",
+    "custom": "Προσαρμοσμένο"
+  },
+  "weekdays": {
+    "0": "Κυριακή",
+    "1": "Δευτέρα",
+    "2": "Τρίτη",
+    "3": "Τετάρτη",
+    "4": "Πέμπτη",
+    "5": "Παρασκευή",
+    "6": "Σάββατο"
   },
   "media": {
     "title": "Μέσα αποθήκευσης",
@@ -275,6 +302,20 @@
     "avg": "Μέσος όρος",
     "noData": "Δεν υπάρχουν δεδομένα ακόμα."
   },
+  "calendar": {
+    "title": "Ημερολόγιο αντιγράφων",
+    "entries": "καταχωρήσεις"
+  },
+  "bulk": {
+    "selected": "επιλεγμένα",
+    "select": "Επιλογή",
+    "deleteConfirm": "αντίγραφα θα μετακινηθούν στον κάδο.",
+    "deleteConfirmMedia": "μέσα αποθήκευσης θα μετακινηθούν στον κάδο.",
+    "deleteConfirmDevices": "πηγές θα μετακινηθούν στον κάδο."
+  },
+  "comparison": {
+    "title": "Σύγκριση μεγεθών"
+  },
   "update": {
     "available": "Διαθέσιμη ενημέρωση",
     "version": "Νέα έκδοση:",
@@ -283,18 +324,6 @@
     "ready": "Η ενημέρωση είναι έτοιμη",
     "restartDesc": "Επανεκκινήστε την εφαρμογή για να εφαρμόσετε την ενημέρωση.",
     "restart": "Επανεκκίνηση τώρα"
-  },
-  "calendar": {
-    "title": "Ημερολόγιο αντιγράφων",
-    "entries": "καταχωρήσεις"
-  },
-  "bulk": {
-    "selected": "επιλεγμένα",
-    "select": "Επιλογή",
-    "deleteConfirm": "αντίγραφα θα μετακινηθούν στον κάδο."
-  },
-  "comparison": {
-    "title": "Σύγκριση μεγεθών"
   },
   "categories": {
     "photos": "Φωτογραφίες",
@@ -319,7 +348,15 @@
     "games": "Παιχνίδια",
     "applications": "Εφαρμογές",
     "config": "Ρυθμίσεις",
-    "other": "Άλλο"
+    "other": "Άλλο",
+    "logs": "Αρχεία καταγραφής",
+    "credentials": "Διαπιστευτήρια",
+    "container": "Container",
+    "cloud_data": "Δεδομένα cloud",
+    "bookmarks": "Σελιδοδείκτες",
+    "passwords": "Κωδικοί πρόσβασης",
+    "notes": "Σημειώσεις",
+    "education": "Εκπαίδευση"
   },
   "deviceTypes": {
     "desktop": "Σταθερός υπολογιστής",
@@ -338,27 +375,37 @@
     "other": "Άλλο"
   },
   "storageTypes": {
-    "internal_drive": "Εσωτερικός HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Εσωτερικός HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Εξωτερικός HDD",
-    "usb_stick": "USB stick", "sd_card": "Κάρτα SD", "optical": "Οπτικό (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Κοινόχρηστος φάκελος δικτύου", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Cloud", "object_storage": "Αποθήκευση αντικειμένων (S3)",
-    "tape": "Ταινία", "raid": "RAID",
-    "local": "Τοπικό", "other": "Άλλο"
+    "usb_stick": "USB stick",
+    "sd_card": "Κάρτα SD",
+    "optical": "Οπτικό (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Κοινόχρηστος φάκελος δικτύου",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Cloud",
+    "object_storage": "Αποθήκευση αντικειμένων (S3)",
+    "tape": "Ταινία",
+    "raid": "RAID",
+    "local": "Τοπικό",
+    "other": "Άλλο"
   },
   "folders": {
-      "create": "Νέος φάκελος",
-      "rename": "Μετονομασία φακέλου",
-      "deleteFolder": "Διαγραφή φακέλου",
-      "deleteConfirm": "Διαγραφή φακέλου \"{{name}}\"; Τα στοιχεία θα μετακινηθούν στα Αταξινόμητα.",
-      "folderName": "Όνομα φακέλου",
-      "moveToFolder": "Μετακίνηση σε φάκελο",
-      "unfiled": "Αταξινόμητα",
-      "allFolders": "Όλα",
-      "items": "στοιχεία",
-      "viewFlat": "Επίπεδη προβολή",
-      "viewFolder": "Προβολή φακέλων",
-      "viewExpanded": "Εκτεταμένη προβολή"
+    "create": "Νέος φάκελος",
+    "rename": "Μετονομασία φακέλου",
+    "deleteFolder": "Διαγραφή φακέλου",
+    "deleteConfirm": "Διαγραφή φακέλου \"{{name}}\"; Τα στοιχεία θα μετακινηθούν στα Αταξινόμητα.",
+    "folderName": "Όνομα φακέλου",
+    "moveToFolder": "Μετακίνηση σε φάκελο",
+    "unfiled": "Αταξινόμητα",
+    "allFolders": "Όλα",
+    "items": "στοιχεία",
+    "viewFlat": "Επίπεδη προβολή",
+    "viewFolder": "Προβολή φακέλων",
+    "viewExpanded": "Εκτεταμένη προβολή"
   },
   "rule321": {
     "title": "Κανόνας αντιγράφων 3-2-1",

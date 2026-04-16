@@ -71,7 +71,34 @@
     "entryNumber": "Número",
     "pause": "Pausar",
     "resume": "Reanudar",
-    "editLocation": "Editar ubicación"
+    "editLocation": "Editar ubicación",
+    "mode": "Modo",
+    "manual": "Manual",
+    "automatic": "Automático",
+    "frequency": "Frecuencia",
+    "time": "Hora",
+    "weekday": "Día de la semana",
+    "monthDay": "Día del mes",
+    "customIntervalDays": "Intervalo (días)",
+    "scheduleNote": "Nota de programación",
+    "scheduleNotePlaceholder": "ej. Synology Task Scheduler, cron job...",
+    "customCategory": "Personalizado"
+  },
+  "schedule": {
+    "daily": "Diario",
+    "weekly": "Semanal",
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "custom": "Personalizado"
+  },
+  "weekdays": {
+    "0": "Domingo",
+    "1": "Lunes",
+    "2": "Martes",
+    "3": "Miércoles",
+    "4": "Jueves",
+    "5": "Viernes",
+    "6": "Sábado"
   },
   "media": {
     "title": "Soportes de almacenamiento",
@@ -275,6 +302,20 @@
     "avg": "Media",
     "noData": "Aún no hay datos."
   },
+  "calendar": {
+    "title": "Calendario de copias",
+    "entries": "entradas"
+  },
+  "bulk": {
+    "selected": "seleccionados",
+    "select": "Seleccionar",
+    "deleteConfirm": "copias se moverán a la papelera.",
+    "deleteConfirmMedia": "medios de almacenamiento serán movidos a la papelera.",
+    "deleteConfirmDevices": "fuentes serán movidas a la papelera."
+  },
+  "comparison": {
+    "title": "Comparación de tamaños"
+  },
   "update": {
     "available": "Actualización disponible",
     "version": "Nueva versión:",
@@ -283,18 +324,6 @@
     "ready": "Actualización lista",
     "restartDesc": "Reinicia la aplicación para aplicar la actualización.",
     "restart": "Reiniciar ahora"
-  },
-  "calendar": {
-    "title": "Calendario de copias",
-    "entries": "entradas"
-  },
-  "bulk": {
-    "selected": "seleccionados",
-    "select": "Seleccionar",
-    "deleteConfirm": "copias se moverán a la papelera."
-  },
-  "comparison": {
-    "title": "Comparación de tamaños"
   },
   "categories": {
     "photos": "Fotos",
@@ -319,7 +348,15 @@
     "games": "Juegos",
     "applications": "Aplicaciones",
     "config": "Configuración",
-    "other": "Otro"
+    "other": "Otro",
+    "logs": "Registros",
+    "credentials": "Credenciales",
+    "container": "Contenedor",
+    "cloud_data": "Datos en la nube",
+    "bookmarks": "Marcadores",
+    "passwords": "Contraseñas",
+    "notes": "Notas",
+    "education": "Educación"
   },
   "deviceTypes": {
     "desktop": "PC de escritorio",
@@ -338,27 +375,37 @@
     "other": "Otro"
   },
   "storageTypes": {
-    "internal_drive": "HDD interno", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "HDD interno",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "HDD externo",
-    "usb_stick": "Memoria USB", "sd_card": "Tarjeta SD", "optical": "Óptico (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Recurso compartido de red", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Nube", "object_storage": "Almacenamiento de objetos (S3)",
-    "tape": "Cinta", "raid": "RAID",
-    "local": "Local", "other": "Otro"
+    "usb_stick": "Memoria USB",
+    "sd_card": "Tarjeta SD",
+    "optical": "Óptico (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Recurso compartido de red",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Nube",
+    "object_storage": "Almacenamiento de objetos (S3)",
+    "tape": "Cinta",
+    "raid": "RAID",
+    "local": "Local",
+    "other": "Otro"
   },
   "folders": {
-      "create": "Nueva carpeta",
-      "rename": "Renombrar carpeta",
-      "deleteFolder": "Eliminar carpeta",
-      "deleteConfirm": "Eliminar carpeta \"{{name}}\"? Los elementos se moverán a Sin carpeta.",
-      "folderName": "Nombre de carpeta",
-      "moveToFolder": "Mover a carpeta",
-      "unfiled": "Sin carpeta",
-      "allFolders": "Todos",
-      "items": "elementos",
-      "viewFlat": "Vista plana",
-      "viewFolder": "Vista de carpetas",
-      "viewExpanded": "Vista expandida"
+    "create": "Nueva carpeta",
+    "rename": "Renombrar carpeta",
+    "deleteFolder": "Eliminar carpeta",
+    "deleteConfirm": "Eliminar carpeta \"{{name}}\"? Los elementos se moverán a Sin carpeta.",
+    "folderName": "Nombre de carpeta",
+    "moveToFolder": "Mover a carpeta",
+    "unfiled": "Sin carpeta",
+    "allFolders": "Todos",
+    "items": "elementos",
+    "viewFlat": "Vista plana",
+    "viewFolder": "Vista de carpetas",
+    "viewExpanded": "Vista expandida"
   },
   "rule321": {
     "title": "Regla de respaldo 3-2-1",

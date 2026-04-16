@@ -71,7 +71,34 @@
     "entryNumber": "Nummer",
     "pause": "Pause",
     "resume": "Gjenoppta",
-    "editLocation": "Rediger plassering"
+    "editLocation": "Rediger plassering",
+    "mode": "Modus",
+    "manual": "Manuell",
+    "automatic": "Automatisk",
+    "frequency": "Frekvens",
+    "time": "Tid",
+    "weekday": "Ukedag",
+    "monthDay": "Dag i måneden",
+    "customIntervalDays": "Intervall (dager)",
+    "scheduleNote": "Planleggingsnotat",
+    "scheduleNotePlaceholder": "f.eks. Synology Task Scheduler, cron job...",
+    "customCategory": "Egendefinert"
+  },
+  "schedule": {
+    "daily": "Daglig",
+    "weekly": "Ukentlig",
+    "monthly": "Månedlig",
+    "yearly": "Årlig",
+    "custom": "Egendefinert"
+  },
+  "weekdays": {
+    "0": "Søndag",
+    "1": "Mandag",
+    "2": "Tirsdag",
+    "3": "Onsdag",
+    "4": "Torsdag",
+    "5": "Fredag",
+    "6": "Lørdag"
   },
   "media": {
     "title": "Lagringsmedier",
@@ -275,6 +302,20 @@
     "avg": "Gjennomsnitt",
     "noData": "Ingen data ennå."
   },
+  "calendar": {
+    "title": "Sikkerhetskopieringskalender",
+    "entries": "oppføringer"
+  },
+  "bulk": {
+    "selected": "valgt",
+    "select": "Velg",
+    "deleteConfirm": "sikkerhetskopier flyttes til papirkurven.",
+    "deleteConfirmMedia": "lagringsmedier vil bli flyttet til papirkurven.",
+    "deleteConfirmDevices": "kilder vil bli flyttet til papirkurven."
+  },
+  "comparison": {
+    "title": "Størrelsessammenligning"
+  },
   "update": {
     "available": "Oppdatering tilgjengelig",
     "version": "Ny versjon:",
@@ -283,18 +324,6 @@
     "ready": "Oppdatering klar",
     "restartDesc": "Start appen på nytt for å bruke oppdateringen.",
     "restart": "Start på nytt nå"
-  },
-  "calendar": {
-    "title": "Sikkerhetskopieringskalender",
-    "entries": "oppføringer"
-  },
-  "bulk": {
-    "selected": "valgt",
-    "select": "Velg",
-    "deleteConfirm": "sikkerhetskopier flyttes til papirkurven."
-  },
-  "comparison": {
-    "title": "Størrelsessammenligning"
   },
   "categories": {
     "photos": "Bilder",
@@ -319,7 +348,15 @@
     "games": "Spill",
     "applications": "Applikasjoner",
     "config": "Konfigurasjon",
-    "other": "Annet"
+    "other": "Annet",
+    "logs": "Logger",
+    "credentials": "Legitimasjon",
+    "container": "Container",
+    "cloud_data": "Skydata",
+    "bookmarks": "Bokmerker",
+    "passwords": "Passord",
+    "notes": "Notater",
+    "education": "Utdanning"
   },
   "deviceTypes": {
     "desktop": "Stasjonær PC",
@@ -338,27 +375,37 @@
     "other": "Annet"
   },
   "storageTypes": {
-    "internal_drive": "Intern HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Intern HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Ekstern HDD",
-    "usb_stick": "USB-minnepinne", "sd_card": "SD-kort", "optical": "Optisk (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Nettverksdeling", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Sky", "object_storage": "Objektlagring (S3)",
-    "tape": "Bånd", "raid": "RAID",
-    "local": "Lokal", "other": "Annet"
+    "usb_stick": "USB-minnepinne",
+    "sd_card": "SD-kort",
+    "optical": "Optisk (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Nettverksdeling",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Sky",
+    "object_storage": "Objektlagring (S3)",
+    "tape": "Bånd",
+    "raid": "RAID",
+    "local": "Lokal",
+    "other": "Annet"
   },
   "folders": {
-      "create": "Ny mappe",
-      "rename": "Gi nytt navn til mappe",
-      "deleteFolder": "Slett mappe",
-      "deleteConfirm": "Slette mappen \"{{name}}\"? Elementer flyttes til Usortert.",
-      "folderName": "Mappenavn",
-      "moveToFolder": "Flytt til mappe",
-      "unfiled": "Usortert",
-      "allFolders": "Alle",
-      "items": "elementer",
-      "viewFlat": "Flat visning",
-      "viewFolder": "Mappevisning",
-      "viewExpanded": "Utvidet visning"
+    "create": "Ny mappe",
+    "rename": "Gi nytt navn til mappe",
+    "deleteFolder": "Slett mappe",
+    "deleteConfirm": "Slette mappen \"{{name}}\"? Elementer flyttes til Usortert.",
+    "folderName": "Mappenavn",
+    "moveToFolder": "Flytt til mappe",
+    "unfiled": "Usortert",
+    "allFolders": "Alle",
+    "items": "elementer",
+    "viewFlat": "Flat visning",
+    "viewFolder": "Mappevisning",
+    "viewExpanded": "Utvidet visning"
   },
   "rule321": {
     "title": "3-2-1-sikkerhetskopieringsregelen",

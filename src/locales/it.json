@@ -71,7 +71,34 @@
     "entryNumber": "Numero",
     "pause": "Pausa",
     "resume": "Riprendi",
-    "editLocation": "Modifica posizione"
+    "editLocation": "Modifica posizione",
+    "mode": "Modalità",
+    "manual": "Manuale",
+    "automatic": "Automatico",
+    "frequency": "Frequenza",
+    "time": "Ora",
+    "weekday": "Giorno della settimana",
+    "monthDay": "Giorno del mese",
+    "customIntervalDays": "Intervallo (giorni)",
+    "scheduleNote": "Nota di pianificazione",
+    "scheduleNotePlaceholder": "es. Synology Task Scheduler, cron job...",
+    "customCategory": "Personalizzato"
+  },
+  "schedule": {
+    "daily": "Giornaliero",
+    "weekly": "Settimanale",
+    "monthly": "Mensile",
+    "yearly": "Annuale",
+    "custom": "Personalizzato"
+  },
+  "weekdays": {
+    "0": "Domenica",
+    "1": "Lunedì",
+    "2": "Martedì",
+    "3": "Mercoledì",
+    "4": "Giovedì",
+    "5": "Venerdì",
+    "6": "Sabato"
   },
   "media": {
     "title": "Supporti di archiviazione",
@@ -275,6 +302,20 @@
     "avg": "Media",
     "noData": "Nessun dato presente."
   },
+  "calendar": {
+    "title": "Calendario dei backup",
+    "entries": "voci"
+  },
+  "bulk": {
+    "selected": "selezionati",
+    "select": "Seleziona",
+    "deleteConfirm": "backup verranno spostati nel cestino.",
+    "deleteConfirmMedia": "supporti di archiviazione saranno spostati nel cestino.",
+    "deleteConfirmDevices": "fonti saranno spostate nel cestino."
+  },
+  "comparison": {
+    "title": "Confronto dimensioni"
+  },
   "update": {
     "available": "Aggiornamento disponibile",
     "version": "Nuova versione:",
@@ -283,18 +324,6 @@
     "ready": "Aggiornamento pronto",
     "restartDesc": "Riavvia l'applicazione per applicare l'aggiornamento.",
     "restart": "Riavvia ora"
-  },
-  "calendar": {
-    "title": "Calendario dei backup",
-    "entries": "voci"
-  },
-  "bulk": {
-    "selected": "selezionati",
-    "select": "Seleziona",
-    "deleteConfirm": "backup verranno spostati nel cestino."
-  },
-  "comparison": {
-    "title": "Confronto dimensioni"
   },
   "categories": {
     "photos": "Foto",
@@ -319,7 +348,15 @@
     "games": "Giochi",
     "applications": "Applicazioni",
     "config": "Configurazione",
-    "other": "Altro"
+    "other": "Altro",
+    "logs": "Log",
+    "credentials": "Credenziali",
+    "container": "Contenitore",
+    "cloud_data": "Dati cloud",
+    "bookmarks": "Segnalibri",
+    "passwords": "Password",
+    "notes": "Note",
+    "education": "Istruzione"
   },
   "deviceTypes": {
     "desktop": "PC desktop",
@@ -338,27 +375,37 @@
     "other": "Altro"
   },
   "storageTypes": {
-    "internal_drive": "HDD interno", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "HDD interno",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "HDD esterno",
-    "usb_stick": "Chiavetta USB", "sd_card": "Scheda SD", "optical": "Ottico (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Condivisione di rete", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Cloud", "object_storage": "Archiviazione oggetti (S3)",
-    "tape": "Nastro", "raid": "RAID",
-    "local": "Locale", "other": "Altro"
+    "usb_stick": "Chiavetta USB",
+    "sd_card": "Scheda SD",
+    "optical": "Ottico (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Condivisione di rete",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Cloud",
+    "object_storage": "Archiviazione oggetti (S3)",
+    "tape": "Nastro",
+    "raid": "RAID",
+    "local": "Locale",
+    "other": "Altro"
   },
   "folders": {
-      "create": "Nuova cartella",
-      "rename": "Rinomina cartella",
-      "deleteFolder": "Elimina cartella",
-      "deleteConfirm": "Eliminare la cartella \"{{name}}\"? Gli elementi verranno spostati in Non archiviato.",
-      "folderName": "Nome cartella",
-      "moveToFolder": "Sposta in cartella",
-      "unfiled": "Non archiviato",
-      "allFolders": "Tutti",
-      "items": "elementi",
-      "viewFlat": "Vista piatta",
-      "viewFolder": "Vista cartelle",
-      "viewExpanded": "Vista espansa"
+    "create": "Nuova cartella",
+    "rename": "Rinomina cartella",
+    "deleteFolder": "Elimina cartella",
+    "deleteConfirm": "Eliminare la cartella \"{{name}}\"? Gli elementi verranno spostati in Non archiviato.",
+    "folderName": "Nome cartella",
+    "moveToFolder": "Sposta in cartella",
+    "unfiled": "Non archiviato",
+    "allFolders": "Tutti",
+    "items": "elementi",
+    "viewFlat": "Vista piatta",
+    "viewFolder": "Vista cartelle",
+    "viewExpanded": "Vista espansa"
   },
   "rule321": {
     "title": "Regola di backup 3-2-1",

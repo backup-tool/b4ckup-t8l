@@ -71,7 +71,34 @@
     "entryNumber": "Numero",
     "pause": "I-pause",
     "resume": "Ipagpatuloy",
-    "editLocation": "I-edit ang Lokasyon"
+    "editLocation": "I-edit ang Lokasyon",
+    "mode": "Mode",
+    "manual": "Manual",
+    "automatic": "Awtomatiko",
+    "frequency": "Dalas",
+    "time": "Oras",
+    "weekday": "Araw ng linggo",
+    "monthDay": "Araw ng buwan",
+    "customIntervalDays": "Pagitan (araw)",
+    "scheduleNote": "Tala ng iskedyul",
+    "scheduleNotePlaceholder": "hal. Synology Task Scheduler, cron job...",
+    "customCategory": "Pasadya"
+  },
+  "schedule": {
+    "daily": "Araw-araw",
+    "weekly": "Lingguhan",
+    "monthly": "Buwanan",
+    "yearly": "Taunan",
+    "custom": "Pasadya"
+  },
+  "weekdays": {
+    "0": "Linggo",
+    "1": "Lunes",
+    "2": "Martes",
+    "3": "Miyerkules",
+    "4": "Huwebes",
+    "5": "Biyernes",
+    "6": "Sabado"
   },
   "media": {
     "title": "Storage Media",
@@ -275,6 +302,20 @@
     "avg": "Average",
     "noData": "Wala pang data."
   },
+  "calendar": {
+    "title": "Kalendaryo ng Backup",
+    "entries": "mga entry"
+  },
+  "bulk": {
+    "selected": "napili",
+    "select": "Pumili",
+    "deleteConfirm": "mga backup ay ililipat sa basurahan.",
+    "deleteConfirmMedia": "storage media ang ililipat sa basurahan.",
+    "deleteConfirmDevices": "mga source ang ililipat sa basurahan."
+  },
+  "comparison": {
+    "title": "Paghahambing ng Laki"
+  },
   "update": {
     "available": "May Available na Update",
     "version": "Bagong bersyon:",
@@ -283,18 +324,6 @@
     "ready": "Handa na ang Update",
     "restartDesc": "I-restart ang app upang ma-apply ang update.",
     "restart": "I-restart Ngayon"
-  },
-  "calendar": {
-    "title": "Kalendaryo ng Backup",
-    "entries": "mga entry"
-  },
-  "bulk": {
-    "selected": "napili",
-    "select": "Pumili",
-    "deleteConfirm": "mga backup ay ililipat sa basurahan."
-  },
-  "comparison": {
-    "title": "Paghahambing ng Laki"
   },
   "categories": {
     "photos": "Mga Larawan",
@@ -319,7 +348,15 @@
     "games": "Mga Laro",
     "applications": "Mga Aplikasyon",
     "config": "Konfigurasyion",
-    "other": "Iba pa"
+    "other": "Iba pa",
+    "logs": "Mga Log",
+    "credentials": "Mga Kredensyal",
+    "container": "Container",
+    "cloud_data": "Data sa Cloud",
+    "bookmarks": "Mga Bookmark",
+    "passwords": "Mga Password",
+    "notes": "Mga Tala",
+    "education": "Edukasyon"
   },
   "deviceTypes": {
     "desktop": "Desktop PC",
@@ -338,27 +375,37 @@
     "other": "Iba pa"
   },
   "storageTypes": {
-    "internal_drive": "Internal HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Internal HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "External HDD",
-    "usb_stick": "USB Stick", "sd_card": "SD Card", "optical": "Optical (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Network Share", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Cloud", "object_storage": "Object Storage (S3)",
-    "tape": "Tape", "raid": "RAID",
-    "local": "Lokal", "other": "Iba pa"
+    "usb_stick": "USB Stick",
+    "sd_card": "SD Card",
+    "optical": "Optical (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Network Share",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Cloud",
+    "object_storage": "Object Storage (S3)",
+    "tape": "Tape",
+    "raid": "RAID",
+    "local": "Lokal",
+    "other": "Iba pa"
   },
   "folders": {
-      "create": "Bagong Folder",
-      "rename": "Palitan ang Pangalan ng Folder",
-      "deleteFolder": "Burahin ang Folder",
-      "deleteConfirm": "Burahin ang folder na \"{{name}}\"? Ang mga item ay ililipat sa Hindi Nakaayos.",
-      "folderName": "Pangalan ng Folder",
-      "moveToFolder": "Ilipat sa Folder",
-      "unfiled": "Hindi Nakaayos",
-      "allFolders": "Lahat",
-      "items": "mga item",
-      "viewFlat": "Patag na View",
-      "viewFolder": "Folder View",
-      "viewExpanded": "Pinalawak na View"
+    "create": "Bagong Folder",
+    "rename": "Palitan ang Pangalan ng Folder",
+    "deleteFolder": "Burahin ang Folder",
+    "deleteConfirm": "Burahin ang folder na \"{{name}}\"? Ang mga item ay ililipat sa Hindi Nakaayos.",
+    "folderName": "Pangalan ng Folder",
+    "moveToFolder": "Ilipat sa Folder",
+    "unfiled": "Hindi Nakaayos",
+    "allFolders": "Lahat",
+    "items": "mga item",
+    "viewFlat": "Patag na View",
+    "viewFolder": "Folder View",
+    "viewExpanded": "Pinalawak na View"
   },
   "rule321": {
     "title": "Panuntunang 3-2-1 sa Backup",

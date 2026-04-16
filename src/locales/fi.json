@@ -71,7 +71,34 @@
     "entryNumber": "Numero",
     "pause": "Keskeytä",
     "resume": "Jatka",
-    "editLocation": "Muokkaa sijaintia"
+    "editLocation": "Muokkaa sijaintia",
+    "mode": "Tila",
+    "manual": "Manuaalinen",
+    "automatic": "Automaattinen",
+    "frequency": "Tiheys",
+    "time": "Aika",
+    "weekday": "Viikonpäivä",
+    "monthDay": "Kuukauden päivä",
+    "customIntervalDays": "Väli (päivää)",
+    "scheduleNote": "Aikatauluhuomautus",
+    "scheduleNotePlaceholder": "esim. Synology Task Scheduler, cron job...",
+    "customCategory": "Mukautettu"
+  },
+  "schedule": {
+    "daily": "Päivittäin",
+    "weekly": "Viikoittain",
+    "monthly": "Kuukausittain",
+    "yearly": "Vuosittain",
+    "custom": "Mukautettu"
+  },
+  "weekdays": {
+    "0": "Sunnuntai",
+    "1": "Maanantai",
+    "2": "Tiistai",
+    "3": "Keskiviikko",
+    "4": "Torstai",
+    "5": "Perjantai",
+    "6": "Lauantai"
   },
   "media": {
     "title": "Tallennusmediat",
@@ -275,6 +302,20 @@
     "avg": "Keskiarvo",
     "noData": "Ei tietoja vielä."
   },
+  "calendar": {
+    "title": "Varmuuskopiointikalenteri",
+    "entries": "merkintää"
+  },
+  "bulk": {
+    "selected": "valittu",
+    "select": "Valitse",
+    "deleteConfirm": "varmuuskopiota siirretään roskakoriin.",
+    "deleteConfirmMedia": "tallennusmediaa siirretään roskakoriin.",
+    "deleteConfirmDevices": "lähdettä siirretään roskakoriin."
+  },
+  "comparison": {
+    "title": "Kokovertailu"
+  },
   "update": {
     "available": "Päivitys saatavilla",
     "version": "Uusi versio:",
@@ -283,18 +324,6 @@
     "ready": "Päivitys valmis",
     "restartDesc": "Käynnistä sovellus uudelleen päivityksen asentamiseksi.",
     "restart": "Käynnistä uudelleen"
-  },
-  "calendar": {
-    "title": "Varmuuskopiointikalenteri",
-    "entries": "merkintää"
-  },
-  "bulk": {
-    "selected": "valittu",
-    "select": "Valitse",
-    "deleteConfirm": "varmuuskopiota siirretään roskakoriin."
-  },
-  "comparison": {
-    "title": "Kokovertailu"
   },
   "categories": {
     "photos": "Valokuvat",
@@ -319,7 +348,15 @@
     "games": "Pelit",
     "applications": "Sovellukset",
     "config": "Asetukset",
-    "other": "Muu"
+    "other": "Muu",
+    "logs": "Lokit",
+    "credentials": "Tunnistetiedot",
+    "container": "Säiliö",
+    "cloud_data": "Pilvidata",
+    "bookmarks": "Kirjanmerkit",
+    "passwords": "Salasanat",
+    "notes": "Muistiinpanot",
+    "education": "Koulutus"
   },
   "deviceTypes": {
     "desktop": "Pöytätietokone",
@@ -338,27 +375,37 @@
     "other": "Muu"
   },
   "storageTypes": {
-    "internal_drive": "Sisäinen HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Sisäinen HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Ulkoinen HDD",
-    "usb_stick": "USB-tikku", "sd_card": "SD-kortti", "optical": "Optinen (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Verkkojako", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Pilvi", "object_storage": "Objektitallennus (S3)",
-    "tape": "Nauha", "raid": "RAID",
-    "local": "Paikallinen", "other": "Muu"
+    "usb_stick": "USB-tikku",
+    "sd_card": "SD-kortti",
+    "optical": "Optinen (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Verkkojako",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Pilvi",
+    "object_storage": "Objektitallennus (S3)",
+    "tape": "Nauha",
+    "raid": "RAID",
+    "local": "Paikallinen",
+    "other": "Muu"
   },
   "folders": {
-      "create": "Uusi kansio",
-      "rename": "Nimeä kansio uudelleen",
-      "deleteFolder": "Poista kansio",
-      "deleteConfirm": "Poista kansio \"{{name}}\"? Kohteet siirretään Lajittelemattomat-kansioon.",
-      "folderName": "Kansion nimi",
-      "moveToFolder": "Siirrä kansioon",
-      "unfiled": "Lajittelemattomat",
-      "allFolders": "Kaikki",
-      "items": "kohdetta",
-      "viewFlat": "Tasanäkymä",
-      "viewFolder": "Kansionäkymä",
-      "viewExpanded": "Laajennettu näkymä"
+    "create": "Uusi kansio",
+    "rename": "Nimeä kansio uudelleen",
+    "deleteFolder": "Poista kansio",
+    "deleteConfirm": "Poista kansio \"{{name}}\"? Kohteet siirretään Lajittelemattomat-kansioon.",
+    "folderName": "Kansion nimi",
+    "moveToFolder": "Siirrä kansioon",
+    "unfiled": "Lajittelemattomat",
+    "allFolders": "Kaikki",
+    "items": "kohdetta",
+    "viewFlat": "Tasanäkymä",
+    "viewFolder": "Kansionäkymä",
+    "viewExpanded": "Laajennettu näkymä"
   },
   "rule321": {
     "title": "3-2-1-varmuuskopiointisääntö",

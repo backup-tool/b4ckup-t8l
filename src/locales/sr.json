@@ -71,7 +71,34 @@
     "entryNumber": "Број",
     "pause": "Паузирај",
     "resume": "Настави",
-    "editLocation": "Уреди локацију"
+    "editLocation": "Уреди локацију",
+    "mode": "Режим",
+    "manual": "Ручни",
+    "automatic": "Аутоматски",
+    "frequency": "Учесталост",
+    "time": "Време",
+    "weekday": "Дан у недељи",
+    "monthDay": "Дан у месецу",
+    "customIntervalDays": "Интервал (дани)",
+    "scheduleNote": "Белешка о распореду",
+    "scheduleNotePlaceholder": "нпр. Synology Task Scheduler, cron job...",
+    "customCategory": "Прилагођено"
+  },
+  "schedule": {
+    "daily": "Дневно",
+    "weekly": "Недељно",
+    "monthly": "Месечно",
+    "yearly": "Годишње",
+    "custom": "Прилагођено"
+  },
+  "weekdays": {
+    "0": "Недеља",
+    "1": "Понедељак",
+    "2": "Уторак",
+    "3": "Среда",
+    "4": "Четвртак",
+    "5": "Петак",
+    "6": "Субота"
   },
   "media": {
     "title": "Медији за складиштење",
@@ -275,6 +302,20 @@
     "avg": "Просек",
     "noData": "Још нема података."
   },
+  "calendar": {
+    "title": "Календар резервних копија",
+    "entries": "уноса"
+  },
+  "bulk": {
+    "selected": "изабрано",
+    "select": "Изабери",
+    "deleteConfirm": "резервних копија биће премештено у корпу.",
+    "deleteConfirmMedia": "медија за складиштење ће бити премештена у корпу.",
+    "deleteConfirmDevices": "извори ће бити премештени у корпу."
+  },
+  "comparison": {
+    "title": "Поређење величина"
+  },
   "update": {
     "available": "Доступно ажурирање",
     "version": "Нова верзија:",
@@ -283,18 +324,6 @@
     "ready": "Ажурирање спремно",
     "restartDesc": "Поново покрените апликацију да бисте применили ажурирање.",
     "restart": "Поново покрени сада"
-  },
-  "calendar": {
-    "title": "Календар резервних копија",
-    "entries": "уноса"
-  },
-  "bulk": {
-    "selected": "изабрано",
-    "select": "Изабери",
-    "deleteConfirm": "резервних копија биће премештено у корпу."
-  },
-  "comparison": {
-    "title": "Поређење величина"
   },
   "categories": {
     "photos": "Фотографије",
@@ -319,7 +348,15 @@
     "games": "Игре",
     "applications": "Апликације",
     "config": "Конфигурација",
-    "other": "Остало"
+    "other": "Остало",
+    "logs": "Дневници",
+    "credentials": "Акредитиви",
+    "container": "Контејнер",
+    "cloud_data": "Подаци у облаку",
+    "bookmarks": "Обележивачи",
+    "passwords": "Лозинке",
+    "notes": "Белешке",
+    "education": "Образовање"
   },
   "deviceTypes": {
     "desktop": "Стони рачунар",
@@ -338,27 +375,37 @@
     "other": "Остало"
   },
   "storageTypes": {
-    "internal_drive": "Интерни HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Интерни HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Екстерни HDD",
-    "usb_stick": "USB стик", "sd_card": "SD картица", "optical": "Оптички (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Мрежно дељење", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Облак", "object_storage": "Складиштење објеката (S3)",
-    "tape": "Трака", "raid": "RAID",
-    "local": "Локално", "other": "Остало"
+    "usb_stick": "USB стик",
+    "sd_card": "SD картица",
+    "optical": "Оптички (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Мрежно дељење",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Облак",
+    "object_storage": "Складиштење објеката (S3)",
+    "tape": "Трака",
+    "raid": "RAID",
+    "local": "Локално",
+    "other": "Остало"
   },
   "folders": {
-      "create": "Нови фолдер",
-      "rename": "Преименуј фолдер",
-      "deleteFolder": "Обриши фолдер",
-      "deleteConfirm": "Обрисати фолдер \"{{name}}\"? Ставке ће бити премештене у Несортирано.",
-      "folderName": "Назив фолдера",
-      "moveToFolder": "Премести у фолдер",
-      "unfiled": "Несортирано",
-      "allFolders": "Све",
-      "items": "ставки",
-      "viewFlat": "Равни приказ",
-      "viewFolder": "Приказ фолдера",
-      "viewExpanded": "Проширени приказ"
+    "create": "Нови фолдер",
+    "rename": "Преименуј фолдер",
+    "deleteFolder": "Обриши фолдер",
+    "deleteConfirm": "Обрисати фолдер \"{{name}}\"? Ставке ће бити премештене у Несортирано.",
+    "folderName": "Назив фолдера",
+    "moveToFolder": "Премести у фолдер",
+    "unfiled": "Несортирано",
+    "allFolders": "Све",
+    "items": "ставки",
+    "viewFlat": "Равни приказ",
+    "viewFolder": "Приказ фолдера",
+    "viewExpanded": "Проширени приказ"
   },
   "rule321": {
     "title": "Правило резервних копија 3-2-1",

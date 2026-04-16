@@ -71,7 +71,34 @@
     "entryNumber": "شمېره",
     "pause": "درول",
     "resume": "دوام",
-    "editLocation": "ځای سمون"
+    "editLocation": "ځای سمون",
+    "mode": "Mode",
+    "manual": "Manual",
+    "automatic": "Automatic",
+    "frequency": "Frequency",
+    "time": "Time",
+    "weekday": "Weekday",
+    "monthDay": "Day of Month",
+    "customIntervalDays": "Interval (days)",
+    "scheduleNote": "Schedule Note",
+    "scheduleNotePlaceholder": "e.g. Synology Task Scheduler, cron job...",
+    "customCategory": "Custom"
+  },
+  "schedule": {
+    "daily": "ورځنۍ",
+    "weekly": "اونۍز",
+    "monthly": "مياشتنۍ",
+    "yearly": "کلنۍز",
+    "custom": "دلخواهۍ"
+  },
+  "weekdays": {
+    "0": "يکشنبه",
+    "1": "دوشنبه",
+    "2": "سه‌شنبه",
+    "3": "چهارشنبه",
+    "4": "پنجشنبه",
+    "5": "جمعه",
+    "6": "شنبه"
   },
   "media": {
     "title": "د ذخیرې رسنۍ",
@@ -275,6 +302,20 @@
     "avg": "اوسط",
     "noData": "تر اوسه معلومات نشته."
   },
+  "calendar": {
+    "title": "Backup Calendar",
+    "entries": "entries"
+  },
+  "bulk": {
+    "selected": "selected",
+    "select": "Select",
+    "deleteConfirm": "backups will be moved to trash.",
+    "deleteConfirmMedia": "storage media will be moved to trash.",
+    "deleteConfirmDevices": "sources will be moved to trash."
+  },
+  "comparison": {
+    "title": "Size Comparison"
+  },
   "update": {
     "available": "تازه کول شته",
     "version": "نوی نسخه:",
@@ -283,27 +324,6 @@
     "ready": "تازه کول چمتو دي",
     "restartDesc": "د تازه کولو پلي کولو لپاره اپلیکیشن بیا پیل کړئ.",
     "restart": "اوس بیا پیل کړئ"
-  },
-  "folders": {
-      "create": "نوی فولډر",
-      "rename": "د فولډر نوم بدلول",
-      "deleteFolder": "فولډر ړنګول",
-      "deleteConfirm": "د \"{{name}}\" فولډر ړنګ شي؟ توکي به نامنظم ته ولیږدول شي.",
-      "folderName": "د فولډر نوم",
-      "moveToFolder": "فولډر ته لیږدول",
-      "unfiled": "نامنظم",
-      "allFolders": "ټول",
-      "items": "توکي",
-      "viewFlat": "مسطح لید",
-      "viewFolder": "د فولډر لید",
-      "viewExpanded": "پراخ لید"
-  },
-  "rule321": {
-    "title": "د بیک اپ 3-2-1 قاعده",
-    "desc": "3 کاپي, 2 مختلفې د رسنۍ ډولونه, 1 بهرنۍ",
-    "copies": "کاپي",
-    "mediaTypes": "د رسنۍ ډولونه",
-    "offsite": "بهرنۍ"
   },
   "categories": {
     "photos": "Photos",
@@ -328,7 +348,15 @@
     "games": "Games",
     "applications": "Applications",
     "config": "Configuration",
-    "other": "Other"
+    "other": "Other",
+    "logs": "Logs",
+    "credentials": "Credentials",
+    "container": "Container",
+    "cloud_data": "Cloud Data",
+    "bookmarks": "Bookmarks",
+    "passwords": "Passwords",
+    "notes": "Notes",
+    "education": "Education"
   },
   "deviceTypes": {
     "desktop": "Desktop PC",
@@ -347,24 +375,43 @@
     "other": "Other"
   },
   "storageTypes": {
-    "internal_drive": "Internal HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Internal HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "External HDD",
-    "usb_stick": "USB Stick", "sd_card": "SD Card", "optical": "Optical (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Network Share", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Cloud", "object_storage": "Object Storage (S3)",
-    "tape": "Tape", "raid": "RAID",
-    "local": "Local", "other": "Other"
+    "usb_stick": "USB Stick",
+    "sd_card": "SD Card",
+    "optical": "Optical (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Network Share",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Cloud",
+    "object_storage": "Object Storage (S3)",
+    "tape": "Tape",
+    "raid": "RAID",
+    "local": "Local",
+    "other": "Other"
   },
-  "calendar": {
-    "title": "Backup Calendar",
-    "entries": "entries"
+  "folders": {
+    "create": "نوی فولډر",
+    "rename": "د فولډر نوم بدلول",
+    "deleteFolder": "فولډر ړنګول",
+    "deleteConfirm": "د \"{{name}}\" فولډر ړنګ شي؟ توکي به نامنظم ته ولیږدول شي.",
+    "folderName": "د فولډر نوم",
+    "moveToFolder": "فولډر ته لیږدول",
+    "unfiled": "نامنظم",
+    "allFolders": "ټول",
+    "items": "توکي",
+    "viewFlat": "مسطح لید",
+    "viewFolder": "د فولډر لید",
+    "viewExpanded": "پراخ لید"
   },
-  "bulk": {
-    "selected": "selected",
-    "select": "Select",
-    "deleteConfirm": "backups will be moved to trash."
-  },
-  "comparison": {
-    "title": "Size Comparison"
+  "rule321": {
+    "title": "د بیک اپ 3-2-1 قاعده",
+    "desc": "3 کاپي, 2 مختلفې د رسنۍ ډولونه, 1 بهرنۍ",
+    "copies": "کاپي",
+    "mediaTypes": "د رسنۍ ډولونه",
+    "offsite": "بهرنۍ"
   }
 }

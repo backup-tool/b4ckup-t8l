@@ -71,7 +71,34 @@
     "entryNumber": "Numer",
     "pause": "Wstrzymaj",
     "resume": "Wznów",
-    "editLocation": "Edytuj lokalizację"
+    "editLocation": "Edytuj lokalizację",
+    "mode": "Tryb",
+    "manual": "Ręczny",
+    "automatic": "Automatyczny",
+    "frequency": "Częstotliwość",
+    "time": "Godzina",
+    "weekday": "Dzień tygodnia",
+    "monthDay": "Dzień miesiąca",
+    "customIntervalDays": "Interwał (dni)",
+    "scheduleNote": "Notatka harmonogramu",
+    "scheduleNotePlaceholder": "np. Synology Task Scheduler, cron job...",
+    "customCategory": "Niestandardowy"
+  },
+  "schedule": {
+    "daily": "Codziennie",
+    "weekly": "Co tydzień",
+    "monthly": "Co miesiąc",
+    "yearly": "Co rok",
+    "custom": "Niestandardowy"
+  },
+  "weekdays": {
+    "0": "Niedziela",
+    "1": "Poniedziałek",
+    "2": "Wtorek",
+    "3": "Środa",
+    "4": "Czwartek",
+    "5": "Piątek",
+    "6": "Sobota"
   },
   "media": {
     "title": "Nośniki",
@@ -275,6 +302,20 @@
     "avg": "Średnia",
     "noData": "Brak danych."
   },
+  "calendar": {
+    "title": "Kalendarz kopii zapasowych",
+    "entries": "wpisów"
+  },
+  "bulk": {
+    "selected": "zaznaczonych",
+    "select": "Zaznacz",
+    "deleteConfirm": "kopii zapasowych zostanie przeniesionych do kosza.",
+    "deleteConfirmMedia": "nośników zostanie przeniesionych do kosza.",
+    "deleteConfirmDevices": "źródeł zostanie przeniesionych do kosza."
+  },
+  "comparison": {
+    "title": "Porównanie rozmiarów"
+  },
   "update": {
     "available": "Dostępna aktualizacja",
     "version": "Nowa wersja:",
@@ -283,18 +324,6 @@
     "ready": "Aktualizacja gotowa",
     "restartDesc": "Uruchom ponownie aplikację, aby zastosować aktualizację.",
     "restart": "Uruchom ponownie"
-  },
-  "calendar": {
-    "title": "Kalendarz kopii zapasowych",
-    "entries": "wpisów"
-  },
-  "bulk": {
-    "selected": "zaznaczonych",
-    "select": "Zaznacz",
-    "deleteConfirm": "kopii zapasowych zostanie przeniesionych do kosza."
-  },
-  "comparison": {
-    "title": "Porównanie rozmiarów"
   },
   "categories": {
     "photos": "Zdjęcia",
@@ -319,7 +348,15 @@
     "games": "Gry",
     "applications": "Aplikacje",
     "config": "Konfiguracja",
-    "other": "Inne"
+    "other": "Inne",
+    "logs": "Logi",
+    "credentials": "Poświadczenia",
+    "container": "Kontener",
+    "cloud_data": "Dane chmury",
+    "bookmarks": "Zakładki",
+    "passwords": "Hasła",
+    "notes": "Notatki",
+    "education": "Edukacja"
   },
   "deviceTypes": {
     "desktop": "Komputer stacjonarny",
@@ -338,27 +375,37 @@
     "other": "Inne"
   },
   "storageTypes": {
-    "internal_drive": "Wewnętrzny HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Wewnętrzny HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Zewnętrzny HDD",
-    "usb_stick": "Pendrive", "sd_card": "Karta SD", "optical": "Optyczny (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Udział sieciowy", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Chmura", "object_storage": "Magazyn obiektowy (S3)",
-    "tape": "Taśma", "raid": "RAID",
-    "local": "Lokalny", "other": "Inne"
+    "usb_stick": "Pendrive",
+    "sd_card": "Karta SD",
+    "optical": "Optyczny (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Udział sieciowy",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Chmura",
+    "object_storage": "Magazyn obiektowy (S3)",
+    "tape": "Taśma",
+    "raid": "RAID",
+    "local": "Lokalny",
+    "other": "Inne"
   },
   "folders": {
-      "create": "Nowy folder",
-      "rename": "Zmień nazwę folderu",
-      "deleteFolder": "Usuń folder",
-      "deleteConfirm": "Usunąć folder \"{{name}}\"? Elementy zostaną przeniesione do Niesortowane.",
-      "folderName": "Nazwa folderu",
-      "moveToFolder": "Przenieś do folderu",
-      "unfiled": "Niesortowane",
-      "allFolders": "Wszystkie",
-      "items": "elementów",
-      "viewFlat": "Widok płaski",
-      "viewFolder": "Widok folderów",
-      "viewExpanded": "Widok rozwinięty"
+    "create": "Nowy folder",
+    "rename": "Zmień nazwę folderu",
+    "deleteFolder": "Usuń folder",
+    "deleteConfirm": "Usunąć folder \"{{name}}\"? Elementy zostaną przeniesione do Niesortowane.",
+    "folderName": "Nazwa folderu",
+    "moveToFolder": "Przenieś do folderu",
+    "unfiled": "Niesortowane",
+    "allFolders": "Wszystkie",
+    "items": "elementów",
+    "viewFlat": "Widok płaski",
+    "viewFolder": "Widok folderów",
+    "viewExpanded": "Widok rozwinięty"
   },
   "rule321": {
     "title": "Reguła kopii zapasowych 3-2-1",

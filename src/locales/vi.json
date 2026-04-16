@@ -71,7 +71,34 @@
     "entryNumber": "Số",
     "pause": "Tạm dừng",
     "resume": "Tiếp tục",
-    "editLocation": "Chỉnh sửa vị trí"
+    "editLocation": "Chỉnh sửa vị trí",
+    "mode": "Chế độ",
+    "manual": "Thủ công",
+    "automatic": "Tự động",
+    "frequency": "Tần suất",
+    "time": "Thời gian",
+    "weekday": "Ngày trong tuần",
+    "monthDay": "Ngày trong tháng",
+    "customIntervalDays": "Khoảng cách (ngày)",
+    "scheduleNote": "Ghi chú lịch",
+    "scheduleNotePlaceholder": "VD: Synology Task Scheduler, cron job...",
+    "customCategory": "Tùy chỉnh"
+  },
+  "schedule": {
+    "daily": "Hàng ngày",
+    "weekly": "Hàng tuần",
+    "monthly": "Hàng tháng",
+    "yearly": "Hàng năm",
+    "custom": "Tùy chỉnh"
+  },
+  "weekdays": {
+    "0": "Chủ Nhật",
+    "1": "Thứ Hai",
+    "2": "Thứ Ba",
+    "3": "Thứ Tư",
+    "4": "Thứ Năm",
+    "5": "Thứ Sáu",
+    "6": "Thứ Bảy"
   },
   "media": {
     "title": "Phương tiện lưu trữ",
@@ -275,6 +302,20 @@
     "avg": "Trung bình",
     "noData": "Chưa có dữ liệu."
   },
+  "calendar": {
+    "title": "Lịch sao lưu",
+    "entries": "mục"
+  },
+  "bulk": {
+    "selected": "đã chọn",
+    "select": "Chọn",
+    "deleteConfirm": "bản sao lưu sẽ được chuyển vào thùng rác.",
+    "deleteConfirmMedia": "phương tiện lưu trữ sẽ được chuyển vào thùng rác.",
+    "deleteConfirmDevices": "nguồn sẽ được chuyển vào thùng rác."
+  },
+  "comparison": {
+    "title": "So sánh kích thước"
+  },
   "update": {
     "available": "Có bản cập nhật",
     "version": "Phiên bản mới:",
@@ -283,18 +324,6 @@
     "ready": "Bản cập nhật đã sẵn sàng",
     "restartDesc": "Khởi động lại ứng dụng để áp dụng bản cập nhật.",
     "restart": "Khởi động lại ngay"
-  },
-  "calendar": {
-    "title": "Lịch sao lưu",
-    "entries": "mục"
-  },
-  "bulk": {
-    "selected": "đã chọn",
-    "select": "Chọn",
-    "deleteConfirm": "bản sao lưu sẽ được chuyển vào thùng rác."
-  },
-  "comparison": {
-    "title": "So sánh kích thước"
   },
   "categories": {
     "photos": "Ảnh",
@@ -319,7 +348,15 @@
     "games": "Trò chơi",
     "applications": "Ứng dụng",
     "config": "Cấu hình",
-    "other": "Khác"
+    "other": "Khác",
+    "logs": "Nhật ký",
+    "credentials": "Thông tin xác thực",
+    "container": "Container",
+    "cloud_data": "Dữ liệu đám mây",
+    "bookmarks": "Dấu trang",
+    "passwords": "Mật khẩu",
+    "notes": "Ghi chú",
+    "education": "Giáo dục"
   },
   "deviceTypes": {
     "desktop": "Máy tính bàn",
@@ -338,27 +375,37 @@
     "other": "Khác"
   },
   "storageTypes": {
-    "internal_drive": "HDD trong", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "HDD trong",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "HDD ngoài",
-    "usb_stick": "USB", "sd_card": "Thẻ SD", "optical": "Quang (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Chia sẻ mạng", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Đám mây", "object_storage": "Lưu trữ đối tượng (S3)",
-    "tape": "Băng từ", "raid": "RAID",
-    "local": "Cục bộ", "other": "Khác"
+    "usb_stick": "USB",
+    "sd_card": "Thẻ SD",
+    "optical": "Quang (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Chia sẻ mạng",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Đám mây",
+    "object_storage": "Lưu trữ đối tượng (S3)",
+    "tape": "Băng từ",
+    "raid": "RAID",
+    "local": "Cục bộ",
+    "other": "Khác"
   },
   "folders": {
-      "create": "Thư mục mới",
-      "rename": "Đổi tên thư mục",
-      "deleteFolder": "Xóa thư mục",
-      "deleteConfirm": "Xóa thư mục \"{{name}}\"? Các mục sẽ được chuyển sang Chưa phân loại.",
-      "folderName": "Tên thư mục",
-      "moveToFolder": "Chuyển vào thư mục",
-      "unfiled": "Chưa phân loại",
-      "allFolders": "Tất cả",
-      "items": "mục",
-      "viewFlat": "Xem phẳng",
-      "viewFolder": "Xem thư mục",
-      "viewExpanded": "Xem mở rộng"
+    "create": "Thư mục mới",
+    "rename": "Đổi tên thư mục",
+    "deleteFolder": "Xóa thư mục",
+    "deleteConfirm": "Xóa thư mục \"{{name}}\"? Các mục sẽ được chuyển sang Chưa phân loại.",
+    "folderName": "Tên thư mục",
+    "moveToFolder": "Chuyển vào thư mục",
+    "unfiled": "Chưa phân loại",
+    "allFolders": "Tất cả",
+    "items": "mục",
+    "viewFlat": "Xem phẳng",
+    "viewFolder": "Xem thư mục",
+    "viewExpanded": "Xem mở rộng"
   },
   "rule321": {
     "title": "Quy tắc sao lưu 3-2-1",

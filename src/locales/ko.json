@@ -71,7 +71,34 @@
     "entryNumber": "번호",
     "pause": "일시 중지",
     "resume": "재개",
-    "editLocation": "위치 편집"
+    "editLocation": "위치 편집",
+    "mode": "모드",
+    "manual": "수동",
+    "automatic": "자동",
+    "frequency": "빈도",
+    "time": "시간",
+    "weekday": "요일",
+    "monthDay": "월 일",
+    "customIntervalDays": "간격 (일)",
+    "scheduleNote": "스케줄 메모",
+    "scheduleNotePlaceholder": "예: Synology Task Scheduler, cron job...",
+    "customCategory": "사용자 정의"
+  },
+  "schedule": {
+    "daily": "매일",
+    "weekly": "매주",
+    "monthly": "매월",
+    "yearly": "매년",
+    "custom": "사용자 정의"
+  },
+  "weekdays": {
+    "0": "일요일",
+    "1": "월요일",
+    "2": "화요일",
+    "3": "수요일",
+    "4": "목요일",
+    "5": "금요일",
+    "6": "토요일"
   },
   "media": {
     "title": "저장 매체",
@@ -275,6 +302,20 @@
     "avg": "평균",
     "noData": "아직 데이터가 없습니다."
   },
+  "calendar": {
+    "title": "백업 캘린더",
+    "entries": "항목"
+  },
+  "bulk": {
+    "selected": "선택됨",
+    "select": "선택",
+    "deleteConfirm": "개의 백업이 휴지통으로 이동됩니다.",
+    "deleteConfirmMedia": "개의 저장 매체가 휴지통으로 이동됩니다.",
+    "deleteConfirmDevices": "개의 소스가 휴지통으로 이동됩니다."
+  },
+  "comparison": {
+    "title": "크기 비교"
+  },
   "update": {
     "available": "업데이트 가능",
     "version": "새 버전:",
@@ -283,18 +324,6 @@
     "ready": "업데이트 준비 완료",
     "restartDesc": "업데이트를 적용하려면 앱을 다시 시작하세요.",
     "restart": "지금 다시 시작"
-  },
-  "calendar": {
-    "title": "백업 캘린더",
-    "entries": "항목"
-  },
-  "bulk": {
-    "selected": "선택됨",
-    "select": "선택",
-    "deleteConfirm": "개의 백업이 휴지통으로 이동됩니다."
-  },
-  "comparison": {
-    "title": "크기 비교"
   },
   "categories": {
     "photos": "사진",
@@ -319,7 +348,15 @@
     "games": "게임",
     "applications": "애플리케이션",
     "config": "설정",
-    "other": "기타"
+    "other": "기타",
+    "logs": "로그",
+    "credentials": "자격 증명",
+    "container": "컨테이너",
+    "cloud_data": "클라우드 데이터",
+    "bookmarks": "북마크",
+    "passwords": "비밀번호",
+    "notes": "메모",
+    "education": "교육"
   },
   "deviceTypes": {
     "desktop": "데스크톱 PC",
@@ -338,27 +375,37 @@
     "other": "기타"
   },
   "storageTypes": {
-    "internal_drive": "내장 HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "내장 HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "외장 HDD",
-    "usb_stick": "USB 메모리", "sd_card": "SD 카드", "optical": "광학 (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "네트워크 공유", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "클라우드", "object_storage": "오브젝트 스토리지 (S3)",
-    "tape": "테이프", "raid": "RAID",
-    "local": "로컬", "other": "기타"
+    "usb_stick": "USB 메모리",
+    "sd_card": "SD 카드",
+    "optical": "광학 (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "네트워크 공유",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "클라우드",
+    "object_storage": "오브젝트 스토리지 (S3)",
+    "tape": "테이프",
+    "raid": "RAID",
+    "local": "로컬",
+    "other": "기타"
   },
   "folders": {
-      "create": "새 폴더",
-      "rename": "폴더 이름 변경",
-      "deleteFolder": "폴더 삭제",
-      "deleteConfirm": "\"{{name}}\" 폴더를 삭제하시겠습니까? 항목은 미분류로 이동됩니다.",
-      "folderName": "폴더 이름",
-      "moveToFolder": "폴더로 이동",
-      "unfiled": "미분류",
-      "allFolders": "전체",
-      "items": "항목",
-      "viewFlat": "평면 보기",
-      "viewFolder": "폴더 보기",
-      "viewExpanded": "확장 보기"
+    "create": "새 폴더",
+    "rename": "폴더 이름 변경",
+    "deleteFolder": "폴더 삭제",
+    "deleteConfirm": "\"{{name}}\" 폴더를 삭제하시겠습니까? 항목은 미분류로 이동됩니다.",
+    "folderName": "폴더 이름",
+    "moveToFolder": "폴더로 이동",
+    "unfiled": "미분류",
+    "allFolders": "전체",
+    "items": "항목",
+    "viewFlat": "평면 보기",
+    "viewFolder": "폴더 보기",
+    "viewExpanded": "확장 보기"
   },
   "rule321": {
     "title": "3-2-1 백업 규칙",

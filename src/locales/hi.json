@@ -71,7 +71,34 @@
     "entryNumber": "संख्या",
     "pause": "रोकें",
     "resume": "फिर से शुरू करें",
-    "editLocation": "स्थान संपादित करें"
+    "editLocation": "स्थान संपादित करें",
+    "mode": "मोड",
+    "manual": "मैनुअल",
+    "automatic": "स्वचालित",
+    "frequency": "आवृत्ति",
+    "time": "समय",
+    "weekday": "सप्ताह का दिन",
+    "monthDay": "महीने का दिन",
+    "customIntervalDays": "अंतराल (दिन)",
+    "scheduleNote": "शेड्यूल नोट",
+    "scheduleNotePlaceholder": "उदा. Synology Task Scheduler, cron job...",
+    "customCategory": "कस्टम"
+  },
+  "schedule": {
+    "daily": "दैनिक",
+    "weekly": "साप्ताहिक",
+    "monthly": "मासिक",
+    "yearly": "वार्षिक",
+    "custom": "कस्टम"
+  },
+  "weekdays": {
+    "0": "रविवार",
+    "1": "सोमवार",
+    "2": "मंगलवार",
+    "3": "बुधवार",
+    "4": "गुरुवार",
+    "5": "शुक्रवार",
+    "6": "शनिवार"
   },
   "media": {
     "title": "स्टोरेज मीडिया",
@@ -275,6 +302,20 @@
     "avg": "औसत",
     "noData": "अभी तक कोई डेटा नहीं है।"
   },
+  "calendar": {
+    "title": "बैकअप कैलेंडर",
+    "entries": "प्रविष्टियाँ"
+  },
+  "bulk": {
+    "selected": "चयनित",
+    "select": "चुनें",
+    "deleteConfirm": "बैकअप कचरे में भेजे जाएँगे।",
+    "deleteConfirmMedia": "स्टोरेज मीडिया को कूड़ेदान में ले जाया जाएगा।",
+    "deleteConfirmDevices": "स्रोतों को कूड़ेदान में ले जाया जाएगा।"
+  },
+  "comparison": {
+    "title": "आकार तुलना"
+  },
   "update": {
     "available": "अपडेट उपलब्ध",
     "version": "नया संस्करण:",
@@ -283,18 +324,6 @@
     "ready": "अपडेट तैयार",
     "restartDesc": "अपडेट लागू करने के लिए ऐप पुनः आरंभ करें।",
     "restart": "अभी पुनः आरंभ करें"
-  },
-  "calendar": {
-    "title": "बैकअप कैलेंडर",
-    "entries": "प्रविष्टियाँ"
-  },
-  "bulk": {
-    "selected": "चयनित",
-    "select": "चुनें",
-    "deleteConfirm": "बैकअप कचरे में भेजे जाएँगे।"
-  },
-  "comparison": {
-    "title": "आकार तुलना"
   },
   "categories": {
     "photos": "फ़ोटो",
@@ -319,7 +348,15 @@
     "games": "गेम",
     "applications": "एप्लिकेशन",
     "config": "कॉन्फ़िगरेशन",
-    "other": "अन्य"
+    "other": "अन्य",
+    "logs": "लॉग",
+    "credentials": "प्रमाण पत्र",
+    "container": "कंटेनर",
+    "cloud_data": "क्लाउड डेटा",
+    "bookmarks": "बुकमार्क",
+    "passwords": "पासवर्ड",
+    "notes": "नोट्स",
+    "education": "शिक्षा"
   },
   "deviceTypes": {
     "desktop": "डेस्कटॉप PC",
@@ -338,27 +375,37 @@
     "other": "अन्य"
   },
   "storageTypes": {
-    "internal_drive": "आंतरिक HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "आंतरिक HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "बाहरी HDD",
-    "usb_stick": "USB स्टिक", "sd_card": "SD कार्ड", "optical": "ऑप्टिकल (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "नेटवर्क शेयर", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "क्लाउड", "object_storage": "ऑब्जेक्ट स्टोरेज (S3)",
-    "tape": "टेप", "raid": "RAID",
-    "local": "स्थानीय", "other": "अन्य"
+    "usb_stick": "USB स्टिक",
+    "sd_card": "SD कार्ड",
+    "optical": "ऑप्टिकल (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "नेटवर्क शेयर",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "क्लाउड",
+    "object_storage": "ऑब्जेक्ट स्टोरेज (S3)",
+    "tape": "टेप",
+    "raid": "RAID",
+    "local": "स्थानीय",
+    "other": "अन्य"
   },
   "folders": {
-      "create": "नया फ़ोल्डर",
-      "rename": "फ़ोल्डर का नाम बदलें",
-      "deleteFolder": "फ़ोल्डर हटाएँ",
-      "deleteConfirm": "फ़ोल्डर \"{{name}}\" हटाएँ? आइटम अवर्गीकृत में चले जाएँगे।",
-      "folderName": "फ़ोल्डर का नाम",
-      "moveToFolder": "फ़ोल्डर में ले जाएँ",
-      "unfiled": "अवर्गीकृत",
-      "allFolders": "सभी",
-      "items": "आइटम",
-      "viewFlat": "सपाट दृश्य",
-      "viewFolder": "फ़ोल्डर दृश्य",
-      "viewExpanded": "विस्तारित दृश्य"
+    "create": "नया फ़ोल्डर",
+    "rename": "फ़ोल्डर का नाम बदलें",
+    "deleteFolder": "फ़ोल्डर हटाएँ",
+    "deleteConfirm": "फ़ोल्डर \"{{name}}\" हटाएँ? आइटम अवर्गीकृत में चले जाएँगे।",
+    "folderName": "फ़ोल्डर का नाम",
+    "moveToFolder": "फ़ोल्डर में ले जाएँ",
+    "unfiled": "अवर्गीकृत",
+    "allFolders": "सभी",
+    "items": "आइटम",
+    "viewFlat": "सपाट दृश्य",
+    "viewFolder": "फ़ोल्डर दृश्य",
+    "viewExpanded": "विस्तारित दृश्य"
   },
   "rule321": {
     "title": "3-2-1 बैकअप नियम",

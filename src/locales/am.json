@@ -12,7 +12,7 @@
     "statistics": "ስታቲስቲክስ",
     "trash": "ቆሻሻ",
     "settings": "ቅንብሮች",
-    "calendar": "ቀdelays"
+    "calendar": "የቀን መቁጠሪያ"
   },
   "dashboard": {
     "title": "ዳሽቦርድ",
@@ -71,7 +71,34 @@
     "entryNumber": "ቁጥር",
     "pause": "አቁም",
     "resume": "ቀጥል",
-    "editLocation": "ቦታ አርትዕ"
+    "editLocation": "ቦታ አርትዕ",
+    "mode": "ማይመርጒያ",
+    "manual": "በእጂ",
+    "automatic": "አውቶማቲክ",
+    "frequency": "ድግግሞሽ",
+    "time": "ሰዓት",
+    "weekday": "የሳምንቱ ቀን",
+    "monthDay": "የወሩ ቀን",
+    "customIntervalDays": "የጊዜ ልየት (ቀናት)",
+    "scheduleNote": "የመርሃ መግለጪያ ማሳ ሰኒድ",
+    "scheduleNotePlaceholder": "ዕንደ Synology Task Scheduler, cron job...",
+    "customCategory": "ብጁ"
+  },
+  "schedule": {
+    "daily": "የቀን ቀን",
+    "weekly": "በሰንበት",
+    "monthly": "የወር ወር",
+    "yearly": "የዓመት ዓመት",
+    "custom": "ብጁ"
+  },
+  "weekdays": {
+    "0": "እህድ",
+    "1": "ሰኞ",
+    "2": "ማክሰኞ",
+    "3": "ረቡዕ",
+    "4": "ሐሙስ",
+    "5": "አርብ",
+    "6": "ቅዳሜ"
   },
   "media": {
     "title": "የማከማቻ ሚዲያ",
@@ -199,8 +226,8 @@
     "exportCSV": "እንደ CSV ላክ",
     "exportSuccess": "ውሂብ በተሳካ ሁኔታ ተልኳል",
     "updates": "ማperbarui",
-    "checkUpdates": "ዝdelays ፈልግ",
-    "upToDate": "ወdelays ነdelays!"
+    "checkUpdates": "ዝማኔዎችን ፈልግ",
+    "upToDate": "ወቅታዊ ነዎት!"
   },
   "common": {
     "save": "አስቀምጥ",
@@ -275,6 +302,20 @@
     "avg": "አማካይ",
     "noData": "እስካሁን ምንም ውሂብ የለም።"
   },
+  "calendar": {
+    "title": "የምትኬ ቀን መቁጠሪያ",
+    "entries": "ግቤቶች"
+  },
+  "bulk": {
+    "selected": "ተመርጠዋል",
+    "select": "ምረጥ",
+    "deleteConfirm": "ምትኬዎች ወደ ቆሻሻ ይዛወራሉ።",
+    "deleteConfirmMedia": "የማከማħያ ምድቦች ወደ ቁሸት ይ ተወ ይወሰዳሉ።",
+    "deleteConfirmDevices": "ምንጮች ወደ ቁሸት ይወሰዳሉ።"
+  },
+  "comparison": {
+    "title": "የመጠን ንጽጽር"
+  },
   "update": {
     "available": "ዝማኔ ይገኛል",
     "version": "አዲስ ስሪት:",
@@ -283,18 +324,6 @@
     "ready": "ዝማኔ ዝግጁ ነው",
     "restartDesc": "ዝማኔውን ለመተግበር መተግበሪያውን እንደገና ያስጀምሩ።",
     "restart": "አሁን እንደገና አስጀምር"
-  },
-  "calendar": {
-    "title": "የምትኬ ቀን መቁጠሪያ",
-    "entries": "ግቤቶች"
-  },
-  "bulk": {
-    "selected": "ተመርጠዋል",
-    "select": "ምረጥ",
-    "deleteConfirm": "ምትኬዎች ወደ ቆሻሻ ይዛወራሉ።"
-  },
-  "comparison": {
-    "title": "የመጠን ንጽጽር"
   },
   "categories": {
     "photos": "ፎቶዎች",
@@ -319,7 +348,15 @@
     "games": "ጨዋታዎች",
     "applications": "መተግበሪያዎች",
     "config": "ውቅር",
-    "other": "ሌላ"
+    "other": "ሌላ",
+    "logs": "ምዝግቦች",
+    "credentials": "ማረጋ ገጳች",
+    "container": "ኮንተይነር",
+    "cloud_data": "የዞመ መ ረጃ",
+    "bookmarks": "የ መድረክ ምልክቶች",
+    "passwords": "የም ስጥር ቃላት",
+    "notes": "ማስታወሻ",
+    "education": "ትምህርት"
   },
   "deviceTypes": {
     "desktop": "ዴስክቶፕ ኮምፒውተር",
@@ -338,27 +375,37 @@
     "other": "ሌላ"
   },
   "storageTypes": {
-    "internal_drive": "ውስጣዊ HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "ውስጣዊ HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "ውጫዊ HDD",
-    "usb_stick": "USB ማህደረ ትውስታ", "sd_card": "SD ካርድ", "optical": "ኦፕቲካል (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "የአውታረ መረብ ማጋራት", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "ደመና", "object_storage": "የነገር ማከማቻ (S3)",
-    "tape": "ቴፕ", "raid": "RAID",
-    "local": "የአካባቢ", "other": "ሌላ"
+    "usb_stick": "USB ማህደረ ትውስታ",
+    "sd_card": "SD ካርድ",
+    "optical": "ኦፕቲካል (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "የአውታረ መረብ ማጋራት",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "ደመና",
+    "object_storage": "የነገር ማከማቻ (S3)",
+    "tape": "ቴፕ",
+    "raid": "RAID",
+    "local": "የአካባቢ",
+    "other": "ሌላ"
   },
   "folders": {
-      "create": "አዲስ ፎልደር",
-      "rename": "ፎልደር ሰም ቀይር",
-      "deleteFolder": "ፎልደር ሰርዝ",
-      "deleteConfirm": "\"{{name}}\" ፎልደር ይሰርዝ? ንጥሎች ወደ ያልተመደቡ ይዘዋወራሉ።",
-      "folderName": "የፎልደር ስም",
-      "moveToFolder": "ወደ ፎልደር አንቀሳቅስ",
-      "unfiled": "ያልተመደቡ",
-      "allFolders": "ሁሉም",
-      "items": "ንጥሎች",
-      "viewFlat": "ጠፍጣፋ ዕይታ",
-      "viewFolder": "የፎልደር ዕይታ",
-      "viewExpanded": "የተዘረጋ ዕይታ"
+    "create": "አዲስ ፎልደር",
+    "rename": "ፎልደር ሰም ቀይር",
+    "deleteFolder": "ፎልደር ሰርዝ",
+    "deleteConfirm": "\"{{name}}\" ፎልደር ይሰርዝ? ንጥሎች ወደ ያልተመደቡ ይዘዋወራሉ።",
+    "folderName": "የፎልደር ስም",
+    "moveToFolder": "ወደ ፎልደር አንቀሳቅስ",
+    "unfiled": "ያልተመደቡ",
+    "allFolders": "ሁሉም",
+    "items": "ንጥሎች",
+    "viewFlat": "ጠፍጣፋ ዕይታ",
+    "viewFolder": "የፎልደር ዕይታ",
+    "viewExpanded": "የተዘረጋ ዕይታ"
   },
   "rule321": {
     "title": "የ3-2-1 ምትኬ ደንብ",

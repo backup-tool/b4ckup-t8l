@@ -71,7 +71,34 @@
     "entryNumber": "מספר",
     "pause": "השהה",
     "resume": "חדש",
-    "editLocation": "ערוך מיקום"
+    "editLocation": "ערוך מיקום",
+    "mode": "מצב",
+    "manual": "ידני",
+    "automatic": "אוטומטי",
+    "frequency": "תדירות",
+    "time": "שעה",
+    "weekday": "יום בשבוע",
+    "monthDay": "יום בחודש",
+    "customIntervalDays": "מרווח (ימים)",
+    "scheduleNote": "הערת תזמון",
+    "scheduleNotePlaceholder": "למשל Synology Task Scheduler, cron job...",
+    "customCategory": "מותאם אישית"
+  },
+  "schedule": {
+    "daily": "יומי",
+    "weekly": "שבועי",
+    "monthly": "חודשי",
+    "yearly": "שנתי",
+    "custom": "מותאם אישית"
+  },
+  "weekdays": {
+    "0": "יום ראשון",
+    "1": "יום שני",
+    "2": "יום שלישי",
+    "3": "יום רביעי",
+    "4": "יום חמישי",
+    "5": "יום שישי",
+    "6": "שבת"
   },
   "media": {
     "title": "אמצעי אחסון",
@@ -275,6 +302,20 @@
     "avg": "ממוצע",
     "noData": "אין נתונים עדיין."
   },
+  "calendar": {
+    "title": "לוח שנה לגיבויים",
+    "entries": "רשומות"
+  },
+  "bulk": {
+    "selected": "נבחרו",
+    "select": "בחירה",
+    "deleteConfirm": "גיבויים יועברו לפח האשפה.",
+    "deleteConfirmMedia": "אמצעי אחסון יועברו לפח האשפה.",
+    "deleteConfirmDevices": "מקורות יועברו לפח האשפה."
+  },
+  "comparison": {
+    "title": "השוואת גדלים"
+  },
   "update": {
     "available": "עדכון זמין",
     "version": "גרסה חדשה:",
@@ -283,18 +324,6 @@
     "ready": "העדכון מוכן",
     "restartDesc": "הפעל מחדש את האפליקציה כדי להחיל את העדכון.",
     "restart": "הפעל מחדש עכשיו"
-  },
-  "calendar": {
-    "title": "לוח שנה לגיבויים",
-    "entries": "רשומות"
-  },
-  "bulk": {
-    "selected": "נבחרו",
-    "select": "בחירה",
-    "deleteConfirm": "גיבויים יועברו לפח האשפה."
-  },
-  "comparison": {
-    "title": "השוואת גדלים"
   },
   "categories": {
     "photos": "תמונות",
@@ -319,7 +348,15 @@
     "games": "משחקים",
     "applications": "יישומים",
     "config": "תצורה",
-    "other": "אחר"
+    "other": "אחר",
+    "logs": "יומנים",
+    "credentials": "אישורים",
+    "container": "מכל",
+    "cloud_data": "נתוני ענן",
+    "bookmarks": "סימניות",
+    "passwords": "סיסמאות",
+    "notes": "הערות",
+    "education": "חינוך"
   },
   "deviceTypes": {
     "desktop": "מחשב שולחני",
@@ -338,27 +375,37 @@
     "other": "אחר"
   },
   "storageTypes": {
-    "internal_drive": "HDD פנימי", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "HDD פנימי",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "HDD חיצוני",
-    "usb_stick": "כונן USB", "sd_card": "כרטיס SD", "optical": "אופטי (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "שיתוף רשת", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "ענן", "object_storage": "אחסון אובייקטים (S3)",
-    "tape": "סרט", "raid": "RAID",
-    "local": "מקומי", "other": "אחר"
+    "usb_stick": "כונן USB",
+    "sd_card": "כרטיס SD",
+    "optical": "אופטי (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "שיתוף רשת",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "ענן",
+    "object_storage": "אחסון אובייקטים (S3)",
+    "tape": "סרט",
+    "raid": "RAID",
+    "local": "מקומי",
+    "other": "אחר"
   },
   "folders": {
-      "create": "תיקייה חדשה",
-      "rename": "שנה שם תיקייה",
-      "deleteFolder": "מחק תיקייה",
-      "deleteConfirm": "למחוק את התיקייה \"{{name}}\"? הפריטים יועברו לא ממוינים.",
-      "folderName": "שם תיקייה",
-      "moveToFolder": "העבר לתיקייה",
-      "unfiled": "לא ממוינים",
-      "allFolders": "הכל",
-      "items": "פריטים",
-      "viewFlat": "תצוגה שטוחה",
-      "viewFolder": "תצוגת תיקיות",
-      "viewExpanded": "תצוגה מורחבת"
+    "create": "תיקייה חדשה",
+    "rename": "שנה שם תיקייה",
+    "deleteFolder": "מחק תיקייה",
+    "deleteConfirm": "למחוק את התיקייה \"{{name}}\"? הפריטים יועברו לא ממוינים.",
+    "folderName": "שם תיקייה",
+    "moveToFolder": "העבר לתיקייה",
+    "unfiled": "לא ממוינים",
+    "allFolders": "הכל",
+    "items": "פריטים",
+    "viewFlat": "תצוגה שטוחה",
+    "viewFolder": "תצוגת תיקיות",
+    "viewExpanded": "תצוגה מורחבת"
   },
   "rule321": {
     "title": "כלל גיבוי 3-2-1",

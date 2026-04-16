@@ -71,7 +71,34 @@
     "entryNumber": "Número",
     "pause": "Pausar",
     "resume": "Retomar",
-    "editLocation": "Editar localização"
+    "editLocation": "Editar localização",
+    "mode": "Modo",
+    "manual": "Manual",
+    "automatic": "Automático",
+    "frequency": "Frequência",
+    "time": "Hora",
+    "weekday": "Dia da semana",
+    "monthDay": "Dia do mês",
+    "customIntervalDays": "Intervalo (dias)",
+    "scheduleNote": "Nota de agendamento",
+    "scheduleNotePlaceholder": "ex. Synology Task Scheduler, cron job...",
+    "customCategory": "Personalizado"
+  },
+  "schedule": {
+    "daily": "Diário",
+    "weekly": "Semanal",
+    "monthly": "Mensal",
+    "yearly": "Anual",
+    "custom": "Personalizado"
+  },
+  "weekdays": {
+    "0": "Domingo",
+    "1": "Segunda-feira",
+    "2": "Terça-feira",
+    "3": "Quarta-feira",
+    "4": "Quinta-feira",
+    "5": "Sexta-feira",
+    "6": "Sábado"
   },
   "media": {
     "title": "Suportes de armazenamento",
@@ -275,6 +302,20 @@
     "avg": "Média",
     "noData": "Ainda não há dados."
   },
+  "calendar": {
+    "title": "Calendário de cópias",
+    "entries": "entradas"
+  },
+  "bulk": {
+    "selected": "selecionados",
+    "select": "Selecionar",
+    "deleteConfirm": "cópias serão movidas para a lixeira.",
+    "deleteConfirmMedia": "mídias de armazenamento serão movidas para a lixeira.",
+    "deleteConfirmDevices": "fontes serão movidas para a lixeira."
+  },
+  "comparison": {
+    "title": "Comparação de tamanhos"
+  },
   "update": {
     "available": "Atualização disponível",
     "version": "Nova versão:",
@@ -283,18 +324,6 @@
     "ready": "Atualização pronta",
     "restartDesc": "Reinicie a aplicação para aplicar a atualização.",
     "restart": "Reiniciar agora"
-  },
-  "calendar": {
-    "title": "Calendário de cópias",
-    "entries": "entradas"
-  },
-  "bulk": {
-    "selected": "selecionados",
-    "select": "Selecionar",
-    "deleteConfirm": "cópias serão movidas para a lixeira."
-  },
-  "comparison": {
-    "title": "Comparação de tamanhos"
   },
   "categories": {
     "photos": "Fotos",
@@ -319,7 +348,15 @@
     "games": "Jogos",
     "applications": "Aplicações",
     "config": "Configuração",
-    "other": "Outro"
+    "other": "Outro",
+    "logs": "Logs",
+    "credentials": "Credenciais",
+    "container": "Container",
+    "cloud_data": "Dados na nuvem",
+    "bookmarks": "Favoritos",
+    "passwords": "Senhas",
+    "notes": "Notas",
+    "education": "Educação"
   },
   "deviceTypes": {
     "desktop": "PC de secretária",
@@ -338,27 +375,37 @@
     "other": "Outro"
   },
   "storageTypes": {
-    "internal_drive": "HDD interno", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "HDD interno",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "HDD externo",
-    "usb_stick": "Pen USB", "sd_card": "Cartão SD", "optical": "Ótico (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Partilha de rede", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Nuvem", "object_storage": "Armazenamento de objetos (S3)",
-    "tape": "Fita", "raid": "RAID",
-    "local": "Local", "other": "Outro"
+    "usb_stick": "Pen USB",
+    "sd_card": "Cartão SD",
+    "optical": "Ótico (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Partilha de rede",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Nuvem",
+    "object_storage": "Armazenamento de objetos (S3)",
+    "tape": "Fita",
+    "raid": "RAID",
+    "local": "Local",
+    "other": "Outro"
   },
   "folders": {
-      "create": "Nova pasta",
-      "rename": "Renomear pasta",
-      "deleteFolder": "Excluir pasta",
-      "deleteConfirm": "Excluir pasta \"{{name}}\"? Os itens serão movidos para Sem pasta.",
-      "folderName": "Nome da pasta",
-      "moveToFolder": "Mover para pasta",
-      "unfiled": "Sem pasta",
-      "allFolders": "Todos",
-      "items": "itens",
-      "viewFlat": "Vista plana",
-      "viewFolder": "Vista de pastas",
-      "viewExpanded": "Vista expandida"
+    "create": "Nova pasta",
+    "rename": "Renomear pasta",
+    "deleteFolder": "Excluir pasta",
+    "deleteConfirm": "Excluir pasta \"{{name}}\"? Os itens serão movidos para Sem pasta.",
+    "folderName": "Nome da pasta",
+    "moveToFolder": "Mover para pasta",
+    "unfiled": "Sem pasta",
+    "allFolders": "Todos",
+    "items": "itens",
+    "viewFlat": "Vista plana",
+    "viewFolder": "Vista de pastas",
+    "viewExpanded": "Vista expandida"
   },
   "rule321": {
     "title": "Regra de cópia de segurança 3-2-1",

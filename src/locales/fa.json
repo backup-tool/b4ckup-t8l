@@ -71,7 +71,34 @@
     "entryNumber": "شماره",
     "pause": "توقف",
     "resume": "ادامه",
-    "editLocation": "ویرایش مکان"
+    "editLocation": "ویرایش مکان",
+    "mode": "حالت",
+    "manual": "دستی",
+    "automatic": "خودکار",
+    "frequency": "تناوب",
+    "time": "زمان",
+    "weekday": "روز هفته",
+    "monthDay": "روز ماه",
+    "customIntervalDays": "فاصله (روز)",
+    "scheduleNote": "یادداشت زمان‌بندی",
+    "scheduleNotePlaceholder": "مثلاً Synology Task Scheduler, cron job...",
+    "customCategory": "سفارشی"
+  },
+  "schedule": {
+    "daily": "روزانه",
+    "weekly": "هفتگی",
+    "monthly": "ماهانه",
+    "yearly": "سالانه",
+    "custom": "سفارشی"
+  },
+  "weekdays": {
+    "0": "یکشنبه",
+    "1": "دوشنبه",
+    "2": "سه‌شنبه",
+    "3": "چهارشنبه",
+    "4": "پنجشنبه",
+    "5": "جمعه",
+    "6": "شنبه"
   },
   "media": {
     "title": "رسانه ذخیره‌سازی",
@@ -275,6 +302,20 @@
     "avg": "میانگین",
     "noData": "هنوز داده‌ای وجود ندارد."
   },
+  "calendar": {
+    "title": "تقویم پشتیبان‌ها",
+    "entries": "مورد"
+  },
+  "bulk": {
+    "selected": "انتخاب شده",
+    "select": "انتخاب",
+    "deleteConfirm": "پشتیبان به زباله‌دان منتقل خواهند شد.",
+    "deleteConfirmMedia": "رسانه ذخیره‌سازی به سطل زباله منتقل می‌شود.",
+    "deleteConfirmDevices": "منابع به سطل زباله منتقل می‌شود."
+  },
+  "comparison": {
+    "title": "مقایسه حجم"
+  },
   "update": {
     "available": "به‌روزرسانی موجود",
     "version": "نسخه جدید:",
@@ -283,18 +324,6 @@
     "ready": "به‌روزرسانی آماده",
     "restartDesc": "برای اعمال به‌روزرسانی، برنامه را مجدداً راه‌اندازی کنید.",
     "restart": "راه‌اندازی مجدد"
-  },
-  "calendar": {
-    "title": "تقویم پشتیبان‌ها",
-    "entries": "مورد"
-  },
-  "bulk": {
-    "selected": "انتخاب شده",
-    "select": "انتخاب",
-    "deleteConfirm": "پشتیبان به زباله‌دان منتقل خواهند شد."
-  },
-  "comparison": {
-    "title": "مقایسه حجم"
   },
   "categories": {
     "photos": "عکس‌ها",
@@ -319,7 +348,15 @@
     "games": "بازی‌ها",
     "applications": "برنامه‌ها",
     "config": "پیکربندی",
-    "other": "سایر"
+    "other": "سایر",
+    "logs": "گزارش‌ها",
+    "credentials": "اعتبارنامه‌ها",
+    "container": "کانتینر",
+    "cloud_data": "داده‌های ابری",
+    "bookmarks": "نشانک‌ها",
+    "passwords": "گذرواژه‌ها",
+    "notes": "یادداشت‌ها",
+    "education": "آموزش"
   },
   "deviceTypes": {
     "desktop": "رایانه رومیزی",
@@ -338,27 +375,37 @@
     "other": "سایر"
   },
   "storageTypes": {
-    "internal_drive": "HDD داخلی", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "HDD داخلی",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "HDD خارجی",
-    "usb_stick": "فلش USB", "sd_card": "کارت SD", "optical": "نوری (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "اشتراک شبکه", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "ابر", "object_storage": "ذخیره‌سازی شیء (S3)",
-    "tape": "نوار", "raid": "RAID",
-    "local": "محلی", "other": "سایر"
+    "usb_stick": "فلش USB",
+    "sd_card": "کارت SD",
+    "optical": "نوری (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "اشتراک شبکه",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "ابر",
+    "object_storage": "ذخیره‌سازی شیء (S3)",
+    "tape": "نوار",
+    "raid": "RAID",
+    "local": "محلی",
+    "other": "سایر"
   },
   "folders": {
-      "create": "پوشه جدید",
-      "rename": "تغییر نام پوشه",
-      "deleteFolder": "حذف پوشه",
-      "deleteConfirm": "پوشه \"{{name}}\" حذف شود؟ موارد به دسته‌بندی نشده منتقل می‌شوند.",
-      "folderName": "نام پوشه",
-      "moveToFolder": "انتقال به پوشه",
-      "unfiled": "دسته‌بندی نشده",
-      "allFolders": "همه",
-      "items": "مورد",
-      "viewFlat": "نمای مسطح",
-      "viewFolder": "نمای پوشه",
-      "viewExpanded": "نمای گسترش‌یافته"
+    "create": "پوشه جدید",
+    "rename": "تغییر نام پوشه",
+    "deleteFolder": "حذف پوشه",
+    "deleteConfirm": "پوشه \"{{name}}\" حذف شود؟ موارد به دسته‌بندی نشده منتقل می‌شوند.",
+    "folderName": "نام پوشه",
+    "moveToFolder": "انتقال به پوشه",
+    "unfiled": "دسته‌بندی نشده",
+    "allFolders": "همه",
+    "items": "مورد",
+    "viewFlat": "نمای مسطح",
+    "viewFolder": "نمای پوشه",
+    "viewExpanded": "نمای گسترش‌یافته"
   },
   "rule321": {
     "title": "قانون پشتیبان 3-2-1",

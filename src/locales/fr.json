@@ -71,7 +71,34 @@
     "entryNumber": "Numéro",
     "pause": "Pause",
     "resume": "Reprendre",
-    "editLocation": "Modifier l'emplacement"
+    "editLocation": "Modifier l'emplacement",
+    "mode": "Mode",
+    "manual": "Manuel",
+    "automatic": "Automatique",
+    "frequency": "Fréquence",
+    "time": "Heure",
+    "weekday": "Jour de la semaine",
+    "monthDay": "Jour du mois",
+    "customIntervalDays": "Intervalle (jours)",
+    "scheduleNote": "Note de planification",
+    "scheduleNotePlaceholder": "ex. Synology Task Scheduler, cron job...",
+    "customCategory": "Personnalisé"
+  },
+  "schedule": {
+    "daily": "Quotidien",
+    "weekly": "Hebdomadaire",
+    "monthly": "Mensuel",
+    "yearly": "Annuel",
+    "custom": "Personnalisé"
+  },
+  "weekdays": {
+    "0": "Dimanche",
+    "1": "Lundi",
+    "2": "Mardi",
+    "3": "Mercredi",
+    "4": "Jeudi",
+    "5": "Vendredi",
+    "6": "Samedi"
   },
   "media": {
     "title": "Supports de stockage",
@@ -275,6 +302,20 @@
     "avg": "Moyenne",
     "noData": "Aucune donnée pour le moment."
   },
+  "calendar": {
+    "title": "Calendrier des sauvegardes",
+    "entries": "entrées"
+  },
+  "bulk": {
+    "selected": "sélectionné(s)",
+    "select": "Sélectionner",
+    "deleteConfirm": "sauvegardes seront déplacées vers la corbeille.",
+    "deleteConfirmMedia": "supports de stockage seront déplacés vers la corbeille.",
+    "deleteConfirmDevices": "sources seront déplacées vers la corbeille."
+  },
+  "comparison": {
+    "title": "Comparaison des tailles"
+  },
   "update": {
     "available": "Mise à jour disponible",
     "version": "Nouvelle version :",
@@ -283,18 +324,6 @@
     "ready": "Mise à jour prête",
     "restartDesc": "Redémarrez l'application pour appliquer la mise à jour.",
     "restart": "Redémarrer maintenant"
-  },
-  "calendar": {
-    "title": "Calendrier des sauvegardes",
-    "entries": "entrées"
-  },
-  "bulk": {
-    "selected": "sélectionné(s)",
-    "select": "Sélectionner",
-    "deleteConfirm": "sauvegardes seront déplacées vers la corbeille."
-  },
-  "comparison": {
-    "title": "Comparaison des tailles"
   },
   "categories": {
     "photos": "Photos",
@@ -319,7 +348,15 @@
     "games": "Jeux",
     "applications": "Applications",
     "config": "Configuration",
-    "other": "Autre"
+    "other": "Autre",
+    "logs": "Journaux",
+    "credentials": "Identifiants",
+    "container": "Conteneur",
+    "cloud_data": "Données cloud",
+    "bookmarks": "Favoris",
+    "passwords": "Mots de passe",
+    "notes": "Notes",
+    "education": "Éducation"
   },
   "deviceTypes": {
     "desktop": "PC de bureau",
@@ -338,27 +375,37 @@
     "other": "Autre"
   },
   "storageTypes": {
-    "internal_drive": "Disque dur interne", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Disque dur interne",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Disque dur externe",
-    "usb_stick": "Clé USB", "sd_card": "Carte SD", "optical": "Optique (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Partage réseau", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Cloud", "object_storage": "Stockage objet (S3)",
-    "tape": "Bande", "raid": "RAID",
-    "local": "Local", "other": "Autre"
+    "usb_stick": "Clé USB",
+    "sd_card": "Carte SD",
+    "optical": "Optique (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Partage réseau",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Cloud",
+    "object_storage": "Stockage objet (S3)",
+    "tape": "Bande",
+    "raid": "RAID",
+    "local": "Local",
+    "other": "Autre"
   },
   "folders": {
-      "create": "Nouveau dossier",
-      "rename": "Renommer le dossier",
-      "deleteFolder": "Supprimer le dossier",
-      "deleteConfirm": "Supprimer le dossier \"{{name}}\" ? Les éléments seront déplacés vers Non classé.",
-      "folderName": "Nom du dossier",
-      "moveToFolder": "Déplacer vers le dossier",
-      "unfiled": "Non classé",
-      "allFolders": "Tous",
-      "items": "éléments",
-      "viewFlat": "Vue plate",
-      "viewFolder": "Vue dossier",
-      "viewExpanded": "Vue étendue"
+    "create": "Nouveau dossier",
+    "rename": "Renommer le dossier",
+    "deleteFolder": "Supprimer le dossier",
+    "deleteConfirm": "Supprimer le dossier \"{{name}}\" ? Les éléments seront déplacés vers Non classé.",
+    "folderName": "Nom du dossier",
+    "moveToFolder": "Déplacer vers le dossier",
+    "unfiled": "Non classé",
+    "allFolders": "Tous",
+    "items": "éléments",
+    "viewFlat": "Vue plate",
+    "viewFolder": "Vue dossier",
+    "viewExpanded": "Vue étendue"
   },
   "rule321": {
     "title": "Règle de sauvegarde 3-2-1",

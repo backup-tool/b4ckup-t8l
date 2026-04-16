@@ -71,7 +71,34 @@
     "entryNumber": "Номер",
     "pause": "Пауза",
     "resume": "Продължаване",
-    "editLocation": "Редактиране на местоположение"
+    "editLocation": "Редактиране на местоположение",
+    "mode": "Режим",
+    "manual": "Ръчен",
+    "automatic": "Автоматичен",
+    "frequency": "Честота",
+    "time": "Час",
+    "weekday": "Ден от седмицата",
+    "monthDay": "Ден от месеца",
+    "customIntervalDays": "Интервал (дни)",
+    "scheduleNote": "Бележка за графика",
+    "scheduleNotePlaceholder": "напр. Synology Task Scheduler, cron job...",
+    "customCategory": "Потребителски"
+  },
+  "schedule": {
+    "daily": "Дневно",
+    "weekly": "Седмично",
+    "monthly": "Месечно",
+    "yearly": "Годишно",
+    "custom": "Потребителски"
+  },
+  "weekdays": {
+    "0": "Неделя",
+    "1": "Понеделник",
+    "2": "Вторник",
+    "3": "Сряда",
+    "4": "Четвъртък",
+    "5": "Петък",
+    "6": "Събота"
   },
   "media": {
     "title": "Носители",
@@ -275,6 +302,20 @@
     "avg": "Средно",
     "noData": "Все още няма данни."
   },
+  "calendar": {
+    "title": "Календар на копията",
+    "entries": "записа"
+  },
+  "bulk": {
+    "selected": "избрани",
+    "select": "Избери",
+    "deleteConfirm": "копия ще бъдат преместени в кошчето.",
+    "deleteConfirmMedia": "носители ще бъдат преместени в кошчето.",
+    "deleteConfirmDevices": "източници ще бъдат преместени в кошчето."
+  },
+  "comparison": {
+    "title": "Сравнение на размери"
+  },
   "update": {
     "available": "Налична актуализация",
     "version": "Нова версия:",
@@ -283,18 +324,6 @@
     "ready": "Актуализацията е готова",
     "restartDesc": "Рестартирайте приложението, за да приложите актуализацията.",
     "restart": "Рестартиране сега"
-  },
-  "calendar": {
-    "title": "Календар на копията",
-    "entries": "записа"
-  },
-  "bulk": {
-    "selected": "избрани",
-    "select": "Избери",
-    "deleteConfirm": "копия ще бъдат преместени в кошчето."
-  },
-  "comparison": {
-    "title": "Сравнение на размери"
   },
   "categories": {
     "photos": "Снимки",
@@ -319,7 +348,15 @@
     "games": "Игри",
     "applications": "Приложения",
     "config": "Конфигурация",
-    "other": "Друго"
+    "other": "Друго",
+    "logs": "Логове",
+    "credentials": "Удостоверения",
+    "container": "Контейнер",
+    "cloud_data": "Облачни данни",
+    "bookmarks": "Отметки",
+    "passwords": "Пароли",
+    "notes": "Бележки",
+    "education": "Образование"
   },
   "deviceTypes": {
     "desktop": "Настолен компютър",
@@ -338,27 +375,37 @@
     "other": "Друго"
   },
   "storageTypes": {
-    "internal_drive": "Вътрешен HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Вътрешен HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Външен HDD",
-    "usb_stick": "USB флаш", "sd_card": "SD карта", "optical": "Оптичен (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Мрежово споделяне", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Облак", "object_storage": "Обектно хранилище (S3)",
-    "tape": "Лента", "raid": "RAID",
-    "local": "Локален", "other": "Друго"
+    "usb_stick": "USB флаш",
+    "sd_card": "SD карта",
+    "optical": "Оптичен (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Мрежово споделяне",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Облак",
+    "object_storage": "Обектно хранилище (S3)",
+    "tape": "Лента",
+    "raid": "RAID",
+    "local": "Локален",
+    "other": "Друго"
   },
   "folders": {
-      "create": "Нова папка",
-      "rename": "Преименуване на папка",
-      "deleteFolder": "Изтриване на папка",
-      "deleteConfirm": "Изтриване на папка \"{{name}}\"? Елементите ще бъдат преместени в Некласифицирани.",
-      "folderName": "Име на папка",
-      "moveToFolder": "Преместване в папка",
-      "unfiled": "Некласифицирани",
-      "allFolders": "Всички",
-      "items": "елемента",
-      "viewFlat": "Плосък изглед",
-      "viewFolder": "Изглед на папки",
-      "viewExpanded": "Разгънат изглед"
+    "create": "Нова папка",
+    "rename": "Преименуване на папка",
+    "deleteFolder": "Изтриване на папка",
+    "deleteConfirm": "Изтриване на папка \"{{name}}\"? Елементите ще бъдат преместени в Некласифицирани.",
+    "folderName": "Име на папка",
+    "moveToFolder": "Преместване в папка",
+    "unfiled": "Некласифицирани",
+    "allFolders": "Всички",
+    "items": "елемента",
+    "viewFlat": "Плосък изглед",
+    "viewFolder": "Изглед на папки",
+    "viewExpanded": "Разгънат изглед"
   },
   "rule321": {
     "title": "Правило за архивиране 3-2-1",

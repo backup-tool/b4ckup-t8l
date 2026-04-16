@@ -71,7 +71,34 @@
     "entryNumber": "หมายเลข",
     "pause": "หยุดชั่วคราว",
     "resume": "ดำเนินการต่อ",
-    "editLocation": "แก้ไขตำแหน่ง"
+    "editLocation": "แก้ไขตำแหน่ง",
+    "mode": "โหมด",
+    "manual": "ด้วยตนเอง",
+    "automatic": "อัตโนมัติ",
+    "frequency": "ความถี่",
+    "time": "เวลา",
+    "weekday": "วันในสัปดาห์",
+    "monthDay": "วันในเดือน",
+    "customIntervalDays": "ช่วง (วัน)",
+    "scheduleNote": "บันทึกกำหนดการ",
+    "scheduleNotePlaceholder": "เช่น Synology Task Scheduler, cron job...",
+    "customCategory": "กำหนดเอง"
+  },
+  "schedule": {
+    "daily": "รายวัน",
+    "weekly": "รายสัปดาห์",
+    "monthly": "รายเดือน",
+    "yearly": "รายปี",
+    "custom": "กำหนดเอง"
+  },
+  "weekdays": {
+    "0": "อาทิตย์",
+    "1": "จันทร์",
+    "2": "อังคาร",
+    "3": "พุธ",
+    "4": "พฤหัสบดี",
+    "5": "ศุกร์",
+    "6": "เสาร์"
   },
   "media": {
     "title": "สื่อจัดเก็บ",
@@ -275,6 +302,20 @@
     "avg": "เฉลี่ย",
     "noData": "ยังไม่มีข้อมูล"
   },
+  "calendar": {
+    "title": "ปฏิทินสำรองข้อมูล",
+    "entries": "รายการ"
+  },
+  "bulk": {
+    "selected": "ที่เลือก",
+    "select": "เลือก",
+    "deleteConfirm": "การสำรองข้อมูลจะถูกย้ายไปถังขยะ",
+    "deleteConfirmMedia": "สื่อจัดเก็บข้อมูลจะถูกย้ายไปยังถังขยะ",
+    "deleteConfirmDevices": "แหล่งที่มาจะถูกย้ายไปยังถังขยะ"
+  },
+  "comparison": {
+    "title": "เปรียบเทียบขนาด"
+  },
   "update": {
     "available": "มีอัปเดตใหม่",
     "version": "เวอร์ชันใหม่:",
@@ -283,18 +324,6 @@
     "ready": "อัปเดตพร้อมแล้ว",
     "restartDesc": "รีสตาร์ทแอปเพื่อใช้งานอัปเดต",
     "restart": "รีสตาร์ทตอนนี้"
-  },
-  "calendar": {
-    "title": "ปฏิทินสำรองข้อมูล",
-    "entries": "รายการ"
-  },
-  "bulk": {
-    "selected": "ที่เลือก",
-    "select": "เลือก",
-    "deleteConfirm": "การสำรองข้อมูลจะถูกย้ายไปถังขยะ"
-  },
-  "comparison": {
-    "title": "เปรียบเทียบขนาด"
   },
   "categories": {
     "photos": "รูปภาพ",
@@ -319,7 +348,15 @@
     "games": "เกม",
     "applications": "แอปพลิเคชัน",
     "config": "การกำหนดค่า",
-    "other": "อื่นๆ"
+    "other": "อื่นๆ",
+    "logs": "บันทึก",
+    "credentials": "ข้อมูลประจำตัว",
+    "container": "คอนเทนเนอร์",
+    "cloud_data": "ข้อมูลคลาวด์",
+    "bookmarks": "บุ๊กมาร์ค",
+    "passwords": "รหัสผ่าน",
+    "notes": "บันทึกย่อ",
+    "education": "การศึกษา"
   },
   "deviceTypes": {
     "desktop": "คอมพิวเตอร์ตั้งโต๊ะ",
@@ -338,27 +375,37 @@
     "other": "อื่นๆ"
   },
   "storageTypes": {
-    "internal_drive": "HDD ภายใน", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "HDD ภายใน",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "HDD ภายนอก",
-    "usb_stick": "แฟลชไดรฟ์ USB", "sd_card": "การ์ด SD", "optical": "แผ่นออปติคัล (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "แชร์เครือข่าย", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "คลาวด์", "object_storage": "ที่เก็บอ็อบเจกต์ (S3)",
-    "tape": "เทป", "raid": "RAID",
-    "local": "ภายในเครื่อง", "other": "อื่นๆ"
+    "usb_stick": "แฟลชไดรฟ์ USB",
+    "sd_card": "การ์ด SD",
+    "optical": "แผ่นออปติคัล (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "แชร์เครือข่าย",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "คลาวด์",
+    "object_storage": "ที่เก็บอ็อบเจกต์ (S3)",
+    "tape": "เทป",
+    "raid": "RAID",
+    "local": "ภายในเครื่อง",
+    "other": "อื่นๆ"
   },
   "folders": {
-      "create": "โฟลเดอร์ใหม่",
-      "rename": "เปลี่ยนชื่อโฟลเดอร์",
-      "deleteFolder": "ลบโฟลเดอร์",
-      "deleteConfirm": "ลบโฟลเดอร์ \"{{name}}\"? รายการจะถูกย้ายไปยังไม่จัดหมวดหมู่",
-      "folderName": "ชื่อโฟลเดอร์",
-      "moveToFolder": "ย้ายไปโฟลเดอร์",
-      "unfiled": "ไม่จัดหมวดหมู่",
-      "allFolders": "ทั้งหมด",
-      "items": "รายการ",
-      "viewFlat": "มุมมองแบน",
-      "viewFolder": "มุมมองโฟลเดอร์",
-      "viewExpanded": "มุมมองขยาย"
+    "create": "โฟลเดอร์ใหม่",
+    "rename": "เปลี่ยนชื่อโฟลเดอร์",
+    "deleteFolder": "ลบโฟลเดอร์",
+    "deleteConfirm": "ลบโฟลเดอร์ \"{{name}}\"? รายการจะถูกย้ายไปยังไม่จัดหมวดหมู่",
+    "folderName": "ชื่อโฟลเดอร์",
+    "moveToFolder": "ย้ายไปโฟลเดอร์",
+    "unfiled": "ไม่จัดหมวดหมู่",
+    "allFolders": "ทั้งหมด",
+    "items": "รายการ",
+    "viewFlat": "มุมมองแบน",
+    "viewFolder": "มุมมองโฟลเดอร์",
+    "viewExpanded": "มุมมองขยาย"
   },
   "rule321": {
     "title": "กฎการสำรองข้อมูล 3-2-1",

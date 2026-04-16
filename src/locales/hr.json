@@ -71,7 +71,34 @@
     "entryNumber": "Broj",
     "pause": "Pauziraj",
     "resume": "Nastavi",
-    "editLocation": "Uredi lokaciju"
+    "editLocation": "Uredi lokaciju",
+    "mode": "Način",
+    "manual": "Ručno",
+    "automatic": "Automatski",
+    "frequency": "Učestalost",
+    "time": "Vrijeme",
+    "weekday": "Dan u tjednu",
+    "monthDay": "Dan u mjesecu",
+    "customIntervalDays": "Interval (dani)",
+    "scheduleNote": "Bilješka rasporeda",
+    "scheduleNotePlaceholder": "npr. Synology Task Scheduler, cron job...",
+    "customCategory": "Prilagođeno"
+  },
+  "schedule": {
+    "daily": "Dnevno",
+    "weekly": "Tjedno",
+    "monthly": "Mjesečno",
+    "yearly": "Godišnje",
+    "custom": "Prilagođeno"
+  },
+  "weekdays": {
+    "0": "Nedjelja",
+    "1": "Ponedjeljak",
+    "2": "Utorak",
+    "3": "Srijeda",
+    "4": "Četvrtak",
+    "5": "Petak",
+    "6": "Subota"
   },
   "media": {
     "title": "Mediji za pohranu",
@@ -275,6 +302,20 @@
     "avg": "Prosjek",
     "noData": "Još nema podataka."
   },
+  "calendar": {
+    "title": "Kalendar sigurnosnih kopija",
+    "entries": "unosa"
+  },
+  "bulk": {
+    "selected": "odabrano",
+    "select": "Odaberi",
+    "deleteConfirm": "sigurnosnih kopija bit će premješteno u smeće.",
+    "deleteConfirmMedia": "medija za pohranu bit će premješteno u koš.",
+    "deleteConfirmDevices": "izvora bit će premješteno u koš."
+  },
+  "comparison": {
+    "title": "Usporedba veličina"
+  },
   "update": {
     "available": "Dostupno ažuriranje",
     "version": "Nova verzija:",
@@ -283,18 +324,6 @@
     "ready": "Ažuriranje spremno",
     "restartDesc": "Ponovno pokrenite aplikaciju da biste primijenili ažuriranje.",
     "restart": "Ponovno pokreni sada"
-  },
-  "calendar": {
-    "title": "Kalendar sigurnosnih kopija",
-    "entries": "unosa"
-  },
-  "bulk": {
-    "selected": "odabrano",
-    "select": "Odaberi",
-    "deleteConfirm": "sigurnosnih kopija bit će premješteno u smeće."
-  },
-  "comparison": {
-    "title": "Usporedba veličina"
   },
   "categories": {
     "photos": "Fotografije",
@@ -319,7 +348,15 @@
     "games": "Igre",
     "applications": "Aplikacije",
     "config": "Konfiguracija",
-    "other": "Ostalo"
+    "other": "Ostalo",
+    "logs": "Zapisi",
+    "credentials": "Vjerodajnice",
+    "container": "Kontejner",
+    "cloud_data": "Podaci u oblaku",
+    "bookmarks": "Oznake",
+    "passwords": "Lozinke",
+    "notes": "Bilješke",
+    "education": "Obrazovanje"
   },
   "deviceTypes": {
     "desktop": "Stolno računalo",
@@ -338,27 +375,37 @@
     "other": "Ostalo"
   },
   "storageTypes": {
-    "internal_drive": "Unutarnji HDD", "ssd": "SSD", "nvme": "NVMe",
+    "internal_drive": "Unutarnji HDD",
+    "ssd": "SSD",
+    "nvme": "NVMe",
     "external_drive": "Vanjski HDD",
-    "usb_stick": "USB stick", "sd_card": "SD kartica", "optical": "Optički (CD/DVD/BD)",
-    "nas": "NAS", "network_share": "Mrežno dijeljenje", "ftp": "FTP / SFTP", "webdav": "WebDAV",
-    "cloud": "Oblak", "object_storage": "Pohrana objekata (S3)",
-    "tape": "Traka", "raid": "RAID",
-    "local": "Lokalno", "other": "Ostalo"
+    "usb_stick": "USB stick",
+    "sd_card": "SD kartica",
+    "optical": "Optički (CD/DVD/BD)",
+    "nas": "NAS",
+    "network_share": "Mrežno dijeljenje",
+    "ftp": "FTP / SFTP",
+    "webdav": "WebDAV",
+    "cloud": "Oblak",
+    "object_storage": "Pohrana objekata (S3)",
+    "tape": "Traka",
+    "raid": "RAID",
+    "local": "Lokalno",
+    "other": "Ostalo"
   },
   "folders": {
-      "create": "Nova mapa",
-      "rename": "Preimenuj mapu",
-      "deleteFolder": "Obriši mapu",
-      "deleteConfirm": "Obrisati mapu \"{{name}}\"? Stavke će biti premještene u Nesortirано.",
-      "folderName": "Naziv mape",
-      "moveToFolder": "Premjesti u mapu",
-      "unfiled": "Nesortirано",
-      "allFolders": "Sve",
-      "items": "stavki",
-      "viewFlat": "Ravni prikaz",
-      "viewFolder": "Prikaz mapa",
-      "viewExpanded": "Prošireni prikaz"
+    "create": "Nova mapa",
+    "rename": "Preimenuj mapu",
+    "deleteFolder": "Obriši mapu",
+    "deleteConfirm": "Obrisati mapu \"{{name}}\"? Stavke će biti premještene u Nesortirано.",
+    "folderName": "Naziv mape",
+    "moveToFolder": "Premjesti u mapu",
+    "unfiled": "Nesortirано",
+    "allFolders": "Sve",
+    "items": "stavki",
+    "viewFlat": "Ravni prikaz",
+    "viewFolder": "Prikaz mapa",
+    "viewExpanded": "Prošireni prikaz"
   },
   "rule321": {
     "title": "Pravilo sigurnosnih kopija 3-2-1",
