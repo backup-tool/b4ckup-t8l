@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Folder,
@@ -475,9 +475,9 @@ export function FolderModal({
   const [name, setName] = useState(initialName || "");
 
   // Reset name when modal opens
-  useState(() => {
+  useEffect(() => {
     if (open) setName(initialName || "");
-  });
+  }, [open, initialName]);
 
   return (
     <Modal
