@@ -48,8 +48,10 @@ export function Media() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<Record<string, any> | null>(null);
   const [softDeleteId, setSoftDeleteId] = useState<number | null>(null);
-  const prefs = useViewPrefs((s) => s.get("media"));
+  const prefsPages = useViewPrefs((s) => s.pages);
   const setPrefs = useViewPrefs((s) => s.set);
+  const savedMedia = prefsPages["media"] || {};
+  const prefs = { view: (savedMedia.view || "grid") as "grid" | "list", sortField: savedMedia.sortField || "name", sortDir: savedMedia.sortDir || "asc", filters: savedMedia.filters || {} as Record<string, string>, search: savedMedia.search || "" };
   const [view, _setView] = useState<"grid" | "list">(prefs.view as "grid" | "list");
   const setView = (v: "grid" | "list") => { _setView(v); setPrefs("media", { view: v }); };
   const [editMode, setEditMode] = useState(false);

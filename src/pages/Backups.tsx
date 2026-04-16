@@ -51,8 +51,10 @@ export function Backups() {
   const [loading, setLoading] = useState(true);
   const [deleted, setDeleted] = useState<Array<Record<string, any>>>([]);
   const [devices, setDevices] = useState<Array<Record<string, any>>>([]);
-  const prefs = useViewPrefs((s) => s.get("backups"));
+  const prefsPages = useViewPrefs((s) => s.pages);
   const setPrefs = useViewPrefs((s) => s.set);
+  const savedBackups = prefsPages["backups"] || {};
+  const prefs = { view: (savedBackups.view || "list") as "grid" | "list", sortField: savedBackups.sortField || "name", sortDir: savedBackups.sortDir || "asc", filters: savedBackups.filters || {} as Record<string, string>, search: savedBackups.search || "" };
   const [search, _setSearch] = useState(prefs.search);
   const setSearch = (v: string) => { _setSearch(v); setPrefs("backups", { search: v }); };
   const [filterCategory, _setFilterCategory] = useState(prefs.filters.category || "all");

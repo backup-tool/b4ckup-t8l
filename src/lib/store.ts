@@ -45,7 +45,10 @@ function savePrefs(pages: Record<string, PagePrefs>) {
 
 export const useViewPrefs = create<ViewPrefsState>((set, getState) => ({
   pages: loadPrefs(),
-  get: (page) => ({ ...DEFAULTS, ...getState().pages[page] }),
+  get: (page) => {
+    const saved = getState().pages[page] || {};
+    return { ...DEFAULTS, ...saved, filters: { ...DEFAULTS.filters, ...(saved.filters || {}) } };
+  },
   set: (page, prefs) =>
     set((s) => {
       const pages = { ...s.pages, [page]: { ...DEFAULTS, ...s.pages[page], ...prefs } };

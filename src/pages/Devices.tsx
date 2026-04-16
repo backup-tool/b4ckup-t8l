@@ -45,8 +45,10 @@ export function Devices() {
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<Record<string, any> | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
-  const prefs = useViewPrefs((s) => s.get("devices"));
+  const prefsPages = useViewPrefs((s) => s.pages);
   const setPrefs = useViewPrefs((s) => s.set);
+  const savedDevices = prefsPages["devices"] || {};
+  const prefs = { view: (savedDevices.view || "grid") as "grid" | "list", sortField: savedDevices.sortField || "name", sortDir: savedDevices.sortDir || "asc", filters: savedDevices.filters || {} as Record<string, string>, search: savedDevices.search || "" };
   const [view, _setView] = useState<"grid" | "list">(prefs.view as "grid" | "list");
   const setView = (v: "grid" | "list") => { _setView(v); setPrefs("devices", { view: v }); };
   const [editMode, setEditMode] = useState(false);
