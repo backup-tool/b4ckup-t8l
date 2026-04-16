@@ -354,9 +354,13 @@
   },
   "deviceTypes": {
     "desktop": "Desktop PC", "laptop": "Laptop", "phone": "Phone", "tablet": "Tablet",
-    "server": "Server", "nas": "NAS", "cloud": "Cloud Service",
-    "external_drive": "External Drive", "camera": "Camera", "console": "Console",
-    "smart_home": "Smart Home", "app": "App", "service": "Online Service", "other": "Other"
+    "camera": "Camera", "smartwatch": "Smartwatch", "ereader": "E-Reader",
+    "server": "Server", "nas": "NAS", "router": "Router", "raspberry_pi": "Raspberry Pi",
+    "external_drive": "External Drive", "console": "Console", "smart_home": "Smart Home",
+    "tv": "TV / Smart TV", "drone": "Drone",
+    "cloud": "Cloud Service", "app": "App", "service": "Online Service",
+    "email": "Email Service", "website": "Website", "database": "Database",
+    "vm": "Virtual Machine", "other": "Other"
   },
   "storageTypes": {
     "internal_drive": "Internal HDD", "ssd": "SSD", "nvme": "NVMe",
@@ -381,7 +385,8 @@
     "items": "items",
     "viewFlat": "Flat View",
     "viewFolder": "Folder View",
-    "viewExpanded": "Expanded View"
+    "viewExpanded": "Expanded View",
+    "folder": "Folder"
   },
   "rule321": {
     "title": "3-2-1 Backup Rule",

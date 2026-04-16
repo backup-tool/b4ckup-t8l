@@ -386,7 +386,17 @@
     "smart_home": "سمارٹ ہوم",
     "app": "App",
     "service": "آن لائن سروس",
-    "other": "دیگر"
+    "other": "دیگر",
+    "smartwatch": "سمارٹ واچ",
+    "ereader": "ای ریڈر",
+    "router": "راؤٹر",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "ٹی وی / سمارٹ ٹی وی",
+    "drone": "ڈرون",
+    "email": "ای میل سروس",
+    "website": "ویب سائٹ",
+    "database": "ڈیٹابیس",
+    "vm": "ورچوئل مشین"
   },
   "storageTypes": {
     "internal_drive": "اندرونی HDD",
@@ -426,7 +436,8 @@
     "items": "آئٹمز",
     "viewFlat": "فلیٹ ویو",
     "viewFolder": "فولڈر ویو",
-    "viewExpanded": "توسیعی ویو"
+    "viewExpanded": "توسیعی ویو",
+    "folder": "فولڈر"
   },
   "rule321": {
     "title": "3-2-1 بیک اپ اصول",

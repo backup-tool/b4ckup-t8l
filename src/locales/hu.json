@@ -386,7 +386,17 @@
     "smart_home": "Okosotthon",
     "app": "App",
     "service": "Online szolgáltatás",
-    "other": "Egyéb"
+    "other": "Egyéb",
+    "smartwatch": "Okosóra",
+    "ereader": "E-könyvolvasó",
+    "router": "Router",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "TV / Smart TV",
+    "drone": "Drón",
+    "email": "E-mail szolgáltatás",
+    "website": "Weboldal",
+    "database": "Adatbázis",
+    "vm": "Virtuális gép"
   },
   "storageTypes": {
     "internal_drive": "Belső HDD",
@@ -426,7 +436,8 @@
     "items": "elem",
     "viewFlat": "Sima nézet",
     "viewFolder": "Mappa nézet",
-    "viewExpanded": "Kibontott nézet"
+    "viewExpanded": "Kibontott nézet",
+    "folder": "Mappa"
   },
   "rule321": {
     "title": "3-2-1 biztonsági mentési szabály",

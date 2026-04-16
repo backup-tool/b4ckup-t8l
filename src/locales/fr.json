@@ -386,7 +386,17 @@
     "smart_home": "Maison connectée",
     "app": "App",
     "service": "Service en ligne",
-    "other": "Autre"
+    "other": "Autre",
+    "smartwatch": "Smartwatch",
+    "ereader": "Liseuse",
+    "router": "Routeur",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "TV / Smart TV",
+    "drone": "Drone",
+    "email": "Service e-mail",
+    "website": "Site web",
+    "database": "Base de données",
+    "vm": "Machine virtuelle"
   },
   "storageTypes": {
     "internal_drive": "Disque dur interne",
@@ -426,7 +436,8 @@
     "items": "éléments",
     "viewFlat": "Vue plate",
     "viewFolder": "Vue dossier",
-    "viewExpanded": "Vue étendue"
+    "viewExpanded": "Vue étendue",
+    "folder": "Dossier"
   },
   "rule321": {
     "title": "Règle de sauvegarde 3-2-1",

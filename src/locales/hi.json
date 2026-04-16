@@ -386,7 +386,17 @@
     "smart_home": "स्मार्ट होम",
     "app": "App",
     "service": "ऑनलाइन सेवा",
-    "other": "अन्य"
+    "other": "अन्य",
+    "smartwatch": "स्मार्टवॉच",
+    "ereader": "ई-रीडर",
+    "router": "राउटर",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "टीवी / स्मार्ट टीवी",
+    "drone": "ड्रोन",
+    "email": "ईमेल सेवा",
+    "website": "वेबसाइट",
+    "database": "डेटाबेस",
+    "vm": "वर्चुअल मशीन"
   },
   "storageTypes": {
     "internal_drive": "आंतरिक HDD",
@@ -426,7 +436,8 @@
     "items": "आइटम",
     "viewFlat": "सपाट दृश्य",
     "viewFolder": "फ़ोल्डर दृश्य",
-    "viewExpanded": "विस्तारित दृश्य"
+    "viewExpanded": "विस्तारित दृश्य",
+    "folder": "फ़ोल्डर"
   },
   "rule321": {
     "title": "3-2-1 बैकअप नियम",

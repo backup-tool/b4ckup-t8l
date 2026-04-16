@@ -386,7 +386,17 @@
     "smart_home": "Mala Jîr",
     "app": "App",
     "service": "Xizmeta Serhêl",
-    "other": "Din"
+    "other": "Din",
+    "smartwatch": "Smartwatch",
+    "ereader": "E-Reader",
+    "router": "Router",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "TV / Smart TV",
+    "drone": "Drone",
+    "email": "Xizmeta e-nameyê",
+    "website": "Malpera webê",
+    "database": "Databas",
+    "vm": "Makîneya virtual"
   },
   "storageTypes": {
     "internal_drive": "HDD-ya Hundurîn",
@@ -426,7 +436,8 @@
     "items": "tişt",
     "viewFlat": "Dîmena dûz",
     "viewFolder": "Dîmena pûşeyê",
-    "viewExpanded": "Dîmena berfireh"
+    "viewExpanded": "Dîmena berfireh",
+    "folder": "Peldank"
   },
   "rule321": {
     "title": "Rêgeza Paştgirtinê 3-2-1",

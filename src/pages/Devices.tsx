@@ -63,6 +63,7 @@ export function Devices() {
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
   const [bulkConfirmOpen, setBulkConfirmOpen] = useState(false);
   const [lastClickedId, setLastClickedId] = useState<number | null>(null);
+  const [selectedFolderIds, setSelectedFolderIds] = useState<Set<number>>(new Set());
 
   // Folder support
   const folderHook = useFolders("device");
@@ -108,9 +109,11 @@ export function Devices() {
       if (editMode && (e.metaKey || e.ctrlKey) && e.key === "a") {
         e.preventDefault();
         setSelectedIds(new Set(devices.map((d) => d.id as number)));
+        setSelectedFolderIds(new Set(folderHook.rootFolders.map((f) => f.id)));
       }
       if (editMode && e.key === "Escape") {
         setSelectedIds(new Set());
+        setSelectedFolderIds(new Set());
       }
     };
     document.addEventListener("keydown", handler);
@@ -135,6 +138,15 @@ export function Devices() {
     }
     setSelectedIds(next);
     setLastClickedId(id);
+  }
+
+  function handleFolderClick(id: number, e: React.MouseEvent) {
+    if (!editMode) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const next = new Set(selectedFolderIds);
+    if (next.has(id)) next.delete(id); else next.add(id);
+    setSelectedFolderIds(next);
   }
 
   async function loadDevices() {
@@ -254,21 +266,45 @@ export function Devices() {
         </div>
         <div className="flex items-center gap-2">
           <TrashSection
-            items={deleted.map((d) => ({
-              id: d.id as number,
-              title: d.name as string,
-              subtitle: t(`deviceTypes.${d.type}`, { defaultValue: d.type as string }),
-              deleted_at: d.deleted_at as string,
-            }))}
-            onRestore={async (id) => { await restoreDevice(id); await loadDevices(); }}
-            onPermanentDelete={async (id) => { await permanentDeleteDevice(id); await loadDevices(); }}
-            onRestoreAll={async () => { for (const d of deleted) await restoreDevice(d.id as number); await loadDevices(); }}
-            onDeleteAll={async () => { for (const d of deleted) await permanentDeleteDevice(d.id as number); await loadDevices(); }}
+            items={[
+              ...deleted.map((d) => ({
+                id: d.id as number,
+                title: d.name as string,
+                subtitle: t(`deviceTypes.${d.type}`, { defaultValue: d.type as string }),
+                deleted_at: d.deleted_at as string,
+              })),
+              ...folderHook.deletedFolders.map((f) => ({
+                id: f.id,
+                title: `[${t("folders.folder")}] ${f.name}`,
+                subtitle: t("folders.folder"),
+                deleted_at: f.created_at,
+              })),
+            ]}
+            onRestore={async (id) => {
+              const isFolder = folderHook.deletedFolders.some((f) => f.id === id);
+              if (isFolder) { await folderHook.restoreFolder(id); } else { await restoreDevice(id); }
+              await loadDevices();
+            }}
+            onPermanentDelete={async (id) => {
+              const isFolder = folderHook.deletedFolders.some((f) => f.id === id);
+              if (isFolder) { await folderHook.permanentDeleteFolder(id); } else { await permanentDeleteDevice(id); }
+              await loadDevices();
+            }}
+            onRestoreAll={async () => {
+              for (const d of deleted) await restoreDevice(d.id as number);
+              for (const f of folderHook.deletedFolders) await folderHook.restoreFolder(f.id);
+              await loadDevices();
+            }}
+            onDeleteAll={async () => {
+              for (const d of deleted) await permanentDeleteDevice(d.id as number);
+              for (const f of folderHook.deletedFolders) await folderHook.permanentDeleteFolder(f.id);
+              await loadDevices();
+            }}
             permanentDeleteMessage={t("trash.confirmPermanent")}
           />
           <Button
             variant={editMode ? "primary" : "secondary"}
-            onClick={() => { setEditMode(!editMode); if (editMode) setSelectedIds(new Set()); }}
+            onClick={() => { setEditMode(!editMode); if (editMode) { setSelectedIds(new Set()); setSelectedFolderIds(new Set()); } }}
           >
             <Pencil className="w-4 h-4" />
             {editMode ? t("common.done") : t("common.edit")}
@@ -369,16 +405,32 @@ export function Devices() {
       </div>
 
       {/* Bulk actions */}
-      {editMode && selectedIds.size > 0 && (
+      {editMode && (selectedIds.size + selectedFolderIds.size) > 0 && (
         <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-primary/5 border border-primary/20">
-          <span className="text-sm font-medium">{selectedIds.size} {t("bulk.selected")}</span>
+          <span className="text-sm font-medium">{selectedIds.size + selectedFolderIds.size} {t("bulk.selected")}</span>
           <div className="flex gap-2 ml-auto">
             {folderHook.viewMode !== "flat" && (
               <MoveToFolderMenu
                 folders={folderHook.folders}
+                excludeFolderIds={selectedFolderIds.size > 0 ? (() => {
+                  const excluded = new Set<number>();
+                  for (const fid of selectedFolderIds) {
+                    excluded.add(fid);
+                    for (const f of folderHook.folders) {
+                      if (folderHook.isAncestor(fid, f.id)) excluded.add(f.id);
+                    }
+                  }
+                  return excluded;
+                })() : undefined}
                 onMove={async (folderId) => {
-                  await folderHook.moveItems(Array.from(selectedIds), folderId);
+                  if (selectedIds.size > 0) {
+                    await folderHook.moveItems(Array.from(selectedIds), folderId);
+                  }
+                  for (const fid of selectedFolderIds) {
+                    await folderHook.moveFolder(fid, folderId);
+                  }
                   setSelectedIds(new Set());
+                  setSelectedFolderIds(new Set());
                   await loadDevices();
                 }}
               />
@@ -395,6 +447,8 @@ export function Devices() {
         <FolderBreadcrumb
           currentFolder={folderHook.currentFolder}
           onNavigateBack={() => folderHook.navigateToFolder(null)}
+          breadcrumbPath={folderHook.breadcrumbPath}
+          onNavigateToFolder={(id) => folderHook.navigateToFolder(id)}
           dropRef={(el: HTMLElement | null) => registerDropTarget(null, el)}
           isDropOver={isDragOver(null)}
         />
@@ -427,17 +481,26 @@ export function Devices() {
       ) : folderHook.viewMode === "folder" && folderHook.currentFolderId === null ? (
         <div>
           <FolderGrid
-            folders={folderHook.folders}
+            folders={folderHook.rootFolders}
             itemCounts={(() => {
               const counts = new Map<number, number>();
-              for (const f of folderHook.folders) {
+              for (const f of folderHook.rootFolders) {
                 counts.set(f.id, sorted.filter((d) => (d.folder_id as number | null) === f.id).length);
+              }
+              return counts;
+            })()}
+            childCounts={(() => {
+              const counts = new Map<number, number>();
+              for (const f of folderHook.rootFolders) {
+                counts.set(f.id, folderHook.getChildFolders(f.id).length);
               }
               return counts;
             })()}
             onOpen={(folderId) => folderHook.navigateToFolder(folderId)}
             onRename={(folder) => setRenamingFolder(folder)}
             onDelete={(folder) => setDeletingFolder(folder)}
+            selectedFolderIds={selectedFolderIds}
+            onFolderSelect={handleFolderClick}
             editMode={editMode}
             registerDropTarget={registerDropTarget}
             isDragOver={isDragOver}
@@ -630,12 +693,14 @@ export function Devices() {
         onClose={() => setBulkConfirmOpen(false)}
         onConfirm={async () => {
           for (const id of selectedIds) await softDeleteDevice(id);
+          for (const id of selectedFolderIds) await folderHook.deleteFolder(id);
           setSelectedIds(new Set());
+          setSelectedFolderIds(new Set());
           setBulkConfirmOpen(false);
           await loadDevices();
         }}
         title={t("trash.moveToTrash")}
-        message={`${selectedIds.size} ${t("bulk.deleteConfirmDevices")}`}
+        message={`${selectedIds.size + selectedFolderIds.size} ${t("bulk.deleteConfirmDevices")}`}
         confirmLabel={t("trash.moveToTrash")}
         cancelLabel={t("common.cancel")}
         variant="danger"

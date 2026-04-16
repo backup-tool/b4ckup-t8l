@@ -386,7 +386,17 @@
     "smart_home": "智能家居",
     "app": "App",
     "service": "在线服务",
-    "other": "其他"
+    "other": "其他",
+    "smartwatch": "智能手表",
+    "ereader": "电子书阅读器",
+    "router": "路由器",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "电视 / 智能电视",
+    "drone": "无人机",
+    "email": "邮件服务",
+    "website": "网站",
+    "database": "数据库",
+    "vm": "虚拟机"
   },
   "storageTypes": {
     "internal_drive": "内置 HDD",
@@ -426,7 +436,8 @@
     "items": "个项目",
     "viewFlat": "平铺视图",
     "viewFolder": "文件夹视图",
-    "viewExpanded": "展开视图"
+    "viewExpanded": "展开视图",
+    "folder": "文件夹"
   },
   "rule321": {
     "title": "3-2-1 备份规则",

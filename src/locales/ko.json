@@ -386,7 +386,17 @@
     "smart_home": "스마트 홈",
     "app": "App",
     "service": "온라인 서비스",
-    "other": "기타"
+    "other": "기타",
+    "smartwatch": "스마트워치",
+    "ereader": "전자책 리더",
+    "router": "라우터",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "TV / 스마트 TV",
+    "drone": "드론",
+    "email": "이메일 서비스",
+    "website": "웹사이트",
+    "database": "데이터베이스",
+    "vm": "가상 머신"
   },
   "storageTypes": {
     "internal_drive": "내장 HDD",
@@ -426,7 +436,8 @@
     "items": "항목",
     "viewFlat": "평면 보기",
     "viewFolder": "폴더 보기",
-    "viewExpanded": "확장 보기"
+    "viewExpanded": "확장 보기",
+    "folder": "폴더"
   },
   "rule321": {
     "title": "3-2-1 백업 규칙",

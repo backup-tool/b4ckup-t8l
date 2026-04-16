@@ -386,7 +386,17 @@
     "smart_home": "স্মার্ট হোম",
     "app": "App",
     "service": "অনলাইন সেবা",
-    "other": "অন্যান্য"
+    "other": "অন্যান্য",
+    "smartwatch": "স্মার্টওয়াচ",
+    "ereader": "ই-রিডার",
+    "router": "রাউটার",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "টিভি / স্মার্ট টিভি",
+    "drone": "ড্রোন",
+    "email": "ইমেইল সেবা",
+    "website": "ওয়েবসাইট",
+    "database": "ডাটাবেস",
+    "vm": "ভার্চুয়াল মেশিন"
   },
   "storageTypes": {
     "internal_drive": "অভ্যন্তরীণ HDD",
@@ -426,7 +436,8 @@
     "items": "আইটেম",
     "viewFlat": "সমতল দৃশ্য",
     "viewFolder": "ফোল্ডার দৃশ্য",
-    "viewExpanded": "বিস্তৃত দৃশ্য"
+    "viewExpanded": "বিস্তৃত দৃশ্য",
+    "folder": "ফোল্ডার"
   },
   "rule321": {
     "title": "3-2-1 ব্যাকআপ নিয়ম",

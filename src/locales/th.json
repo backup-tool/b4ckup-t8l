@@ -386,7 +386,17 @@
     "smart_home": "สมาร์ทโฮม",
     "app": "App",
     "service": "บริการออนไลน์",
-    "other": "อื่นๆ"
+    "other": "อื่นๆ",
+    "smartwatch": "สมาร์ทวอทช์",
+    "ereader": "E-Reader",
+    "router": "เราเตอร์",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "ทีวี / สมาร์ททีวี",
+    "drone": "โดรน",
+    "email": "บริการอีเมล",
+    "website": "เว็บไซต์",
+    "database": "ฐานข้อมูล",
+    "vm": "เครื่องเสมือน"
   },
   "storageTypes": {
     "internal_drive": "HDD ภายใน",
@@ -426,7 +436,8 @@
     "items": "รายการ",
     "viewFlat": "มุมมองแบน",
     "viewFolder": "มุมมองโฟลเดอร์",
-    "viewExpanded": "มุมมองขยาย"
+    "viewExpanded": "มุมมองขยาย",
+    "folder": "โฟลเดอร์"
   },
   "rule321": {
     "title": "กฎการสำรองข้อมูล 3-2-1",

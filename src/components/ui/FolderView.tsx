@@ -86,17 +86,23 @@ export function FolderToolbar({
 export function FolderBreadcrumb({
   currentFolder,
   onNavigateBack,
+  breadcrumbPath,
+  onNavigateToFolder,
   dropRef,
   isDropOver,
 }: {
   currentFolder: FolderData | null;
   onNavigateBack: () => void;
+  breadcrumbPath?: Array<{ id: number; name: string }>;
+  onNavigateToFolder?: (id: number | null) => void;
   dropRef?: (el: HTMLElement | null) => void;
   isDropOver?: boolean;
 }) {
   const { t } = useTranslation();
 
   if (!currentFolder) return null;
+
+  const path = breadcrumbPath ?? [];
 
   return (
     <div className="flex items-center gap-1.5 text-sm">
@@ -112,11 +118,37 @@ export function FolderBreadcrumb({
       >
         {t("folders.allFolders")}
       </button>
-      <ChevronRight className="w-3.5 h-3.5 text-muted-foreground" />
-      <span className="font-medium flex items-center gap-1.5">
-        <FolderOpen className="w-4 h-4 text-primary" />
-        {currentFolder.name}
-      </span>
+      {path.length > 1
+        ? path.map((segment, i) => {
+            const isLast = i === path.length - 1;
+            return (
+              <span key={segment.id} className="flex items-center gap-1.5">
+                <ChevronRight className="w-3.5 h-3.5 text-muted-foreground" />
+                {isLast ? (
+                  <span className="font-medium flex items-center gap-1.5">
+                    <FolderOpen className="w-4 h-4 text-primary" />
+                    {segment.name}
+                  </span>
+                ) : (
+                  <button
+                    onClick={() => onNavigateToFolder?.(segment.id)}
+                    className="text-muted-foreground hover:text-foreground transition-colors px-1 py-0.5 rounded-md"
+                  >
+                    {segment.name}
+                  </button>
+                )}
+              </span>
+            );
+          })
+        : (
+          <>
+            <ChevronRight className="w-3.5 h-3.5 text-muted-foreground" />
+            <span className="font-medium flex items-center gap-1.5">
+              <FolderOpen className="w-4 h-4 text-primary" />
+              {currentFolder.name}
+            </span>
+          </>
+        )}
     </div>
   );
 }
@@ -126,18 +158,24 @@ export function FolderBreadcrumb({
 export function FolderCard({
   folder,
   itemCount,
+  childCount,
   onOpen,
   onRename,
   onDelete,
+  selected,
+  onSelect,
   editMode,
   dropRef,
   isDropOver,
 }: {
   folder: FolderData;
   itemCount: number;
+  childCount?: number;
   onOpen: () => void;
   onRename: () => void;
   onDelete: () => void;
+  selected?: boolean;
+  onSelect?: (e: React.MouseEvent) => void;
   editMode: boolean;
   dropRef?: (el: HTMLElement | null) => void;
   isDropOver?: boolean;
@@ -151,11 +189,22 @@ export function FolderCard({
         "bg-card rounded-xl border border-border p-5 transition-colors cursor-pointer",
         isDropOver
           ? "border-primary ring-2 ring-primary/40 bg-primary/5"
-          : "hover:border-primary/30"
+          : selected
+            ? "ring-2 ring-primary"
+            : "hover:border-primary/30"
       )}
-      onClick={editMode ? undefined : onOpen}
+      onClick={editMode && onSelect ? onSelect : editMode ? undefined : onOpen}
     >
       <div className="flex items-center gap-3">
+        {editMode && (
+          <input
+            type="checkbox"
+            checked={!!selected}
+            onChange={() => {}}
+            onClick={(e) => e.stopPropagation()}
+            className="rounded shrink-0 pointer-events-none"
+          />
+        )}
         <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
           <Folder className="w-5 h-5 text-primary" />
         </div>
@@ -163,6 +212,12 @@ export function FolderCard({
           <h3 className="font-semibold text-sm truncate">{folder.name}</h3>
           <p className="text-xs text-muted-foreground">
             {itemCount} {t("folders.items")}
+            {(childCount ?? 0) > 0 && (
+              <span className="ml-1.5 inline-flex items-center gap-0.5">
+                <FolderTree className="w-3 h-3 inline" />
+                {childCount}
+              </span>
+            )}
           </p>
         </div>
         {editMode && (
@@ -197,18 +252,24 @@ export function FolderCard({
 export function FolderGrid({
   folders,
   itemCounts,
+  childCounts,
   onOpen,
   onRename,
   onDelete,
+  selectedFolderIds,
+  onFolderSelect,
   editMode,
   registerDropTarget,
   isDragOver,
 }: {
   folders: FolderData[];
   itemCounts: Map<number, number>;
+  childCounts?: Map<number, number>;
   onOpen: (folderId: number) => void;
   onRename: (folder: FolderData) => void;
   onDelete: (folder: FolderData) => void;
+  selectedFolderIds?: Set<number>;
+  onFolderSelect?: (id: number, e: React.MouseEvent) => void;
   editMode: boolean;
   registerDropTarget?: (folderId: number | null, el: HTMLElement | null) => void;
   isDragOver?: (folderId: number | null) => boolean;
@@ -222,9 +283,12 @@ export function FolderGrid({
           key={folder.id}
           folder={folder}
           itemCount={itemCounts.get(folder.id) || 0}
+          childCount={childCounts?.get(folder.id)}
           onOpen={() => onOpen(folder.id)}
           onRename={() => onRename(folder)}
           onDelete={() => onDelete(folder)}
+          selected={selectedFolderIds?.has(folder.id)}
+          onSelect={onFolderSelect ? (e) => onFolderSelect(folder.id, e) : undefined}
           editMode={editMode}
           dropRef={registerDropTarget ? (el) => registerDropTarget(folder.id, el) : undefined}
           isDropOver={isDragOver?.(folder.id)}
@@ -317,14 +381,38 @@ export function FolderSection({
 export function MoveToFolderMenu({
   folders,
   onMove,
+  excludeFolderIds,
+  onMoveFolder,
   className,
 }: {
   folders: FolderData[];
   onMove: (folderId: number | null) => void;
+  excludeFolderIds?: Set<number>;
+  onMoveFolder?: (folderId: number | null) => void;
   className?: string;
 }) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
+
+  // Build a nested tree for display with indentation
+  function buildTree(parentId: number | null, depth: number): Array<{ folder: FolderData; depth: number }> {
+    const result: Array<{ folder: FolderData; depth: number }> = [];
+    for (const f of folders) {
+      if (f.parent_id === parentId && !excludeFolderIds?.has(f.id)) {
+        result.push({ folder: f, depth });
+        result.push(...buildTree(f.id, depth + 1));
+      }
+    }
+    return result;
+  }
+
+  const tree = buildTree(null, 0);
+
+  const handleMove = (folderId: number | null) => {
+    onMove(folderId);
+    if (onMoveFolder) onMoveFolder(folderId);
+    setOpen(false);
+  };
 
   return (
     <div className={cn("relative", className)}>
@@ -342,25 +430,20 @@ export function MoveToFolderMenu({
             className="fixed inset-0 z-40"
             onClick={() => setOpen(false)}
           />
-          <div className="absolute top-full mt-1 left-0 z-50 bg-card border border-border rounded-lg shadow-lg py-1 min-w-[180px]">
+          <div className="absolute top-full mt-1 left-0 z-50 bg-card border border-border rounded-lg shadow-lg py-1 min-w-[180px] max-h-64 overflow-y-auto">
             <button
               className="w-full text-left px-3 py-1.5 text-sm hover:bg-muted transition-colors flex items-center gap-2"
-              onClick={() => {
-                onMove(null);
-                setOpen(false);
-              }}
+              onClick={() => handleMove(null)}
             >
               <LayoutList className="w-3.5 h-3.5 text-muted-foreground" />
               {t("folders.unfiled")}
             </button>
-            {folders.map((f) => (
+            {tree.map(({ folder: f, depth }) => (
               <button
                 key={f.id}
-                className="w-full text-left px-3 py-1.5 text-sm hover:bg-muted transition-colors flex items-center gap-2"
-                onClick={() => {
-                  onMove(f.id);
-                  setOpen(false);
-                }}
+                className="w-full text-left py-1.5 text-sm hover:bg-muted transition-colors flex items-center gap-2"
+                style={{ paddingLeft: `${12 + depth * 16}px` }}
+                onClick={() => handleMove(f.id)}
               >
                 <Folder className="w-3.5 h-3.5 text-primary" />
                 {f.name}

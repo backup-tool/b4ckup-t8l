@@ -386,7 +386,17 @@
     "smart_home": "בית חכם",
     "app": "App",
     "service": "שירות מקוון",
-    "other": "אחר"
+    "other": "אחר",
+    "smartwatch": "שעון חכם",
+    "ereader": "קורא אלקטרוני",
+    "router": "נתב",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "טלוויזיה / טלוויזיה חכמה",
+    "drone": "רחפן",
+    "email": "שירות דוא\"ל",
+    "website": "אתר אינטרנט",
+    "database": "מסד נתונים",
+    "vm": "מכונה וירטואלית"
   },
   "storageTypes": {
     "internal_drive": "HDD פנימי",
@@ -426,7 +436,8 @@
     "items": "פריטים",
     "viewFlat": "תצוגה שטוחה",
     "viewFolder": "תצוגת תיקיות",
-    "viewExpanded": "תצוגה מורחבת"
+    "viewExpanded": "תצוגה מורחבת",
+    "folder": "תיקייה"
   },
   "rule321": {
     "title": "כלל גיבוי 3-2-1",

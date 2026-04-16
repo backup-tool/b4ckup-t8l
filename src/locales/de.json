@@ -353,20 +353,14 @@
     "games": "Spiele", "other": "Sonstiges"
   },
   "deviceTypes": {
-    "desktop": "Desktop-PC",
-    "laptop": "Laptop",
-    "phone": "Smartphone",
-    "tablet": "Tablet",
-    "server": "Server",
-    "nas": "NAS",
-    "cloud": "Cloud-Dienst",
-    "external_drive": "Externe Festplatte",
-    "camera": "Kamera",
-    "console": "Konsole",
-    "smart_home": "Smart Home",
-    "app": "App",
-    "service": "Online-Dienst",
-    "other": "Sonstiges"
+    "desktop": "Desktop-PC", "laptop": "Laptop", "phone": "Smartphone", "tablet": "Tablet",
+    "camera": "Kamera", "smartwatch": "Smartwatch", "ereader": "E-Reader",
+    "server": "Server", "nas": "NAS", "router": "Router", "raspberry_pi": "Raspberry Pi",
+    "external_drive": "Externe Festplatte", "console": "Konsole", "smart_home": "Smart Home",
+    "tv": "TV / Smart TV", "drone": "Drohne",
+    "cloud": "Cloud-Dienst", "app": "App", "service": "Online-Dienst",
+    "email": "E-Mail-Dienst", "website": "Webseite", "database": "Datenbank",
+    "vm": "Virtuelle Maschine", "other": "Sonstiges"
   },
   "storageTypes": {
     "internal_drive": "Interne Festplatte", "ssd": "SSD", "nvme": "NVMe",
@@ -391,7 +385,8 @@
     "items": "Elemente",
     "viewFlat": "Flache Ansicht",
     "viewFolder": "Ordneransicht",
-    "viewExpanded": "Erweiterte Ansicht"
+    "viewExpanded": "Erweiterte Ansicht",
+    "folder": "Ordner"
   },
   "rule321": {
     "title": "3-2-1 Backup-Regel",

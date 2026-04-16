@@ -386,7 +386,17 @@
     "smart_home": "Խելացի տուն",
     "app": "App",
     "service": "Առցանց ծառայություն",
-    "other": "Այլ"
+    "other": "Այլ",
+    "smartwatch": "Smartwatch",
+    "ereader": "E-Reader",
+    "router": "Router",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "TV / Smart TV",
+    "drone": "Անօդաթռչկ",
+    "email": "Էլ. փոստի ծառայություն",
+    "website": "Կայք",
+    "database": "Տվյալների բազա",
+    "vm": "Վիրտուալ մեքենա"
   },
   "storageTypes": {
     "internal_drive": "Ներքին HDD",
@@ -426,7 +436,8 @@
     "items": "տառրեր",
     "viewFlat": "Հարթ տեսք",
     "viewFolder": "Թղթապանակի տեսք",
-    "viewExpanded": "Ընդլայնված տեսք"
+    "viewExpanded": "Ընդլայնված տեսք",
+    "folder": "Folder"
   },
   "rule321": {
     "title": "Պահուստի կանոն 3-2-1",

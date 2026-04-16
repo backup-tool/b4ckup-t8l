@@ -386,7 +386,17 @@
     "smart_home": "Умен дом",
     "app": "App",
     "service": "Онлайн услуга",
-    "other": "Друго"
+    "other": "Друго",
+    "smartwatch": "Smartwatch",
+    "ereader": "E-Reader",
+    "router": "Router",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "TV / Smart TV",
+    "drone": "Дрон",
+    "email": "Имейл услуга",
+    "website": "Уебсайт",
+    "database": "База данни",
+    "vm": "Виртуална машина"
   },
   "storageTypes": {
     "internal_drive": "Вътрешен HDD",
@@ -426,7 +436,8 @@
     "items": "елемента",
     "viewFlat": "Плосък изглед",
     "viewFolder": "Изглед на папки",
-    "viewExpanded": "Разгънат изглед"
+    "viewExpanded": "Разгънат изглед",
+    "folder": "Папка"
   },
   "rule321": {
     "title": "Правило за архивиране 3-2-1",

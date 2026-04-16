@@ -193,6 +193,9 @@ async function runMigrations(db: Database) {
   try {
     await db.execute("ALTER TABLE devices ADD COLUMN storage_capacity TEXT DEFAULT NULL");
   } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE folders ADD COLUMN parent_id INTEGER DEFAULT NULL");
+  } catch { /* column already exists */ }
 }
 
 // --- Storage Media ---
@@ -787,11 +790,11 @@ export async function getFolders(entityType: string) {
   );
 }
 
-export async function createFolder(name: string, entityType: string) {
+export async function createFolder(name: string, entityType: string, parentId?: number | null) {
   const db = await getDb();
   const result = await db.execute(
-    "INSERT INTO folders (name, entity_type) VALUES ($1, $2)",
-    [name, entityType]
+    "INSERT INTO folders (name, entity_type, parent_id) VALUES ($1, $2, $3)",
+    [name, entityType, parentId ?? null]
   );
   return result.lastInsertId!;
 }
@@ -804,10 +807,42 @@ export async function updateFolder(id: number, name: string) {
 export async function softDeleteFolder(id: number) {
   const db = await getDb();
   await db.execute("UPDATE folders SET deleted_at=datetime('now') WHERE id=$1", [id]);
-  // Move items back to unfiled
+  // Also soft-delete child folders
+  await db.execute("UPDATE folders SET deleted_at=datetime('now') WHERE parent_id=$1 AND deleted_at IS NULL", [id]);
+}
+
+export async function restoreFolder(id: number) {
+  const db = await getDb();
+  await db.execute("UPDATE folders SET deleted_at=NULL WHERE id=$1", [id]);
+  // Also restore child folders
+  await db.execute("UPDATE folders SET deleted_at=NULL WHERE parent_id=$1", [id]);
+}
+
+export async function permanentDeleteFolder(id: number) {
+  const db = await getDb();
+  // Move items to unfiled before deleting
   await db.execute("UPDATE backups SET folder_id=NULL WHERE folder_id=$1", [id]);
   await db.execute("UPDATE storage_media SET folder_id=NULL WHERE folder_id=$1", [id]);
   await db.execute("UPDATE devices SET folder_id=NULL WHERE folder_id=$1", [id]);
+  // Move child folder items to unfiled and delete child folders
+  const children = await db.select<Array<Record<string, any>>>("SELECT id FROM folders WHERE parent_id=$1", [id]);
+  for (const child of children) {
+    await permanentDeleteFolder(child.id as number);
+  }
+  await db.execute("DELETE FROM folders WHERE id=$1", [id]);
+}
+
+export async function getDeletedFolders(entityType: string) {
+  const db = await getDb();
+  return db.select<Array<Record<string, any>>>(
+    "SELECT * FROM folders WHERE entity_type=$1 AND deleted_at IS NOT NULL ORDER BY name",
+    [entityType]
+  );
+}
+
+export async function moveFolderToParent(folderId: number, parentId: number | null) {
+  const db = await getDb();
+  await db.execute("UPDATE folders SET parent_id=$1 WHERE id=$2", [parentId, folderId]);
 }
 
 export async function updateFolderCollapsed(id: number, collapsed: boolean) {

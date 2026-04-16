@@ -386,7 +386,17 @@
     "smart_home": "Розумний дім",
     "app": "App",
     "service": "Онлайн-сервіс",
-    "other": "Інше"
+    "other": "Інше",
+    "smartwatch": "Розумний годинник",
+    "ereader": "Електронна книга",
+    "router": "Роутер",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "ТВ / Смарт ТВ",
+    "drone": "Дрон",
+    "email": "Поштовий сервіс",
+    "website": "Веб-сайт",
+    "database": "База даних",
+    "vm": "Віртуальна машина"
   },
   "storageTypes": {
     "internal_drive": "Внутрішній HDD",
@@ -426,7 +436,8 @@
     "items": "елементів",
     "viewFlat": "Плоский вигляд",
     "viewFolder": "Вигляд папок",
-    "viewExpanded": "Розгорнутий вигляд"
+    "viewExpanded": "Розгорнутий вигляд",
+    "folder": "Папка"
   },
   "rule321": {
     "title": "Правило резервних копій 3-2-1",

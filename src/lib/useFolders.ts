@@ -4,6 +4,10 @@ import {
   createFolder,
   updateFolder,
   softDeleteFolder,
+  restoreFolder,
+  permanentDeleteFolder,
+  getDeletedFolders,
+  moveFolderToParent,
   updateFolderCollapsed,
   moveItemToFolder,
   moveItemsToFolder,
@@ -16,6 +20,7 @@ export interface FolderData {
   entity_type: string;
   sort_order: number;
   collapsed: boolean;
+  parent_id: number | null;
   created_at: string;
 }
 
@@ -27,6 +32,7 @@ export interface FolderGroup<T> {
 export function useFolders(entityType: FolderEntityType, refreshKey?: number) {
   const storageKey = `folder-view-mode-${entityType}`;
   const [folders, setFolders] = useState<FolderData[]>([]);
+  const [deletedFolders, setDeletedFolders] = useState<FolderData[]>([]);
   const [viewMode, setViewModeState] = useState<FolderViewMode>(() => {
     return (localStorage.getItem(storageKey) as FolderViewMode) || "flat";
   });
@@ -36,7 +42,6 @@ export function useFolders(entityType: FolderEntityType, refreshKey?: number) {
     (mode: FolderViewMode) => {
       setViewModeState(mode);
       localStorage.setItem(storageKey, mode);
-      // Reset navigation when switching modes
       if (mode !== "folder") setCurrentFolderId(null);
     },
     [storageKey]
@@ -44,7 +49,10 @@ export function useFolders(entityType: FolderEntityType, refreshKey?: number) {
 
   const loadFolders = useCallback(async () => {
     try {
-      const rows = await getFolders(entityType);
+      const [rows, deleted] = await Promise.all([
+        getFolders(entityType),
+        getDeletedFolders(entityType),
+      ]);
       setFolders(
         rows.map((r) => ({
           id: r.id as number,
@@ -52,6 +60,18 @@ export function useFolders(entityType: FolderEntityType, refreshKey?: number) {
           entity_type: r.entity_type as string,
           sort_order: r.sort_order as number,
           collapsed: !!(r.collapsed as number),
+          parent_id: (r.parent_id as number | null) ?? null,
+          created_at: r.created_at as string,
+        }))
+      );
+      setDeletedFolders(
+        deleted.map((r) => ({
+          id: r.id as number,
+          name: r.name as string,
+          entity_type: r.entity_type as string,
+          sort_order: r.sort_order as number,
+          collapsed: false,
+          parent_id: (r.parent_id as number | null) ?? null,
           created_at: r.created_at as string,
         }))
       );
@@ -64,12 +84,51 @@ export function useFolders(entityType: FolderEntityType, refreshKey?: number) {
     loadFolders();
   }, [loadFolders, refreshKey]);
 
+  // Get root folders (no parent) for current context
+  const rootFolders = useMemo(
+    () => folders.filter((f) => f.parent_id === currentFolderId),
+    [folders, currentFolderId]
+  );
+
+  // Get child folders of a specific parent
+  const getChildFolders = useCallback(
+    (parentId: number | null) => folders.filter((f) => f.parent_id === parentId),
+    [folders]
+  );
+
+  // Get full breadcrumb path for current folder
+  const breadcrumbPath = useMemo(() => {
+    const path: FolderData[] = [];
+    let id = currentFolderId;
+    while (id != null) {
+      const folder = folders.find((f) => f.id === id);
+      if (!folder) break;
+      path.unshift(folder);
+      id = folder.parent_id;
+    }
+    return path;
+  }, [folders, currentFolderId]);
+
+  // Check if a folder is an ancestor of another (to prevent circular moves)
+  const isAncestor = useCallback(
+    (folderId: number, potentialChildId: number): boolean => {
+      let id: number | null = potentialChildId;
+      while (id != null) {
+        if (id === folderId) return true;
+        const folder = folders.find((f) => f.id === id);
+        id = folder?.parent_id ?? null;
+      }
+      return false;
+    },
+    [folders]
+  );
+
   const handleCreateFolder = useCallback(
-    async (name: string) => {
-      await createFolder(name, entityType);
+    async (name: string, parentId?: number | null) => {
+      await createFolder(name, entityType, parentId ?? currentFolderId);
       await loadFolders();
     },
-    [entityType, loadFolders]
+    [entityType, currentFolderId, loadFolders]
   );
 
   const handleRenameFolder = useCallback(
@@ -87,6 +146,34 @@ export function useFolders(entityType: FolderEntityType, refreshKey?: number) {
       await loadFolders();
     },
     [currentFolderId, loadFolders]
+  );
+
+  const handleRestoreFolder = useCallback(
+    async (id: number) => {
+      await restoreFolder(id);
+      await loadFolders();
+    },
+    [loadFolders]
+  );
+
+  const handlePermanentDeleteFolder = useCallback(
+    async (id: number) => {
+      await permanentDeleteFolder(id);
+      await loadFolders();
+    },
+    [loadFolders]
+  );
+
+  const handleMoveFolder = useCallback(
+    async (folderId: number, targetParentId: number | null) => {
+      // Prevent moving a folder into itself or its own descendants
+      if (targetParentId !== null && (folderId === targetParentId || isAncestor(folderId, targetParentId))) {
+        return;
+      }
+      await moveFolderToParent(folderId, targetParentId);
+      await loadFolders();
+    },
+    [isAncestor, loadFolders]
   );
 
   const handleToggleCollapsed = useCallback(
@@ -126,7 +213,6 @@ export function useFolders(entityType: FolderEntityType, refreshKey?: number) {
   function groupItemsByFolder<T extends Record<string, any>>(items: T[]): FolderGroup<T>[] {
     const groups: FolderGroup<T>[] = [];
 
-    // Add folder groups
     for (const folder of folders) {
       groups.push({
         folder,
@@ -134,7 +220,6 @@ export function useFolders(entityType: FolderEntityType, refreshKey?: number) {
       });
     }
 
-    // Add unfiled group
     const unfiled = items.filter(
       (item) => !(item.folder_id as number | null)
     );
@@ -150,24 +235,30 @@ export function useFolders(entityType: FolderEntityType, refreshKey?: number) {
     if (viewMode === "folder" && currentFolderId !== null) {
       return items.filter((item) => (item.folder_id as number | null) === currentFolderId);
     }
-    // In folder root view (currentFolderId === null), show unfiled items
     if (viewMode === "folder") {
       return items.filter((item) => !(item.folder_id as number | null));
     }
-    // expanded mode: all items (grouped by folder in UI)
     return items;
   }
 
   return {
     folders,
+    deletedFolders,
+    rootFolders,
     viewMode,
     setViewMode,
     currentFolderId,
     currentFolder,
+    breadcrumbPath,
     navigateToFolder,
+    getChildFolders,
+    isAncestor,
     createFolder: handleCreateFolder,
     renameFolder: handleRenameFolder,
     deleteFolder: handleDeleteFolder,
+    restoreFolder: handleRestoreFolder,
+    permanentDeleteFolder: handlePermanentDeleteFolder,
+    moveFolder: handleMoveFolder,
     toggleCollapsed: handleToggleCollapsed,
     moveItem: handleMoveItem,
     moveItems: handleMoveItems,

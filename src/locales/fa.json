@@ -386,7 +386,17 @@
     "smart_home": "خانه هوشمند",
     "app": "App",
     "service": "سرویس آنلاین",
-    "other": "سایر"
+    "other": "سایر",
+    "smartwatch": "ساعت هوشمند",
+    "ereader": "کتابخوان الکترونیکی",
+    "router": "روتر",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "تلویزیون / تلویزیون هوشمند",
+    "drone": "پهپاد",
+    "email": "سرویس ایمیل",
+    "website": "وب‌سایت",
+    "database": "پایگاه داده",
+    "vm": "ماشین مجازی"
   },
   "storageTypes": {
     "internal_drive": "HDD داخلی",
@@ -426,7 +436,8 @@
     "items": "مورد",
     "viewFlat": "نمای مسطح",
     "viewFolder": "نمای پوشه",
-    "viewExpanded": "نمای گسترش‌یافته"
+    "viewExpanded": "نمای گسترش‌یافته",
+    "folder": "پوشه"
   },
   "rule321": {
     "title": "قانون پشتیبان 3-2-1",

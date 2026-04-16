@@ -386,7 +386,17 @@
     "smart_home": "Älykoti",
     "app": "App",
     "service": "Verkkopalvelu",
-    "other": "Muu"
+    "other": "Muu",
+    "smartwatch": "Älykello",
+    "ereader": "E-Reader",
+    "router": "Reititin",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "TV / Smart TV",
+    "drone": "Drone",
+    "email": "Sähköpostipalvelu",
+    "website": "Verkkosivusto",
+    "database": "Tietokanta",
+    "vm": "Virtuaalikone"
   },
   "storageTypes": {
     "internal_drive": "Sisäinen HDD",
@@ -426,7 +436,8 @@
     "items": "kohdetta",
     "viewFlat": "Tasanäkymä",
     "viewFolder": "Kansionäkymä",
-    "viewExpanded": "Laajennettu näkymä"
+    "viewExpanded": "Laajennettu näkymä",
+    "folder": "Kansio"
   },
   "rule321": {
     "title": "3-2-1-varmuuskopiointisääntö",

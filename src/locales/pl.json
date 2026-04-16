@@ -386,7 +386,17 @@
     "smart_home": "Inteligentny dom",
     "app": "App",
     "service": "Usługa online",
-    "other": "Inne"
+    "other": "Inne",
+    "smartwatch": "Smartwatch",
+    "ereader": "Czytnik e-booków",
+    "router": "Router",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "TV / Smart TV",
+    "drone": "Dron",
+    "email": "Usługa e-mail",
+    "website": "Strona internetowa",
+    "database": "Baza danych",
+    "vm": "Maszyna wirtualna"
   },
   "storageTypes": {
     "internal_drive": "Wewnętrzny HDD",
@@ -426,7 +436,8 @@
     "items": "elementów",
     "viewFlat": "Widok płaski",
     "viewFolder": "Widok folderów",
-    "viewExpanded": "Widok rozwinięty"
+    "viewExpanded": "Widok rozwinięty",
+    "folder": "Folder"
   },
   "rule321": {
     "title": "Reguła kopii zapasowych 3-2-1",

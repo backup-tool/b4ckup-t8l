@@ -386,7 +386,17 @@
     "smart_home": "منزل ذكي",
     "app": "App",
     "service": "خدمة عبر الإنترنت",
-    "other": "أخرى"
+    "other": "أخرى",
+    "smartwatch": "ساعة ذكية",
+    "ereader": "قارئ إلكتروني",
+    "router": "راوتر",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "تلفزيون / تلفزيون ذكي",
+    "drone": "طائرة بدون طيار",
+    "email": "خدمة البريد الإلكتروني",
+    "website": "موقع إلكتروني",
+    "database": "قاعدة بيانات",
+    "vm": "جهاز افتراضي"
   },
   "storageTypes": {
     "internal_drive": "HDD داخلي",
@@ -426,7 +436,8 @@
     "items": "عناصر",
     "viewFlat": "عرض مسطح",
     "viewFolder": "عرض المجلدات",
-    "viewExpanded": "عرض موسع"
+    "viewExpanded": "عرض موسع",
+    "folder": "مجلد"
   },
   "rule321": {
     "title": "قاعدة النسخ الاحتياطي 3-2-1",

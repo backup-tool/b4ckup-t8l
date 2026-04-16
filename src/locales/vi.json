@@ -386,7 +386,17 @@
     "smart_home": "Nhà thông minh",
     "app": "App",
     "service": "Dịch vụ trực tuyến",
-    "other": "Khác"
+    "other": "Khác",
+    "smartwatch": "Đồng hồ thông minh",
+    "ereader": "Máy đọc sách",
+    "router": "Router",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "TV / Smart TV",
+    "drone": "Drone",
+    "email": "Dịch vụ email",
+    "website": "Trang web",
+    "database": "Cơ sở dữ liệu",
+    "vm": "Máy ảo"
   },
   "storageTypes": {
     "internal_drive": "HDD trong",
@@ -426,7 +436,8 @@
     "items": "mục",
     "viewFlat": "Xem phẳng",
     "viewFolder": "Xem thư mục",
-    "viewExpanded": "Xem mở rộng"
+    "viewExpanded": "Xem mở rộng",
+    "folder": "Thư mục"
   },
   "rule321": {
     "title": "Quy tắc sao lưu 3-2-1",

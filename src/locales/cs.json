@@ -386,7 +386,17 @@
     "smart_home": "Chytrá domácnost",
     "app": "App",
     "service": "Online služba",
-    "other": "Ostatní"
+    "other": "Ostatní",
+    "smartwatch": "Smartwatch",
+    "ereader": "E-Reader",
+    "router": "Router",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "TV / Smart TV",
+    "drone": "Dron",
+    "email": "E-mailová služba",
+    "website": "Webová stránka",
+    "database": "Databáze",
+    "vm": "Virtuální stroj"
   },
   "storageTypes": {
     "internal_drive": "Interní HDD",
@@ -426,7 +436,8 @@
     "items": "položek",
     "viewFlat": "Plochý pohled",
     "viewFolder": "Pohled složek",
-    "viewExpanded": "Rozbalený pohled"
+    "viewExpanded": "Rozbalený pohled",
+    "folder": "Složka"
   },
   "rule321": {
     "title": "Pravidlo zálohování 3-2-1",

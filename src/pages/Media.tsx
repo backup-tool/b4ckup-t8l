@@ -68,6 +68,7 @@ export function Media() {
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
   const [bulkConfirmOpen, setBulkConfirmOpen] = useState(false);
   const [lastClickedId, setLastClickedId] = useState<number | null>(null);
+  const [selectedFolderIds, setSelectedFolderIds] = useState<Set<number>>(new Set());
 
   // Folder support
   const folderHook = useFolders("media", refreshKey);
@@ -111,9 +112,11 @@ export function Media() {
       if (editMode && (e.metaKey || e.ctrlKey) && e.key === "a") {
         e.preventDefault();
         setSelectedIds(new Set(media.map((m) => m.id as number)));
+        setSelectedFolderIds(new Set(folderHook.rootFolders.map((f) => f.id)));
       }
       if (editMode && e.key === "Escape") {
         setSelectedIds(new Set());
+        setSelectedFolderIds(new Set());
       }
     };
     document.addEventListener("keydown", handler);
@@ -138,6 +141,15 @@ export function Media() {
     }
     setSelectedIds(next);
     setLastClickedId(id);
+  }
+
+  function handleFolderClick(id: number, e: React.MouseEvent) {
+    if (!editMode) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const next = new Set(selectedFolderIds);
+    if (next.has(id)) next.delete(id); else next.add(id);
+    setSelectedFolderIds(next);
   }
 
   async function loadAll() {
@@ -262,21 +274,45 @@ export function Media() {
         </div>
         <div className="flex items-center gap-2">
           <TrashSection
-            items={deleted.map((m) => ({
-              id: m.id as number,
-              title: m.name as string,
-              subtitle: t(`storageTypes.${m.type}`, { defaultValue: m.type as string }),
-              deleted_at: m.deleted_at as string,
-            }))}
-            onRestore={async (id) => { await restoreMedia(id); triggerRefresh(); await loadAll(); }}
-            onPermanentDelete={async (id) => { await permanentDeleteMedia(id); triggerRefresh(); await loadAll(); }}
-            onRestoreAll={async () => { for (const m of deleted) await restoreMedia(m.id as number); triggerRefresh(); await loadAll(); }}
-            onDeleteAll={async () => { for (const m of deleted) await permanentDeleteMedia(m.id as number); triggerRefresh(); await loadAll(); }}
+            items={[
+              ...deleted.map((m) => ({
+                id: m.id as number,
+                title: m.name as string,
+                subtitle: t(`storageTypes.${m.type}`, { defaultValue: m.type as string }),
+                deleted_at: m.deleted_at as string,
+              })),
+              ...folderHook.deletedFolders.map((f) => ({
+                id: f.id,
+                title: `[${t("folders.folder")}] ${f.name}`,
+                subtitle: t("folders.folder"),
+                deleted_at: f.created_at,
+              })),
+            ]}
+            onRestore={async (id) => {
+              const isFolder = folderHook.deletedFolders.some((f) => f.id === id);
+              if (isFolder) { await folderHook.restoreFolder(id); } else { await restoreMedia(id); }
+              triggerRefresh(); await loadAll();
+            }}
+            onPermanentDelete={async (id) => {
+              const isFolder = folderHook.deletedFolders.some((f) => f.id === id);
+              if (isFolder) { await folderHook.permanentDeleteFolder(id); } else { await permanentDeleteMedia(id); }
+              triggerRefresh(); await loadAll();
+            }}
+            onRestoreAll={async () => {
+              for (const m of deleted) await restoreMedia(m.id as number);
+              for (const f of folderHook.deletedFolders) await folderHook.restoreFolder(f.id);
+              triggerRefresh(); await loadAll();
+            }}
+            onDeleteAll={async () => {
+              for (const m of deleted) await permanentDeleteMedia(m.id as number);
+              for (const f of folderHook.deletedFolders) await folderHook.permanentDeleteFolder(f.id);
+              triggerRefresh(); await loadAll();
+            }}
             permanentDeleteMessage={t("trash.confirmPermanentMedia")}
           />
           <Button
             variant={editMode ? "primary" : "secondary"}
-            onClick={() => { setEditMode(!editMode); if (editMode) setSelectedIds(new Set()); }}
+            onClick={() => { setEditMode(!editMode); if (editMode) { setSelectedIds(new Set()); setSelectedFolderIds(new Set()); } }}
           >
             <Pencil className="w-4 h-4" />
             {editMode ? t("common.done") : t("common.edit")}
@@ -393,16 +429,32 @@ export function Media() {
       </div>
 
       {/* Bulk actions */}
-      {editMode && selectedIds.size > 0 && (
+      {editMode && (selectedIds.size + selectedFolderIds.size) > 0 && (
         <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-primary/5 border border-primary/20">
-          <span className="text-sm font-medium">{selectedIds.size} {t("bulk.selected")}</span>
+          <span className="text-sm font-medium">{selectedIds.size + selectedFolderIds.size} {t("bulk.selected")}</span>
           <div className="flex gap-2 ml-auto">
             {folderHook.viewMode !== "flat" && (
               <MoveToFolderMenu
                 folders={folderHook.folders}
+                excludeFolderIds={selectedFolderIds.size > 0 ? (() => {
+                  const excluded = new Set<number>();
+                  for (const fid of selectedFolderIds) {
+                    excluded.add(fid);
+                    for (const f of folderHook.folders) {
+                      if (folderHook.isAncestor(fid, f.id)) excluded.add(f.id);
+                    }
+                  }
+                  return excluded;
+                })() : undefined}
                 onMove={async (folderId) => {
-                  await folderHook.moveItems(Array.from(selectedIds), folderId);
+                  if (selectedIds.size > 0) {
+                    await folderHook.moveItems(Array.from(selectedIds), folderId);
+                  }
+                  for (const fid of selectedFolderIds) {
+                    await folderHook.moveFolder(fid, folderId);
+                  }
                   setSelectedIds(new Set());
+                  setSelectedFolderIds(new Set());
                   triggerRefresh();
                   await loadAll();
                 }}
@@ -420,6 +472,8 @@ export function Media() {
         <FolderBreadcrumb
           currentFolder={folderHook.currentFolder}
           onNavigateBack={() => folderHook.navigateToFolder(null)}
+          breadcrumbPath={folderHook.breadcrumbPath}
+          onNavigateToFolder={(id) => folderHook.navigateToFolder(id)}
           dropRef={(el: HTMLElement | null) => registerDropTarget(null, el)}
           isDropOver={isDragOver(null)}
         />
@@ -452,17 +506,26 @@ export function Media() {
       ) : folderHook.viewMode === "folder" && folderHook.currentFolderId === null ? (
         <div>
           <FolderGrid
-            folders={folderHook.folders}
+            folders={folderHook.rootFolders}
             itemCounts={(() => {
               const counts = new Map<number, number>();
-              for (const f of folderHook.folders) {
+              for (const f of folderHook.rootFolders) {
                 counts.set(f.id, sorted.filter((m) => (m.folder_id as number | null) === f.id).length);
+              }
+              return counts;
+            })()}
+            childCounts={(() => {
+              const counts = new Map<number, number>();
+              for (const f of folderHook.rootFolders) {
+                counts.set(f.id, folderHook.getChildFolders(f.id).length);
               }
               return counts;
             })()}
             onOpen={(folderId) => folderHook.navigateToFolder(folderId)}
             onRename={(folder) => setRenamingFolder(folder)}
             onDelete={(folder) => setDeletingFolder(folder)}
+            selectedFolderIds={selectedFolderIds}
+            onFolderSelect={handleFolderClick}
             editMode={editMode}
             registerDropTarget={registerDropTarget}
             isDragOver={isDragOver}
@@ -626,12 +689,14 @@ export function Media() {
         onClose={() => setBulkConfirmOpen(false)}
         onConfirm={async () => {
           for (const id of selectedIds) await softDeleteMedia(id);
+          for (const id of selectedFolderIds) await folderHook.deleteFolder(id);
           setSelectedIds(new Set());
+          setSelectedFolderIds(new Set());
           setBulkConfirmOpen(false);
           triggerRefresh(); await loadAll();
         }}
         title={t("trash.moveToTrash")}
-        message={`${selectedIds.size} ${t("bulk.deleteConfirmMedia")}`}
+        message={`${selectedIds.size + selectedFolderIds.size} ${t("bulk.deleteConfirmMedia")}`}
         confirmLabel={t("trash.moveToTrash")}
         cancelLabel={t("common.cancel")}
         variant="danger"

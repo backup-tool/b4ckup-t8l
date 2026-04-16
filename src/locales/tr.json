@@ -386,7 +386,17 @@
     "smart_home": "Akıllı Ev",
     "app": "App",
     "service": "Çevrimiçi Hizmet",
-    "other": "Diğer"
+    "other": "Diğer",
+    "smartwatch": "Akıllı saat",
+    "ereader": "E-Kitap okuyucu",
+    "router": "Router",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "TV / Akıllı TV",
+    "drone": "Drone",
+    "email": "E-posta hizmeti",
+    "website": "Web sitesi",
+    "database": "Veritabanı",
+    "vm": "Sanal makine"
   },
   "storageTypes": {
     "internal_drive": "Dahili HDD",
@@ -426,7 +436,8 @@
     "items": "öğe",
     "viewFlat": "Düz Görünüm",
     "viewFolder": "Klasör Görünümü",
-    "viewExpanded": "Genişletilmiş Görünüm"
+    "viewExpanded": "Genişletilmiş Görünüm",
+    "folder": "Klasör"
   },
   "rule321": {
     "title": "3-2-1 Yedekleme Kuralı",

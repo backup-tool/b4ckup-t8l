@@ -185,13 +185,13 @@ export const SCHEDULE_FREQUENCIES = [
 
 export const DEVICE_TYPES = [
   // Physical devices
-  "desktop", "laptop", "phone", "tablet", "camera",
+  "desktop", "laptop", "phone", "tablet", "camera", "smartwatch", "ereader",
   // Server & Network
-  "server", "nas",
+  "server", "nas", "router", "raspberry_pi",
   // External & Entertainment
-  "external_drive", "console", "smart_home",
+  "external_drive", "console", "smart_home", "tv", "drone",
   // Cloud & Digital
-  "cloud", "app", "service",
+  "cloud", "app", "service", "email", "website", "database", "vm",
   // Other
   "other",
 ] as const;
@@ -202,14 +202,24 @@ export const DEVICE_TYPE_LABELS: Record<string, L> = {
   phone: { en: "Phone", de: "Smartphone", ru: "\u0422\u0435\u043b\u0435\u0444\u043e\u043d" },
   tablet: { en: "Tablet", de: "Tablet", ru: "\u041f\u043b\u0430\u043d\u0448\u0435\u0442" },
   camera: { en: "Camera", de: "Kamera", ru: "\u041a\u0430\u043c\u0435\u0440\u0430" },
+  smartwatch: { en: "Smartwatch", de: "Smartwatch", ru: "\u0421\u043c\u0430\u0440\u0442-\u0447\u0430\u0441\u044b" },
+  ereader: { en: "E-Reader", de: "E-Reader", ru: "\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0430\u044f \u043a\u043d\u0438\u0433\u0430" },
   server: { en: "Server", de: "Server", ru: "\u0421\u0435\u0440\u0432\u0435\u0440" },
   nas: { en: "NAS", de: "NAS", ru: "NAS" },
+  router: { en: "Router", de: "Router", ru: "\u0420\u043e\u0443\u0442\u0435\u0440" },
+  raspberry_pi: { en: "Raspberry Pi", de: "Raspberry Pi", ru: "Raspberry Pi" },
   external_drive: { en: "External Drive", de: "Externe Festplatte", ru: "\u0412\u043d\u0435\u0448\u043d\u0438\u0439 \u0434\u0438\u0441\u043a" },
   console: { en: "Console", de: "Konsole", ru: "\u041a\u043e\u043d\u0441\u043e\u043b\u044c" },
   smart_home: { en: "Smart Home", de: "Smart Home", ru: "\u0423\u043c\u043d\u044b\u0439 \u0434\u043e\u043c" },
+  tv: { en: "TV / Smart TV", de: "TV / Smart TV", ru: "\u0422\u0435\u043b\u0435\u0432\u0438\u0437\u043e\u0440" },
+  drone: { en: "Drone", de: "Drohne", ru: "\u0414\u0440\u043e\u043d" },
   cloud: { en: "Cloud Service", de: "Cloud-Dienst", ru: "\u041e\u0431\u043b\u0430\u0447\u043d\u044b\u0439 \u0441\u0435\u0440\u0432\u0438\u0441" },
   app: { en: "App", de: "App", ru: "\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435" },
   service: { en: "Online Service", de: "Online-Dienst", ru: "\u041e\u043d\u043b\u0430\u0439\u043d-\u0441\u0435\u0440\u0432\u0438\u0441" },
+  email: { en: "Email Service", de: "E-Mail-Dienst", ru: "\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0430\u044f \u043f\u043e\u0447\u0442\u0430" },
+  website: { en: "Website", de: "Webseite", ru: "\u0412\u0435\u0431-\u0441\u0430\u0439\u0442" },
+  database: { en: "Database", de: "Datenbank", ru: "\u0411\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u044b\u0445" },
+  vm: { en: "Virtual Machine", de: "Virtuelle Maschine", ru: "\u0412\u0438\u0440\u0442. \u043c\u0430\u0448\u0438\u043d\u0430" },
   other: { en: "Other", de: "Sonstiges", ru: "\u0414\u0440\u0443\u0433\u043e\u0435" },
 };
 
@@ -223,14 +233,24 @@ export const DEVICE_FIELD_CONFIG: Record<string, DeviceFields[]> = {
   phone:          ["brand", "model", "os", "serial_number", "storage_capacity"],
   tablet:         ["brand", "model", "os", "serial_number", "storage_capacity"],
   camera:         ["brand", "model", "serial_number"],
+  smartwatch:     ["brand", "model", "os", "serial_number", "storage_capacity"],
+  ereader:        ["brand", "model", "serial_number", "storage_capacity"],
   server:         ["brand", "model", "os", "serial_number", "ip_address", "storage_capacity"],
   nas:            ["brand", "model", "os", "serial_number", "ip_address", "storage_capacity"],
+  router:         ["brand", "model", "serial_number", "ip_address"],
+  raspberry_pi:   ["brand", "model", "os", "serial_number", "ip_address", "storage_capacity"],
   external_drive: ["brand", "model", "serial_number", "storage_capacity"],
   console:        ["brand", "model", "os", "serial_number"],
   smart_home:     ["brand", "model", "serial_number", "ip_address"],
+  tv:             ["brand", "model", "serial_number", "ip_address"],
+  drone:          ["brand", "model", "serial_number"],
   cloud:          ["provider", "url", "storage_capacity"],
   app:            ["provider", "url"],
   service:        ["provider", "url"],
+  email:          ["provider", "url"],
+  website:        ["provider", "url"],
+  database:       ["provider", "url", "ip_address", "storage_capacity"],
+  vm:             ["os", "ip_address", "storage_capacity"],
   other:          ALL_DEVICE_FIELDS,
 };
 

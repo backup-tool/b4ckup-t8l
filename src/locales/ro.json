@@ -386,7 +386,17 @@
     "smart_home": "Casă inteligentă",
     "app": "App",
     "service": "Serviciu online",
-    "other": "Altele"
+    "other": "Altele",
+    "smartwatch": "Smartwatch",
+    "ereader": "E-Reader",
+    "router": "Router",
+    "raspberry_pi": "Raspberry Pi",
+    "tv": "TV / Smart TV",
+    "drone": "Dronă",
+    "email": "Serviciu de e-mail",
+    "website": "Site web",
+    "database": "Bază de date",
+    "vm": "Mașină virtuală"
   },
   "storageTypes": {
     "internal_drive": "HDD intern",
@@ -426,7 +436,8 @@
     "items": "elemente",
     "viewFlat": "Vedere plată",
     "viewFolder": "Vedere dosare",
-    "viewExpanded": "Vedere extinsă"
+    "viewExpanded": "Vedere extinsă",
+    "folder": "Dosar"
   },
   "rule321": {
     "title": "Regula de backup 3-2-1",
