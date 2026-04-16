@@ -54,7 +54,7 @@ import {
   getBackupsWithStatus,
   toggleBackupPaused,
 } from "@/lib/db";
-import { BACKUP_CATEGORIES, BACKUP_MODES, SCHEDULE_FREQUENCIES, SIZE_UNITS, SIZE_MULTIPLIERS } from "@/lib/types";
+import { BACKUP_CATEGORIES, SIZE_UNITS, SIZE_MULTIPLIERS } from "@/lib/types";
 import type { BackupStatus } from "@/lib/types";
 import { formatBytes, formatDate, todayISO } from "@/lib/format";
 import { useAppStore } from "@/lib/store";
@@ -131,6 +131,14 @@ export function BackupDetail() {
     path_on_media: "",
     auto_detect: false,
     scan_mode: "subdirectories",
+    backup_mode: "manual" as string,
+    schedule_frequency: "daily" as string,
+    schedule_time: "",
+    schedule_weekday: "",
+    schedule_month_day: "",
+    schedule_custom_interval_days: "",
+    schedule_note: "",
+    reminder_interval_days: "",
   });
 
   const load = useCallback(async () => {
@@ -464,16 +472,46 @@ export function BackupDetail() {
     if (path) setLocationForm({ ...locationForm, path_on_media: path });
   }
 
+  const emptyLocationForm = {
+    storage_media_id: "",
+    path_on_media: "",
+    auto_detect: false,
+    scan_mode: "subdirectories",
+    backup_mode: "manual",
+    schedule_frequency: "daily",
+    schedule_time: "",
+    schedule_weekday: "",
+    schedule_month_day: "",
+    schedule_custom_interval_days: "",
+    schedule_note: "",
+    reminder_interval_days: "",
+  };
+
+  function locationDataFromForm() {
+    const isAuto = locationForm.backup_mode === "automatic";
+    return {
+      path_on_media: locationForm.path_on_media || null,
+      auto_detect: locationForm.auto_detect,
+      scan_mode: locationForm.scan_mode,
+      backup_mode: locationForm.backup_mode,
+      schedule_frequency: isAuto ? locationForm.schedule_frequency : null,
+      schedule_time: isAuto && locationForm.schedule_time ? locationForm.schedule_time : null,
+      schedule_weekday: isAuto && locationForm.schedule_weekday ? parseInt(locationForm.schedule_weekday) : null,
+      schedule_month_day: isAuto && locationForm.schedule_month_day ? parseInt(locationForm.schedule_month_day) : null,
+      schedule_custom_interval_days: isAuto && locationForm.schedule_custom_interval_days ? parseInt(locationForm.schedule_custom_interval_days) : null,
+      schedule_note: isAuto && locationForm.schedule_note ? locationForm.schedule_note : null,
+      reminder_interval_days: locationForm.reminder_interval_days ? parseInt(locationForm.reminder_interval_days) : null,
+    };
+  }
+
   async function handleAddLocation() {
     await addStorageLocation({
       backup_id: backup!.id as number,
       storage_media_id: parseInt(locationForm.storage_media_id),
-      path_on_media: locationForm.path_on_media || null,
-      auto_detect: locationForm.auto_detect,
-      scan_mode: locationForm.scan_mode,
+      ...locationDataFromForm(),
     });
     setLocationModalOpen(false);
-    setLocationForm({ storage_media_id: "", path_on_media: "", auto_detect: false, scan_mode: "subdirectories" });
+    setLocationForm(emptyLocationForm);
     triggerRefresh();
     await load();
   }
@@ -491,18 +529,22 @@ export function BackupDetail() {
       path_on_media: (loc.path_on_media as string) || "",
       auto_detect: Boolean(loc.auto_detect),
       scan_mode: (loc.scan_mode as string) || "subdirectories",
+      backup_mode: (loc.backup_mode as string) || "manual",
+      schedule_frequency: (loc.schedule_frequency as string) || "daily",
+      schedule_time: (loc.schedule_time as string) || "",
+      schedule_weekday: loc.schedule_weekday != null ? String(loc.schedule_weekday) : "",
+      schedule_month_day: loc.schedule_month_day != null ? String(loc.schedule_month_day) : "",
+      schedule_custom_interval_days: loc.schedule_custom_interval_days != null ? String(loc.schedule_custom_interval_days) : "",
+      schedule_note: (loc.schedule_note as string) || "",
+      reminder_interval_days: loc.reminder_interval_days != null ? String(loc.reminder_interval_days) : "",
     });
   }
 
   async function handleEditLocation() {
     if (editLocationId == null) return;
-    await updateStorageLocation(editLocationId, {
-      path_on_media: locationForm.path_on_media || null,
-      auto_detect: locationForm.auto_detect,
-      scan_mode: locationForm.scan_mode,
-    });
+    await updateStorageLocation(editLocationId, locationDataFromForm());
     setEditLocationId(null);
-    setLocationForm({ storage_media_id: "", path_on_media: "", auto_detect: false, scan_mode: "subdirectories" });
+    setLocationForm(emptyLocationForm);
     triggerRefresh();
     await load();
   }
@@ -686,23 +728,9 @@ export function BackupDetail() {
       </div>
 
       {/* Info cards */}
-      {(backup.notes || backup.encryption_info || backup.backup_mode) && (
+      {(backup.notes || backup.encryption_info) && (
         <Card>
           <div className="grid grid-cols-2 gap-4 text-sm">
-            <div>
-              <p className="text-xs text-muted-foreground mb-1">{t("backups.mode")}</p>
-              <p>{t(`backups.${backup.backup_mode || "manual"}`)}</p>
-              {backup.backup_mode === "automatic" && backup.schedule_frequency && (
-                <div className="mt-1 text-xs text-muted-foreground space-y-0.5">
-                  <p>{t("backups.frequency")}: {t(`schedule.${backup.schedule_frequency}`)}</p>
-                  {backup.schedule_time && <p>{t("backups.time")}: {String(backup.schedule_time)}</p>}
-                  {backup.schedule_weekday != null && <p>{t("backups.weekday")}: {t(`weekdays.${backup.schedule_weekday}`)}</p>}
-                  {backup.schedule_month_day != null && <p>{t("backups.monthDay")}: {String(backup.schedule_month_day)}</p>}
-                  {backup.schedule_custom_interval_days != null && <p>{t("backups.customIntervalDays")}: {String(backup.schedule_custom_interval_days)}</p>}
-                  {backup.schedule_note && <p>{t("backups.scheduleNote")}: {String(backup.schedule_note)}</p>}
-                </div>
-              )}
-            </div>
             {backup.notes && (
               <div>
                 <p className="text-xs text-muted-foreground mb-1">{t("backups.notes")}</p>
@@ -843,14 +871,29 @@ export function BackupDetail() {
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2 min-w-0 flex-1">
                       <HardDrive className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
-                      <p className="text-sm font-medium truncate">
-                        {String(loc.media_name)}
-                        {loc.auto_detect ? (
-                          <span className="ml-2 text-[10px] text-emerald-600 font-normal">
-                            {t("backups.autoDetect")}
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-medium truncate">
+                          {String(loc.media_name)}
+                          <span className={`ml-2 text-[10px] font-normal ${loc.backup_mode === "automatic" ? "text-emerald-600" : "text-muted-foreground"}`}>
+                            {loc.backup_mode === "automatic" ? t("backups.automatic") : t("backups.manual")}
                           </span>
-                        ) : null}
-                      </p>
+                          {loc.auto_detect ? (
+                            <span className="ml-2 text-[10px] text-blue-600 font-normal">
+                              {t("backups.autoDetect")}
+                            </span>
+                          ) : null}
+                        </p>
+                        {loc.backup_mode === "automatic" && loc.schedule_frequency && (
+                          <p className="text-[10px] text-muted-foreground mt-0.5 truncate">
+                            {t(`schedule.${loc.schedule_frequency}`)}
+                            {loc.schedule_time ? ` · ${loc.schedule_time}` : ""}
+                            {loc.schedule_weekday != null ? ` · ${t(`weekdays.${loc.schedule_weekday}`)}` : ""}
+                            {loc.schedule_month_day != null ? ` · ${t("backups.monthDay")}: ${loc.schedule_month_day}` : ""}
+                            {loc.schedule_custom_interval_days != null ? ` · ${loc.schedule_custom_interval_days} ${t("common.days")}` : ""}
+                            {loc.schedule_note ? ` · ${loc.schedule_note}` : ""}
+                          </p>
+                        )}
+                      </div>
                     </div>
                     <div className="flex gap-1 shrink-0">
                       {loc.path_on_media && (
@@ -1191,6 +1234,93 @@ export function BackupDetail() {
               ]}
             />
           </div>
+          <div>
+            <Label>{t("backups.mode")}</Label>
+            <CustomSelect
+              value={locationForm.backup_mode}
+              onChange={(val) => setLocationForm({ ...locationForm, backup_mode: val })}
+              options={[
+                { value: "manual", label: t("backups.manual") },
+                { value: "automatic", label: t("backups.automatic") },
+              ]}
+            />
+          </div>
+          {locationForm.backup_mode === "automatic" && (
+            <>
+              <div>
+                <Label>{t("backups.frequency")}</Label>
+                <CustomSelect
+                  value={locationForm.schedule_frequency}
+                  onChange={(val) => setLocationForm({ ...locationForm, schedule_frequency: val })}
+                  options={[
+                    { value: "daily", label: t("schedule.daily") },
+                    { value: "weekly", label: t("schedule.weekly") },
+                    { value: "monthly", label: t("schedule.monthly") },
+                    { value: "yearly", label: t("schedule.yearly") },
+                    { value: "custom", label: t("schedule.custom") },
+                  ]}
+                />
+              </div>
+              <div>
+                <Label>{t("backups.time")}</Label>
+                <Input
+                  type="time"
+                  value={locationForm.schedule_time}
+                  onChange={(e) => setLocationForm({ ...locationForm, schedule_time: e.target.value })}
+                />
+              </div>
+              {locationForm.schedule_frequency === "weekly" && (
+                <div>
+                  <Label>{t("backups.weekday")}</Label>
+                  <CustomSelect
+                    value={locationForm.schedule_weekday}
+                    onChange={(val) => setLocationForm({ ...locationForm, schedule_weekday: val })}
+                    options={[0,1,2,3,4,5,6].map((d) => ({ value: String(d), label: t(`weekdays.${d}`) }))}
+                  />
+                </div>
+              )}
+              {locationForm.schedule_frequency === "monthly" && (
+                <div>
+                  <Label>{t("backups.monthDay")}</Label>
+                  <Input
+                    type="number"
+                    min="1"
+                    max="31"
+                    value={locationForm.schedule_month_day}
+                    onChange={(e) => setLocationForm({ ...locationForm, schedule_month_day: e.target.value })}
+                  />
+                </div>
+              )}
+              {locationForm.schedule_frequency === "custom" && (
+                <div>
+                  <Label>{t("backups.customIntervalDays")}</Label>
+                  <Input
+                    type="number"
+                    min="1"
+                    value={locationForm.schedule_custom_interval_days}
+                    onChange={(e) => setLocationForm({ ...locationForm, schedule_custom_interval_days: e.target.value })}
+                  />
+                </div>
+              )}
+              <div>
+                <Label>{t("backups.scheduleNote")}</Label>
+                <Input
+                  value={locationForm.schedule_note}
+                  onChange={(e) => setLocationForm({ ...locationForm, schedule_note: e.target.value })}
+                  placeholder={t("backups.scheduleNotePlaceholder")}
+                />
+              </div>
+            </>
+          )}
+          <div>
+            <Label>{t("backups.reminderDays")}</Label>
+            <Input
+              type="number"
+              value={locationForm.reminder_interval_days}
+              onChange={(e) => setLocationForm({ ...locationForm, reminder_interval_days: e.target.value })}
+              placeholder="30"
+            />
+          </div>
           <div className="flex justify-end gap-2 pt-2">
             <Button
               variant="secondary"
@@ -1211,7 +1341,7 @@ export function BackupDetail() {
       {/* Edit Location Modal */}
       <Modal
         open={editLocationId !== null}
-        onClose={() => { setEditLocationId(null); setLocationForm({ storage_media_id: "", path_on_media: "", auto_detect: false, scan_mode: "subdirectories" }); }}
+        onClose={() => { setEditLocationId(null); setLocationForm(emptyLocationForm); }}
         onSave={handleEditLocation}
         title={t("backups.editLocation")}
       >
@@ -1265,10 +1395,97 @@ export function BackupDetail() {
               ]}
             />
           </div>
+          <div>
+            <Label>{t("backups.mode")}</Label>
+            <CustomSelect
+              value={locationForm.backup_mode}
+              onChange={(val) => setLocationForm({ ...locationForm, backup_mode: val })}
+              options={[
+                { value: "manual", label: t("backups.manual") },
+                { value: "automatic", label: t("backups.automatic") },
+              ]}
+            />
+          </div>
+          {locationForm.backup_mode === "automatic" && (
+            <>
+              <div>
+                <Label>{t("backups.frequency")}</Label>
+                <CustomSelect
+                  value={locationForm.schedule_frequency}
+                  onChange={(val) => setLocationForm({ ...locationForm, schedule_frequency: val })}
+                  options={[
+                    { value: "daily", label: t("schedule.daily") },
+                    { value: "weekly", label: t("schedule.weekly") },
+                    { value: "monthly", label: t("schedule.monthly") },
+                    { value: "yearly", label: t("schedule.yearly") },
+                    { value: "custom", label: t("schedule.custom") },
+                  ]}
+                />
+              </div>
+              <div>
+                <Label>{t("backups.time")}</Label>
+                <Input
+                  type="time"
+                  value={locationForm.schedule_time}
+                  onChange={(e) => setLocationForm({ ...locationForm, schedule_time: e.target.value })}
+                />
+              </div>
+              {locationForm.schedule_frequency === "weekly" && (
+                <div>
+                  <Label>{t("backups.weekday")}</Label>
+                  <CustomSelect
+                    value={locationForm.schedule_weekday}
+                    onChange={(val) => setLocationForm({ ...locationForm, schedule_weekday: val })}
+                    options={[0,1,2,3,4,5,6].map((d) => ({ value: String(d), label: t(`weekdays.${d}`) }))}
+                  />
+                </div>
+              )}
+              {locationForm.schedule_frequency === "monthly" && (
+                <div>
+                  <Label>{t("backups.monthDay")}</Label>
+                  <Input
+                    type="number"
+                    min="1"
+                    max="31"
+                    value={locationForm.schedule_month_day}
+                    onChange={(e) => setLocationForm({ ...locationForm, schedule_month_day: e.target.value })}
+                  />
+                </div>
+              )}
+              {locationForm.schedule_frequency === "custom" && (
+                <div>
+                  <Label>{t("backups.customIntervalDays")}</Label>
+                  <Input
+                    type="number"
+                    min="1"
+                    value={locationForm.schedule_custom_interval_days}
+                    onChange={(e) => setLocationForm({ ...locationForm, schedule_custom_interval_days: e.target.value })}
+                  />
+                </div>
+              )}
+              <div>
+                <Label>{t("backups.scheduleNote")}</Label>
+                <Input
+                  value={locationForm.schedule_note}
+                  onChange={(e) => setLocationForm({ ...locationForm, schedule_note: e.target.value })}
+                  placeholder={t("backups.scheduleNotePlaceholder")}
+                />
+              </div>
+            </>
+          )}
+          <div>
+            <Label>{t("backups.reminderDays")}</Label>
+            <Input
+              type="number"
+              value={locationForm.reminder_interval_days}
+              onChange={(e) => setLocationForm({ ...locationForm, reminder_interval_days: e.target.value })}
+              placeholder="30"
+            />
+          </div>
           <div className="flex justify-end gap-2 pt-2">
             <Button
               variant="secondary"
-              onClick={() => { setEditLocationId(null); setLocationForm({ storage_media_id: "", path_on_media: "", auto_detect: false, scan_mode: "subdirectories" }); }}
+              onClick={() => { setEditLocationId(null); setLocationForm(emptyLocationForm); }}
             >
               {t("common.cancel")}
             </Button>
@@ -1354,84 +1571,6 @@ export function BackupDetail() {
               }
             />
           </div>
-          <div>
-            <Label>{t("backups.mode")}</Label>
-            <CustomSelect
-              value={editForm.backup_mode}
-              onChange={(val) => setEditForm({ ...editForm, backup_mode: val })}
-              options={BACKUP_MODES.map((m) => ({
-                value: m,
-                label: t(`backups.${m}`),
-              }))}
-            />
-          </div>
-          {editForm.backup_mode === "automatic" && (
-            <>
-              <div>
-                <Label>{t("backups.frequency")}</Label>
-                <CustomSelect
-                  value={editForm.schedule_frequency}
-                  onChange={(val) => setEditForm({ ...editForm, schedule_frequency: val })}
-                  options={SCHEDULE_FREQUENCIES.map((f) => ({
-                    value: f,
-                    label: t(`schedule.${f}`),
-                  }))}
-                />
-              </div>
-              <div>
-                <Label>{t("backups.time")}</Label>
-                <Input
-                  type="time"
-                  value={editForm.schedule_time}
-                  onChange={(e) => setEditForm({ ...editForm, schedule_time: e.target.value })}
-                />
-              </div>
-              {editForm.schedule_frequency === "weekly" && (
-                <div>
-                  <Label>{t("backups.weekday")}</Label>
-                  <CustomSelect
-                    value={editForm.schedule_weekday}
-                    onChange={(val) => setEditForm({ ...editForm, schedule_weekday: val })}
-                    options={[0,1,2,3,4,5,6].map((d) => ({
-                      value: String(d),
-                      label: t(`weekdays.${d}`),
-                    }))}
-                  />
-                </div>
-              )}
-              {editForm.schedule_frequency === "monthly" && (
-                <div>
-                  <Label>{t("backups.monthDay")}</Label>
-                  <Input
-                    type="number"
-                    min="1"
-                    max="31"
-                    value={editForm.schedule_month_day}
-                    onChange={(e) => setEditForm({ ...editForm, schedule_month_day: e.target.value })}
-                  />
-                </div>
-              )}
-              {editForm.schedule_frequency === "custom" && (
-                <div>
-                  <Label>{t("backups.customIntervalDays")}</Label>
-                  <Input
-                    type="number"
-                    min="1"
-                    value={editForm.schedule_custom_interval_days}
-                    onChange={(e) => setEditForm({ ...editForm, schedule_custom_interval_days: e.target.value })}
-                  />
-                </div>
-              )}
-              <div>
-                <Label>{t("backups.scheduleNote")}</Label>
-                <Input
-                  value={editForm.schedule_note}
-                  onChange={(e) => setEditForm({ ...editForm, schedule_note: e.target.value })}
-                  placeholder={t("backups.scheduleNotePlaceholder")}
-                />
-              </div>
-            </>
-          )}
           <div>
             <Label>{t("backups.notes")}</Label>
             <Textarea

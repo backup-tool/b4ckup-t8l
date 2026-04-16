@@ -36,7 +36,7 @@ import {
   createDevice,
   createEntry,
 } from "@/lib/db";
-import { BACKUP_CATEGORIES, BACKUP_MODES, SCHEDULE_FREQUENCIES, SIZE_UNITS, SIZE_MULTIPLIERS } from "@/lib/types";
+import { BACKUP_CATEGORIES, SIZE_UNITS, SIZE_MULTIPLIERS } from "@/lib/types";
 import type { BackupStatus } from "@/lib/types";
 import { formatBytes, formatDate, daysAgo, todayISO } from "@/lib/format";
 import { DatePicker } from "@/components/ui/DatePicker";
@@ -693,84 +693,6 @@ export function Backups() {
               }
             />
           </div>
-          <div>
-            <Label>{t("backups.mode")}</Label>
-            <CustomSelect
-              value={form.backup_mode}
-              onChange={(val) => setForm({ ...form, backup_mode: val })}
-              options={BACKUP_MODES.map((m) => ({
-                value: m,
-                label: t(`backups.${m}`),
-              }))}
-            />
-          </div>
-          {form.backup_mode === "automatic" && (
-            <>
-              <div>
-                <Label>{t("backups.frequency")}</Label>
-                <CustomSelect
-                  value={form.schedule_frequency}
-                  onChange={(val) => setForm({ ...form, schedule_frequency: val })}
-                  options={SCHEDULE_FREQUENCIES.map((f) => ({
-                    value: f,
-                    label: t(`schedule.${f}`),
-                  }))}
-                />
-              </div>
-              <div>
-                <Label>{t("backups.time")}</Label>
-                <Input
-                  type="time"
-                  value={form.schedule_time}
-                  onChange={(e) => setForm({ ...form, schedule_time: e.target.value })}
-                />
-              </div>
-              {form.schedule_frequency === "weekly" && (
-                <div>
-                  <Label>{t("backups.weekday")}</Label>
-                  <CustomSelect
-                    value={form.schedule_weekday}
-                    onChange={(val) => setForm({ ...form, schedule_weekday: val })}
-                    options={[0,1,2,3,4,5,6].map((d) => ({
-                      value: String(d),
-                      label: t(`weekdays.${d}`),
-                    }))}
-                  />
-                </div>
-              )}
-              {form.schedule_frequency === "monthly" && (
-                <div>
-                  <Label>{t("backups.monthDay")}</Label>
-                  <Input
-                    type="number"
-                    min="1"
-                    max="31"
-                    value={form.schedule_month_day}
-                    onChange={(e) => setForm({ ...form, schedule_month_day: e.target.value })}
-                  />
-                </div>
-              )}
-              {form.schedule_frequency === "custom" && (
-                <div>
-                  <Label>{t("backups.customIntervalDays")}</Label>
-                  <Input
-                    type="number"
-                    min="1"
-                    value={form.schedule_custom_interval_days}
-                    onChange={(e) => setForm({ ...form, schedule_custom_interval_days: e.target.value })}
-                  />
-                </div>
-              )}
-              <div>
-                <Label>{t("backups.scheduleNote")}</Label>
-                <Input
-                  value={form.schedule_note}
-                  onChange={(e) => setForm({ ...form, schedule_note: e.target.value })}
-                  placeholder={t("backups.scheduleNotePlaceholder")}
-                />
-              </div>
-            </>
-          )}
           <div>
             <Label>{t("backups.notes")}</Label>
             <Textarea

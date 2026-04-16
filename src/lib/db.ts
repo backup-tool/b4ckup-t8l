@@ -196,6 +196,45 @@ async function runMigrations(db: Database) {
   try {
     await db.execute("ALTER TABLE folders ADD COLUMN parent_id INTEGER DEFAULT NULL");
   } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backup_storage_locations ADD COLUMN backup_mode TEXT DEFAULT 'manual'");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backup_storage_locations ADD COLUMN schedule_frequency TEXT DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backup_storage_locations ADD COLUMN schedule_time TEXT DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backup_storage_locations ADD COLUMN schedule_weekday INTEGER DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backup_storage_locations ADD COLUMN schedule_month_day INTEGER DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backup_storage_locations ADD COLUMN schedule_custom_interval_days INTEGER DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backup_storage_locations ADD COLUMN schedule_note TEXT DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backup_storage_locations ADD COLUMN reminder_interval_days INTEGER DEFAULT NULL");
+  } catch { /* column already exists */ }
+  // One-time migration: copy backup_mode/schedule from backups to their storage locations
+  try {
+    await db.execute(`
+      UPDATE backup_storage_locations
+      SET backup_mode = (SELECT backup_mode FROM backups WHERE backups.id = backup_storage_locations.backup_id),
+          schedule_frequency = (SELECT schedule_frequency FROM backups WHERE backups.id = backup_storage_locations.backup_id),
+          schedule_time = (SELECT schedule_time FROM backups WHERE backups.id = backup_storage_locations.backup_id),
+          schedule_weekday = (SELECT schedule_weekday FROM backups WHERE backups.id = backup_storage_locations.backup_id),
+          schedule_month_day = (SELECT schedule_month_day FROM backups WHERE backups.id = backup_storage_locations.backup_id),
+          schedule_custom_interval_days = (SELECT schedule_custom_interval_days FROM backups WHERE backups.id = backup_storage_locations.backup_id),
+          schedule_note = (SELECT schedule_note FROM backups WHERE backups.id = backup_storage_locations.backup_id),
+          reminder_interval_days = (SELECT reminder_interval_days FROM backups WHERE backups.id = backup_storage_locations.backup_id)
+      WHERE backup_mode IS NULL OR backup_mode = 'manual'
+    `);
+  } catch { /* already migrated */ }
 }
 
 // --- Storage Media ---
@@ -650,12 +689,34 @@ export async function addStorageLocation(data: {
   path_on_media: string | null;
   auto_detect: boolean;
   scan_mode?: string;
+  backup_mode?: string;
+  schedule_frequency?: string | null;
+  schedule_time?: string | null;
+  schedule_weekday?: number | null;
+  schedule_month_day?: number | null;
+  schedule_custom_interval_days?: number | null;
+  schedule_note?: string | null;
+  reminder_interval_days?: number | null;
 }) {
   const db = await getDb();
   await db.execute(
-    `INSERT OR IGNORE INTO backup_storage_locations (backup_id, storage_media_id, path_on_media, auto_detect, scan_mode)
-     VALUES ($1, $2, $3, $4, $5)`,
-    [data.backup_id, data.storage_media_id, data.path_on_media, data.auto_detect ? 1 : 0, data.scan_mode || "subdirectories"]
+    `INSERT OR IGNORE INTO backup_storage_locations
+     (backup_id, storage_media_id, path_on_media, auto_detect, scan_mode,
+      backup_mode, schedule_frequency, schedule_time, schedule_weekday,
+      schedule_month_day, schedule_custom_interval_days, schedule_note, reminder_interval_days)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
+    [
+      data.backup_id, data.storage_media_id, data.path_on_media,
+      data.auto_detect ? 1 : 0, data.scan_mode || "subdirectories",
+      data.backup_mode || "manual",
+      data.schedule_frequency ?? null,
+      data.schedule_time ?? null,
+      data.schedule_weekday ?? null,
+      data.schedule_month_day ?? null,
+      data.schedule_custom_interval_days ?? null,
+      data.schedule_note ?? null,
+      data.reminder_interval_days ?? null,
+    ]
   );
 }
 
@@ -663,11 +724,35 @@ export async function updateStorageLocation(id: number, data: {
   path_on_media: string | null;
   auto_detect: boolean;
   scan_mode?: string;
+  backup_mode?: string;
+  schedule_frequency?: string | null;
+  schedule_time?: string | null;
+  schedule_weekday?: number | null;
+  schedule_month_day?: number | null;
+  schedule_custom_interval_days?: number | null;
+  schedule_note?: string | null;
+  reminder_interval_days?: number | null;
 }) {
   const db = await getDb();
   await db.execute(
-    "UPDATE backup_storage_locations SET path_on_media=$1, auto_detect=$2, scan_mode=$3 WHERE id=$4",
-    [data.path_on_media, data.auto_detect ? 1 : 0, data.scan_mode || "subdirectories", id]
+    `UPDATE backup_storage_locations
+     SET path_on_media=$1, auto_detect=$2, scan_mode=$3,
+         backup_mode=$4, schedule_frequency=$5, schedule_time=$6,
+         schedule_weekday=$7, schedule_month_day=$8, schedule_custom_interval_days=$9,
+         schedule_note=$10, reminder_interval_days=$11
+     WHERE id=$12`,
+    [
+      data.path_on_media, data.auto_detect ? 1 : 0, data.scan_mode || "subdirectories",
+      data.backup_mode || "manual",
+      data.schedule_frequency ?? null,
+      data.schedule_time ?? null,
+      data.schedule_weekday ?? null,
+      data.schedule_month_day ?? null,
+      data.schedule_custom_interval_days ?? null,
+      data.schedule_note ?? null,
+      data.reminder_interval_days ?? null,
+      id,
+    ]
   );
 }
 
@@ -689,6 +774,35 @@ export async function removeStorageLocation(id: number) {
 
 // --- Dashboard / Stats ---
 
+// Compute status for a single storage location
+function computeLocationStatus(
+  location: Record<string, any>,
+  backup: Record<string, any>,
+  latestEntryForLocation: Record<string, any> | null
+): "ok" | "warning" | "critical" {
+  const mode = (location.backup_mode as string) || (backup.backup_mode as string) || "manual";
+  const hasSchedule = !!(location.schedule_frequency || backup.schedule_frequency);
+  const isAutomatic = mode === "automatic" && hasSchedule;
+  const reminderDays = (location.reminder_interval_days as number)
+    || (backup.reminder_interval_days as number) || 30;
+
+  if (!latestEntryForLocation) {
+    return isAutomatic ? "ok" : "critical";
+  }
+  const daysSince = Math.floor(
+    (Date.now() - new Date(latestEntryForLocation.backup_date as string).getTime()) / (1000 * 60 * 60 * 24)
+  );
+  if (daysSince <= reminderDays) return "ok";
+  if (daysSince <= reminderDays * 2) return "warning";
+  return "critical";
+}
+
+function worstStatus(statuses: ("ok" | "warning" | "critical")[]): "ok" | "warning" | "critical" {
+  if (statuses.includes("critical")) return "critical";
+  if (statuses.includes("warning")) return "warning";
+  return "ok";
+}
+
 export async function getBackupsWithStatus() {
   const db = await getDb();
   const backups = await db.select<Array<Record<string, any>>>(
@@ -700,22 +814,37 @@ export async function getBackupsWithStatus() {
     const latest = await getLatestEntryForBackup(backup.id as number);
     const locations = await getLocationsForBackup(backup.id as number);
 
-    const isAutomatic = backup.backup_mode === "automatic" && backup.schedule_frequency;
-    let status: "ok" | "warning" | "critical" | "paused" = isAutomatic ? "ok" : "critical";
+    let status: "ok" | "warning" | "critical" | "paused";
     if (backup.is_paused) {
       status = "paused";
-    } else if (latest) {
-      const daysSince = Math.floor(
-        (Date.now() - new Date(latest.backup_date as string).getTime()) / (1000 * 60 * 60 * 24)
-      );
-      const reminderDays = (backup.reminder_interval_days as number) || 30;
-      if (daysSince <= reminderDays) {
-        status = "ok";
-      } else if (daysSince <= reminderDays * 2) {
-        status = "warning";
-      } else {
-        status = "critical";
+    } else if (locations.length === 0) {
+      // No locations: fall back to backup-level mode/schedule
+      const isAutomatic = backup.backup_mode === "automatic" && backup.schedule_frequency;
+      status = isAutomatic ? "ok" : "critical";
+      if (latest) {
+        const daysSince = Math.floor(
+          (Date.now() - new Date(latest.backup_date as string).getTime()) / (1000 * 60 * 60 * 24)
+        );
+        const reminderDays = (backup.reminder_interval_days as number) || 30;
+        if (daysSince <= reminderDays) status = "ok";
+        else if (daysSince <= reminderDays * 2) status = "warning";
+        else status = "critical";
       }
+    } else {
+      // Calculate status per location and take the worst
+      const locationStatuses: ("ok" | "warning" | "critical")[] = [];
+      for (const loc of locations) {
+        // Find latest entry for this specific location
+        const locEntries = await db.select<Array<Record<string, any>>>(
+          `SELECT * FROM backup_entries
+           WHERE backup_id = $1 AND storage_media_id = $2 AND deleted_at IS NULL
+           ORDER BY backup_date DESC LIMIT 1`,
+          [backup.id, loc.storage_media_id]
+        );
+        const latestForLoc = locEntries[0] || null;
+        locationStatuses.push(computeLocationStatus(loc, backup, latestForLoc));
+      }
+      status = worstStatus(locationStatuses);
     }
 
     result.push({
