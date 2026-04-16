@@ -71,7 +71,34 @@
     "entryNumber": "Nummer",
     "pause": "Pausieren",
     "resume": "Fortsetzen",
-    "editLocation": "Standort bearbeiten"
+    "editLocation": "Standort bearbeiten",
+    "mode": "Modus",
+    "manual": "Manuell",
+    "automatic": "Automatisch",
+    "frequency": "Frequenz",
+    "time": "Uhrzeit",
+    "weekday": "Wochentag",
+    "monthDay": "Tag im Monat",
+    "customIntervalDays": "Intervall (Tage)",
+    "scheduleNote": "Zeitplan-Notiz",
+    "scheduleNotePlaceholder": "z.B. Synology Task Scheduler, Cron-Job...",
+    "customCategory": "Eigene"
+  },
+  "schedule": {
+    "daily": "Täglich",
+    "weekly": "Wöchentlich",
+    "monthly": "Monatlich",
+    "yearly": "Jährlich",
+    "custom": "Benutzerdefiniert"
+  },
+  "weekdays": {
+    "0": "Sonntag",
+    "1": "Montag",
+    "2": "Dienstag",
+    "3": "Mittwoch",
+    "4": "Donnerstag",
+    "5": "Freitag",
+    "6": "Samstag"
   },
   "media": {
     "title": "Speichermedien",
@@ -91,7 +118,8 @@
     "noMedia": "Noch keine Speichermedien. Erstelle dein erstes Medium um loszulegen.",
     "encrypted": "Verschlüsselt",
     "encryptionType": "Verschlüsselungstyp",
-    "encryptionLabel": "Bezeichnung / Key-ID"
+    "encryptionLabel": "Bezeichnung / Key-ID",
+    "customType": "Eigener"
   },
   "devices": {
     "title": "Geräte",
@@ -105,6 +133,12 @@
     "model": "Modell",
     "serialNumber": "Seriennummer",
     "notes": "Notizen",
+    "brand": "Marke",
+    "provider": "Anbieter",
+    "ipAddress": "IP-Adresse",
+    "url": "URL",
+    "storageCapacity": "Speicherkapazität",
+    "customType": "Eigener",
     "backupCount": "Backups",
     "noDevices": "Noch keine Quellen. Erstelle deine erste Quelle um loszulegen.",
     "save": "Speichern",
@@ -275,7 +309,9 @@
   "bulk": {
     "selected": "ausgewählt",
     "select": "Auswählen",
-    "deleteConfirm": "Backups werden in den Papierkorb verschoben."
+    "deleteConfirm": "Backups werden in den Papierkorb verschoben.",
+    "deleteConfirmMedia": "Speichermedien werden in den Papierkorb verschoben.",
+    "deleteConfirmDevices": "Quellen werden in den Papierkorb verschoben."
   },
   "comparison": {
     "title": "Größenvergleich"
@@ -290,29 +326,17 @@
     "restart": "Jetzt neu starten"
   },
   "categories": {
-    "photos": "Fotos",
-    "videos": "Videos",
-    "music": "Musik",
-    "documents": "Dokumente",
-    "desktop": "Desktop",
-    "system": "System",
-    "system_image": "System-Image",
-    "vm": "Virtuelle Maschine",
-    "database": "Datenbank",
-    "media": "Medien",
-    "code": "Code",
-    "projects": "Projekte",
-    "email": "E-Mail",
-    "contacts": "Kontakte",
-    "calendar": "Kalender",
-    "messages": "Nachrichten",
-    "health": "Gesundheit",
-    "social_media": "Social Media",
-    "finance": "Finanzen",
-    "games": "Spiele",
-    "applications": "Anwendungen",
-    "config": "Konfiguration",
-    "other": "Sonstiges"
+    "documents": "Dokumente", "photos": "Fotos", "videos": "Videos", "music": "Musik",
+    "media": "Medien", "desktop": "Desktop",
+    "email": "E-Mail", "messages": "Nachrichten", "contacts": "Kontakte", "calendar": "Kalender",
+    "code": "Code", "projects": "Projekte", "database": "Datenbank", "config": "Konfiguration",
+    "logs": "Protokolle", "credentials": "Zugangsdaten",
+    "system": "System", "system_image": "System-Image", "vm": "Virtuelle Maschine",
+    "container": "Container", "applications": "Anwendungen",
+    "cloud_data": "Cloud-Daten", "social_media": "Social Media", "bookmarks": "Lesezeichen",
+    "passwords": "Passwörter",
+    "finance": "Finanzen", "health": "Gesundheit", "notes": "Notizen", "education": "Bildung",
+    "games": "Spiele", "other": "Sonstiges"
   },
   "deviceTypes": {
     "desktop": "Desktop-PC",
@@ -331,32 +355,27 @@
     "other": "Sonstiges"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Interne Festplatte", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Externe Festplatte",
-    "internal_drive": "Interne Festplatte",
-    "ssd": "SSD",
-    "usb_stick": "USB-Stick",
-    "sd_card": "SD-Karte",
-    "cloud": "Cloud",
-    "tape": "Bandlaufwerk",
-    "optical": "Optisch (CD/DVD/BD)",
-    "network_share": "Netzwerkfreigabe",
-    "local": "Lokal",
-    "other": "Sonstiges"
+    "usb_stick": "USB-Stick", "sd_card": "SD-Karte", "optical": "Optisch (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Netzwerkfreigabe", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Cloud", "object_storage": "Objektspeicher (S3)",
+    "tape": "Bandlaufwerk", "raid": "RAID",
+    "local": "Lokal", "other": "Sonstiges"
   },
   "folders": {
-      "create": "Neuer Ordner",
-      "rename": "Ordner umbenennen",
-      "deleteFolder": "Ordner löschen",
-      "deleteConfirm": "Ordner \"{{name}}\" löschen? Elemente werden zu Nicht einsortiert verschoben.",
-      "folderName": "Ordnername",
-      "moveToFolder": "In Ordner verschieben",
-      "unfiled": "Nicht einsortiert",
-      "allFolders": "Alle",
-      "items": "Elemente",
-      "viewFlat": "Flache Ansicht",
-      "viewFolder": "Ordneransicht",
-      "viewExpanded": "Erweiterte Ansicht"
+    "create": "Neuer Ordner",
+    "rename": "Ordner umbenennen",
+    "deleteFolder": "Ordner löschen",
+    "deleteConfirm": "Ordner \"{{name}}\" löschen? Elemente werden zu Nicht einsortiert verschoben.",
+    "folderName": "Ordnername",
+    "moveToFolder": "In Ordner verschieben",
+    "unfiled": "Nicht einsortiert",
+    "allFolders": "Alle",
+    "items": "Elemente",
+    "viewFlat": "Flache Ansicht",
+    "viewFolder": "Ordneransicht",
+    "viewExpanded": "Erweiterte Ansicht"
   },
   "rule321": {
     "title": "3-2-1 Backup-Regel",

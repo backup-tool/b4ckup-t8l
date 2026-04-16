@@ -157,6 +157,42 @@ async function runMigrations(db: Database) {
   try {
     await db.execute("ALTER TABLE devices ADD COLUMN folder_id INTEGER DEFAULT NULL");
   } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backups ADD COLUMN backup_mode TEXT DEFAULT 'manual'");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backups ADD COLUMN schedule_frequency TEXT DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backups ADD COLUMN schedule_time TEXT DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backups ADD COLUMN schedule_weekday INTEGER DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backups ADD COLUMN schedule_month_day INTEGER DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backups ADD COLUMN schedule_custom_interval_days INTEGER DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backups ADD COLUMN schedule_note TEXT DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE devices ADD COLUMN brand TEXT DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE devices ADD COLUMN provider TEXT DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE devices ADD COLUMN ip_address TEXT DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE devices ADD COLUMN url TEXT DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE devices ADD COLUMN storage_capacity TEXT DEFAULT NULL");
+  } catch { /* column already exists */ }
 }
 
 // --- Storage Media ---
@@ -287,11 +323,18 @@ export async function updateDevice(id: number, data: {
   model: string | null;
   serial_number: string | null;
   notes: string | null;
+  brand: string | null;
+  provider: string | null;
+  ip_address: string | null;
+  url: string | null;
+  storage_capacity: string | null;
 }) {
   const db = await getDb();
   await db.execute(
-    "UPDATE devices SET name=$1, type=$2, os=$3, model=$4, serial_number=$5, notes=$6 WHERE id=$7",
-    [data.name, data.type, data.os, data.model, data.serial_number, data.notes, id]
+    `UPDATE devices SET name=$1, type=$2, os=$3, model=$4, serial_number=$5, notes=$6,
+     brand=$7, provider=$8, ip_address=$9, url=$10, storage_capacity=$11 WHERE id=$12`,
+    [data.name, data.type, data.os, data.model, data.serial_number, data.notes,
+     data.brand, data.provider, data.ip_address, data.url, data.storage_capacity, id]
   );
 }
 
@@ -358,11 +401,19 @@ export async function createBackup(data: {
   notes: string | null;
   encryption_info: string | null;
   reminder_interval_days: number | null;
+  backup_mode: string;
+  schedule_frequency: string | null;
+  schedule_time: string | null;
+  schedule_weekday: number | null;
+  schedule_month_day: number | null;
+  schedule_custom_interval_days: number | null;
+  schedule_note: string | null;
 }) {
   const db = await getDb();
   const result = await db.execute(
-    `INSERT INTO backups (name, device_name, category, tags, notes, encryption_info, reminder_interval_days)
-     VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+    `INSERT INTO backups (name, device_name, category, tags, notes, encryption_info, reminder_interval_days,
+     backup_mode, schedule_frequency, schedule_time, schedule_weekday, schedule_month_day, schedule_custom_interval_days, schedule_note)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)`,
     [
       data.name,
       data.device_name,
@@ -371,6 +422,13 @@ export async function createBackup(data: {
       data.notes,
       data.encryption_info,
       data.reminder_interval_days,
+      data.backup_mode,
+      data.schedule_frequency,
+      data.schedule_time,
+      data.schedule_weekday,
+      data.schedule_month_day,
+      data.schedule_custom_interval_days,
+      data.schedule_note,
     ]
   );
   return result.lastInsertId!;
@@ -386,12 +444,21 @@ export async function updateBackup(
     notes: string | null;
     encryption_info: string | null;
     reminder_interval_days: number | null;
+    backup_mode: string;
+    schedule_frequency: string | null;
+    schedule_time: string | null;
+    schedule_weekday: number | null;
+    schedule_month_day: number | null;
+    schedule_custom_interval_days: number | null;
+    schedule_note: string | null;
   }
 ) {
   const db = await getDb();
   await db.execute(
     `UPDATE backups SET name=$1, device_name=$2, category=$3, tags=$4, notes=$5, encryption_info=$6,
-     reminder_interval_days=$7, updated_at=datetime('now') WHERE id=$8`,
+     reminder_interval_days=$7, backup_mode=$8, schedule_frequency=$9, schedule_time=$10,
+     schedule_weekday=$11, schedule_month_day=$12, schedule_custom_interval_days=$13,
+     schedule_note=$14, updated_at=datetime('now') WHERE id=$15`,
     [
       data.name,
       data.device_name,
@@ -400,6 +467,13 @@ export async function updateBackup(
       data.notes,
       data.encryption_info,
       data.reminder_interval_days,
+      data.backup_mode,
+      data.schedule_frequency,
+      data.schedule_time,
+      data.schedule_weekday,
+      data.schedule_month_day,
+      data.schedule_custom_interval_days,
+      data.schedule_note,
       id,
     ]
   );

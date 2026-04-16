@@ -91,7 +91,8 @@
     "noMedia": "እስካሁን ምንም የማከማቻ ሚዲያ የለም። ለመጀመር የመጀመሪያ ሚዲያዎን ይፍጠሩ።",
     "encrypted": "የተመሰጠረ",
     "encryptionType": "የምስጠራ ዓይነት",
-    "encryptionLabel": "መለያ / የቁልፍ ID"
+    "encryptionLabel": "መለያ / የቁልፍ ID",
+    "customType": "ብጁ"
   },
   "devices": {
     "title": "መሣሪያዎች",
@@ -105,6 +106,12 @@
     "model": "ሞዴል",
     "serialNumber": "ተከታታይ ቁጥር",
     "notes": "ማስታወሻዎች",
+    "brand": "ብራንድ",
+    "provider": "አቅራቢ",
+    "ipAddress": "IP አድራሻ",
+    "url": "URL",
+    "storageCapacity": "የማከማቻ አቅም",
+    "customType": "ብጁ",
     "backupCount": "ምትኬዎች",
     "noDevices": "እስካሁን ምንም ምንጮች የሉም። ለመጀመር የመጀመሪያ ምንጭዎን ይፍጠሩ።",
     "save": "አስቀምጥ",
@@ -331,18 +338,13 @@
     "other": "ሌላ"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "ውስጣዊ HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "ውጫዊ HDD",
-    "internal_drive": "ውስጣዊ HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB ማህደረ ትውስታ",
-    "sd_card": "SD ካርድ",
-    "cloud": "ደመና",
-    "tape": "ቴፕ",
-    "optical": "ኦፕቲካል (CD/DVD/BD)",
-    "network_share": "የአውታረ መረብ ማጋራት",
-    "local": "የአካባቢ",
-    "other": "ሌላ"
+    "usb_stick": "USB ማህደረ ትውስታ", "sd_card": "SD ካርድ", "optical": "ኦፕቲካል (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "የአውታረ መረብ ማጋራት", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "ደመና", "object_storage": "የነገር ማከማቻ (S3)",
+    "tape": "ቴፕ", "raid": "RAID",
+    "local": "የአካባቢ", "other": "ሌላ"
   },
   "folders": {
       "create": "አዲስ ፎልደር",

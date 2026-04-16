@@ -91,7 +91,8 @@
     "noMedia": "لا توجد وسائط تخزين بعد. أنشئ أول وسيط للبدء.",
     "encrypted": "مشفّر",
     "encryptionType": "نوع التشفير",
-    "encryptionLabel": "التسمية / معرّف المفتاح"
+    "encryptionLabel": "التسمية / معرّف المفتاح",
+    "customType": "مخصص"
   },
   "devices": {
     "title": "الأجهزة",
@@ -105,6 +106,12 @@
     "model": "الطراز",
     "serialNumber": "الرقم التسلسلي",
     "notes": "ملاحظات",
+    "brand": "العلامة التجارية",
+    "provider": "المزود",
+    "ipAddress": "عنوان IP",
+    "url": "URL",
+    "storageCapacity": "سعة التخزين",
+    "customType": "مخصص",
     "backupCount": "النسخ الاحتياطية",
     "noDevices": "لا توجد مصادر بعد. أنشئ أول مصدر للبدء.",
     "save": "حفظ",
@@ -331,18 +338,13 @@
     "other": "أخرى"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "HDD داخلي", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "HDD خارجي",
-    "internal_drive": "HDD داخلي",
-    "ssd": "SSD",
-    "usb_stick": "ذاكرة USB",
-    "sd_card": "بطاقة SD",
-    "cloud": "سحابة",
-    "tape": "شريط",
-    "optical": "بصري (CD/DVD/BD)",
-    "network_share": "مشاركة شبكة",
-    "local": "محلي",
-    "other": "أخرى"
+    "usb_stick": "ذاكرة USB", "sd_card": "بطاقة SD", "optical": "بصري (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "مشاركة شبكة", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "سحابة", "object_storage": "تخزين كائنات (S3)",
+    "tape": "شريط", "raid": "RAID",
+    "local": "محلي", "other": "أخرى"
   },
   "folders": {
       "create": "مجلد جديد",

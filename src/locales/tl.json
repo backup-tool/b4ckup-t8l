@@ -91,7 +91,8 @@
     "noMedia": "Wala pang storage media. Gumawa ng iyong unang medium upang magsimula.",
     "encrypted": "Naka-encrypt",
     "encryptionType": "Uri ng Encryption",
-    "encryptionLabel": "Label / Key ID"
+    "encryptionLabel": "Label / Key ID",
+    "customType": "Custom"
   },
   "devices": {
     "title": "Mga Device",
@@ -105,6 +106,12 @@
     "model": "Modelo",
     "serialNumber": "Serial Number",
     "notes": "Mga Tala",
+    "brand": "Tatak",
+    "provider": "Tagapagbigay",
+    "ipAddress": "IP Address",
+    "url": "URL",
+    "storageCapacity": "Kapasidad ng Imbakan",
+    "customType": "Pasadya",
     "backupCount": "Mga Backup",
     "noDevices": "Wala pang mga pinagmulan. Gumawa ng iyong unang pinagmulan upang magsimula.",
     "save": "I-save",
@@ -331,18 +338,13 @@
     "other": "Iba pa"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Internal HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "External HDD",
-    "internal_drive": "Internal HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB Stick",
-    "sd_card": "SD Card",
-    "cloud": "Cloud",
-    "tape": "Tape",
-    "optical": "Optical (CD/DVD/BD)",
-    "network_share": "Network Share",
-    "local": "Lokal",
-    "other": "Iba pa"
+    "usb_stick": "USB Stick", "sd_card": "SD Card", "optical": "Optical (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Network Share", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Cloud", "object_storage": "Object Storage (S3)",
+    "tape": "Tape", "raid": "RAID",
+    "local": "Lokal", "other": "Iba pa"
   },
   "folders": {
       "create": "Bagong Folder",

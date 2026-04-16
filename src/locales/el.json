@@ -91,7 +91,8 @@
     "noMedia": "Δεν υπάρχουν μέσα αποθήκευσης ακόμα. Δημιουργήστε το πρώτο σας μέσο για να ξεκινήσετε.",
     "encrypted": "Κρυπτογραφημένο",
     "encryptionType": "Τύπος κρυπτογράφησης",
-    "encryptionLabel": "Ετικέτα / ID κλειδιού"
+    "encryptionLabel": "Ετικέτα / ID κλειδιού",
+    "customType": "Προσαρμοσμένο"
   },
   "devices": {
     "title": "Συσκευές",
@@ -105,6 +106,12 @@
     "model": "Μοντέλο",
     "serialNumber": "Σειριακός αριθμός",
     "notes": "Σημειώσεις",
+    "brand": "Μάρκα",
+    "provider": "Πάροχος",
+    "ipAddress": "Διεύθυνση IP",
+    "url": "URL",
+    "storageCapacity": "Χωρητικότητα αποθήκευσης",
+    "customType": "Προσαρμοσμένο",
     "backupCount": "Αντίγραφα",
     "noDevices": "Δεν υπάρχουν πηγές ακόμα. Δημιουργήστε την πρώτη σας πηγή για να ξεκινήσετε.",
     "save": "Αποθήκευση",
@@ -331,18 +338,13 @@
     "other": "Άλλο"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Εσωτερικός HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Εξωτερικός HDD",
-    "internal_drive": "Εσωτερικός HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB stick",
-    "sd_card": "Κάρτα SD",
-    "cloud": "Cloud",
-    "tape": "Ταινία",
-    "optical": "Οπτικό (CD/DVD/BD)",
-    "network_share": "Κοινόχρηστος φάκελος δικτύου",
-    "local": "Τοπικό",
-    "other": "Άλλο"
+    "usb_stick": "USB stick", "sd_card": "Κάρτα SD", "optical": "Οπτικό (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Κοινόχρηστος φάκελος δικτύου", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Cloud", "object_storage": "Αποθήκευση αντικειμένων (S3)",
+    "tape": "Ταινία", "raid": "RAID",
+    "local": "Τοπικό", "other": "Άλλο"
   },
   "folders": {
       "create": "Νέος φάκελος",

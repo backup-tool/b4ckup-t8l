@@ -91,7 +91,8 @@
     "noMedia": "Inga lagringsmedia ännu. Skapa ditt första medium för att komma igång.",
     "encrypted": "Krypterad",
     "encryptionType": "Krypteringstyp",
-    "encryptionLabel": "Etikett / Nyckel-ID"
+    "encryptionLabel": "Etikett / Nyckel-ID",
+    "customType": "Anpassad"
   },
   "devices": {
     "title": "Enheter",
@@ -105,6 +106,12 @@
     "model": "Modell",
     "serialNumber": "Serienummer",
     "notes": "Anteckningar",
+    "brand": "Varumärke",
+    "provider": "Leverantör",
+    "ipAddress": "IP-adress",
+    "url": "URL",
+    "storageCapacity": "Lagringskapacitet",
+    "customType": "Anpassad",
     "backupCount": "Säkerhetskopior",
     "noDevices": "Inga källor ännu. Skapa din första källa för att komma igång.",
     "save": "Spara",
@@ -331,18 +338,13 @@
     "other": "Övrigt"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Intern HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Extern HDD",
-    "internal_drive": "Intern HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB-minne",
-    "sd_card": "SD-kort",
-    "cloud": "Moln",
-    "tape": "Band",
-    "optical": "Optisk (CD/DVD/BD)",
-    "network_share": "Nätverksdelning",
-    "local": "Lokal",
-    "other": "Övrigt"
+    "usb_stick": "USB-minne", "sd_card": "SD-kort", "optical": "Optisk (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Nätverksdelning", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Moln", "object_storage": "Objektlagring (S3)",
+    "tape": "Band", "raid": "RAID",
+    "local": "Lokal", "other": "Övrigt"
   },
   "folders": {
       "create": "Ny mapp",

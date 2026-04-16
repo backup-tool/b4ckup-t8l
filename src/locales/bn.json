@@ -91,7 +91,8 @@
     "noMedia": "এখনো কোনো স্টোরেজ মিডিয়া নেই। শুরু করতে আপনার প্রথম মাধ্যম তৈরি করুন।",
     "encrypted": "এনক্রিপ্টেড",
     "encryptionType": "এনক্রিপশন ধরন",
-    "encryptionLabel": "লেবেল / কী ID"
+    "encryptionLabel": "লেবেল / কী ID",
+    "customType": "কাস্টম"
   },
   "devices": {
     "title": "ডিভাইস",
@@ -105,6 +106,12 @@
     "model": "মডেল",
     "serialNumber": "সিরিয়াল নম্বর",
     "notes": "নোট",
+    "brand": "ব্র্যান্ড",
+    "provider": "প্রদানকারী",
+    "ipAddress": "IP ঠিকানা",
+    "url": "URL",
+    "storageCapacity": "স্টোরেজ ক্ষমতা",
+    "customType": "কাস্টম",
     "backupCount": "ব্যাকআপ",
     "noDevices": "এখনো কোনো উৎস নেই। শুরু করতে আপনার প্রথম উৎস তৈরি করুন।",
     "save": "সংরক্ষণ করুন",
@@ -331,18 +338,13 @@
     "other": "অন্যান্য"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "অভ্যন্তরীণ HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "বহিরাগত HDD",
-    "internal_drive": "অভ্যন্তরীণ HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB স্টিক",
-    "sd_card": "SD কার্ড",
-    "cloud": "ক্লাউড",
-    "tape": "টেপ",
-    "optical": "অপটিক্যাল (CD/DVD/BD)",
-    "network_share": "নেটওয়ার্ক শেয়ার",
-    "local": "স্থানীয়",
-    "other": "অন্যান্য"
+    "usb_stick": "USB স্টিক", "sd_card": "SD কার্ড", "optical": "অপটিক্যাল (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "নেটওয়ার্ক শেয়ার", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "ক্লাউড", "object_storage": "অবজেক্ট স্টোরেজ (S3)",
+    "tape": "টেপ", "raid": "RAID",
+    "local": "স্থানীয়", "other": "অন্যান্য"
   },
   "folders": {
       "create": "নতুন ফোল্ডার",

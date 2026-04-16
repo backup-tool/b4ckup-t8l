@@ -91,7 +91,8 @@
     "noMedia": "Belum ada media penyimpanan. Buat media pertama Anda untuk memulai.",
     "encrypted": "Terenkripsi",
     "encryptionType": "Tipe Enkripsi",
-    "encryptionLabel": "Label / ID Kunci"
+    "encryptionLabel": "Label / ID Kunci",
+    "customType": "Kustom"
   },
   "devices": {
     "title": "Perangkat",
@@ -105,6 +106,12 @@
     "model": "Model",
     "serialNumber": "Nomor Seri",
     "notes": "Catatan",
+    "brand": "Merek",
+    "provider": "Penyedia",
+    "ipAddress": "Alamat IP",
+    "url": "URL",
+    "storageCapacity": "Kapasitas Penyimpanan",
+    "customType": "Kustom",
     "backupCount": "Jumlah Cadangan",
     "noDevices": "Belum ada sumber. Buat sumber pertama Anda untuk memulai.",
     "save": "Simpan",
@@ -331,18 +338,13 @@
     "other": "Lainnya"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "HDD Internal", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "HDD Eksternal",
-    "internal_drive": "HDD Internal",
-    "ssd": "SSD",
-    "usb_stick": "Flash Drive USB",
-    "sd_card": "Kartu SD",
-    "cloud": "Cloud",
-    "tape": "Pita",
-    "optical": "Optik (CD/DVD/BD)",
-    "network_share": "Berbagi Jaringan",
-    "local": "Lokal",
-    "other": "Lainnya"
+    "usb_stick": "Flash Drive USB", "sd_card": "Kartu SD", "optical": "Optik (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Berbagi Jaringan", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Cloud", "object_storage": "Penyimpanan Objek (S3)",
+    "tape": "Pita", "raid": "RAID",
+    "local": "Lokal", "other": "Lainnya"
   },
   "folders": {
       "create": "Folder Baru",

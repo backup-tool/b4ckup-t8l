@@ -91,7 +91,8 @@
     "noMedia": "아직 저장 매체가 없습니다. 첫 번째 매체를 생성하여 시작하세요.",
     "encrypted": "암호화됨",
     "encryptionType": "암호화 유형",
-    "encryptionLabel": "라벨 / 키 ID"
+    "encryptionLabel": "라벨 / 키 ID",
+    "customType": "사용자 지정"
   },
   "devices": {
     "title": "장치",
@@ -105,6 +106,12 @@
     "model": "모델",
     "serialNumber": "일련번호",
     "notes": "메모",
+    "brand": "브랜드",
+    "provider": "공급자",
+    "ipAddress": "IP 주소",
+    "url": "URL",
+    "storageCapacity": "저장 용량",
+    "customType": "사용자 정의",
     "backupCount": "백업 수",
     "noDevices": "아직 소스가 없습니다. 첫 번째 소스를 생성하여 시작하세요.",
     "save": "저장",
@@ -331,18 +338,13 @@
     "other": "기타"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "내장 HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "외장 HDD",
-    "internal_drive": "내장 HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB 메모리",
-    "sd_card": "SD 카드",
-    "cloud": "클라우드",
-    "tape": "테이프",
-    "optical": "광학 (CD/DVD/BD)",
-    "network_share": "네트워크 공유",
-    "local": "로컬",
-    "other": "기타"
+    "usb_stick": "USB 메모리", "sd_card": "SD 카드", "optical": "광학 (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "네트워크 공유", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "클라우드", "object_storage": "오브젝트 스토리지 (S3)",
+    "tape": "테이프", "raid": "RAID",
+    "local": "로컬", "other": "기타"
   },
   "folders": {
       "create": "새 폴더",

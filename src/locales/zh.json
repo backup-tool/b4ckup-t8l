@@ -91,7 +91,8 @@
     "noMedia": "暂无存储介质。创建您的第一个介质以开始使用。",
     "encrypted": "已加密",
     "encryptionType": "加密类型",
-    "encryptionLabel": "标签 / 密钥 ID"
+    "encryptionLabel": "标签 / 密钥 ID",
+    "customType": "自定义"
   },
   "devices": {
     "title": "设备",
@@ -105,6 +106,12 @@
     "model": "型号",
     "serialNumber": "序列号",
     "notes": "备注",
+    "brand": "品牌",
+    "provider": "供应商",
+    "ipAddress": "IP 地址",
+    "url": "URL",
+    "storageCapacity": "存储容量",
+    "customType": "自定义",
     "backupCount": "备份数",
     "noDevices": "暂无来源。创建您的第一个来源以开始使用。",
     "save": "保存",
@@ -331,18 +338,13 @@
     "other": "其他"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "内置 HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "外置 HDD",
-    "internal_drive": "内置 HDD",
-    "ssd": "SSD",
-    "usb_stick": "U盘",
-    "sd_card": "SD 卡",
-    "cloud": "云端",
-    "tape": "磁带",
-    "optical": "光盘 (CD/DVD/BD)",
-    "network_share": "网络共享",
-    "local": "本地",
-    "other": "其他"
+    "usb_stick": "U盘", "sd_card": "SD 卡", "optical": "光盘 (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "网络共享", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "云端", "object_storage": "对象存储 (S3)",
+    "tape": "磁带", "raid": "RAID",
+    "local": "本地", "other": "其他"
   },
   "folders": {
       "create": "新建文件夹",

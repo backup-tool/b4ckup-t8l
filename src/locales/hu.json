@@ -91,7 +91,8 @@
     "noMedia": "Még nincsenek tárolóeszközök. Hozd létre az elsőt a kezdéshez.",
     "encrypted": "Titkosított",
     "encryptionType": "Titkosítás típusa",
-    "encryptionLabel": "Címke / Kulcsazonosító"
+    "encryptionLabel": "Címke / Kulcsazonosító",
+    "customType": "Egyéni"
   },
   "devices": {
     "title": "Eszközök",
@@ -105,6 +106,12 @@
     "model": "Modell",
     "serialNumber": "Sorozatszám",
     "notes": "Jegyzetek",
+    "brand": "Márka",
+    "provider": "Szolgáltató",
+    "ipAddress": "IP-cím",
+    "url": "URL",
+    "storageCapacity": "Tárolókapacitás",
+    "customType": "Egyéni",
     "backupCount": "Biztonsági mentések",
     "noDevices": "Még nincsenek források. Hozd létre az elsőt a kezdéshez.",
     "save": "Mentés",
@@ -331,18 +338,13 @@
     "other": "Egyéb"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Belső HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Külső HDD",
-    "internal_drive": "Belső HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB pendrive",
-    "sd_card": "SD kártya",
-    "cloud": "Felhő",
-    "tape": "Szalag",
-    "optical": "Optikai (CD/DVD/BD)",
-    "network_share": "Hálózati megosztás",
-    "local": "Helyi",
-    "other": "Egyéb"
+    "usb_stick": "USB pendrive", "sd_card": "SD kártya", "optical": "Optikai (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Hálózati megosztás", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Felhő", "object_storage": "Objektumtár (S3)",
+    "tape": "Szalag", "raid": "RAID",
+    "local": "Helyi", "other": "Egyéb"
   },
   "folders": {
       "create": "Új mappa",

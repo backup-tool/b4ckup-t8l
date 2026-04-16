@@ -91,7 +91,8 @@
     "noMedia": "Nessun supporto di archiviazione presente. Crea il tuo primo supporto per iniziare.",
     "encrypted": "Cifrato",
     "encryptionType": "Tipo di cifratura",
-    "encryptionLabel": "Etichetta / ID chiave"
+    "encryptionLabel": "Etichetta / ID chiave",
+    "customType": "Personalizzato"
   },
   "devices": {
     "title": "Dispositivi",
@@ -105,6 +106,12 @@
     "model": "Modello",
     "serialNumber": "Numero di serie",
     "notes": "Note",
+    "brand": "Marca",
+    "provider": "Fornitore",
+    "ipAddress": "Indirizzo IP",
+    "url": "URL",
+    "storageCapacity": "Capacità di archiviazione",
+    "customType": "Personalizzato",
     "backupCount": "Backup",
     "noDevices": "Nessuna sorgente presente. Crea la tua prima sorgente per iniziare.",
     "save": "Salva",
@@ -331,18 +338,13 @@
     "other": "Altro"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "HDD interno", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "HDD esterno",
-    "internal_drive": "HDD interno",
-    "ssd": "SSD",
-    "usb_stick": "Chiavetta USB",
-    "sd_card": "Scheda SD",
-    "cloud": "Cloud",
-    "tape": "Nastro",
-    "optical": "Ottico (CD/DVD/BD)",
-    "network_share": "Condivisione di rete",
-    "local": "Locale",
-    "other": "Altro"
+    "usb_stick": "Chiavetta USB", "sd_card": "Scheda SD", "optical": "Ottico (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Condivisione di rete", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Cloud", "object_storage": "Archiviazione oggetti (S3)",
+    "tape": "Nastro", "raid": "RAID",
+    "local": "Locale", "other": "Altro"
   },
   "folders": {
       "create": "Nuova cartella",

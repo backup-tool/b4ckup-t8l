@@ -91,7 +91,8 @@
     "noMedia": "Niciun mediu de stocare încă. Creează primul mediu pentru a începe.",
     "encrypted": "Criptat",
     "encryptionType": "Tip criptare",
-    "encryptionLabel": "Etichetă / ID cheie"
+    "encryptionLabel": "Etichetă / ID cheie",
+    "customType": "Personalizat"
   },
   "devices": {
     "title": "Dispozitive",
@@ -105,6 +106,12 @@
     "model": "Model",
     "serialNumber": "Număr de serie",
     "notes": "Notițe",
+    "brand": "Marcă",
+    "provider": "Furnizor",
+    "ipAddress": "Adresă IP",
+    "url": "URL",
+    "storageCapacity": "Capacitate de stocare",
+    "customType": "Personalizat",
     "backupCount": "Copii de siguranță",
     "noDevices": "Nicio sursă încă. Creează prima sursă pentru a începe.",
     "save": "Salvează",
@@ -331,18 +338,13 @@
     "other": "Altele"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "HDD intern", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "HDD extern",
-    "internal_drive": "HDD intern",
-    "ssd": "SSD",
-    "usb_stick": "Stick USB",
-    "sd_card": "Card SD",
-    "cloud": "Cloud",
-    "tape": "Bandă",
-    "optical": "Optic (CD/DVD/BD)",
-    "network_share": "Partajare în rețea",
-    "local": "Local",
-    "other": "Altele"
+    "usb_stick": "Stick USB", "sd_card": "Card SD", "optical": "Optic (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Partajare în rețea", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Cloud", "object_storage": "Stocare obiecte (S3)",
+    "tape": "Bandă", "raid": "RAID",
+    "local": "Local", "other": "Altele"
   },
   "folders": {
       "create": "Dosar nou",

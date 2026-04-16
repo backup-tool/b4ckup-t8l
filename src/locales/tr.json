@@ -91,7 +91,8 @@
     "noMedia": "Henüz depolama ortamı yok. Başlamak için ilk ortamınızı oluşturun.",
     "encrypted": "Şifreli",
     "encryptionType": "Şifreleme Türü",
-    "encryptionLabel": "Etiket / Anahtar ID"
+    "encryptionLabel": "Etiket / Anahtar ID",
+    "customType": "Özel"
   },
   "devices": {
     "title": "Cihazlar",
@@ -105,6 +106,12 @@
     "model": "Model",
     "serialNumber": "Seri Numarası",
     "notes": "Notlar",
+    "brand": "Marka",
+    "provider": "Sağlayıcı",
+    "ipAddress": "IP Adresi",
+    "url": "URL",
+    "storageCapacity": "Depolama Kapasitesi",
+    "customType": "Özel",
     "backupCount": "Yedekler",
     "noDevices": "Henüz kaynak yok. Başlamak için ilk kaynağınızı oluşturun.",
     "save": "Kaydet",
@@ -331,18 +338,13 @@
     "other": "Diğer"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Dahili HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Harici HDD",
-    "internal_drive": "Dahili HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB Bellek",
-    "sd_card": "SD Kart",
-    "cloud": "Bulut",
-    "tape": "Teyp",
-    "optical": "Optik (CD/DVD/BD)",
-    "network_share": "Ağ Paylaşımı",
-    "local": "Yerel",
-    "other": "Diğer"
+    "usb_stick": "USB Bellek", "sd_card": "SD Kart", "optical": "Optik (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Ağ Paylaşımı", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Bulut", "object_storage": "Nesne Depolama (S3)",
+    "tape": "Teyp", "raid": "RAID",
+    "local": "Yerel", "other": "Diğer"
   },
   "folders": {
       "create": "Yeni Klasör",

@@ -91,7 +91,8 @@
     "noMedia": "Носіїв даних ще немає. Створіть перший носій, щоб почати.",
     "encrypted": "Зашифровано",
     "encryptionType": "Тип шифрування",
-    "encryptionLabel": "Мітка / ID ключа"
+    "encryptionLabel": "Мітка / ID ключа",
+    "customType": "Користувацький"
   },
   "devices": {
     "title": "Пристрої",
@@ -105,6 +106,12 @@
     "model": "Модель",
     "serialNumber": "Серійний номер",
     "notes": "Нотатки",
+    "brand": "Бренд",
+    "provider": "Провайдер",
+    "ipAddress": "IP-адреса",
+    "url": "URL",
+    "storageCapacity": "Ємність сховища",
+    "customType": "Користувацький",
     "backupCount": "Резервні копії",
     "noDevices": "Джерел ще немає. Створіть перше джерело, щоб почати.",
     "save": "Зберегти",
@@ -331,18 +338,13 @@
     "other": "Інше"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Внутрішній HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Зовнішній HDD",
-    "internal_drive": "Внутрішній HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB-флешка",
-    "sd_card": "SD-картка",
-    "cloud": "Хмара",
-    "tape": "Стрічка",
-    "optical": "Оптичний (CD/DVD/BD)",
-    "network_share": "Мережевий ресурс",
-    "local": "Локальний",
-    "other": "Інше"
+    "usb_stick": "USB-флешка", "sd_card": "SD-картка", "optical": "Оптичний (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Мережевий ресурс", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Хмара", "object_storage": "Об'єктне сховище (S3)",
+    "tape": "Стрічка", "raid": "RAID",
+    "local": "Локальний", "other": "Інше"
   },
   "folders": {
       "create": "Нова папка",

@@ -91,7 +91,8 @@
     "noMedia": "Još nema medija za pohranu. Stvorite prvi medij za početak.",
     "encrypted": "Enkriptirano",
     "encryptionType": "Vrsta enkripcije",
-    "encryptionLabel": "Oznaka / ID ključa"
+    "encryptionLabel": "Oznaka / ID ključa",
+    "customType": "Prilagođeno"
   },
   "devices": {
     "title": "Uređaji",
@@ -105,6 +106,12 @@
     "model": "Model",
     "serialNumber": "Serijski broj",
     "notes": "Bilješke",
+    "brand": "Marka",
+    "provider": "Pružatelj",
+    "ipAddress": "IP adresa",
+    "url": "URL",
+    "storageCapacity": "Kapacitet pohrane",
+    "customType": "Prilagođeno",
     "backupCount": "Sigurnosne kopije",
     "noDevices": "Još nema izvora. Stvorite prvi izvor za početak.",
     "save": "Spremi",
@@ -331,18 +338,13 @@
     "other": "Ostalo"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Unutarnji HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Vanjski HDD",
-    "internal_drive": "Unutarnji HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB stick",
-    "sd_card": "SD kartica",
-    "cloud": "Oblak",
-    "tape": "Traka",
-    "optical": "Optički (CD/DVD/BD)",
-    "network_share": "Mrežno dijeljenje",
-    "local": "Lokalno",
-    "other": "Ostalo"
+    "usb_stick": "USB stick", "sd_card": "SD kartica", "optical": "Optički (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Mrežno dijeljenje", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Oblak", "object_storage": "Pohrana objekata (S3)",
+    "tape": "Traka", "raid": "RAID",
+    "local": "Lokalno", "other": "Ostalo"
   },
   "folders": {
       "create": "Nova mapa",

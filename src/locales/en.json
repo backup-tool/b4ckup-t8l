@@ -71,7 +71,34 @@
     "editEntry": "Edit Entry",
     "entryNumber": "Number",
     "pause": "Pause",
-    "resume": "Resume"
+    "resume": "Resume",
+    "mode": "Mode",
+    "manual": "Manual",
+    "automatic": "Automatic",
+    "frequency": "Frequency",
+    "time": "Time",
+    "weekday": "Weekday",
+    "monthDay": "Day of Month",
+    "customIntervalDays": "Interval (days)",
+    "scheduleNote": "Schedule Note",
+    "scheduleNotePlaceholder": "e.g. Synology Task Scheduler, cron job...",
+    "customCategory": "Custom"
+  },
+  "schedule": {
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "custom": "Custom"
+  },
+  "weekdays": {
+    "0": "Sunday",
+    "1": "Monday",
+    "2": "Tuesday",
+    "3": "Wednesday",
+    "4": "Thursday",
+    "5": "Friday",
+    "6": "Saturday"
   },
   "media": {
     "title": "Storage Media",
@@ -91,7 +118,8 @@
     "noMedia": "No storage media yet. Create your first medium to get started.",
     "encrypted": "Encrypted",
     "encryptionType": "Encryption Type",
-    "encryptionLabel": "Label / Key ID"
+    "encryptionLabel": "Label / Key ID",
+    "customType": "Custom"
   },
   "devices": {
     "title": "Devices",
@@ -105,6 +133,12 @@
     "model": "Model",
     "serialNumber": "Serial Number",
     "notes": "Notes",
+    "brand": "Brand",
+    "provider": "Provider",
+    "ipAddress": "IP Address",
+    "url": "URL",
+    "storageCapacity": "Storage Capacity",
+    "customType": "Custom",
     "backupCount": "Backups",
     "noDevices": "No sources yet. Create your first source to get started.",
     "save": "Save",
@@ -275,7 +309,9 @@
   "bulk": {
     "selected": "selected",
     "select": "Select",
-    "deleteConfirm": "backups will be moved to trash."
+    "deleteConfirm": "backups will be moved to trash.",
+    "deleteConfirmMedia": "storage media will be moved to trash.",
+    "deleteConfirmDevices": "sources will be moved to trash."
   },
   "comparison": {
     "title": "Size Comparison"
@@ -290,13 +326,17 @@
     "restart": "Restart Now"
   },
   "categories": {
-    "photos": "Photos", "videos": "Videos", "music": "Music", "documents": "Documents",
-    "desktop": "Desktop", "system": "System", "system_image": "System Image",
-    "vm": "Virtual Machine", "database": "Database", "media": "Media", "code": "Code",
-    "projects": "Projects", "email": "Email", "contacts": "Contacts", "calendar": "Calendar",
-    "messages": "Messages", "health": "Health", "social_media": "Social Media",
-    "finance": "Finance", "games": "Games", "applications": "Applications",
-    "config": "Configuration", "other": "Other"
+    "documents": "Documents", "photos": "Photos", "videos": "Videos", "music": "Music",
+    "media": "Media", "desktop": "Desktop",
+    "email": "Email", "messages": "Messages", "contacts": "Contacts", "calendar": "Calendar",
+    "code": "Code", "projects": "Projects", "database": "Database", "config": "Configuration",
+    "logs": "Logs", "credentials": "Credentials",
+    "system": "System", "system_image": "System Image", "vm": "Virtual Machine",
+    "container": "Container", "applications": "Applications",
+    "cloud_data": "Cloud Data", "social_media": "Social Media", "bookmarks": "Bookmarks",
+    "passwords": "Passwords",
+    "finance": "Finance", "health": "Health", "notes": "Notes", "education": "Education",
+    "games": "Games", "other": "Other"
   },
   "deviceTypes": {
     "desktop": "Desktop PC", "laptop": "Laptop", "phone": "Phone", "tablet": "Tablet",
@@ -305,9 +345,12 @@
     "smart_home": "Smart Home", "app": "App", "service": "Online Service", "other": "Other"
   },
   "storageTypes": {
-    "nas": "NAS", "external_drive": "External HDD", "internal_drive": "Internal HDD",
-    "ssd": "SSD", "usb_stick": "USB Stick", "sd_card": "SD Card", "cloud": "Cloud",
-    "tape": "Tape", "optical": "Optical (CD/DVD/BD)", "network_share": "Network Share",
+    "internal_drive": "Internal HDD", "ssd": "SSD", "nvme": "NVMe",
+    "external_drive": "External HDD",
+    "usb_stick": "USB Stick", "sd_card": "SD Card", "optical": "Optical (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Network Share", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Cloud", "object_storage": "Object Storage (S3)",
+    "tape": "Tape", "raid": "RAID",
     "local": "Local", "other": "Other"
   },
   "folders": {

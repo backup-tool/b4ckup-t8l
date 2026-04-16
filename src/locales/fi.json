@@ -91,7 +91,8 @@
     "noMedia": "Ei tallennusmedioita vielä. Luo ensimmäinen media aloittaaksesi.",
     "encrypted": "Salattu",
     "encryptionType": "Salaustyyppi",
-    "encryptionLabel": "Tunniste / Avain-ID"
+    "encryptionLabel": "Tunniste / Avain-ID",
+    "customType": "Mukautettu"
   },
   "devices": {
     "title": "Laitteet",
@@ -105,6 +106,12 @@
     "model": "Malli",
     "serialNumber": "Sarjanumero",
     "notes": "Muistiinpanot",
+    "brand": "Merkki",
+    "provider": "Palveluntarjoaja",
+    "ipAddress": "IP-osoite",
+    "url": "URL",
+    "storageCapacity": "Tallennuskapasiteetti",
+    "customType": "Mukautettu",
     "backupCount": "Varmuuskopiot",
     "noDevices": "Ei lähteitä vielä. Luo ensimmäinen lähde aloittaaksesi.",
     "save": "Tallenna",
@@ -331,18 +338,13 @@
     "other": "Muu"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Sisäinen HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Ulkoinen HDD",
-    "internal_drive": "Sisäinen HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB-tikku",
-    "sd_card": "SD-kortti",
-    "cloud": "Pilvi",
-    "tape": "Nauha",
-    "optical": "Optinen (CD/DVD/BD)",
-    "network_share": "Verkkojako",
-    "local": "Paikallinen",
-    "other": "Muu"
+    "usb_stick": "USB-tikku", "sd_card": "SD-kortti", "optical": "Optinen (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Verkkojako", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Pilvi", "object_storage": "Objektitallennus (S3)",
+    "tape": "Nauha", "raid": "RAID",
+    "local": "Paikallinen", "other": "Muu"
   },
   "folders": {
       "create": "Uusi kansio",

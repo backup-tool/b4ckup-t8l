@@ -91,7 +91,8 @@
     "noMedia": "ยังไม่มีสื่อจัดเก็บ สร้างสื่อแรกเพื่อเริ่มต้น",
     "encrypted": "เข้ารหัสแล้ว",
     "encryptionType": "ประเภทการเข้ารหัส",
-    "encryptionLabel": "ป้ายกำกับ / ID คีย์"
+    "encryptionLabel": "ป้ายกำกับ / ID คีย์",
+    "customType": "กำหนดเอง"
   },
   "devices": {
     "title": "อุปกรณ์",
@@ -105,6 +106,12 @@
     "model": "รุ่น",
     "serialNumber": "หมายเลขซีเรียล",
     "notes": "บันทึก",
+    "brand": "แบรนด์",
+    "provider": "ผู้ให้บริการ",
+    "ipAddress": "ที่อยู่ IP",
+    "url": "URL",
+    "storageCapacity": "ความจุพื้นที่เก็บข้อมูล",
+    "customType": "กำหนดเอง",
     "backupCount": "จำนวนสำรองข้อมูล",
     "noDevices": "ยังไม่มีแหล่งที่มา สร้างแหล่งที่มาแรกเพื่อเริ่มต้น",
     "save": "บันทึก",
@@ -331,18 +338,13 @@
     "other": "อื่นๆ"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "HDD ภายใน", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "HDD ภายนอก",
-    "internal_drive": "HDD ภายใน",
-    "ssd": "SSD",
-    "usb_stick": "แฟลชไดรฟ์ USB",
-    "sd_card": "การ์ด SD",
-    "cloud": "คลาวด์",
-    "tape": "เทป",
-    "optical": "แผ่นออปติคัล (CD/DVD/BD)",
-    "network_share": "แชร์เครือข่าย",
-    "local": "ภายในเครื่อง",
-    "other": "อื่นๆ"
+    "usb_stick": "แฟลชไดรฟ์ USB", "sd_card": "การ์ด SD", "optical": "แผ่นออปติคัล (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "แชร์เครือข่าย", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "คลาวด์", "object_storage": "ที่เก็บอ็อบเจกต์ (S3)",
+    "tape": "เทป", "raid": "RAID",
+    "local": "ภายในเครื่อง", "other": "อื่นๆ"
   },
   "folders": {
       "create": "โฟลเดอร์ใหม่",

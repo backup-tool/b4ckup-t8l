@@ -35,6 +35,13 @@ export interface Backup {
   watch_path: string | null;
   auto_detect: boolean;
   folder_id: number | null;
+  backup_mode: "manual" | "automatic";
+  schedule_frequency: "daily" | "weekly" | "monthly" | "yearly" | "custom" | null;
+  schedule_time: string | null;
+  schedule_weekday: number | null;
+  schedule_month_day: number | null;
+  schedule_custom_interval_days: number | null;
+  schedule_note: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -72,66 +79,112 @@ export interface StorageMediaWithUsage extends StorageMedia {
 }
 
 export const STORAGE_TYPES = [
-  "nas", "external_drive", "internal_drive", "ssd", "usb_stick",
-  "sd_card", "cloud", "tape", "optical", "network_share", "local", "other",
+  // Local drives
+  "internal_drive", "ssd", "nvme", "external_drive",
+  // Portable
+  "usb_stick", "sd_card", "optical",
+  // Network
+  "nas", "network_share", "ftp", "webdav",
+  // Cloud
+  "cloud", "object_storage",
+  // Archival
+  "tape", "raid",
+  // Other
+  "local", "other",
 ] as const;
 
 export const BACKUP_CATEGORIES = [
-  "photos", "videos", "music", "documents", "desktop",
-  "system", "system_image", "vm", "database",
-  "media", "code", "projects", "email",
-  "contacts", "calendar", "messages",
-  "health", "social_media", "finance",
-  "games", "applications", "config", "other",
+  // Documents & Files
+  "documents", "photos", "videos", "music", "media", "desktop",
+  // Communication
+  "email", "messages", "contacts", "calendar",
+  // Development & IT
+  "code", "projects", "database", "config", "logs", "credentials",
+  // System
+  "system", "system_image", "vm", "container", "applications",
+  // Cloud & Services
+  "cloud_data", "social_media", "bookmarks", "passwords",
+  // Personal
+  "finance", "health", "notes", "education",
+  // Entertainment
+  "games",
+  // Other
+  "other",
 ] as const;
 
 type L = { en: string; de: string; ru: string };
 
 export const STORAGE_TYPE_LABELS: Record<string, L> = {
-  nas: { en: "NAS", de: "NAS", ru: "NAS" },
-  external_drive: { en: "External HDD", de: "Externe Festplatte", ru: "\u0412\u043d\u0435\u0448\u043d\u0438\u0439 HDD" },
   internal_drive: { en: "Internal HDD", de: "Interne Festplatte", ru: "\u0412\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0439 HDD" },
   ssd: { en: "SSD", de: "SSD", ru: "SSD" },
+  nvme: { en: "NVMe", de: "NVMe", ru: "NVMe" },
+  external_drive: { en: "External HDD", de: "Externe Festplatte", ru: "\u0412\u043d\u0435\u0448\u043d\u0438\u0439 HDD" },
   usb_stick: { en: "USB Stick", de: "USB-Stick", ru: "USB-\u043d\u0430\u043a\u043e\u043f\u0438\u0442\u0435\u043b\u044c" },
   sd_card: { en: "SD Card", de: "SD-Karte", ru: "SD-\u043a\u0430\u0440\u0442\u0430" },
-  cloud: { en: "Cloud", de: "Cloud", ru: "\u041e\u0431\u043b\u0430\u043a\u043e" },
-  tape: { en: "Tape", de: "Bandlaufwerk", ru: "\u041b\u0435\u043d\u0442\u0430" },
   optical: { en: "Optical (CD/DVD/BD)", de: "Optisch (CD/DVD/BD)", ru: "\u041e\u043f\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 (CD/DVD/BD)" },
+  nas: { en: "NAS", de: "NAS", ru: "NAS" },
   network_share: { en: "Network Share", de: "Netzwerkfreigabe", ru: "\u0421\u0435\u0442\u0435\u0432\u043e\u0439 \u0440\u0435\u0441\u0443\u0440\u0441" },
+  ftp: { en: "FTP / SFTP", de: "FTP / SFTP", ru: "FTP / SFTP" },
+  webdav: { en: "WebDAV", de: "WebDAV", ru: "WebDAV" },
+  cloud: { en: "Cloud", de: "Cloud", ru: "\u041e\u0431\u043b\u0430\u043a\u043e" },
+  object_storage: { en: "Object Storage (S3)", de: "Objektspeicher (S3)", ru: "\u041e\u0431\u044a\u0435\u043a\u0442\u043d\u043e\u0435 \u0445\u0440\u0430\u043d\u0438\u043b\u0438\u0449\u0435 (S3)" },
+  tape: { en: "Tape", de: "Bandlaufwerk", ru: "\u041b\u0435\u043d\u0442\u0430" },
+  raid: { en: "RAID", de: "RAID", ru: "RAID" },
   local: { en: "Local", de: "Lokal", ru: "\u041b\u043e\u043a\u0430\u043b\u044c\u043d\u044b\u0439" },
   other: { en: "Other", de: "Sonstiges", ru: "\u0414\u0440\u0443\u0433\u043e\u0435" },
 };
 
 export const CATEGORY_LABELS: Record<string, L> = {
+  documents: { en: "Documents", de: "Dokumente", ru: "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u044b" },
   photos: { en: "Photos", de: "Fotos", ru: "\u0424\u043e\u0442\u043e" },
   videos: { en: "Videos", de: "Videos", ru: "\u0412\u0438\u0434\u0435\u043e" },
   music: { en: "Music", de: "Musik", ru: "\u041c\u0443\u0437\u044b\u043a\u0430" },
-  documents: { en: "Documents", de: "Dokumente", ru: "\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u044b" },
+  media: { en: "Media", de: "Medien", ru: "\u041c\u0435\u0434\u0438\u0430" },
   desktop: { en: "Desktop", de: "Desktop", ru: "\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b" },
+  email: { en: "Email", de: "E-Mail", ru: "\u041f\u043e\u0447\u0442\u0430" },
+  messages: { en: "Messages", de: "Nachrichten", ru: "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f" },
+  contacts: { en: "Contacts", de: "Kontakte", ru: "\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b" },
+  calendar: { en: "Calendar", de: "Kalender", ru: "\u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044c" },
+  code: { en: "Code", de: "Code", ru: "\u041a\u043e\u0434" },
+  projects: { en: "Projects", de: "Projekte", ru: "\u041f\u0440\u043e\u0435\u043a\u0442\u044b" },
+  database: { en: "Database", de: "Datenbank", ru: "\u0411\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u044b\u0445" },
+  config: { en: "Configuration", de: "Konfiguration", ru: "\u041a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044f" },
+  logs: { en: "Logs", de: "Protokolle", ru: "\u041b\u043e\u0433\u0438" },
+  credentials: { en: "Credentials", de: "Zugangsdaten", ru: "\u0423\u0447\u0451\u0442\u043d\u044b\u0435 \u0434\u0430\u043d\u043d\u044b\u0435" },
   system: { en: "System", de: "System", ru: "\u0421\u0438\u0441\u0442\u0435\u043c\u0430" },
   system_image: { en: "System Image", de: "System-Image", ru: "\u041e\u0431\u0440\u0430\u0437 \u0441\u0438\u0441\u0442\u0435\u043c\u044b" },
   vm: { en: "Virtual Machine", de: "Virtuelle Maschine", ru: "\u0412\u0438\u0440\u0442. \u043c\u0430\u0448\u0438\u043d\u0430" },
-  database: { en: "Database", de: "Datenbank", ru: "\u0411\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u044b\u0445" },
-  media: { en: "Media", de: "Medien", ru: "\u041c\u0435\u0434\u0438\u0430" },
-  code: { en: "Code", de: "Code", ru: "\u041a\u043e\u0434" },
-  projects: { en: "Projects", de: "Projekte", ru: "\u041f\u0440\u043e\u0435\u043a\u0442\u044b" },
-  email: { en: "Email", de: "E-Mail", ru: "\u041f\u043e\u0447\u0442\u0430" },
-  contacts: { en: "Contacts", de: "Kontakte", ru: "\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b" },
-  calendar: { en: "Calendar", de: "Kalender", ru: "\u041a\u0430\u043b\u0435\u043d\u0434\u0430\u0440\u044c" },
-  messages: { en: "Messages", de: "Nachrichten", ru: "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f" },
-  health: { en: "Health", de: "Gesundheit", ru: "\u0417\u0434\u043e\u0440\u043e\u0432\u044c\u0435" },
-  social_media: { en: "Social Media", de: "Social Media", ru: "\u0421\u043e\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0435 \u0441\u0435\u0442\u0438" },
-  finance: { en: "Finance", de: "Finanzen", ru: "\u0424\u0438\u043d\u0430\u043d\u0441\u044b" },
-  games: { en: "Games", de: "Spiele", ru: "\u0418\u0433\u0440\u044b" },
+  container: { en: "Container", de: "Container", ru: "\u041a\u043e\u043d\u0442\u0435\u0439\u043d\u0435\u0440" },
   applications: { en: "Applications", de: "Anwendungen", ru: "\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f" },
-  config: { en: "Configuration", de: "Konfiguration", ru: "\u041a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u044f" },
+  cloud_data: { en: "Cloud Data", de: "Cloud-Daten", ru: "\u041e\u0431\u043b\u0430\u0447\u043d\u044b\u0435 \u0434\u0430\u043d\u043d\u044b\u0435" },
+  social_media: { en: "Social Media", de: "Social Media", ru: "\u0421\u043e\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0435 \u0441\u0435\u0442\u0438" },
+  bookmarks: { en: "Bookmarks", de: "Lesezeichen", ru: "\u0417\u0430\u043a\u043b\u0430\u0434\u043a\u0438" },
+  passwords: { en: "Passwords", de: "Passwörter", ru: "\u041f\u0430\u0440\u043e\u043b\u0438" },
+  finance: { en: "Finance", de: "Finanzen", ru: "\u0424\u0438\u043d\u0430\u043d\u0441\u044b" },
+  health: { en: "Health", de: "Gesundheit", ru: "\u0417\u0434\u043e\u0440\u043e\u0432\u044c\u0435" },
+  notes: { en: "Notes", de: "Notizen", ru: "\u0417\u0430\u043c\u0435\u0442\u043a\u0438" },
+  education: { en: "Education", de: "Bildung", ru: "\u041e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u0435" },
+  games: { en: "Games", de: "Spiele", ru: "\u0418\u0433\u0440\u044b" },
   other: { en: "Other", de: "Sonstiges", ru: "\u0414\u0440\u0443\u0433\u043e\u0435" },
 };
 
+export const BACKUP_MODES = ["manual", "automatic"] as const;
+
+export const SCHEDULE_FREQUENCIES = [
+  "daily", "weekly", "monthly", "yearly", "custom",
+] as const;
+
 export const DEVICE_TYPES = [
-  "desktop", "laptop", "phone", "tablet", "server", "nas",
-  "cloud", "external_drive", "camera", "console", "smart_home",
-  "app", "service", "other",
+  // Physical devices
+  "desktop", "laptop", "phone", "tablet", "camera",
+  // Server & Network
+  "server", "nas",
+  // External & Entertainment
+  "external_drive", "console", "smart_home",
+  // Cloud & Digital
+  "cloud", "app", "service",
+  // Other
+  "other",
 ] as const;
 
 export const DEVICE_TYPE_LABELS: Record<string, L> = {
@@ -139,17 +192,42 @@ export const DEVICE_TYPE_LABELS: Record<string, L> = {
   laptop: { en: "Laptop", de: "Laptop", ru: "\u041d\u043e\u0443\u0442\u0431\u0443\u043a" },
   phone: { en: "Phone", de: "Smartphone", ru: "\u0422\u0435\u043b\u0435\u0444\u043e\u043d" },
   tablet: { en: "Tablet", de: "Tablet", ru: "\u041f\u043b\u0430\u043d\u0448\u0435\u0442" },
+  camera: { en: "Camera", de: "Kamera", ru: "\u041a\u0430\u043c\u0435\u0440\u0430" },
   server: { en: "Server", de: "Server", ru: "\u0421\u0435\u0440\u0432\u0435\u0440" },
   nas: { en: "NAS", de: "NAS", ru: "NAS" },
-  cloud: { en: "Cloud Service", de: "Cloud-Dienst", ru: "\u041e\u0431\u043b\u0430\u0447\u043d\u044b\u0439 \u0441\u0435\u0440\u0432\u0438\u0441" },
   external_drive: { en: "External Drive", de: "Externe Festplatte", ru: "\u0412\u043d\u0435\u0448\u043d\u0438\u0439 \u0434\u0438\u0441\u043a" },
-  camera: { en: "Camera", de: "Kamera", ru: "\u041a\u0430\u043c\u0435\u0440\u0430" },
   console: { en: "Console", de: "Konsole", ru: "\u041a\u043e\u043d\u0441\u043e\u043b\u044c" },
   smart_home: { en: "Smart Home", de: "Smart Home", ru: "\u0423\u043c\u043d\u044b\u0439 \u0434\u043e\u043c" },
+  cloud: { en: "Cloud Service", de: "Cloud-Dienst", ru: "\u041e\u0431\u043b\u0430\u0447\u043d\u044b\u0439 \u0441\u0435\u0440\u0432\u0438\u0441" },
   app: { en: "App", de: "App", ru: "\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435" },
   service: { en: "Online Service", de: "Online-Dienst", ru: "\u041e\u043d\u043b\u0430\u0439\u043d-\u0441\u0435\u0440\u0432\u0438\u0441" },
   other: { en: "Other", de: "Sonstiges", ru: "\u0414\u0440\u0443\u0433\u043e\u0435" },
 };
+
+type DeviceFields = "brand" | "model" | "os" | "serial_number" | "ip_address" | "url" | "provider" | "storage_capacity";
+
+const ALL_DEVICE_FIELDS: DeviceFields[] = ["brand", "model", "os", "serial_number", "ip_address", "url", "provider", "storage_capacity"];
+
+export const DEVICE_FIELD_CONFIG: Record<string, DeviceFields[]> = {
+  desktop:        ["brand", "model", "os", "serial_number"],
+  laptop:         ["brand", "model", "os", "serial_number", "storage_capacity"],
+  phone:          ["brand", "model", "os", "serial_number", "storage_capacity"],
+  tablet:         ["brand", "model", "os", "serial_number", "storage_capacity"],
+  camera:         ["brand", "model", "serial_number"],
+  server:         ["brand", "model", "os", "serial_number", "ip_address", "storage_capacity"],
+  nas:            ["brand", "model", "os", "serial_number", "ip_address", "storage_capacity"],
+  external_drive: ["brand", "model", "serial_number", "storage_capacity"],
+  console:        ["brand", "model", "os", "serial_number"],
+  smart_home:     ["brand", "model", "serial_number", "ip_address"],
+  cloud:          ["provider", "url", "storage_capacity"],
+  app:            ["provider", "url"],
+  service:        ["provider", "url"],
+  other:          ALL_DEVICE_FIELDS,
+};
+
+export function getDeviceFields(type: string): DeviceFields[] {
+  return DEVICE_FIELD_CONFIG[type] ?? ALL_DEVICE_FIELDS;
+}
 
 export const SIZE_UNITS = [
   { value: "Bytes", label: "Bytes" },

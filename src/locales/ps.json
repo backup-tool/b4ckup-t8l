@@ -91,7 +91,8 @@
     "noMedia": "تر اوسه د ذخیرې رسنۍ نشته. خپل لومړۍ رسنۍ جوړ کړئ.",
     "encrypted": "کوډ شوی",
     "encryptionType": "د کوډ کولو ډول",
-    "encryptionLabel": "لیبل / د کیلي ID"
+    "encryptionLabel": "لیبل / د کیلي ID",
+    "customType": "دلخوا"
   },
   "devices": {
     "title": "وسایل",
@@ -105,6 +106,12 @@
     "model": "ماډل",
     "serialNumber": "لړېیي شمېره",
     "notes": "یاداښتونه",
+    "brand": "برانډ",
+    "provider": "چمتووونکی",
+    "ipAddress": "IP پته",
+    "url": "URL",
+    "storageCapacity": "د ذخیره کولو ظرفیت",
+    "customType": "دودیز",
     "backupCount": "بیک اپونه",
     "noDevices": "تر اوسه سرچینې نشته. خپل لومړۍ سرچینه جوړ کړئ.",
     "save": "خوندي کړئ",
@@ -340,18 +347,13 @@
     "other": "Other"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Internal HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "External HDD",
-    "internal_drive": "Internal HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB Stick",
-    "sd_card": "SD Card",
-    "cloud": "Cloud",
-    "tape": "Tape",
-    "optical": "Optical (CD/DVD/BD)",
-    "network_share": "Network Share",
-    "local": "Local",
-    "other": "Other"
+    "usb_stick": "USB Stick", "sd_card": "SD Card", "optical": "Optical (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Network Share", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Cloud", "object_storage": "Object Storage (S3)",
+    "tape": "Tape", "raid": "RAID",
+    "local": "Local", "other": "Other"
   },
   "calendar": {
     "title": "Backup Calendar",

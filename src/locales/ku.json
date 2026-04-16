@@ -91,7 +91,8 @@
     "noMedia": "Hîn medyaya hilanînê tune. Medyaya xwe ya yekem biafirîne.",
     "encrypted": "Şîfrekirî",
     "encryptionType": "Cureya Şîfrekirinê",
-    "encryptionLabel": "Etîket / Nasnameya Mifteyê"
+    "encryptionLabel": "Etîket / Nasnameya Mifteyê",
+    "customType": "Taybet"
   },
   "devices": {
     "title": "Cîhaz",
@@ -105,6 +106,12 @@
     "model": "Model",
     "serialNumber": "Hejmara Rêzê",
     "notes": "Not",
+    "brand": "Marka",
+    "provider": "Dabînker",
+    "ipAddress": "Navnîşana IP",
+    "url": "URL",
+    "storageCapacity": "Kapasîteya hilanînê",
+    "customType": "Kesane",
     "backupCount": "Paştgirtin",
     "noDevices": "Hîn çavkanî tune. Çavkaniya xwe ya yekem biafirîne.",
     "save": "Tomar bike",
@@ -331,18 +338,13 @@
     "other": "Din"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "HDD-ya Hundurîn", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "HDD-ya Derve",
-    "internal_drive": "HDD-ya Hundurîn",
-    "ssd": "SSD",
-    "usb_stick": "Stîka USB",
-    "sd_card": "Karta SD",
-    "cloud": "Ewr",
-    "tape": "Teyp",
-    "optical": "Optîk (CD/DVD/BD)",
-    "network_share": "Parvekirina Torê",
-    "local": "Herêmî",
-    "other": "Din"
+    "usb_stick": "Stîka USB", "sd_card": "Karta SD", "optical": "Optîk (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Parvekirina Torê", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Ewr", "object_storage": "Hilanîna Objeyê (S3)",
+    "tape": "Teyp", "raid": "RAID",
+    "local": "Herêmî", "other": "Din"
   },
   "folders": {
       "create": "Pûşeya nû",

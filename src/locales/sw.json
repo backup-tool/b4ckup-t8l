@@ -91,7 +91,8 @@
     "noMedia": "Hakuna vyombo vya hifadhi bado. Unda chombo chako cha kwanza ili kuanza.",
     "encrypted": "Imesimbwa",
     "encryptionType": "Aina ya Usimbaji",
-    "encryptionLabel": "Lebo / Kitambulisho cha Ufunguo"
+    "encryptionLabel": "Lebo / Kitambulisho cha Ufunguo",
+    "customType": "Maalum"
   },
   "devices": {
     "title": "Vifaa",
@@ -105,6 +106,12 @@
     "model": "Modeli",
     "serialNumber": "Nambari ya Siri",
     "notes": "Maelezo",
+    "brand": "Chapa",
+    "provider": "Mtoa huduma",
+    "ipAddress": "Anwani ya IP",
+    "url": "URL",
+    "storageCapacity": "Uwezo wa kuhifadhi",
+    "customType": "Maalum",
     "backupCount": "Nakala Rudufu",
     "noDevices": "Hakuna vyanzo bado. Unda chanzo chako cha kwanza ili kuanza.",
     "save": "Hifadhi",
@@ -331,18 +338,13 @@
     "other": "Nyingine"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "HDD ya Ndani", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "HDD ya Nje",
-    "internal_drive": "HDD ya Ndani",
-    "ssd": "SSD",
-    "usb_stick": "Kijiti cha USB",
-    "sd_card": "Kadi ya SD",
-    "cloud": "Wingu",
-    "tape": "Tepu",
-    "optical": "Macho (CD/DVD/BD)",
-    "network_share": "Kushiriki Mtandao",
-    "local": "Ndani",
-    "other": "Nyingine"
+    "usb_stick": "Kijiti cha USB", "sd_card": "Kadi ya SD", "optical": "Macho (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Kushiriki Mtandao", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Wingu", "object_storage": "Hifadhi ya Vitu (S3)",
+    "tape": "Tepu", "raid": "RAID",
+    "local": "Ndani", "other": "Nyingine"
   },
   "folders": {
       "create": "Folda Mpya",

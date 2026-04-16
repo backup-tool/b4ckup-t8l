@@ -91,7 +91,8 @@
     "noMedia": "Zatím žádná úložná média. Vytvořte první médium a začněte.",
     "encrypted": "Šifrované",
     "encryptionType": "Typ šifrování",
-    "encryptionLabel": "Štítek / ID klíče"
+    "encryptionLabel": "Štítek / ID klíče",
+    "customType": "Vlastní"
   },
   "devices": {
     "title": "Zařízení",
@@ -105,6 +106,12 @@
     "model": "Model",
     "serialNumber": "Sériové číslo",
     "notes": "Poznámky",
+    "brand": "Značka",
+    "provider": "Poskytovatel",
+    "ipAddress": "IP adresa",
+    "url": "URL",
+    "storageCapacity": "Kapacita úložiště",
+    "customType": "Vlastní",
     "backupCount": "Zálohy",
     "noDevices": "Zatím žádné zdroje. Vytvořte první zdroj a začněte.",
     "save": "Uložit",
@@ -331,18 +338,13 @@
     "other": "Ostatní"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Interní HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Externí HDD",
-    "internal_drive": "Interní HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB flash disk",
-    "sd_card": "SD karta",
-    "cloud": "Cloud",
-    "tape": "Páska",
-    "optical": "Optický (CD/DVD/BD)",
-    "network_share": "Síťové sdílení",
-    "local": "Lokální",
-    "other": "Ostatní"
+    "usb_stick": "USB flash disk", "sd_card": "SD karta", "optical": "Optický (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Síťové sdílení", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Cloud", "object_storage": "Objektové úložiště (S3)",
+    "tape": "Páska", "raid": "RAID",
+    "local": "Lokální", "other": "Ostatní"
   },
   "folders": {
       "create": "Nová složka",

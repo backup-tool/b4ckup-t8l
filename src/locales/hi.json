@@ -91,7 +91,8 @@
     "noMedia": "अभी तक कोई स्टोरेज मीडिया नहीं है। शुरू करने के लिए अपना पहला मीडियम बनाएँ।",
     "encrypted": "एन्क्रिप्टेड",
     "encryptionType": "एन्क्रिप्शन प्रकार",
-    "encryptionLabel": "लेबल / कुंजी ID"
+    "encryptionLabel": "लेबल / कुंजी ID",
+    "customType": "कस्टम"
   },
   "devices": {
     "title": "उपकरण",
@@ -105,6 +106,12 @@
     "model": "मॉडल",
     "serialNumber": "क्रम संख्या",
     "notes": "नोट्स",
+    "brand": "ब्रांड",
+    "provider": "प्रदाता",
+    "ipAddress": "IP पता",
+    "url": "URL",
+    "storageCapacity": "भंडारण क्षमता",
+    "customType": "कस्टम",
     "backupCount": "बैकअप",
     "noDevices": "अभी तक कोई स्रोत नहीं है। शुरू करने के लिए अपना पहला स्रोत बनाएँ।",
     "save": "सहेजें",
@@ -331,18 +338,13 @@
     "other": "अन्य"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "आंतरिक HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "बाहरी HDD",
-    "internal_drive": "आंतरिक HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB स्टिक",
-    "sd_card": "SD कार्ड",
-    "cloud": "क्लाउड",
-    "tape": "टेप",
-    "optical": "ऑप्टिकल (CD/DVD/BD)",
-    "network_share": "नेटवर्क शेयर",
-    "local": "स्थानीय",
-    "other": "अन्य"
+    "usb_stick": "USB स्टिक", "sd_card": "SD कार्ड", "optical": "ऑप्टिकल (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "नेटवर्क शेयर", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "क्लाउड", "object_storage": "ऑब्जेक्ट स्टोरेज (S3)",
+    "tape": "टेप", "raid": "RAID",
+    "local": "स्थानीय", "other": "अन्य"
   },
   "folders": {
       "create": "नया फ़ोल्डर",

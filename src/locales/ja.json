@@ -91,7 +91,8 @@
     "noMedia": "ストレージメディアはまだありません。最初のメディアを作成して始めましょう。",
     "encrypted": "暗号化済み",
     "encryptionType": "暗号化タイプ",
-    "encryptionLabel": "ラベル / キー ID"
+    "encryptionLabel": "ラベル / キー ID",
+    "customType": "カスタム"
   },
   "devices": {
     "title": "デバイス",
@@ -105,6 +106,12 @@
     "model": "モデル",
     "serialNumber": "シリアル番号",
     "notes": "メモ",
+    "brand": "ブランド",
+    "provider": "プロバイダー",
+    "ipAddress": "IPアドレス",
+    "url": "URL",
+    "storageCapacity": "ストレージ容量",
+    "customType": "カスタム",
     "backupCount": "バックアップ数",
     "noDevices": "ソースはまだありません。最初のソースを作成して始めましょう。",
     "save": "保存",
@@ -331,18 +338,13 @@
     "other": "その他"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "内蔵HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "外付けHDD",
-    "internal_drive": "内蔵HDD",
-    "ssd": "SSD",
-    "usb_stick": "USBメモリ",
-    "sd_card": "SDカード",
-    "cloud": "クラウド",
-    "tape": "テープ",
-    "optical": "光学 (CD/DVD/BD)",
-    "network_share": "ネットワーク共有",
-    "local": "ローカル",
-    "other": "その他"
+    "usb_stick": "USBメモリ", "sd_card": "SDカード", "optical": "光学 (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "ネットワーク共有", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "クラウド", "object_storage": "オブジェクトストレージ (S3)",
+    "tape": "テープ", "raid": "RAID",
+    "local": "ローカル", "other": "その他"
   },
   "folders": {
       "create": "新規フォルダ",

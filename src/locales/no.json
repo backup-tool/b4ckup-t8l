@@ -91,7 +91,8 @@
     "noMedia": "Ingen lagringsmedier ennå. Opprett ditt første medium for å komme i gang.",
     "encrypted": "Kryptert",
     "encryptionType": "Krypteringstype",
-    "encryptionLabel": "Etikett / Nøkkel-ID"
+    "encryptionLabel": "Etikett / Nøkkel-ID",
+    "customType": "Egendefinert"
   },
   "devices": {
     "title": "Enheter",
@@ -105,6 +106,12 @@
     "model": "Modell",
     "serialNumber": "Serienummer",
     "notes": "Notater",
+    "brand": "Merke",
+    "provider": "Leverandør",
+    "ipAddress": "IP-adresse",
+    "url": "URL",
+    "storageCapacity": "Lagringskapasitet",
+    "customType": "Egendefinert",
     "backupCount": "Sikkerhetskopier",
     "noDevices": "Ingen kilder ennå. Opprett din første kilde for å komme i gang.",
     "save": "Lagre",
@@ -331,18 +338,13 @@
     "other": "Annet"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Intern HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Ekstern HDD",
-    "internal_drive": "Intern HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB-minnepinne",
-    "sd_card": "SD-kort",
-    "cloud": "Sky",
-    "tape": "Bånd",
-    "optical": "Optisk (CD/DVD/BD)",
-    "network_share": "Nettverksdeling",
-    "local": "Lokal",
-    "other": "Annet"
+    "usb_stick": "USB-minnepinne", "sd_card": "SD-kort", "optical": "Optisk (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Nettverksdeling", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Sky", "object_storage": "Objektlagring (S3)",
+    "tape": "Bånd", "raid": "RAID",
+    "local": "Lokal", "other": "Annet"
   },
   "folders": {
       "create": "Ny mappe",

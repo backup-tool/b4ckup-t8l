@@ -91,7 +91,8 @@
     "noMedia": "Brak nośników. Utwórz pierwszy nośnik, aby rozpocząć.",
     "encrypted": "Zaszyfrowany",
     "encryptionType": "Typ szyfrowania",
-    "encryptionLabel": "Etykieta / ID klucza"
+    "encryptionLabel": "Etykieta / ID klucza",
+    "customType": "Niestandardowy"
   },
   "devices": {
     "title": "Urządzenia",
@@ -105,6 +106,12 @@
     "model": "Model",
     "serialNumber": "Numer seryjny",
     "notes": "Notatki",
+    "brand": "Marka",
+    "provider": "Dostawca",
+    "ipAddress": "Adres IP",
+    "url": "URL",
+    "storageCapacity": "Pojemność pamięci",
+    "customType": "Niestandardowy",
     "backupCount": "Kopie zapasowe",
     "noDevices": "Brak źródeł. Utwórz pierwsze źródło, aby rozpocząć.",
     "save": "Zapisz",
@@ -331,18 +338,13 @@
     "other": "Inne"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Wewnętrzny HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Zewnętrzny HDD",
-    "internal_drive": "Wewnętrzny HDD",
-    "ssd": "SSD",
-    "usb_stick": "Pendrive",
-    "sd_card": "Karta SD",
-    "cloud": "Chmura",
-    "tape": "Taśma",
-    "optical": "Optyczny (CD/DVD/BD)",
-    "network_share": "Udział sieciowy",
-    "local": "Lokalny",
-    "other": "Inne"
+    "usb_stick": "Pendrive", "sd_card": "Karta SD", "optical": "Optyczny (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Udział sieciowy", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Chmura", "object_storage": "Magazyn obiektowy (S3)",
+    "tape": "Taśma", "raid": "RAID",
+    "local": "Lokalny", "other": "Inne"
   },
   "folders": {
       "create": "Nowy folder",

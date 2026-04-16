@@ -91,7 +91,8 @@
     "noMedia": "אין אמצעי אחסון עדיין. צור את האמצעי הראשון שלך כדי להתחיל.",
     "encrypted": "מוצפן",
     "encryptionType": "סוג הצפנה",
-    "encryptionLabel": "תווית / מזהה מפתח"
+    "encryptionLabel": "תווית / מזהה מפתח",
+    "customType": "מותאם אישית"
   },
   "devices": {
     "title": "התקנים",
@@ -105,6 +106,12 @@
     "model": "דגם",
     "serialNumber": "מספר סידורי",
     "notes": "הערות",
+    "brand": "מותג",
+    "provider": "ספק",
+    "ipAddress": "כתובת IP",
+    "url": "URL",
+    "storageCapacity": "קיבולת אחסון",
+    "customType": "מותאם אישית",
     "backupCount": "גיבויים",
     "noDevices": "אין מקורות עדיין. צור את המקור הראשון שלך כדי להתחיל.",
     "save": "שמירה",
@@ -331,18 +338,13 @@
     "other": "אחר"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "HDD פנימי", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "HDD חיצוני",
-    "internal_drive": "HDD פנימי",
-    "ssd": "SSD",
-    "usb_stick": "כונן USB",
-    "sd_card": "כרטיס SD",
-    "cloud": "ענן",
-    "tape": "סרט",
-    "optical": "אופטי (CD/DVD/BD)",
-    "network_share": "שיתוף רשת",
-    "local": "מקומי",
-    "other": "אחר"
+    "usb_stick": "כונן USB", "sd_card": "כרטיס SD", "optical": "אופטי (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "שיתוף רשת", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "ענן", "object_storage": "אחסון אובייקטים (S3)",
+    "tape": "סרט", "raid": "RAID",
+    "local": "מקומי", "other": "אחר"
   },
   "folders": {
       "create": "תיקייה חדשה",

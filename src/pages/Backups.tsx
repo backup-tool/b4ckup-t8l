@@ -33,7 +33,7 @@ import {
   getAllDevices,
   createDevice,
 } from "@/lib/db";
-import { BACKUP_CATEGORIES } from "@/lib/types";
+import { BACKUP_CATEGORIES, BACKUP_MODES, SCHEDULE_FREQUENCIES } from "@/lib/types";
 import type { BackupStatus } from "@/lib/types";
 import { formatBytes, formatDate, daysAgo } from "@/lib/format";
 import { useAppStore } from "@/lib/store";
@@ -87,6 +87,13 @@ export function Backups() {
     notes: "",
     encryption_info: "",
     reminder_interval_days: "30",
+    backup_mode: "manual" as string,
+    schedule_frequency: "daily" as string,
+    schedule_time: "",
+    schedule_weekday: "",
+    schedule_month_day: "",
+    schedule_custom_interval_days: "",
+    schedule_note: "",
   });
 
   useEffect(() => {
@@ -121,6 +128,7 @@ export function Backups() {
     if (form.device_name.trim()) {
       await createDevice(form.device_name.trim());
     }
+    const isAutomatic = form.backup_mode === "automatic";
     await createBackup({
       name: form.name,
       device_name: form.device_name,
@@ -131,6 +139,13 @@ export function Backups() {
       reminder_interval_days: form.reminder_interval_days
         ? parseInt(form.reminder_interval_days)
         : 30,
+      backup_mode: form.backup_mode,
+      schedule_frequency: isAutomatic ? form.schedule_frequency : null,
+      schedule_time: isAutomatic && form.schedule_time ? form.schedule_time : null,
+      schedule_weekday: isAutomatic && form.schedule_weekday ? parseInt(form.schedule_weekday) : null,
+      schedule_month_day: isAutomatic && form.schedule_month_day ? parseInt(form.schedule_month_day) : null,
+      schedule_custom_interval_days: isAutomatic && form.schedule_custom_interval_days ? parseInt(form.schedule_custom_interval_days) : null,
+      schedule_note: isAutomatic && form.schedule_note ? form.schedule_note : null,
     });
     setModalOpen(false);
     setForm({
@@ -141,6 +156,13 @@ export function Backups() {
       notes: "",
       encryption_info: "",
       reminder_interval_days: "30",
+      backup_mode: "manual",
+      schedule_frequency: "daily",
+      schedule_time: "",
+      schedule_weekday: "",
+      schedule_month_day: "",
+      schedule_custom_interval_days: "",
+      schedule_note: "",
     });
     triggerRefresh();
     await loadAll();
@@ -243,6 +265,9 @@ export function Backups() {
               value: cat,
               label: t(`categories.${cat}`, { defaultValue: cat }),
             })),
+            ...Array.from(new Set(backups.map((b) => b.category as string)))
+              .filter((cat) => !(BACKUP_CATEGORIES as readonly string[]).includes(cat))
+              .map((cat) => ({ value: cat, label: cat })),
           ]}
         />
         <CustomSelect
@@ -436,13 +461,14 @@ export function Backups() {
           </div>
           <div>
             <Label>{t("backups.category")}</Label>
-            <CustomSelect
+            <ComboSelect
               value={form.category}
               onChange={(val) => setForm({ ...form, category: val })}
               options={BACKUP_CATEGORIES.map((cat) => ({
                 value: cat,
                 label: t(`categories.${cat}`, { defaultValue: cat }),
               }))}
+              createLabel={t("backups.customCategory")}
             />
           </div>
           <div>
@@ -473,6 +499,84 @@ export function Backups() {
               }
             />
           </div>
+          <div>
+            <Label>{t("backups.mode")}</Label>
+            <CustomSelect
+              value={form.backup_mode}
+              onChange={(val) => setForm({ ...form, backup_mode: val })}
+              options={BACKUP_MODES.map((m) => ({
+                value: m,
+                label: t(`backups.${m}`),
+              }))}
+            />
+          </div>
+          {form.backup_mode === "automatic" && (
+            <>
+              <div>
+                <Label>{t("backups.frequency")}</Label>
+                <CustomSelect
+                  value={form.schedule_frequency}
+                  onChange={(val) => setForm({ ...form, schedule_frequency: val })}
+                  options={SCHEDULE_FREQUENCIES.map((f) => ({
+                    value: f,
+                    label: t(`schedule.${f}`),
+                  }))}
+                />
+              </div>
+              <div>
+                <Label>{t("backups.time")}</Label>
+                <Input
+                  type="time"
+                  value={form.schedule_time}
+                  onChange={(e) => setForm({ ...form, schedule_time: e.target.value })}
+                />
+              </div>
+              {form.schedule_frequency === "weekly" && (
+                <div>
+                  <Label>{t("backups.weekday")}</Label>
+                  <CustomSelect
+                    value={form.schedule_weekday}
+                    onChange={(val) => setForm({ ...form, schedule_weekday: val })}
+                    options={[0,1,2,3,4,5,6].map((d) => ({
+                      value: String(d),
+                      label: t(`weekdays.${d}`),
+                    }))}
+                  />
+                </div>
+              )}
+              {form.schedule_frequency === "monthly" && (
+                <div>
+                  <Label>{t("backups.monthDay")}</Label>
+                  <Input
+                    type="number"
+                    min="1"
+                    max="31"
+                    value={form.schedule_month_day}
+                    onChange={(e) => setForm({ ...form, schedule_month_day: e.target.value })}
+                  />
+                </div>
+              )}
+              {form.schedule_frequency === "custom" && (
+                <div>
+                  <Label>{t("backups.customIntervalDays")}</Label>
+                  <Input
+                    type="number"
+                    min="1"
+                    value={form.schedule_custom_interval_days}
+                    onChange={(e) => setForm({ ...form, schedule_custom_interval_days: e.target.value })}
+                  />
+                </div>
+              )}
+              <div>
+                <Label>{t("backups.scheduleNote")}</Label>
+                <Input
+                  value={form.schedule_note}
+                  onChange={(e) => setForm({ ...form, schedule_note: e.target.value })}
+                  placeholder={t("backups.scheduleNotePlaceholder")}
+                />
+              </div>
+            </>
+          )}
           <div>
             <Label>{t("backups.notes")}</Label>
             <Textarea

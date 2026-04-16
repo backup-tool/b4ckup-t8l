@@ -91,7 +91,8 @@
     "noMedia": "Ingen lagringsmedier endnu. Opret dit første medie for at komme i gang.",
     "encrypted": "Krypteret",
     "encryptionType": "Krypteringstype",
-    "encryptionLabel": "Etiket / Nøgle-ID"
+    "encryptionLabel": "Etiket / Nøgle-ID",
+    "customType": "Brugerdefineret"
   },
   "devices": {
     "title": "Enheder",
@@ -105,6 +106,12 @@
     "model": "Model",
     "serialNumber": "Serienummer",
     "notes": "Noter",
+    "brand": "Mærke",
+    "provider": "Udbyder",
+    "ipAddress": "IP-adresse",
+    "url": "URL",
+    "storageCapacity": "Lagerkapacitet",
+    "customType": "Brugerdefineret",
     "backupCount": "Sikkerhedskopier",
     "noDevices": "Ingen kilder endnu. Opret din første kilde for at komme i gang.",
     "save": "Gem",
@@ -331,18 +338,13 @@
     "other": "Andet"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Intern HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Ekstern HDD",
-    "internal_drive": "Intern HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB-nøgle",
-    "sd_card": "SD-kort",
-    "cloud": "Sky",
-    "tape": "Bånd",
-    "optical": "Optisk (CD/DVD/BD)",
-    "network_share": "Netværksdeling",
-    "local": "Lokal",
-    "other": "Andet"
+    "usb_stick": "USB-nøgle", "sd_card": "SD-kort", "optical": "Optisk (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Netværksdeling", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Sky", "object_storage": "Objektlagring (S3)",
+    "tape": "Bånd", "raid": "RAID",
+    "local": "Lokal", "other": "Andet"
   },
   "folders": {
       "create": "Ny mappe",

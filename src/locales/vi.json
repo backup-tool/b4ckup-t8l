@@ -91,7 +91,8 @@
     "noMedia": "Chưa có phương tiện lưu trữ nào. Tạo phương tiện đầu tiên để bắt đầu.",
     "encrypted": "Đã mã hóa",
     "encryptionType": "Loại mã hóa",
-    "encryptionLabel": "Nhãn / ID khóa"
+    "encryptionLabel": "Nhãn / ID khóa",
+    "customType": "Tùy chỉnh"
   },
   "devices": {
     "title": "Thiết bị",
@@ -105,6 +106,12 @@
     "model": "Mẫu",
     "serialNumber": "Số sê-ri",
     "notes": "Ghi chú",
+    "brand": "Thương hiệu",
+    "provider": "Nhà cung cấp",
+    "ipAddress": "Địa chỉ IP",
+    "url": "URL",
+    "storageCapacity": "Dung lượng lưu trữ",
+    "customType": "Tùy chỉnh",
     "backupCount": "Số bản sao lưu",
     "noDevices": "Chưa có nguồn nào. Tạo nguồn đầu tiên để bắt đầu.",
     "save": "Lưu",
@@ -331,18 +338,13 @@
     "other": "Khác"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "HDD trong", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "HDD ngoài",
-    "internal_drive": "HDD trong",
-    "ssd": "SSD",
-    "usb_stick": "USB",
-    "sd_card": "Thẻ SD",
-    "cloud": "Đám mây",
-    "tape": "Băng từ",
-    "optical": "Quang (CD/DVD/BD)",
-    "network_share": "Chia sẻ mạng",
-    "local": "Cục bộ",
-    "other": "Khác"
+    "usb_stick": "USB", "sd_card": "Thẻ SD", "optical": "Quang (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Chia sẻ mạng", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Đám mây", "object_storage": "Lưu trữ đối tượng (S3)",
+    "tape": "Băng từ", "raid": "RAID",
+    "local": "Cục bộ", "other": "Khác"
   },
   "folders": {
       "create": "Thư mục mới",

@@ -91,7 +91,8 @@
     "noMedia": "هنوز رسانه ذخیره‌سازی وجود ندارد. اولین رسانه خود را ایجاد کنید.",
     "encrypted": "رمزنگاری شده",
     "encryptionType": "نوع رمزنگاری",
-    "encryptionLabel": "برچسب / شناسه کلید"
+    "encryptionLabel": "برچسب / شناسه کلید",
+    "customType": "سفارشی"
   },
   "devices": {
     "title": "دستگاه‌ها",
@@ -105,6 +106,12 @@
     "model": "مدل",
     "serialNumber": "شماره سریال",
     "notes": "یادداشت‌ها",
+    "brand": "برند",
+    "provider": "ارائه‌دهنده",
+    "ipAddress": "آدرس IP",
+    "url": "URL",
+    "storageCapacity": "ظرفیت ذخیره‌سازی",
+    "customType": "سفارشی",
     "backupCount": "پشتیبان‌ها",
     "noDevices": "هنوز منبعی وجود ندارد. اولین منبع خود را ایجاد کنید.",
     "save": "ذخیره",
@@ -331,18 +338,13 @@
     "other": "سایر"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "HDD داخلی", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "HDD خارجی",
-    "internal_drive": "HDD داخلی",
-    "ssd": "SSD",
-    "usb_stick": "فلش USB",
-    "sd_card": "کارت SD",
-    "cloud": "ابر",
-    "tape": "نوار",
-    "optical": "نوری (CD/DVD/BD)",
-    "network_share": "اشتراک شبکه",
-    "local": "محلی",
-    "other": "سایر"
+    "usb_stick": "فلش USB", "sd_card": "کارت SD", "optical": "نوری (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "اشتراک شبکه", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "ابر", "object_storage": "ذخیره‌سازی شیء (S3)",
+    "tape": "نوار", "raid": "RAID",
+    "local": "محلی", "other": "سایر"
   },
   "folders": {
       "create": "پوشه جدید",

@@ -8,6 +8,7 @@ import { Modal } from "@/components/ui/Modal";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
 import { Input, Textarea, Label } from "@/components/ui/Input";
 import { CustomSelect } from "@/components/ui/CustomSelect";
+import { ComboSelect } from "@/components/ui/ComboSelect";
 import { TrashSection } from "@/components/ui/TrashSection";
 import {
   FolderToolbar,
@@ -28,7 +29,7 @@ import {
   restoreDevice,
   permanentDeleteDevice,
 } from "@/lib/db";
-import { DEVICE_TYPES } from "@/lib/types";
+import { DEVICE_TYPES, getDeviceFields } from "@/lib/types";
 import { useFolders } from "@/lib/useFolders";
 import { useDragDrop } from "@/lib/useDragDrop";
 import type { FolderData } from "@/lib/useFolders";
@@ -46,6 +47,7 @@ export function Devices() {
   const [sortField, setSortField] = useState("name");
   const [sortDir, setSortDir] = useState("asc");
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
+  const [bulkConfirmOpen, setBulkConfirmOpen] = useState(false);
 
   // Folder support
   const folderHook = useFolders("device");
@@ -70,6 +72,11 @@ export function Devices() {
     model: "",
     serial_number: "",
     notes: "",
+    brand: "",
+    provider: "",
+    ip_address: "",
+    url: "",
+    storage_capacity: "",
   });
 
   useEffect(() => {
@@ -98,9 +105,11 @@ export function Devices() {
     setLoading(false);
   }
 
+  const emptyForm = { name: "", type: "laptop", os: "", model: "", serial_number: "", notes: "", brand: "", provider: "", ip_address: "", url: "", storage_capacity: "" };
+
   function openCreate() {
     setEditing(null);
-    setForm({ name: "", type: "laptop", os: "", model: "", serial_number: "", notes: "" });
+    setForm(emptyForm);
     setModalOpen(true);
   }
 
@@ -113,34 +122,38 @@ export function Devices() {
       model: (d.model as string) || "",
       serial_number: (d.serial_number as string) || "",
       notes: (d.notes as string) || "",
+      brand: (d.brand as string) || "",
+      provider: (d.provider as string) || "",
+      ip_address: (d.ip_address as string) || "",
+      url: (d.url as string) || "",
+      storage_capacity: (d.storage_capacity as string) || "",
     });
     setModalOpen(true);
   }
 
+  const deviceData = () => ({
+    name: form.name,
+    type: form.type,
+    os: form.os || null,
+    model: form.model || null,
+    serial_number: form.serial_number || null,
+    notes: form.notes || null,
+    brand: form.brand || null,
+    provider: form.provider || null,
+    ip_address: form.ip_address || null,
+    url: form.url || null,
+    storage_capacity: form.storage_capacity || null,
+  });
+
   async function handleSave() {
     if (editing) {
-      await updateDevice(editing.id as number, {
-        name: form.name,
-        type: form.type,
-        os: form.os || null,
-        model: form.model || null,
-        serial_number: form.serial_number || null,
-        notes: form.notes || null,
-      });
+      await updateDevice(editing.id as number, deviceData());
     } else {
       await createDevice(form.name, form.type);
-      // Get the device we just created and update it with extra fields
       const all = await getDeviceWithBackupCount();
       const created = all.find((d) => d.name === form.name);
-      if (created && (form.os || form.model || form.serial_number || form.notes)) {
-        await updateDevice(created.id as number, {
-          name: form.name,
-          type: form.type,
-          os: form.os || null,
-          model: form.model || null,
-          serial_number: form.serial_number || null,
-          notes: form.notes || null,
-        });
+      if (created) {
+        await updateDevice(created.id as number, deviceData());
       }
     }
     setModalOpen(false);
@@ -231,6 +244,9 @@ export function Devices() {
                 }}
               />
             )}
+            <Button size="sm" variant="destructive" onClick={() => setBulkConfirmOpen(true)}>
+              {t("common.delete")}
+            </Button>
           </div>
         </div>
       )}
@@ -334,39 +350,103 @@ export function Devices() {
           </div>
           <div>
             <Label>{t("devices.type")}</Label>
-            <CustomSelect
+            <ComboSelect
               value={form.type}
               onChange={(val) => setForm({ ...form, type: val })}
               options={DEVICE_TYPES.map((type) => ({
                 value: type,
                 label: t(`deviceTypes.${type}`, { defaultValue: type }),
               }))}
+              createLabel={t("devices.customType")}
             />
           </div>
-          <div>
-            <Label>{t("devices.os")}</Label>
-            <Input
-              value={form.os}
-              onChange={(e) => setForm({ ...form, os: e.target.value })}
-              placeholder="macOS 15, Windows 11, iOS 19..."
-            />
-          </div>
-          <div>
-            <Label>{t("devices.model")}</Label>
-            <Input
-              value={form.model}
-              onChange={(e) => setForm({ ...form, model: e.target.value })}
-              placeholder="MacBook Pro 16' M4 Max"
-            />
-          </div>
-          <div>
-            <Label>{t("devices.serialNumber")}</Label>
-            <Input
-              value={form.serial_number}
-              onChange={(e) => setForm({ ...form, serial_number: e.target.value })}
-              placeholder="C02X..."
-            />
-          </div>
+          {(() => {
+            const fields = getDeviceFields(form.type);
+            return (
+              <>
+                {fields.includes("brand") && (
+                  <div>
+                    <Label>{t("devices.brand")}</Label>
+                    <Input
+                      value={form.brand}
+                      onChange={(e) => setForm({ ...form, brand: e.target.value })}
+                      placeholder="Apple, Samsung, Dell..."
+                    />
+                  </div>
+                )}
+                {fields.includes("model") && (
+                  <div>
+                    <Label>{t("devices.model")}</Label>
+                    <Input
+                      value={form.model}
+                      onChange={(e) => setForm({ ...form, model: e.target.value })}
+                      placeholder="MacBook Pro 16' M4 Max"
+                    />
+                  </div>
+                )}
+                {fields.includes("os") && (
+                  <div>
+                    <Label>{t("devices.os")}</Label>
+                    <Input
+                      value={form.os}
+                      onChange={(e) => setForm({ ...form, os: e.target.value })}
+                      placeholder="macOS 15, Windows 11, iOS 19..."
+                    />
+                  </div>
+                )}
+                {fields.includes("serial_number") && (
+                  <div>
+                    <Label>{t("devices.serialNumber")}</Label>
+                    <Input
+                      value={form.serial_number}
+                      onChange={(e) => setForm({ ...form, serial_number: e.target.value })}
+                      placeholder="C02X..."
+                    />
+                  </div>
+                )}
+                {fields.includes("ip_address") && (
+                  <div>
+                    <Label>{t("devices.ipAddress")}</Label>
+                    <Input
+                      value={form.ip_address}
+                      onChange={(e) => setForm({ ...form, ip_address: e.target.value })}
+                      placeholder="192.168.1.100"
+                    />
+                  </div>
+                )}
+                {fields.includes("provider") && (
+                  <div>
+                    <Label>{t("devices.provider")}</Label>
+                    <Input
+                      value={form.provider}
+                      onChange={(e) => setForm({ ...form, provider: e.target.value })}
+                      placeholder="Google, AWS, Dropbox..."
+                    />
+                  </div>
+                )}
+                {fields.includes("url") && (
+                  <div>
+                    <Label>{t("devices.url")}</Label>
+                    <Input
+                      value={form.url}
+                      onChange={(e) => setForm({ ...form, url: e.target.value })}
+                      placeholder="https://..."
+                    />
+                  </div>
+                )}
+                {fields.includes("storage_capacity") && (
+                  <div>
+                    <Label>{t("devices.storageCapacity")}</Label>
+                    <Input
+                      value={form.storage_capacity}
+                      onChange={(e) => setForm({ ...form, storage_capacity: e.target.value })}
+                      placeholder="512 GB, 2 TB..."
+                    />
+                  </div>
+                )}
+              </>
+            );
+          })()}
           <div>
             <Label>{t("devices.notes")}</Label>
             <Textarea
@@ -394,6 +474,22 @@ export function Devices() {
         message={t("trash.confirmSoftDelete")}
         confirmLabel={t("trash.moveToTrash")}
         cancelLabel={t("common.cancel")}
+      />
+
+      <ConfirmDialog
+        open={bulkConfirmOpen}
+        onClose={() => setBulkConfirmOpen(false)}
+        onConfirm={async () => {
+          for (const id of selectedIds) await softDeleteDevice(id);
+          setSelectedIds(new Set());
+          setBulkConfirmOpen(false);
+          await loadDevices();
+        }}
+        title={t("trash.moveToTrash")}
+        message={`${selectedIds.size} ${t("bulk.deleteConfirmDevices")}`}
+        confirmLabel={t("trash.moveToTrash")}
+        cancelLabel={t("common.cancel")}
+        variant="danger"
       />
 
       {/* Folder modals */}
@@ -498,8 +594,10 @@ function DevicesItemList({
                   <h3 className="text-sm font-semibold truncate">{d.name as string}</h3>
                   <p className="text-xs text-muted-foreground truncate">
                     {t(`deviceTypes.${d.type}`, { defaultValue: d.type as string })}
-                    {d.os ? ` \u00b7 ${d.os}` : ""}
-                    {d.model ? ` \u00b7 ${d.model}` : ""}
+                    {d.brand ? ` · ${d.brand}` : ""}
+                    {d.model ? ` · ${d.model}` : ""}
+                    {d.os ? ` · ${d.os}` : ""}
+                    {d.provider ? ` · ${d.provider}` : ""}
                   </p>
                 </div>
                 <span className="text-xs text-muted-foreground shrink-0">{d.backup_count as number} {t("devices.backupCount")}</span>
@@ -561,10 +659,10 @@ function DevicesItemList({
               </div>}
             </div>
             <div className="space-y-1 text-xs text-muted-foreground mt-3">
-              {d.os && (
+              {d.brand && (
                 <div className="flex justify-between gap-2">
-                  <span className="shrink-0">{t("devices.os")}</span>
-                  <span className="text-foreground truncate">{d.os as string}</span>
+                  <span className="shrink-0">{t("devices.brand")}</span>
+                  <span className="text-foreground truncate">{d.brand as string}</span>
                 </div>
               )}
               {d.model && (
@@ -573,10 +671,40 @@ function DevicesItemList({
                   <span className="text-foreground truncate">{d.model as string}</span>
                 </div>
               )}
+              {d.os && (
+                <div className="flex justify-between gap-2">
+                  <span className="shrink-0">{t("devices.os")}</span>
+                  <span className="text-foreground truncate">{d.os as string}</span>
+                </div>
+              )}
               {d.serial_number && (
                 <div className="flex justify-between gap-2">
                   <span className="shrink-0">{t("devices.serialNumber")}</span>
                   <span className="text-foreground font-mono text-[10px] truncate">{d.serial_number as string}</span>
+                </div>
+              )}
+              {d.ip_address && (
+                <div className="flex justify-between gap-2">
+                  <span className="shrink-0">{t("devices.ipAddress")}</span>
+                  <span className="text-foreground font-mono text-[10px] truncate">{d.ip_address as string}</span>
+                </div>
+              )}
+              {d.provider && (
+                <div className="flex justify-between gap-2">
+                  <span className="shrink-0">{t("devices.provider")}</span>
+                  <span className="text-foreground truncate">{d.provider as string}</span>
+                </div>
+              )}
+              {d.url && (
+                <div className="flex justify-between gap-2">
+                  <span className="shrink-0">{t("devices.url")}</span>
+                  <span className="text-foreground truncate">{d.url as string}</span>
+                </div>
+              )}
+              {d.storage_capacity && (
+                <div className="flex justify-between gap-2">
+                  <span className="shrink-0">{t("devices.storageCapacity")}</span>
+                  <span className="text-foreground truncate">{d.storage_capacity as string}</span>
                 </div>
               )}
               <div className="flex justify-between pt-1 border-t border-border mt-2">

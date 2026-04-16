@@ -91,7 +91,8 @@
     "noMedia": "Nog geen opslagmedia. Maak je eerste medium om te beginnen.",
     "encrypted": "Versleuteld",
     "encryptionType": "Versleutelingstype",
-    "encryptionLabel": "Label / Sleutel-ID"
+    "encryptionLabel": "Label / Sleutel-ID",
+    "customType": "Aangepast"
   },
   "devices": {
     "title": "Apparaten",
@@ -105,6 +106,12 @@
     "model": "Model",
     "serialNumber": "Serienummer",
     "notes": "Notities",
+    "brand": "Merk",
+    "provider": "Aanbieder",
+    "ipAddress": "IP-adres",
+    "url": "URL",
+    "storageCapacity": "Opslagcapaciteit",
+    "customType": "Aangepast",
     "backupCount": "Back-ups",
     "noDevices": "Nog geen bronnen. Maak je eerste bron om te beginnen.",
     "save": "Opslaan",
@@ -331,18 +338,13 @@
     "other": "Overig"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Interne HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Externe HDD",
-    "internal_drive": "Interne HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB-stick",
-    "sd_card": "SD-kaart",
-    "cloud": "Cloud",
-    "tape": "Tape",
-    "optical": "Optisch (CD/DVD/BD)",
-    "network_share": "Netwerkshare",
-    "local": "Lokaal",
-    "other": "Overig"
+    "usb_stick": "USB-stick", "sd_card": "SD-kaart", "optical": "Optisch (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Netwerkshare", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Cloud", "object_storage": "Objectopslag (S3)",
+    "tape": "Tape", "raid": "RAID",
+    "local": "Lokaal", "other": "Overig"
   },
   "folders": {
       "create": "Nieuwe map",

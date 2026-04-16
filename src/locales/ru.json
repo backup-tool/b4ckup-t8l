@@ -91,7 +91,8 @@
     "noMedia": "Носителей данных пока нет. Создайте первый носитель, чтобы начать.",
     "encrypted": "Зашифровано",
     "encryptionType": "Тип шифрования",
-    "encryptionLabel": "Метка / ID ключа"
+    "encryptionLabel": "Метка / ID ключа",
+    "customType": "Пользовательский"
   },
   "devices": {
     "title": "Устройства",
@@ -105,6 +106,12 @@
     "model": "Модель",
     "serialNumber": "Серийный номер",
     "notes": "Заметки",
+    "brand": "Бренд",
+    "provider": "Провайдер",
+    "ipAddress": "IP-адрес",
+    "url": "URL",
+    "storageCapacity": "Ёмкость хранилища",
+    "customType": "Пользовательский",
     "backupCount": "Резервные копии",
     "noDevices": "Источников пока нет. Создайте первый источник, чтобы начать.",
     "save": "Сохранить",
@@ -331,18 +338,13 @@
     "other": "Прочее"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "Внутренний HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "Внешний HDD",
-    "internal_drive": "Внутренний HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB-флешка",
-    "sd_card": "SD-карта",
-    "cloud": "Облако",
-    "tape": "Лента",
-    "optical": "Оптический (CD/DVD/BD)",
-    "network_share": "Сетевой ресурс",
-    "local": "Локальный",
-    "other": "Прочее"
+    "usb_stick": "USB-флешка", "sd_card": "SD-карта", "optical": "Оптический (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "Сетевой ресурс", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "Облако", "object_storage": "Объектное хранилище (S3)",
+    "tape": "Лента", "raid": "RAID",
+    "local": "Локальный", "other": "Прочее"
   },
   "folders": {
       "create": "Новая папка",

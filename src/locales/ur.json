@@ -91,7 +91,8 @@
     "noMedia": "ابھی تک کوئی اسٹوریج میڈیا نہیں۔ شروع کرنے کے لیے اپنا پہلا میڈیم بنائیں۔",
     "encrypted": "انکرپٹڈ",
     "encryptionType": "انکرپشن قسم",
-    "encryptionLabel": "لیبل / کلید ID"
+    "encryptionLabel": "لیبل / کلید ID",
+    "customType": "حسب ضرورت"
   },
   "devices": {
     "title": "آلات",
@@ -105,6 +106,12 @@
     "model": "ماڈل",
     "serialNumber": "سیریل نمبر",
     "notes": "نوٹس",
+    "brand": "برانڈ",
+    "provider": "فراہم کنندہ",
+    "ipAddress": "IP ایڈریس",
+    "url": "URL",
+    "storageCapacity": "ذخیرہ کرنے کی گنجائش",
+    "customType": "حسب ضرورت",
     "backupCount": "بیک اپ",
     "noDevices": "ابھی تک کوئی ذریعہ نہیں۔ شروع کرنے کے لیے اپنا پہلا ذریعہ بنائیں۔",
     "save": "محفوظ کریں",
@@ -331,18 +338,13 @@
     "other": "دیگر"
   },
   "storageTypes": {
-    "nas": "NAS",
+    "internal_drive": "اندرونی HDD", "ssd": "SSD", "nvme": "NVMe",
     "external_drive": "بیرونی HDD",
-    "internal_drive": "اندرونی HDD",
-    "ssd": "SSD",
-    "usb_stick": "USB اسٹک",
-    "sd_card": "SD کارڈ",
-    "cloud": "کلاؤڈ",
-    "tape": "ٹیپ",
-    "optical": "آپٹیکل (CD/DVD/BD)",
-    "network_share": "نیٹ ورک شیئر",
-    "local": "مقامی",
-    "other": "دیگر"
+    "usb_stick": "USB اسٹک", "sd_card": "SD کارڈ", "optical": "آپٹیکل (CD/DVD/BD)",
+    "nas": "NAS", "network_share": "نیٹ ورک شیئر", "ftp": "FTP / SFTP", "webdav": "WebDAV",
+    "cloud": "کلاؤڈ", "object_storage": "آبجیکٹ اسٹوریج (S3)",
+    "tape": "ٹیپ", "raid": "RAID",
+    "local": "مقامی", "other": "دیگر"
   },
   "folders": {
       "create": "نیا فولڈر",

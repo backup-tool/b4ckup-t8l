@@ -52,7 +52,7 @@ import {
   getBackupsWithStatus,
   toggleBackupPaused,
 } from "@/lib/db";
-import { BACKUP_CATEGORIES, SIZE_UNITS, SIZE_MULTIPLIERS } from "@/lib/types";
+import { BACKUP_CATEGORIES, BACKUP_MODES, SCHEDULE_FREQUENCIES, SIZE_UNITS, SIZE_MULTIPLIERS } from "@/lib/types";
 import type { BackupStatus } from "@/lib/types";
 import { formatBytes, formatDate, todayISO } from "@/lib/format";
 import { useAppStore } from "@/lib/store";
@@ -115,6 +115,13 @@ export function BackupDetail() {
     notes: "",
     encryption_info: "",
     reminder_interval_days: "30",
+    backup_mode: "manual" as string,
+    schedule_frequency: "daily" as string,
+    schedule_time: "",
+    schedule_weekday: "",
+    schedule_month_day: "",
+    schedule_custom_interval_days: "",
+    schedule_note: "",
   });
   const [locationForm, setLocationForm] = useState({
     storage_media_id: "",
@@ -269,6 +276,13 @@ export function BackupDetail() {
       notes: (backup.notes as string) || "",
       encryption_info: (backup.encryption_info as string) || "",
       reminder_interval_days: String(backup.reminder_interval_days || 30),
+      backup_mode: (backup.backup_mode as string) || "manual",
+      schedule_frequency: (backup.schedule_frequency as string) || "daily",
+      schedule_time: (backup.schedule_time as string) || "",
+      schedule_weekday: backup.schedule_weekday != null ? String(backup.schedule_weekday) : "",
+      schedule_month_day: backup.schedule_month_day != null ? String(backup.schedule_month_day) : "",
+      schedule_custom_interval_days: backup.schedule_custom_interval_days != null ? String(backup.schedule_custom_interval_days) : "",
+      schedule_note: (backup.schedule_note as string) || "",
     });
     setEditModalOpen(true);
   }
@@ -277,6 +291,7 @@ export function BackupDetail() {
     if (editForm.device_name.trim()) {
       await createDevice(editForm.device_name.trim());
     }
+    const isAutomatic = editForm.backup_mode === "automatic";
     await updateBackup(backup!.id as number, {
       name: editForm.name,
       device_name: editForm.device_name,
@@ -287,6 +302,13 @@ export function BackupDetail() {
       reminder_interval_days: editForm.reminder_interval_days
         ? parseInt(editForm.reminder_interval_days)
         : 30,
+      backup_mode: editForm.backup_mode,
+      schedule_frequency: isAutomatic ? editForm.schedule_frequency : null,
+      schedule_time: isAutomatic && editForm.schedule_time ? editForm.schedule_time : null,
+      schedule_weekday: isAutomatic && editForm.schedule_weekday ? parseInt(editForm.schedule_weekday) : null,
+      schedule_month_day: isAutomatic && editForm.schedule_month_day ? parseInt(editForm.schedule_month_day) : null,
+      schedule_custom_interval_days: isAutomatic && editForm.schedule_custom_interval_days ? parseInt(editForm.schedule_custom_interval_days) : null,
+      schedule_note: isAutomatic && editForm.schedule_note ? editForm.schedule_note : null,
     });
     setEditModalOpen(false);
     triggerRefresh();
@@ -601,9 +623,23 @@ export function BackupDetail() {
       </div>
 
       {/* Info cards */}
-      {(backup.notes || backup.encryption_info) && (
+      {(backup.notes || backup.encryption_info || backup.backup_mode) && (
         <Card>
           <div className="grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <p className="text-xs text-muted-foreground mb-1">{t("backups.mode")}</p>
+              <p>{t(`backups.${backup.backup_mode || "manual"}`)}</p>
+              {backup.backup_mode === "automatic" && backup.schedule_frequency && (
+                <div className="mt-1 text-xs text-muted-foreground space-y-0.5">
+                  <p>{t("backups.frequency")}: {t(`schedule.${backup.schedule_frequency}`)}</p>
+                  {backup.schedule_time && <p>{t("backups.time")}: {String(backup.schedule_time)}</p>}
+                  {backup.schedule_weekday != null && <p>{t("backups.weekday")}: {t(`weekdays.${backup.schedule_weekday}`)}</p>}
+                  {backup.schedule_month_day != null && <p>{t("backups.monthDay")}: {String(backup.schedule_month_day)}</p>}
+                  {backup.schedule_custom_interval_days != null && <p>{t("backups.customIntervalDays")}: {String(backup.schedule_custom_interval_days)}</p>}
+                  {backup.schedule_note && <p>{t("backups.scheduleNote")}: {String(backup.schedule_note)}</p>}
+                </div>
+              )}
+            </div>
             {backup.notes && (
               <div>
                 <p className="text-xs text-muted-foreground mb-1">{t("backups.notes")}</p>
@@ -1188,7 +1224,7 @@ export function BackupDetail() {
           </div>
           <div>
             <Label>{t("backups.category")}</Label>
-            <CustomSelect
+            <ComboSelect
               value={editForm.category}
               onChange={(val) =>
                 setEditForm({ ...editForm, category: val })
@@ -1197,6 +1233,7 @@ export function BackupDetail() {
                 value: cat,
                 label: t(`categories.${cat}`, { defaultValue: cat }),
               }))}
+              createLabel={t("backups.customCategory")}
             />
           </div>
           <div>
@@ -1230,6 +1267,84 @@ export function BackupDetail() {
               }
             />
           </div>
+          <div>
+            <Label>{t("backups.mode")}</Label>
+            <CustomSelect
+              value={editForm.backup_mode}
+              onChange={(val) => setEditForm({ ...editForm, backup_mode: val })}
+              options={BACKUP_MODES.map((m) => ({
+                value: m,
+                label: t(`backups.${m}`),
+              }))}
+            />
+          </div>
+          {editForm.backup_mode === "automatic" && (
+            <>
+              <div>
+                <Label>{t("backups.frequency")}</Label>
+                <CustomSelect
+                  value={editForm.schedule_frequency}
+                  onChange={(val) => setEditForm({ ...editForm, schedule_frequency: val })}
+                  options={SCHEDULE_FREQUENCIES.map((f) => ({
+                    value: f,
+                    label: t(`schedule.${f}`),
+                  }))}
+                />
+              </div>
+              <div>
+                <Label>{t("backups.time")}</Label>
+                <Input
+                  type="time"
+                  value={editForm.schedule_time}
+                  onChange={(e) => setEditForm({ ...editForm, schedule_time: e.target.value })}
+                />
+              </div>
+              {editForm.schedule_frequency === "weekly" && (
+                <div>
+                  <Label>{t("backups.weekday")}</Label>
+                  <CustomSelect
+                    value={editForm.schedule_weekday}
+                    onChange={(val) => setEditForm({ ...editForm, schedule_weekday: val })}
+                    options={[0,1,2,3,4,5,6].map((d) => ({
+                      value: String(d),
+                      label: t(`weekdays.${d}`),
+                    }))}
+                  />
+                </div>
+              )}
+              {editForm.schedule_frequency === "monthly" && (
+                <div>
+                  <Label>{t("backups.monthDay")}</Label>
+                  <Input
+                    type="number"
+                    min="1"
+                    max="31"
+                    value={editForm.schedule_month_day}
+                    onChange={(e) => setEditForm({ ...editForm, schedule_month_day: e.target.value })}
+                  />
+                </div>
+              )}
+              {editForm.schedule_frequency === "custom" && (
+                <div>
+                  <Label>{t("backups.customIntervalDays")}</Label>
+                  <Input
+                    type="number"
+                    min="1"
+                    value={editForm.schedule_custom_interval_days}
+                    onChange={(e) => setEditForm({ ...editForm, schedule_custom_interval_days: e.target.value })}
+                  />
+                </div>
+              )}
+              <div>
+                <Label>{t("backups.scheduleNote")}</Label>
+                <Input
+                  value={editForm.schedule_note}
+                  onChange={(e) => setEditForm({ ...editForm, schedule_note: e.target.value })}
+                  placeholder={t("backups.scheduleNotePlaceholder")}
+                />
+              </div>
+            </>
+          )}
           <div>
             <Label>{t("backups.notes")}</Label>
             <Textarea

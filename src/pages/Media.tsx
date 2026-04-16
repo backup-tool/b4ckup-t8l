@@ -8,6 +8,7 @@ import { Modal } from "@/components/ui/Modal";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
 import { Input, Textarea, Label } from "@/components/ui/Input";
 import { CustomSelect } from "@/components/ui/CustomSelect";
+import { ComboSelect } from "@/components/ui/ComboSelect";
 import { TrashSection } from "@/components/ui/TrashSection";
 import {
   FolderToolbar,
@@ -50,6 +51,7 @@ export function Media() {
   const [sortField, setSortField] = useState("name");
   const [sortDir, setSortDir] = useState("asc");
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
+  const [bulkConfirmOpen, setBulkConfirmOpen] = useState(false);
 
   // Folder support
   const folderHook = useFolders("media", refreshKey);
@@ -261,6 +263,9 @@ export function Media() {
                 }}
               />
             )}
+            <Button size="sm" variant="destructive" onClick={() => setBulkConfirmOpen(true)}>
+              {t("common.delete")}
+            </Button>
           </div>
         </div>
       )}
@@ -364,13 +369,14 @@ export function Media() {
           </div>
           <div>
             <Label>{t("media.type")}</Label>
-            <CustomSelect
+            <ComboSelect
               value={form.type}
               onChange={(val) => setForm({ ...form, type: val })}
               options={STORAGE_TYPES.map((type) => ({
                 value: type,
                 label: t(`storageTypes.${type}`, { defaultValue: type }),
               }))}
+              createLabel={t("media.customType")}
             />
           </div>
           <div>
@@ -468,6 +474,22 @@ export function Media() {
         message={t("trash.confirmSoftDeleteMedia")}
         confirmLabel={t("trash.moveToTrash")}
         cancelLabel={t("common.cancel")}
+      />
+
+      <ConfirmDialog
+        open={bulkConfirmOpen}
+        onClose={() => setBulkConfirmOpen(false)}
+        onConfirm={async () => {
+          for (const id of selectedIds) await softDeleteMedia(id);
+          setSelectedIds(new Set());
+          setBulkConfirmOpen(false);
+          triggerRefresh(); await loadAll();
+        }}
+        title={t("trash.moveToTrash")}
+        message={`${selectedIds.size} ${t("bulk.deleteConfirmMedia")}`}
+        confirmLabel={t("trash.moveToTrash")}
+        cancelLabel={t("common.cancel")}
+        variant="danger"
       />
 
       {/* Folder modals */}
