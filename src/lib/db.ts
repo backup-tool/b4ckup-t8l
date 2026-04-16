@@ -700,7 +700,8 @@ export async function getBackupsWithStatus() {
     const latest = await getLatestEntryForBackup(backup.id as number);
     const locations = await getLocationsForBackup(backup.id as number);
 
-    let status: "ok" | "warning" | "critical" | "paused" = "critical";
+    const isAutomatic = backup.backup_mode === "automatic" && backup.schedule_frequency;
+    let status: "ok" | "warning" | "critical" | "paused" = isAutomatic ? "ok" : "critical";
     if (backup.is_paused) {
       status = "paused";
     } else if (latest) {
@@ -712,6 +713,8 @@ export async function getBackupsWithStatus() {
         status = "ok";
       } else if (daysSince <= reminderDays * 2) {
         status = "warning";
+      } else {
+        status = "critical";
       }
     }
 

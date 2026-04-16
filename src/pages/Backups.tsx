@@ -32,11 +32,14 @@ import {
   permanentDeleteBackup,
   toggleBackupPaused,
   getAllDevices,
+  getAllMedia,
   createDevice,
+  createEntry,
 } from "@/lib/db";
-import { BACKUP_CATEGORIES, BACKUP_MODES, SCHEDULE_FREQUENCIES } from "@/lib/types";
+import { BACKUP_CATEGORIES, BACKUP_MODES, SCHEDULE_FREQUENCIES, SIZE_UNITS, SIZE_MULTIPLIERS } from "@/lib/types";
 import type { BackupStatus } from "@/lib/types";
-import { formatBytes, formatDate, daysAgo } from "@/lib/format";
+import { formatBytes, formatDate, daysAgo, todayISO } from "@/lib/format";
+import { DatePicker } from "@/components/ui/DatePicker";
 import { cn } from "@/lib/cn";
 import { useAppStore, useViewPrefs } from "@/lib/store";
 import { useFolders } from "@/lib/useFolders";
@@ -74,6 +77,15 @@ export function Backups() {
   const [editMode, setEditMode] = useState(false);
   const [lastClickedId, setLastClickedId] = useState<number | null>(null);
   const [selectedFolderIds, setSelectedFolderIds] = useState<Set<number>>(new Set());
+  const [quickAddBackupId, setQuickAddBackupId] = useState<number | null>(null);
+  const [mediaList, setMediaList] = useState<Array<Record<string, any>>>([]);
+  const [quickAddForm, setQuickAddForm] = useState({
+    storage_media_id: "",
+    size_bytes: "",
+    size_unit: "GB",
+    backup_date: todayISO(),
+    notes: "",
+  });
 
   // Folder support
   const folderHook = useFolders("backup", refreshKey);
@@ -165,14 +177,38 @@ export function Backups() {
 
   async function loadAll() {
     try {
-      const [b, d, del] = await Promise.all([getBackupsWithStatus(), getAllDevices(), getDeletedBackups()]);
+      const [b, d, del, m] = await Promise.all([getBackupsWithStatus(), getAllDevices(), getDeletedBackups(), getAllMedia()]);
       setBackups(b);
       setDevices(d);
       setDeleted(del);
+      setMediaList(m);
     } catch (err) {
       console.error(err);
     }
     setLoading(false);
+  }
+
+  function openQuickAdd(backupId: number, e: React.MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    setQuickAddBackupId(backupId);
+    setQuickAddForm({ storage_media_id: "", size_bytes: "", size_unit: "GB", backup_date: todayISO(), notes: "" });
+  }
+
+  async function handleQuickAdd() {
+    if (!quickAddBackupId || !quickAddForm.storage_media_id) return;
+    const raw = parseFloat(quickAddForm.size_bytes) || 0;
+    const bytes = Math.round(raw * (SIZE_MULTIPLIERS[quickAddForm.size_unit] || 1));
+    await createEntry({
+      backup_id: quickAddBackupId,
+      storage_media_id: parseInt(quickAddForm.storage_media_id),
+      size_bytes: bytes,
+      backup_date: quickAddForm.backup_date || todayISO(),
+      notes: quickAddForm.notes || null,
+    });
+    setQuickAddBackupId(null);
+    triggerRefresh();
+    await loadAll();
   }
 
   async function handleCreate() {
@@ -523,6 +559,7 @@ export function Backups() {
           registerDropTarget={registerDropTarget}
           isDragOver={isDragOver}
           handleItemClick={handleItemClick}
+          openQuickAdd={openQuickAdd}
         />
       ) : folderHook.viewMode === "folder" && folderHook.currentFolderId === null ? (
         /* Folder mode root: show folder cards + unfiled items */
@@ -564,6 +601,7 @@ export function Backups() {
             loadAll={loadAll}
             makeDraggable={editMode ? makeDraggable : undefined}
             handleItemClick={handleItemClick}
+            openQuickAdd={openQuickAdd}
           />
         </div>
       ) : (
@@ -582,6 +620,7 @@ export function Backups() {
           loadAll={loadAll}
           makeDraggable={editMode ? makeDraggable : undefined}
           handleItemClick={handleItemClick}
+          openQuickAdd={openQuickAdd}
         />
       )}
 
@@ -750,6 +789,66 @@ export function Backups() {
         </div>
       </Modal>
 
+      {/* Quick Add Entry Modal */}
+      <Modal
+        open={quickAddBackupId !== null}
+        onClose={() => setQuickAddBackupId(null)}
+        onSave={handleQuickAdd}
+        title={t("backups.addEntry")}
+      >
+        <div className="space-y-4">
+          <div>
+            <Label>{t("backups.selectMedia")}</Label>
+            <CustomSelect
+              value={quickAddForm.storage_media_id}
+              onChange={(val) => setQuickAddForm({ ...quickAddForm, storage_media_id: val })}
+              options={mediaList.map((m) => ({ value: String(m.id), label: m.name as string }))}
+              placeholder={t("backups.selectMedia")}
+            />
+          </div>
+          <div>
+            <Label>{t("backups.size")}</Label>
+            <div className="flex gap-2">
+              <Input
+                type="number"
+                value={quickAddForm.size_bytes}
+                onChange={(e) => setQuickAddForm({ ...quickAddForm, size_bytes: e.target.value })}
+                placeholder="0"
+                className="flex-1"
+              />
+              <CustomSelect
+                className="w-24"
+                value={quickAddForm.size_unit}
+                onChange={(val) => setQuickAddForm({ ...quickAddForm, size_unit: val })}
+                options={SIZE_UNITS.map((u) => ({ value: u.value, label: u.label }))}
+              />
+            </div>
+          </div>
+          <div>
+            <Label>{t("backups.backupDate")}</Label>
+            <DatePicker
+              value={quickAddForm.backup_date}
+              onChange={(val) => setQuickAddForm({ ...quickAddForm, backup_date: val })}
+            />
+          </div>
+          <div>
+            <Label>{t("backups.notes")}</Label>
+            <Textarea
+              value={quickAddForm.notes}
+              onChange={(e) => setQuickAddForm({ ...quickAddForm, notes: e.target.value })}
+            />
+          </div>
+          <div className="flex justify-end gap-2 pt-2">
+            <Button variant="secondary" onClick={() => setQuickAddBackupId(null)}>
+              {t("common.cancel")}
+            </Button>
+            <Button onClick={handleQuickAdd} disabled={!quickAddForm.storage_media_id}>
+              {t("common.save")}
+            </Button>
+          </div>
+        </div>
+      </Modal>
+
       {/* Soft delete confirm */}
       <ConfirmDialog
         open={softDeleteId !== null}
@@ -831,6 +930,7 @@ function BackupsItemList({
   loadAll,
   makeDraggable,
   handleItemClick,
+  openQuickAdd,
 }: {
   items: Array<Record<string, any>>;
   view: "grid" | "list";
@@ -842,6 +942,7 @@ function BackupsItemList({
   loadAll: () => Promise<void>;
   makeDraggable?: (itemId: number, selectedIds: Set<number>, label?: string) => Record<string, any>;
   handleItemClick: (id: number, e: React.MouseEvent) => void;
+  openQuickAdd: (id: number, e: React.MouseEvent) => void;
 }) {
   if (items.length === 0) {
     return (
@@ -864,7 +965,16 @@ function BackupsItemList({
                 {b.device_name as string} · {t(`categories.${b.category}`, { defaultValue: b.category as string })}
               </p>
             </div>
-            <StatusBadge status={b.status as BackupStatus} />
+            <div className="flex items-center gap-1.5">
+              <StatusBadge status={b.status as BackupStatus} />
+              <button
+                onClick={(e) => openQuickAdd(b.id as number, e)}
+                className="p-1 rounded hover:bg-muted transition-colors"
+                title={t("backups.addEntry")}
+              >
+                <Plus className="w-3.5 h-3.5 text-muted-foreground" />
+              </button>
+            </div>
           </div>
           <div className="flex items-center justify-between mt-3 pt-3 border-t border-border">
             <span className="text-xs text-muted-foreground">
@@ -951,6 +1061,13 @@ function BackupsItemList({
                       </p>
                     </div>
                     <StatusBadge status={b.status as BackupStatus} />
+                    <button
+                      onClick={(e) => openQuickAdd(b.id as number, e)}
+                      className="p-1.5 rounded hover:bg-muted transition-colors"
+                      title={t("backups.addEntry")}
+                    >
+                      <Plus className="w-3.5 h-3.5 text-muted-foreground" />
+                    </button>
                   </div>
                 </div>
               );
@@ -1042,6 +1159,7 @@ function BackupsExpandedView({
   registerDropTarget,
   isDragOver,
   handleItemClick,
+  openQuickAdd,
 }: {
   sorted: Array<Record<string, any>>;
   folderHook: ReturnType<typeof useFolders>;
@@ -1060,6 +1178,7 @@ function BackupsExpandedView({
   registerDropTarget: (folderId: number | null, el: HTMLElement | null) => void;
   isDragOver: (folderId: number | null) => boolean;
   handleItemClick: (id: number, e: React.MouseEvent) => void;
+  openQuickAdd: (id: number, e: React.MouseEvent) => void;
 }) {
   const groups = folderHook.groupItemsByFolder(sorted);
 
@@ -1099,6 +1218,7 @@ function BackupsExpandedView({
               loadAll={loadAll}
               makeDraggable={editMode ? makeDraggable : undefined}
               handleItemClick={handleItemClick}
+              openQuickAdd={openQuickAdd}
             />
           </FolderSection>
         );
