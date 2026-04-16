@@ -72,6 +72,7 @@
     "entryNumber": "Number",
     "pause": "Pause",
     "resume": "Resume",
+    "rescan": "Recalculate size",
     "mode": "Mode",
     "manual": "Manual",
     "automatic": "Automatic",

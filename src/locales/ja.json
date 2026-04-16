@@ -71,6 +71,7 @@
     "entryNumber": "番号",
     "pause": "一時停止",
     "resume": "再開",
+    "rescan": "サイズを再計算",
     "editLocation": "保存場所を編集",
     "mode": "モード",
     "manual": "手動",

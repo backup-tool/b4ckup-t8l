@@ -22,6 +22,7 @@ import {
   Pause,
   Play,
   ChevronDown,
+  RefreshCw,
 } from "lucide-react";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -267,6 +268,48 @@ export function BackupDetail() {
 
     calcSizes();
   }, [id, entries.length, locations.length]);
+
+  async function rescanEntry(entry: Record<string, any>) {
+    const loc = locations.find(
+      (l) => (l.storage_media_id as number) === (entry.storage_media_id as number)
+    );
+    if (!loc?.path_on_media || !entry.notes) return;
+
+    const basePath = loc.path_on_media as string;
+    const name = entry.notes as string;
+    const fullPath = basePath.endsWith("/") ? basePath + name : basePath + "/" + name;
+    const taskId = `rescan-${entry.id}`;
+
+    setSizeCalcProgress((prev) => ({
+      ...prev,
+      [`entry-${entry.id}`]: { bytes: 0, elapsed: 0, phase: "calculating" },
+    }));
+
+    let unlisten: (() => void) | null = null;
+    try {
+      const { listen } = await import("@tauri-apps/api/event");
+      unlisten = await listen<any>("size-progress", (event) => {
+        const d = event.payload;
+        if (d.taskId !== taskId) return;
+        setSizeCalcProgress((prev) => {
+          const old = prev[`entry-${entry.id}`];
+          if (old && d.phase === "calculating" && old.phase === "calculating" && (d.bytes || 0) < old.bytes) return prev;
+          return { ...prev, [`entry-${entry.id}`]: { bytes: d.bytes || 0, elapsed: d.elapsed || 0, phase: d.phase } };
+        });
+      });
+
+      const size = await invoke<number>("get_dir_size_with_progress", { path: fullPath, taskId });
+      if (size > 0) {
+        await updateEntrySize(entry.id as number, size);
+      }
+    } catch (err) {
+      console.warn(`Rescan failed for ${name}:`, err);
+    }
+
+    setSizeCalcProgress((prev) => ({ ...prev, [`entry-${entry.id}`]: { ...prev[`entry-${entry.id}`], phase: "done" } }));
+    if (unlisten) unlisten();
+    await load();
+  }
 
   if (!backup) return null;
 
@@ -923,6 +966,16 @@ export function BackupDetail() {
 
                 {/* Actions */}
                 <div className="flex items-center gap-1 shrink-0">
+                  {entry.notes && locations.some((l) => (l.storage_media_id as number) === (entry.storage_media_id as number) && l.path_on_media) && (
+                    <button
+                      onClick={() => rescanEntry(entry)}
+                      disabled={sizeCalcProgress[`entry-${entry.id}`]?.phase === "calculating"}
+                      className="p-1.5 rounded hover:bg-muted transition-colors disabled:opacity-40"
+                      title={t("backups.rescan")}
+                    >
+                      <RefreshCw className={`w-3.5 h-3.5 text-muted-foreground ${sizeCalcProgress[`entry-${entry.id}`]?.phase === "calculating" ? "animate-spin" : ""}`} />
+                    </button>
+                  )}
                   {!entry.verified_at && (
                     <Button
                       size="sm"

@@ -71,6 +71,7 @@
     "entryNumber": "번호",
     "pause": "일시 중지",
     "resume": "재개",
+    "rescan": "크기 다시 계산",
     "editLocation": "위치 편집",
     "mode": "모드",
     "manual": "수동",

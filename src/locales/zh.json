@@ -71,6 +71,7 @@
     "entryNumber": "编号",
     "pause": "暂停",
     "resume": "恢复",
+    "rescan": "重新计算大小",
     "editLocation": "编辑位置",
     "mode": "模式",
     "manual": "手动",
