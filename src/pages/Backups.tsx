@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Plus, Search, Database, Trash2, Monitor, Pause, Play, GripVertical } from "lucide-react";
+import { Plus, Search, Filter, ArrowUpDown, Database, Trash2, Monitor, Pause, Play, GripVertical, Pencil } from "lucide-react";
 import { ViewToggle } from "@/components/ui/ViewToggle";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -9,6 +9,7 @@ import { Modal } from "@/components/ui/Modal";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
 import { Input, Textarea, Label } from "@/components/ui/Input";
 import { CustomSelect } from "@/components/ui/CustomSelect";
+import { Popover } from "@/components/ui/Popover";
 import { ComboSelect } from "@/components/ui/ComboSelect";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { TrashSection } from "@/components/ui/TrashSection";
@@ -36,6 +37,7 @@ import {
 import { BACKUP_CATEGORIES, BACKUP_MODES, SCHEDULE_FREQUENCIES } from "@/lib/types";
 import type { BackupStatus } from "@/lib/types";
 import { formatBytes, formatDate, daysAgo } from "@/lib/format";
+import { cn } from "@/lib/cn";
 import { useAppStore } from "@/lib/store";
 import { useFolders } from "@/lib/useFolders";
 import { useDragDrop } from "@/lib/useDragDrop";
@@ -60,6 +62,7 @@ export function Backups() {
   const [bulkConfirmOpen, setBulkConfirmOpen] = useState(false);
   const [view, setView] = useState<"grid" | "list">("list");
   const [editMode, setEditMode] = useState(false);
+  const [lastClickedId, setLastClickedId] = useState<number | null>(null);
 
   // Folder support
   const folderHook = useFolders("backup", refreshKey);
@@ -106,10 +109,37 @@ export function Backups() {
         e.preventDefault();
         setModalOpen(true);
       }
+      if (editMode && (e.metaKey || e.ctrlKey) && e.key === "a") {
+        e.preventDefault();
+        setSelectedIds(new Set(backups.map((b) => b.id as number)));
+      }
+      if (editMode && e.key === "Escape") {
+        setSelectedIds(new Set());
+      }
     };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
-  }, []);
+  }, [editMode, backups]);
+
+  function handleItemClick(id: number, e: React.MouseEvent) {
+    if (!editMode) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const next = new Set(selectedIds);
+    if (e.shiftKey && lastClickedId != null) {
+      const ids = sorted.map((b) => b.id as number);
+      const start = ids.indexOf(lastClickedId);
+      const end = ids.indexOf(id);
+      if (start >= 0 && end >= 0) {
+        const [from, to] = [Math.min(start, end), Math.max(start, end)];
+        for (let i = from; i <= to; i++) next.add(ids[i]);
+      }
+    } else {
+      if (next.has(id)) next.delete(id); else next.add(id);
+    }
+    setSelectedIds(next);
+    setLastClickedId(id);
+  }
 
   async function loadAll() {
     try {
@@ -216,7 +246,7 @@ export function Backups() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <h1 className="text-xl font-bold">{t("backups.title")}</h1>
-          <ViewToggle view={view} onViewChange={setView} editMode={editMode} onEditModeChange={(v) => { setEditMode(v); if (!v) setSelectedIds(new Set()); }} />
+          <ViewToggle view={view} onViewChange={setView} />
           <FolderToolbar
             viewMode={folderHook.viewMode}
             onViewModeChange={folderHook.setViewMode}
@@ -224,7 +254,7 @@ export function Backups() {
           />
         </div>
         <div className="flex items-center gap-2">
-          {editMode && <TrashSection
+          <TrashSection
             items={deleted.map((b) => ({
               id: b.id as number,
               title: b.name as string,
@@ -236,7 +266,14 @@ export function Backups() {
             onRestoreAll={async () => { for (const b of deleted) await restoreBackup(b.id as number); triggerRefresh(); await loadAll(); }}
             onDeleteAll={async () => { for (const b of deleted) await permanentDeleteBackup(b.id as number); triggerRefresh(); await loadAll(); }}
             permanentDeleteMessage={t("trash.confirmPermanentBackup")}
-          />}
+          />
+          <Button
+            variant={editMode ? "primary" : "secondary"}
+            onClick={() => { setEditMode(!editMode); if (editMode) setSelectedIds(new Set()); }}
+          >
+            <Pencil className="w-4 h-4" />
+            {editMode ? t("common.done") : t("common.edit")}
+          </Button>
           <Button onClick={() => setModalOpen(true)}>
             <Plus className="w-4 h-4" />
             {t("backups.create")}
@@ -244,8 +281,8 @@ export function Backups() {
         </div>
       </div>
 
-      {/* Filters */}
-      <div className="flex gap-3">
+      {/* Search, Filter, Sort */}
+      <div className="flex gap-3 items-center">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
@@ -255,54 +292,99 @@ export function Backups() {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        <CustomSelect
-          className="w-40"
-          value={filterCategory}
-          onChange={setFilterCategory}
-          options={[
-            { value: "all", label: t("backups.filterAll") },
-            ...BACKUP_CATEGORIES.map((cat) => ({
-              value: cat,
-              label: t(`categories.${cat}`, { defaultValue: cat }),
-            })),
-            ...Array.from(new Set(backups.map((b) => b.category as string)))
-              .filter((cat) => !(BACKUP_CATEGORIES as readonly string[]).includes(cat))
-              .map((cat) => ({ value: cat, label: cat })),
-          ]}
-        />
-        <CustomSelect
-          className="w-36"
-          value={filterStatus}
-          onChange={setFilterStatus}
-          options={[
-            { value: "all", label: t("backups.filterAll") },
-            { value: "ok", label: t("status.ok") },
-            { value: "warning", label: t("status.warning") },
-            { value: "critical", label: t("status.critical") },
-            { value: "paused", label: t("status.paused") },
-          ]}
-        />
-        <CustomSelect
-          className="w-40"
-          value={sortField}
-          onChange={setSortField}
-          options={[
-            { value: "name", label: t("backups.name") },
-            { value: "device", label: t("backups.device") },
-            { value: "date", label: t("backups.lastBackup") },
-            { value: "size", label: t("backups.size") },
-            { value: "status", label: t("backups.status") },
-          ]}
-        />
-        <CustomSelect
-          className="w-28"
-          value={sortDir}
-          onChange={setSortDir}
-          options={[
-            { value: "asc", label: "↑" },
-            { value: "desc", label: "↓" },
-          ]}
-        />
+        <Popover
+          align="right"
+          trigger={
+            <button className="flex items-center gap-2 rounded-lg border border-input bg-background px-3 py-2 text-sm hover:border-ring/40 transition-colors">
+              <Filter className="w-4 h-4 text-muted-foreground" />
+              {t("common.filter")}
+              {(filterCategory !== "all" || filterStatus !== "all") && (
+                <span className="ml-1 px-1.5 py-0.5 text-[10px] font-medium rounded-full bg-primary text-primary-foreground">
+                  {(filterCategory !== "all" ? 1 : 0) + (filterStatus !== "all" ? 1 : 0)}
+                </span>
+              )}
+            </button>
+          }
+        >
+          <div className="space-y-3 min-w-[240px]">
+            <div>
+              <label className="text-xs font-medium text-muted-foreground mb-1 block">{t("backups.category")}</label>
+              <CustomSelect
+                value={filterCategory}
+                onChange={setFilterCategory}
+                options={[
+                  { value: "all", label: t("backups.filterAll") },
+                  ...BACKUP_CATEGORIES.map((cat) => ({
+                    value: cat,
+                    label: t(`categories.${cat}`, { defaultValue: cat }),
+                  })),
+                  ...Array.from(new Set(backups.map((b) => b.category as string)))
+                    .filter((cat) => !(BACKUP_CATEGORIES as readonly string[]).includes(cat))
+                    .map((cat) => ({ value: cat, label: cat })),
+                ]}
+              />
+            </div>
+            <div>
+              <label className="text-xs font-medium text-muted-foreground mb-1 block">{t("backups.status")}</label>
+              <CustomSelect
+                value={filterStatus}
+                onChange={setFilterStatus}
+                options={[
+                  { value: "all", label: t("backups.filterAll") },
+                  { value: "ok", label: t("status.ok") },
+                  { value: "warning", label: t("status.warning") },
+                  { value: "critical", label: t("status.critical") },
+                  { value: "paused", label: t("status.paused") },
+                ]}
+              />
+            </div>
+            {(filterCategory !== "all" || filterStatus !== "all") && (
+              <button
+                onClick={() => { setFilterCategory("all"); setFilterStatus("all"); }}
+                className="text-xs text-primary hover:underline"
+              >
+                {t("common.resetFilter")}
+              </button>
+            )}
+          </div>
+        </Popover>
+        <Popover
+          align="right"
+          trigger={
+            <button className="flex items-center gap-2 rounded-lg border border-input bg-background px-3 py-2 text-sm hover:border-ring/40 transition-colors">
+              <ArrowUpDown className="w-4 h-4 text-muted-foreground" />
+              {t("common.sort")}
+            </button>
+          }
+        >
+          <div className="space-y-3 min-w-[200px]">
+            <div>
+              <label className="text-xs font-medium text-muted-foreground mb-1 block">{t("common.sortBy")}</label>
+              <CustomSelect
+                value={sortField}
+                onChange={setSortField}
+                options={[
+                  { value: "name", label: t("backups.name") },
+                  { value: "device", label: t("backups.device") },
+                  { value: "date", label: t("backups.lastBackup") },
+                  { value: "size", label: t("backups.size") },
+                  { value: "status", label: t("backups.status") },
+                ]}
+              />
+            </div>
+            <div>
+              <label className="text-xs font-medium text-muted-foreground mb-1 block">{t("common.direction")}</label>
+              <CustomSelect
+                value={sortDir}
+                onChange={setSortDir}
+                options={[
+                  { value: "asc", label: t("common.ascending") },
+                  { value: "desc", label: t("common.descending") },
+                ]}
+              />
+            </div>
+          </div>
+        </Popover>
       </div>
 
       {/* Bulk actions toolbar */}
@@ -365,7 +447,6 @@ export function Backups() {
           view={view}
           editMode={editMode}
           selectedIds={selectedIds}
-          setSelectedIds={setSelectedIds}
           setSoftDeleteId={setSoftDeleteId}
           setRenamingFolder={setRenamingFolder}
           setDeletingFolder={setDeletingFolder}
@@ -377,6 +458,7 @@ export function Backups() {
           makeDraggable={editMode ? makeDraggable : undefined}
           registerDropTarget={registerDropTarget}
           isDragOver={isDragOver}
+          handleItemClick={handleItemClick}
         />
       ) : folderHook.viewMode === "folder" && folderHook.currentFolderId === null ? (
         /* Folder mode root: show folder cards + unfiled items */
@@ -403,12 +485,12 @@ export function Backups() {
             view={view}
             editMode={editMode}
             selectedIds={selectedIds}
-            setSelectedIds={setSelectedIds}
             setSoftDeleteId={setSoftDeleteId}
             t={t}
             triggerRefresh={triggerRefresh}
             loadAll={loadAll}
             makeDraggable={editMode ? makeDraggable : undefined}
+            handleItemClick={handleItemClick}
           />
         </div>
       ) : (
@@ -421,12 +503,12 @@ export function Backups() {
           view={view}
           editMode={editMode}
           selectedIds={selectedIds}
-          setSelectedIds={setSelectedIds}
           setSoftDeleteId={setSoftDeleteId}
           t={t}
           triggerRefresh={triggerRefresh}
           loadAll={loadAll}
           makeDraggable={editMode ? makeDraggable : undefined}
+          handleItemClick={handleItemClick}
         />
       )}
 
@@ -668,23 +750,23 @@ function BackupsItemList({
   view,
   editMode,
   selectedIds,
-  setSelectedIds,
   setSoftDeleteId,
   t,
   triggerRefresh,
   loadAll,
   makeDraggable,
+  handleItemClick,
 }: {
   items: Array<Record<string, any>>;
   view: "grid" | "list";
   editMode: boolean;
   selectedIds: Set<number>;
-  setSelectedIds: (s: Set<number>) => void;
   setSoftDeleteId: (id: number | null) => void;
   t: (key: string, opts?: any) => string;
   triggerRefresh: () => void;
   loadAll: () => Promise<void>;
   makeDraggable?: (itemId: number, selectedIds: Set<number>, label?: string) => Record<string, any>;
+  handleItemClick: (id: number, e: React.MouseEvent) => void;
 }) {
   if (items.length === 0) {
     return (
@@ -696,53 +778,59 @@ function BackupsItemList({
   }
 
   if (view === "grid") {
+    const cardContent = (b: Record<string, any>) => {
+      const latest = b.latest_entry as Record<string, any> | null;
+      return (
+        <>
+          <div className="flex items-start justify-between mb-2">
+            <div className="min-w-0">
+              <h3 className="font-semibold text-sm truncate">{b.name as string}</h3>
+              <p className="text-xs text-muted-foreground truncate">
+                {b.device_name as string} · {t(`categories.${b.category}`, { defaultValue: b.category as string })}
+              </p>
+            </div>
+            <StatusBadge status={b.status as BackupStatus} />
+          </div>
+          <div className="flex items-center justify-between mt-3 pt-3 border-t border-border">
+            <span className="text-xs text-muted-foreground">
+              {latest ? `${formatDate(latest.backup_date as string)}` : t("backups.never")}
+            </span>
+            <span className="text-sm font-medium tabular-nums">
+              {latest ? formatBytes(latest.size_bytes as number) : "\u2014"}
+            </span>
+          </div>
+        </>
+      );
+    };
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {items.map((b) => {
-          const latest = b.latest_entry as Record<string, any> | null;
-          return (
-            <div
-              key={b.id as number}
-              className="relative"
-              {...(makeDraggable ? makeDraggable(b.id as number, selectedIds, b.name as string) : {})}
-            >
-              {editMode && (
-                <input
-                  type="checkbox"
-                  checked={selectedIds.has(b.id as number)}
-                  onChange={(e) => {
-                    const next = new Set(selectedIds);
-                    if (e.target.checked) next.add(b.id as number);
-                    else next.delete(b.id as number);
-                    setSelectedIds(next);
-                  }}
-                  className="absolute top-3 left-3 rounded z-10"
-                />
-              )}
+        {items.map((b) => (
+          <div key={b.id as number} className="relative">
+            {editMode && (
+              <input
+                type="checkbox"
+                checked={selectedIds.has(b.id as number)}
+                onChange={() => {}}
+                onClick={(e) => e.stopPropagation()}
+                className="absolute top-3 left-3 rounded z-10 pointer-events-none"
+              />
+            )}
+            {editMode ? (
+              <Card
+                className={cn("cursor-pointer h-full", selectedIds.has(b.id as number) && "ring-2 ring-primary")}
+                onClick={(e) => handleItemClick(b.id as number, e)}
+              >
+                {cardContent(b)}
+              </Card>
+            ) : (
               <Link to={`/backups/${b.id}`} draggable={false}>
                 <Card className="hover:border-primary/30 transition-colors cursor-pointer h-full">
-                  <div className="flex items-start justify-between mb-2">
-                    <div className="min-w-0">
-                      <h3 className="font-semibold text-sm truncate">{b.name as string}</h3>
-                      <p className="text-xs text-muted-foreground truncate">
-                        {b.device_name as string} · {t(`categories.${b.category}`, { defaultValue: b.category as string })}
-                      </p>
-                    </div>
-                    <StatusBadge status={b.status as BackupStatus} />
-                  </div>
-                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-border">
-                    <span className="text-xs text-muted-foreground">
-                      {latest ? `${formatDate(latest.backup_date as string)}` : t("backups.never")}
-                    </span>
-                    <span className="text-sm font-medium tabular-nums">
-                      {latest ? formatBytes(latest.size_bytes as number) : "\u2014"}
-                    </span>
-                  </div>
+                  {cardContent(b)}
                 </Card>
               </Link>
-            </div>
-          );
-        })}
+            )}
+          </div>
+        ))}
       </div>
     );
   }
@@ -767,55 +855,65 @@ function BackupsItemList({
           <div className="space-y-1.5 ml-6">
             {deviceItems.map((b) => {
               const latest = b.latest_entry as Record<string, any> | null;
+              const listCardContent = (
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="font-semibold text-sm">{b.name as string}</h3>
+                    <p className="text-xs text-muted-foreground">
+                      {t(`categories.${b.category}`, { defaultValue: b.category as string })}
+                      {b.tags ? ` \u00b7 ${b.tags}` : ""}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-6">
+                    <div className="text-right">
+                      <p className="text-sm">
+                        {latest ? formatBytes(latest.size_bytes as number) : "\u2014"}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {latest
+                          ? `${formatDate(latest.backup_date as string)} (${daysAgo(latest.backup_date as string)} ${t("common.days")})`
+                          : t("backups.never")}
+                      </p>
+                    </div>
+                    <StatusBadge status={b.status as BackupStatus} />
+                  </div>
+                </div>
+              );
               return (
                 <div
                   key={b.id as number}
                   className="flex items-center gap-2"
-                  {...(makeDraggable ? makeDraggable(b.id as number, selectedIds, b.name as string) : {})}
                 >
-                  {makeDraggable && (
-                    <GripVertical className="w-4 h-4 text-muted-foreground/40 shrink-0 cursor-grab" />
+                  {editMode && (
+                    <GripVertical
+                      className="w-4 h-4 text-muted-foreground/40 shrink-0 cursor-grab"
+                      {...(makeDraggable ? makeDraggable(b.id as number, selectedIds, b.name as string) : {})}
+                    />
                   )}
                   {editMode && (
                     <input
                       type="checkbox"
                       checked={selectedIds.has(b.id as number)}
-                      onChange={(e) => {
-                        const next = new Set(selectedIds);
-                        if (e.target.checked) next.add(b.id as number);
-                        else next.delete(b.id as number);
-                        setSelectedIds(next);
-                      }}
-                      className="rounded shrink-0"
+                      onChange={() => {}}
+                      onClick={(e) => e.stopPropagation()}
+                      className="rounded shrink-0 pointer-events-none"
                       aria-label={`${t("bulk.select")} ${b.name}`}
                     />
                   )}
-                  <Link to={`/backups/${b.id}`} className="block flex-1" draggable={false}>
-                    <Card className="hover:border-primary/30 transition-colors cursor-pointer py-3">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h3 className="font-semibold text-sm">{b.name as string}</h3>
-                          <p className="text-xs text-muted-foreground">
-                            {t(`categories.${b.category}`, { defaultValue: b.category as string })}
-                            {b.tags ? ` \u00b7 ${b.tags}` : ""}
-                          </p>
-                        </div>
-                        <div className="flex items-center gap-6">
-                          <div className="text-right">
-                            <p className="text-sm">
-                              {latest ? formatBytes(latest.size_bytes as number) : "\u2014"}
-                            </p>
-                            <p className="text-xs text-muted-foreground">
-                              {latest
-                                ? `${formatDate(latest.backup_date as string)} (${daysAgo(latest.backup_date as string)} ${t("common.days")})`
-                                : t("backups.never")}
-                            </p>
-                          </div>
-                          <StatusBadge status={b.status as BackupStatus} />
-                        </div>
-                      </div>
+                  {editMode ? (
+                    <Card
+                      className={cn("cursor-pointer py-3 flex-1", selectedIds.has(b.id as number) && "ring-2 ring-primary")}
+                      onClick={(e) => handleItemClick(b.id as number, e)}
+                    >
+                      {listCardContent}
                     </Card>
-                  </Link>
+                  ) : (
+                    <Link to={`/backups/${b.id}`} className="block flex-1" draggable={false}>
+                      <Card className="hover:border-primary/30 transition-colors cursor-pointer py-3">
+                        {listCardContent}
+                      </Card>
+                    </Link>
+                  )}
                   {editMode && (
                     <>
                       <button
@@ -857,7 +955,6 @@ function BackupsExpandedView({
   view,
   editMode,
   selectedIds,
-  setSelectedIds,
   setSoftDeleteId,
   setRenamingFolder,
   setDeletingFolder,
@@ -869,13 +966,13 @@ function BackupsExpandedView({
   makeDraggable,
   registerDropTarget,
   isDragOver,
+  handleItemClick,
 }: {
   sorted: Array<Record<string, any>>;
   folderHook: ReturnType<typeof useFolders>;
   view: "grid" | "list";
   editMode: boolean;
   selectedIds: Set<number>;
-  setSelectedIds: (s: Set<number>) => void;
   setSoftDeleteId: (id: number | null) => void;
   setRenamingFolder: (f: FolderData | null) => void;
   setDeletingFolder: (f: FolderData | null) => void;
@@ -887,6 +984,7 @@ function BackupsExpandedView({
   makeDraggable?: (itemId: number, selectedIds: Set<number>, label?: string) => Record<string, any>;
   registerDropTarget: (folderId: number | null, el: HTMLElement | null) => void;
   isDragOver: (folderId: number | null) => boolean;
+  handleItemClick: (id: number, e: React.MouseEvent) => void;
 }) {
   const groups = folderHook.groupItemsByFolder(sorted);
 
@@ -920,12 +1018,12 @@ function BackupsExpandedView({
               view={view}
               editMode={editMode}
               selectedIds={selectedIds}
-              setSelectedIds={setSelectedIds}
               setSoftDeleteId={setSoftDeleteId}
               t={t}
               triggerRefresh={triggerRefresh}
               loadAll={loadAll}
               makeDraggable={editMode ? makeDraggable : undefined}
+              handleItemClick={handleItemClick}
             />
           </FolderSection>
         );

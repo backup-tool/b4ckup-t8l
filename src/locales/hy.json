@@ -119,7 +119,8 @@
     "encrypted": "Գաղտնագրված",
     "encryptionType": "Գաղտնագրման տեսակ",
     "encryptionLabel": "Պիտակ / Բանալիի ID",
-    "customType": "Հատուկ"
+    "customType": "Հատուկ",
+    "search": "Search storage media..."
   },
   "devices": {
     "title": "Սարքեր",
@@ -140,6 +141,7 @@
     "storageCapacity": "Պահեստի տարողություն",
     "customType": "Հարմարեցված",
     "backupCount": "Պահուստներ",
+    "search": "Search sources...",
     "noDevices": "Աղբյուրներ դեռ չկան։ Ստեղծեք ձեր առաջին աղբյուրը։",
     "save": "Պահպանել",
     "cancel": "Չեղարկել"
@@ -243,7 +245,17 @@
     "ago": "առաջ",
     "days": "օր",
     "today": "Այսօր",
-    "yesterday": "Երեկ"
+    "yesterday": "Երեկ",
+    "filter": "Filter",
+    "sort": "Sort",
+    "sortBy": "Sort by",
+    "direction": "Direction",
+    "ascending": "Ascending",
+    "descending": "Descending",
+    "resetFilter": "Reset filters",
+    "yes": "Yes",
+    "no": "No",
+    "done": "Done"
   },
   "status": {
     "ok": "Թարմացված",

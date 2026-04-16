@@ -119,7 +119,8 @@
     "encrypted": "Terenkripsi",
     "encryptionType": "Tipe Enkripsi",
     "encryptionLabel": "Label / ID Kunci",
-    "customType": "Kustom"
+    "customType": "Kustom",
+    "search": "Cari media penyimpanan..."
   },
   "devices": {
     "title": "Perangkat",
@@ -140,6 +141,7 @@
     "storageCapacity": "Kapasitas Penyimpanan",
     "customType": "Kustom",
     "backupCount": "Jumlah Cadangan",
+    "search": "Cari sumber...",
     "noDevices": "Belum ada sumber. Buat sumber pertama Anda untuk memulai.",
     "save": "Simpan",
     "cancel": "Batal"
@@ -243,7 +245,17 @@
     "ago": "yang lalu",
     "days": "hari",
     "today": "Hari Ini",
-    "yesterday": "Kemarin"
+    "yesterday": "Kemarin",
+    "filter": "Filter",
+    "sort": "Urutkan",
+    "sortBy": "Urutkan berdasarkan",
+    "direction": "Arah",
+    "ascending": "Naik",
+    "descending": "Turun",
+    "resetFilter": "Atur ulang filter",
+    "yes": "Ya",
+    "no": "Tidak",
+    "done": "Selesai"
   },
   "status": {
     "ok": "Terbaru",

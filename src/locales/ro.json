@@ -119,7 +119,8 @@
     "encrypted": "Criptat",
     "encryptionType": "Tip criptare",
     "encryptionLabel": "Etichetă / ID cheie",
-    "customType": "Personalizat"
+    "customType": "Personalizat",
+    "search": "Căutare medii de stocare..."
   },
   "devices": {
     "title": "Dispozitive",
@@ -140,6 +141,7 @@
     "storageCapacity": "Capacitate de stocare",
     "customType": "Personalizat",
     "backupCount": "Copii de siguranță",
+    "search": "Căutare surse...",
     "noDevices": "Nicio sursă încă. Creează prima sursă pentru a începe.",
     "save": "Salvează",
     "cancel": "Anulează"
@@ -243,7 +245,17 @@
     "ago": "în urmă",
     "days": "zile",
     "today": "Astăzi",
-    "yesterday": "Ieri"
+    "yesterday": "Ieri",
+    "filter": "Filtru",
+    "sort": "Sortare",
+    "sortBy": "Sortare după",
+    "direction": "Direcție",
+    "ascending": "Crescător",
+    "descending": "Descrescător",
+    "resetFilter": "Resetare filtre",
+    "yes": "Da",
+    "no": "Nu",
+    "done": "Gata"
   },
   "status": {
     "ok": "La zi",

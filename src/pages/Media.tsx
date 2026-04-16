@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Plus, Pencil, Trash2, HardDrive, GripVertical } from "lucide-react";
+import { Plus, Pencil, Trash2, HardDrive, GripVertical, Search, Filter, ArrowUpDown } from "lucide-react";
+import { cn } from "@/lib/cn";
 import { ViewToggle } from "@/components/ui/ViewToggle";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -9,6 +10,7 @@ import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
 import { Input, Textarea, Label } from "@/components/ui/Input";
 import { CustomSelect } from "@/components/ui/CustomSelect";
 import { ComboSelect } from "@/components/ui/ComboSelect";
+import { Popover } from "@/components/ui/Popover";
 import { TrashSection } from "@/components/ui/TrashSection";
 import {
   FolderToolbar,
@@ -48,10 +50,14 @@ export function Media() {
   const [softDeleteId, setSoftDeleteId] = useState<number | null>(null);
   const [view, setView] = useState<"grid" | "list">("grid");
   const [editMode, setEditMode] = useState(false);
+  const [search, setSearch] = useState("");
+  const [filterType, setFilterType] = useState("all");
+  const [filterEncrypted, setFilterEncrypted] = useState("all");
   const [sortField, setSortField] = useState("name");
   const [sortDir, setSortDir] = useState("asc");
   const [selectedIds, setSelectedIds] = useState<Set<number>>(new Set());
   const [bulkConfirmOpen, setBulkConfirmOpen] = useState(false);
+  const [lastClickedId, setLastClickedId] = useState<number | null>(null);
 
   // Folder support
   const folderHook = useFolders("media", refreshKey);
@@ -92,10 +98,37 @@ export function Media() {
         e.preventDefault();
         openCreate();
       }
+      if (editMode && (e.metaKey || e.ctrlKey) && e.key === "a") {
+        e.preventDefault();
+        setSelectedIds(new Set(media.map((m) => m.id as number)));
+      }
+      if (editMode && e.key === "Escape") {
+        setSelectedIds(new Set());
+      }
     };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
-  }, []);
+  }, [editMode, media]);
+
+  function handleItemClick(id: number, e: React.MouseEvent) {
+    if (!editMode) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const next = new Set(selectedIds);
+    if (e.shiftKey && lastClickedId != null) {
+      const ids = sorted.map((m) => m.id as number);
+      const start = ids.indexOf(lastClickedId);
+      const end = ids.indexOf(id);
+      if (start >= 0 && end >= 0) {
+        const [from, to] = [Math.min(start, end), Math.max(start, end)];
+        for (let i = from; i <= to; i++) next.add(ids[i]);
+      }
+    } else {
+      if (next.has(id)) next.delete(id); else next.add(id);
+    }
+    setSelectedIds(next);
+    setLastClickedId(id);
+  }
 
   async function loadAll() {
     try {
@@ -180,7 +213,19 @@ export function Media() {
   }
 
 
-  const sorted = [...media].sort((a, b) => {
+  const filtered = media.filter((m) => {
+    const matchesSearch = !search ||
+      (m.name as string).toLowerCase().includes(search.toLowerCase()) ||
+      (m.type as string).toLowerCase().includes(search.toLowerCase()) ||
+      ((m.path as string) || "").toLowerCase().includes(search.toLowerCase());
+    const matchesType = filterType === "all" || m.type === filterType;
+    const matchesEncrypted = filterEncrypted === "all" ||
+      (filterEncrypted === "yes" && m.is_encrypted) ||
+      (filterEncrypted === "no" && !m.is_encrypted);
+    return matchesSearch && matchesType && matchesEncrypted;
+  });
+
+  const sorted = [...filtered].sort((a, b) => {
     const key = sortField;
     const mult = sortDir === "desc" ? -1 : 1;
     if (key === "name") return mult * (a.name as string).localeCompare(b.name as string);
@@ -198,36 +243,15 @@ export function Media() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <h1 className="text-xl font-bold">{t("media.title")}</h1>
-          <ViewToggle view={view} onViewChange={setView} editMode={editMode} onEditModeChange={(v) => { setEditMode(v); if (!v) setSelectedIds(new Set()); }} />
+          <ViewToggle view={view} onViewChange={setView} />
           <FolderToolbar
             viewMode={folderHook.viewMode}
             onViewModeChange={folderHook.setViewMode}
             onCreateFolder={() => setFolderModalOpen(true)}
           />
-          <CustomSelect
-            className="w-32"
-            value={sortField}
-            onChange={setSortField}
-            options={[
-              { value: "name", label: t("media.name") },
-              { value: "type", label: t("media.type") },
-              { value: "capacity", label: t("media.capacity") },
-              { value: "used", label: t("media.used") },
-              { value: "backups", label: t("media.backupCount") },
-            ]}
-          />
-          <CustomSelect
-            className="w-20"
-            value={sortDir}
-            onChange={setSortDir}
-            options={[
-              { value: "asc", label: "↑" },
-              { value: "desc", label: "↓" },
-            ]}
-          />
         </div>
         <div className="flex items-center gap-2">
-          {editMode && <TrashSection
+          <TrashSection
             items={deleted.map((m) => ({
               id: m.id as number,
               title: m.name as string,
@@ -239,12 +263,123 @@ export function Media() {
             onRestoreAll={async () => { for (const m of deleted) await restoreMedia(m.id as number); triggerRefresh(); await loadAll(); }}
             onDeleteAll={async () => { for (const m of deleted) await permanentDeleteMedia(m.id as number); triggerRefresh(); await loadAll(); }}
             permanentDeleteMessage={t("trash.confirmPermanentMedia")}
-          />}
+          />
+          <Button
+            variant={editMode ? "primary" : "secondary"}
+            onClick={() => { setEditMode(!editMode); if (editMode) setSelectedIds(new Set()); }}
+          >
+            <Pencil className="w-4 h-4" />
+            {editMode ? t("common.done") : t("common.edit")}
+          </Button>
           <Button onClick={openCreate}>
             <Plus className="w-4 h-4" />
             {t("media.create")}
           </Button>
         </div>
+      </div>
+
+      {/* Search, Filter, Sort */}
+      <div className="flex gap-3 items-center">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <Input
+            className="pl-9"
+            placeholder={t("media.search")}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+        <Popover
+          align="right"
+          trigger={
+            <button className="flex items-center gap-2 rounded-lg border border-input bg-background px-3 py-2 text-sm hover:border-ring/40 transition-colors">
+              <Filter className="w-4 h-4 text-muted-foreground" />
+              {t("common.filter")}
+              {(filterType !== "all" || filterEncrypted !== "all") && (
+                <span className="ml-1 px-1.5 py-0.5 text-[10px] font-medium rounded-full bg-primary text-primary-foreground">
+                  {(filterType !== "all" ? 1 : 0) + (filterEncrypted !== "all" ? 1 : 0)}
+                </span>
+              )}
+            </button>
+          }
+        >
+          <div className="space-y-3 min-w-[240px]">
+            <div>
+              <label className="text-xs font-medium text-muted-foreground mb-1 block">{t("media.type")}</label>
+              <CustomSelect
+                value={filterType}
+                onChange={setFilterType}
+                options={[
+                  { value: "all", label: t("backups.filterAll") },
+                  ...STORAGE_TYPES.map((type) => ({
+                    value: type,
+                    label: t(`storageTypes.${type}`, { defaultValue: type }),
+                  })),
+                  ...Array.from(new Set(media.map((m) => m.type as string)))
+                    .filter((type) => !(STORAGE_TYPES as readonly string[]).includes(type))
+                    .map((type) => ({ value: type, label: type })),
+                ]}
+              />
+            </div>
+            <div>
+              <label className="text-xs font-medium text-muted-foreground mb-1 block">{t("media.encrypted")}</label>
+              <CustomSelect
+                value={filterEncrypted}
+                onChange={setFilterEncrypted}
+                options={[
+                  { value: "all", label: t("backups.filterAll") },
+                  { value: "yes", label: t("common.yes") },
+                  { value: "no", label: t("common.no") },
+                ]}
+              />
+            </div>
+            {(filterType !== "all" || filterEncrypted !== "all") && (
+              <button
+                onClick={() => { setFilterType("all"); setFilterEncrypted("all"); }}
+                className="text-xs text-primary hover:underline"
+              >
+                {t("common.resetFilter")}
+              </button>
+            )}
+          </div>
+        </Popover>
+        <Popover
+          align="right"
+          trigger={
+            <button className="flex items-center gap-2 rounded-lg border border-input bg-background px-3 py-2 text-sm hover:border-ring/40 transition-colors">
+              <ArrowUpDown className="w-4 h-4 text-muted-foreground" />
+              {t("common.sort")}
+            </button>
+          }
+        >
+          <div className="space-y-3 min-w-[200px]">
+            <div>
+              <label className="text-xs font-medium text-muted-foreground mb-1 block">{t("common.sortBy")}</label>
+              <CustomSelect
+                value={sortField}
+                onChange={setSortField}
+                options={[
+                  { value: "name", label: t("media.name") },
+                  { value: "type", label: t("media.type") },
+                  { value: "capacity", label: t("media.capacity") },
+                  { value: "used", label: t("media.used") },
+                  { value: "backups", label: t("media.backupCount") },
+                ]}
+              />
+            </div>
+            <div>
+              <label className="text-xs font-medium text-muted-foreground mb-1 block">{t("common.direction")}</label>
+              <CustomSelect
+                value={sortDir}
+                onChange={setSortDir}
+                options={[
+                  { value: "asc", label: t("common.ascending") },
+                  { value: "desc", label: t("common.descending") },
+                ]}
+              />
+            </div>
+          </div>
+        </Popover>
       </div>
 
       {/* Bulk actions */}
@@ -292,7 +427,6 @@ export function Media() {
           view={view}
           editMode={editMode}
           selectedIds={selectedIds}
-          setSelectedIds={setSelectedIds}
           openEdit={openEdit}
           setSoftDeleteId={setSoftDeleteId}
           setRenamingFolder={setRenamingFolder}
@@ -303,6 +437,7 @@ export function Media() {
           makeDraggable={editMode ? makeDraggable : undefined}
           registerDropTarget={registerDropTarget}
           isDragOver={isDragOver}
+          handleItemClick={handleItemClick}
         />
       ) : folderHook.viewMode === "folder" && folderHook.currentFolderId === null ? (
         <div>
@@ -327,11 +462,11 @@ export function Media() {
             view={view}
             editMode={editMode}
             selectedIds={selectedIds}
-            setSelectedIds={setSelectedIds}
             openEdit={openEdit}
             setSoftDeleteId={setSoftDeleteId}
             t={t}
             makeDraggable={editMode ? makeDraggable : undefined}
+            handleItemClick={handleItemClick}
           />
         </div>
       ) : (
@@ -343,11 +478,11 @@ export function Media() {
           view={view}
           editMode={editMode}
           selectedIds={selectedIds}
-          setSelectedIds={setSelectedIds}
           openEdit={openEdit}
           setSoftDeleteId={setSoftDeleteId}
           t={t}
           makeDraggable={editMode ? makeDraggable : undefined}
+          handleItemClick={handleItemClick}
         />
       )}
 
@@ -538,21 +673,21 @@ function MediaItemList({
   view,
   editMode,
   selectedIds,
-  setSelectedIds,
   openEdit,
   setSoftDeleteId,
   t,
   makeDraggable,
+  handleItemClick,
 }: {
   items: Array<Record<string, any>>;
   view: "grid" | "list";
   editMode: boolean;
   selectedIds: Set<number>;
-  setSelectedIds: (s: Set<number>) => void;
   openEdit: (m: Record<string, any>) => void;
   setSoftDeleteId: (id: number | null) => void;
   t: (key: string, opts?: any) => string;
   makeDraggable?: (itemId: number, selectedIds: Set<number>, label?: string) => Record<string, any>;
+  handleItemClick: (id: number, e: React.MouseEvent) => void;
 }) {
   if (items.length === 0) {
     return (
@@ -569,55 +704,59 @@ function MediaItemList({
         {items.map((m) => {
           const used = m.used_gb as number;
           const total = m.total_capacity_gb as number | null;
+          const listCardContent = (
+            <div className="flex items-center gap-4">
+              <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center shrink-0">
+                <HardDrive className="w-4 h-4 text-muted-foreground" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-semibold truncate">{m.name as string}</h3>
+                <p className="text-xs text-muted-foreground truncate">
+                  {t(`storageTypes.${m.type}`, { defaultValue: m.type as string })}
+                  {m.is_encrypted ? ` \u00b7 \ud83d\udd12 ${m.encryption_label || t("media.encrypted")}` : ""}
+                </p>
+              </div>
+              <div className="text-right shrink-0">
+                <p className="text-sm font-medium tabular-nums">
+                  {total ? formatBytes(total * 1024 ** 3) : "\u2014"}
+                </p>
+                <p className="text-[10px] text-muted-foreground">
+                  {formatBytes(used * 1024 ** 3)} {t("media.used")} \u00b7 {m.backup_count as number} {t("media.backupCount")}
+                </p>
+              </div>
+              {editMode && (
+                <div className="flex gap-1 shrink-0">
+                  <button onClick={(e) => { e.stopPropagation(); openEdit(m); }} className="p-1 rounded hover:bg-muted"><Pencil className="w-3.5 h-3.5 text-muted-foreground" /></button>
+                  <button onClick={(e) => { e.stopPropagation(); setSoftDeleteId(m.id as number); }} className="p-1 rounded hover:bg-muted"><Trash2 className="w-3.5 h-3.5 text-muted-foreground" /></button>
+                </div>
+              )}
+            </div>
+          );
           return (
             <div
-            key={m.id as number}
-            className="flex items-center gap-2"
-            {...(makeDraggable ? makeDraggable(m.id as number, selectedIds, m.name as string) : {})}
-          >
-              {makeDraggable && (
-                <GripVertical className="w-4 h-4 text-muted-foreground/40 shrink-0 cursor-grab" />
+              key={m.id as number}
+              className="flex items-center gap-2"
+            >
+              {editMode && (
+                <GripVertical
+                  className="w-4 h-4 text-muted-foreground/40 shrink-0 cursor-grab"
+                  {...(makeDraggable ? makeDraggable(m.id as number, selectedIds, m.name as string) : {})}
+                />
               )}
               {editMode && (
                 <input
                   type="checkbox"
                   checked={selectedIds.has(m.id as number)}
-                  onChange={(e) => {
-                    const next = new Set(selectedIds);
-                    if (e.target.checked) next.add(m.id as number);
-                    else next.delete(m.id as number);
-                    setSelectedIds(next);
-                  }}
-                  className="rounded shrink-0"
+                  onChange={() => {}}
+                  onClick={(e) => e.stopPropagation()}
+                  className="rounded shrink-0 pointer-events-none"
                 />
               )}
-              <Card className="py-3 flex-1">
-                <div className="flex items-center gap-4">
-                  <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center shrink-0">
-                    <HardDrive className="w-4 h-4 text-muted-foreground" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-sm font-semibold truncate">{m.name as string}</h3>
-                    <p className="text-xs text-muted-foreground truncate">
-                      {t(`storageTypes.${m.type}`, { defaultValue: m.type as string })}
-                      {m.is_encrypted ? ` \u00b7 \ud83d\udd12 ${m.encryption_label || t("media.encrypted")}` : ""}
-                    </p>
-                  </div>
-                  <div className="text-right shrink-0">
-                    <p className="text-sm font-medium tabular-nums">
-                      {total ? formatBytes(total * 1024 ** 3) : "\u2014"}
-                    </p>
-                    <p className="text-[10px] text-muted-foreground">
-                      {formatBytes(used * 1024 ** 3)} {t("media.used")} \u00b7 {m.backup_count as number} {t("media.backupCount")}
-                    </p>
-                  </div>
-                  {editMode && (
-                    <div className="flex gap-1 shrink-0">
-                      <button onClick={() => openEdit(m)} className="p-1 rounded hover:bg-muted"><Pencil className="w-3.5 h-3.5 text-muted-foreground" /></button>
-                      <button onClick={() => setSoftDeleteId(m.id as number)} className="p-1 rounded hover:bg-muted"><Trash2 className="w-3.5 h-3.5 text-muted-foreground" /></button>
-                    </div>
-                  )}
-                </div>
+              <Card
+                className={cn("py-3 flex-1", editMode && "cursor-pointer", editMode && selectedIds.has(m.id as number) && "ring-2 ring-primary")}
+                onClick={editMode ? (e) => handleItemClick(m.id as number, e) : undefined}
+              >
+                {listCardContent}
               </Card>
             </div>
           );
@@ -626,68 +765,69 @@ function MediaItemList({
     );
   }
 
+  const gridCardContent = (m: Record<string, any>) => {
+    const used = m.used_gb as number;
+    const total = m.total_capacity_gb as number | null;
+    const pct = total ? Math.min((used / total) * 100, 100) : 0;
+    return (
+      <>
+        <div className="flex items-start justify-between mb-3">
+          <div>
+            <h3 className="font-semibold text-sm">{m.name as string}</h3>
+            <p className="text-xs text-muted-foreground">
+              {t(`storageTypes.${m.type}`, { defaultValue: m.type as string })}
+              {m.is_encrypted ? (
+                <span className="ml-1.5 text-[10px] text-amber-600 font-medium">
+                  \ud83d\udd12 {m.encryption_label || t("media.encrypted")}
+                </span>
+              ) : null}
+            </p>
+          </div>
+          {editMode && <div className="flex gap-1">
+            <button onClick={(e) => { e.stopPropagation(); openEdit(m); }} className="p-1 rounded hover:bg-muted"><Pencil className="w-3.5 h-3.5 text-muted-foreground" /></button>
+            <button onClick={(e) => { e.stopPropagation(); setSoftDeleteId(m.id as number); }} className="p-1 rounded hover:bg-muted"><Trash2 className="w-3.5 h-3.5 text-muted-foreground" /></button>
+          </div>}
+        </div>
+        {total && (
+          <div className="mb-2">
+            <div className="h-2 bg-muted rounded-full overflow-hidden">
+              <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${pct}%` }} />
+            </div>
+            <div className="flex justify-between text-xs text-muted-foreground mt-1">
+              <span>{formatBytes(used * 1024 ** 3)} {t("media.used")}</span>
+              <span>{formatBytes(total * 1024 ** 3)}</span>
+            </div>
+          </div>
+        )}
+        <div className="flex items-center justify-between text-xs text-muted-foreground">
+          <span>{m.backup_count as number} {t("media.backupCount")}</span>
+          {m.path && <span className="truncate max-w-[150px]">{String(m.path)}</span>}
+        </div>
+      </>
+    );
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {items.map((m) => {
-        const used = m.used_gb as number;
-        const total = m.total_capacity_gb as number | null;
-        const pct = total ? Math.min((used / total) * 100, 100) : 0;
-        return (
-          <div
-            key={m.id as number}
-            className="relative"
-            {...(makeDraggable ? makeDraggable(m.id as number, selectedIds, m.name as string) : {})}
+      {items.map((m) => (
+        <div key={m.id as number} className="relative">
+          {editMode && (
+            <input
+              type="checkbox"
+              checked={selectedIds.has(m.id as number)}
+              onChange={() => {}}
+              onClick={(e) => e.stopPropagation()}
+              className="absolute top-3 left-3 rounded z-10 pointer-events-none"
+            />
+          )}
+          <Card
+            className={cn(editMode && "cursor-pointer", editMode && selectedIds.has(m.id as number) && "ring-2 ring-primary")}
+            onClick={editMode ? (e) => handleItemClick(m.id as number, e) : undefined}
           >
-            {editMode && (
-              <input
-                type="checkbox"
-                checked={selectedIds.has(m.id as number)}
-                onChange={(e) => {
-                  const next = new Set(selectedIds);
-                  if (e.target.checked) next.add(m.id as number);
-                  else next.delete(m.id as number);
-                  setSelectedIds(next);
-                }}
-                className="absolute top-3 left-3 rounded z-10"
-              />
-            )}
-            <Card>
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <h3 className="font-semibold text-sm">{m.name as string}</h3>
-                  <p className="text-xs text-muted-foreground">
-                    {t(`storageTypes.${m.type}`, { defaultValue: m.type as string })}
-                    {m.is_encrypted ? (
-                      <span className="ml-1.5 text-[10px] text-amber-600 font-medium">
-                        \ud83d\udd12 {m.encryption_label || t("media.encrypted")}
-                      </span>
-                    ) : null}
-                  </p>
-                </div>
-                {editMode && <div className="flex gap-1">
-                  <button onClick={() => openEdit(m)} className="p-1 rounded hover:bg-muted"><Pencil className="w-3.5 h-3.5 text-muted-foreground" /></button>
-                  <button onClick={() => setSoftDeleteId(m.id as number)} className="p-1 rounded hover:bg-muted"><Trash2 className="w-3.5 h-3.5 text-muted-foreground" /></button>
-                </div>}
-              </div>
-              {total && (
-                <div className="mb-2">
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${pct}%` }} />
-                  </div>
-                  <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                    <span>{formatBytes(used * 1024 ** 3)} {t("media.used")}</span>
-                    <span>{formatBytes(total * 1024 ** 3)}</span>
-                  </div>
-                </div>
-              )}
-              <div className="flex items-center justify-between text-xs text-muted-foreground">
-                <span>{m.backup_count as number} {t("media.backupCount")}</span>
-                {m.path && <span className="truncate max-w-[150px]">{String(m.path)}</span>}
-              </div>
-            </Card>
-          </div>
-        );
-      })}
+            {gridCardContent(m)}
+          </Card>
+        </div>
+      ))}
     </div>
   );
 }
@@ -698,7 +838,6 @@ function MediaExpandedView({
   view,
   editMode,
   selectedIds,
-  setSelectedIds,
   openEdit,
   setSoftDeleteId,
   setRenamingFolder,
@@ -709,13 +848,13 @@ function MediaExpandedView({
   makeDraggable,
   registerDropTarget,
   isDragOver,
+  handleItemClick,
 }: {
   sorted: Array<Record<string, any>>;
   folderHook: ReturnType<typeof useFolders>;
   view: "grid" | "list";
   editMode: boolean;
   selectedIds: Set<number>;
-  setSelectedIds: (s: Set<number>) => void;
   openEdit: (m: Record<string, any>) => void;
   setSoftDeleteId: (id: number | null) => void;
   setRenamingFolder: (f: FolderData | null) => void;
@@ -726,6 +865,7 @@ function MediaExpandedView({
   makeDraggable?: (itemId: number, selectedIds: Set<number>, label?: string) => Record<string, any>;
   registerDropTarget: (folderId: number | null, el: HTMLElement | null) => void;
   isDragOver: (folderId: number | null) => boolean;
+  handleItemClick: (id: number, e: React.MouseEvent) => void;
 }) {
   const groups = folderHook.groupItemsByFolder(sorted);
 
@@ -759,11 +899,11 @@ function MediaExpandedView({
               view={view}
               editMode={editMode}
               selectedIds={selectedIds}
-              setSelectedIds={setSelectedIds}
               openEdit={openEdit}
               setSoftDeleteId={setSoftDeleteId}
               t={t}
               makeDraggable={editMode ? makeDraggable : undefined}
+              handleItemClick={handleItemClick}
             />
           </FolderSection>
         );

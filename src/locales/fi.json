@@ -119,7 +119,8 @@
     "encrypted": "Salattu",
     "encryptionType": "Salaustyyppi",
     "encryptionLabel": "Tunniste / Avain-ID",
-    "customType": "Mukautettu"
+    "customType": "Mukautettu",
+    "search": "Hae tallennusmedioita..."
   },
   "devices": {
     "title": "Laitteet",
@@ -140,6 +141,7 @@
     "storageCapacity": "Tallennuskapasiteetti",
     "customType": "Mukautettu",
     "backupCount": "Varmuuskopiot",
+    "search": "Hae lähteitä...",
     "noDevices": "Ei lähteitä vielä. Luo ensimmäinen lähde aloittaaksesi.",
     "save": "Tallenna",
     "cancel": "Peruuta"
@@ -243,7 +245,17 @@
     "ago": "sitten",
     "days": "päivää",
     "today": "Tänään",
-    "yesterday": "Eilen"
+    "yesterday": "Eilen",
+    "filter": "Suodatin",
+    "sort": "Lajittele",
+    "sortBy": "Lajittele",
+    "direction": "Suunta",
+    "ascending": "Nouseva",
+    "descending": "Laskeva",
+    "resetFilter": "Nollaa suodattimet",
+    "yes": "Kyllä",
+    "no": "Ei",
+    "done": "Valmis"
   },
   "status": {
     "ok": "Ajan tasalla",

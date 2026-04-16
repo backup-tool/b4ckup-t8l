@@ -119,7 +119,8 @@
     "encrypted": "Đã mã hóa",
     "encryptionType": "Loại mã hóa",
     "encryptionLabel": "Nhãn / ID khóa",
-    "customType": "Tùy chỉnh"
+    "customType": "Tùy chỉnh",
+    "search": "Tìm kiếm phương tiện lưu trữ..."
   },
   "devices": {
     "title": "Thiết bị",
@@ -140,6 +141,7 @@
     "storageCapacity": "Dung lượng lưu trữ",
     "customType": "Tùy chỉnh",
     "backupCount": "Số bản sao lưu",
+    "search": "Tìm kiếm nguồn...",
     "noDevices": "Chưa có nguồn nào. Tạo nguồn đầu tiên để bắt đầu.",
     "save": "Lưu",
     "cancel": "Hủy"
@@ -243,7 +245,17 @@
     "ago": "trước",
     "days": "ngày",
     "today": "Hôm nay",
-    "yesterday": "Hôm qua"
+    "yesterday": "Hôm qua",
+    "filter": "Bộ lọc",
+    "sort": "Sắp xếp",
+    "sortBy": "Sắp xếp theo",
+    "direction": "Hướng",
+    "ascending": "Tăng dần",
+    "descending": "Giảm dần",
+    "resetFilter": "Đặt lại bộ lọc",
+    "yes": "Có",
+    "no": "Không",
+    "done": "Xong"
   },
   "status": {
     "ok": "Đã cập nhật",

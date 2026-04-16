@@ -119,7 +119,8 @@
     "encrypted": "Zaszyfrowany",
     "encryptionType": "Typ szyfrowania",
     "encryptionLabel": "Etykieta / ID klucza",
-    "customType": "Niestandardowy"
+    "customType": "Niestandardowy",
+    "search": "Szukaj nośników danych..."
   },
   "devices": {
     "title": "Urządzenia",
@@ -140,6 +141,7 @@
     "storageCapacity": "Pojemność pamięci",
     "customType": "Niestandardowy",
     "backupCount": "Kopie zapasowe",
+    "search": "Szukaj źródeł...",
     "noDevices": "Brak źródeł. Utwórz pierwsze źródło, aby rozpocząć.",
     "save": "Zapisz",
     "cancel": "Anuluj"
@@ -243,7 +245,17 @@
     "ago": "temu",
     "days": "dni",
     "today": "Dzisiaj",
-    "yesterday": "Wczoraj"
+    "yesterday": "Wczoraj",
+    "filter": "Filtr",
+    "sort": "Sortuj",
+    "sortBy": "Sortuj według",
+    "direction": "Kierunek",
+    "ascending": "Rosnąco",
+    "descending": "Malejąco",
+    "resetFilter": "Resetuj filtry",
+    "yes": "Tak",
+    "no": "Nie",
+    "done": "Gotowe"
   },
   "status": {
     "ok": "Aktualne",

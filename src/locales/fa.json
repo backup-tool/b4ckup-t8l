@@ -119,7 +119,8 @@
     "encrypted": "رمزنگاری شده",
     "encryptionType": "نوع رمزنگاری",
     "encryptionLabel": "برچسب / شناسه کلید",
-    "customType": "سفارشی"
+    "customType": "سفارشی",
+    "search": "جستجوی رسانه‌های ذخیره‌سازی..."
   },
   "devices": {
     "title": "دستگاه‌ها",
@@ -140,6 +141,7 @@
     "storageCapacity": "ظرفیت ذخیره‌سازی",
     "customType": "سفارشی",
     "backupCount": "پشتیبان‌ها",
+    "search": "جستجوی منابع...",
     "noDevices": "هنوز منبعی وجود ندارد. اولین منبع خود را ایجاد کنید.",
     "save": "ذخیره",
     "cancel": "لغو"
@@ -243,7 +245,17 @@
     "ago": "پیش",
     "days": "روز",
     "today": "امروز",
-    "yesterday": "دیروز"
+    "yesterday": "دیروز",
+    "filter": "فیلتر",
+    "sort": "مرتب‌سازی",
+    "sortBy": "مرتب‌سازی بر اساس",
+    "direction": "جهت",
+    "ascending": "صعودی",
+    "descending": "نزولی",
+    "resetFilter": "بازنشانی فیلترها",
+    "yes": "بله",
+    "no": "خیر",
+    "done": "انجام"
   },
   "status": {
     "ok": "به‌روز",

@@ -119,7 +119,8 @@
     "encrypted": "एन्क्रिप्टेड",
     "encryptionType": "एन्क्रिप्शन प्रकार",
     "encryptionLabel": "लेबल / कुंजी ID",
-    "customType": "कस्टम"
+    "customType": "कस्टम",
+    "search": "स्टोरेज मीडिया खोजें..."
   },
   "devices": {
     "title": "उपकरण",
@@ -140,6 +141,7 @@
     "storageCapacity": "भंडारण क्षमता",
     "customType": "कस्टम",
     "backupCount": "बैकअप",
+    "search": "स्रोत खोजें...",
     "noDevices": "अभी तक कोई स्रोत नहीं है। शुरू करने के लिए अपना पहला स्रोत बनाएँ।",
     "save": "सहेजें",
     "cancel": "रद्द करें"
@@ -243,7 +245,17 @@
     "ago": "पहले",
     "days": "दिन",
     "today": "आज",
-    "yesterday": "कल"
+    "yesterday": "कल",
+    "filter": "फ़िल्टर",
+    "sort": "क्रमबद्ध करें",
+    "sortBy": "इसके अनुसार क्रमबद्ध करें",
+    "direction": "दिशा",
+    "ascending": "आरोही",
+    "descending": "अवरोही",
+    "resetFilter": "फ़िल्टर रीसेट करें",
+    "yes": "हाँ",
+    "no": "नहीं",
+    "done": "हो गया"
   },
   "status": {
     "ok": "अद्यतित",

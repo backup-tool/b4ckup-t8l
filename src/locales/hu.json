@@ -119,7 +119,8 @@
     "encrypted": "Titkosított",
     "encryptionType": "Titkosítás típusa",
     "encryptionLabel": "Címke / Kulcsazonosító",
-    "customType": "Egyéni"
+    "customType": "Egyéni",
+    "search": "Tárolóeszközök keresése..."
   },
   "devices": {
     "title": "Eszközök",
@@ -140,6 +141,7 @@
     "storageCapacity": "Tárolókapacitás",
     "customType": "Egyéni",
     "backupCount": "Biztonsági mentések",
+    "search": "Források keresése...",
     "noDevices": "Még nincsenek források. Hozd létre az elsőt a kezdéshez.",
     "save": "Mentés",
     "cancel": "Mégse"
@@ -243,7 +245,17 @@
     "ago": "ezelőtt",
     "days": "nap",
     "today": "Ma",
-    "yesterday": "Tegnap"
+    "yesterday": "Tegnap",
+    "filter": "Szűrő",
+    "sort": "Rendezés",
+    "sortBy": "Rendezés",
+    "direction": "Irány",
+    "ascending": "Növekvő",
+    "descending": "Csökkenő",
+    "resetFilter": "Szűrők visszaállítása",
+    "yes": "Igen",
+    "no": "Nem",
+    "done": "Kész"
   },
   "status": {
     "ok": "Naprakész",

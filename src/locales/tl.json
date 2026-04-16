@@ -119,7 +119,8 @@
     "encrypted": "Naka-encrypt",
     "encryptionType": "Uri ng Encryption",
     "encryptionLabel": "Label / Key ID",
-    "customType": "Custom"
+    "customType": "Custom",
+    "search": "Maghanap ng storage media..."
   },
   "devices": {
     "title": "Mga Device",
@@ -140,6 +141,7 @@
     "storageCapacity": "Kapasidad ng Imbakan",
     "customType": "Pasadya",
     "backupCount": "Mga Backup",
+    "search": "Maghanap ng mga pinagmulan...",
     "noDevices": "Wala pang mga pinagmulan. Gumawa ng iyong unang pinagmulan upang magsimula.",
     "save": "I-save",
     "cancel": "Kanselahin"
@@ -243,7 +245,17 @@
     "ago": "nakalipas",
     "days": "araw",
     "today": "Ngayon",
-    "yesterday": "Kahapon"
+    "yesterday": "Kahapon",
+    "filter": "Filter",
+    "sort": "Ayusin",
+    "sortBy": "Ayusin ayon sa",
+    "direction": "Direksyon",
+    "ascending": "Pataas",
+    "descending": "Pababa",
+    "resetFilter": "I-reset ang mga filter",
+    "yes": "Oo",
+    "no": "Hindi",
+    "done": "Tapos"
   },
   "status": {
     "ok": "Napapanahon",

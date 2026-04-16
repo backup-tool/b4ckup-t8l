@@ -119,7 +119,8 @@
     "encrypted": "Versleuteld",
     "encryptionType": "Versleutelingstype",
     "encryptionLabel": "Label / Sleutel-ID",
-    "customType": "Aangepast"
+    "customType": "Aangepast",
+    "search": "Opslagmedia zoeken..."
   },
   "devices": {
     "title": "Apparaten",
@@ -140,6 +141,7 @@
     "storageCapacity": "Opslagcapaciteit",
     "customType": "Aangepast",
     "backupCount": "Back-ups",
+    "search": "Bronnen zoeken...",
     "noDevices": "Nog geen bronnen. Maak je eerste bron om te beginnen.",
     "save": "Opslaan",
     "cancel": "Annuleren"
@@ -243,7 +245,17 @@
     "ago": "geleden",
     "days": "dagen",
     "today": "Vandaag",
-    "yesterday": "Gisteren"
+    "yesterday": "Gisteren",
+    "filter": "Filter",
+    "sort": "Sorteren",
+    "sortBy": "Sorteren op",
+    "direction": "Richting",
+    "ascending": "Oplopend",
+    "descending": "Aflopend",
+    "resetFilter": "Filters resetten",
+    "yes": "Ja",
+    "no": "Nee",
+    "done": "Klaar"
   },
   "status": {
     "ok": "Actueel",

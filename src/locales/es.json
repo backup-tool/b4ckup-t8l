@@ -119,7 +119,8 @@
     "encrypted": "Cifrado",
     "encryptionType": "Tipo de cifrado",
     "encryptionLabel": "Etiqueta / ID de clave",
-    "customType": "Personalizado"
+    "customType": "Personalizado",
+    "search": "Buscar medios de almacenamiento..."
   },
   "devices": {
     "title": "Dispositivos",
@@ -140,6 +141,7 @@
     "storageCapacity": "Capacidad de almacenamiento",
     "customType": "Personalizado",
     "backupCount": "Copias",
+    "search": "Buscar fuentes...",
     "noDevices": "Aún no hay orígenes. Crea tu primer origen para empezar.",
     "save": "Guardar",
     "cancel": "Cancelar"
@@ -243,7 +245,17 @@
     "ago": "hace",
     "days": "días",
     "today": "Hoy",
-    "yesterday": "Ayer"
+    "yesterday": "Ayer",
+    "filter": "Filtro",
+    "sort": "Ordenar",
+    "sortBy": "Ordenar por",
+    "direction": "Dirección",
+    "ascending": "Ascendente",
+    "descending": "Descendente",
+    "resetFilter": "Restablecer filtros",
+    "yes": "Sí",
+    "no": "No",
+    "done": "Listo"
   },
   "status": {
     "ok": "Actualizado",

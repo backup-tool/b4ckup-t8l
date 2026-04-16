@@ -119,7 +119,8 @@
     "encrypted": "מוצפן",
     "encryptionType": "סוג הצפנה",
     "encryptionLabel": "תווית / מזהה מפתח",
-    "customType": "מותאם אישית"
+    "customType": "מותאם אישית",
+    "search": "חיפוש אמצעי אחסון..."
   },
   "devices": {
     "title": "התקנים",
@@ -140,6 +141,7 @@
     "storageCapacity": "קיבולת אחסון",
     "customType": "מותאם אישית",
     "backupCount": "גיבויים",
+    "search": "חיפוש מקורות...",
     "noDevices": "אין מקורות עדיין. צור את המקור הראשון שלך כדי להתחיל.",
     "save": "שמירה",
     "cancel": "ביטול"
@@ -243,7 +245,17 @@
     "ago": "לפני",
     "days": "ימים",
     "today": "היום",
-    "yesterday": "אתמול"
+    "yesterday": "אתמול",
+    "filter": "סינון",
+    "sort": "מיון",
+    "sortBy": "מיון לפי",
+    "direction": "כיוון",
+    "ascending": "עולה",
+    "descending": "יורד",
+    "resetFilter": "איפוס מסננים",
+    "yes": "כן",
+    "no": "לא",
+    "done": "סיום"
   },
   "status": {
     "ok": "מעודכן",

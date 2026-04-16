@@ -119,7 +119,8 @@
     "encrypted": "مشفّر",
     "encryptionType": "نوع التشفير",
     "encryptionLabel": "التسمية / معرّف المفتاح",
-    "customType": "مخصص"
+    "customType": "مخصص",
+    "search": "البحث في وسائط التخزين..."
   },
   "devices": {
     "title": "الأجهزة",
@@ -140,6 +141,7 @@
     "storageCapacity": "سعة التخزين",
     "customType": "مخصص",
     "backupCount": "النسخ الاحتياطية",
+    "search": "البحث في المصادر...",
     "noDevices": "لا توجد مصادر بعد. أنشئ أول مصدر للبدء.",
     "save": "حفظ",
     "cancel": "إلغاء"
@@ -243,7 +245,17 @@
     "ago": "مضت",
     "days": "أيام",
     "today": "اليوم",
-    "yesterday": "أمس"
+    "yesterday": "أمس",
+    "filter": "تصفية",
+    "sort": "ترتيب",
+    "sortBy": "ترتيب حسب",
+    "direction": "الاتجاه",
+    "ascending": "تصاعدي",
+    "descending": "تنازلي",
+    "resetFilter": "إعادة تعيين التصفية",
+    "yes": "نعم",
+    "no": "لا",
+    "done": "تم"
   },
   "status": {
     "ok": "محدّث",

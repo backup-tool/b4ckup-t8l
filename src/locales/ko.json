@@ -119,7 +119,8 @@
     "encrypted": "암호화됨",
     "encryptionType": "암호화 유형",
     "encryptionLabel": "라벨 / 키 ID",
-    "customType": "사용자 지정"
+    "customType": "사용자 지정",
+    "search": "저장 매체 검색..."
   },
   "devices": {
     "title": "장치",
@@ -140,6 +141,7 @@
     "storageCapacity": "저장 용량",
     "customType": "사용자 정의",
     "backupCount": "백업 수",
+    "search": "소스 검색...",
     "noDevices": "아직 소스가 없습니다. 첫 번째 소스를 생성하여 시작하세요.",
     "save": "저장",
     "cancel": "취소"
@@ -243,7 +245,17 @@
     "ago": "전",
     "days": "일",
     "today": "오늘",
-    "yesterday": "어제"
+    "yesterday": "어제",
+    "filter": "필터",
+    "sort": "정렬",
+    "sortBy": "정렬 기준",
+    "direction": "방향",
+    "ascending": "오름차순",
+    "descending": "내림차순",
+    "resetFilter": "필터 초기화",
+    "yes": "예",
+    "no": "아니오",
+    "done": "완료"
   },
   "status": {
     "ok": "최신 상태",

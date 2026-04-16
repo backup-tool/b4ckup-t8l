@@ -119,7 +119,8 @@
     "encrypted": "已加密",
     "encryptionType": "加密类型",
     "encryptionLabel": "标签 / 密钥 ID",
-    "customType": "自定义"
+    "customType": "自定义",
+    "search": "搜索存储介质..."
   },
   "devices": {
     "title": "设备",
@@ -140,6 +141,7 @@
     "storageCapacity": "存储容量",
     "customType": "自定义",
     "backupCount": "备份数",
+    "search": "搜索来源...",
     "noDevices": "暂无来源。创建您的第一个来源以开始使用。",
     "save": "保存",
     "cancel": "取消"
@@ -243,7 +245,17 @@
     "ago": "前",
     "days": "天",
     "today": "今天",
-    "yesterday": "昨天"
+    "yesterday": "昨天",
+    "filter": "筛选",
+    "sort": "排序",
+    "sortBy": "排序方式",
+    "direction": "方向",
+    "ascending": "升序",
+    "descending": "降序",
+    "resetFilter": "重置筛选",
+    "yes": "是",
+    "no": "否",
+    "done": "完成"
   },
   "status": {
     "ok": "已更新",

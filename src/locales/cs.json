@@ -119,7 +119,8 @@
     "encrypted": "Šifrované",
     "encryptionType": "Typ šifrování",
     "encryptionLabel": "Štítek / ID klíče",
-    "customType": "Vlastní"
+    "customType": "Vlastní",
+    "search": "Hledat úložná média..."
   },
   "devices": {
     "title": "Zařízení",
@@ -140,6 +141,7 @@
     "storageCapacity": "Kapacita úložiště",
     "customType": "Vlastní",
     "backupCount": "Zálohy",
+    "search": "Hledat zdroje...",
     "noDevices": "Zatím žádné zdroje. Vytvořte první zdroj a začněte.",
     "save": "Uložit",
     "cancel": "Zrušit"
@@ -243,7 +245,17 @@
     "ago": "před",
     "days": "dny",
     "today": "Dnes",
-    "yesterday": "Včera"
+    "yesterday": "Včera",
+    "filter": "Filtr",
+    "sort": "Řadit",
+    "sortBy": "Řadit podle",
+    "direction": "Směr",
+    "ascending": "Vzestupně",
+    "descending": "Sestupně",
+    "resetFilter": "Resetovat filtry",
+    "yes": "Ano",
+    "no": "Ne",
+    "done": "Hotovo"
   },
   "status": {
     "ok": "Aktuální",

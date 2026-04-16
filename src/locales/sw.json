@@ -119,7 +119,8 @@
     "encrypted": "Imesimbwa",
     "encryptionType": "Aina ya Usimbaji",
     "encryptionLabel": "Lebo / Kitambulisho cha Ufunguo",
-    "customType": "Maalum"
+    "customType": "Maalum",
+    "search": "Tafuta vyombo vya kuhifadhi..."
   },
   "devices": {
     "title": "Vifaa",
@@ -140,6 +141,7 @@
     "storageCapacity": "Uwezo wa kuhifadhi",
     "customType": "Maalum",
     "backupCount": "Nakala Rudufu",
+    "search": "Tafuta vyanzo...",
     "noDevices": "Hakuna vyanzo bado. Unda chanzo chako cha kwanza ili kuanza.",
     "save": "Hifadhi",
     "cancel": "Ghairi"
@@ -243,7 +245,17 @@
     "ago": "iliyopita",
     "days": "siku",
     "today": "Leo",
-    "yesterday": "Jana"
+    "yesterday": "Jana",
+    "filter": "Kichujio",
+    "sort": "Panga",
+    "sortBy": "Panga kwa",
+    "direction": "Mwelekeo",
+    "ascending": "Kupanda",
+    "descending": "Kushuka",
+    "resetFilter": "Weka upya vichujio",
+    "yes": "Ndiyo",
+    "no": "Hapana",
+    "done": "Imekamilika"
   },
   "status": {
     "ok": "Imesasishwa",

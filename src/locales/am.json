@@ -119,7 +119,8 @@
     "encrypted": "የተመሰጠረ",
     "encryptionType": "የምስጠራ ዓይነት",
     "encryptionLabel": "መለያ / የቁልፍ ID",
-    "customType": "ብጁ"
+    "customType": "ብጁ",
+    "search": "የማከማቻ ሚዲያ ፈልግ..."
   },
   "devices": {
     "title": "መሣሪያዎች",
@@ -140,6 +141,7 @@
     "storageCapacity": "የማከማቻ አቅም",
     "customType": "ብጁ",
     "backupCount": "ምትኬዎች",
+    "search": "ምንጮችን ፈልግ...",
     "noDevices": "እስካሁን ምንም ምንጮች የሉም። ለመጀመር የመጀመሪያ ምንጭዎን ይፍጠሩ።",
     "save": "አስቀምጥ",
     "cancel": "ሰርዝ"
@@ -243,7 +245,17 @@
     "ago": "በፊት",
     "days": "ቀናት",
     "today": "ዛሬ",
-    "yesterday": "ትናንት"
+    "yesterday": "ትናንት",
+    "filter": "ማጣሪያ",
+    "sort": "ደርድር",
+    "sortBy": "ደርድር በ",
+    "direction": "አቅጣጫ",
+    "ascending": "ከታች ወደ ላይ",
+    "descending": "ከላይ ወደ ታች",
+    "resetFilter": "ማጣሪያዎችን ዳግም አስጀምር",
+    "yes": "አዎ",
+    "no": "አይ",
+    "done": "Done"
   },
   "status": {
     "ok": "ወቅታዊ",

@@ -119,7 +119,8 @@
     "encrypted": "Verschlüsselt",
     "encryptionType": "Verschlüsselungstyp",
     "encryptionLabel": "Bezeichnung / Key-ID",
-    "customType": "Eigener"
+    "customType": "Eigener",
+    "search": "Speichermedien durchsuchen..."
   },
   "devices": {
     "title": "Geräte",
@@ -141,6 +142,7 @@
     "customType": "Eigener",
     "backupCount": "Backups",
     "noDevices": "Noch keine Quellen. Erstelle deine erste Quelle um loszulegen.",
+    "search": "Quellen durchsuchen...",
     "save": "Speichern",
     "cancel": "Abbrechen"
   },
@@ -243,7 +245,17 @@
     "ago": "her",
     "days": "Tage",
     "today": "Heute",
-    "yesterday": "Gestern"
+    "yesterday": "Gestern",
+    "filter": "Filter",
+    "sort": "Sortieren",
+    "sortBy": "Sortieren nach",
+    "direction": "Richtung",
+    "ascending": "Aufsteigend",
+    "descending": "Absteigend",
+    "resetFilter": "Filter zur\u00fccksetzen",
+    "yes": "Ja",
+    "no": "Nein",
+    "done": "Fertig"
   },
   "status": {
     "ok": "Aktuell",

@@ -119,7 +119,8 @@
     "encrypted": "Şifreli",
     "encryptionType": "Şifreleme Türü",
     "encryptionLabel": "Etiket / Anahtar ID",
-    "customType": "Özel"
+    "customType": "Özel",
+    "search": "Depolama ortamı ara..."
   },
   "devices": {
     "title": "Cihazlar",
@@ -140,6 +141,7 @@
     "storageCapacity": "Depolama Kapasitesi",
     "customType": "Özel",
     "backupCount": "Yedekler",
+    "search": "Kaynak ara...",
     "noDevices": "Henüz kaynak yok. Başlamak için ilk kaynağınızı oluşturun.",
     "save": "Kaydet",
     "cancel": "İptal"
@@ -243,7 +245,17 @@
     "ago": "önce",
     "days": "gün",
     "today": "Bugün",
-    "yesterday": "Dün"
+    "yesterday": "Dün",
+    "filter": "Filtre",
+    "sort": "Sırala",
+    "sortBy": "Sıralama ölçütü",
+    "direction": "Yön",
+    "ascending": "Artan",
+    "descending": "Azalan",
+    "resetFilter": "Filtreleri sıfırla",
+    "yes": "Evet",
+    "no": "Hayır",
+    "done": "Tamam"
   },
   "status": {
     "ok": "Güncel",

@@ -119,7 +119,8 @@
     "encrypted": "Kryptert",
     "encryptionType": "Krypteringstype",
     "encryptionLabel": "Etikett / Nøkkel-ID",
-    "customType": "Egendefinert"
+    "customType": "Egendefinert",
+    "search": "Søk i lagringsmedier..."
   },
   "devices": {
     "title": "Enheter",
@@ -140,6 +141,7 @@
     "storageCapacity": "Lagringskapasitet",
     "customType": "Egendefinert",
     "backupCount": "Sikkerhetskopier",
+    "search": "Søk i kilder...",
     "noDevices": "Ingen kilder ennå. Opprett din første kilde for å komme i gang.",
     "save": "Lagre",
     "cancel": "Avbryt"
@@ -243,7 +245,17 @@
     "ago": "siden",
     "days": "dager",
     "today": "I dag",
-    "yesterday": "I går"
+    "yesterday": "I går",
+    "filter": "Filter",
+    "sort": "Sorter",
+    "sortBy": "Sorter etter",
+    "direction": "Retning",
+    "ascending": "Stigende",
+    "descending": "Synkende",
+    "resetFilter": "Tilbakestill filtre",
+    "yes": "Ja",
+    "no": "Nei",
+    "done": "Ferdig"
   },
   "status": {
     "ok": "Oppdatert",

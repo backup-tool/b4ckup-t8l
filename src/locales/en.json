@@ -119,7 +119,8 @@
     "encrypted": "Encrypted",
     "encryptionType": "Encryption Type",
     "encryptionLabel": "Label / Key ID",
-    "customType": "Custom"
+    "customType": "Custom",
+    "search": "Search storage media..."
   },
   "devices": {
     "title": "Devices",
@@ -141,6 +142,7 @@
     "customType": "Custom",
     "backupCount": "Backups",
     "noDevices": "No sources yet. Create your first source to get started.",
+    "search": "Search sources...",
     "save": "Save",
     "cancel": "Cancel"
   },
@@ -243,7 +245,17 @@
     "ago": "ago",
     "days": "days",
     "today": "Today",
-    "yesterday": "Yesterday"
+    "yesterday": "Yesterday",
+    "filter": "Filter",
+    "sort": "Sort",
+    "sortBy": "Sort by",
+    "direction": "Direction",
+    "ascending": "Ascending",
+    "descending": "Descending",
+    "resetFilter": "Reset filters",
+    "yes": "Yes",
+    "no": "No",
+    "done": "Done"
   },
   "status": {
     "ok": "Up to Date",

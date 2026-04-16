@@ -119,7 +119,8 @@
     "encrypted": "کوډ شوی",
     "encryptionType": "د کوډ کولو ډول",
     "encryptionLabel": "لیبل / د کیلي ID",
-    "customType": "دلخوا"
+    "customType": "دلخوا",
+    "search": "د ذخیره رسنۍ لټون..."
   },
   "devices": {
     "title": "وسایل",
@@ -140,6 +141,7 @@
     "storageCapacity": "د ذخیره کولو ظرفیت",
     "customType": "دودیز",
     "backupCount": "بیک اپونه",
+    "search": "سرچینې لټون...",
     "noDevices": "تر اوسه سرچینې نشته. خپل لومړۍ سرچینه جوړ کړئ.",
     "save": "خوندي کړئ",
     "cancel": "لغوه"
@@ -243,7 +245,17 @@
     "ago": "مخکې",
     "days": "ورځې",
     "today": "نن",
-    "yesterday": "پرون"
+    "yesterday": "پرون",
+    "filter": "فیلټر",
+    "sort": "ترتیبول",
+    "sortBy": "ترتیبول په اساس",
+    "direction": "لوری",
+    "ascending": "پورته",
+    "descending": "ښکته",
+    "resetFilter": "فیلټرونه بیا تنظیم کړئ",
+    "yes": "هو",
+    "no": "نه",
+    "done": "Done"
   },
   "status": {
     "ok": "تازه",

@@ -119,7 +119,8 @@
     "encrypted": "এনক্রিপ্টেড",
     "encryptionType": "এনক্রিপশন ধরন",
     "encryptionLabel": "লেবেল / কী ID",
-    "customType": "কাস্টম"
+    "customType": "কাস্টম",
+    "search": "স্টোরেজ মিডিয়া অনুসন্ধান..."
   },
   "devices": {
     "title": "ডিভাইস",
@@ -140,6 +141,7 @@
     "storageCapacity": "স্টোরেজ ক্ষমতা",
     "customType": "কাস্টম",
     "backupCount": "ব্যাকআপ",
+    "search": "উৎস অনুসন্ধান...",
     "noDevices": "এখনো কোনো উৎস নেই। শুরু করতে আপনার প্রথম উৎস তৈরি করুন।",
     "save": "সংরক্ষণ করুন",
     "cancel": "বাতিল করুন"
@@ -243,7 +245,17 @@
     "ago": "আগে",
     "days": "দিন",
     "today": "আজ",
-    "yesterday": "গতকাল"
+    "yesterday": "গতকাল",
+    "filter": "ফিল্টার",
+    "sort": "সাজান",
+    "sortBy": "এর ভিত্তিতে সাজান",
+    "direction": "দিক",
+    "ascending": "ঊর্ধ্বক্রম",
+    "descending": "অধঃক্রম",
+    "resetFilter": "ফিল্টার রিসেট করুন",
+    "yes": "হ্যাঁ",
+    "no": "না",
+    "done": "সম্পন্ন"
   },
   "status": {
     "ok": "হালনাগাদ",

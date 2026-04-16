@@ -119,7 +119,8 @@
     "encrypted": "Enkriptirano",
     "encryptionType": "Vrsta enkripcije",
     "encryptionLabel": "Oznaka / ID ključa",
-    "customType": "Prilagođeno"
+    "customType": "Prilagođeno",
+    "search": "Pretraži medije za pohranu..."
   },
   "devices": {
     "title": "Uređaji",
@@ -140,6 +141,7 @@
     "storageCapacity": "Kapacitet pohrane",
     "customType": "Prilagođeno",
     "backupCount": "Sigurnosne kopije",
+    "search": "Pretraži izvore...",
     "noDevices": "Još nema izvora. Stvorite prvi izvor za početak.",
     "save": "Spremi",
     "cancel": "Odustani"
@@ -243,7 +245,17 @@
     "ago": "prije",
     "days": "dana",
     "today": "Danas",
-    "yesterday": "Jučer"
+    "yesterday": "Jučer",
+    "filter": "Filtar",
+    "sort": "Sortiraj",
+    "sortBy": "Sortiraj po",
+    "direction": "Smjer",
+    "ascending": "Uzlazno",
+    "descending": "Silazno",
+    "resetFilter": "Poništi filtre",
+    "yes": "Da",
+    "no": "Ne",
+    "done": "Gotovo"
   },
   "status": {
     "ok": "Ažurno",

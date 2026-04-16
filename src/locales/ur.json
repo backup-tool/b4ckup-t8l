@@ -119,7 +119,8 @@
     "encrypted": "انکرپٹڈ",
     "encryptionType": "انکرپشن قسم",
     "encryptionLabel": "لیبل / کلید ID",
-    "customType": "حسب ضرورت"
+    "customType": "حسب ضرورت",
+    "search": "اسٹوریج میڈیا تلاش کریں..."
   },
   "devices": {
     "title": "آلات",
@@ -140,6 +141,7 @@
     "storageCapacity": "ذخیرہ کرنے کی گنجائش",
     "customType": "حسب ضرورت",
     "backupCount": "بیک اپ",
+    "search": "ذرائع تلاش کریں...",
     "noDevices": "ابھی تک کوئی ذریعہ نہیں۔ شروع کرنے کے لیے اپنا پہلا ذریعہ بنائیں۔",
     "save": "محفوظ کریں",
     "cancel": "منسوخ کریں"
@@ -243,7 +245,17 @@
     "ago": "پہلے",
     "days": "دن",
     "today": "آج",
-    "yesterday": "کل"
+    "yesterday": "کل",
+    "filter": "فلٹر",
+    "sort": "ترتیب دیں",
+    "sortBy": "ترتیب بہ",
+    "direction": "سمت",
+    "ascending": "صعودی",
+    "descending": "نزولی",
+    "resetFilter": "فلٹرز ری سیٹ کریں",
+    "yes": "ہاں",
+    "no": "نہیں",
+    "done": "ہو گیا"
   },
   "status": {
     "ok": "تازہ ترین",

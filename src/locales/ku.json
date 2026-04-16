@@ -119,7 +119,8 @@
     "encrypted": "Şîfrekirî",
     "encryptionType": "Cureya Şîfrekirinê",
     "encryptionLabel": "Etîket / Nasnameya Mifteyê",
-    "customType": "Taybet"
+    "customType": "Taybet",
+    "search": "Li medyaya hilanînê bigere..."
   },
   "devices": {
     "title": "Cîhaz",
@@ -140,6 +141,7 @@
     "storageCapacity": "Kapasîteya hilanînê",
     "customType": "Kesane",
     "backupCount": "Paştgirtin",
+    "search": "Li çavkaniyan bigere...",
     "noDevices": "Hîn çavkanî tune. Çavkaniya xwe ya yekem biafirîne.",
     "save": "Tomar bike",
     "cancel": "Betal"
@@ -243,7 +245,17 @@
     "ago": "berê",
     "days": "roj",
     "today": "Îro",
-    "yesterday": "Duh"
+    "yesterday": "Duh",
+    "filter": "Parzûn",
+    "sort": "Rêzkirin",
+    "sortBy": "Rêz bike li gorî",
+    "direction": "Araستê",
+    "ascending": "Bilindkirî",
+    "descending": "Daxistî",
+    "resetFilter": "Parzûnan nû bike",
+    "yes": "Erê",
+    "no": "Na",
+    "done": "Temam"
   },
   "status": {
     "ok": "Nûvekirî",

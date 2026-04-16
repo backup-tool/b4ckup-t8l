@@ -119,7 +119,8 @@
     "encrypted": "Krypterad",
     "encryptionType": "Krypteringstyp",
     "encryptionLabel": "Etikett / Nyckel-ID",
-    "customType": "Anpassad"
+    "customType": "Anpassad",
+    "search": "Sök lagringsmedia..."
   },
   "devices": {
     "title": "Enheter",
@@ -140,6 +141,7 @@
     "storageCapacity": "Lagringskapacitet",
     "customType": "Anpassad",
     "backupCount": "Säkerhetskopior",
+    "search": "Sök källor...",
     "noDevices": "Inga källor ännu. Skapa din första källa för att komma igång.",
     "save": "Spara",
     "cancel": "Avbryt"
@@ -243,7 +245,17 @@
     "ago": "sedan",
     "days": "dagar",
     "today": "Idag",
-    "yesterday": "Igår"
+    "yesterday": "Igår",
+    "filter": "Filter",
+    "sort": "Sortera",
+    "sortBy": "Sortera efter",
+    "direction": "Riktning",
+    "ascending": "Stigande",
+    "descending": "Fallande",
+    "resetFilter": "Återställ filter",
+    "yes": "Ja",
+    "no": "Nej",
+    "done": "Klar"
   },
   "status": {
     "ok": "Uppdaterad",
