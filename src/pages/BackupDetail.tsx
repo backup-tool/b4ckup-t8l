@@ -94,6 +94,7 @@ export function BackupDetail() {
   const [scanError, setScanError] = useState<string | null>(null);
   const [scanSizesLoading, setScanSizesLoading] = useState<Set<number>>(new Set());
   const [editEntryModalOpen, setEditEntryModalOpen] = useState(false);
+  const [chartPeriod, setChartPeriod] = useState("all");
   const [editEntryForm, setEditEntryForm] = useState({
     id: 0,
     size_bytes: "",
@@ -616,13 +617,23 @@ export function BackupDetail() {
 
 
 
-  // Chart data — auto-detect best unit based on max size
-  const rawSizes = entries.map((e) => e.size_bytes as number).filter((s) => s > 0);
+  // Chart data — filter by period, auto-detect best unit
+  const now = new Date();
+  const periodCutoff = chartPeriod === "30" ? new Date(now.getTime() - 30 * 86400000)
+    : chartPeriod === "90" ? new Date(now.getTime() - 90 * 86400000)
+    : chartPeriod === "year" ? new Date(now.getTime() - 365 * 86400000)
+    : null;
+
+  const chartEntries = periodCutoff
+    ? entries.filter((e) => new Date(e.backup_date as string) >= periodCutoff)
+    : entries;
+
+  const rawSizes = chartEntries.map((e) => e.size_bytes as number).filter((s) => s > 0);
   const maxBytes = rawSizes.length > 0 ? Math.max(...rawSizes) : 0;
   const chartUnit = maxBytes >= 1024 ** 4 ? "TB" : maxBytes >= 1024 ** 3 ? "GB" : maxBytes >= 1024 ** 2 ? "MB" : maxBytes >= 1024 ? "KB" : "Bytes";
   const chartDivisor = maxBytes >= 1024 ** 4 ? 1024 ** 4 : maxBytes >= 1024 ** 3 ? 1024 ** 3 : maxBytes >= 1024 ** 2 ? 1024 ** 2 : maxBytes >= 1024 ? 1024 : 1;
 
-  const chartData = [...entries]
+  const chartData = [...chartEntries]
     .reverse()
     .map((e) => ({
       date: formatDate(e.backup_date as string),
@@ -712,7 +723,29 @@ export function BackupDetail() {
         {/* Size history chart */}
         <Card>
           <CardHeader>
-            <CardTitle>{t("backups.sizeHistory")}</CardTitle>
+            <div className="flex items-center justify-between">
+              <CardTitle>{t("backups.sizeHistory")}</CardTitle>
+              <div className="flex gap-1">
+                {[
+                  { value: "30", label: t("history.last30") },
+                  { value: "90", label: t("history.last90") },
+                  { value: "year", label: t("history.lastYear") },
+                  { value: "all", label: t("history.allTime") },
+                ].map((opt) => (
+                  <button
+                    key={opt.value}
+                    onClick={() => setChartPeriod(opt.value)}
+                    className={`px-2 py-0.5 text-[10px] rounded-md transition-colors ${
+                      chartPeriod === opt.value
+                        ? "bg-primary text-primary-foreground"
+                        : "text-muted-foreground hover:bg-muted"
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            </div>
           </CardHeader>
           {chartData.length < 2 ? (
             <p className="text-sm text-muted-foreground">{t("backups.noEntries")}</p>
