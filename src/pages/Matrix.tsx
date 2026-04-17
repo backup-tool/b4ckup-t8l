@@ -123,17 +123,17 @@ export function Matrix() {
           <p className="text-muted-foreground">{t("matrix.noData")}</p>
         </Card>
       ) : (
-        <div className="overflow-x-auto border border-border rounded-xl">
+        <div className="overflow-x-auto overflow-y-clip border border-border rounded-xl">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border bg-muted/50">
-                <th className="text-left px-4 py-3 font-semibold sticky left-0 bg-muted/50 z-10 min-w-[200px]">
+                <th className="text-left px-4 py-3 font-semibold sticky left-0 top-0 bg-muted/50 z-30 min-w-[200px]">
                   {t("backups.name")}
                 </th>
                 {sortedMedia.map((m, idx) => (
                   <th
                     key={m.id as number}
-                    className={`px-3 py-3 font-semibold text-center min-w-[100px] ${editMode ? "bg-primary/5" : ""}`}
+                    className={`px-3 py-3 font-semibold text-center min-w-[100px] sticky top-0 z-20 ${editMode ? "bg-primary/5" : "bg-muted/50"}`}
                   >
                     <div className="flex flex-col items-center gap-1">
                       <div className="text-xs">{m.name as string}</div>
