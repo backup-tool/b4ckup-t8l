@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Heart, Coffee, CreditCard, Users } from "lucide-react";
+import { Heart, Coffee, CreditCard } from "lucide-react";
 
 const DONATE_OPTIONS = [
   {
@@ -20,15 +20,6 @@ const DONATE_OPTIONS = [
     color: "bg-[#0070BA]/10 text-[#0070BA]",
     btnColor: "bg-[#0070BA] hover:bg-[#005ea6]",
   },
-  {
-    id: "patreon",
-    icon: Users,
-    name: "Patreon",
-    desc: "donatePatreonDesc",
-    url: "https://patreon.com/YOUR_PATREON",
-    color: "bg-[#FF424D]/10 text-[#FF424D]",
-    btnColor: "bg-[#FF424D] hover:bg-[#e63940]",
-  },
 ];
 
 export function Donate() {
@@ -44,7 +35,7 @@ export function Donate() {
         <p className="text-fg-muted max-w-lg mx-auto">{t("donate.subtitle")}</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
         {DONATE_OPTIONS.map((opt) => (
           <div
             key={opt.id}
