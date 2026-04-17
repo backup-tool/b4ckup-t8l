@@ -23,6 +23,8 @@ import {
   Play,
   ChevronDown,
   RefreshCw,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -43,6 +45,7 @@ import {
   markEntryVerified,
   updateEntry,
   updateEntrySize,
+  toggleEntryAvailability,
   updateBackup,
   softDeleteBackup,
   getAllMedia,
@@ -139,6 +142,8 @@ export function BackupDetail() {
     schedule_custom_interval_days: "",
     schedule_note: "",
     reminder_interval_days: "",
+    retention_type: "all" as string,
+    retention_value: "",
   });
 
   const load = useCallback(async () => {
@@ -485,6 +490,8 @@ export function BackupDetail() {
     schedule_custom_interval_days: "",
     schedule_note: "",
     reminder_interval_days: "",
+    retention_type: "all",
+    retention_value: "",
   };
 
   function locationDataFromForm() {
@@ -501,6 +508,8 @@ export function BackupDetail() {
       schedule_custom_interval_days: isAuto && locationForm.schedule_custom_interval_days ? parseInt(locationForm.schedule_custom_interval_days) : null,
       schedule_note: isAuto && locationForm.schedule_note ? locationForm.schedule_note : null,
       reminder_interval_days: locationForm.reminder_interval_days ? parseInt(locationForm.reminder_interval_days) : null,
+      retention_type: locationForm.retention_type,
+      retention_value: locationForm.retention_type !== "all" && locationForm.retention_value ? parseInt(locationForm.retention_value) : null,
     };
   }
 
@@ -537,6 +546,8 @@ export function BackupDetail() {
       schedule_custom_interval_days: loc.schedule_custom_interval_days != null ? String(loc.schedule_custom_interval_days) : "",
       schedule_note: (loc.schedule_note as string) || "",
       reminder_interval_days: loc.reminder_interval_days != null ? String(loc.reminder_interval_days) : "",
+      retention_type: (loc.retention_type as string) || "all",
+      retention_value: loc.retention_value != null ? String(loc.retention_value) : "",
     });
   }
 
@@ -666,9 +677,11 @@ export function BackupDetail() {
     : chartPeriod === "year" ? new Date(now.getTime() - 365 * 86400000)
     : null;
 
+  // Only include entries that are still physically available
+  const availableEntries = entries.filter((e) => e.is_available == null ? true : !!e.is_available);
   const chartEntries = periodCutoff
-    ? entries.filter((e) => new Date(e.backup_date as string) >= periodCutoff)
-    : entries;
+    ? availableEntries.filter((e) => new Date(e.backup_date as string) >= periodCutoff)
+    : availableEntries;
 
   const rawSizes = chartEntries.map((e) => e.size_bytes as number).filter((s) => s > 0);
   const maxBytes = rawSizes.length > 0 ? Math.max(...rawSizes) : 0;
@@ -821,7 +834,7 @@ export function BackupDetail() {
         {/* Size Comparison */}
         {entries.length >= 2 && (() => {
           const sorted = [...entries]
-            .filter((e) => (e.size_bytes as number) > 0)
+            .filter((e) => (e.size_bytes as number) > 0 && (e.is_available == null ? true : !!e.is_available))
             .sort((a, b) => (a.backup_date as string).localeCompare(b.backup_date as string));
           if (sorted.length < 2) return null;
           const comparisons = sorted.slice(1).map((entry, i) => {
@@ -891,6 +904,11 @@ export function BackupDetail() {
                             {loc.schedule_month_day != null ? ` · ${t("backups.monthDay")}: ${loc.schedule_month_day}` : ""}
                             {loc.schedule_custom_interval_days != null ? ` · ${loc.schedule_custom_interval_days} ${t("common.days")}` : ""}
                             {loc.schedule_note ? ` · ${loc.schedule_note}` : ""}
+                          </p>
+                        )}
+                        {loc.retention_type && loc.retention_type !== "all" && loc.retention_value && (
+                          <p className="text-[10px] text-muted-foreground mt-0.5 truncate">
+                            {t("backups.retention")}: {loc.retention_value} {t(`backups.retention${loc.retention_type === "count" ? "CountUnit" : loc.retention_type === "days" ? "Days" : "Months"}`)}
                           </p>
                         )}
                       </div>
@@ -969,10 +987,11 @@ export function BackupDetail() {
           <div className="space-y-1">
             {entries.map((entry, idx) => {
               const num = entry.entry_number || entries.length - idx;
+              const isAvailable = entry.is_available == null ? true : !!entry.is_available;
               return (
               <div
                 key={entry.id as number}
-                className="flex items-center gap-3 py-3 px-4 rounded-lg border border-border hover:border-primary/20 transition-colors"
+                className={`flex items-center gap-3 py-3 px-4 rounded-lg border border-border hover:border-primary/20 transition-colors ${!isAvailable ? "opacity-50" : ""}`}
               >
                 {/* Number badge */}
                 <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center shrink-0">
@@ -982,12 +1001,17 @@ export function BackupDetail() {
                 {/* Info */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <p className="text-sm font-semibold">
+                    <p className={`text-sm font-semibold ${!isAvailable ? "line-through" : ""}`}>
                       {formatDate(entry.backup_date as string)}
                     </p>
                     <span className="text-xs text-muted-foreground px-1.5 py-0.5 bg-muted rounded">
                       {entry.media_name as string}
                     </span>
+                    {!isAvailable && (
+                      <span className="text-[10px] text-muted-foreground px-1.5 py-0.5 bg-muted rounded border border-border">
+                        {t("backups.notAvailable")}
+                      </span>
+                    )}
                     {entry.verified_at && (
                       <span className="text-xs text-emerald-600 flex items-center gap-0.5">
                         <CheckCircle className="w-3 h-3" />
@@ -1061,6 +1085,21 @@ export function BackupDetail() {
                       <CheckCircle className="w-3.5 h-3.5" />
                     </Button>
                   )}
+                  <button
+                    onClick={async () => {
+                      await toggleEntryAvailability(entry.id as number, !isAvailable);
+                      triggerRefresh();
+                      await load();
+                    }}
+                    className="p-1.5 rounded hover:bg-muted transition-colors"
+                    title={isAvailable ? t("backups.markNotAvailable") : t("backups.markAvailable")}
+                  >
+                    {isAvailable ? (
+                      <Eye className="w-3.5 h-3.5 text-muted-foreground" />
+                    ) : (
+                      <EyeOff className="w-3.5 h-3.5 text-muted-foreground" />
+                    )}
+                  </button>
                   <button
                     onClick={() => openEditEntry(entry)}
                     className="p-1.5 rounded hover:bg-muted transition-colors"
@@ -1321,6 +1360,31 @@ export function BackupDetail() {
               placeholder="30"
             />
           </div>
+          <div>
+            <Label>{t("backups.retention")}</Label>
+            <CustomSelect
+              value={locationForm.retention_type}
+              onChange={(val) => setLocationForm({ ...locationForm, retention_type: val })}
+              options={[
+                { value: "all", label: t("backups.retentionAll") },
+                { value: "count", label: t("backups.retentionCount") },
+                { value: "days", label: t("backups.retentionDays") },
+                { value: "months", label: t("backups.retentionMonths") },
+              ]}
+            />
+          </div>
+          {locationForm.retention_type !== "all" && (
+            <div>
+              <Label>{t("backups.retentionValue")}</Label>
+              <Input
+                type="number"
+                min="1"
+                value={locationForm.retention_value}
+                onChange={(e) => setLocationForm({ ...locationForm, retention_value: e.target.value })}
+                placeholder={locationForm.retention_type === "count" ? "10" : "30"}
+              />
+            </div>
+          )}
           <div className="flex justify-end gap-2 pt-2">
             <Button
               variant="secondary"
@@ -1482,6 +1546,31 @@ export function BackupDetail() {
               placeholder="30"
             />
           </div>
+          <div>
+            <Label>{t("backups.retention")}</Label>
+            <CustomSelect
+              value={locationForm.retention_type}
+              onChange={(val) => setLocationForm({ ...locationForm, retention_type: val })}
+              options={[
+                { value: "all", label: t("backups.retentionAll") },
+                { value: "count", label: t("backups.retentionCount") },
+                { value: "days", label: t("backups.retentionDays") },
+                { value: "months", label: t("backups.retentionMonths") },
+              ]}
+            />
+          </div>
+          {locationForm.retention_type !== "all" && (
+            <div>
+              <Label>{t("backups.retentionValue")}</Label>
+              <Input
+                type="number"
+                min="1"
+                value={locationForm.retention_value}
+                onChange={(e) => setLocationForm({ ...locationForm, retention_value: e.target.value })}
+                placeholder={locationForm.retention_type === "count" ? "10" : "30"}
+              />
+            </div>
+          )}
           <div className="flex justify-end gap-2 pt-2">
             <Button
               variant="secondary"

@@ -54,8 +54,11 @@ export interface BackupEntry {
   backup_date: string;
   verified_at: string | null;
   notes: string | null;
+  is_available: boolean;
   created_at: string;
 }
+
+export const RETENTION_TYPES = ["all", "count", "days", "months"] as const;
 
 export interface BackupStorageLocation {
   id: number;

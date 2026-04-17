@@ -220,6 +220,15 @@ async function runMigrations(db: Database) {
   try {
     await db.execute("ALTER TABLE backup_storage_locations ADD COLUMN reminder_interval_days INTEGER DEFAULT NULL");
   } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backup_storage_locations ADD COLUMN retention_type TEXT DEFAULT 'all'");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backup_storage_locations ADD COLUMN retention_value INTEGER DEFAULT NULL");
+  } catch { /* column already exists */ }
+  try {
+    await db.execute("ALTER TABLE backup_entries ADD COLUMN is_available INTEGER NOT NULL DEFAULT 1");
+  } catch { /* column already exists */ }
   // One-time migration: copy backup_mode/schedule from backups to their storage locations
   try {
     await db.execute(`
@@ -602,7 +611,54 @@ export async function createEntry(data: {
     `INSERT OR IGNORE INTO backup_storage_locations (backup_id, storage_media_id) VALUES ($1, $2)`,
     [data.backup_id, data.storage_media_id]
   );
+  // Apply retention policy — mark older entries as not available
+  await applyRetentionPolicy(data.backup_id, data.storage_media_id);
   return result.lastInsertId!;
+}
+
+export async function toggleEntryAvailability(id: number, available: boolean) {
+  const db = await getDb();
+  await db.execute("UPDATE backup_entries SET is_available=$1 WHERE id=$2", [available ? 1 : 0, id]);
+}
+
+export async function applyRetentionPolicy(backupId: number, storageMediaId: number) {
+  const db = await getDb();
+  const locRows = await db.select<Array<Record<string, any>>>(
+    "SELECT retention_type, retention_value FROM backup_storage_locations WHERE backup_id=$1 AND storage_media_id=$2",
+    [backupId, storageMediaId]
+  );
+  const loc = locRows[0];
+  if (!loc) return;
+  const retType = (loc.retention_type as string) || "all";
+  const retVal = loc.retention_value as number | null;
+  if (retType === "all" || !retVal || retVal <= 0) return;
+
+  const entries = await db.select<Array<Record<string, any>>>(
+    `SELECT id, backup_date FROM backup_entries
+     WHERE backup_id=$1 AND storage_media_id=$2 AND deleted_at IS NULL AND is_available = 1
+     ORDER BY backup_date DESC`,
+    [backupId, storageMediaId]
+  );
+
+  const idsToMark: number[] = [];
+  if (retType === "count") {
+    for (let i = retVal; i < entries.length; i++) {
+      idsToMark.push(entries[i].id as number);
+    }
+  } else if (retType === "days" || retType === "months") {
+    const now = Date.now();
+    const cutoffMs = retType === "days"
+      ? retVal * 86400000
+      : retVal * 30 * 86400000;
+    for (const e of entries) {
+      const age = now - new Date(e.backup_date as string).getTime();
+      if (age > cutoffMs) idsToMark.push(e.id as number);
+    }
+  }
+
+  for (const id of idsToMark) {
+    await db.execute("UPDATE backup_entries SET is_available=0 WHERE id=$1", [id]);
+  }
 }
 
 export async function markEntryVerified(id: number) {
@@ -697,14 +753,17 @@ export async function addStorageLocation(data: {
   schedule_custom_interval_days?: number | null;
   schedule_note?: string | null;
   reminder_interval_days?: number | null;
+  retention_type?: string;
+  retention_value?: number | null;
 }) {
   const db = await getDb();
   await db.execute(
     `INSERT OR IGNORE INTO backup_storage_locations
      (backup_id, storage_media_id, path_on_media, auto_detect, scan_mode,
       backup_mode, schedule_frequency, schedule_time, schedule_weekday,
-      schedule_month_day, schedule_custom_interval_days, schedule_note, reminder_interval_days)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
+      schedule_month_day, schedule_custom_interval_days, schedule_note, reminder_interval_days,
+      retention_type, retention_value)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)`,
     [
       data.backup_id, data.storage_media_id, data.path_on_media,
       data.auto_detect ? 1 : 0, data.scan_mode || "subdirectories",
@@ -716,6 +775,8 @@ export async function addStorageLocation(data: {
       data.schedule_custom_interval_days ?? null,
       data.schedule_note ?? null,
       data.reminder_interval_days ?? null,
+      data.retention_type || "all",
+      data.retention_value ?? null,
     ]
   );
 }
@@ -732,6 +793,8 @@ export async function updateStorageLocation(id: number, data: {
   schedule_custom_interval_days?: number | null;
   schedule_note?: string | null;
   reminder_interval_days?: number | null;
+  retention_type?: string;
+  retention_value?: number | null;
 }) {
   const db = await getDb();
   await db.execute(
@@ -739,8 +802,9 @@ export async function updateStorageLocation(id: number, data: {
      SET path_on_media=$1, auto_detect=$2, scan_mode=$3,
          backup_mode=$4, schedule_frequency=$5, schedule_time=$6,
          schedule_weekday=$7, schedule_month_day=$8, schedule_custom_interval_days=$9,
-         schedule_note=$10, reminder_interval_days=$11
-     WHERE id=$12`,
+         schedule_note=$10, reminder_interval_days=$11,
+         retention_type=$12, retention_value=$13
+     WHERE id=$14`,
     [
       data.path_on_media, data.auto_detect ? 1 : 0, data.scan_mode || "subdirectories",
       data.backup_mode || "manual",
@@ -751,6 +815,8 @@ export async function updateStorageLocation(id: number, data: {
       data.schedule_custom_interval_days ?? null,
       data.schedule_note ?? null,
       data.reminder_interval_days ?? null,
+      data.retention_type || "all",
+      data.retention_value ?? null,
       id,
     ]
   );
