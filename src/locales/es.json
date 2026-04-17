@@ -269,7 +269,8 @@
     "no": "No",
     "done": "Listo",
     "older": "entradas anteriores",
-    "showLess": "Mostrar menos"
+    "showLess": "Mostrar menos",
+    "reset": "Restablecer"
   },
   "status": {
     "ok": "Actualizado",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Vista general",
-    "noData": "Aún no hay datos. Crea copias de seguridad y asigna ubicaciones de almacenamiento."
+    "noData": "Aún no hay datos. Crea copias de seguridad y asigna ubicaciones de almacenamiento.",
+    "moveLeft": "Mover a la izquierda",
+    "moveRight": "Mover a la derecha"
   },
   "scan": {
     "button": "Escanear",

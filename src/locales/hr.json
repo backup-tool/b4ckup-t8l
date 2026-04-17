@@ -269,7 +269,8 @@
     "no": "Ne",
     "done": "Gotovo",
     "older": "stariji zapisi",
-    "showLess": "Prikaži manje"
+    "showLess": "Prikaži manje",
+    "reset": "Poništi"
   },
   "status": {
     "ok": "Ažurno",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Pregled",
-    "noData": "Još nema podataka. Stvorite sigurnosne kopije i dodijelite lokacije pohrane."
+    "noData": "Još nema podataka. Stvorite sigurnosne kopije i dodijelite lokacije pohrane.",
+    "moveLeft": "Pomakni lijevo",
+    "moveRight": "Pomakni desno"
   },
   "scan": {
     "button": "Skeniraj",

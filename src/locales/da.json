@@ -269,7 +269,8 @@
     "no": "Nej",
     "done": "Færdig",
     "older": "ældre poster",
-    "showLess": "Vis mindre"
+    "showLess": "Vis mindre",
+    "reset": "Nulstil"
   },
   "status": {
     "ok": "Opdateret",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Oversigt",
-    "noData": "Ingen data endnu. Opret sikkerhedskopier og tildel lagringssteder."
+    "noData": "Ingen data endnu. Opret sikkerhedskopier og tildel lagringssteder.",
+    "moveLeft": "Flyt til venstre",
+    "moveRight": "Flyt til højre"
   },
   "scan": {
     "button": "Scan",

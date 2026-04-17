@@ -1,11 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Check, X, Grid3X3 } from "lucide-react";
+import { Check, X, Grid3X3, Pencil, ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
 import { Card } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 import { getMatrixData } from "@/lib/db";
 import { formatBytes, formatDate } from "@/lib/format";
 import { useAppStore } from "@/lib/store";
+
+const COLUMN_ORDER_KEY = "matrix-column-order";
+
+function loadColumnOrder(): number[] {
+  try {
+    return JSON.parse(localStorage.getItem(COLUMN_ORDER_KEY) || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function saveColumnOrder(order: number[]) {
+  localStorage.setItem(COLUMN_ORDER_KEY, JSON.stringify(order));
+}
 
 export function Matrix() {
   const { t } = useTranslation();
@@ -14,6 +29,8 @@ export function Matrix() {
   const [media, setMedia] = useState<Array<Record<string, any>>>([]);
   const [locations, setLocations] = useState<Array<Record<string, any>>>([]);
   const [loading, setLoading] = useState(true);
+  const [editMode, setEditMode] = useState(false);
+  const [columnOrder, setColumnOrder] = useState<number[]>(() => loadColumnOrder());
 
   useEffect(() => {
     async function load() {
@@ -25,6 +42,38 @@ export function Matrix() {
     }
     load();
   }, [refreshKey]);
+
+  // Sort media according to saved order; new media get appended at the end
+  const sortedMedia = useMemo(() => {
+    if (columnOrder.length === 0) return media;
+    const byId = new Map(media.map((m) => [m.id as number, m]));
+    const ordered: Array<Record<string, any>> = [];
+    // Add media in saved order first
+    for (const id of columnOrder) {
+      const m = byId.get(id);
+      if (m) {
+        ordered.push(m);
+        byId.delete(id);
+      }
+    }
+    // Append any new media not yet in the order
+    for (const m of byId.values()) ordered.push(m);
+    return ordered;
+  }, [media, columnOrder]);
+
+  function moveColumn(index: number, direction: -1 | 1) {
+    const newIndex = index + direction;
+    if (newIndex < 0 || newIndex >= sortedMedia.length) return;
+    const newOrder = sortedMedia.map((m) => m.id as number);
+    [newOrder[index], newOrder[newIndex]] = [newOrder[newIndex], newOrder[index]];
+    setColumnOrder(newOrder);
+    saveColumnOrder(newOrder);
+  }
+
+  function resetColumnOrder() {
+    setColumnOrder([]);
+    saveColumnOrder([]);
+  }
 
   if (loading) return null;
 
@@ -46,7 +95,27 @@ export function Matrix() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-bold">{t("matrix.title")}</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-xl font-bold">{t("matrix.title")}</h1>
+        {!isEmpty && (
+          <div className="flex items-center gap-2">
+            {editMode && columnOrder.length > 0 && (
+              <Button variant="secondary" size="sm" onClick={resetColumnOrder}>
+                <RotateCcw className="w-3.5 h-3.5" />
+                {t("common.reset", { defaultValue: "Reset" })}
+              </Button>
+            )}
+            <Button
+              variant={editMode ? "primary" : "secondary"}
+              size="sm"
+              onClick={() => setEditMode(!editMode)}
+            >
+              <Pencil className="w-3.5 h-3.5" />
+              {editMode ? t("common.done") : t("common.edit")}
+            </Button>
+          </div>
+        )}
+      </div>
 
       {isEmpty ? (
         <Card className="text-center py-12">
@@ -61,12 +130,34 @@ export function Matrix() {
                 <th className="text-left px-4 py-3 font-semibold sticky left-0 bg-muted/50 z-10 min-w-[200px]">
                   {t("backups.name")}
                 </th>
-                {media.map((m) => (
+                {sortedMedia.map((m, idx) => (
                   <th
                     key={m.id as number}
-                    className="px-3 py-3 font-semibold text-center min-w-[100px]"
+                    className={`px-3 py-3 font-semibold text-center min-w-[100px] ${editMode ? "bg-primary/5" : ""}`}
                   >
-                    <div className="text-xs">{m.name as string}</div>
+                    <div className="flex flex-col items-center gap-1">
+                      <div className="text-xs">{m.name as string}</div>
+                      {editMode && (
+                        <div className="flex items-center gap-0.5">
+                          <button
+                            onClick={() => moveColumn(idx, -1)}
+                            disabled={idx === 0}
+                            className="p-0.5 rounded hover:bg-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                            title={t("matrix.moveLeft", { defaultValue: "Move left" })}
+                          >
+                            <ChevronLeft className="w-3.5 h-3.5 text-muted-foreground" />
+                          </button>
+                          <button
+                            onClick={() => moveColumn(idx, 1)}
+                            disabled={idx === sortedMedia.length - 1}
+                            className="p-0.5 rounded hover:bg-muted disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                            title={t("matrix.moveRight", { defaultValue: "Move right" })}
+                          >
+                            <ChevronRight className="w-3.5 h-3.5 text-muted-foreground" />
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </th>
                 ))}
               </tr>
@@ -77,7 +168,7 @@ export function Matrix() {
                   {/* Device group header */}
                   <tr key={`group-${device}`} className="bg-muted/30">
                     <td
-                      colSpan={media.length + 1}
+                      colSpan={sortedMedia.length + 1}
                       className="px-4 py-2 text-xs font-bold text-muted-foreground uppercase tracking-wide sticky left-0 bg-muted/30"
                     >
                       {device}
@@ -97,7 +188,7 @@ export function Matrix() {
                           {b.name as string}
                         </Link>
                       </td>
-                      {media.map((m) => {
+                      {sortedMedia.map((m) => {
                         const loc = getLocation(b.id as number, m.id as number);
                         return (
                           <td key={m.id as number} className="px-3 py-2.5 text-center">

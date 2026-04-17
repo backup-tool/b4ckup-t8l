@@ -269,7 +269,8 @@
     "no": "Non",
     "done": "Terminé",
     "older": "entrées plus anciennes",
-    "showLess": "Afficher moins"
+    "showLess": "Afficher moins",
+    "reset": "Réinitialiser"
   },
   "status": {
     "ok": "À jour",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Vue d'ensemble",
-    "noData": "Aucune donnée pour le moment. Créez des sauvegardes et assignez des emplacements de stockage."
+    "noData": "Aucune donnée pour le moment. Créez des sauvegardes et assignez des emplacements de stockage.",
+    "moveLeft": "Déplacer à gauche",
+    "moveRight": "Déplacer à droite"
   },
   "scan": {
     "button": "Analyser",

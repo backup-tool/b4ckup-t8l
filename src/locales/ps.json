@@ -269,7 +269,8 @@
     "no": "نه",
     "done": "Done",
     "older": "older entries",
-    "showLess": "Show less"
+    "showLess": "Show less",
+    "reset": "بیا تنظیم کړئ"
   },
   "status": {
     "ok": "تازه",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "کتنه",
-    "noData": "تر اوسه معلومات نشته. بیک اپونه جوړ کړئ او د ذخیرې ځایونه ټاکلې کړئ."
+    "noData": "تر اوسه معلومات نشته. بیک اپونه جوړ کړئ او د ذخیرې ځایونه ټاکلې کړئ.",
+    "moveLeft": "کیڼ ته حرکت",
+    "moveRight": "ښي ته حرکت"
   },
   "scan": {
     "button": "سکین",

@@ -269,7 +269,8 @@
     "no": "No",
     "done": "Done",
     "older": "older entries",
-    "showLess": "Show less"
+    "showLess": "Show less",
+    "reset": "Reset"
   },
   "status": {
     "ok": "Up to Date",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Overview",
-    "noData": "No data yet. Create backups and assign storage locations."
+    "noData": "No data yet. Create backups and assign storage locations.",
+    "moveLeft": "Move left",
+    "moveRight": "Move right"
   },
   "scan": {
     "button": "Scan",

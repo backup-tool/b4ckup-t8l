@@ -269,7 +269,8 @@
     "no": "Ei",
     "done": "Valmis",
     "older": "vanhemmat merkinnät",
-    "showLess": "Näytä vähemmän"
+    "showLess": "Näytä vähemmän",
+    "reset": "Nollaa"
   },
   "status": {
     "ok": "Ajan tasalla",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Yleiskatsaus",
-    "noData": "Ei tietoja vielä. Luo varmuuskopioita ja määritä tallennussijainnit."
+    "noData": "Ei tietoja vielä. Luo varmuuskopioita ja määritä tallennussijainnit.",
+    "moveLeft": "Siirrä vasemmalle",
+    "moveRight": "Siirrä oikealle"
   },
   "scan": {
     "button": "Skannaa",

@@ -269,7 +269,8 @@
     "no": "Tidak",
     "done": "Selesai",
     "older": "entri lebih lama",
-    "showLess": "Tampilkan lebih sedikit"
+    "showLess": "Tampilkan lebih sedikit",
+    "reset": "Atur ulang"
   },
   "status": {
     "ok": "Terbaru",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Ringkasan",
-    "noData": "Belum ada data. Buat cadangan dan tetapkan lokasi penyimpanan."
+    "noData": "Belum ada data. Buat cadangan dan tetapkan lokasi penyimpanan.",
+    "moveLeft": "Geser ke kiri",
+    "moveRight": "Geser ke kanan"
   },
   "scan": {
     "button": "Pindai",

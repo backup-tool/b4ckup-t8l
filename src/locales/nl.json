@@ -269,7 +269,8 @@
     "no": "Nee",
     "done": "Klaar",
     "older": "oudere items",
-    "showLess": "Minder tonen"
+    "showLess": "Minder tonen",
+    "reset": "Opnieuw instellen"
   },
   "status": {
     "ok": "Actueel",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Overzicht",
-    "noData": "Nog geen gegevens. Maak back-ups en wijs opslaglocaties toe."
+    "noData": "Nog geen gegevens. Maak back-ups en wijs opslaglocaties toe.",
+    "moveLeft": "Naar links verplaatsen",
+    "moveRight": "Naar rechts verplaatsen"
   },
   "scan": {
     "button": "Scannen",

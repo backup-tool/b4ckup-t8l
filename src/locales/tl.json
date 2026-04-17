@@ -269,7 +269,8 @@
     "no": "Hindi",
     "done": "Tapos",
     "older": "mas lumang mga entry",
-    "showLess": "Ipakita ang mas kaunti"
+    "showLess": "Ipakita ang mas kaunti",
+    "reset": "I-reset"
   },
   "status": {
     "ok": "Napapanahon",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Pangkalahatang-tanaw",
-    "noData": "Wala pang data. Gumawa ng mga backup at magtalaga ng mga lokasyon ng storage."
+    "noData": "Wala pang data. Gumawa ng mga backup at magtalaga ng mga lokasyon ng storage.",
+    "moveLeft": "Ilipat sa kaliwa",
+    "moveRight": "Ilipat sa kanan"
   },
   "scan": {
     "button": "I-scan",

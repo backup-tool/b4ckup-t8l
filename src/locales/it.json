@@ -269,7 +269,8 @@
     "no": "No",
     "done": "Fatto",
     "older": "voci precedenti",
-    "showLess": "Mostra meno"
+    "showLess": "Mostra meno",
+    "reset": "Reimposta"
   },
   "status": {
     "ok": "Aggiornato",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Panoramica",
-    "noData": "Nessun dato presente. Crea dei backup e assegna le posizioni di archiviazione."
+    "noData": "Nessun dato presente. Crea dei backup e assegna le posizioni di archiviazione.",
+    "moveLeft": "Sposta a sinistra",
+    "moveRight": "Sposta a destra"
   },
   "scan": {
     "button": "Scansiona",

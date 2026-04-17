@@ -269,7 +269,8 @@
     "no": "Na",
     "done": "Temam",
     "older": "older entries",
-    "showLess": "Show less"
+    "showLess": "Show less",
+    "reset": "Jê ve sazkirin"
   },
   "status": {
     "ok": "Nûvekirî",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Dîtina Giştî",
-    "noData": "Hîn dane tune. Paştgirtinan biafirîne û cihên hilanînê destnîşan bike."
+    "noData": "Hîn dane tune. Paştgirtinan biafirîne û cihên hilanînê destnîşan bike.",
+    "moveLeft": "Biçe çepê",
+    "moveRight": "Biçe rastê"
   },
   "scan": {
     "button": "Bişkoje",

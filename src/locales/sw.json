@@ -269,7 +269,8 @@
     "no": "Hapana",
     "done": "Imekamilika",
     "older": "maingizo ya zamani",
-    "showLess": "Onyesha kidogo"
+    "showLess": "Onyesha kidogo",
+    "reset": "Weka upya"
   },
   "status": {
     "ok": "Imesasishwa",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Muhtasari",
-    "noData": "Hakuna data bado. Unda nakala rudufu na uteue maeneo ya hifadhi."
+    "noData": "Hakuna data bado. Unda nakala rudufu na uteue maeneo ya hifadhi.",
+    "moveLeft": "Sogeza kushoto",
+    "moveRight": "Sogeza kulia"
   },
   "scan": {
     "button": "Changanua",

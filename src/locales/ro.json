@@ -269,7 +269,8 @@
     "no": "Nu",
     "done": "Gata",
     "older": "intrări mai vechi",
-    "showLess": "Afișează mai puțin"
+    "showLess": "Afișează mai puțin",
+    "reset": "Resetează"
   },
   "status": {
     "ok": "La zi",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Prezentare generală",
-    "noData": "Nicio dată încă. Creează copii de siguranță și atribuie locații de stocare."
+    "noData": "Nicio dată încă. Creează copii de siguranță și atribuie locații de stocare.",
+    "moveLeft": "Mută la stânga",
+    "moveRight": "Mută la dreapta"
   },
   "scan": {
     "button": "Scanează",

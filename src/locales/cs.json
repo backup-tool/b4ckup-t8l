@@ -269,7 +269,8 @@
     "no": "Ne",
     "done": "Hotovo",
     "older": "starší záznamy",
-    "showLess": "Zobrazit méně"
+    "showLess": "Zobrazit méně",
+    "reset": "Obnovit"
   },
   "status": {
     "ok": "Aktuální",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Přehled",
-    "noData": "Zatím žádná data. Vytvořte zálohy a přiřaďte umístění úložiště."
+    "noData": "Zatím žádná data. Vytvořte zálohy a přiřaďte umístění úložiště.",
+    "moveLeft": "Posunout doleva",
+    "moveRight": "Posunout doprava"
   },
   "scan": {
     "button": "Skenovat",

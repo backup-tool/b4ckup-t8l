@@ -269,7 +269,8 @@
     "no": "Hayır",
     "done": "Tamam",
     "older": "eski kayıtlar",
-    "showLess": "Daha az göster"
+    "showLess": "Daha az göster",
+    "reset": "Sıfırla"
   },
   "status": {
     "ok": "Güncel",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Genel Bakış",
-    "noData": "Henüz veri yok. Yedekler oluşturun ve depolama konumları atayın."
+    "noData": "Henüz veri yok. Yedekler oluşturun ve depolama konumları atayın.",
+    "moveLeft": "Sola taşı",
+    "moveRight": "Sağa taşı"
   },
   "scan": {
     "button": "Tara",

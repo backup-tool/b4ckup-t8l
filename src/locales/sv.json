@@ -269,7 +269,8 @@
     "no": "Nej",
     "done": "Klar",
     "older": "äldre poster",
-    "showLess": "Visa mindre"
+    "showLess": "Visa mindre",
+    "reset": "Återställ"
   },
   "status": {
     "ok": "Uppdaterad",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Överblick",
-    "noData": "Ingen data ännu. Skapa säkerhetskopior och tilldela lagringsplatser."
+    "noData": "Ingen data ännu. Skapa säkerhetskopior och tilldela lagringsplatser.",
+    "moveLeft": "Flytta åt vänster",
+    "moveRight": "Flytta åt höger"
   },
   "scan": {
     "button": "Skanna",

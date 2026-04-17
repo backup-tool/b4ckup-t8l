@@ -269,7 +269,8 @@
     "no": "አይ",
     "done": "Done",
     "older": "older entries",
-    "showLess": "Show less"
+    "showLess": "Show less",
+    "reset": "ዳግም አስጀምር"
   },
   "status": {
     "ok": "ወቅታዊ",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "አጠቃላይ እይታ",
-    "noData": "እስካሁን ምንም ውሂብ የለም። ምትኬዎችን ይፍጠሩ እና የማከማቻ ቦታዎችን ይመድቡ።"
+    "noData": "እስካሁን ምንም ውሂብ የለም። ምትኬዎችን ይፍጠሩ እና የማከማቻ ቦታዎችን ይመድቡ።",
+    "moveLeft": "ወደ ግራ አንቀሳቅስ",
+    "moveRight": "ወደ ቀኝ አንቀሳቅስ"
   },
   "scan": {
     "button": "ቃኝ",

@@ -269,7 +269,8 @@
     "no": "Nem",
     "done": "Kész",
     "older": "régebbi bejegyzések",
-    "showLess": "Kevesebb mutatása"
+    "showLess": "Kevesebb mutatása",
+    "reset": "Visszaállítás"
   },
   "status": {
     "ok": "Naprakész",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Áttekintés",
-    "noData": "Még nincsenek adatok. Hozz létre biztonsági mentéseket és rendelj hozzájuk tárolási helyeket."
+    "noData": "Még nincsenek adatok. Hozz létre biztonsági mentéseket és rendelj hozzájuk tárolási helyeket.",
+    "moveLeft": "Mozgatás balra",
+    "moveRight": "Mozgatás jobbra"
   },
   "scan": {
     "button": "Keresés",

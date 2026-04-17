@@ -269,7 +269,8 @@
     "no": "Không",
     "done": "Xong",
     "older": "mục cũ hơn",
-    "showLess": "Thu gọn"
+    "showLess": "Thu gọn",
+    "reset": "Đặt lại"
   },
   "status": {
     "ok": "Đã cập nhật",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Tổng quan",
-    "noData": "Chưa có dữ liệu. Tạo bản sao lưu và gán vị trí lưu trữ."
+    "noData": "Chưa có dữ liệu. Tạo bản sao lưu và gán vị trí lưu trữ.",
+    "moveLeft": "Di chuyển sang trái",
+    "moveRight": "Di chuyển sang phải"
   },
   "scan": {
     "button": "Quét",

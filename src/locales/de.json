@@ -269,7 +269,8 @@
     "no": "Nein",
     "done": "Fertig",
     "older": "ältere Einträge",
-    "showLess": "Weniger anzeigen"
+    "showLess": "Weniger anzeigen",
+    "reset": "Zurücksetzen"
   },
   "status": {
     "ok": "Aktuell",
@@ -279,7 +280,9 @@
   },
   "matrix": {
     "title": "Übersicht",
-    "noData": "Noch keine Daten. Erstelle Backups und weise Speicherorte zu."
+    "noData": "Noch keine Daten. Erstelle Backups und weise Speicherorte zu.",
+    "moveLeft": "Nach links",
+    "moveRight": "Nach rechts"
   },
   "scan": {
     "button": "Scannen",
