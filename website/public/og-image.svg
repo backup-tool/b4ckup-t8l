@@ -1,11 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
-    <!-- Background radial gradient for subtle depth -->
-    <radialGradient id="bgGradient" cx="50%" cy="50%" r="70%">
-      <stop offset="0%" stop-color="#0a1510" stop-opacity="1"/>
+    <!-- Rich background gradient -->
+    <radialGradient id="bgGradient" cx="30%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#0f2a1e" stop-opacity="1"/>
+      <stop offset="45%" stop-color="#050e0a" stop-opacity="1"/>
       <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
     </radialGradient>
-    <!-- Divider vertical gradient (matches website) -->
+    <!-- Secondary glow for depth -->
+    <radialGradient id="glowGradient" cx="75%" cy="85%" r="50%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Divider vertical gradient -->
     <linearGradient id="dividerGradient" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#4ade80" stop-opacity="0"/>
       <stop offset="50%" stop-color="#4ade80" stop-opacity="1"/>
@@ -16,27 +22,43 @@
       <stop offset="0%" stop-color="#4ade80"/>
       <stop offset="100%" stop-color="#22d3ee"/>
     </linearGradient>
-    <!-- Subtle green glow for accent line under tagline -->
-    <linearGradient id="accentLine" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#4ade80" stop-opacity="0"/>
-      <stop offset="50%" stop-color="#4ade80" stop-opacity="1"/>
-      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    <!-- Logo glow -->
+    <radialGradient id="logoGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ade80" stop-opacity="0.35"/>
+      <stop offset="70%" stop-color="#4ade80" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Pill border gradient -->
+    <linearGradient id="pillBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4ade80" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.4"/>
     </linearGradient>
   </defs>
 
-  <!-- Background -->
+  <!-- Layered background -->
   <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  <rect width="1200" height="630" fill="url(#glowGradient)"/>
 
-  <!-- Very subtle grid lines (decorative) -->
+  <!-- Subtle grid pattern -->
   <g opacity="0.04" stroke="#4ade80" stroke-width="1">
-    <line x1="0" y1="210" x2="1200" y2="210"/>
-    <line x1="0" y1="420" x2="1200" y2="420"/>
-    <line x1="400" y1="0" x2="400" y2="630"/>
-    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="0" y1="158" x2="1200" y2="158"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
   </g>
 
-  <!-- Logo (centered horizontally, positioned top) -->
-  <g transform="translate(516, 90) scale(0.33)">
+  <!-- Soft diagonal accent line (top-right) -->
+  <g opacity="0.5">
+    <line x1="900" y1="0" x2="1200" y2="300" stroke="#4ade80" stroke-width="1" stroke-dasharray="4,6" opacity="0.2"/>
+  </g>
+
+  <!-- BRAND LOCKUP (logo + wordmark inline) -->
+  <!-- Logo glow backdrop -->
+  <circle cx="200" cy="250" r="140" fill="url(#logoGlow)"/>
+
+  <!-- Logo -->
+  <g transform="translate(80, 130) scale(0.47)">
     <rect width="512" height="512" rx="80" fill="#000000"/>
     <path d="M256 72 L408 138 L408 280 Q408 388 256 448 Q104 388 104 280 L104 138 Z"
           fill="none" stroke="#4ade80" stroke-width="36" stroke-linejoin="round"/>
@@ -45,30 +67,75 @@
     <line x1="200" y1="348" x2="312" y2="348" stroke="#4ade80" stroke-width="24" stroke-linecap="round"/>
   </g>
 
-  <!-- Brand title: "B4cKuP | T8L" matching website design -->
-  <!-- "B4cKuP" in white -->
-  <text x="445" y="385" text-anchor="end"
+  <!-- Wordmark (to the right of logo) -->
+  <text x="355" y="225"
         font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-        font-size="110" font-weight="700" letter-spacing="-2" fill="#f1f5f9">B4cKuP</text>
+        font-size="96" font-weight="700" letter-spacing="-2" fill="#f1f5f9">B4cKuP</text>
 
-  <!-- Vertical divider (gradient green) -->
-  <rect x="595" y="303" width="4" height="100" fill="url(#dividerGradient)" rx="2"/>
+  <!-- Vertical divider -->
+  <rect x="796" y="148" width="4" height="90" fill="url(#dividerGradient)" rx="2"/>
 
-  <!-- "T8L" with green→cyan gradient -->
-  <text x="625" y="385" text-anchor="start"
+  <!-- T8L with gradient -->
+  <text x="824" y="225"
         font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-        font-size="110" font-weight="300" letter-spacing="10" fill="url(#subGradient)">T8L</text>
+        font-size="96" font-weight="300" letter-spacing="8" fill="url(#subGradient)">T8L</text>
 
-  <!-- Tagline -->
-  <text x="600" y="455" text-anchor="middle"
+  <!-- Subtitle under wordmark -->
+  <text x="355" y="280"
         font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-        font-size="28" font-weight="400" fill="#d4d4d8">Track, manage and monitor all your backups</text>
+        font-size="22" font-weight="400" fill="#4ade80" letter-spacing="4">BACKUP TRACKING TOOL</text>
 
-  <!-- Accent line -->
-  <rect x="450" y="495" width="300" height="3" fill="url(#accentLine)" rx="1.5"/>
-
-  <!-- Footer subtitle -->
-  <text x="600" y="550" text-anchor="middle"
+  <!-- Main tagline -->
+  <text x="600" y="400" text-anchor="middle"
         font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-        font-size="20" font-weight="400" fill="#71717a" letter-spacing="3">FREE · OPEN SOURCE · CROSS-PLATFORM</text>
+        font-size="38" font-weight="500" fill="#f1f5f9">Track, manage and monitor all your backups</text>
+
+  <!-- Feature pills -->
+  <g transform="translate(600, 470)">
+    <!-- Pill 1: Free & Open Source -->
+    <g transform="translate(-390, 0)">
+      <rect x="0" y="0" width="240" height="52" rx="26" fill="#0a1f15" stroke="url(#pillBorder)" stroke-width="1.5"/>
+      <!-- heart/unlock icon -->
+      <g transform="translate(22, 16) scale(0.85)">
+        <path d="M12 21s-7-4.5-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-7 10-7 10z"
+              fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <text x="58" y="33"
+            font-family="'Space Grotesk', sans-serif"
+            font-size="18" font-weight="500" fill="#f1f5f9">Free &amp; Open Source</text>
+    </g>
+
+    <!-- Pill 2: Cross-platform -->
+    <g transform="translate(-125, 0)">
+      <rect x="0" y="0" width="250" height="52" rx="26" fill="#0a1f15" stroke="url(#pillBorder)" stroke-width="1.5"/>
+      <!-- monitor icon -->
+      <g transform="translate(22, 16) scale(0.85)">
+        <rect x="2" y="3" width="20" height="14" rx="2" fill="none" stroke="#22d3ee" stroke-width="2"/>
+        <line x1="8" y1="21" x2="16" y2="21" stroke="#22d3ee" stroke-width="2" stroke-linecap="round"/>
+        <line x1="12" y1="17" x2="12" y2="21" stroke="#22d3ee" stroke-width="2"/>
+      </g>
+      <text x="58" y="33"
+            font-family="'Space Grotesk', sans-serif"
+            font-size="18" font-weight="500" fill="#f1f5f9">Win · macOS · Linux</text>
+    </g>
+
+    <!-- Pill 3: Privacy first -->
+    <g transform="translate(150, 0)">
+      <rect x="0" y="0" width="240" height="52" rx="26" fill="#0a1f15" stroke="url(#pillBorder)" stroke-width="1.5"/>
+      <!-- shield icon -->
+      <g transform="translate(22, 16) scale(0.85)">
+        <path d="M12 2 L20 5 L20 12 C20 17 16 21 12 22 C8 21 4 17 4 12 L4 5 Z"
+              fill="none" stroke="#4ade80" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M9 12 L11 14 L15 10" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
+      <text x="58" y="33"
+            font-family="'Space Grotesk', sans-serif"
+            font-size="18" font-weight="500" fill="#f1f5f9">100% Local &amp; Private</text>
+    </g>
+  </g>
+
+  <!-- URL footer -->
+  <text x="600" y="580" text-anchor="middle"
+        font-family="'Space Grotesk', sans-serif"
+        font-size="20" font-weight="500" fill="#52525b" letter-spacing="2">backup-tool.app</text>
 </svg>
