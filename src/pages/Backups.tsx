@@ -963,34 +963,34 @@ function BackupsItemList({
             {deviceItems.map((b) => {
               const latest = b.latest_entry as Record<string, any> | null;
               const listCardContent = (
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="font-semibold text-sm">{b.name as string}</h3>
-                    <p className="text-xs text-muted-foreground">
+                <div className="flex items-center gap-4">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-sm truncate">{b.name as string}</h3>
+                    <p className="text-xs text-muted-foreground truncate">
                       {t(`categories.${b.category}`, { defaultValue: b.category as string })}
                       {b.tags ? ` \u00b7 ${b.tags}` : ""}
                     </p>
                   </div>
-                  <div className="flex items-center gap-6">
-                    <div className="text-right">
-                      <p className="text-sm">
-                        {latest ? formatBytes(latest.size_bytes as number) : "\u2014"}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {latest
-                          ? `${formatDate(latest.backup_date as string)} (${daysAgo(latest.backup_date as string)} ${t("common.days")})`
-                          : t("backups.never")}
-                      </p>
-                    </div>
-                    <StatusBadge status={b.status as BackupStatus} />
-                    <button
-                      onClick={(e) => openQuickAdd(b.id as number, e)}
-                      className="p-1.5 rounded hover:bg-muted transition-colors"
-                      title={t("backups.addEntry")}
-                    >
-                      <Plus className="w-3.5 h-3.5 text-muted-foreground" />
-                    </button>
+                  <div className="text-right w-64 shrink-0">
+                    <p className="text-sm tabular-nums">
+                      {latest ? formatBytes(latest.size_bytes as number) : "\u2014"}
+                    </p>
+                    <p className="text-xs text-muted-foreground tabular-nums">
+                      {latest
+                        ? `${formatDate(latest.backup_date as string)} (${daysAgo(latest.backup_date as string)} ${t("common.days")})`
+                        : t("backups.never")}
+                    </p>
                   </div>
+                  <div className="w-28 shrink-0 flex justify-center">
+                    <StatusBadge status={b.status as BackupStatus} />
+                  </div>
+                  <button
+                    onClick={(e) => openQuickAdd(b.id as number, e)}
+                    className="p-1.5 rounded hover:bg-muted transition-colors shrink-0"
+                    title={t("backups.addEntry")}
+                  >
+                    <Plus className="w-3.5 h-3.5 text-muted-foreground" />
+                  </button>
                 </div>
               );
               return (
