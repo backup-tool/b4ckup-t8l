@@ -1021,14 +1021,15 @@ export function BackupDetail() {
                     {(() => {
                       const size = entry.size_bytes as number;
                       const prog = sizeCalcProgress[`entry-${entry.id}`];
-                      const liveBytes = prog?.phase === "calculating" ? prog.bytes : 0;
-                      const displayBytes = size > 0 ? size : liveBytes;
-                      if (displayBytes > 0) {
-                        const isLive = size === 0 && liveBytes > 0;
+                      const isCalculating = prog?.phase === "calculating";
+                      const liveBytes = isCalculating ? prog.bytes : 0;
+                      // During calculation, prefer live bytes over stored size (for rescans of existing entries)
+                      const displayBytes = isCalculating ? liveBytes : size;
+                      if (displayBytes > 0 || isCalculating) {
                         return (
-                          <span className={`text-xs ml-1 ${size > 0 ? "font-medium" : "text-muted-foreground"}`}>
+                          <span className={`text-xs ml-1 ${!isCalculating && size > 0 ? "font-medium" : "text-muted-foreground"}`}>
                             <span className="tabular-nums inline-block min-w-[5em] text-right">{formatBytes(displayBytes)}</span>
-                            {isLive && <span className="text-[10px] ml-0.5">...</span>}
+                            {isCalculating && <span className="text-[10px] ml-0.5">...</span>}
                           </span>
                         );
                       }
@@ -1039,7 +1040,7 @@ export function BackupDetail() {
                     {entry.notes && (
                       <span className="text-xs text-muted-foreground truncate">{entry.notes as string}</span>
                     )}
-                    {(entry.size_bytes as number) === 0 && (() => {
+                    {(() => {
                       const prog = sizeCalcProgress[`entry-${entry.id}`];
                       const tooltip = "Speicherplatz wird im Hintergrund berechnet.\nBitte die App nicht schließen.";
                       if (prog && prog.phase === "calculating") {
