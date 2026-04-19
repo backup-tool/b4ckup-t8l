@@ -849,8 +849,12 @@ function computeLocationStatus(
   const mode = (location.backup_mode as string) || (backup.backup_mode as string) || "manual";
   const hasSchedule = !!(location.schedule_frequency || backup.schedule_frequency);
   const isAutomatic = mode === "automatic" && hasSchedule;
+  const isProviderManaged = mode === "provider_managed";
   const reminderDays = (location.reminder_interval_days as number)
     || (backup.reminder_interval_days as number) || 30;
+
+  // Provider-managed locations are always OK (vendor handles the data)
+  if (isProviderManaged) return "ok";
 
   if (!latestEntryForLocation) {
     return isAutomatic ? "ok" : "critical";

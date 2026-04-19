@@ -79,9 +79,16 @@ export function Dashboard() {
     const locs = b.storage_locations as Array<Record<string, any>>;
     const copies = locs.length;
     const mediaTypes = new Set(locs.map((l) => l.media_type)).size;
-    const hasOffsite = locs.some((l) => l.media_type === "cloud" || l.media_type === "nas");
-    const passes = copies >= 3 && mediaTypes >= 2 && hasOffsite;
-    return { name: b.name as string, copies, mediaTypes, hasOffsite, passes };
+    // Provider-managed locations count as offsite (data lives on vendor servers)
+    const hasOffsite = locs.some(
+      (l) => l.media_type === "cloud" || l.media_type === "nas" || l.backup_mode === "provider_managed"
+    );
+    // Flag: all locations are provider-managed → user has no independent copy
+    const providerOnly = locs.length > 0 && locs.every((l) => l.backup_mode === "provider_managed");
+    // Provider-only backups don't satisfy the 3-2-1 rule: you need at least one copy
+    // you actually control, not just the vendor's storage.
+    const passes = !providerOnly && copies >= 3 && mediaTypes >= 2 && hasOffsite;
+    return { name: b.name as string, copies, mediaTypes, hasOffsite, providerOnly, passes };
   });
   const rulePassCount = rule321Results.filter((r) => r.passes).length;
 
@@ -370,10 +377,20 @@ export function Dashboard() {
                 {(ruleExpanded ? rule321Results : rule321Results.slice(0, RULE_COLLAPSED_LIMIT)).map((r) => (
                   <div
                     key={r.name}
-                    className="flex items-center justify-between text-xs py-1"
+                    className="flex items-center justify-between text-xs py-1 gap-2"
                   >
-                    <span className="truncate">{r.name}</span>
-                    <span className={r.passes ? "text-emerald-600" : "text-red-500"}>
+                    <span className="truncate flex items-center gap-1.5 min-w-0">
+                      <span className="truncate">{r.name}</span>
+                      {r.providerOnly && (
+                        <span
+                          className="text-[9px] text-sky-600 bg-sky-500/10 px-1.5 py-0.5 rounded font-medium shrink-0"
+                          title={t("dashboard.providerOnlyHint")}
+                        >
+                          ☁
+                        </span>
+                      )}
+                    </span>
+                    <span className={r.passes ? "text-emerald-600 shrink-0" : "text-red-500 shrink-0"}>
                       {r.copies}/{r.mediaTypes}/{r.hasOffsite ? "1" : "0"}
                     </span>
                   </div>

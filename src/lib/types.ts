@@ -180,7 +180,7 @@ export const CATEGORY_LABELS: Record<string, L> = {
   other: { en: "Other", de: "Sonstiges", ru: "\u0414\u0440\u0443\u0433\u043e\u0435" },
 };
 
-export const BACKUP_MODES = ["manual", "automatic"] as const;
+export const BACKUP_MODES = ["manual", "automatic", "provider_managed"] as const;
 
 export const SCHEDULE_FREQUENCIES = [
   "daily", "weekly", "monthly", "yearly", "custom",

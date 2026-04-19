@@ -887,9 +887,15 @@ export function BackupDetail() {
                       <div className="min-w-0 flex-1">
                         <p className="text-sm font-medium truncate">
                           {String(loc.media_name)}
-                          <span className={`ml-2 text-[10px] font-normal ${loc.backup_mode === "automatic" ? "text-emerald-600" : "text-muted-foreground"}`}>
-                            {loc.backup_mode === "automatic" ? t("backups.automatic") : t("backups.manual")}
-                          </span>
+                          {loc.backup_mode === "provider_managed" ? (
+                            <span className="ml-2 text-[10px] font-normal text-sky-600 inline-flex items-center gap-0.5">
+                              ☁ {t("backups.providerManaged")}
+                            </span>
+                          ) : (
+                            <span className={`ml-2 text-[10px] font-normal ${loc.backup_mode === "automatic" ? "text-emerald-600" : "text-muted-foreground"}`}>
+                              {loc.backup_mode === "automatic" ? t("backups.automatic") : t("backups.manual")}
+                            </span>
+                          )}
                           {loc.auto_detect ? (
                             <span className="ml-2 text-[10px] text-blue-600 font-normal">
                               {t("backups.autoDetect")}
@@ -1282,8 +1288,14 @@ export function BackupDetail() {
               options={[
                 { value: "manual", label: t("backups.manual") },
                 { value: "automatic", label: t("backups.automatic") },
+                { value: "provider_managed", label: t("backups.providerManaged") },
               ]}
             />
+            {locationForm.backup_mode === "provider_managed" && (
+              <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">
+                {t("backups.providerManagedHint")}
+              </p>
+            )}
           </div>
           {locationForm.backup_mode === "automatic" && (
             <>
@@ -1468,8 +1480,14 @@ export function BackupDetail() {
               options={[
                 { value: "manual", label: t("backups.manual") },
                 { value: "automatic", label: t("backups.automatic") },
+                { value: "provider_managed", label: t("backups.providerManaged") },
               ]}
             />
+            {locationForm.backup_mode === "provider_managed" && (
+              <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">
+                {t("backups.providerManagedHint")}
+              </p>
+            )}
           </div>
           {locationForm.backup_mode === "automatic" && (
             <>
