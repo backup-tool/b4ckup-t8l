@@ -81,19 +81,48 @@ export function Dashboard() {
   });
   const rulePassCount = rule321Results.filter((r) => r.passes).length;
 
-  // Storage forecast: aggregate total size per month
+  // Storage forecast: aggregate total size per month, then project forward with linear regression
   const monthlyData = new Map<string, number>();
   for (const e of [...allEntries].reverse()) {
     const date = new Date(e.backup_date as string);
     const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
     monthlyData.set(key, (monthlyData.get(key) || 0) + ((e.size_bytes as number) || 0));
   }
-  // Cumulative
+  // Sort chronologically and compute cumulative historical values
+  const sortedMonths = Array.from(monthlyData.keys()).sort();
   let cumulative = 0;
-  const forecastData: Array<{ month: string; size: number }> = [];
-  for (const [month, bytes] of monthlyData) {
-    cumulative += bytes;
-    forecastData.push({ month, size: +(cumulative / (1024 ** 3)).toFixed(1) });
+  type ForecastPoint = { month: string; historical?: number; forecast?: number };
+  const forecastData: ForecastPoint[] = [];
+  for (const month of sortedMonths) {
+    cumulative += monthlyData.get(month) || 0;
+    forecastData.push({ month, historical: +(cumulative / (1024 ** 3)).toFixed(1) });
+  }
+
+  // Generate forecast: linear regression on last 12 months (or all if fewer)
+  const FORECAST_MONTHS = 12;
+  if (forecastData.length >= 2) {
+    const recent = forecastData.slice(-12);
+    const n = recent.length;
+    const xs = recent.map((_, i) => i);
+    const ys = recent.map((p) => p.historical!);
+    const sumX = xs.reduce((a, b) => a + b, 0);
+    const sumY = ys.reduce((a, b) => a + b, 0);
+    const sumXY = xs.reduce((a, x, i) => a + x * ys[i], 0);
+    const sumXX = xs.reduce((a, x) => a + x * x, 0);
+    const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+    const intercept = (sumY - slope * sumX) / n;
+    const lastValue = ys[n - 1];
+    // Make sure forecast connects to last historical point
+    forecastData[forecastData.length - 1].forecast = lastValue;
+    // Parse last month
+    const [lastYear, lastMonth] = sortedMonths[sortedMonths.length - 1].split("-").map(Number);
+    for (let i = 1; i <= FORECAST_MONTHS; i++) {
+      const date = new Date(lastYear, lastMonth - 1 + i, 1);
+      const month = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+      // Project: slope-based, but never decrease below last value
+      const projected = intercept + slope * (n - 1 + i);
+      forecastData.push({ month, forecast: Math.max(lastValue, +projected.toFixed(1)) });
+    }
   }
 
   return (
@@ -347,7 +376,33 @@ export function Dashboard() {
       {forecastData.length >= 2 && (
         <Card>
           <CardHeader>
-            <CardTitle>{t("dashboard.storageForecast")}</CardTitle>
+            <div className="flex items-center justify-between w-full">
+              <div className="flex items-center gap-2">
+                <CardTitle>{t("dashboard.storageForecast")}</CardTitle>
+                <Popover
+                  trigger={
+                    <button className="p-1 rounded-full hover:bg-muted transition-colors" aria-label="Info">
+                      <Info className="w-3.5 h-3.5 text-muted-foreground" />
+                    </button>
+                  }
+                >
+                  <div className="max-w-sm space-y-2 text-xs">
+                    <p className="font-semibold">{t("dashboard.storageForecast")}</p>
+                    <p className="text-muted-foreground">{t("dashboard.forecastExplain")}</p>
+                  </div>
+                </Popover>
+              </div>
+              <div className="flex items-center gap-3 text-[10px] text-muted-foreground">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-3 h-0.5 bg-[var(--chart-line)]" />
+                  {t("dashboard.forecastHistorical")}
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-3 h-0.5 border-t border-dashed border-[var(--chart-line)]" />
+                  {t("dashboard.forecastPredicted")}
+                </div>
+              </div>
+            </div>
           </CardHeader>
           <div className="h-52">
             <ResponsiveContainer width="100%" height="100%">
@@ -365,15 +420,31 @@ export function Dashboard() {
                     fontSize: "12px",
                     padding: "8px 12px",
                   }}
-                  formatter={(value: any) => [`${value} GB`]}
-                  separator=""
+                  formatter={(value: any, name: any) => {
+                    if (value == null) return [null, null];
+                    const label = name === "historical" ? t("dashboard.forecastHistorical") : t("dashboard.forecastPredicted");
+                    return [`${value} GB`, label];
+                  }}
                 />
                 <Line
                   type="monotone"
-                  dataKey="size"
+                  dataKey="historical"
                   stroke="var(--chart-line)"
                   strokeWidth={2}
                   dot={{ r: 3, fill: "var(--chart-dot)", stroke: "var(--chart-line)", strokeWidth: 2 }}
+                  connectNulls={false}
+                  name="historical"
+                />
+                <Line
+                  type="monotone"
+                  dataKey="forecast"
+                  stroke="var(--chart-line)"
+                  strokeWidth={2}
+                  strokeDasharray="6 4"
+                  dot={{ r: 3, fill: "var(--chart-dot)", stroke: "var(--chart-line)", strokeWidth: 2 }}
+                  connectNulls={false}
+                  name="forecast"
+                  opacity={0.7}
                 />
               </LineChart>
             </ResponsiveContainer>
