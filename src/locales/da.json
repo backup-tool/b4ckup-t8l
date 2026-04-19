@@ -459,6 +459,10 @@
     "desc": "3 kopier, 2 forskellige medietyper, 1 ekstern",
     "copies": "kopier",
     "mediaTypes": "medietyper",
-    "offsite": "ekstern"
+    "offsite": "ekstern",
+    "explainCopies": "kopier af dine data i alt (originalen + 2 backups).",
+    "explainMediaTypes": "forskellige typer lagermedier (f.eks. intern SSD + ekstern disk, eller NAS + cloud) for at beskytte mod hardwarefejl.",
+    "explainOffsite": "kopi opbevaret eksternt (f.eks. cloud-backup eller en disk på et andet sted) for at beskytte mod tyveri, brand eller oversvømmelse.",
+    "explainDisplay": "Tallene ved siden af hver backup viser: kopier / medietyper / eksternt. Grøn = regel opfyldt, rød = regel ikke opfyldt."
   }
 }

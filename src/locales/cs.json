@@ -459,6 +459,10 @@
     "desc": "3 kopie, 2 různé typy médií, 1 mimo pracoviště",
     "copies": "kopie",
     "mediaTypes": "typy médií",
-    "offsite": "mimo pracoviště"
+    "offsite": "mimo pracoviště",
+    "explainCopies": "kopií vašich dat celkem (originál + 2 zálohy).",
+    "explainMediaTypes": "různých typů úložných médií (např. interní SSD + externí disk nebo NAS + cloud) pro ochranu před selháním hardwaru.",
+    "explainOffsite": "kopie uložená mimo lokalitu (např. cloudová záloha nebo disk na jiném místě) pro ochranu před krádeží, požárem nebo povodní.",
+    "explainDisplay": "Čísla vedle každé zálohy ukazují: kopie / typy médií / mimo lokalitu. Zelená = pravidlo splněno, červená = pravidlo nesplněno."
   }
 }

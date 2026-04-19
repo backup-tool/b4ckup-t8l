@@ -13,7 +13,8 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
-import { Database, Shield, AlertTriangle, AlertCircle, PauseCircle, HardDrive, TrendingUp } from "lucide-react";
+import { Database, Shield, AlertTriangle, AlertCircle, PauseCircle, HardDrive, TrendingUp, Info } from "lucide-react";
+import { Popover } from "@/components/ui/Popover";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { getBackupsWithStatus, getMediaWithUsage, getAllEntries } from "@/lib/db";
 import { formatBytes, formatDate, daysAgo } from "@/lib/format";
@@ -272,7 +273,38 @@ export function Dashboard() {
         {/* 3-2-1 Rule */}
         <Card>
           <CardHeader>
-            <CardTitle>{t("dashboard.backupRule")}</CardTitle>
+            <div className="flex items-center gap-2">
+              <CardTitle>{t("dashboard.backupRule")}</CardTitle>
+              <Popover
+                trigger={
+                  <button className="p-1 rounded-full hover:bg-muted transition-colors" aria-label="Info">
+                    <Info className="w-3.5 h-3.5 text-muted-foreground" />
+                  </button>
+                }
+              >
+                <div className="max-w-sm space-y-2 text-sm">
+                  <p className="font-semibold">{t("rule321.title")}</p>
+                  <p className="text-xs text-muted-foreground">{t("rule321.desc")}</p>
+                  <ul className="space-y-2 text-xs">
+                    <li className="flex gap-2">
+                      <span className="text-accent font-bold shrink-0">3</span>
+                      <span>{t("rule321.explainCopies")}</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-accent font-bold shrink-0">2</span>
+                      <span>{t("rule321.explainMediaTypes")}</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-accent font-bold shrink-0">1</span>
+                      <span>{t("rule321.explainOffsite")}</span>
+                    </li>
+                  </ul>
+                  <p className="text-[10px] text-muted-foreground pt-2 border-t border-border">
+                    {t("rule321.explainDisplay")}
+                  </p>
+                </div>
+              </Popover>
+            </div>
           </CardHeader>
           {backups.length === 0 ? (
             <p className="text-sm text-muted-foreground">{t("dashboard.noBackups")}</p>

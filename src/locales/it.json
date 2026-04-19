@@ -459,6 +459,10 @@
     "desc": "3 copie, 2 tipi di supporto diversi, 1 fuori sede",
     "copies": "copie",
     "mediaTypes": "tipi di supporto",
-    "offsite": "fuori sede"
+    "offsite": "fuori sede",
+    "explainCopies": "copie dei tuoi dati in totale (l'originale + 2 backup).",
+    "explainMediaTypes": "tipi diversi di supporti di archiviazione (es. SSD interno + disco esterno, o NAS + cloud) per proteggere da guasti hardware.",
+    "explainOffsite": "copia conservata fuori sede (es. backup cloud o disco in un'altra posizione) per proteggere da furto, incendio o alluvione.",
+    "explainDisplay": "I numeri accanto a ciascun backup mostrano: copie / tipi di supporti / fuori sede. Verde = regola rispettata, rosso = regola non rispettata."
   }
 }

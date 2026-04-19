@@ -459,6 +459,10 @@
     "desc": "3 kopi, 2 cureyên medyayê yên cuda, 1 li derve",
     "copies": "kopi",
     "mediaTypes": "cureyên medyayê",
-    "offsite": "li derve"
+    "offsite": "li derve",
+    "explainCopies": "copies of your data in total (the original + 2 backups).",
+    "explainMediaTypes": "different types of storage media (e.g. internal SSD + external drive, or NAS + cloud) to protect against hardware failure.",
+    "explainOffsite": "copy stored offsite (e.g. cloud backup or a drive at another location) to protect against theft, fire or flooding.",
+    "explainDisplay": "The numbers next to each backup show: copies / media types / offsite. Green = rule passes, red = rule fails."
   }
 }

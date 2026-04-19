@@ -459,6 +459,10 @@
     "desc": "Nakala 3, aina 2 tofauti za vyombo, 1 nje ya eneo",
     "copies": "nakala",
     "mediaTypes": "aina za vyombo",
-    "offsite": "nje ya eneo"
+    "offsite": "nje ya eneo",
+    "explainCopies": "nakala za data yako kwa jumla (asili + nakala 2 za hifadhi).",
+    "explainMediaTypes": "aina tofauti za vyombo vya kuhifadhi (mf. SSD ya ndani + hifadhi ya nje, au NAS + wingu) kulinda dhidi ya kushindwa kwa vifaa.",
+    "explainOffsite": "nakala iliyohifadhiwa nje ya tovuti (mf. hifadhi ya wingu au hifadhi katika eneo lingine) kulinda dhidi ya wizi, moto au mafuriko.",
+    "explainDisplay": "Nambari karibu na kila hifadhi zinaonyesha: nakala / aina za vyombo / nje ya tovuti. Kijani = sheria imetimizwa, nyekundu = sheria haijatimizwa."
   }
 }

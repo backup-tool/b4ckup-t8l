@@ -459,6 +459,10 @@
     "desc": "3 kopiota, 2 eri mediatyyppiä, 1 ulkopuolinen",
     "copies": "kopiota",
     "mediaTypes": "mediatyyppiä",
-    "offsite": "ulkopuolinen"
+    "offsite": "ulkopuolinen",
+    "explainCopies": "kopiota tiedoistasi yhteensä (alkuperäinen + 2 varmuuskopiota).",
+    "explainMediaTypes": "erilaista tallennusvälinetyyppiä (esim. sisäinen SSD + ulkoinen asema tai NAS + pilvi) laitteistovikojen varalta.",
+    "explainOffsite": "toisessa sijainnissa säilytettävä kopio (esim. pilvivarmuuskopio tai asema toisessa paikassa) varkauden, tulipalon tai tulvan varalta.",
+    "explainDisplay": "Numerot kunkin varmuuskopion vieressä näyttävät: kopiot / välinetyypit / etäsijainti. Vihreä = sääntö täyttyy, punainen = sääntö ei täyty."
   }
 }

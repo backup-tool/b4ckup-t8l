@@ -459,6 +459,10 @@
     "desc": "3 kopieën, 2 verschillende mediatypes, 1 extern",
     "copies": "kopieën",
     "mediaTypes": "mediatypes",
-    "offsite": "extern"
+    "offsite": "extern",
+    "explainCopies": "kopieën van je gegevens in totaal (het origineel + 2 back-ups).",
+    "explainMediaTypes": "verschillende soorten opslagmedia (bijv. interne SSD + externe schijf, of NAS + cloud) om te beschermen tegen hardwarefouten.",
+    "explainOffsite": "kopie opgeslagen op een externe locatie (bijv. cloudback-up of een schijf op een andere locatie) om te beschermen tegen diefstal, brand of overstroming.",
+    "explainDisplay": "De cijfers naast elke back-up tonen: kopieën / mediatypes / externe locatie. Groen = regel voldaan, rood = regel niet voldaan."
   }
 }

@@ -459,6 +459,10 @@
     "desc": "3 copii, 2 tipuri diferite de medii, 1 extern",
     "copies": "copii",
     "mediaTypes": "tipuri de medii",
-    "offsite": "extern"
+    "offsite": "extern",
+    "explainCopies": "copii ale datelor tale în total (originalul + 2 backup-uri).",
+    "explainMediaTypes": "tipuri diferite de medii de stocare (ex. SSD intern + disc extern, sau NAS + cloud) pentru a proteja împotriva defecțiunilor hardware.",
+    "explainOffsite": "copie stocată în altă locație (ex. backup în cloud sau disc într-o altă locație) pentru a proteja împotriva furtului, incendiilor sau inundațiilor.",
+    "explainDisplay": "Numerele de lângă fiecare backup arată: copii / tipuri de medii / altă locație. Verde = regulă îndeplinită, roșu = regulă neîndeplinită."
   }
 }

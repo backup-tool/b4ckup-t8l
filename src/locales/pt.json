@@ -459,6 +459,10 @@
     "desc": "3 cópias, 2 tipos de suporte diferentes, 1 fora do local",
     "copies": "cópias",
     "mediaTypes": "tipos de suporte",
-    "offsite": "fora do local"
+    "offsite": "fora do local",
+    "explainCopies": "cópias dos seus dados no total (o original + 2 backups).",
+    "explainMediaTypes": "tipos diferentes de mídia de armazenamento (ex. SSD interno + disco externo, ou NAS + nuvem) para proteger contra falhas de hardware.",
+    "explainOffsite": "cópia armazenada fora do local (ex. backup na nuvem ou disco em outro local) para proteger contra roubo, incêndio ou inundação.",
+    "explainDisplay": "Os números ao lado de cada backup mostram: cópias / tipos de mídia / fora do local. Verde = regra cumprida, vermelho = regra não cumprida."
   }
 }

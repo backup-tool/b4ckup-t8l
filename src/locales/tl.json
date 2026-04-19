@@ -459,6 +459,10 @@
     "desc": "3 kopya, 2 magkaibang uri ng media, 1 offsite",
     "copies": "kopya",
     "mediaTypes": "uri ng media",
-    "offsite": "offsite"
+    "offsite": "offsite",
+    "explainCopies": "kabuuang kopya ng iyong data (ang orihinal + 2 backup).",
+    "explainMediaTypes": "iba't ibang uri ng storage media (hal. internal SSD + external drive, o NAS + cloud) upang maprotektahan laban sa pagkabigo ng hardware.",
+    "explainOffsite": "kopyang nakaimbak sa ibang lokasyon (hal. cloud backup o drive sa ibang lugar) upang maprotektahan laban sa pagnanakaw, sunog o pagbaha.",
+    "explainDisplay": "Ang mga numero sa tabi ng bawat backup ay nagpapakita ng: mga kopya / uri ng media / ibang lokasyon. Berde = natupad ang panuntunan, pula = hindi natupad ang panuntunan."
   }
 }

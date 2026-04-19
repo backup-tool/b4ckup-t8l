@@ -459,6 +459,10 @@
     "desc": "3 kopya, 2 farklı ortam türü, 1 uzak konum",
     "copies": "kopya",
     "mediaTypes": "ortam türü",
-    "offsite": "uzak konum"
+    "offsite": "uzak konum",
+    "explainCopies": "toplam veri kopyanız (orijinal + 2 yedek).",
+    "explainMediaTypes": "farklı depolama ortamı türü (örn. dahili SSD + harici sürücü veya NAS + bulut) donanım arızalarına karşı koruma sağlar.",
+    "explainOffsite": "başka bir yerde saklanan kopya (örn. bulut yedek veya başka bir konumdaki sürücü) hırsızlık, yangın veya sele karşı koruma sağlar.",
+    "explainDisplay": "Her yedeğin yanındaki sayılar şunları gösterir: kopyalar / ortam türleri / dış konum. Yeşil = kural sağlandı, kırmızı = kural sağlanmadı."
   }
 }

@@ -459,6 +459,10 @@
     "desc": "3 kopior, 2 olika mediatyper, 1 extern",
     "copies": "kopior",
     "mediaTypes": "mediatyper",
-    "offsite": "extern"
+    "offsite": "extern",
+    "explainCopies": "kopior av dina data totalt (originalet + 2 säkerhetskopior).",
+    "explainMediaTypes": "olika typer av lagringsmedia (t.ex. intern SSD + extern disk, eller NAS + moln) för att skydda mot hårdvarufel.",
+    "explainOffsite": "kopia lagrad på annan plats (t.ex. molnsäkerhetskopia eller en disk på en annan plats) för att skydda mot stöld, brand eller översvämning.",
+    "explainDisplay": "Siffrorna bredvid varje säkerhetskopia visar: kopior / medietyper / annan plats. Grön = regel uppfylld, röd = regel ej uppfylld."
   }
 }

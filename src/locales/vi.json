@@ -459,6 +459,10 @@
     "desc": "3 bản sao, 2 loại phương tiện khác nhau, 1 bản ngoài cơ sở",
     "copies": "bản sao",
     "mediaTypes": "loại phương tiện",
-    "offsite": "ngoài cơ sở"
+    "offsite": "ngoài cơ sở",
+    "explainCopies": "bản sao dữ liệu của bạn tổng cộng (bản gốc + 2 bản sao lưu).",
+    "explainMediaTypes": "loại phương tiện lưu trữ khác nhau (ví dụ: SSD nội bộ + ổ ngoài, hoặc NAS + đám mây) để bảo vệ khỏi lỗi phần cứng.",
+    "explainOffsite": "bản sao được lưu trữ ngoài cơ sở (ví dụ: sao lưu đám mây hoặc ổ đĩa ở vị trí khác) để bảo vệ khỏi trộm cắp, hỏa hoạn hoặc lũ lụt.",
+    "explainDisplay": "Các số bên cạnh mỗi bản sao lưu hiển thị: bản sao / loại phương tiện / ngoài cơ sở. Xanh = quy tắc đạt, đỏ = quy tắc không đạt."
   }
 }

@@ -459,6 +459,10 @@
     "desc": "3 másolat, 2 különböző médiatípus, 1 távoli",
     "copies": "másolat",
     "mediaTypes": "médiatípus",
-    "offsite": "távoli"
+    "offsite": "távoli",
+    "explainCopies": "másolat az adataidról összesen (az eredeti + 2 biztonsági mentés).",
+    "explainMediaTypes": "különböző típusú adathordozó (pl. belső SSD + külső meghajtó vagy NAS + felhő) hardverhiba elleni védelemhez.",
+    "explainOffsite": "másolat távoli helyen tárolva (pl. felhőalapú biztonsági mentés vagy meghajtó egy másik helyen) lopás, tűz vagy árvíz elleni védelemhez.",
+    "explainDisplay": "Az egyes biztonsági mentések melletti számok mutatják: másolatok / adathordozó-típusok / távoli hely. Zöld = szabály teljesül, piros = szabály nem teljesül."
   }
 }

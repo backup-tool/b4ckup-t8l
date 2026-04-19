@@ -408,6 +408,10 @@
     "desc": "3 Kopien, 2 verschiedene Medientypen, 1 Offsite",
     "copies": "Kopien",
     "mediaTypes": "Medientypen",
-    "offsite": "Offsite"
+    "offsite": "Offsite",
+    "explainCopies": "Kopien deiner Daten insgesamt (das Original + 2 Backups).",
+    "explainMediaTypes": "verschiedene Speichermedien-Typen (z.B. interne SSD + externe Festplatte oder NAS + Cloud), um vor Hardware-Ausfällen zu schützen.",
+    "explainOffsite": "Kopie an einem anderen Ort (z.B. Cloud-Backup oder Festplatte an einem anderen Standort), um vor Diebstahl, Feuer oder Wasserschäden zu schützen.",
+    "explainDisplay": "Die Zahlen neben jedem Backup zeigen: Kopien / Medientypen / Offsite. Grün = Regel erfüllt, Rot = Regel nicht erfüllt."
   }
 }

@@ -459,6 +459,10 @@
     "desc": "3 salinan, 2 tipe media berbeda, 1 di luar lokasi",
     "copies": "salinan",
     "mediaTypes": "tipe media",
-    "offsite": "di luar lokasi"
+    "offsite": "di luar lokasi",
+    "explainCopies": "salinan data Anda secara total (asli + 2 cadangan).",
+    "explainMediaTypes": "jenis media penyimpanan yang berbeda (mis. SSD internal + drive eksternal, atau NAS + cloud) untuk melindungi dari kegagalan perangkat keras.",
+    "explainOffsite": "salinan yang disimpan di luar lokasi (mis. cadangan cloud atau drive di lokasi lain) untuk melindungi dari pencurian, kebakaran, atau banjir.",
+    "explainDisplay": "Angka di samping setiap cadangan menunjukkan: salinan / jenis media / luar lokasi. Hijau = aturan terpenuhi, merah = aturan gagal."
   }
 }

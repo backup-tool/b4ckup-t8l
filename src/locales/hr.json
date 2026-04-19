@@ -459,6 +459,10 @@
     "desc": "3 kopije, 2 različite vrste medija, 1 izvan lokacije",
     "copies": "kopije",
     "mediaTypes": "vrste medija",
-    "offsite": "izvan lokacije"
+    "offsite": "izvan lokacije",
+    "explainCopies": "kopija vaših podataka ukupno (original + 2 sigurnosne kopije).",
+    "explainMediaTypes": "različitih tipova medija za pohranu (npr. interni SSD + vanjski disk ili NAS + oblak) za zaštitu od kvarova hardvera.",
+    "explainOffsite": "kopija pohranjena izvan lokacije (npr. sigurnosna kopija u oblaku ili disk na drugoj lokaciji) za zaštitu od krađe, požara ili poplave.",
+    "explainDisplay": "Brojevi pored svake sigurnosne kopije prikazuju: kopije / tipovi medija / izvan lokacije. Zeleno = pravilo zadovoljeno, crveno = pravilo nije zadovoljeno."
   }
 }

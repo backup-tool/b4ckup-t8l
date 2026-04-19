@@ -459,6 +459,10 @@
     "desc": "3 copies, 2 types de supports différents, 1 hors site",
     "copies": "copies",
     "mediaTypes": "types de supports",
-    "offsite": "hors site"
+    "offsite": "hors site",
+    "explainCopies": "copies de vos données au total (l'original + 2 sauvegardes).",
+    "explainMediaTypes": "types différents de supports de stockage (p. ex. SSD interne + disque externe, ou NAS + cloud) pour vous protéger contre les pannes matérielles.",
+    "explainOffsite": "copie stockée hors site (p. ex. sauvegarde cloud ou disque dans un autre endroit) pour vous protéger contre le vol, l'incendie ou les inondations.",
+    "explainDisplay": "Les chiffres à côté de chaque sauvegarde indiquent : copies / types de supports / hors site. Vert = règle respectée, rouge = règle non respectée."
   }
 }

@@ -459,6 +459,10 @@
     "desc": "3 kopie, 2 różne typy nośników, 1 poza siedzibą",
     "copies": "kopie",
     "mediaTypes": "typy nośników",
-    "offsite": "poza siedzibą"
+    "offsite": "poza siedzibą",
+    "explainCopies": "kopii twoich danych łącznie (oryginał + 2 kopie zapasowe).",
+    "explainMediaTypes": "różnych typów nośników pamięci (np. wewnętrzny SSD + dysk zewnętrzny lub NAS + chmura) w celu ochrony przed awarią sprzętu.",
+    "explainOffsite": "kopia przechowywana w innej lokalizacji (np. kopia zapasowa w chmurze lub dysk w innym miejscu) w celu ochrony przed kradzieżą, pożarem lub powodzią.",
+    "explainDisplay": "Liczby obok każdej kopii zapasowej pokazują: kopie / typy nośników / inna lokalizacja. Zielony = reguła spełniona, czerwony = reguła niespełniona."
   }
 }
