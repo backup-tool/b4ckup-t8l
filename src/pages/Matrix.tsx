@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo, useRef } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Check, X, Grid3X3, Pencil, ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
@@ -31,37 +31,6 @@ export function Matrix() {
   const [loading, setLoading] = useState(true);
   const [editMode, setEditMode] = useState(false);
   const [columnOrder, setColumnOrder] = useState<number[]>(() => loadColumnOrder());
-  const tableContainerRef = useRef<HTMLDivElement>(null);
-  const [theadOffset, setTheadOffset] = useState(0);
-
-  // Manual sticky header: track scroll position of the nearest scroll ancestor (main)
-  useEffect(() => {
-    const container = tableContainerRef.current;
-    if (!container) return;
-    // Find scrollable ancestor
-    let scroller: HTMLElement | Window = window;
-    let el: HTMLElement | null = container.parentElement;
-    while (el) {
-      const style = window.getComputedStyle(el);
-      if (/(auto|scroll)/.test(style.overflowY)) { scroller = el; break; }
-      el = el.parentElement;
-    }
-    const update = () => {
-      const rect = container.getBoundingClientRect();
-      const scrollerTop = scroller === window ? 0 : (scroller as HTMLElement).getBoundingClientRect().top;
-      const offset = scrollerTop - rect.top;
-      // Max offset so header doesn't leave the table
-      const maxOffset = Math.max(0, container.clientHeight - 60);
-      setTheadOffset(Math.max(0, Math.min(offset, maxOffset)));
-    };
-    update();
-    scroller.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    return () => {
-      scroller.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, []);
 
   useEffect(() => {
     async function load() {
@@ -154,24 +123,18 @@ export function Matrix() {
           <p className="text-muted-foreground">{t("matrix.noData")}</p>
         </Card>
       ) : (
-        <div ref={tableContainerRef} className="overflow-x-auto border border-border rounded-xl relative">
-          <table className="w-full text-sm">
-            <thead
-              style={{
-                transform: theadOffset ? `translateY(${theadOffset}px)` : undefined,
-                willChange: theadOffset ? "transform" : undefined,
-                position: "relative",
-                zIndex: 20,
-              }}
-            >
-              <tr className="border-b border-border bg-muted/50">
-                <th className="text-left px-4 py-3 font-semibold sticky left-0 bg-muted/50 z-30 min-w-[200px]">
+        <div className="border border-border rounded-xl">
+          <div>
+            <table className="w-full text-sm border-collapse">
+              <thead>
+              <tr className="border-b border-border">
+                <th className="text-left px-4 py-3 font-semibold sticky left-0 top-0 bg-muted/50 z-30 min-w-[200px]">
                   {t("backups.name")}
                 </th>
                 {sortedMedia.map((m, idx) => (
                   <th
                     key={m.id as number}
-                    className={`px-3 py-3 font-semibold text-center min-w-[100px] ${editMode ? "bg-primary/5" : "bg-muted/50"}`}
+                    className={`px-3 py-3 font-semibold text-center min-w-[100px] sticky top-0 z-20 ${editMode ? "bg-primary/5" : "bg-muted/50"}`}
                   >
                     <div className="flex flex-col items-center gap-1">
                       <div className="text-xs">{m.name as string}</div>
@@ -256,6 +219,7 @@ export function Matrix() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
     </div>
