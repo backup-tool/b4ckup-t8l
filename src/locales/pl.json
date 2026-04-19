@@ -30,6 +30,8 @@
     "forecastHistorical": "Historia",
     "forecastPredicted": "Prognoza",
     "forecastExplain": "Pokazuje, jak łączna przestrzeń kopii zapasowych rosła w ciągu ostatnich miesięcy, i prognozuje kolejne 12 miesięcy na podstawie trendu liniowego z ostatniego roku. Przydatne do wcześniejszego planowania nowych nośników danych.",
+    "showAllMedia": "Pokaż wszystkie (jeszcze {{count}})",
+    "showAllBackups": "Pokaż wszystkie (jeszcze {{count}})",
     "noBackups": "Brak kopii zapasowych. Utwórz pierwszą kopię zapasową, aby rozpocząć.",
     "usedOf": "z",
     "free": "wolne",

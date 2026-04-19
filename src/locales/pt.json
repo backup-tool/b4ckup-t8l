@@ -30,6 +30,8 @@
     "forecastHistorical": "Histórico",
     "forecastPredicted": "Previsão",
     "forecastExplain": "Mostra como seu armazenamento total de backup cresceu nos últimos meses e projeta os próximos 12 meses com base em uma tendência linear do último ano. Útil para planejar novas mídias de armazenamento com antecedência.",
+    "showAllMedia": "Mostrar tudo (mais {{count}})",
+    "showAllBackups": "Mostrar tudo (mais {{count}})",
     "noBackups": "Ainda não há cópias de segurança. Crie a sua primeira cópia para começar.",
     "usedOf": "de",
     "free": "livre",

@@ -30,6 +30,8 @@
     "forecastHistorical": "Verlauf",
     "forecastPredicted": "Prognose",
     "forecastExplain": "Zeigt, wie dein gesamter Backup-Speicher in den letzten Monaten gewachsen ist und projiziert die nächsten 12 Monate basierend auf dem linearen Trend des letzten Jahres. Nützlich um rechtzeitig neue Speichermedien einzuplanen.",
+    "showAllMedia": "Alle anzeigen ({{count}} weitere)",
+    "showAllBackups": "Alle anzeigen ({{count}} weitere)",
     "noBackups": "Noch keine Backups. Erstelle dein erstes Backup um loszulegen.",
     "usedOf": "von",
     "free": "frei",

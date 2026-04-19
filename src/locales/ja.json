@@ -30,6 +30,8 @@
     "forecastHistorical": "履歴",
     "forecastPredicted": "予測",
     "forecastExplain": "過去数か月間のバックアップストレージ総量の推移を示し、昨年の線形トレンドに基づいて今後12か月を予測します。新しいストレージメディアを事前に計画するのに役立ちます。",
+    "showAllMedia": "すべて表示(他 {{count}} 件)",
+    "showAllBackups": "すべて表示(他 {{count}} 件)",
     "noBackups": "バックアップはまだありません。最初のバックアップを作成して始めましょう。",
     "usedOf": "/",
     "free": "空き",

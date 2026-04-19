@@ -30,6 +30,8 @@
     "forecastHistorical": "Historisch",
     "forecastPredicted": "Prognose",
     "forecastExplain": "Toont hoe je totale back-upopslag de afgelopen maanden is gegroeid en projecteert de komende 12 maanden op basis van een lineaire trend van het afgelopen jaar. Handig om tijdig nieuwe opslagmedia te plannen.",
+    "showAllMedia": "Alles weergeven ({{count}} meer)",
+    "showAllBackups": "Alles weergeven ({{count}} meer)",
     "noBackups": "Nog geen back-ups. Maak je eerste back-up om te beginnen.",
     "usedOf": "van",
     "free": "vrij",

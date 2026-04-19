@@ -13,7 +13,7 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
-import { Database, Shield, AlertTriangle, AlertCircle, PauseCircle, HardDrive, TrendingUp, Info } from "lucide-react";
+import { Database, Shield, AlertTriangle, AlertCircle, PauseCircle, HardDrive, TrendingUp, Info, ChevronDown } from "lucide-react";
 import { Popover } from "@/components/ui/Popover";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
 import { getBackupsWithStatus, getMediaWithUsage, getAllEntries } from "@/lib/db";
@@ -33,6 +33,10 @@ export function Dashboard() {
   const [recentEntries, setRecentEntries] = useState<Array<Record<string, any>>>([]);
   const [allEntries, setAllEntries] = useState<Array<Record<string, any>>>([]);
   const [loading, setLoading] = useState(true);
+  const [storageExpanded, setStorageExpanded] = useState(false);
+  const [ruleExpanded, setRuleExpanded] = useState(false);
+  const STORAGE_COLLAPSED_LIMIT = 6;
+  const RULE_COLLAPSED_LIMIT = 8;
 
   useEffect(() => {
     async function load() {
@@ -235,7 +239,7 @@ export function Dashboard() {
             <p className="text-sm text-muted-foreground">{t("media.noMedia")}</p>
           ) : (
             <div className="space-y-4">
-              {media.map((m) => {
+              {(storageExpanded ? media : media.slice(0, STORAGE_COLLAPSED_LIMIT)).map((m) => {
                 const used = m.used_gb as number;
                 const total = m.total_capacity_gb as number | null;
                 const pct = total ? Math.min((used / total) * 100, 100) : 0;
@@ -290,6 +294,17 @@ export function Dashboard() {
                   </div>
                 );
               })}
+              {media.length > STORAGE_COLLAPSED_LIMIT && (
+                <button
+                  onClick={() => setStorageExpanded(!storageExpanded)}
+                  className="flex items-center justify-center gap-1 w-full py-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${storageExpanded ? "rotate-180" : ""}`} />
+                  {storageExpanded
+                    ? t("common.showLess")
+                    : t("dashboard.showAllMedia", { count: media.length - STORAGE_COLLAPSED_LIMIT, defaultValue: `Show all (${media.length})` })}
+                </button>
+              )}
               {totalCapacity > 0 && (
                 <div className="pt-2 border-t border-border text-xs text-muted-foreground">
                   {t("dashboard.totalCapacity")}: {formatBytes(totalCapacity * 1024 * 1024 * 1024)} &middot; {formatBytes(totalUsed * 1024 * 1024 * 1024)} {t("media.used")} ({totalCapacity > 0 ? Math.round((totalUsed / totalCapacity) * 100) : 0}%)
@@ -352,7 +367,7 @@ export function Dashboard() {
                 </div>
               </div>
               <div className="space-y-1">
-                {rule321Results.map((r) => (
+                {(ruleExpanded ? rule321Results : rule321Results.slice(0, RULE_COLLAPSED_LIMIT)).map((r) => (
                   <div
                     key={r.name}
                     className="flex items-center justify-between text-xs py-1"
@@ -364,6 +379,17 @@ export function Dashboard() {
                   </div>
                 ))}
               </div>
+              {rule321Results.length > RULE_COLLAPSED_LIMIT && (
+                <button
+                  onClick={() => setRuleExpanded(!ruleExpanded)}
+                  className="flex items-center justify-center gap-1 w-full py-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${ruleExpanded ? "rotate-180" : ""}`} />
+                  {ruleExpanded
+                    ? t("common.showLess")
+                    : t("dashboard.showAllBackups", { count: rule321Results.length - RULE_COLLAPSED_LIMIT, defaultValue: `Show all (${rule321Results.length})` })}
+                </button>
+              )}
               <p className="text-[10px] text-muted-foreground mt-2">
                 {t("rule321.desc")}
               </p>

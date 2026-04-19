@@ -30,6 +30,8 @@
     "forecastHistorical": "기록",
     "forecastPredicted": "예측",
     "forecastExplain": "지난 몇 달 동안 전체 백업 저장소가 어떻게 증가했는지 보여주고 지난 1년간의 선형 추세를 기반으로 향후 12개월을 예측합니다. 새로운 저장 매체를 미리 계획하는 데 유용합니다.",
+    "showAllMedia": "모두 표시 ({{count}}개 더)",
+    "showAllBackups": "모두 표시 ({{count}}개 더)",
     "noBackups": "아직 백업이 없습니다. 첫 번째 백업을 생성하여 시작하세요.",
     "usedOf": "/",
     "free": "여유",

@@ -30,6 +30,8 @@
     "forecastHistorical": "历史",
     "forecastPredicted": "预测",
     "forecastExplain": "显示您的总备份存储在过去几个月中的增长情况,并根据去年的线性趋势预测未来12个月。有助于提前规划新的存储介质。",
+    "showAllMedia": "显示全部(还有 {{count}} 个)",
+    "showAllBackups": "显示全部(还有 {{count}} 个)",
     "noBackups": "暂无备份。创建您的第一个备份以开始使用。",
     "usedOf": "共",
     "free": "可用",

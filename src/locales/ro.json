@@ -30,6 +30,8 @@
     "forecastHistorical": "Istoric",
     "forecastPredicted": "Prognoză",
     "forecastExplain": "Arată cum a crescut stocarea totală a copiilor de rezervă în ultimele luni și proiectează următoarele 12 luni pe baza unei tendințe liniare din ultimul an. Util pentru planificarea din timp a noilor medii de stocare.",
+    "showAllMedia": "Afișează tot (încă {{count}})",
+    "showAllBackups": "Afișează tot (încă {{count}})",
     "noBackups": "Nicio copie de siguranță încă. Creează prima copie de siguranță pentru a începe.",
     "usedOf": "din",
     "free": "liber",

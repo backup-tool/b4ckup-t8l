@@ -30,6 +30,8 @@
     "forecastHistorical": "Geçmiş",
     "forecastPredicted": "Tahmin",
     "forecastExplain": "Toplam yedekleme depolama alanınızın son aylarda nasıl büyüdüğünü gösterir ve geçen yılın doğrusal eğilimine göre önümüzdeki 12 ayı tahmin eder. Yeni depolama ortamlarını önceden planlamak için yararlıdır.",
+    "showAllMedia": "Tümünü göster ({{count}} tane daha)",
+    "showAllBackups": "Tümünü göster ({{count}} tane daha)",
     "noBackups": "Henüz yedek yok. Başlamak için ilk yedeğinizi oluşturun.",
     "usedOf": "/",
     "free": "boş",

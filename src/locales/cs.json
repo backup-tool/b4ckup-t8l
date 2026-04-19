@@ -30,6 +30,8 @@
     "forecastHistorical": "Historie",
     "forecastPredicted": "Prognóza",
     "forecastExplain": "Zobrazuje, jak vaše celkové úložiště záloh rostlo během posledních měsíců, a předpovídá následujících 12 měsíců na základě lineárního trendu posledního roku. Užitečné pro předem plánování nových úložných médií.",
+    "showAllMedia": "Zobrazit vše (dalších {{count}})",
+    "showAllBackups": "Zobrazit vše (dalších {{count}})",
     "noBackups": "Zatím žádné zálohy. Vytvořte první zálohu a začněte.",
     "usedOf": "z",
     "free": "volné",

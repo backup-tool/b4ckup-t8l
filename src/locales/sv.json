@@ -30,6 +30,8 @@
     "forecastHistorical": "Historisk",
     "forecastPredicted": "Prognos",
     "forecastExplain": "Visar hur din totala säkerhetskopieringslagring har vuxit under de senaste månaderna och projicerar de kommande 12 månaderna baserat på en linjär trend från förra året. Användbart för att planera nya lagringsmedier i god tid.",
+    "showAllMedia": "Visa alla ({{count}} till)",
+    "showAllBackups": "Visa alla ({{count}} till)",
     "noBackups": "Inga säkerhetskopior ännu. Skapa din första säkerhetskopia för att komma igång.",
     "usedOf": "av",
     "free": "ledigt",

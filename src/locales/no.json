@@ -30,6 +30,8 @@
     "forecastHistorical": "Historisk",
     "forecastPredicted": "Prognose",
     "forecastExplain": "Viser hvordan din totale sikkerhetskopi-lagring har vokst de siste månedene, og forutsier de neste 12 månedene basert på en lineær trend fra det siste året. Nyttig for å planlegge nye lagringsmedier i god tid.",
+    "showAllMedia": "Vis alle ({{count}} flere)",
+    "showAllBackups": "Vis alle ({{count}} flere)",
     "noBackups": "Ingen sikkerhetskopier ennå. Opprett din første sikkerhetskopi for å komme i gang.",
     "usedOf": "av",
     "free": "ledig",

@@ -30,6 +30,8 @@
     "forecastHistorical": "Historia",
     "forecastPredicted": "Ennuste",
     "forecastExplain": "Näyttää, miten varmuuskopioidesi kokonaistallennustila on kasvanut viime kuukausien aikana, ja ennustaa seuraavat 12 kuukautta viime vuoden lineaarisen trendin perusteella. Hyödyllinen uusien tallennusvälineiden suunnitteluun etukäteen.",
+    "showAllMedia": "Näytä kaikki ({{count}} lisää)",
+    "showAllBackups": "Näytä kaikki ({{count}} lisää)",
     "noBackups": "Ei varmuuskopioita vielä. Luo ensimmäinen varmuuskopio aloittaaksesi.",
     "usedOf": "/",
     "free": "vapaana",

@@ -30,6 +30,8 @@
     "forecastHistorical": "Előzmény",
     "forecastPredicted": "Előrejelzés",
     "forecastExplain": "Megmutatja, hogyan növekedett a teljes biztonsági mentési tárhelye az elmúlt hónapokban, és a következő 12 hónapot az elmúlt év lineáris trendje alapján vetíti előre. Hasznos az új tárolóeszközök időben történő tervezéséhez.",
+    "showAllMedia": "Összes megjelenítése (még {{count}})",
+    "showAllBackups": "Összes megjelenítése (még {{count}})",
     "noBackups": "Még nincsenek biztonsági mentések. Hozd létre az elsőt a kezdéshez.",
     "usedOf": "/",
     "free": "szabad",

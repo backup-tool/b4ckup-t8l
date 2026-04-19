@@ -30,6 +30,8 @@
     "forecastHistorical": "Kihistoria",
     "forecastPredicted": "Utabiri",
     "forecastExplain": "Inaonyesha jinsi hifadhi yako yote ya nakala rudufu imekua katika miezi iliyopita na kutabiri miezi 12 ijayo kulingana na mwelekeo wa moja kwa moja wa mwaka uliopita. Muhimu kwa kupanga vyombo vipya vya kuhifadhi mapema.",
+    "showAllMedia": "Onyesha zote ({{count}} zaidi)",
+    "showAllBackups": "Onyesha zote ({{count}} zaidi)",
     "noBackups": "Hakuna nakala rudufu bado. Unda nakala yako ya kwanza ili kuanza.",
     "usedOf": "kati ya",
     "free": "huru",

@@ -30,6 +30,8 @@
     "forecastHistorical": "Kasaysayan",
     "forecastPredicted": "Pagtataya",
     "forecastExplain": "Ipinapakita kung paano lumago ang iyong kabuuang storage ng backup sa nakaraang mga buwan at hinuhulaan ang susunod na 12 buwan batay sa linear na trend ng nakaraang taon. Kapaki-pakinabang para sa maagang pagpaplano ng mga bagong storage media.",
+    "showAllMedia": "Ipakita lahat ({{count}} pa)",
+    "showAllBackups": "Ipakita lahat ({{count}} pa)",
     "noBackups": "Wala pang mga backup. Gumawa ng iyong unang backup upang magsimula.",
     "usedOf": "sa",
     "free": "bakante",

@@ -30,6 +30,8 @@
     "forecastHistorical": "Historical",
     "forecastPredicted": "Forecast",
     "forecastExplain": "Shows how your total backup storage has grown over the past months and projects the next 12 months based on a linear trend of the last year. Useful for planning new storage media in advance.",
+    "showAllMedia": "Show all ({{count}} more)",
+    "showAllBackups": "Show all ({{count}} more)",
     "noBackups": "تر اوسه بیک اپ نشته. خپل لومړی بیک اپ جوړ کړئ.",
     "usedOf": "له",
     "free": "خلاص",
